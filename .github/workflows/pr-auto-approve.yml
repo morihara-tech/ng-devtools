@@ -16,4 +16,12 @@ jobs:
     permissions:
       pull-requests: write
     steps:
-      - uses: hmarr/auto-approve-action@v4
+      - id: create_token
+        uses: tibdex/github-app-token@v2
+        with:
+          app_id: ${{ secrets.AUTO_APPROVE_APP_ID }}
+          private_key: ${{ secrets.AUTO_APPROVE_KEY }}
+      - id: auto-approve-action
+        uses: hmarr/auto-approve-action@v4
+        with:
+          github-token: ${{ steps.create_token.outputs.token }}
