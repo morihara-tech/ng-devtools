@@ -1,0 +1,24 @@
+.sidenav-width {
+  width: 288px;
+  padding: 0 16px;
+}
+
+.sidenav-header {
+  height: 128px;
+  color: #fff;
+  // TODO mixin
+  background: linear-gradient(170deg,#78db99,#0ec6bd);
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+}
+
+.person-area {
+  padding: 0 16px;
+  margin-top: auto;
+}
+
+.person-icon {
+  font-size: 48px;
+  padding-bottom: 16px;
+}

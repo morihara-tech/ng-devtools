@@ -1,0 +1,15 @@
+@if (person) {
+  <button mat-button [matMenuTriggerFor]="menu" class="person-button">
+    <span>{{ person.name }}</span>
+    <mat-icon class="padding-left">person</mat-icon>
+  </button>
+  
+  <mat-menu #menu="matMenu" xPosition="before">
+    @for (menu of person.menus; track menu.menuId) {
+      <button mat-menu-item (click)="this.clickMenu.emit(menu)">
+        <mat-icon>{{ menu.icon }}</mat-icon>
+        <span>{{ menu.label }}</span>
+      </button>
+    }
+  </mat-menu> 
+}
