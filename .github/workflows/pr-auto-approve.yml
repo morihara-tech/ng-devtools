@@ -9,9 +9,8 @@ on:
 
 jobs:
   auto-approve:
-    if: |
-      github.event.pull_request.user.login == github.repository_owner
-      && ! github.event.pull_request.draft
+    if: | 
+      ! github.event.pull_request.draft
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
@@ -21,7 +20,13 @@ jobs:
         with:
           app_id: ${{ secrets.AUTO_APPROVE_APP_ID }}
           private_key: ${{ secrets.AUTO_APPROVE_KEY }}
-      - id: auto-approve-action
+      - id: get_admin_members
+        run: |
+          gh api /orgs/${{ github.repository_owner }}/teams/admin/memberships/${{ github.event.pull_request.user.login }}
+        env:
+          GH_TOKEN: ${{ steps.create_token.outputs.token }}
+      - id: auto_approve_action
+        if: steps.get_admin_members.outcome == 'success'
         uses: hmarr/auto-approve-action@v4
         with:
           github-token: ${{ steps.create_token.outputs.token }}
