@@ -1,0 +1,25 @@
+@if (person) {
+  <div class="sidenav-header sidenav-width">
+    <div class="person-area">
+      <div class="person-icon">
+        <mat-icon>account_circle</mat-icon>
+      </div>
+      <div class="person-name">
+        {{ person.personName }}
+      </div>
+    </div>
+  </div>
+}
+<div class="sidenav-width">
+  <mat-nav-list>
+    @for (item of items; track $index) {
+      <a mat-list-item
+        class="item"
+        [routerLink]="item.routerLink"
+        (click)="this.clickMenu.emit()">
+        <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+        <span matLine>{{ item.label }}</span>
+      </a>
+    }
+  </mat-nav-list>
+</div>

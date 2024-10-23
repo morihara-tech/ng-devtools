@@ -1,0 +1,13 @@
+@if (model) {
+  <mat-toolbar class="header-toolbar">
+    <button mat-icon-button (click)="onToggleMenu()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <a [routerLink]="model.logo.routerLink">
+      <img class="logo" [src]="model.logo.logoUrl">
+    </a>
+    <span>{{ getTitle }}</span>
+    <span class="spacer"></span>
+    <app-person-button [person]="model.person" (clickMenu)="clickPersonContext.emit($event)"></app-person-button>
+  </mat-toolbar>  
+}

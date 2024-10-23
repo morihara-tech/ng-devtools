@@ -1,0 +1,6 @@
+@use '@angular/material' as mat;
+
+@mixin header($theme) {
+  --header-background-color: #{mat.get-theme-color($theme, primary-container)};
+  --header-text-color: #{mat.get-theme-color($theme, primary)};
+}
