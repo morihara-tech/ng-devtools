@@ -16,11 +16,11 @@
 // that you are using.
 :root {
   @include mat.all-component-themes(m3-theme.$light-theme);
-  @include mixin.header(m3-theme.$light-theme);
+  @include mixin.devtools-theme(m3-theme.$light-theme);
 
   @media (prefers-color-scheme: dark) {
     @include mat.all-component-colors(m3-theme.$dark-theme);
-    @include mixin.header(m3-theme.$dark-theme);
+    @include mixin.devtools-theme(m3-theme.$dark-theme);
   }
 }
 
@@ -34,3 +34,28 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 8px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #d3d3d3;
+  border-radius: 8px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #a9a9a9;
+}
+
+::-webkit-scrollbar-corner {
+  background: #fafafa;
+}

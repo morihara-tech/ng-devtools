@@ -1,0 +1,29 @@
+@use '@angular/material' as mat;
+
+@mixin color($theme) {
+  .devtools-header-toolbar {
+    @media (prefers-color-scheme: light) {
+      --mat-toolbar-container-background-color: #{mat.get-theme-color($theme, inverse-primary)};
+    }
+    @media (prefers-color-scheme: dark) {
+      --mat-toolbar-container-background-color: #{mat.get-theme-color($theme, surface-container-lowest)};
+    }
+    --mat-toolbar-container-text-color: #{mat.get-theme-color($theme, primary)};
+  }
+}
+
+@mixin typography($theme) {
+  .devtools-header-toolbar {
+    font: mat.get-theme-typography($theme, headline-large, font);
+  }
+}
+
+@mixin theme($theme) {
+  @if mat.theme-has($theme, color) {
+    @include color($theme);
+  }
+
+  @if mat.theme-has($theme, typography) {
+    @include typography($theme);
+  }
+}
