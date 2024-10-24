@@ -1,20 +1,8 @@
 <app-header
   [model]="headerModel"
-  (toggleMenu)="sidenav.toggle()"
+  (toggleMenu)="onToggleMenu()"
   (clickPersonContext)="onClickPersonContext($event)"
 ></app-header>
-<mat-sidenav-container class="container">
-  <mat-sidenav #sidenav class="sidenav" mode="side">
-    <app-sidemenu
-      [items]="sidemenuItems"
-      [person]="sidemenuPerson"
-      (clickMenu)="onClickMenu()"
-    ></app-sidemenu>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <!-- <app-breadcrumb></app-breadcrumb> -->
-    <div class="content">
-      <router-outlet></router-outlet>
-    </div>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+<app-sidenav [(toggle)]="toggle">
+  <router-outlet></router-outlet>
+</app-sidenav>
