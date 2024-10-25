@@ -1,0 +1,15 @@
+<mat-sidenav-container class="container">
+  <mat-sidenav #sidenav class="sidenav" mode="side">
+    <app-sidemenu
+      [items]="sidemenuItems"
+      [person]="sidemenuPerson"
+      (clickMenu)="onClickMenu()"
+    ></app-sidemenu>
+  </mat-sidenav>
+  <mat-sidenav-content class="devtools-sidenav-content">
+    <!-- <app-breadcrumb></app-breadcrumb> -->
+    <div class="content">
+      <ng-content></ng-content>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -2,22 +2,22 @@ import { Component, ViewChild } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
-import { SidemenuComponent } from './components/sidemenu/sidemenu.component';
-import { SidemenuItemModel, SidemenuPersonModel } from './components/sidemenu/sidemenu-model';
 import { HeaderModel, PersonButtonMenuModel } from './components/header/header-model';
 import { filter, map, mergeMap } from 'rxjs';
 import { Title } from '@angular/platform-browser';
 import { TEXT, Text } from '../resources/texts/text';
+import { SidenavComponent } from "./components/sidenav/sidenav.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
     HeaderComponent,
-    SidemenuComponent,
+    SidenavComponent,
     MatSidenavModule,
-    RouterOutlet
-  ],
+    RouterOutlet,
+    SidenavComponent
+],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -29,10 +29,8 @@ export class AppComponent {
   headerModel: HeaderModel = {
     logo: { logoUrl: '/logo.gif', routerLink: '/' }
   };
-  sidemenuItems?: Array<SidemenuItemModel>;
-  sidemenuPerson?: SidemenuPersonModel;
 
-  defaultToggle: boolean = false;
+  toggle: boolean = false;
 
   constructor(
     // @Inject(ENVIRONMENT) env: Environment,
@@ -44,26 +42,21 @@ export class AppComponent {
     this.init();
   }
 
-  onClickMenu(): void {
-    setTimeout(() => {
-      if (!this.defaultToggle) {
-        this.sidenav?.close();
-      }
-    }, 100);
-  }
-
   onClickPersonContext(menu: PersonButtonMenuModel): void {
     if (menu.menuId === 'logout') {
       this.route.navigate(['logout']);
     }
   }
 
+  onToggleMenu(): void {
+    this.toggle = !this.toggle;
+  }
+
   private init(): void {
     // TODO locale
     TEXT('ja').subscribe(res => {
-      this.text = res
+      this.text = res;
       this.setTitle();
-      this.setSidemenu();
     });
   }
 
@@ -85,23 +78,8 @@ export class AppComponent {
         if (this.text) {
           this.titleService.setTitle(this.text[event['titleId']]);
         }
-        this.defaultToggle = (event['menuToggle']);
-        if (this.defaultToggle) {
-          this.sidenav?.open();
-        }
-        if (!this.defaultToggle) {
-          this.sidenav?.close();
-        }
+        this.toggle = (event['menuToggle']);
       });
-  }
-
-  private setSidemenu(): void {
-    if (!this.text) {
-      return;
-    }
-    this.sidemenuItems = [
-      { icon: 'data_object', label: 'test', routerLink: '/' }
-    ];
   }
 
 }

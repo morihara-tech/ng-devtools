@@ -1,6 +1,8 @@
 @use '@angular/material' as mat;
+@use '../components/header/header-theme' as header;
+@use '../components/sidenav/sidenav-theme' as sidenav;
 
-@mixin header($theme) {
-  --header-background-color: #{mat.get-theme-color($theme, primary-container)};
-  --header-text-color: #{mat.get-theme-color($theme, primary)};
+@mixin devtools-theme($theme) {
+  @include header.theme($theme);
+  @include sidenav.theme($theme);
 }
