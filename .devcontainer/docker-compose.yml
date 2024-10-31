@@ -3,6 +3,8 @@ services:
   workspace:
     container_name: ng-devtools
     build: workspace
+    environment:
+      GIT_PAGER: "LESSCHARSET=utf-8 less"
     volumes:
       - ../:/ng-devtools
       - $HOME/.aws/:/root/.aws/
