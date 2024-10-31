@@ -1,0 +1,30 @@
+<div class="devtools-error-container">
+  <div class="content">
+    <div class="card">
+      <mat-card>
+        <mat-card-content>
+          <div class="card-content">
+            @if (text && titleTextId) {
+              <div class="title">
+                {{ text[titleTextId] }}
+              </div>
+            }
+            <ng-content />
+          </div>
+        </mat-card-content>
+        <mat-card-footer>
+          <div class="button-area">
+            @if (text) {
+              <a mat-stroked-button class="button" [routerLink]="'/'">{{ text['goBackHome'] }}</a>
+            }
+          </div>
+        </mat-card-footer>
+      </mat-card>
+      <div class="copy-right">
+        @if (text) {
+          <span class="credit-label">{{ text['copyRight'] }}</span>
+        }
+      </div>
+    </div>
+  </div>
+</div>

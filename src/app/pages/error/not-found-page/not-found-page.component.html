@@ -1,0 +1,7 @@
+@if (text) {
+  <app-error-template [text]="text" titleTextId="notFoundErrorTitle">
+    <div class="message">
+      {{ text['notFoundErrorMessage'] }}
+    </div>
+  </app-error-template>
+}
