@@ -2,9 +2,11 @@
 @use '../components/header/header-theme' as header;
 @use '../components/sidenav/sidenav-theme' as sidenav;
 @use '../components/error-template/error-template-theme' as error-template;
+@use '../components/heading/heading-theme' as heading;
 
 @mixin devtools-theme($theme) {
   @include header.theme($theme);
   @include sidenav.theme($theme);
+  @include heading.theme($theme);
   @include error-template.theme($theme);
 }

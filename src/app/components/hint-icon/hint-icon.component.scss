@@ -1,0 +1,14 @@
+.help {
+  font-size: 14px;
+  height: 14px;
+  width: 14px;
+}
+
+::ng-deep .help-tooltip-break {
+  white-space: pre-line;
+  font-size: 14px;
+
+  .mat-mdc-tooltip-surface {
+    max-width: unset !important;
+  }
+}

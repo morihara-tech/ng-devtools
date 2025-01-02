@@ -1,0 +1,25 @@
+.flex {
+  display: flex;
+  gap: 8px 32px;
+  align-items: center;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+.input-form-wrapper {
+  margin-top: 24px;
+}
+
+::ng-deep .input-form-with-icon .mat-mdc-form-field-infix {
+  width: 112px;
+}
+
+.hint {
+  margin-left: 16px;
+}
+
+.toggle {
+  margin-bottom: 20px;
+}

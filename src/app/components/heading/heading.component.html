@@ -1,0 +1,42 @@
+@switch (headingType) {
+  @case ('h2') {
+    <h2 class="devtool-heading">
+      <ng-container *ngTemplateOutlet="template"></ng-container>
+    </h2>
+  }
+  @case ('h3') {
+    <h3 class="devtool-heading">
+      <ng-container *ngTemplateOutlet="template"></ng-container>
+    </h3>
+  }
+  @case ('h4') {
+    <h4 class="devtool-heading">
+      <ng-container *ngTemplateOutlet="template"></ng-container>
+    </h4>
+  }
+  @default {
+    <h1 class="devtool-heading">
+      <ng-container *ngTemplateOutlet="template"></ng-container>
+    </h1>
+  }
+}
+
+<ng-template #template>
+  <div class="between">
+    <div class="text">
+      <mat-icon class="right middle">keyboard_arrow_right</mat-icon>
+      <span class="middle">
+        <ng-content></ng-content>
+      </span>
+      @if (text && hintMessageTextId) {
+        <mat-icon matSuffix mat-icon-button class="hint-icon middle"
+          [matTooltip]="text[hintMessageTextId]" matTooltipPosition="right" matTooltipHideDelay="2000">
+          help_outline
+        </mat-icon>
+      }
+    </div>
+    <div class="right-contents">
+      <ng-content select=".right"></ng-content>
+    </div>
+  </div>
+</ng-template>
