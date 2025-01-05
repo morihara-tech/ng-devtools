@@ -12,8 +12,12 @@
   margin-top: 24px;
 }
 
+.input-form {
+  width: 128px;
+}
+
 ::ng-deep .input-form-with-icon .mat-mdc-form-field-infix {
-  width: 112px;
+  width: 198px;
 }
 
 .hint {

@@ -30,8 +30,8 @@
       }
     </mat-dialog-content>
     <mat-dialog-actions>
-      <button mat-stroked-button (click)="onCancelClick()">{{ data.text['cancel'] }}</button>
-      <button mat-flat-button (click)="onSubmit()" [disabled]="errorMessage !== null" type="submit" color="primary">{{ data.text['ok'] }}</button>
+      <button mat-stroked-button type="button" (click)="onCancelClick()">{{ data.text['cancel'] }}</button>
+      <button mat-flat-button type="submit" [disabled]="errorMessage !== null" color="primary">{{ data.text['ok'] }}</button>
     </mat-dialog-actions>
   </form>
 }

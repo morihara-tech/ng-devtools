@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, inject, signal } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -12,7 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
 import { DatetimeMakerDialogComponent } from './datetime-maker-dialog/datetime-maker-dialog.component';
-import { distinctUntilChanged } from 'rxjs';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-ulid-gen-input-card',
@@ -25,6 +25,7 @@ import { distinctUntilChanged } from 'rxjs';
     MatFormFieldModule,
     MatInputModule,
     MatSlideToggleModule,
+    MatTooltipModule,
     HeadingComponent,
     HintIconComponent,
   ],
@@ -33,7 +34,7 @@ import { distinctUntilChanged } from 'rxjs';
 })
 export class UlidGenInputCardComponent implements OnInit {
   @Input() text?: Text;
-  @Output() submit: EventEmitter<UlidGenInputModel> = new EventEmitter();
+  @Output() generate: EventEmitter<UlidGenInputModel> = new EventEmitter();
 
   formGroup?: FormGroup;
 
@@ -44,6 +45,9 @@ export class UlidGenInputCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.resetForm();
+    setTimeout(() => {
+      this.onSubmit();
+    }, 10);
   }
 
   onSubmit(): void {
@@ -51,12 +55,11 @@ export class UlidGenInputCardComponent implements OnInit {
       return;
     }
     const model: UlidGenInputModel = {
-      generatingSize: Number(this.formGroup.controls['generatingSize']),
-      isSelectedTimeMode: Boolean(this.formGroup.controls['isSelectedTimeMode']),
-      baseUnixDatetime: Number(this.formGroup.controls['baseUnixDatetime']),
-      isMonoIncreaseMode: Boolean(this.formGroup.controls['isMonoIncreaseMode']),
+      generatingSize: Number(this.formGroup.controls['generatingSize'].value),
+      baseTimestamp: Number(this.formGroup.controls['baseTimestamp'].value),
+      isMonoIncreaseMode: Boolean(this.formGroup.controls['isMonoIncreaseMode'].value),
     };
-    this.submit.emit(model);
+    this.generate.emit(model);
   }
 
   onClickCalendarButton(): void {
@@ -66,20 +69,20 @@ export class UlidGenInputCardComponent implements OnInit {
     const dialogRef = this.dialog.open(DatetimeMakerDialogComponent, {
       data: {
         text: this.text,
-        unixdatetime: Number(this.formGroup.value['baseUnixDatetime'])
+        unixdatetime: Number(this.formGroup.value['baseTimestamp'])
       },
     });
     dialogRef.afterClosed().subscribe(result => {
       if (!result) {
         return;
       }
-      this.formGroup?.controls['baseUnixDatetime'].setValue(result);
+      this.formGroup?.controls['baseTimestamp'].setValue(result);
     });
   }
 
   onClickReload(): void {
     const now = new Date();
-    this.formGroup?.controls['baseUnixDatetime'].setValue(Math.floor(now.getTime() / 1000));
+    this.formGroup?.controls['baseTimestamp'].setValue(Math.floor(now.getTime()));
   }
 
   get hasError(): boolean {
@@ -89,28 +92,38 @@ export class UlidGenInputCardComponent implements OnInit {
     return this.formGroup.status !== 'VALID';
   }
 
+  get errorMessage(): string | null {
+    if (!this.formGroup || !this.text) {
+      return null;
+    }
+
+    for (const key of Object.keys(this.formGroup.controls)) {
+      if (this.formGroup.controls[key].errors?.['required']) {
+        return this.text['ulidGenInputErrorRequired'];
+      }
+    }
+    if (this.formGroup.controls['generatingSize'].errors?.['min'] || this.formGroup.controls['generatingSize'].errors?.['max']) {
+      return this.text['ulidGenInputErrorGeneratingSizeRange'];
+    }
+    if (this.formGroup.controls['baseTimestamp'].errors?.['min']) {
+      return this.text['ulidGenInputErrorBaseTimestampMin'];
+    }
+    return null;
+  }
+
   private resetForm(): void {
     const now = new Date();
     this.formGroup = this.fb.group({
-      generatingSize: this.fb.control<number>(1, [
+      generatingSize: this.fb.control<number>(5, [
         Validators.required,
         Validators.min(1),
         Validators.max(5000)
       ]),
-      isSelectedTimeMode: this.fb.control<boolean>(false),
-      baseUnixDatetime: this.fb.control<number>({value: Math.floor(now.getTime() / 1000), disabled: true}, [
+      baseTimestamp: this.fb.control<number>(Math.floor(now.getTime()), [
+        Validators.required,
         Validators.min(0),
       ]),
       isMonoIncreaseMode: this.fb.control<boolean>(false)
-    });
-    this.formGroup.valueChanges
-      .pipe(distinctUntilChanged((prev, curr) => prev.isSelectedTimeMode === curr.isSelectedTimeMode))
-      .subscribe(values => {
-      if (!values.isSelectedTimeMode) {
-        this.formGroup?.controls['baseUnixDatetime'].disable();
-      } else {
-        this.formGroup?.controls['baseUnixDatetime'].enable();
-      }
     });
   }
 

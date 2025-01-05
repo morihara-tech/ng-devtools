@@ -1,6 +1,6 @@
 <mat-card appearance="raised">
   @if (formGroup && text) {
-    <form [formGroup]="formGroup" (submit)="onSubmit()">
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
       <mat-card-content>
         <app-heading headingType="h3">{{ text['ulidGenInputHeading'] }}</app-heading>
         <div class="input-form-wrapper flex wrap">
@@ -8,27 +8,33 @@
             <mat-label>{{ text['generatingSize'] }}</mat-label>
             <input matInput type="number" [placeholder]="text['generatingSizePlaceholder']" formControlName="generatingSize">
           </mat-form-field>
+          <mat-form-field class="input-form-with-icon">
+            <mat-label>{{ text['baseTimestamp'] }}</mat-label>
+            <input matInput type="number" min="0" formControlName="baseTimestamp">
+            <button matSuffix mat-icon-button type="button" aria-label="calendar"
+              [matTooltip]="text['selectDatetime']"
+              (click)="onClickCalendarButton()">
+              <mat-icon>edit_calendar</mat-icon>
+            </button>
+            <button matSuffix mat-icon-button type="button" aria-label="reload"
+              [matTooltip]="text['reload']"
+              (click)="onClickReload()">
+              <mat-icon>refresh</mat-icon>
+            </button>
+          </mat-form-field>
           <div class="flex toggle">
             <mat-slide-toggle formControlName="isMonoIncreaseMode">
               {{ text['isMonoIncreaseMode'] }}
             </mat-slide-toggle>
             <app-hint-icon [message]="text['isMonoIncreaseModeHint']" class="hint"></app-hint-icon>
           </div>
-          <mat-slide-toggle formControlName="isSelectedTimeMode" class="toggle">{{ text['isSelectedTimeMode'] }}</mat-slide-toggle>
-          <mat-form-field class="input-form-with-icon">
-            <mat-label>{{ text['baseUnixDatetime'] }}</mat-label>
-            <input matInput type="number" min="0" formControlName="baseUnixDatetime">
-            <button matSuffix mat-icon-button aria-label="calendar" [disabled]="formGroup.controls['baseUnixDatetime'].disabled" (click)="onClickCalendarButton()">
-              <mat-icon>edit_calendar</mat-icon>
-            </button>
-            <button matSuffix mat-icon-button aria-label="reload" [disabled]="formGroup.controls['baseUnixDatetime'].disabled" (click)="onClickReload()">
-              <mat-icon>refresh</mat-icon>
-            </button>
-          </mat-form-field>
-          </div>
+        </div>
+        @if (errorMessage !== null) {
+          <mat-error>{{ errorMessage }}</mat-error>
+        }
       </mat-card-content>
       <mat-card-actions align="end">
-        <button mat-flat-button type="submit" [disabled]="hasError">{{ text['generate'] }}</button>
+        <button mat-flat-button [disabled]="hasError" type="submit">{{ text['generate'] }}</button>
       </mat-card-actions>
     </form>
   }

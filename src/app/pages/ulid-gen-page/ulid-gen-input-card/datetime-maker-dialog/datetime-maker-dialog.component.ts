@@ -86,6 +86,7 @@ export class DatetimeMakerDialogComponent implements OnInit {
     }
     return null;
   }
+
   private setCalendarLocale(): void {
     // TODO locale
     this.calendarLocale.set('ja-JP');
@@ -93,7 +94,7 @@ export class DatetimeMakerDialogComponent implements OnInit {
   }
 
   private resetForm(): void {
-    const date = new Date(this.data.unixdatetime * 1000);
+    const date = new Date(this.data.unixdatetime);
     this.formGroup = this.fb.group({
       baseDate: this.fb.control<Moment>(moment(date), [
         Validators.required
@@ -124,6 +125,6 @@ export class DatetimeMakerDialogComponent implements OnInit {
     baseDate.hours(this.formGroup.value['baseHours']);
     baseDate.minutes(this.formGroup.value['baseMinutes']);
     baseDate.seconds(this.formGroup.value['baseSeconds']);
-    return baseDate.unix();
+    return baseDate.valueOf();
   }
 }

@@ -6,9 +6,11 @@
   }
   <app-ulid-gen-input-card
     [text]="text"
+    (generate)="onGenerate($event)"
   ></app-ulid-gen-input-card>
   <div class="spacer"></div>
   <app-ulid-gen-output-card
+    #output
     [text]="text"
   ></app-ulid-gen-output-card>  
 </app-application-page-template>

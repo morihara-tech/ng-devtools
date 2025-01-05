@@ -1,6 +1,5 @@
 export interface UlidGenInputModel {
   generatingSize: number;
-  isSelectedTimeMode: boolean;
-  baseUnixDatetime: number;
+  baseTimestamp: number;
   isMonoIncreaseMode: boolean;
 }
