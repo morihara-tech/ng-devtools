@@ -1,0 +1,22 @@
+.text-viewer-table-content {
+  padding: 8px 0;
+  height: 100%;
+}
+
+.user-select-none {
+  user-select: none;
+}
+
+.mat-column-position {
+  width: 32px;
+  border-right-style: solid;
+  border-right-width: 1px;
+}
+
+.mat-mdc-cell {
+  border-bottom: none !important;
+}
+
+.mat-mdc-row {
+  height: 24px;
+}

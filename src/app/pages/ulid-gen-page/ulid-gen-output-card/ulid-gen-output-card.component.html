@@ -1,0 +1,19 @@
+<mat-card appearance="raised">
+  <mat-card-content>
+    @if (text) {
+      <app-heading headingType="h3">
+        {{ text['ulidGenOutputHeading'] }}
+        <div class="right">
+          <button mat-icon-button
+            [matTooltip]="text['copyToClipboard']"
+            (click)="onClickCopy()">
+            <mat-icon>content_copy</mat-icon>
+          </button>
+        </div>
+      </app-heading>
+      <div class="text-viewer-table-wrapper">
+        <app-text-viewer-table [value]="ulidStrings"></app-text-viewer-table>
+      </div>
+    }
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,24 @@
+.flex {
+  display: flex;
+  gap: 0 8px;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+.between {
+  justify-content: space-between;
+}
+
+.message {
+  white-space: pre-line;
+}
+
+.date {
+  width: 160px;
+}
+
+.time {
+  width: 80px;
+}

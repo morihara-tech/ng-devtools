@@ -1,0 +1,13 @@
+@if (valueModels.length !== 0) {
+  <div class="text-viewer-table-content">
+    <table mat-table [dataSource]="valueModels">
+      <ng-container matColumnDef="position" sticky>
+        <td mat-cell *matCellDef="let model" class="user-select-none"> {{ model.position }} </td>
+      </ng-container>
+      <ng-container matColumnDef="line">
+        <td mat-cell *matCellDef="let model"> {{ model.line }} </td>
+      </ng-container>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+}

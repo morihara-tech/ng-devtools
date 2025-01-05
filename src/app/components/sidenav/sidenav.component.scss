@@ -3,7 +3,8 @@
 }
 
 .content {
-  padding: 8px 32px;
+  padding-top: 8px;
+  padding-bottom: 8px;
   height: calc(100% - 16px);
 }
 
@@ -16,11 +17,21 @@
   .container {
       height: calc(100vh - 56px);
   }
+
+  .content {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
 }
 
 @media screen and (min-width:600px) {
   /*for pc*/
   .container {
       height: calc(100vh - 64px);
+  }
+
+  .content {
+    padding-left: 16px;
+    padding-right: 16px;
   }
 }

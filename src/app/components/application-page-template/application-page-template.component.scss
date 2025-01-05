@@ -1,0 +1,13 @@
+@media screen and (min-width:600px) {
+  /*for pc*/
+  .page-wrapper {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .page-content-wrapper {
+    width: calc(100% - 328px);
+  }
+  .ad-wrapper {
+    width: 328px;
+  }
+}

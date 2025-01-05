@@ -63,7 +63,7 @@ export class SidenavComponent implements OnChanges {
       return;
     }
     this.sidemenuItems = [
-      { icon: 'data_object', label: 'test', routerLink: '/' }
+      { icon: 'exposure_plus_1', label: this.text['ulidGenPage'], routerLink: '/ulid-generator' }
     ];
   }
 }
