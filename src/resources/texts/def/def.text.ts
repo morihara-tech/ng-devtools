@@ -15,9 +15,11 @@ export const DEF_TEXT: { [locale in Locale]: Text } = {
     'copyToClipboard': 'クリップボードにコピーする',
     'copiedMessage': 'コピーしました。',
     // error
+    '404ErrorPage': 'ページが見つかりません',
     'notFoundErrorTitle': 'ページが見つかりません',
     'notFoundErrorMessage': '申し訳ございません。\nお探しのページは、移動または削除された可能性があります。',
     // ulid gen
+    'ulidGenPage': 'ULID生成',
     'ulidGenTitle': 'ULID生成ツール',
     'ulidGenInputHeading': 'ULID生成条件',
     'ulidGenOutputHeading': '生成結果',

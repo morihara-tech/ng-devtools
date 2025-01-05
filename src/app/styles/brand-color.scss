@@ -1,0 +1,16 @@
+// Note: Brand Color is #AE1C1D
+$_brand-color: (
+  darkest: #2B0707,
+  dark: #530D0E,
+  normal: #AE1C1D,
+  light: #E14B4D,
+  lightest: #FBE9E9,
+  header: #543030,
+  header-dark: #301B1B,
+);
+
+@mixin init() {
+  @each $key, $value in $_brand-color {
+    --brand-color-#{$key}: #{$value};
+  }
+}

@@ -1,14 +1,26 @@
 @use '@angular/material' as mat;
+@use './brand-color' as brand-color;
 @use '../components/header/header-theme' as header;
 @use '../components/sidenav/sidenav-theme' as sidenav;
 @use '../components/error-template/error-template-theme' as error-template;
-@use '../components/heading/heading-theme' as heading;
 @use '../components/text-viewer-table/text-viewer-table-theme' as text-viewer-table;
 
 @mixin devtools-theme($theme) {
+  @include brand-color.init();
   @include header.theme($theme);
+  @include component-color-definition();
   @include sidenav.theme($theme);
-  @include heading.theme($theme);
   @include text-viewer-table.theme($theme);
   @include error-template.theme($theme);
+}
+
+@mixin component-color-definition() {
+  @media (prefers-color-scheme: light) {
+    --custom-header-background-color: var(--brand-color-header);
+    --custom-heading-border-color: var(--brand-color-normal);
+  }
+  @media (prefers-color-scheme: dark) {
+    --custom-header-background-color: var(--brand-color-header-dark);
+    --custom-heading-border-color: var(--brand-color-light);
+  }
 }

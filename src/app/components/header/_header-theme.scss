@@ -2,19 +2,21 @@
 
 @mixin color($theme) {
   .devtools-header-toolbar {
+    --mat-toolbar-container-background-color: var(--custom-header-background-color);
     @media (prefers-color-scheme: light) {
-      --mat-toolbar-container-background-color: #{mat.get-theme-color($theme, inverse-primary)};
+      --mat-toolbar-container-text-color: #{mat.get-theme-color($theme, on-primary)};
+      --mdc-icon-button-icon-color: #{mat.get-theme-color($theme, on-primary)};
     }
     @media (prefers-color-scheme: dark) {
-      --mat-toolbar-container-background-color: #{mat.get-theme-color($theme, surface-container-lowest)};
+      --mat-toolbar-container-text-color: #{mat.get-theme-color($theme, on-surface)};
+      --mdc-icon-button-icon-color: #{mat.get-theme-color($theme, on-surface)};
     }
-    --mat-toolbar-container-text-color: #{mat.get-theme-color($theme, primary)};
   }
 }
 
 @mixin typography($theme) {
   .devtools-header-toolbar {
-    font: mat.get-theme-typography($theme, headline-large, font);
+    font: mat.get-theme-typography($theme, headline-small, font);
   }
 }
 
