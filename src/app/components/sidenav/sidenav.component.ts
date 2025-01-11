@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { SidemenuComponent } from '../sidemenu/sidemenu.component';
-import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
+import { MatDrawerMode, MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
 import { TEXT, Text } from '../../../resources/texts/text';
 import { SidemenuItemModel, SidemenuPersonModel } from '../sidemenu/sidemenu-model';
 
@@ -58,6 +58,12 @@ export class SidenavComponent implements OnChanges {
     });
   }
 
+  get mode(): MatDrawerMode {
+    return (window.innerWidth < 600)
+      ? 'over'
+      : 'side';
+  }
+
   private setSidemenu(): void {
     if (!this.text) {
       return;
@@ -66,4 +72,5 @@ export class SidenavComponent implements OnChanges {
       { icon: 'exposure_plus_1', label: this.text['ulidGenPage'], routerLink: '/ulid-generator' }
     ];
   }
+
 }

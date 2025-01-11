@@ -1,5 +1,5 @@
 <mat-sidenav-container class="container">
-  <mat-sidenav #sidenav class="sidenav" mode="side">
+  <mat-sidenav #sidenav class="sidenav" [mode]="mode">
     <app-sidemenu
       [items]="sidemenuItems"
       [person]="sidemenuPerson"
