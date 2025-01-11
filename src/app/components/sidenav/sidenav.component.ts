@@ -1,8 +1,10 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { SidemenuComponent } from '../sidemenu/sidemenu.component';
-import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
+import { MatDrawerMode, MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
 import { TEXT, Text } from '../../../resources/texts/text';
 import { SidemenuItemModel, SidemenuPersonModel } from '../sidemenu/sidemenu-model';
+import { LocaleService } from '../locale/locale.service';
+import { mergeMap } from 'rxjs';
 
 @Component({
   selector: 'app-sidenav',
@@ -37,6 +39,7 @@ export class SidenavComponent implements OnChanges {
 
   constructor(
     // @Inject(ENVIRONMENT) env: Environment
+    private localeService: LocaleService,
   ) {
     this.init();
   }
@@ -51,11 +54,18 @@ export class SidenavComponent implements OnChanges {
   }
 
   private init(): void {
-    // TODO locale
-    TEXT('ja').subscribe(res => {
-      this.text = res;
-      this.setSidemenu();
-    });
+    this.localeService.get()
+      .pipe(mergeMap((locale) => TEXT(locale)))
+      .subscribe((res) => {
+        this.text = res;
+        this.setSidemenu();
+      });
+  }
+
+  get mode(): MatDrawerMode {
+    return (window.innerWidth < 600)
+      ? 'over'
+      : 'side';
   }
 
   private setSidemenu(): void {
@@ -66,4 +76,5 @@ export class SidenavComponent implements OnChanges {
       { icon: 'exposure_plus_1', label: this.text['ulidGenPage'], routerLink: '/ulid-generator' }
     ];
   }
+
 }

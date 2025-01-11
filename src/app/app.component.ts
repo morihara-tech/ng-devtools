@@ -7,6 +7,8 @@ import { filter, map, mergeMap } from 'rxjs';
 import { Title } from '@angular/platform-browser';
 import { TEXT, Text } from '../resources/texts/text';
 import { SidenavComponent } from "./components/sidenav/sidenav.component";
+import { LocaleService } from './components/locale/locale.service';
+import { locale } from 'moment';
 
 @Component({
   selector: 'app-root',
@@ -35,6 +37,7 @@ export class AppComponent {
   constructor(
     // @Inject(ENVIRONMENT) env: Environment,
     // private auth: AuthService,
+    private localeService: LocaleService,
     private route: Router,
     private activatedRoute: ActivatedRoute,
     private titleService: Title
@@ -53,11 +56,12 @@ export class AppComponent {
   }
 
   private init(): void {
-    // TODO locale
-    TEXT('ja').subscribe(res => {
-      this.text = res;
-      this.setTitle();
-    });
+    this.localeService.get()
+      .pipe(mergeMap((locale) => TEXT(locale)))
+      .subscribe((res) => {
+        this.text = res;
+        this.setTitle();
+      });
   }
 
   private setTitle(): void {

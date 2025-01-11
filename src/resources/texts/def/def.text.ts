@@ -1,8 +1,11 @@
-import { Locale, Text } from "../text";
+import { Locale } from "../../../app/components/locale/locale-model";
+import { Text } from "../text";
 
 export const DEF_TEXT: { [locale in Locale]: Text } = {
   ja: {
     // common
+    'ja': '日本語',
+    'en': 'English',
     'guest': 'ゲスト',
     'goBackHome': 'ホームに戻る',
     'copyRight': '© 2024 Yutaka Morihara',
@@ -42,6 +45,8 @@ export const DEF_TEXT: { [locale in Locale]: Text } = {
   },
   en: {
     // common
+    'ja': '日本語',
+    'en': 'English',
     'guest': 'Guest',
     'goBackHome': 'Back to Home',
     'copyRight': '© 2024 Yutaka Morihara',
@@ -57,7 +62,8 @@ export const DEF_TEXT: { [locale in Locale]: Text } = {
     'notFoundErrorTitle': 'Page not found',
     'notFoundErrorMessage': 'Sorry, the page you\'re looking for can\'t be found.',
     // ulid gen
-    'ulidGenTitle': 'ULID Generator',
+    'ulidGenPage': 'ULID Generator',
+    'ulidGenTitle': 'ULID Generating Tool',
     'ulidGenInputHeading': 'Conditions',
     'ulidGenOutputHeading': 'Results',
     'baseTimestamp': 'Base datetime - Timestamp',
@@ -65,7 +71,7 @@ export const DEF_TEXT: { [locale in Locale]: Text } = {
     'isMonoIncreaseMode': 'Increase monotonically',
     'isMonoIncreaseModeHint': 'The random part at the end of the ULID is generated in increments of 1 bit.',
     'generate': 'Generate',
-    'generatingSize': 'Number of ULIDs to generate',
+    'generatingSize': 'Number of ULIDs',
     'generatingSizePlaceholder': 'Max 5,000',
     'ulidGenInputErrorRequired': 'Required fields are missing.',
     'ulidGenInputErrorGeneratingSizeRange': 'The number of ULIDs to generate must be between 1 and 5,000.',

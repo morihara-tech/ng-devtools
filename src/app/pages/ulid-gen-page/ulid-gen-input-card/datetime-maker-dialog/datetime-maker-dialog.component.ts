@@ -10,6 +10,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import moment, { Moment } from 'moment';
 import 'moment/locale/ja';
+import { LocaleService } from '../../../../components/locale/locale.service';
 
 @Component({
   selector: 'app-datetime-maker-dialog',
@@ -35,6 +36,7 @@ export class DatetimeMakerDialogComponent implements OnInit {
 
   formGroup?: FormGroup;
 
+  private readonly localeService = inject(LocaleService);
   private readonly dialogRef = inject(MatDialogRef<DatetimeMakerDialogComponent>);
   private readonly fb = inject(FormBuilder);
   private readonly calendarAdapter = inject<DateAdapter<unknown, unknown>>(DateAdapter);
@@ -88,9 +90,14 @@ export class DatetimeMakerDialogComponent implements OnInit {
   }
 
   private setCalendarLocale(): void {
-    // TODO locale
-    this.calendarLocale.set('ja-JP');
-    this.calendarAdapter.setLocale(this.calendarLocale());
+    this.localeService.get().subscribe((locale) => {
+      if (locale === 'ja') {
+        this.calendarLocale.set('ja-JP');
+      } else {
+        this.calendarLocale.set('en-US');
+      }
+      this.calendarAdapter.setLocale(this.calendarLocale());
+    });
   }
 
   private resetForm(): void {

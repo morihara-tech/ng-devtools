@@ -6,12 +6,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { MatButtonModule } from '@angular/material/button';
+import { LanguageButtonComponent } from './language-button/language-button.component';
+import { Text } from '../../../resources/texts/text';
 
 @Component({
   selector: 'app-header',
   standalone: true,
   imports: [
     PersonButtonComponent,
+    LanguageButtonComponent,
     RouterModule,
     MatButtonModule,
     MatIconModule,
@@ -21,6 +24,7 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
+  @Input() text?: Text;
   @Input() model?: HeaderModel;
   @Output() toggleMenu: EventEmitter<void> = new EventEmitter();
   @Output() clickPersonContext: EventEmitter<PersonButtonMenuModel> = new EventEmitter();
