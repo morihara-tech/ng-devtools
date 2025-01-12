@@ -9,6 +9,16 @@
 
 @media screen and (max-width: 600px) {
   /*for smart phone*/
+  .devtools-header-toolbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+
+  .header-wrapper {
+    padding-bottom: var(--mat-toolbar-mobile-height);
+  }
+
   .logo {
     width: 24px;
     height: 24px;
