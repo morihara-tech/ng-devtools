@@ -1,9 +1,12 @@
-<app-header
-  [text]="text"
-  [model]="headerModel"
-  (toggleMenu)="onToggleMenu()"
-  (clickPersonContext)="onClickPersonContext($event)"
-></app-header>
-<app-sidenav [(toggle)]="toggle">
+<div class="header-wrapper">
+  <app-header
+    class="header"
+    [text]="text"
+    [model]="headerModel"
+    (toggleMenu)="onToggleMenu()"
+    (clickPersonContext)="onClickPersonContext($event)"
+  ></app-header>
+</div>
+<app-sidenav [(toggle)]="toggle" class="sidenav">
   <router-outlet></router-outlet>
 </app-sidenav>
