@@ -2,12 +2,9 @@
   /*for pc*/
   .page-wrapper {
     display: flex;
-    justify-content: flex-end;
+    flex-wrap: wrap;
   }
   .page-content-wrapper {
-    width: calc(100% - 328px);
-  }
-  .ad-wrapper {
-    width: 328px;
+    min-width: 75%;
   }
 }
