@@ -1,9 +1,5 @@
 @media screen and (max-width: 600px) {
   /*for smart phone*/
-  .header-wrapper {
-    margin-bottom: var(--mat-toolbar-mobile-height);
-  }
-
   .header {
     position: fixed;
     top: 0;
@@ -13,6 +9,10 @@
   }
 
   .sidenav {
+    position: fixed;
+    top: var(--mat-toolbar-mobile-height);
+    left: 0;
+    right: 0;
     overflow-y: visible;
   }
 }

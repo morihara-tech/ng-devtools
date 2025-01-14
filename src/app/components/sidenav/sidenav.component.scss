@@ -15,7 +15,7 @@
 @media screen and (max-width:600px) {
   /*for smart phone*/
   .container {
-      height: calc(100vh - 56px);
+    height: calc(100vh - var(--mat-toolbar-mobile-height));
   }
 
   .content {
@@ -27,7 +27,7 @@
 @media screen and (min-width:600px) {
   /*for pc*/
   .container {
-      height: calc(100vh - 64px);
+    height: calc(100vh - var(--mat-toolbar-standard-height));
   }
 
   .content {
