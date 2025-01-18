@@ -4,15 +4,14 @@ import { MatTooltipModule, TooltipPosition } from '@angular/material/tooltip';
 import { ClickableHintIconDirective } from './clickable-hint-icon.directive';
 
 @Component({
-  selector: 'app-hint-icon',
-  standalone: true,
-  imports: [
-    MatIconModule,
-    MatTooltipModule,
-    ClickableHintIconDirective,
-  ],
-  templateUrl: './hint-icon.component.html',
-  styleUrl: './hint-icon.component.scss'
+    selector: 'app-hint-icon',
+    imports: [
+        MatIconModule,
+        MatTooltipModule,
+        ClickableHintIconDirective,
+    ],
+    templateUrl: './hint-icon.component.html',
+    styleUrl: './hint-icon.component.scss'
 })
 export class HintIconComponent {
   @Input() message: string = '';

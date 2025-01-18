@@ -5,15 +5,14 @@ import { PersonButtonMenuModel, PersonButtonModel } from '../header-model';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-person-button',
-  standalone: true,
-  imports: [
-    MatButtonModule,
-    MatMenuModule,
-    MatIconModule
-  ],
-  templateUrl: './person-button.component.html',
-  styleUrl: './person-button.component.scss'
+    selector: 'app-person-button',
+    imports: [
+        MatButtonModule,
+        MatMenuModule,
+        MatIconModule
+    ],
+    templateUrl: './person-button.component.html',
+    styleUrl: './person-button.component.scss'
 })
 export class PersonButtonComponent {
   @Input() person?: PersonButtonModel;

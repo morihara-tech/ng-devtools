@@ -5,15 +5,14 @@ import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-  selector: 'app-error-template',
-  standalone: true,
-  imports: [
-    MatCardModule,
-    MatButtonModule,
-    RouterModule,
-  ],
-  templateUrl: './error-template.component.html',
-  styleUrl: './error-template.component.scss'
+    selector: 'app-error-template',
+    imports: [
+        MatCardModule,
+        MatButtonModule,
+        RouterModule,
+    ],
+    templateUrl: './error-template.component.html',
+    styleUrl: './error-template.component.scss'
 })
 export class ErrorTemplateComponent {
   @Input() text?: Text;

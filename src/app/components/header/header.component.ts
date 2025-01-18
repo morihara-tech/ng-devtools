@@ -10,18 +10,17 @@ import { LanguageButtonComponent } from './language-button/language-button.compo
 import { Text } from '../../../resources/texts/text';
 
 @Component({
-  selector: 'app-header',
-  standalone: true,
-  imports: [
-    PersonButtonComponent,
-    LanguageButtonComponent,
-    RouterModule,
-    MatButtonModule,
-    MatIconModule,
-    MatToolbarModule
-  ],
-  templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+    selector: 'app-header',
+    imports: [
+        PersonButtonComponent,
+        LanguageButtonComponent,
+        RouterModule,
+        MatButtonModule,
+        MatIconModule,
+        MatToolbarModule
+    ],
+    templateUrl: './header.component.html',
+    styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
   @Input() text?: Text;

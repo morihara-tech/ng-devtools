@@ -15,22 +15,21 @@ import { DatetimeMakerDialogComponent } from './datetime-maker-dialog/datetime-m
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
-  selector: 'app-ulid-gen-input-card',
-  standalone: true,
-  imports: [
-    ReactiveFormsModule,
-    MatCardModule,
-    MatButtonModule,
-    MatIconModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSlideToggleModule,
-    MatTooltipModule,
-    HeadingComponent,
-    HintIconComponent,
-  ],
-  templateUrl: './ulid-gen-input-card.component.html',
-  styleUrl: './ulid-gen-input-card.component.scss'
+    selector: 'app-ulid-gen-input-card',
+    imports: [
+        ReactiveFormsModule,
+        MatCardModule,
+        MatButtonModule,
+        MatIconModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSlideToggleModule,
+        MatTooltipModule,
+        HeadingComponent,
+        HintIconComponent,
+    ],
+    templateUrl: './ulid-gen-input-card.component.html',
+    styleUrl: './ulid-gen-input-card.component.scss'
 })
 export class UlidGenInputCardComponent implements OnInit {
   @Input() text?: Text;

@@ -5,13 +5,12 @@ import { LocaleService } from '../../../components/locale/locale.service';
 import { mergeMap } from 'rxjs';
 
 @Component({
-  selector: 'app-not-found-page',
-  standalone: true,
-  imports: [
-    ErrorTemplateComponent
-  ],
-  templateUrl: './not-found-page.component.html',
-  styleUrl: './not-found-page.component.scss'
+    selector: 'app-not-found-page',
+    imports: [
+        ErrorTemplateComponent
+    ],
+    templateUrl: './not-found-page.component.html',
+    styleUrl: './not-found-page.component.scss'
 })
 export class NotFoundPageComponent implements OnInit {
   text?: Text;

@@ -5,15 +5,14 @@ import { RouterModule } from '@angular/router';
 import { SidemenuItemModel, SidemenuPersonModel } from './sidemenu-model';
 
 @Component({
-  selector: 'app-sidemenu',
-  standalone: true,
-  imports: [
-    RouterModule,
-    MatIconModule,
-    MatListModule
-  ],
-  templateUrl: './sidemenu.component.html',
-  styleUrl: './sidemenu.component.scss'
+    selector: 'app-sidemenu',
+    imports: [
+        RouterModule,
+        MatIconModule,
+        MatListModule
+    ],
+    templateUrl: './sidemenu.component.html',
+    styleUrl: './sidemenu.component.scss'
 })
 export class SidemenuComponent {
   @Input() items?: Array<SidemenuItemModel>;

@@ -7,14 +7,13 @@ import { LocaleService } from '../locale/locale.service';
 import { mergeMap } from 'rxjs';
 
 @Component({
-  selector: 'app-sidenav',
-  standalone: true,
-  imports: [
-    SidemenuComponent,
-    MatSidenavModule
-  ],
-  templateUrl: './sidenav.component.html',
-  styleUrl: './sidenav.component.scss'
+    selector: 'app-sidenav',
+    imports: [
+        SidemenuComponent,
+        MatSidenavModule
+    ],
+    templateUrl: './sidenav.component.html',
+    styleUrl: './sidenav.component.scss'
 })
 export class SidenavComponent implements OnChanges {
   @ViewChild('sidenav') sidenav?: MatSidenav;
