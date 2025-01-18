@@ -1,5 +1,10 @@
 .heading {
-  border-bottom-color: var(--custom-heading-border-color);
+  @media (prefers-color-scheme: light) {
+    border-bottom-color: var(--brand-color-normal);
+  }
+  @media (prefers-color-scheme: dark) {
+    border-bottom-color: var(--brand-color-light);
+  }
 }
 
 .right {

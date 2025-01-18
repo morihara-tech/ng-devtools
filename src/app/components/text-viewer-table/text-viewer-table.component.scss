@@ -1,6 +1,16 @@
-.text-viewer-table-content {
+.content {
   padding: 8px 0;
   height: 100%;
+  background: var(--mat-sys-surface-container);
+
+  .mat-mdc-table {
+    background: var(--mat-sys-surface-container);
+  }
+
+  .mat-column-position {
+    color: var(--mat-sys-outline);
+    border-right-color: var(--mat-sys-outline);
+  }
 }
 
 .user-select-none {

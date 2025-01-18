@@ -1,3 +1,17 @@
+.header-toolbar {
+  font: var(--mat-sys-headline);
+  @media (prefers-color-scheme: light) {
+    --mat-toolbar-container-background-color: var(--brand-color-header);
+    --mat-toolbar-container-text-color: var(--mat-sys-on-primary);
+    --mdc-icon-button-icon-color: var(--mat-sys-on-primary);
+  }
+  @media (prefers-color-scheme: dark) {
+    --mat-toolbar-container-background-color: var(--brand-color-header-dark);
+    --mat-toolbar-container-text-color: var(--mat-sys-on-surface);
+    --mdc-icon-button-icon-color: var(--mat-sys-on-surface);
+  }
+}
+
 .spacer {
   flex: 1 1 auto;
 }
