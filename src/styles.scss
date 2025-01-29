@@ -4,6 +4,7 @@
 @use '@angular/material' as mat;
 // Plus imports for other components in your app.
 @use './app/styles/m3-theme' as m3-theme;
+@use './app/styles/typography' as typography;
 @use './app/styles/mixin' as mixin;
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -22,7 +23,8 @@
       primary: m3-theme.$primary-palette,
       tertiary: m3-theme.$tertiary-palette,
       theme-type: light,
-    )
+    ),
+    typography: typography.$typography
   ));
 
   @media (prefers-color-scheme: dark) {
@@ -31,7 +33,8 @@
         primary: m3-theme.$primary-palette,
         tertiary: m3-theme.$tertiary-palette,
         theme-type: dark,
-      )
+      ),
+      typography: typography.$typography
     ));
   }
 }
@@ -45,7 +48,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Roboto, "BIZ UDGothic", sans-serif; }
 
 ::-webkit-scrollbar {
   width: 8px;

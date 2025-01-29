@@ -1,5 +1,5 @@
 .header-toolbar {
-  font: var(--mat-sys-headline);
+  font: var(--mat-sys-headline-small);
   @media (prefers-color-scheme: light) {
     --mat-toolbar-container-background-color: var(--brand-color-header);
     --mat-toolbar-container-text-color: var(--mat-sys-on-primary);
