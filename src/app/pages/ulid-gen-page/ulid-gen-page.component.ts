@@ -9,16 +9,15 @@ import { mergeMap } from 'rxjs';
 import { LocaleService } from '../../components/locale/locale.service';
 
 @Component({
-  selector: 'app-ulid-gen-page',
-  standalone: true,
-  imports: [
-    ApplicationPageTemplateComponent,
-    HeadingComponent,
-    UlidGenInputCardComponent,
-    UlidGenOutputCardComponent,
-  ],
-  templateUrl: './ulid-gen-page.component.html',
-  styleUrl: './ulid-gen-page.component.scss'
+    selector: 'app-ulid-gen-page',
+    imports: [
+        ApplicationPageTemplateComponent,
+        HeadingComponent,
+        UlidGenInputCardComponent,
+        UlidGenOutputCardComponent,
+    ],
+    templateUrl: './ulid-gen-page.component.html',
+    styleUrl: './ulid-gen-page.component.scss'
 })
 export class UlidGenPageComponent implements OnInit {
   @ViewChild('output') output?: UlidGenOutputCardComponent;

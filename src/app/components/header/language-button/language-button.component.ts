@@ -7,15 +7,14 @@ import { LocaleService } from '../../locale/locale.service';
 import { Locale } from '../../locale/locale-model';
 
 @Component({
-  selector: 'app-language-button',
-  standalone: true,
-  imports: [
-    MatIconModule,
-    MatButtonModule,
-    MatMenuModule,
-  ],
-  templateUrl: './language-button.component.html',
-  styleUrl: './language-button.component.scss'
+    selector: 'app-language-button',
+    imports: [
+        MatIconModule,
+        MatButtonModule,
+        MatMenuModule,
+    ],
+    templateUrl: './language-button.component.html',
+    styleUrl: './language-button.component.scss'
 })
 export class LanguageButtonComponent {
   @Input() text?: Text;

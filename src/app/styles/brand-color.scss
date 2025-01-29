@@ -10,7 +10,9 @@ $_brand-color: (
 );
 
 @mixin init() {
-  @each $key, $value in $_brand-color {
-    --brand-color-#{$key}: #{$value};
+  & {
+    @each $key, $value in $_brand-color {
+      --brand-color-#{$key}: #{$value};
+    }
   }
 }

@@ -3,13 +3,12 @@ import { MatTableModule } from '@angular/material/table';
 import { TextViewerTableModel } from './text-viewer-table-model';
 
 @Component({
-  selector: 'app-text-viewer-table',
-  standalone: true,
-  imports: [
-    MatTableModule,
-  ],
-  templateUrl: './text-viewer-table.component.html',
-  styleUrl: './text-viewer-table.component.scss'
+    selector: 'app-text-viewer-table',
+    imports: [
+        MatTableModule,
+    ],
+    templateUrl: './text-viewer-table.component.html',
+    styleUrl: './text-viewer-table.component.scss'
 })
 export class TextViewerTableComponent {
   @Input() value?: string;

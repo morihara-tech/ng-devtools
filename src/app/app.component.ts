@@ -11,17 +11,16 @@ import { LocaleService } from './components/locale/locale.service';
 import { locale } from 'moment';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [
-    HeaderComponent,
-    SidenavComponent,
-    MatSidenavModule,
-    RouterOutlet,
-    SidenavComponent
-],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+    selector: 'app-root',
+    imports: [
+        HeaderComponent,
+        SidenavComponent,
+        MatSidenavModule,
+        RouterOutlet,
+        SidenavComponent
+    ],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss'
 })
 export class AppComponent {
   @ViewChild('sidenav') sidenav?: MatSidenav;

@@ -13,23 +13,22 @@ import 'moment/locale/ja';
 import { LocaleService } from '../../../../components/locale/locale.service';
 
 @Component({
-  selector: 'app-datetime-maker-dialog',
-  standalone: true,
-  providers: [
-    { provide: MAT_DATE_LOCALE, useValue: 'en-US' },
-    provideMomentDateAdapter()
-  ],
-  imports: [
-    MatDialogModule,
-    MatButtonModule,
-    ReactiveFormsModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatFormFieldModule,
-    MatInputModule,
-  ],
-  templateUrl: './datetime-maker-dialog.component.html',
-  styleUrl: './datetime-maker-dialog.component.scss'
+    selector: 'app-datetime-maker-dialog',
+    providers: [
+        { provide: MAT_DATE_LOCALE, useValue: 'en-US' },
+        provideMomentDateAdapter()
+    ],
+    imports: [
+        MatDialogModule,
+        MatButtonModule,
+        ReactiveFormsModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatFormFieldModule,
+        MatInputModule,
+    ],
+    templateUrl: './datetime-maker-dialog.component.html',
+    styleUrl: './datetime-maker-dialog.component.scss'
 })
 export class DatetimeMakerDialogComponent implements OnInit {
   readonly data = inject<DatetimeMakerModel>(MAT_DIALOG_DATA);

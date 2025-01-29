@@ -11,19 +11,18 @@ import { factory, monotonicFactory } from 'ulid';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
-  selector: 'app-ulid-gen-output-card',
-  standalone: true,
-  imports: [
-    MatCardModule,
-    MatButtonModule,
-    MatIconModule,
-    MatSnackBarModule,
-    MatTooltipModule,
-    HeadingComponent,
-    TextViewerTableComponent,
-  ],
-  templateUrl: './ulid-gen-output-card.component.html',
-  styleUrl: './ulid-gen-output-card.component.scss'
+    selector: 'app-ulid-gen-output-card',
+    imports: [
+        MatCardModule,
+        MatButtonModule,
+        MatIconModule,
+        MatSnackBarModule,
+        MatTooltipModule,
+        HeadingComponent,
+        TextViewerTableComponent,
+    ],
+    templateUrl: './ulid-gen-output-card.component.html',
+    styleUrl: './ulid-gen-output-card.component.scss'
 })
 export class UlidGenOutputCardComponent {
   @Input() text?: Text;

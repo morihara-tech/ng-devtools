@@ -5,15 +5,14 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { Text } from '../../../resources/texts/text';
 
 @Component({
-  selector: 'app-heading',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatIconModule,
-    MatTooltipModule,
-  ],
-  templateUrl: './heading.component.html',
-  styleUrl: './heading.component.scss'
+    selector: 'app-heading',
+    imports: [
+        CommonModule,
+        MatIconModule,
+        MatTooltipModule,
+    ],
+    templateUrl: './heading.component.html',
+    styleUrl: './heading.component.scss'
 })
 export class HeadingComponent {
   @Input() text?: Text;
