@@ -9,7 +9,6 @@
 .content {
   padding-top: 8px;
   padding-bottom: 8px;
-  height: calc(100% - 16px);
 }
 
 .sidenav {
@@ -19,7 +18,8 @@
 @media screen and (max-width:600px) {
   /*for smart phone*/
   .container {
-    height: calc(100vh - var(--mat-toolbar-mobile-height));
+    height: calc(var(--vh, 1vh) * 100 - var(--mat-toolbar-mobile-height));
+    padding-bottom: env(safe-area-inset-bottom);
   }
 
   .content {
@@ -31,7 +31,8 @@
 @media screen and (min-width:600px) {
   /*for pc*/
   .container {
-    height: calc(100vh - var(--mat-toolbar-standard-height));
+    height: calc(var(--vh, 1vh) * 100 - var(--mat-toolbar-standard-height));
+    padding-bottom: env(safe-area-inset-bottom);
   }
 
   .content {

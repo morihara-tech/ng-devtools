@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { SidemenuComponent } from '../sidemenu/sidemenu.component';
 import { MatDrawerMode, MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
 import { TEXT, Text } from '../../../resources/texts/text';
@@ -15,7 +15,7 @@ import { mergeMap } from 'rxjs';
     templateUrl: './sidenav.component.html',
     styleUrl: './sidenav.component.scss'
 })
-export class SidenavComponent implements OnChanges {
+export class SidenavComponent implements OnChanges, OnInit {
   @ViewChild('sidenav') sidenav?: MatSidenav;
 
   @Input() toggle: boolean = false;
@@ -24,6 +24,13 @@ export class SidenavComponent implements OnChanges {
   text?: Text;
   sidemenuItems?: Array<SidemenuItemModel>;
   sidemenuPerson?: SidemenuPersonModel;
+
+  constructor(
+    // @Inject(ENVIRONMENT) env: Environment
+    private localeService: LocaleService,
+  ) {
+    this.init();
+  }
 
   ngOnChanges(): void {
     if (!this.sidenav) {
@@ -36,11 +43,11 @@ export class SidenavComponent implements OnChanges {
     }
   }
 
-  constructor(
-    // @Inject(ENVIRONMENT) env: Environment
-    private localeService: LocaleService,
-  ) {
-    this.init();
+  ngOnInit(): void {
+    this.setVhVariable();
+    window.addEventListener('resize', () => {
+      this.setVhVariable();
+    });
   }
 
   onClickMenu(): void {
@@ -76,4 +83,8 @@ export class SidenavComponent implements OnChanges {
     ];
   }
 
+  private setVhVariable(): void {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  }
 }
