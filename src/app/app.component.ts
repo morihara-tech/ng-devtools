@@ -8,7 +8,6 @@ import { Title } from '@angular/platform-browser';
 import { TEXT, Text } from '../resources/texts/text';
 import { SidenavComponent } from "./components/sidenav/sidenav.component";
 import { LocaleService } from './components/locale/locale.service';
-import { locale } from 'moment';
 
 @Component({
     selector: 'app-root',
@@ -28,7 +27,7 @@ export class AppComponent {
   text?: Text;
 
   headerModel: HeaderModel = {
-    logo: { logoUrl: '/logo.gif', routerLink: '/' }
+    logo: { logoUrl: '/logo.png', routerLink: '/' }
   };
 
   toggle: boolean = false;

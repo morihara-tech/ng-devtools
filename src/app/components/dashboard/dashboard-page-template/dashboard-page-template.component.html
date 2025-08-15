@@ -1,0 +1,39 @@
+<div class="card-container" #cardContainer>
+  <div class="card-wrapper" #cardWrapper
+    cdkDropList
+    cdkDropListOrientation="mixed"
+    [style.width.px]="wrapperWidth"
+    (cdkDropListDropped)="onDrop($event)">
+    @for (model of cardModels; track $index) {
+      <mat-card cdkDrag [style.width.px]="getCardWidth(model)" [style.height.px]="getCardHeight(model)">
+        <div class="custom-drag-placeholder"
+          [style.width.px]="getCardWidth(model)"
+          [style.height.px]="getCardHeight(model)"
+          *cdkDragPlaceholder
+        ></div>
+        <mat-card-header class="card-header">
+          <div mat-card-avatar cdkDragHandle class="indicator">
+            <mat-icon>drag_indicator</mat-icon>
+          </div>
+          <mat-card-title-group>
+            <mat-card-title>{{ model.title }}</mat-card-title>
+          </mat-card-title-group>
+        </mat-card-header>
+        <mat-card-content class="card-content">
+          <ng-container #cardContent></ng-container>
+        </mat-card-content>
+        @if (model.destination) {
+          <mat-divider class="divider"></mat-divider>
+          <mat-card-footer class="card-footer">
+            <app-hyper-link-text
+              [url]="model.destination.url"
+              [external]="model.destination.external"
+              [openInNewTab]="model.destination.openInNewTab">
+              {{ model.destination.linkText }}
+            </app-hyper-link-text>
+          </mat-card-footer>
+        }
+      </mat-card>
+    }
+  </div>
+</div>
