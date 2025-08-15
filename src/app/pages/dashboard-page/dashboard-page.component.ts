@@ -7,6 +7,7 @@ import { mergeMap } from 'rxjs';
 import { TEXT, Text } from '../../../resources/texts/text';
 import { MenuCardComponent } from './menu-card/menu-card.component';
 import { GithubCardComponent } from './github-card/github-card.component';
+import { UpdateHistoryCardComponent } from './update-history-card/update-history-card.component';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -41,9 +42,6 @@ export class DashboardPageComponent implements OnInit {
         component: UsageCardComponent,
         size: { x: 'm', y: 's' },
       }, {
-        title: this.text['menuCardTitle'],
-        component: MenuCardComponent,
-      }, {
         title: this.text['githubCardTitle'],
         component: GithubCardComponent,
         destination: {
@@ -52,6 +50,14 @@ export class DashboardPageComponent implements OnInit {
           external: true,
           openInNewTab: true
         }
+      }, {
+        title: this.text['menuCardTitle'],
+        component: MenuCardComponent,
+        size: { x: 's', y: 'm' },
+      },{
+        title: this.text['updateHistoryCardTitle'],
+        component: UpdateHistoryCardComponent,
+        size: { x: 'm', y: 'm' },
       }
     ]);
   }
