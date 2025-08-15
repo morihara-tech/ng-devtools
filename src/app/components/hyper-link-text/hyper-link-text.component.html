@@ -1,0 +1,17 @@
+@if (isExternal) {
+  <a [href]="url" [target]="target" [rel]="rel" class="link"><!--
+  --><ng-container *ngTemplateOutlet="template"></ng-container><!--
+  -->@if (isOpenInNewTab) {<!--
+    --><mat-icon class="open-in-new">open_in_new</mat-icon><!--
+  -->}<!--
+--></a>
+} @else {
+  <a [routerLink]="url" [target]="target" [rel]="rel" class="link"><!--
+    --><ng-container *ngTemplateOutlet="template"></ng-container><!--
+    -->@if (isOpenInNewTab) {<!--
+      --><mat-icon class="open-in-new">open_in_new</mat-icon><!--
+    -->}<!--
+  --></a>
+}
+
+<ng-template #template><ng-content></ng-content></ng-template>

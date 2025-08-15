@@ -37,6 +37,9 @@ export class HeaderComponent {
   }
 
   get getTitle(): string {
+    if (this.text) {
+      return this.text['appTitle'];
+    }
     return this.titleService.getTitle();
   }
 

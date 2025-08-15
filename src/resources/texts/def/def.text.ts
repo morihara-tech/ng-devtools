@@ -4,6 +4,7 @@ import { Text } from "../text";
 export const DEF_TEXT: { [locale in Locale]: Text } = {
   ja: {
     // common
+    'appTitle': 'devTools',
     'ja': '日本語',
     'en': 'English',
     'guest': 'ゲスト',
@@ -21,8 +22,19 @@ export const DEF_TEXT: { [locale in Locale]: Text } = {
     '404ErrorPage': 'ページが見つかりません',
     'notFoundErrorTitle': 'ページが見つかりません',
     'notFoundErrorMessage': '申し訳ございません。\nお探しのページは、移動または削除された可能性があります。',
+    // dashboard
+    'dashboardPage': 'ダッシュボード | devTools',
+    'dashboardMenu': 'ダッシュボード',
+    'usageCardTitle': 'ご利用方法',
+    'usageCardDescription': '開発者のためのシンプルなユーティリティ集です。\n\n各ツールを選択してご利用ください。\nデータは一切保存されないので、安心してご利用ください。',
+    'menuCardTitle': 'メニュー',
+    'releaseCardTitle': 'リリース情報',
+    'githubCardTitle': '問い合わせ',
+    'githubCardDescription': 'このツールはオープンソースです。\n不具合や要望などがありましたら、GitHubのIssueにてお知らせください。',
+    'githubCardLinkText': 'GitHub Issuesに移動',
     // ulid gen
-    'ulidGenPage': 'ULID生成',
+    'ulidGenPage': 'ULID生成 | devTools',
+    'ulidGenMenu': 'ULID生成',
     'ulidGenTitle': 'ULID生成ツール',
     'ulidGenInputHeading': 'ULID生成条件',
     'ulidGenOutputHeading': '生成結果',
@@ -45,6 +57,7 @@ export const DEF_TEXT: { [locale in Locale]: Text } = {
   },
   en: {
     // common
+    'appTitle': 'devTools',
     'ja': '日本語',
     'en': 'English',
     'guest': 'Guest',
@@ -61,8 +74,18 @@ export const DEF_TEXT: { [locale in Locale]: Text } = {
     // error
     'notFoundErrorTitle': 'Page not found',
     'notFoundErrorMessage': 'Sorry, the page you\'re looking for can\'t be found.',
+    // dashboard
+    'dashboardPage': 'Dashboard | devTools',
+    'usageCardTitle': 'How to Use',
+    'usageCardDescription': 'This is a simple utility collection for developers.\n\nPlease select a tool to use.\nNo data is saved, so you can use it with confidence.',
+    'menuCardTitle': 'Menu',
+    'releaseCardTitle': 'Release Information',
+    'githubCardTitle': 'Contact',
+    'githubCardDescription': 'This tool is open source.\nIf you have any bugs or requests, please let us know on GitHub Issues.',
+    'githubCardLinkText': 'Go to GitHub Issues',
     // ulid gen
-    'ulidGenPage': 'ULID Generator',
+    'ulidGenPage': 'ULID Generator | devTools',
+    'ulidGenMenu': 'ULID Generator',
     'ulidGenTitle': 'ULID Generating Tool',
     'ulidGenInputHeading': 'Conditions',
     'ulidGenOutputHeading': 'Results',

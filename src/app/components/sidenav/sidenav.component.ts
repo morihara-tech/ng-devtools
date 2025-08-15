@@ -79,7 +79,8 @@ export class SidenavComponent implements OnChanges, OnInit {
       return;
     }
     this.sidemenuItems = [
-      { icon: 'exposure_plus_1', label: this.text['ulidGenPage'], routerLink: '/ulid-generator' }
+      { icon: 'dashboard', label: this.text['dashboardMenu'], routerLink: '/dashboard' },
+      { icon: 'exposure_plus_1', label: this.text['ulidGenMenu'], routerLink: '/ulid-generator' }
     ];
   }
 
