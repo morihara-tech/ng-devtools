@@ -32,6 +32,7 @@ export const DEF_TEXT: { [locale in Locale]: Text } = {
     'githubCardTitle': '問い合わせ',
     'githubCardDescription': 'このツールはオープンソースです。\n不具合や要望などがありましたら、GitHubのIssueにてお知らせください。',
     'githubCardLinkText': 'GitHub Issuesに移動',
+    'updateHistoryCardTitle': '更新履歴',
     // ulid gen
     'ulidGenPage': 'ULID生成 | devTools',
     'ulidGenMenu': 'ULID生成',
@@ -83,6 +84,7 @@ export const DEF_TEXT: { [locale in Locale]: Text } = {
     'githubCardTitle': 'Contact',
     'githubCardDescription': 'This tool is open source.\nIf you have any bugs or requests, please let us know on GitHub Issues.',
     'githubCardLinkText': 'Go to GitHub Issues',
+    'updateHistoryCardTitle': 'Update History',
     // ulid gen
     'ulidGenPage': 'ULID Generator | devTools',
     'ulidGenMenu': 'ULID Generator',
