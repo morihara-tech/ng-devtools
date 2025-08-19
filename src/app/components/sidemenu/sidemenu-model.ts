@@ -1,6 +1,7 @@
 export interface SidemenuItemModel {
   label: string;
-  icon: string;
+  icon?: string;
+  svgIcon?: string;
   routerLink: string;
 }
 

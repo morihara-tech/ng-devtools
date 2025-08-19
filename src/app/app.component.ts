@@ -8,6 +8,7 @@ import { Title } from '@angular/platform-browser';
 import { TEXT, Text } from '../resources/texts/text';
 import { SidenavComponent } from "./components/sidenav/sidenav.component";
 import { LocaleService } from './components/locale/locale.service';
+import { IconService } from './icon.service';
 
 @Component({
     selector: 'app-root',
@@ -38,7 +39,8 @@ export class AppComponent {
     private localeService: LocaleService,
     private route: Router,
     private activatedRoute: ActivatedRoute,
-    private titleService: Title
+    private titleService: Title,
+    private _: IconService
   ) {
     this.init();
   }
