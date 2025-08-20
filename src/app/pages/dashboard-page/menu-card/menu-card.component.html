@@ -1,9 +1,16 @@
 <mat-nav-list class="list">
   <mat-list>
     <mat-list-item class="item">
-      <mat-icon matListItemIcon class="icon">exposure_plus_1</mat-icon>
+      <mat-icon matListItemIcon class="icon" svgIcon="ulid"></mat-icon>
       <div matListItemLine class="line">
         <app-hyper-link-text url="/ulid-generator">{{ text['ulidGenMenu'] }}</app-hyper-link-text>
+      </div>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item class="item">
+      <mat-icon matListItemIcon class="icon" svgIcon="uuid"></mat-icon>
+      <div matListItemLine class="line">
+        <app-hyper-link-text url="/uuid-generator">{{ text['uuidGenMenu'] }}</app-hyper-link-text>
       </div>
     </mat-list-item>
     <mat-divider></mat-divider>
