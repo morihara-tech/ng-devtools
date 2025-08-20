@@ -116,7 +116,7 @@ export class UlidGenInputCardComponent implements OnInit {
       generatingSize: this.fb.control<number>(5, [
         Validators.required,
         Validators.min(1),
-        Validators.max(5000)
+        Validators.max(1000)
       ]),
       baseTimestamp: this.fb.control<number>(Math.floor(now.getTime()), [
         Validators.required,

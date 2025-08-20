@@ -1,0 +1,16 @@
+<app-application-page-template>
+  @if (text) {
+    <div class="margin-bottom-16">
+      <app-heading headingType="h2" hintMessageTextId="uuidGenHint"> {{ text['uuidGenTitle'] }} </app-heading>
+    </div>
+  }
+  <app-uuid-gen-input-card
+    [text]="text"
+    (generate)="onGenerate($event)"
+  ></app-uuid-gen-input-card>
+  <div class="spacer"></div>
+  <app-uuid-gen-output-card
+    #output
+    [text]="text"
+  ></app-uuid-gen-output-card>  
+</app-application-page-template>

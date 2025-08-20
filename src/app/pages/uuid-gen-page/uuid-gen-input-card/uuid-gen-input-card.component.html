@@ -1,0 +1,32 @@
+<mat-card appearance="raised">
+  @if (formGroup && text) {
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+      <mat-card-content>
+        <app-heading headingType="h3">{{ text['uuidGenInputHeading'] }}</app-heading>
+        <div class="input-form-wrapper flex wrap">
+          <mat-form-field class="input-form">
+            <mat-label>{{ text['generatingSize'] }}</mat-label>
+            <input matInput type="number" [placeholder]="text['generatingSizePlaceholder']" formControlName="generatingSize">
+          </mat-form-field>
+          <div class="flex">
+            <mat-form-field class="input-form">
+              <mat-label>{{ text['uuidVersion'] }}</mat-label>
+              <mat-select formControlName="version" aria-label="UUID version">
+                <mat-option value="v1">v1</mat-option>
+                <mat-option value="v4">v4</mat-option>
+                <mat-option value="v7">v7</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <app-hint-icon [message]="text['uuidVersionHint']" class="hint"></app-hint-icon>
+          </div>
+        </div>
+        @if (errorMessage !== null) {
+          <mat-error>{{ errorMessage }}</mat-error>
+        }
+      </mat-card-content>
+      <mat-card-actions align="end">
+        <button mat-flat-button [disabled]="hasError" type="submit">{{ text['generate'] }}</button>
+      </mat-card-actions>
+    </form>
+  }
+</mat-card>

@@ -12,5 +12,6 @@ export class IconService {
     sanitizer: DomSanitizer
   ) {
     iconRegistry.addSvgIcon('ulid', sanitizer.bypassSecurityTrustResourceUrl('icons/ulid.svg'));
+    iconRegistry.addSvgIcon('uuid', sanitizer.bypassSecurityTrustResourceUrl('icons/uuid.svg'));
   }
 }
