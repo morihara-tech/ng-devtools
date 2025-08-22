@@ -1,23 +1,26 @@
 <mat-card appearance="raised">
-  @if (formGroup && text) {
+  @if (formGroup) {
     <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
       <mat-card-content>
-        <app-heading headingType="h3">{{ text['uuidGenInputHeading'] }}</app-heading>
+        <app-heading headingType="h3" i18n="@@page.uuid.card.input.heading">生成条件</app-heading>
         <div class="input-form-wrapper flex wrap">
           <mat-form-field class="input-form">
-            <mat-label>{{ text['generatingSize'] }}</mat-label>
-            <input matInput type="number" [placeholder]="text['generatingSizePlaceholder']" formControlName="generatingSize">
+            <mat-label i18n="@@page.uuid.card.input.generatingSize">生成数</mat-label>
+            <input matInput type="number"
+              placeholder="最大1,000"
+              i18n-placeholder="@@page.uuid.card.input.placeholder.generatingSize"
+              formControlName="generatingSize">
           </mat-form-field>
           <div class="flex">
             <mat-form-field class="input-form">
-              <mat-label>{{ text['uuidVersion'] }}</mat-label>
+              <mat-label i18n="@@page.uuid.card.input.uuidVersion">バージョン</mat-label>
               <mat-select formControlName="version" aria-label="UUID version">
                 <mat-option value="v1">v1</mat-option>
                 <mat-option value="v4">v4</mat-option>
                 <mat-option value="v7">v7</mat-option>
               </mat-select>
             </mat-form-field>
-            <app-hint-icon [message]="text['uuidVersionHint']" class="hint"></app-hint-icon>
+            <app-hint-icon message="v1: 時刻とMACアドレスを組み合わせて生成。時系列順に並びやすいが生成元が推測されやすい。\nv4: ほぼ完全にランダムに生成。衝突確率が極めて低く最も広く使われている。\nv7: Unix時間と乱数を組み合わせて生成。時系列順に並べやすくかつプライバシーに配慮されている。" class="hint"></app-hint-icon>
           </div>
         </div>
         @if (errorMessage !== null) {
@@ -25,7 +28,7 @@
         }
       </mat-card-content>
       <mat-card-actions align="end">
-        <button mat-flat-button [disabled]="hasError" type="submit">{{ text['generate'] }}</button>
+        <button mat-flat-button [disabled]="hasError" type="submit" i18n="@@page.uuid.card.input.generate">生成</button>
       </mat-card-actions>
     </form>
   }

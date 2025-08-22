@@ -1,10 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { SidemenuComponent } from '../sidemenu/sidemenu.component';
 import { MatDrawerMode, MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
-import { TEXT, Text } from '../../../resources/texts/text';
 import { SidemenuItemModel, SidemenuPersonModel } from '../sidemenu/sidemenu-model';
-import { LocaleService } from '../locale/locale.service';
-import { mergeMap } from 'rxjs';
 
 @Component({
     selector: 'app-sidenav',
@@ -21,16 +18,12 @@ export class SidenavComponent implements OnChanges, OnInit {
   @Input() toggle: boolean = false;
   @Output() toggleChange: EventEmitter<boolean> = new EventEmitter();
 
-  text?: Text;
   sidemenuItems?: Array<SidemenuItemModel>;
   sidemenuPerson?: SidemenuPersonModel;
 
   constructor(
     // @Inject(ENVIRONMENT) env: Environment
-    private localeService: LocaleService,
-  ) {
-    this.init();
-  }
+  ) {}
 
   ngOnChanges(): void {
     if (!this.sidenav) {
@@ -44,6 +37,7 @@ export class SidenavComponent implements OnChanges, OnInit {
   }
 
   ngOnInit(): void {
+    this.setSidemenu();
     this.setVhVariable();
     window.addEventListener('resize', () => {
       this.setVhVariable();
@@ -59,15 +53,6 @@ export class SidenavComponent implements OnChanges, OnInit {
     }, 100);
   }
 
-  private init(): void {
-    this.localeService.get()
-      .pipe(mergeMap((locale) => TEXT(locale)))
-      .subscribe((res) => {
-        this.text = res;
-        this.setSidemenu();
-      });
-  }
-
   get mode(): MatDrawerMode {
     return (window.innerWidth < 600)
       ? 'over'
@@ -75,13 +60,10 @@ export class SidenavComponent implements OnChanges, OnInit {
   }
 
   private setSidemenu(): void {
-    if (!this.text) {
-      return;
-    }
     this.sidemenuItems = [
-      { icon: 'dashboard', label: this.text['dashboardMenu'], routerLink: '/dashboard' },
-      { svgIcon: 'ulid', label: this.text['ulidGenMenu'], routerLink: '/ulid-generator' },
-      { svgIcon: 'uuid', label: this.text['uuidGenMenu'], routerLink: '/uuid-generator' },
+      { icon: 'dashboard', label: $localize`:@@page.dashboard.menu:ダッシュボード`, routerLink: '/dashboard' },
+      { svgIcon: 'ulid', label: $localize`:@@page.ulid.menu:ULID生成`, routerLink: '/ulid-generator' },
+      { svgIcon: 'uuid', label: $localize`:@@page.uuid.menu:UUID生成`, routerLink: '/uuid-generator' },
     ];
   }
 

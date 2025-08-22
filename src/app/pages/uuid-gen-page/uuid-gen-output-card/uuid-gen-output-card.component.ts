@@ -1,5 +1,4 @@
 import { Component, Input, inject } from '@angular/core';
-import { Text } from '../../../../resources/texts/text';
 import { UuidGenInputModel, UuidVersion } from '../uuid-gen-model';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -25,8 +24,6 @@ import { v1 as uuidv1, v4 as uuidv4, v7 as uuidv7 } from 'uuid';
   styleUrl: './uuid-gen-output-card.component.scss',
 })
 export class UuidGenOutputCardComponent {
-  @Input() text?: Text;
-
   uuidStrings?: string;
 
   private snackBar = inject(MatSnackBar);
@@ -37,14 +34,12 @@ export class UuidGenOutputCardComponent {
   }
 
   onClickCopy(): void {
-    if (!this.uuidStrings || !this.text) {
+    if (!this.uuidStrings) {
       return;
     }
     navigator.clipboard.writeText(this.uuidStrings);
-    this.snackBar.open(this.text['copiedMessage'], this.text['ok'], {
-      duration: 2000,
-      horizontalPosition: 'start',
-    });
+    this.snackBar.open($localize`:@@common.copiedMessage:コピーしました。`,
+      $localize`:@@common.ok:はい`, { duration: 2000, horizontalPosition: 'start' });
   }
 
   private makeUuids(input: UuidGenInputModel): string[] {

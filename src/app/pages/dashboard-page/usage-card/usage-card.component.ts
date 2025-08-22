@@ -1,7 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { mergeMap } from 'rxjs';
-import { TEXT, Text } from '../../../../resources/texts/text';
-import { LocaleService } from '../../../components/locale/locale.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-usage-card',
@@ -9,19 +6,6 @@ import { LocaleService } from '../../../components/locale/locale.service';
   templateUrl: './usage-card.component.html',
   styleUrl: './usage-card.component.scss'
 })
-export class UsageCardComponent implements OnInit {
-  text!: Text;
-
-  constructor(
-    private localeService: LocaleService
-  ) {}
-
-  ngOnInit(): void {
-    this.localeService.get()
-      .pipe(mergeMap((locale) => TEXT(locale)))
-      .subscribe((res) => {
-        this.text = res;
-      });
-  }
+export class UsageCardComponent {
 
 }

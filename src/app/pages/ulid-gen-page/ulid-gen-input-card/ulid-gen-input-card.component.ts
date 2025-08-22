@@ -1,10 +1,9 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { HeadingComponent } from '../../../components/heading/heading.component';
-import { Text } from '../../../../resources/texts/text';
 import { UlidGenInputModel } from '../ulid-gen-model';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HintIconComponent } from '../../../components/hint-icon/hint-icon.component';
@@ -32,7 +31,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     styleUrl: './ulid-gen-input-card.component.scss'
 })
 export class UlidGenInputCardComponent implements OnInit {
-  @Input() text?: Text;
   @Output() generate: EventEmitter<UlidGenInputModel> = new EventEmitter();
 
   formGroup?: FormGroup;
@@ -62,12 +60,11 @@ export class UlidGenInputCardComponent implements OnInit {
   }
 
   onClickCalendarButton(): void {
-    if (!this.text || !this.formGroup) {
+    if (!this.formGroup) {
       return;
     }
     const dialogRef = this.dialog.open(DatetimeMakerDialogComponent, {
       data: {
-        text: this.text,
         unixdatetime: Number(this.formGroup.value['baseTimestamp'])
       },
     });
@@ -92,20 +89,20 @@ export class UlidGenInputCardComponent implements OnInit {
   }
 
   get errorMessage(): string | null {
-    if (!this.formGroup || !this.text) {
+    if (!this.formGroup) {
       return null;
     }
 
     for (const key of Object.keys(this.formGroup.controls)) {
       if (this.formGroup.controls[key].errors?.['required']) {
-        return this.text['ulidGenInputErrorRequired'];
+        return $localize`:@@page.ulid.card.input.error.required:必須項目を入力してください。`;
       }
     }
     if (this.formGroup.controls['generatingSize'].errors?.['min'] || this.formGroup.controls['generatingSize'].errors?.['max']) {
-      return this.text['ulidGenInputErrorGeneratingSizeRange'];
+      return $localize`:@@page.ulid.card.input.error.generatingSizeRange:生成数は1以上1,000以下で入力してください。`;
     }
     if (this.formGroup.controls['baseTimestamp'].errors?.['min']) {
-      return this.text['ulidGenInputErrorBaseTimestampMin'];
+      return $localize`:@@page.ulid.card.input.error.baseTimestampMin:基準日時は0以上で入力してください。`;
     }
     return null;
   }

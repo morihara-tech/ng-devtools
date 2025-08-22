@@ -1,51 +1,69 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { Locale } from './locale-model';
 import { Observable, of } from 'rxjs';
+import { DOCUMENT } from '@angular/common';
 
-const LOCALE_KEY: string = 'language';
 @Injectable({
   providedIn: 'root'
 })
 export class LocaleService {
-  private locales: Array<Locale> = ['ja', 'en'];
+  private readonly SUBPATHS: Record<Locale, string> = {
+    ja: 'ja',
+    en: 'en',
+  };
 
-  constructor() {
-    if (this.exist()) {
-      return;
-    }
-    this.save(this.locales[0]);
+  constructor(@Inject(DOCUMENT) private doc: Document) {}
+
+  switchTo(target: Locale, options?: { preservePath?: boolean }) {
+    const preservePath = options?.preservePath ?? true;
+
+    const baseHref = this.getBaseHref();
+    const { origin, pathname, search, hash } = window.location;
+
+    const relative = preservePath
+      ? this.stripLeadingSlash(
+          pathname.startsWith(baseHref)
+            ? pathname.slice(baseHref.length)
+            : pathname.replace(/^\/+/, '')
+        )
+      : '';
+
+    const sub = this.ensureTrailingSlash('/' + this.SUBPATHS[target]);
+    const targetUrl =
+      origin +
+      sub +
+      (relative ? relative : '') +
+      (search || '') +
+      (hash || '');
+
+    if (this.isSameLocale(baseHref, sub)) return;
+
+    window.location.assign(targetUrl);
   }
 
-  save(locale: Locale): void {
-    localStorage.setItem(LOCALE_KEY, locale);
+  private getBaseHref(): string {
+    // <base href="..."> is set by Angular i18n build per locale
+    const base = this.doc.querySelector('base')?.getAttribute('href') || '/';
+    return this.ensureLeadingSlash(this.ensureTrailingSlash(base));
   }
 
-  remove(): void {
-    localStorage.removeItem(LOCALE_KEY);
+  private isSameLocale(currentBase: string, targetBase: string): boolean {
+    // Normalize for trailing slash
+    const a = this.ensureTrailingSlash(currentBase);
+    const b = this.ensureTrailingSlash(targetBase);
+    return a === b;
   }
 
-  get(): Observable<Locale> {
-    const locale = localStorage.getItem(LOCALE_KEY);
-    const result = this.convertLocale(locale);
-    return of(result);
+  private ensureLeadingSlash(p: string): string {
+    return p.startsWith('/') ? p : '/' + p;
   }
 
-  getLocales(): Array<Locale> {
-    return this.locales;
+  private ensureTrailingSlash(p: string): string {
+    return p.endsWith('/') ? p : p + '/';
   }
 
-  private exist(): boolean {
-    return !!localStorage.getItem(LOCALE_KEY);
+  private stripLeadingSlash(p: string): string {
+    return p.replace(/^\/+/, '');
   }
 
-  private convertLocale(str: string | null): Locale {
-    if (!str || !this.isLocale(str)) {
-      return this.locales[0];
-    }
-    return str;
-  }
-
-  private isLocale(str: string): str is Locale {
-    return !!this.locales.find(l => l === str);
-  }
 }

@@ -1,32 +1,41 @@
 <mat-card appearance="raised">
-  @if (formGroup && text) {
+  @if (formGroup) {
     <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
       <mat-card-content>
-        <app-heading headingType="h3">{{ text['ulidGenInputHeading'] }}</app-heading>
+        <app-heading headingType="h3" i18n="@@page.ulid.card.input.heading">生成条件</app-heading>
         <div class="input-form-wrapper flex wrap">
           <mat-form-field class="input-form">
-            <mat-label>{{ text['generatingSize'] }}</mat-label>
-            <input matInput type="number" [placeholder]="text['generatingSizePlaceholder']" formControlName="generatingSize">
+            <mat-label i18n="@@page.ulid.card.input.generatingSize">生成数</mat-label>
+            <input matInput type="number"
+              placeholder="最大1,000"
+              i18n-placeholder="@@page.ulid.card.input.placeholder.generatingSize"
+              formControlName="generatingSize">
           </mat-form-field>
           <mat-form-field class="input-form-with-icon">
-            <mat-label>{{ text['baseTimestamp'] }}</mat-label>
+            <mat-label i18n="@@page.ulid.card.input.baseTimestamp">基準日時(タイムスタンプ)</mat-label>
             <input matInput type="number" min="0" formControlName="baseTimestamp">
             <button matSuffix mat-icon-button type="button" aria-label="calendar"
-              [matTooltip]="text['selectDatetime']"
+              matTooltip="日時を選択"
+              i18n-matTooltip="@@page.ulid.card.input.selectDatetime"
               (click)="onClickCalendarButton()">
               <mat-icon>edit_calendar</mat-icon>
             </button>
             <button matSuffix mat-icon-button type="button" aria-label="reload"
-              [matTooltip]="text['reload']"
+              matTooltip="更新"
+              i18n-matTooltip="@@common.reload"
               (click)="onClickReload()">
               <mat-icon>refresh</mat-icon>
             </button>
           </mat-form-field>
           <div class="flex toggle">
-            <mat-slide-toggle formControlName="isMonoIncreaseMode">
-              {{ text['isMonoIncreaseMode'] }}
+            <mat-slide-toggle formControlName="isMonoIncreaseMode" i18n="@@page.ulid.card.input.isMonoIncreaseMode">
+              単調増加
             </mat-slide-toggle>
-            <app-hint-icon [message]="text['isMonoIncreaseModeHint']" class="hint"></app-hint-icon>
+            <app-hint-icon
+              message="ULID後部のランダム部分を1ビットずつの増分で生成します。"
+              i18n-message="@@page.ulid.card.input.isMonoIncreaseModeHint"
+              class="hint"
+            ></app-hint-icon>
           </div>
         </div>
         @if (errorMessage !== null) {
@@ -34,7 +43,7 @@
         }
       </mat-card-content>
       <mat-card-actions align="end">
-        <button mat-flat-button [disabled]="hasError" type="submit">{{ text['generate'] }}</button>
+        <button mat-flat-button [disabled]="hasError" type="submit" i18n="@@page.ulid.card.input.generate">生成</button>
       </mat-card-actions>
     </form>
   }

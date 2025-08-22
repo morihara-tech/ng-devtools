@@ -1,8 +1,5 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { TEXT, Text } from '../../../../resources/texts/text';
+import { Component } from '@angular/core';
 import { ErrorTemplateComponent } from '../../../components/error-template/error-template.component';
-import { LocaleService } from '../../../components/locale/locale.service';
-import { mergeMap } from 'rxjs';
 
 @Component({
     selector: 'app-not-found-page',
@@ -12,17 +9,6 @@ import { mergeMap } from 'rxjs';
     templateUrl: './not-found-page.component.html',
     styleUrl: './not-found-page.component.scss'
 })
-export class NotFoundPageComponent implements OnInit {
-  text?: Text;
-
-  private readonly localeService: LocaleService = inject(LocaleService);
-
-  ngOnInit(): void {
-    this.localeService.get()
-      .pipe(mergeMap((locale) => TEXT(locale)))
-      .subscribe((res) => {
-        this.text = res;
-      });
-  }
+export class NotFoundPageComponent {
 
 }

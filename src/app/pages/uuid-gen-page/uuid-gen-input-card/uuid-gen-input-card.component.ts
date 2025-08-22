@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, inject } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -6,7 +6,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { UuidGenInputModel, UuidVersion } from '../uuid-gen-model';
-import { Text } from '../../../../resources/texts/text';
 import { HeadingComponent } from '../../../components/heading/heading.component';
 import { HintIconComponent } from '../../../components/hint-icon/hint-icon.component';
 
@@ -26,7 +25,6 @@ import { HintIconComponent } from '../../../components/hint-icon/hint-icon.compo
   styleUrl: './uuid-gen-input-card.component.scss'
 })
 export class UuidGenInputCardComponent implements OnInit {
-  @Input() text?: Text;
   @Output() generate: EventEmitter<UuidGenInputModel> = new EventEmitter();
 
   formGroup?: FormGroup;
@@ -59,14 +57,14 @@ export class UuidGenInputCardComponent implements OnInit {
   }
 
   get errorMessage(): string | null {
-    if (!this.formGroup || !this.text) {
+    if (!this.formGroup) {
       return null;
     }
     const generatingSizeControl = this.formGroup.controls['generatingSize'];
     if (generatingSizeControl.hasError('required')) {
-      return this.text['uuidGenInputErrorGeneratingSizeRequired'];
+      return $localize`:@@page.uuid.card.input.error.generatingSize.required:生成数を入力してください。`;
     } else if (generatingSizeControl.hasError('min') || generatingSizeControl.hasError('max')) {
-      return this.text['uuidGenInputErrorGeneratingSizeRange'];
+      return $localize`:@@page.uuid.card.input.error.generatingSize.range:生成数は1以上1,000以下で入力してください。`;
     }
     return null;
   }

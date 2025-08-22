@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="2.0" xmlns="urn:oasis:names:tc:xliff:document:2.0" srcLang="ja">
+  <file id="ngi18n" original="ng.template">
+    <unit id="common.goBackHome">
+      <segment>
+        <source>ホームに戻る</source>
+      </segment>
+    </unit>
+    <unit id="common.copyRight">
+      <segment>
+        <source>© 2024 Yutaka Morihara</source>
+      </segment>
+    </unit>
+    <unit id="app.title">
+      <segment>
+        <source>devTools</source>
+      </segment>
+    </unit>
+    <unit id="common.language.ja">
+      <segment>
+        <source>日本語</source>
+      </segment>
+    </unit>
+    <unit id="common.language.en">
+      <segment>
+        <source>English</source>
+      </segment>
+    </unit>
+    <unit id="page.dashboard.menu">
+      <segment>
+        <source>ダッシュボード</source>
+      </segment>
+    </unit>
+    <unit id="page.ulid.menu">
+      <segment>
+        <source>ULID生成</source>
+      </segment>
+    </unit>
+    <unit id="page.uuid.menu">
+      <segment>
+        <source>UUID生成</source>
+      </segment>
+    </unit>
+    <unit id="page.dashboard.card.usage.title">
+      <segment>
+        <source>ご利用方法</source>
+      </segment>
+    </unit>
+    <unit id="page.dashboard.card.github.title">
+      <segment>
+        <source>問い合わせ</source>
+      </segment>
+    </unit>
+    <unit id="page.dashboard.card.github.linkText">
+      <segment>
+        <source>GitHub Issuesに移動</source>
+      </segment>
+    </unit>
+    <unit id="page.dashboard.card.menu.title">
+      <segment>
+        <source>メニュー</source>
+      </segment>
+    </unit>
+    <unit id="page.dashboard.card.updateHistory.title">
+      <segment>
+        <source>更新履歴</source>
+      </segment>
+    </unit>
+    <unit id="page.dashboard.title">
+      <segment>
+        <source>ダッシュボード</source>
+      </segment>
+    </unit>
+    <unit id="page.dashboard.card.github.description">
+      <segment>
+        <source> このツールはオープンソースです。<ph id="0" equiv="LINE_BREAK" type="fmt" disp="&lt;br&gt;"/> 不具合や要望などがありましたら、GitHubのIssueにてお知らせください。</source>
+      </segment>
+    </unit>
+    <unit id="page.dashboard.card.usage.description">
+      <segment>
+        <source> 開発者のためのシンプルなユーティリティ集です。 <pc id="0" equivStart="START_PARAGRAPH" equivEnd="CLOSE_PARAGRAPH" type="other" dispStart="&lt;p&gt;" dispEnd="&lt;/p&gt;"> 各ツールを選択してご利用ください。<ph id="1" equiv="LINE_BREAK" type="fmt" disp="&lt;br&gt;"/> データは一切保存されないので、安心してご利用ください。 </pc></source>
+      </segment>
+    </unit>
+    <unit id="page.error.404.title">
+      <segment>
+        <source>ページが見つかりません</source>
+      </segment>
+    </unit>
+    <unit id="page.error.404.message">
+      <segment>
+        <source> 申し訳ございません。<ph id="0" equiv="LINE_BREAK" type="fmt" disp="&lt;br&gt;"/> お探しのページは、移動または削除された可能性があります。 </source>
+      </segment>
+    </unit>
+    <unit id="page.ulid.card.dialog.datetimeMaker.title">
+      <segment>
+        <source>基準日時の選択</source>
+      </segment>
+    </unit>
+    <unit id="page.ulid.card.dialog.datetimeMaker.message">
+      <segment>
+        <source> 基準日時を入力してください。<ph id="0" equiv="LINE_BREAK" type="fmt" disp="&lt;br&gt;"/> 選択された日時はタイムスタンプへと変換されます。 </source>
+      </segment>
+    </unit>
+    <unit id="page.ulid.card.dialog.datetimeMaker.date">
+      <segment>
+        <source>基準日</source>
+      </segment>
+    </unit>
+    <unit id="common.hours">
+      <segment>
+        <source>時</source>
+      </segment>
+    </unit>
+    <unit id="common.minutes">
+      <segment>
+        <source>分</source>
+      </segment>
+    </unit>
+    <unit id="common.seconds">
+      <segment>
+        <source>秒</source>
+      </segment>
+    </unit>
+    <unit id="common.cancel">
+      <segment>
+        <source>キャンセル</source>
+      </segment>
+    </unit>
+    <unit id="common.ok">
+      <segment>
+        <source>はい</source>
+      </segment>
+    </unit>
+    <unit id="page.ulid.card.dialog.datetimeMaker.error.invalidBaseDate">
+      <segment>
+        <source>正しい基準日を入力してください。例: <ph id="0" equiv="PH" disp="this.getDateFormatString"/></source>
+      </segment>
+    </unit>
+    <unit id="page.ulid.card.dialog.datetimeMaker.error.required">
+      <segment>
+        <source>必須項目です。</source>
+      </segment>
+    </unit>
+    <unit id="page.ulid.card.dialog.datetimeMaker.error.invalidTime">
+      <segment>
+        <source>正しい時間を入力してください。</source>
+      </segment>
+    </unit>
+    <unit id="page.ulid.card.input.heading">
+      <segment>
+        <source>生成条件</source>
+      </segment>
+    </unit>
+    <unit id="page.ulid.card.input.generatingSize">
+      <segment>
+        <source>生成数</source>
+      </segment>
+    </unit>
+    <unit id="page.ulid.card.input.placeholder.generatingSize">
+      <segment>
+        <source>最大1,000</source>
+      </segment>
+    </unit>
+    <unit id="page.ulid.card.input.baseTimestamp">
+      <segment>
+        <source>基準日時(タイムスタンプ)</source>
+      </segment>
+    </unit>
+    <unit id="page.ulid.card.input.selectDatetime">
+      <segment>
+        <source>日時を選択</source>
+      </segment>
+    </unit>
+    <unit id="common.reload">
+      <segment>
+        <source>更新</source>
+      </segment>
+    </unit>
+    <unit id="page.ulid.card.input.isMonoIncreaseMode">
+      <segment>
+        <source> 単調増加 </source>
+      </segment>
+    </unit>
+    <unit id="page.ulid.card.input.isMonoIncreaseModeHint">
+      <segment>
+        <source>ULID後部のランダム部分を1ビットずつの増分で生成します。</source>
+      </segment>
+    </unit>
+    <unit id="page.ulid.card.input.generate">
+      <segment>
+        <source>生成</source>
+      </segment>
+    </unit>
+    <unit id="page.ulid.card.input.error.required">
+      <segment>
+        <source>必須項目を入力してください。</source>
+      </segment>
+    </unit>
+    <unit id="page.ulid.card.input.error.generatingSizeRange">
+      <segment>
+        <source>生成数は1以上1,000以下で入力してください。</source>
+      </segment>
+    </unit>
+    <unit id="page.ulid.card.input.error.baseTimestampMin">
+      <segment>
+        <source>基準日時は0以上で入力してください。</source>
+      </segment>
+    </unit>
+    <unit id="page.ulid.card.output.heading">
+      <segment>
+        <source>生成結果</source>
+      </segment>
+    </unit>
+    <unit id="common.copiedMessage">
+      <segment>
+        <source>コピーしました。</source>
+      </segment>
+    </unit>
+    <unit id="page.ulid.title">
+      <segment>
+        <source>ULID生成ツール</source>
+      </segment>
+    </unit>
+    <unit id="page.uuid.card.input.heading">
+      <segment>
+        <source>生成条件</source>
+      </segment>
+    </unit>
+    <unit id="page.uuid.card.input.generatingSize">
+      <segment>
+        <source>生成数</source>
+      </segment>
+    </unit>
+    <unit id="page.uuid.card.input.placeholder.generatingSize">
+      <segment>
+        <source>最大1,000</source>
+      </segment>
+    </unit>
+    <unit id="page.uuid.card.input.uuidVersion">
+      <segment>
+        <source>バージョン</source>
+      </segment>
+    </unit>
+    <unit id="page.uuid.card.input.generate">
+      <segment>
+        <source>生成</source>
+      </segment>
+    </unit>
+    <unit id="page.uuid.card.input.error.generatingSize.required">
+      <segment>
+        <source>生成数を入力してください。</source>
+      </segment>
+    </unit>
+    <unit id="page.uuid.card.input.error.generatingSize.range">
+      <segment>
+        <source>生成数は1以上1,000以下で入力してください。</source>
+      </segment>
+    </unit>
+    <unit id="page.uuid.card.output.heading">
+      <segment>
+        <source>生成結果</source>
+      </segment>
+    </unit>
+    <unit id="common.copyToClipboard">
+      <segment>
+        <source>クリップボードにコピー</source>
+      </segment>
+    </unit>
+    <unit id="page.uuid.title">
+      <segment>
+        <source>UUID生成ツール</source>
+      </segment>
+    </unit>
+    <unit id="update.home.20250823">
+      <segment>
+        <source>言語切替機能を実装しました。</source>
+      </segment>
+    </unit>
+    <unit id="update.home.20250820">
+      <segment>
+        <source>UUID生成を実装しました。</source>
+      </segment>
+    </unit>
+    <unit id="update.home.20250816">
+      <segment>
+        <source>ダッシュボードを実装しました。</source>
+      </segment>
+    </unit>
+  </file>
+</xliff>

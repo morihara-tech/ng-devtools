@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="2.0" xmlns="urn:oasis:names:tc:xliff:document:2.0" srcLang="ja" trgLang="en">
+  <file id="ngi18n" original="ng.template">
+    <unit id="common.goBackHome">
+      <segment>
+        <source>ホームに戻る</source>
+        <target>Back to home</target>
+      </segment>
+    </unit>
+    <unit id="common.copyRight">
+      <segment>
+        <source>© 2024 Yutaka Morihara</source>
+        <target>© 2024 Yutaka Morihara</target>
+      </segment>
+    </unit>
+    <unit id="app.title">
+      <segment>
+        <source>devTools</source>
+        <target>devTools</target>
+      </segment>
+    </unit>
+    <unit id="common.language.ja">
+      <segment>
+        <source>日本語</source>
+        <target>日本語</target>
+      </segment>
+    </unit>
+    <unit id="common.language.en">
+      <segment>
+        <source>English</source>
+        <target>English</target>
+      </segment>
+    </unit>
+    <unit id="page.dashboard.menu">
+      <segment>
+        <source>ダッシュボード</source>
+        <target>Dashboard</target>
+      </segment>
+    </unit>
+    <unit id="page.ulid.menu">
+      <segment>
+        <source>ULID生成</source>
+        <target>ULID Generator</target>
+      </segment>
+    </unit>
+    <unit id="page.uuid.menu">
+      <segment>
+        <source>UUID生成</source>
+        <target>UUID Generator</target>
+      </segment>
+    </unit>
+    <unit id="page.dashboard.card.usage.title">
+      <segment>
+        <source>ご利用方法</source>
+        <target>How to Use</target>
+      </segment>
+    </unit>
+    <unit id="page.dashboard.card.github.title">
+      <segment>
+        <source>問い合わせ</source>
+        <target>Contact</target>
+      </segment>
+    </unit>
+    <unit id="page.dashboard.card.github.linkText">
+      <segment>
+        <source>GitHub Issuesに移動</source>
+        <target>Go to GitHub Issues</target>
+      </segment>
+    </unit>
+    <unit id="page.dashboard.card.menu.title">
+      <segment>
+        <source>メニュー</source>
+        <target>Menu</target>
+      </segment>
+    </unit>
+    <unit id="page.dashboard.card.updateHistory.title">
+      <segment>
+        <source>更新履歴</source>
+        <target>Update History</target>
+      </segment>
+    </unit>
+    <unit id="page.dashboard.title">
+      <segment>
+        <source>ダッシュボード</source>
+        <target>Dashboard</target>
+      </segment>
+    </unit>
+    <unit id="page.dashboard.card.github.description">
+      <segment state="initial">
+        <source> このツールはオープンソースです。<ph id="0" equiv="LINE_BREAK" type="fmt" disp="&lt;br&gt;"/> 不具合や要望などがありましたら、GitHubのIssueにてお知らせください。</source>
+        <target> This tool is open source. <ph id="0" equiv="LINE_BREAK" type="fmt" disp="&lt;br&gt;"/> If you have any bugs or requests, please let me know on GitHub Issues. </target>
+      </segment>
+    </unit>
+    <unit id="page.dashboard.card.usage.description">
+      <segment state="initial">
+        <source> 開発者のためのシンプルなユーティリティ集です。 <pc id="0" equivStart="START_PARAGRAPH" equivEnd="CLOSE_PARAGRAPH" type="other" dispStart="&lt;p&gt;" dispEnd="&lt;/p&gt;"> 各ツールを選択してご利用ください。<ph id="1" equiv="LINE_BREAK" type="fmt" disp="&lt;br&gt;"/> データは一切保存されないので、安心してご利用ください。 </pc></source>
+        <target> A simple utility collection for developers. <pc id="0" equivStart="START_PARAGRAPH" equivEnd="CLOSE_PARAGRAPH" type="other" dispStart="&lt;p&gt;" dispEnd="&lt;/p&gt;"> Please select each tool to use. <ph id="1" equiv="LINE_BREAK" type="fmt" disp="&lt;br&gt;"/> No data is saved, so you can use it with confidence. </pc> </target>
+      </segment>
+    </unit>
+    <unit id="page.error.404.title">
+      <segment>
+        <source>ページが見つかりません</source>
+        <target>Page Not Found</target>
+      </segment>
+    </unit>
+    <unit id="page.error.404.message">
+      <segment state="initial">
+        <source> 申し訳ございません。<ph id="0" equiv="LINE_BREAK" type="fmt" disp="&lt;br&gt;"/> お探しのページは、移動または削除された可能性があります。 </source>
+        <target>Sorry, the page you&apos;re looking for can&apos;t be found.</target>
+      </segment>
+    </unit>
+    <unit id="page.ulid.card.dialog.datetimeMaker.title">
+      <segment>
+        <source>基準日時の選択</source>
+        <target>Select Base Datetime</target>
+      </segment>
+    </unit>
+    <unit id="page.ulid.card.dialog.datetimeMaker.message">
+      <segment state="initial">
+        <source> 基準日時を入力してください。<ph id="0" equiv="LINE_BREAK" type="fmt" disp="&lt;br&gt;"/> 選択された日時はタイムスタンプへと変換されます。 </source>
+        <target> Please enter the base datetime. <ph id="0" equiv="LINE_BREAK" type="fmt" disp="&lt;br&gt;"/> The selected datetime will be converted to a timestamp. </target>
+      </segment>
+    </unit>
+    <unit id="page.ulid.card.dialog.datetimeMaker.date">
+      <segment>
+        <source>基準日</source>
+        <target>Base Date</target>
+      </segment>
+    </unit>
+    <unit id="common.hours">
+      <segment>
+        <source>時</source>
+        <target>Hours</target>
+      </segment>
+    </unit>
+    <unit id="common.minutes">
+      <segment>
+        <source>分</source>
+        <target>Minutes</target>
+      </segment>
+    </unit>
+    <unit id="common.seconds">
+      <segment>
+        <source>秒</source>
+        <target>Seconds</target>
+      </segment>
+    </unit>
+    <unit id="common.cancel">
+      <segment>
+        <source>キャンセル</source>
+        <target>Cancel</target>
+      </segment>
+    </unit>
+    <unit id="common.ok">
+      <segment>
+        <source>はい</source>
+        <target>OK</target>
+      </segment>
+    </unit>
+    <unit id="page.ulid.card.dialog.datetimeMaker.error.invalidBaseDate">
+      <segment>
+        <source>正しい基準日を入力してください。例: <ph id="0" equiv="PH" disp="this.getDateFormatString"/></source>
+        <target>Invalid base date. ex) <ph id="0" equiv="PH" disp="this.getDateFormatString"/></target>
+      </segment>
+    </unit>
+    <unit id="page.ulid.card.dialog.datetimeMaker.error.required">
+      <segment>
+        <source>必須項目です。</source>
+        <target>Mandatory fields.</target>
+      </segment>
+    </unit>
+    <unit id="page.ulid.card.dialog.datetimeMaker.error.invalidTime">
+      <segment>
+        <source>正しい時間を入力してください。</source>
+        <target>Invalid time.</target>
+      </segment>
+    </unit>
+    <unit id="page.ulid.card.input.heading">
+      <segment>
+        <source>生成条件</source>
+        <target>Conditions</target>
+      </segment>
+    </unit>
+    <unit id="page.ulid.card.input.generatingSize">
+      <segment>
+        <source>生成数</source>
+        <target>Number of ULIDs</target>
+      </segment>
+    </unit>
+    <unit id="page.ulid.card.input.placeholder.generatingSize">
+      <segment>
+        <source>最大1,000</source>
+        <target>Maximum 1,000</target>
+      </segment>
+    </unit>
+    <unit id="page.ulid.card.input.baseTimestamp">
+      <segment>
+        <source>基準日時(タイムスタンプ)</source>
+        <target>Base datetime - Timestamp</target>
+      </segment>
+    </unit>
+    <unit id="page.ulid.card.input.selectDatetime">
+      <segment>
+        <source>日時を選択</source>
+        <target>Select datetime</target>
+      </segment>
+    </unit>
+    <unit id="common.reload">
+      <segment>
+        <source>更新</source>
+        <target>Reload</target>
+      </segment>
+    </unit>
+    <unit id="page.ulid.card.input.isMonoIncreaseMode">
+      <segment>
+        <source> 単調増加 </source>
+        <target> Increase monotonically </target>
+      </segment>
+    </unit>
+    <unit id="page.ulid.card.input.isMonoIncreaseModeHint">
+      <segment>
+        <source>ULID後部のランダム部分を1ビットずつの増分で生成します。</source>
+        <target> Generates the random part of the ULID with an increment of 1 bit. </target>
+      </segment>
+    </unit>
+    <unit id="page.ulid.card.input.generate">
+      <segment>
+        <source>生成</source>
+        <target>Generate</target>
+      </segment>
+    </unit>
+    <unit id="page.ulid.card.input.error.required">
+      <segment>
+        <source>必須項目を入力してください。</source>
+        <target>Mandatory fields must be completed.</target>
+      </segment>
+    </unit>
+    <unit id="page.ulid.card.input.error.generatingSizeRange">
+      <segment>
+        <source>生成数は1以上1,000以下で入力してください。</source>
+        <target>The number of ULIDs must be between 1 and 1,000.</target>
+      </segment>
+    </unit>
+    <unit id="page.ulid.card.input.error.baseTimestampMin">
+      <segment>
+        <source>基準日時は0以上で入力してください。</source>
+        <target>The base datetime must be greater than or equal to 0.</target>
+      </segment>
+    </unit>
+    <unit id="page.ulid.card.output.heading">
+      <segment>
+        <source>生成結果</source>
+        <target>Results</target>
+      </segment>
+    </unit>
+    <unit id="common.copiedMessage">
+      <segment>
+        <source>コピーしました。</source>
+        <target>Copied to clipboard.</target>
+      </segment>
+    </unit>
+    <unit id="page.ulid.title">
+      <segment>
+        <source>ULID生成ツール</source>
+        <target>ULID Generator</target>
+      </segment>
+    </unit>
+    <unit id="page.uuid.card.input.heading">
+      <segment>
+        <source>生成条件</source>
+        <target>Conditions</target>
+      </segment>
+    </unit>
+    <unit id="page.uuid.card.input.generatingSize">
+      <segment>
+        <source>生成数</source>
+        <target>Number of UUIDs</target>
+      </segment>
+    </unit>
+    <unit id="page.uuid.card.input.placeholder.generatingSize">
+      <segment>
+        <source>最大1,000</source>
+        <target>Maximum 1,000</target>
+      </segment>
+    </unit>
+    <unit id="page.uuid.card.input.uuidVersion">
+      <segment>
+        <source>バージョン</source>
+        <target>Version</target>
+      </segment>
+    </unit>
+    <unit id="page.uuid.card.input.generate">
+      <segment>
+        <source>生成</source>
+        <target>Generate</target>
+      </segment>
+    </unit>
+    <unit id="page.uuid.card.input.error.generatingSize.required">
+      <segment>
+        <source>生成数を入力してください。</source>
+        <target>Please enter the number of UUIDs to generate.</target>
+      </segment>
+    </unit>
+    <unit id="page.uuid.card.input.error.generatingSize.range">
+      <segment>
+        <source>生成数は1以上1,000以下で入力してください。</source>
+        <target>The number of UUIDs must be between 1 and 1,000.</target>
+      </segment>
+    </unit>
+    <unit id="page.uuid.card.output.heading">
+      <segment>
+        <source>生成結果</source>
+        <target>Results</target>
+      </segment>
+    </unit>
+    <unit id="common.copyToClipboard">
+      <segment>
+        <source>クリップボードにコピー</source>
+        <target>Copy to clipboard</target>
+      </segment>
+    </unit>
+    <unit id="page.uuid.title">
+      <segment>
+        <source>UUID生成ツール</source>
+        <target>UUID Generator</target>
+      </segment>
+    </unit>
+    <unit id="update.home.20250816">
+      <segment state="initial">
+        <source>ダッシュボードを実装しました。</source>
+        <target>Implemented the dashboard.</target>
+      </segment>
+    </unit>
+    <unit id="update.home.20250820">
+      <segment state="initial">
+        <source>UUID生成を実装しました。</source>
+        <target>Implemented UUID generation.</target>
+      </segment>
+    </unit>
+    <unit id="update.home.20250823">
+      <segment state="initial">
+        <source>言語切替機能を実装しました。</source>
+        <target>Implemented language switching functionality.</target>
+      </segment>
+    </unit>
+  </file>
+</xliff>

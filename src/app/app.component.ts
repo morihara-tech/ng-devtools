@@ -5,9 +5,7 @@ import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
 import { HeaderModel, PersonButtonMenuModel } from './components/header/header-model';
 import { filter, map, mergeMap } from 'rxjs';
 import { Title } from '@angular/platform-browser';
-import { TEXT, Text } from '../resources/texts/text';
 import { SidenavComponent } from "./components/sidenav/sidenav.component";
-import { LocaleService } from './components/locale/locale.service';
 import { IconService } from './icon.service';
 
 @Component({
@@ -36,13 +34,12 @@ export class AppComponent {
   constructor(
     // @Inject(ENVIRONMENT) env: Environment,
     // private auth: AuthService,
-    private localeService: LocaleService,
     private route: Router,
     private activatedRoute: ActivatedRoute,
     private titleService: Title,
     private _: IconService
   ) {
-    this.init();
+    this.setTitle();
   }
 
   onClickPersonContext(menu: PersonButtonMenuModel): void {
@@ -53,15 +50,6 @@ export class AppComponent {
 
   onToggleMenu(): void {
     this.toggle = !this.toggle;
-  }
-
-  private init(): void {
-    this.localeService.get()
-      .pipe(mergeMap((locale) => TEXT(locale)))
-      .subscribe((res) => {
-        this.text = res;
-        this.setTitle();
-      });
   }
 
   private setTitle(): void {
@@ -79,8 +67,9 @@ export class AppComponent {
         mergeMap((route) => route.data)
       )
       .subscribe((event) => {
-        if (this.text) {
-          this.titleService.setTitle(this.text[event['titleId']]);
+        const title = event['title'];
+        if (title) {
+          this.titleService.setTitle(title);
         }
         this.toggle = (event['menuToggle']);
       });
