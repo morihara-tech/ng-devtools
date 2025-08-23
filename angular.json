@@ -13,6 +13,12 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
+      "i18n": {
+        "sourceLocale": "ja",
+        "locales": {
+          "en": "src/resources/texts/def/messages.en.xlf"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser-esbuild",
@@ -21,7 +27,8 @@
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
-              "zone.js"
+              "zone.js",
+              "@angular/localize/init"
             ],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
@@ -55,12 +62,20 @@
                   "maximumError": "4kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "localize": true
             },
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "localize": true
+            },
+            "ja": {
+              "localize": ["ja"]
+            },
+            "en": {
+              "localize": ["en"]
             }
           },
           "defaultConfiguration": "production"
@@ -73,6 +88,12 @@
             },
             "development": {
               "buildTarget": "ng-devtools:build:development"
+            },
+            "ja": {
+              "buildTarget": "ng-devtools:build:ja"
+            },
+            "en": {
+              "buildTarget": "ng-devtools:build:en"
             }
           },
           "options": {
@@ -83,14 +104,27 @@
           "defaultConfiguration": "development"
         },
         "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n"
+          "builder": "ng-extract-i18n-merge:ng-extract-i18n-merge",
+          "options": {
+            "buildTarget": "ng-devtools:build",
+            "format": "xlf2",
+            "outputPath": "src/resources/texts/def",
+            "targetFiles": [
+              "messages.en.xlf"
+            ],
+            "newTranslationTargetsBlank": true,
+            "includeMeaningAndDescription": true,
+            "collapseWhitespace": true,
+            "sort": "stableAlphabetNew"
+          }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "polyfills": [
               "zone.js",
-              "zone.js/testing"
+              "zone.js/testing",
+              "@angular/localize/init"
             ],
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",

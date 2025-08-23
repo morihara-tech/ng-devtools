@@ -1,26 +1,29 @@
-<div mat-dialog-title>{{ data.text['datetimeMakerDialogTitle'] }}</div>
+<div mat-dialog-title i18n="@@page.ulid.card.dialog.datetimeMaker.title">基準日時の選択</div>
 @if (formGroup) {
   <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
     <mat-dialog-content>
-      <p class="message">{{ data.text['datetimeMakerDialogMessage'] }}</p>
+      <p i18n="@@page.ulid.card.dialog.datetimeMaker.message">
+        基準日時を入力してください。<br>
+        選択された日時はタイムスタンプへと変換されます。
+      </p>
       <div class="flex between wrap">
         <mat-form-field class="date">
-          <mat-label>{{ data.text['baseDate'] }}</mat-label>
+          <mat-label i18n="@@page.ulid.card.dialog.datetimeMaker.date">基準日</mat-label>
           <input matInput [placeholder]="getDateFormatString" formControlName="baseDate" [matDatepicker]="picker" cdkFocusInitial>
           <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
         <div class="flex between">
           <mat-form-field class="time">
-            <mat-label>{{ data.text['hours'] }}</mat-label>
+            <mat-label i18n="@@common.hours">時</mat-label>
             <input matInput type="number" max="23" min="0" formControlName="baseHours">
           </mat-form-field>
           <mat-form-field class="time">
-            <mat-label>{{ data.text['minutes'] }}</mat-label>
+            <mat-label i18n="@@common.minutes">分</mat-label>
             <input matInput type="number" max="59" min="0" formControlName="baseMinutes">
           </mat-form-field>
           <mat-form-field class="time">
-            <mat-label>{{ data.text['seconds'] }}</mat-label>
+            <mat-label i18n="@@common.seconds">秒</mat-label>
             <input matInput type="number" max="59" min="0" formControlName="baseSeconds">
           </mat-form-field>
         </div>
@@ -30,8 +33,8 @@
       }
     </mat-dialog-content>
     <mat-dialog-actions>
-      <button mat-stroked-button type="button" (click)="onCancelClick()">{{ data.text['cancel'] }}</button>
-      <button mat-flat-button type="submit" [disabled]="errorMessage !== null" color="primary">{{ data.text['ok'] }}</button>
+      <button mat-stroked-button type="button" (click)="onCancelClick()" i18n="@@common.cancel">キャンセル</button>
+      <button mat-flat-button type="submit" [disabled]="errorMessage !== null" color="primary" i18n="@@common.ok">はい</button>
     </mat-dialog-actions>
   </form>
 }

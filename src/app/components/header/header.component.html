@@ -8,7 +8,7 @@
     </a>
     <span class="title">{{ getTitle }}</span>
     <span class="spacer"></span>
-    <app-language-button [text]="text"></app-language-button>
+    <app-language-button></app-language-button>
     <app-person-button [person]="model.person" (clickMenu)="clickPersonContext.emit($event)"></app-person-button>
   </mat-toolbar>
 }

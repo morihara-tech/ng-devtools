@@ -3,11 +3,10 @@
 </button>
 
 <mat-menu #menu="matMenu" xPosition="before">
-  @for (locale of localeService.getLocales(); track locale) {
-    <button mat-menu-item (click)="onClickLanguage(locale)">
-      @if (text) {
-        <span>{{ text[locale] }}</span>
-      }
-    </button>
-  }
+  <button mat-menu-item (click)="onClickLanguage('ja')">
+    <span i18n="@@common.language.ja">日本語</span>
+  </button>
+  <button mat-menu-item (click)="onClickLanguage('en')">
+    <span i18n="@@common.language.en">English</span>
+  </button>
 </mat-menu>

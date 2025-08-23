@@ -2,9 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { DashboardPageTemplateComponent } from '../../components/dashboard/dashboard-page-template/dashboard-page-template.component';
 import { DashboardService } from '../../components/dashboard/dashboard.service';
 import { UsageCardComponent } from './usage-card/usage-card.component';
-import { LocaleService } from '../../components/locale/locale.service';
-import { mergeMap } from 'rxjs';
-import { TEXT, Text } from '../../../resources/texts/text';
 import { MenuCardComponent } from './menu-card/menu-card.component';
 import { GithubCardComponent } from './github-card/github-card.component';
 import { UpdateHistoryCardComponent } from './update-history-card/update-history-card.component';
@@ -19,43 +16,33 @@ import { UpdateHistoryCardComponent } from './update-history-card/update-history
 })
 export class DashboardPageComponent implements OnInit {
   dashboardService!: DashboardService;
-  text!: Text;
-
-  constructor(
-    private localeService: LocaleService
-  ) {}
 
   ngOnInit(): void {
-    this.localeService.get()
-      .pipe(mergeMap((locale) => TEXT(locale)))
-      .subscribe((res) => {
-        this.text = res;
-        this.initDashboard();
-      });
+    this.initDashboard();
   }
 
   private initDashboard(): void {
     this.dashboardService = new DashboardService();
     this.dashboardService.update([
       {
-        title: this.text['usageCardTitle'],
+        title: $localize`:@@page.dashboard.card.usage.title:ご利用方法`,
         component: UsageCardComponent,
         size: { x: 'm', y: 's' },
       }, {
-        title: this.text['githubCardTitle'],
+        title: $localize`:@@page.dashboard.card.github.title:問い合わせ`,
         component: GithubCardComponent,
         destination: {
-          linkText: this.text['githubCardLinkText'],
+          linkText: $localize`:@@page.dashboard.card.github.linkText:GitHub Issuesに移動`,
           url: 'https://github.com/morihara-tech/ng-devtools/issues',
           external: true,
           openInNewTab: true
         }
       }, {
-        title: this.text['menuCardTitle'],
+        title: $localize`:@@page.dashboard.card.menu.title:メニュー`,
         component: MenuCardComponent,
         size: { x: 's', y: 'm' },
       },{
-        title: this.text['updateHistoryCardTitle'],
+        title: $localize`:@@page.dashboard.card.updateHistory.title:更新履歴`,
         component: UpdateHistoryCardComponent,
         size: { x: 'm', y: 'm' },
       }

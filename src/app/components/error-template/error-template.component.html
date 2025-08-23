@@ -4,9 +4,9 @@
       <mat-card>
         <mat-card-content>
           <div class="card-content">
-            @if (text && titleTextId) {
+            @if (title) {
               <div class="title">
-                {{ text[titleTextId] }}
+                {{ title }}
               </div>
             }
             <ng-content />
@@ -14,16 +14,12 @@
         </mat-card-content>
         <mat-card-footer>
           <div class="button-area">
-            @if (text) {
-              <a mat-stroked-button class="button" [routerLink]="'/'">{{ text['goBackHome'] }}</a>
-            }
+            <a mat-stroked-button class="button" [routerLink]="'/'" i18n="@@common.goBackHome">ホームに戻る</a>
           </div>
         </mat-card-footer>
       </mat-card>
       <div class="copy-right">
-        @if (text) {
-          <span class="credit-label">{{ text['copyRight'] }}</span>
-        }
+        <span class="credit-label" i18n="@@common.copyRight">© 2024 Yutaka Morihara</span>
       </div>
     </div>
   </div>

@@ -1,7 +1,6 @@
-@if (text) {
-  <app-error-template [text]="text" titleTextId="notFoundErrorTitle">
-    <div class="message">
-      {{ text['notFoundErrorMessage'] }}
-    </div>
-  </app-error-template>
-}
+<app-error-template title="ページが見つかりません" i18n-title="@@page.error.404.title">
+  <div i18n="@@page.error.404.message">
+    申し訳ございません。<br>
+    お探しのページは、移動または削除された可能性があります。
+  </div>
+</app-error-template>

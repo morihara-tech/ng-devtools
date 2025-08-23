@@ -1,16 +1,12 @@
 <app-application-page-template>
-  @if (text) {
-    <div class="margin-bottom-16">
-      <app-heading headingType="h2"> {{ text['ulidGenTitle'] }} </app-heading>
-    </div>
-  }
+  <div class="margin-bottom-16">
+    <app-heading headingType="h2" i18n="@@page.ulid.title">ULID生成ツール</app-heading>
+  </div>
   <app-ulid-gen-input-card
-    [text]="text"
     (generate)="onGenerate($event)"
   ></app-ulid-gen-input-card>
   <div class="spacer"></div>
   <app-ulid-gen-output-card
     #output
-    [text]="text"
   ></app-ulid-gen-output-card>  
 </app-application-page-template>

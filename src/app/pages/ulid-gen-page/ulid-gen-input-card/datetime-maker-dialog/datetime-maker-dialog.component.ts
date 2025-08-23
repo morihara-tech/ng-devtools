@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, signal } from '@angular/core';
+import { Component, LOCALE_ID, OnInit, inject, signal } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { DatetimeMakerModel } from './datetime-maker-model';
 import { DateAdapter, MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
@@ -10,12 +10,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import moment, { Moment } from 'moment';
 import 'moment/locale/ja';
-import { LocaleService } from '../../../../components/locale/locale.service';
 
 @Component({
     selector: 'app-datetime-maker-dialog',
     providers: [
-        { provide: MAT_DATE_LOCALE, useValue: 'en-US' },
+        { provide: MAT_DATE_LOCALE, useExisting: LOCALE_ID },
         provideMomentDateAdapter()
     ],
     imports: [
@@ -35,7 +34,6 @@ export class DatetimeMakerDialogComponent implements OnInit {
 
   formGroup?: FormGroup;
 
-  private readonly localeService = inject(LocaleService);
   private readonly dialogRef = inject(MatDialogRef<DatetimeMakerDialogComponent>);
   private readonly fb = inject(FormBuilder);
   private readonly calendarAdapter = inject<DateAdapter<unknown, unknown>>(DateAdapter);
@@ -75,28 +73,21 @@ export class DatetimeMakerDialogComponent implements OnInit {
     }
 
     if (this.formGroup.controls['baseDate'].errors?.['required']) {
-      return this.data.text['datetimeMakerDialogErrorInvalidBaseDate'].replace('{0}', this.getDateFormatString);
+      return $localize`:@@page.ulid.card.dialog.datetimeMaker.error.invalidBaseDate:正しい基準日を入力してください。例: ${this.getDateFormatString}`;
     }
     for (const key of Object.keys(this.formGroup.controls)) {
       if (this.formGroup.controls[key].errors?.['required']) {
-        return this.data.text['datetimeMakerDialogErrorRequired'];
+        return $localize`:@@page.ulid.card.dialog.datetimeMaker.error.required:必須項目です。`;
       }
       if (this.formGroup.controls[key].errors?.['min'] || this.formGroup.controls[key].errors?.['max']) {
-        return this.data.text['datetimeMakerDialogErrorInvalidTime'];
+        return $localize`:@@page.ulid.card.dialog.datetimeMaker.error.invalidTime:正しい時間を入力してください。`;
       }
     }
     return null;
   }
 
   private setCalendarLocale(): void {
-    this.localeService.get().subscribe((locale) => {
-      if (locale === 'ja') {
-        this.calendarLocale.set('ja-JP');
-      } else {
-        this.calendarLocale.set('en-US');
-      }
-      this.calendarAdapter.setLocale(this.calendarLocale());
-    });
+    this.calendarAdapter.setLocale(this.calendarLocale());
   }
 
   private resetForm(): void {

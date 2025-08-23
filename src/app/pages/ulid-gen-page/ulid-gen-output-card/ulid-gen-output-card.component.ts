@@ -1,5 +1,4 @@
-import { Component, Input, inject } from '@angular/core';
-import { Text } from '../../../../resources/texts/text';
+import { Component, inject } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { HeadingComponent } from '../../../components/heading/heading.component';
@@ -25,8 +24,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     styleUrl: './ulid-gen-output-card.component.scss'
 })
 export class UlidGenOutputCardComponent {
-  @Input() text?: Text;
-
   ulidStrings?: string;
 
   private snackBar = inject(MatSnackBar);
@@ -39,11 +36,12 @@ export class UlidGenOutputCardComponent {
   }
 
   onClickCopy(): void {
-    if (!this.ulidStrings || !this.text) {
+    if (!this.ulidStrings) {
       return;
     }
     navigator.clipboard.writeText(this.ulidStrings);
-    this.snackBar.open(this.text['copiedMessage'], this.text['ok'], { duration: 2000, horizontalPosition: 'start' });
+    this.snackBar.open($localize`:@@common.copiedMessage:コピーしました。`,
+      $localize`:@@common.ok:はい`, { duration: 2000, horizontalPosition: 'start' });
   }
 
   private makeUlid(size: number, baseTimestamp: number): string[] {

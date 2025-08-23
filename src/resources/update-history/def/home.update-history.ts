@@ -1,19 +1,17 @@
-import { UpdateHistoryDefModel } from "../../../app/components/update-history/update-history-model";
+import { UpdateHistoryModel } from "../../../app/components/update-history/update-history-model";
 
-export const HOME_UPDATE_HISTORIES_DEF: Array<UpdateHistoryDefModel> = [
+export const HOME_UPDATE_HISTORIES: Array<UpdateHistoryModel> = [
   // add new update history here
   {
+    date: '2025-08-23',
+    description: $localize`:@@update.home.20250823:言語切替機能を実装しました。`
+  },
+  {
     date: '2025-08-20',
-    description: {
-      ja: 'UUID生成を実装しました。',
-      en: 'Implemented UUID generation.'
-    }
+    description: $localize`:@@update.home.20250820:UUID生成を実装しました。`
   },
   {
     date: '2025-08-16',
-    description: {
-      ja: 'ダッシュボードを実装しました。',
-      en: 'Implemented dashboard.'
-    }
+    description: $localize`:@@update.home.20250816:ダッシュボードを実装しました。`
   }
 ];

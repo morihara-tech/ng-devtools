@@ -28,9 +28,9 @@
       <span class="middle">
         <ng-content></ng-content>
       </span>
-      @if (text && hintMessageTextId) {
+      @if (hintMessage) {
         <mat-icon matSuffix mat-icon-button class="hint-icon middle"
-          [matTooltip]="text[hintMessageTextId]" matTooltipPosition="right" matTooltipHideDelay="2000">
+          [matTooltip]="hintMessage" matTooltipPosition="right" matTooltipHideDelay="2000">
           help_outline
         </mat-icon>
       }
