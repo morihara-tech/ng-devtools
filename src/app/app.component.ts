@@ -26,7 +26,7 @@ export class AppComponent {
   text?: Text;
 
   headerModel: HeaderModel = {
-    logo: { logoUrl: '/logo.png', routerLink: '/' }
+    logo: { logoUrl: 'logo.png', routerLink: '/' }
   };
 
   toggle: boolean = false;
