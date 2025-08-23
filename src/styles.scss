@@ -74,3 +74,19 @@ body { margin: 0; font-family: Roboto, "BIZ UDGothic", sans-serif; }
 ::-webkit-scrollbar-corner {
   background: transparent;
 }
+
+
+/* Ensure consistent background behind the iOS status bar */
+html, body { background: var(--mat-sys-surface-bright); }
+
+/* Safe areas for iOS standalone and modern browsers */
+app-root {
+  display: block;
+  min-height: 100dvh;
+  background: var(--mat-sys-surface-bright);
+  /* Prevent content from colliding with the notch/home indicator */
+  padding-top:    env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left:   env(safe-area-inset-left);
+  padding-right:  env(safe-area-inset-right);
+}
