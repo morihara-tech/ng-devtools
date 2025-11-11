@@ -1,7 +1,7 @@
-import { Inject, Injectable } from '@angular/core';
+import { Inject, Injectable, DOCUMENT } from '@angular/core';
 import { Locale } from './locale-model';
 import { Observable, of } from 'rxjs';
-import { DOCUMENT } from '@angular/common';
+
 
 @Injectable({
   providedIn: 'root'
