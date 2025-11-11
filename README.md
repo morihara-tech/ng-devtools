@@ -1,6 +1,6 @@
 # NgDevtools
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.0.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 20.3.9.
 
 ## Development server
 
