@@ -251,14 +251,13 @@
   optionalDependencies:
     lmdb "3.4.2"
 
-"@angular/cdk@19.1.0":
-  version "19.1.0"
-  resolved "https://registry.yarnpkg.com/@angular/cdk/-/cdk-19.1.0.tgz#9c316d83aee26092644ecc82037bf4b526c3d7a7"
-  integrity sha512-h7VSaMA/vFHb7u1bwoHKl3L3mZLIcXNZw6v7Nei9ITfEo1PfSKbrYhleeqpNikzE+LxNDKJrbZtpAckSYHblmA==
+"@angular/cdk@20.2.12":
+  version "20.2.12"
+  resolved "https://registry.yarnpkg.com/@angular/cdk/-/cdk-20.2.12.tgz#a3cc8476f34503b28197bc5822f2a5c75b8aea1f"
+  integrity sha512-hz8GtiMy3N9/e8407ZfrByHD5GEC4SkWtxyUknWuTM9P88AOie0jDZ6CfQg9gQ0OJX+6BAbJV3RpYZA1uzNUqA==
   dependencies:
+    parse5 "^8.0.0"
     tslib "^2.3.0"
-  optionalDependencies:
-    parse5 "^7.1.2"
 
 "@angular/cli@^20.3.9":
   version "20.3.9"
@@ -336,17 +335,17 @@
     tinyglobby "^0.2.12"
     yargs "^18.0.0"
 
-"@angular/material-moment-adapter@19.1.0":
-  version "19.1.0"
-  resolved "https://registry.yarnpkg.com/@angular/material-moment-adapter/-/material-moment-adapter-19.1.0.tgz#48ea2adef41d341b2284a2ff6379cb95f7821309"
-  integrity sha512-JuPNwCSrT9H+X7HVAYcuCQV0I99AnDc0ouZHMvg9xihfa1PF4jW1pq0PW2SXAmEI+FrI/ofvBAaVU6kKjkfiig==
+"@angular/material-moment-adapter@20.2.12":
+  version "20.2.12"
+  resolved "https://registry.yarnpkg.com/@angular/material-moment-adapter/-/material-moment-adapter-20.2.12.tgz#3e93248c043bdeab3e8cbe17b192daacde2448e8"
+  integrity sha512-IECd9uTBIzMdJu8I45q7dSo7VSSny5qZdqeq2qa8TTZh929D9zlMegI/j/4BQCBCOr+QU8PqE49jaIyr1QRsjw==
   dependencies:
     tslib "^2.3.0"
 
-"@angular/material@19.1.0":
-  version "19.1.0"
-  resolved "https://registry.yarnpkg.com/@angular/material/-/material-19.1.0.tgz#3af382acfc8d94f53cfc841dbcdd65ec89e3a9c8"
-  integrity sha512-LTQBWtuRGjNpA7ceQu9PyiUUq0KLfBP8LvL04hLFbEsZ0fIPQ/OO/Otn67/7TMtnHRFnPeezYPHcAHBhiNlR4A==
+"@angular/material@20.2.12":
+  version "20.2.12"
+  resolved "https://registry.yarnpkg.com/@angular/material/-/material-20.2.12.tgz#c35d6bf87155d4dbc2602924de3a693d5a4db16f"
+  integrity sha512-DVenIZmV87qhDBlI2Xv3Z+b+IFI1s4wcZsFrzDi1FBMxKLsltJwMHf4SAmuqY0Mm/2Vw7HEZlfE130TuqjG8Ig==
   dependencies:
     tslib "^2.3.0"
 
@@ -2803,7 +2802,7 @@ ent@~2.2.0:
   dependencies:
     punycode "^1.4.1"
 
-entities@^4.2.0, entities@^4.4.0:
+entities@^4.2.0:
   version "4.5.0"
   resolved "https://registry.npmjs.org/entities/-/entities-4.5.0.tgz"
   integrity sha512-V0hjH4dGPh9Ao5p0MoRY6BVqtwCjhz6vI5LT8AJ55H+4g9/4vbHx1I54fS0XuclLhDHArPQCiMjDxjaL8fPxhw==
@@ -4399,13 +4398,6 @@ parse5-sax-parser@^8.0.0:
   integrity sha512-/dQ8UzHZwnrzs3EvDj6IkKrD/jIZyTlB+8XrHJvcjNgRdmWruNdN9i9RK/JtxakmlUdPwKubKPTCqvbTgzGhrw==
   dependencies:
     parse5 "^8.0.0"
-
-parse5@^7.1.2:
-  version "7.1.2"
-  resolved "https://registry.npmjs.org/parse5/-/parse5-7.1.2.tgz"
-  integrity sha512-Czj1WaSVpaoj0wbhMzLmWD69anp2WH7FXMB9n1Sy8/ZFF9jolSQVMu1Ij5WIyGmcBmhk7EOndpO4mIpihVqAXw==
-  dependencies:
-    entities "^4.4.0"
 
 parse5@^8.0.0:
   version "8.0.0"
