@@ -1,0 +1,47 @@
+<mat-card appearance="raised">
+  @if (formGroup) {
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+      <mat-card-content>
+        <app-heading headingType="h3" i18n="@@page.jsonFormatter.card.input.heading">JSON</app-heading>
+        <div class="input-form-wrapper">
+          <div class="flex wrap">
+            <mat-form-field class="input-form">
+              <mat-label i18n="@@page.jsonFormatter.card.input.indentSpaceSize">インデント</mat-label>
+              <mat-select formControlName="indentSpaceSize" aria-label="indent space size">
+                <mat-option value="2">2</mat-option>
+                <mat-option value="4">4</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field class="input-form">
+              <mat-label i18n="@@page.jsonFormatter.card.input.mode.label">モード</mat-label>
+              <mat-select formControlName="mode" aria-label="json format mode">
+                <mat-option value="format" i18n="@@page.jsonFormatter.card.input.mode.format">整形</mat-option>
+                <mat-option value="minify" i18n="@@page.jsonFormatter.card.input.mode.minify">圧縮</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div class="flex toggle">
+              <mat-slide-toggle formControlName="isEscapeMode" i18n="@@page.jsonFormatter.card.input.isEscapeMode">
+                エスケープ
+              </mat-slide-toggle>
+              <app-hint-icon
+                message="JSONをバックスラッシュ記法でエスケープします。"
+                i18n-message="@@page.jsonFormatter.card.input.isEscapeModeHint"
+                class="hint"
+              ></app-hint-icon>
+            </div>
+          </div>
+          <div class="json-area">
+            "id": 1,"value":"test"
+            <!-- TODO エディター-->
+          </div>
+        </div>
+        @if (errorMessage !== null) {
+          <mat-error>{{ errorMessage }}</mat-error>
+        }
+      </mat-card-content>
+      <mat-card-actions align="end">
+        <button mat-flat-button [disabled]="hasError" type="submit" i18n="@@page.jsonFormatter.card.input.format">変換</button>
+      </mat-card-actions>
+    </form>
+  }
+</mat-card>

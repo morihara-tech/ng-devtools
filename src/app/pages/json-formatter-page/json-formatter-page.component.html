@@ -1,0 +1,12 @@
+<app-application-page-template>
+  <div class="margin-bottom-16">
+    <app-heading headingType="h2" i18n="@@page.json.title">JSON整形ツール</app-heading>
+  </div>
+  <app-json-formatter-input-card
+    (format)="onFormat($event)"
+  ></app-json-formatter-input-card>
+  <div class="spacer"></div>
+  <app-json-formatter-output-card
+    #output
+  ></app-json-formatter-output-card>
+</app-application-page-template>
