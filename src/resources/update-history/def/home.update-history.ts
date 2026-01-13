@@ -3,6 +3,10 @@ import { UpdateHistoryModel } from "../../../app/components/update-history/updat
 export const HOME_UPDATE_HISTORIES: Array<UpdateHistoryModel> = [
   // add new update history here
   {
+    date: '2026-01-13',
+    description: $localize`:@@update.home.20260113:JSON整形ツールのデバッグログを削除しました。`
+  },
+  {
     date: '2025-08-23',
     description: $localize`:@@update.home.20250823:言語切替機能を実装しました。`
   },
