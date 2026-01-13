@@ -1,5 +1,5 @@
-import { Component, EventEmitter, OnInit, Output, inject } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, ViewChild, inject } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { JsonFormatterInputModel } from '../json-formatter-model';
 import { MatButtonModule } from '@angular/material/button';
@@ -8,7 +8,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { HeadingComponent } from '../../../components/heading/heading.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { HintIconComponent } from '../../../components/hint-icon/hint-icon.component';
+import { JsonCodeEditorComponent } from './json-code-editor/json-code-editor.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-json-formatter-input-card',
@@ -20,37 +23,47 @@ import { HintIconComponent } from '../../../components/hint-icon/hint-icon.compo
     MatInputModule,
     MatSelectModule,
     MatSlideToggleModule,
+    MatIconModule,
+    MatTooltipModule,
+    MatSnackBarModule,
     HeadingComponent,
-    HintIconComponent,
+    JsonCodeEditorComponent,
   ],
   templateUrl: './json-formatter-input-card.component.html',
   styleUrl: './json-formatter-input-card.component.scss'
 })
-export class JsonFormatterInputCardComponent implements OnInit {
-  @Output() format: EventEmitter<JsonFormatterInputModel> = new EventEmitter();
+export class JsonFormatterInputCardComponent {
+  @ViewChild(JsonCodeEditorComponent) jsonCodeEditorComponent?: JsonCodeEditorComponent;
 
   formGroup?: FormGroup;
+  errorMessage?: string;
 
   private readonly fb: FormBuilder = inject(FormBuilder);
+  private snackBar = inject(MatSnackBar);
 
   ngOnInit(): void {
     this.resetForm();
-    setTimeout(() => {
-      this.onSubmit();
-    }, 10);
   }
 
   onSubmit(): void {
-    if (!this.formGroup || this.hasError) {
+    if (!this.formGroup || this.hasError || !this.jsonCodeEditorComponent) {
       return;
     }
-    const model: JsonFormatterInputModel = {
-      indentSpaceSize: Number(this.formGroup.controls['indentSpaceSize'].value),
-      mode: this.formGroup.controls['mode'].value as 'format' | 'minify',
-      isEscapeMode: Boolean(this.formGroup.controls['isEscapeMode'].value),
-      jsonString: String(this.formGroup.controls['jsonString'].value),
-    };
-    this.format.emit(model);
+    this.jsonCodeEditorComponent.formatJson(this.makeModel());
+  }
+
+  onCatchError(message: string): void {
+    this.errorMessage = message;
+  }
+
+  onClickCopyMenu(isEscapeMode: boolean): void {
+    if (!this.jsonCodeEditorComponent) {
+      return;
+    }
+    const text = (isEscapeMode) ? JSON.stringify(this.jsonCodeEditorComponent.value) : this.jsonCodeEditorComponent.value ?? '';
+    navigator.clipboard.writeText(text);
+    this.snackBar.open($localize`:@@common.copiedMessage:コピーしました。`,
+      $localize`:@@common.ok:はい`, { duration: 2000, horizontalPosition: 'start' });
   }
 
   get hasError(): boolean {
@@ -60,22 +73,22 @@ export class JsonFormatterInputCardComponent implements OnInit {
     return this.formGroup.status !== 'VALID';
   }
 
-  get errorMessage(): string | null {
-    if (!this.formGroup) {
-      return null;
-    }
-    return null;
-  }
-
   private resetForm(): void {
     this.formGroup = this.fb.group({
       indentSpaceSize: this.fb.control<string>('2', []),
       mode: this.fb.control<string>('format', []),
       isEscapeMode: this.fb.control<boolean>(false, []),
-      jsonString: this.fb.control<string>('{"id": 1,"value":"test"}', [
-        // TODO add validation
-      ]),
     });
+  }
+
+  private makeModel(): JsonFormatterInputModel {
+    if (!this.formGroup) {
+      throw new Error('FormGroup is not initialized');
+    }
+    return {
+      indentSpaceSize: Number(this.formGroup.controls['indentSpaceSize'].value),
+      mode: this.formGroup.controls['mode'].value as 'format' | 'minify',
+    };
   }
 
 }

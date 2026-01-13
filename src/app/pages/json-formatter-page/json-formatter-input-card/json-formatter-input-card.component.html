@@ -1,8 +1,27 @@
 <mat-card appearance="raised">
   @if (formGroup) {
-    <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
-      <mat-card-content>
-        <app-heading headingType="h3" i18n="@@page.jsonFormatter.card.input.heading">JSON</app-heading>
+    <mat-card-content>
+      <app-heading headingType="h3">
+        <span i18n="@@page.jsonFormatter.card.input.heading">JSON</span>
+        <div class="right">
+          <button mat-icon-button
+            matTooltip="エスケープしてコピー"
+            i18n-matTooltip="@@page.jsonFormatter.card.input.escapeAndCopy"
+            (click)="onClickCopyMenu(true)">
+            <mat-icon>code</mat-icon>
+          </button>
+          <button mat-icon-button
+            matTooltip="クリップボードにコピー"
+            i18n-matTooltip="@@common.copyToClipboard"
+            (click)="onClickCopyMenu(false)">
+            <mat-icon>content_copy</mat-icon>
+          </button>
+        </div>
+      </app-heading>
+      <div class="json-area">
+        <app-json-code-editor (catchError)="onCatchError($event)"></app-json-code-editor>
+      </div>
+      <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
         <div class="input-form-wrapper">
           <div class="flex wrap">
             <mat-form-field class="input-form">
@@ -19,29 +38,13 @@
                 <mat-option value="minify" i18n="@@page.jsonFormatter.card.input.mode.minify">圧縮</mat-option>
               </mat-select>
             </mat-form-field>
-            <div class="flex toggle">
-              <mat-slide-toggle formControlName="isEscapeMode" i18n="@@page.jsonFormatter.card.input.isEscapeMode">
-                エスケープ
-              </mat-slide-toggle>
-              <app-hint-icon
-                message="JSONをバックスラッシュ記法でエスケープします。"
-                i18n-message="@@page.jsonFormatter.card.input.isEscapeModeHint"
-                class="hint"
-              ></app-hint-icon>
-            </div>
-          </div>
-          <div class="json-area">
-            "id": 1,"value":"test"
-            <!-- TODO エディター-->
+            <button mat-flat-button [disabled]="hasError" type="submit" class="button" i18n="@@page.jsonFormatter.card.input.format">変換</button>
           </div>
         </div>
-        @if (errorMessage !== null) {
+        @if (errorMessage !== undefined) {
           <mat-error>{{ errorMessage }}</mat-error>
         }
-      </mat-card-content>
-      <mat-card-actions align="end">
-        <button mat-flat-button [disabled]="hasError" type="submit" i18n="@@page.jsonFormatter.card.input.format">変換</button>
-      </mat-card-actions>
-    </form>
+      </form>
+    </mat-card-content>
   }
 </mat-card>
