@@ -411,8 +411,8 @@
     </unit>
     <unit id="update.home.20260113">
       <segment state="initial">
-        <source>JSON整形ツールのデバッグログを削除しました。</source>
-        <target>Removed debug log from JSON formatter tool.</target>
+        <source>JSON整形ツールを実装しました。</source>
+        <target>Implemented JSON formatter tool.</target>
       </segment>
     </unit>
   </file>
