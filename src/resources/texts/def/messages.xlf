@@ -8,7 +8,7 @@
     </unit>
     <unit id="common.copyRight">
       <segment>
-        <source>© 2024 Yutaka Morihara</source>
+        <source>© 2026 Yutaka Morihara</source>
       </segment>
     </unit>
     <unit id="app.title">
@@ -84,6 +84,61 @@
     <unit id="page.error.404.title">
       <segment>
         <source>ページが見つかりません</source>
+      </segment>
+    </unit>
+    <unit id="page.json.formatter.errorMessage">
+      <segment>
+        <source>無効なJSONです。</source>
+      </segment>
+    </unit>
+    <unit id="page.json.menu">
+      <segment>
+        <source>JSON整形</source>
+      </segment>
+    </unit>
+    <unit id="page.json.title">
+      <segment>
+        <source>JSON整形ツール</source>
+      </segment>
+    </unit>
+    <unit id="page.jsonFormatter.card.input.escapeAndCopy">
+      <segment>
+        <source>エスケープしてコピー</source>
+      </segment>
+    </unit>
+    <unit id="page.jsonFormatter.card.input.format">
+      <segment>
+        <source>変換</source>
+      </segment>
+    </unit>
+    <unit id="page.jsonFormatter.card.input.heading">
+      <segment>
+        <source>JSON</source>
+      </segment>
+    </unit>
+    <unit id="page.jsonFormatter.card.input.indentSpaceSize">
+      <segment>
+        <source>インデント</source>
+      </segment>
+    </unit>
+    <unit id="page.jsonFormatter.card.input.mode.format">
+      <segment>
+        <source>整形</source>
+      </segment>
+    </unit>
+    <unit id="page.jsonFormatter.card.input.mode.label">
+      <segment>
+        <source>モード</source>
+      </segment>
+    </unit>
+    <unit id="page.jsonFormatter.card.input.mode.minify">
+      <segment>
+        <source>圧縮</source>
+      </segment>
+    </unit>
+    <unit id="page.jsonFormatter.menu">
+      <segment>
+        <source>JSON整形</source>
       </segment>
     </unit>
     <unit id="page.error.404.message">

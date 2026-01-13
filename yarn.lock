@@ -144,37 +144,13 @@
     "@angular-devkit/core" "20.3.9"
     rxjs "7.8.2"
 
-"@angular-devkit/architect@^0.1301.0 || ^0.1401.0 || ^0.1501.0 || ^0.1601.0 || ^0.1700.0 || ^0.1800.0 || ^0.1900.0 || ^0.2000.0":
-  version "0.2000.6"
-  resolved "https://registry.npmjs.org/@angular-devkit/architect/-/architect-0.2000.6.tgz"
-  integrity sha512-LvXYe7hqEgkBKzDy4VKTgCg2E2nAl8vC986n1+snzt2zMjo2l8wFl6BWal3AtaKGhPlp8/57Y53MdG2TIgUJNA==
+"@angular-devkit/architect@>=0.2000.0 <0.2200.0":
+  version "0.2100.5"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/architect/-/architect-0.2100.5.tgz#322a57591d23dd789f7479084ece6cf5f7e3867f"
+  integrity sha512-KKmZMXzHCX0cWHY7xo9yy1J0fV7S/suhPO00YTcHBgLivkLsnbI177CrmWiMdLxSJD3NqTVkBEMPFQ2I2ooDFw==
   dependencies:
-    "@angular-devkit/core" "20.0.6"
+    "@angular-devkit/core" "21.0.5"
     rxjs "7.8.2"
-
-"@angular-devkit/core@20.0.6":
-  version "20.0.6"
-  resolved "https://registry.npmjs.org/@angular-devkit/core/-/core-20.0.6.tgz"
-  integrity sha512-kalYqR/soAMPgYdaKJL3iOMCubiq0gljpbQFzS+Uey/P1nn+MDY8V0zzc9cBNhKKkAxCXPN/NIEKC7ICOfaJbg==
-  dependencies:
-    ajv "8.17.1"
-    ajv-formats "3.0.1"
-    jsonc-parser "3.3.1"
-    picomatch "4.0.2"
-    rxjs "7.8.2"
-    source-map "0.7.4"
-
-"@angular-devkit/core@20.2.0", "@angular-devkit/core@^13.0.0 || ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0 || ^20.0.0":
-  version "20.2.0"
-  resolved "https://registry.npmjs.org/@angular-devkit/core/-/core-20.2.0.tgz"
-  integrity sha512-3CM6Zsr09Kf92ItFkxijlnC4+ZOgkxdCk0vFYvuw9UuvTDNwyIqJi6693PRPRbcXgpdY2vs6u99elSvQVmoEEw==
-  dependencies:
-    ajv "8.17.1"
-    ajv-formats "3.0.1"
-    jsonc-parser "3.3.1"
-    picomatch "4.0.3"
-    rxjs "7.8.2"
-    source-map "0.7.6"
 
 "@angular-devkit/core@20.3.9":
   version "20.3.9"
@@ -188,16 +164,17 @@
     rxjs "7.8.2"
     source-map "0.7.6"
 
-"@angular-devkit/schematics@20.2.0", "@angular-devkit/schematics@^13.0.0 || ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0 || ^20.0.0":
-  version "20.2.0"
-  resolved "https://registry.npmjs.org/@angular-devkit/schematics/-/schematics-20.2.0.tgz"
-  integrity sha512-TCPIN6Bd04oGuNocETmsd9hzGYrjrivisbMKb0WOuDi3OnCkmWqsPR+QA2kYwTOGqG3HXkz/z3CA0g04M2fgrQ==
+"@angular-devkit/core@21.0.5", "@angular-devkit/core@^20.0.0 || ^21.0.0":
+  version "21.0.5"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-21.0.5.tgz#2695d0b0c85ece82c5f61c3e5a9ec86099b830c4"
+  integrity sha512-STDOtPbd8vePqyneQaLR8c9hnu7BieU7aPG5Icgl0pevv7EfCmwZUTqvK5nCpLk0tVFo6D1WHwIDZ3fnyvFW1A==
   dependencies:
-    "@angular-devkit/core" "20.2.0"
+    ajv "8.17.1"
+    ajv-formats "3.0.1"
     jsonc-parser "3.3.1"
-    magic-string "0.30.17"
-    ora "8.2.0"
+    picomatch "4.0.3"
     rxjs "7.8.2"
+    source-map "0.7.6"
 
 "@angular-devkit/schematics@20.3.9":
   version "20.3.9"
@@ -208,6 +185,17 @@
     jsonc-parser "3.3.1"
     magic-string "0.30.17"
     ora "8.2.0"
+    rxjs "7.8.2"
+
+"@angular-devkit/schematics@21.0.5", "@angular-devkit/schematics@^20.0.0 || ^21.0.0":
+  version "21.0.5"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-21.0.5.tgz#f237a2f77cddac03c0520ff819954b93cd3c9cdb"
+  integrity sha512-U6Z/OEce3R9CJl8/xuVrNVp0uhv3Ac4wRjpG18kE0dh5R87ablhqr/wkP3rZbWpdGwuGSJ+cR7LE5IbwSswejA==
+  dependencies:
+    "@angular-devkit/core" "21.0.5"
+    jsonc-parser "3.3.1"
+    magic-string "0.30.19"
+    ora "9.0.0"
     rxjs "7.8.2"
 
 "@angular/animations@^20.3.10":
@@ -1296,6 +1284,11 @@
   resolved "https://registry.npmjs.org/@jridgewell/sourcemap-codec/-/sourcemap-codec-1.5.0.tgz"
   integrity sha512-gv3ZRaISU3fjPAgNsriBRqGWQL6quFx04YMPW/zD8XMLsU32mhCCbfbO6KZFLjvYpCZ8zyDEgqsgf+PwPaM7GQ==
 
+"@jridgewell/sourcemap-codec@^1.5.5":
+  version "1.5.5"
+  resolved "https://registry.yarnpkg.com/@jridgewell/sourcemap-codec/-/sourcemap-codec-1.5.5.tgz#6912b00d2c631c0d15ce1a7ab57cd657f2a8f8ba"
+  integrity sha512-cYQ9310grqxueWbl+WuIUIaiUaDcj7WOq5fVhEljNVgRfOUhY9fy2zTvfoqWsnebh8Sl70VScFbICvJnLKB0Og==
+
 "@jridgewell/trace-mapping@^0.3.24", "@jridgewell/trace-mapping@^0.3.25":
   version "0.3.25"
   resolved "https://registry.npmjs.org/@jridgewell/trace-mapping/-/trace-mapping-0.3.25.tgz"
@@ -1949,13 +1942,13 @@
     "@angular-devkit/schematics" "20.3.9"
     jsonc-parser "3.3.1"
 
-"@schematics/angular@^13.0.0 || ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0 || ^20.0.0":
-  version "20.2.0"
-  resolved "https://registry.npmjs.org/@schematics/angular/-/angular-20.2.0.tgz"
-  integrity sha512-7sZVj7hOcytQrPE17ixjzul9ih81IfXGcEZvr7fT77qy7Hm5rbMjxqSYxCTf3kAyBFRSLq/E8GTapPAjk2coOg==
+"@schematics/angular@^20.0.0 || ^21.0.0":
+  version "21.0.5"
+  resolved "https://registry.yarnpkg.com/@schematics/angular/-/angular-21.0.5.tgz#87406ab95cff47d5d1a352d63a7a466a01846426"
+  integrity sha512-uNBIilq5bGnln3D7Nbm3/K+Ot++eGj4rygU0DCw//IZiTQU/iSyF3UAsN++iRetu/OMs+97T/RoGPjD22ryiZg==
   dependencies:
-    "@angular-devkit/core" "20.2.0"
-    "@angular-devkit/schematics" "20.2.0"
+    "@angular-devkit/core" "21.0.5"
+    "@angular-devkit/schematics" "21.0.5"
     jsonc-parser "3.3.1"
 
 "@sigstore/bundle@^3.0.0":
@@ -2490,6 +2483,11 @@ chalk@^5.3.0:
   resolved "https://registry.npmjs.org/chalk/-/chalk-5.6.0.tgz"
   integrity sha512-46QrSQFyVSEyYAgQ22hQ+zDa60YHA4fBstHmtSApj1Y5vKtG27fWowW03jCk5KcbXEWPZUIR894aARCA/G1kfQ==
 
+chalk@^5.6.2:
+  version "5.6.2"
+  resolved "https://registry.yarnpkg.com/chalk/-/chalk-5.6.2.tgz#b1238b6e23ea337af71c7f8a295db5af0c158aea"
+  integrity sha512-7NzBL0rN6fMUW+f7A6Io4h40qQlG+xGmtMxfbnH/K7TAtt8JQWVQK+6g0UXKMeVJoyV5EkkNsErQ8pVD3bLHbA==
+
 chardet@^2.1.1:
   version "2.1.1"
   resolved "https://registry.npmjs.org/chardet/-/chardet-2.1.1.tgz"
@@ -2538,6 +2536,11 @@ cli-spinners@^2.9.2:
   version "2.9.2"
   resolved "https://registry.npmjs.org/cli-spinners/-/cli-spinners-2.9.2.tgz"
   integrity sha512-ywqV+5MmyL4E7ybXgKys4DugZbX0FC6LnwrhjuykIjnK9k8OQacQ7axGKnjDXWNhns0xot3bZI5h55H8yo9cJg==
+
+cli-spinners@^3.2.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/cli-spinners/-/cli-spinners-3.3.0.tgz#2ba7c98b4f4662e67315b5634365661be8574440"
+  integrity sha512-/+40ljC3ONVnYIttjMWrlL51nItDAbBrq2upN8BPyvGU/2n5Oxw3tbNwORCaNuNqLJnxGqOfjUuhsv7l5Q4IsQ==
 
 cli-truncate@^4.0.0:
   version "4.0.0"
@@ -3319,6 +3322,11 @@ get-east-asian-width@^1.0.0:
   resolved "https://registry.npmjs.org/get-east-asian-width/-/get-east-asian-width-1.2.0.tgz"
   integrity sha512-2nk+7SIVb14QrgXFHcm84tD4bKQz0RxPuMT8Ag5KPOq7J5fEmAg0UbXdTOSHqNuHSU28k55qnceesxXRZGzKWA==
 
+get-east-asian-width@^1.3.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/get-east-asian-width/-/get-east-asian-width-1.4.0.tgz#9bc4caa131702b4b61729cb7e42735bc550c9ee6"
+  integrity sha512-QZjmEOC+IT1uk6Rx0sX22V6uHWVwbdbxf1faPqJ1QhLdGgsRGCZoyaQBm/piRdJy/D2um6hM1UP7ZEeQ4EkP+Q==
+
 get-intrinsic@^1.1.3, get-intrinsic@^1.2.4:
   version "1.2.4"
   resolved "https://registry.npmjs.org/get-intrinsic/-/get-intrinsic-1.2.4.tgz"
@@ -3661,7 +3669,7 @@ is-unicode-supported@^1.3.0:
   resolved "https://registry.npmjs.org/is-unicode-supported/-/is-unicode-supported-1.3.0.tgz"
   integrity sha512-43r2mRvz+8JRIKnWJ+3j8JtjRKZ6GmjzfaE/qiBJnikNnYv/6bagRJ1kUhNk8R5EX/GkobD+r+sfxCPJsiKBLQ==
 
-is-unicode-supported@^2.0.0:
+is-unicode-supported@^2.0.0, is-unicode-supported@^2.1.0:
   version "2.1.0"
   resolved "https://registry.npmjs.org/is-unicode-supported/-/is-unicode-supported-2.1.0.tgz"
   integrity sha512-mE00Gnza5EEB3Ds0HfMyllZzbBrmLOX3vfWoj9A9PEnTfratQ/BcaJOuMhnkhjXvb2+FkY3VuHqtAGpTPmglFQ==
@@ -3915,6 +3923,14 @@ log-symbols@^6.0.0:
     chalk "^5.3.0"
     is-unicode-supported "^1.3.0"
 
+log-symbols@^7.0.1:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/log-symbols/-/log-symbols-7.0.1.tgz#f52e68037d96f589fc572ff2193dc424d48c195b"
+  integrity sha512-ja1E3yCr9i/0hmBVaM0bfwDjnGy8I/s6PP4DFp+yP+a+mrHO4Rm7DtmnqROTUkHIkqffC84YY7AeqX6oFk0WFg==
+  dependencies:
+    is-unicode-supported "^2.0.0"
+    yoctocolors "^2.1.1"
+
 log-update@^6.1.0:
   version "6.1.0"
   resolved "https://registry.npmjs.org/log-update/-/log-update-6.1.0.tgz"
@@ -3960,6 +3976,13 @@ magic-string@0.30.17:
   integrity sha512-sNPKHvyjVf7gyjwS4xGTaW/mCnF8wnjtifKBEhxfZ7E/S8tQ0rssrwGNn6q8JH/ohItJfSQp9mBtQYuTlH5QnA==
   dependencies:
     "@jridgewell/sourcemap-codec" "^1.5.0"
+
+magic-string@0.30.19:
+  version "0.30.19"
+  resolved "https://registry.yarnpkg.com/magic-string/-/magic-string-0.30.19.tgz#cebe9f104e565602e5d2098c5f2e79a77cc86da9"
+  integrity sha512-2N21sPY9Ws53PZvsEpVtNuSW+ScYbQdp4b9qUaL+9QkHUrGFKo56Lg9Emg5s9V/qrtNBmiR01sYhUOwu3H+VOw==
+  dependencies:
+    "@jridgewell/sourcemap-codec" "^1.5.5"
 
 make-dir@^4.0.0:
   version "4.0.0"
@@ -4248,15 +4271,15 @@ negotiator@^1.0.0:
   resolved "https://registry.npmjs.org/negotiator/-/negotiator-1.0.0.tgz"
   integrity sha512-8Ofs/AUQh8MaEcrlq5xOX0CQ9ypTF5dl78mjlMNfOK08fzpgTHQRQPBxcPlEtIw0yRpws+Zo/3r+5WRby7u3Gg==
 
-ng-extract-i18n-merge@^2:
-  version "2.15.1"
-  resolved "https://registry.npmjs.org/ng-extract-i18n-merge/-/ng-extract-i18n-merge-2.15.1.tgz"
-  integrity sha512-vNr+sVySO13imQ1Y7Jwe3JtGKP4Hck4Gzb7i4HxOq9fDLDORDIoazLTiwmZVoW4ZAyqK7kkDavjS0XD+VSMZUA==
+ng-extract-i18n-merge@3.2.1:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/ng-extract-i18n-merge/-/ng-extract-i18n-merge-3.2.1.tgz#930a895497cbaf9ba256bd29bd3f7aa175334da8"
+  integrity sha512-Yq8uEBa32/Imlo+vnyY6rk+h0VOjWQT8r4Vgiw/YlnK0AzIXFxr6H/Ji3gTJKVsuRY6Tt1swBgmnkAUeDmklRw==
   dependencies:
-    "@angular-devkit/architect" "^0.1301.0 || ^0.1401.0 || ^0.1501.0 || ^0.1601.0 || ^0.1700.0 || ^0.1800.0 || ^0.1900.0 || ^0.2000.0"
-    "@angular-devkit/core" "^13.0.0 || ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0 || ^20.0.0"
-    "@angular-devkit/schematics" "^13.0.0 || ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0 || ^20.0.0"
-    "@schematics/angular" "^13.0.0 || ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0 || ^20.0.0"
+    "@angular-devkit/architect" ">=0.2000.0 <0.2200.0"
+    "@angular-devkit/core" "^20.0.0 || ^21.0.0"
+    "@angular-devkit/schematics" "^20.0.0 || ^21.0.0"
+    "@schematics/angular" "^20.0.0 || ^21.0.0"
     xmldoc "^1.1.3"
 
 node-addon-api@^6.1.0:
@@ -4459,6 +4482,21 @@ ora@8.2.0:
     string-width "^7.2.0"
     strip-ansi "^7.1.0"
 
+ora@9.0.0:
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/ora/-/ora-9.0.0.tgz#945236f5ce78a024cf4c25df6c46ecd09ab6e685"
+  integrity sha512-m0pg2zscbYgWbqRR6ABga5c3sZdEon7bSgjnlXC64kxtxLOyjRcbbUkLj7HFyy/FTD+P2xdBWu8snGhYI0jc4A==
+  dependencies:
+    chalk "^5.6.2"
+    cli-cursor "^5.0.0"
+    cli-spinners "^3.2.0"
+    is-interactive "^2.0.0"
+    is-unicode-supported "^2.1.0"
+    log-symbols "^7.0.1"
+    stdin-discarder "^0.2.2"
+    string-width "^8.1.0"
+    strip-ansi "^7.1.2"
+
 ordered-binary@^1.5.3:
   version "1.5.3"
   resolved "https://registry.npmjs.org/ordered-binary/-/ordered-binary-1.5.3.tgz"
@@ -4567,11 +4605,6 @@ picocolors@^1.1.1:
   version "1.1.1"
   resolved "https://registry.npmjs.org/picocolors/-/picocolors-1.1.1.tgz"
   integrity sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==
-
-picomatch@4.0.2:
-  version "4.0.2"
-  resolved "https://registry.npmjs.org/picomatch/-/picomatch-4.0.2.tgz"
-  integrity sha512-M7BAV6Rlcy5u+m6oPhAPFgJTzAioX/6B0DxyvDlo9l8+T3nLKbrczg2WLUyzd45L8RqfUMyGPzekbMvX2Ldkwg==
 
 picomatch@4.0.3, picomatch@^4.0.2, picomatch@^4.0.3:
   version "4.0.3"
@@ -5141,11 +5174,6 @@ source-map-support@0.5.21:
     buffer-from "^1.0.0"
     source-map "^0.6.0"
 
-source-map@0.7.4:
-  version "0.7.4"
-  resolved "https://registry.npmjs.org/source-map/-/source-map-0.7.4.tgz"
-  integrity sha512-l3BikUxvPOcn5E74dZiq5BGsTb5yEwhaTSzccU6t4sDOH8NWJCstKO5QT2CvtFoK6F0saL7p9xHAqHOlCPJygA==
-
 source-map@0.7.6:
   version "0.7.6"
   resolved "https://registry.npmjs.org/source-map/-/source-map-0.7.6.tgz"
@@ -5259,6 +5287,14 @@ string-width@^7.0.0, string-width@^7.2.0:
     get-east-asian-width "^1.0.0"
     strip-ansi "^7.1.0"
 
+string-width@^8.1.0:
+  version "8.1.0"
+  resolved "https://registry.yarnpkg.com/string-width/-/string-width-8.1.0.tgz#9e9fb305174947cf45c30529414b5da916e9e8d1"
+  integrity sha512-Kxl3KJGb/gxkaUMOjRsQ8IrXiGW75O4E3RPjFIINOVH8AMl2SQ/yWdTzWwF3FevIX9LcMAjJW+GRwAlAbTSXdg==
+  dependencies:
+    get-east-asian-width "^1.3.0"
+    strip-ansi "^7.1.0"
+
 "strip-ansi-cjs@npm:strip-ansi@^6.0.1":
   version "6.0.1"
   resolved "https://registry.npmjs.org/strip-ansi/-/strip-ansi-6.0.1.tgz"
@@ -5277,6 +5313,13 @@ strip-ansi@^7.0.1, strip-ansi@^7.1.0:
   version "7.1.0"
   resolved "https://registry.npmjs.org/strip-ansi/-/strip-ansi-7.1.0.tgz"
   integrity sha512-iq6eVVI64nQQTRYq2KtEg2d2uU7LElhTJwsH4YzIHZshxlgZms/wIc4VoDQTlG/IvVIrBKG06CrZnp0qv7hkcQ==
+  dependencies:
+    ansi-regex "^6.0.1"
+
+strip-ansi@^7.1.2:
+  version "7.1.2"
+  resolved "https://registry.yarnpkg.com/strip-ansi/-/strip-ansi-7.1.2.tgz#132875abde678c7ea8d691533f2e7e22bb744dba"
+  integrity sha512-gmBGslpoQJtgnMAvOVqGZpEz9dyoKTCzy2nfz/n8aIFhN/jCE/rCmcxabB6jOOHV+0WNnylOxaxBQPSvcWklhA==
   dependencies:
     ansi-regex "^6.0.1"
 
@@ -5681,6 +5724,11 @@ yoctocolors-cjs@^2.1.3:
   version "2.1.3"
   resolved "https://registry.npmjs.org/yoctocolors-cjs/-/yoctocolors-cjs-2.1.3.tgz"
   integrity sha512-U/PBtDf35ff0D8X8D0jfdzHYEPFxAI7jJlxZXwCSez5M3190m+QobIfh+sWDWSHMCWWJN2AWamkegn6vr6YBTw==
+
+yoctocolors@^2.1.1:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/yoctocolors/-/yoctocolors-2.1.2.tgz#d795f54d173494e7d8db93150cec0ed7f678c83a"
+  integrity sha512-CzhO+pFNo8ajLM2d2IW/R93ipy99LWjtwblvC1RsoSUMZgyLbYFr221TnSNT7GjGdYui6P459mw9JH/g/zW2ug==
 
 zod-to-json-schema@^3.24.1:
   version "3.24.6"

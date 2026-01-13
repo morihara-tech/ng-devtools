@@ -9,8 +9,8 @@
     </unit>
     <unit id="common.copyRight">
       <segment>
-        <source>© 2024 Yutaka Morihara</source>
-        <target>© 2024 Yutaka Morihara</target>
+        <source>© 2026 Yutaka Morihara</source>
+        <target>© 2026 Yutaka Morihara</target>
       </segment>
     </unit>
     <unit id="app.title">
@@ -101,6 +101,72 @@
       <segment>
         <source>ページが見つかりません</source>
         <target>Page Not Found</target>
+      </segment>
+    </unit>
+    <unit id="page.json.formatter.errorMessage">
+      <segment state="initial">
+        <source>無効なJSONです。</source>
+        <target>Invalid JSON.</target>
+      </segment>
+    </unit>
+    <unit id="page.json.menu">
+      <segment state="initial">
+        <source>JSON整形</source>
+        <target>JSON Formatting</target>
+      </segment>
+    </unit>
+    <unit id="page.json.title">
+      <segment state="initial">
+        <source>JSON整形ツール</source>
+        <target>JSON Formatter Tool</target>
+      </segment>
+    </unit>
+    <unit id="page.jsonFormatter.card.input.escapeAndCopy">
+      <segment state="initial">
+        <source>エスケープしてコピー</source>
+        <target>Escape and Copy</target>
+      </segment>
+    </unit>
+    <unit id="page.jsonFormatter.card.input.format">
+      <segment state="initial">
+        <source>変換</source>
+        <target>Format</target>
+      </segment>
+    </unit>
+    <unit id="page.jsonFormatter.card.input.heading">
+      <segment state="initial">
+        <source>JSON</source>
+        <target>JSON</target>
+      </segment>
+    </unit>
+    <unit id="page.jsonFormatter.card.input.indentSpaceSize">
+      <segment state="initial">
+        <source>インデント</source>
+        <target>Indentation</target>
+      </segment>
+    </unit>
+    <unit id="page.jsonFormatter.card.input.mode.format">
+      <segment state="initial">
+        <source>整形</source>
+        <target>Format</target>
+      </segment>
+    </unit>
+    <unit id="page.jsonFormatter.card.input.mode.label">
+      <segment state="initial">
+        <source>モード</source>
+        <target>Mode</target>
+      </segment>
+    </unit>
+    <unit id="page.jsonFormatter.card.input.mode.minify">
+      <segment state="initial">
+        <source>圧縮</source>
+        <target>Minify</target>
+      </segment>
+    </unit>
+    <unit id="page.jsonFormatter.menu">
+      <segment state="initial">
+        <source>JSON整形</source>
+        <target>JSON Formatter</target>
       </segment>
     </unit>
     <unit id="page.error.404.message">

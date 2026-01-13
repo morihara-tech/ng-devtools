@@ -25,3 +25,59 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+## Internationalization (i18n)
+
+This project supports English and Japanese localization.
+
+### Adding new messages
+
+1. Add message text in the Japanese source file with `$localize`:
+   ```typescript
+   this.title = $localize`:@@page.example.title:例のタイトル`;
+   ```
+
+2. Run the extraction command to automatically update the translation files:
+   ```bash
+   ng extract-i18n
+   ```
+
+3. Add English translations in `src/resources/texts/def/messages.en.xlf`. The command generates a template with your new messages. Add the `<target>` tags:
+   ```xml
+   <unit id="page.example.title">
+     <segment>
+       <source>例のタイトル</source>
+       <target>Example Title</target>
+     </segment>
+   </unit>
+   ```
+
+4. Verify there are no untranslated messages:
+   ```bash
+   grep -n '<target/>' src/resources/texts/def/messages.en.xlf
+   ```
+   
+   If no output, all messages are translated. If there are results, add translations for those empty `<target/>` tags.
+
+### Building for specific locales
+
+- Build for all locales:
+  ```bash
+  ng build
+  ```
+
+- Build for Japanese only:
+  ```bash
+  ng build --configuration=ja
+  ```
+
+- Build for English only:
+  ```bash
+  ng build --configuration=en
+  ```
+
+### Supported locales
+
+- **ja** - Japanese (default)
+- **en** - English
+
