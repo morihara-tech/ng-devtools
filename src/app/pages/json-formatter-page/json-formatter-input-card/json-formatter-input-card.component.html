@@ -1,0 +1,50 @@
+<mat-card appearance="raised">
+  @if (formGroup) {
+    <mat-card-content>
+      <app-heading headingType="h3">
+        <span i18n="@@page.jsonFormatter.card.input.heading">JSON</span>
+        <div class="right">
+          <button mat-icon-button
+            matTooltip="エスケープしてコピー"
+            i18n-matTooltip="@@page.jsonFormatter.card.input.escapeAndCopy"
+            (click)="onClickCopyMenu(true)">
+            <mat-icon>code</mat-icon>
+          </button>
+          <button mat-icon-button
+            matTooltip="クリップボードにコピー"
+            i18n-matTooltip="@@common.copyToClipboard"
+            (click)="onClickCopyMenu(false)">
+            <mat-icon>content_copy</mat-icon>
+          </button>
+        </div>
+      </app-heading>
+      <div class="json-area">
+        <app-json-code-editor (catchError)="onCatchError($event)"></app-json-code-editor>
+      </div>
+      <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+        <div class="input-form-wrapper">
+          <div class="flex wrap">
+            <mat-form-field class="input-form">
+              <mat-label i18n="@@page.jsonFormatter.card.input.indentSpaceSize">インデント</mat-label>
+              <mat-select formControlName="indentSpaceSize" aria-label="indent space size">
+                <mat-option value="2">2</mat-option>
+                <mat-option value="4">4</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field class="input-form">
+              <mat-label i18n="@@page.jsonFormatter.card.input.mode.label">モード</mat-label>
+              <mat-select formControlName="mode" aria-label="json format mode">
+                <mat-option value="format" i18n="@@page.jsonFormatter.card.input.mode.format">整形</mat-option>
+                <mat-option value="minify" i18n="@@page.jsonFormatter.card.input.mode.minify">圧縮</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <button mat-flat-button [disabled]="hasError" type="submit" class="button" i18n="@@page.jsonFormatter.card.input.format">変換</button>
+          </div>
+        </div>
+        @if (errorMessage !== undefined) {
+          <mat-error>{{ errorMessage }}</mat-error>
+        }
+      </form>
+    </mat-card-content>
+  }
+</mat-card>

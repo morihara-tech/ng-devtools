@@ -41,6 +41,17 @@ export class LocaleService {
     window.location.assign(targetUrl);
   }
 
+  getCurrentLocale(): Locale {
+    const baseHref = this.getBaseHref();
+    if (baseHref.includes('/ja/')) {
+      return 'ja';
+    }
+    if (baseHref.includes('/en/')) {
+      return 'en';
+    }
+    return 'ja';
+  }
+
   private getBaseHref(): string {
     // <base href="..."> is set by Angular i18n build per locale
     const base = this.doc.querySelector('base')?.getAttribute('href') || '/';

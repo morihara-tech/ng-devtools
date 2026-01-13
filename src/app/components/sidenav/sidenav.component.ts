@@ -64,6 +64,7 @@ export class SidenavComponent implements OnChanges, OnInit {
       { icon: 'dashboard', label: $localize`:@@page.dashboard.menu:ダッシュボード`, routerLink: '/dashboard' },
       { svgIcon: 'ulid', label: $localize`:@@page.ulid.menu:ULID生成`, routerLink: '/ulid-generator' },
       { svgIcon: 'uuid', label: $localize`:@@page.uuid.menu:UUID生成`, routerLink: '/uuid-generator' },
+      { svgIcon: 'json', label: $localize`:@@page.jsonFormatter.menu:JSON整形`, routerLink: '/json-formatter' },
     ];
   }
 
