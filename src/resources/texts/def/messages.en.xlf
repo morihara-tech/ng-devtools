@@ -409,5 +409,11 @@
         <target>Implemented language switching functionality.</target>
       </segment>
     </unit>
+    <unit id="update.home.20260113">
+      <segment state="initial">
+        <source>JSON整形ツールを実装しました。</source>
+        <target>Implemented JSON formatter tool.</target>
+      </segment>
+    </unit>
   </file>
 </xliff>
