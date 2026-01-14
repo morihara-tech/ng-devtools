@@ -331,6 +331,11 @@
         <source>言語切替機能を実装しました。</source>
       </segment>
     </unit>
+    <unit id="update.home.20260113">
+      <segment>
+        <source>JSON整形ツールを実装しました。</source>
+      </segment>
+    </unit>
     <unit id="update.home.20250820">
       <segment>
         <source>UUID生成を実装しました。</source>

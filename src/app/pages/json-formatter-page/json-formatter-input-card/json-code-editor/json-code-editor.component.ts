@@ -70,7 +70,6 @@ export class JsonCodeEditorComponent implements OnInit{
   }
 
   formatJson(model: JsonFormatterInputModel): void {
-    console.log('value before format:', this.value);
     try {
       const parsed = JSON.parse(this.value);
       this.errorMessage = null;
