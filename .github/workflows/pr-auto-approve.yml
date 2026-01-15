@@ -21,6 +21,7 @@ jobs:
           app_id: ${{ secrets.AUTO_APPROVE_APP_ID }}
           private_key: ${{ secrets.AUTO_APPROVE_KEY }}
       - id: get_admin_members
+        continue-on-error: true
         run: |
           gh api /orgs/${{ github.repository_owner }}/teams/admin/memberships/${{ github.event.pull_request.user.login }}
         env:
