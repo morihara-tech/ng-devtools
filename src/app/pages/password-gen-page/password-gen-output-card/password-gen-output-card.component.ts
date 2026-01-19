@@ -54,9 +54,11 @@ export class PasswordGenOutputCardComponent {
   private generateRandomPassword(length: number, charset: string): string {
     let password = '';
     const charsetLength = charset.length;
+    const randomValues = new Uint32Array(length);
+    window.crypto.getRandomValues(randomValues);
     
     for (let i = 0; i < length; i++) {
-      const randomIndex = Math.floor(Math.random() * charsetLength);
+      const randomIndex = randomValues[i] % charsetLength;
       password += charset[randomIndex];
     }
     
