@@ -535,7 +535,7 @@
         <target>Implemented Password Generator.</target>
       </segment>
     </unit>
-    <unit id="update.home.20260120b">
+    <unit id="update.home.20260121">
       <segment state="initial">
         <source>SQL整形ツールを実装しました。</source>
         <target>Implemented SQL Formatter tool.</target>
