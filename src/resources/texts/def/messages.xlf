@@ -436,6 +436,11 @@
         <source>パスワード生成ツールを実装しました。</source>
       </segment>
     </unit>
+    <unit id="update.home.20260121">
+      <segment>
+        <source>SQL整形ツールを実装しました。</source>
+      </segment>
+    </unit>
     <unit id="update.home.20250820">
       <segment>
         <source>UUID生成を実装しました。</source>
