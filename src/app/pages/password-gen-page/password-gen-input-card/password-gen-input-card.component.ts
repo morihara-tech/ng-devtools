@@ -2,12 +2,13 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { HeadingComponent } from '../../../components/heading/heading.component';
 import { PasswordGenInputModel } from '../password-gen-model';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { HintIconComponent } from '../../../components/hint-icon/hint-icon.component';
 
 @Component({
     selector: 'app-password-gen-input-card',
@@ -17,9 +18,10 @@ import { MatButtonModule } from '@angular/material/button';
         MatButtonModule,
         MatFormFieldModule,
         MatInputModule,
-        MatCheckboxModule,
+        MatSlideToggleModule,
         MatSelectModule,
         HeadingComponent,
+        HintIconComponent,
     ],
     templateUrl: './password-gen-input-card.component.html',
     styleUrl: './password-gen-input-card.component.scss'
@@ -88,7 +90,7 @@ export class PasswordGenInputCardComponent implements OnInit {
 
   private resetForm(): void {
     this.formGroup = this.fb.group({
-      length: this.fb.control<number>(12, [
+      length: this.fb.control<number>(15, [
         Validators.required,
         Validators.min(1),
         Validators.max(50)

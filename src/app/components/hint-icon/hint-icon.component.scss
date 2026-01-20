@@ -1,7 +1,13 @@
+:host {
+  display: inline-flex;
+  align-items: center;
+}
+
 .help {
   font-size: 14px;
   height: 14px;
   width: 14px;
+  margin: 0;
 }
 
 ::ng-deep .help-tooltip-break {

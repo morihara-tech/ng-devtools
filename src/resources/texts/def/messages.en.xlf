@@ -243,8 +243,14 @@
     </unit>
     <unit id="page.password.card.input.excludeSimilar">
       <segment state="final">
-        <source> 類似文字を除く </source>
+        <source>類似文字を除く</source>
         <target>Exclude Similar Characters</target>
+      </segment>
+    </unit>
+    <unit id="page.password.card.input.excludeSimilarHint">
+      <segment state="initial">
+        <source>1・l・I・0・O など見た目が似ている文字を除外します。</source>
+        <target>Excludes characters that look similar, such as 1, l, I, 0, and O.</target>
       </segment>
     </unit>
     <unit id="page.password.card.input.generate">
@@ -523,7 +529,7 @@
         <target>Implemented JSON formatter tool.</target>
       </segment>
     </unit>
-    <unit id="update.home.20260119">
+    <unit id="update.home.20260120">
       <segment state="final">
         <source>パスワード生成ツールを実装しました。</source>
         <target>Implemented Password Generator.</target>

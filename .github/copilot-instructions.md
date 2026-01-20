@@ -75,3 +75,11 @@ refs #88
 ## 7. Accessibility (A11y)
 - **Semantic HTML**: Always use semantic tags (`<article>`, `<nav>`, `<button>`) instead of generic `<div>` where possible.
 - **Attributes**: Ensure all interactive elements have appropriate `aria-` attributes and labels.
+
+## 8. Package Manager
+- **Yarn Only**: Always use `yarn` instead of `npm` for package management.
+  - Examples:
+    - `yarn add <package>` instead of `npm install <package>`
+    - `yarn remove <package>` instead of `npm uninstall <package>`
+    - `yarn` instead of `npm install`
+  - Never suggest or use `npm` commands in this repository.
