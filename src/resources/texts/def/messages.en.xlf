@@ -187,6 +187,120 @@
         <target> Please enter the base datetime. <ph id="0" equiv="LINE_BREAK" type="fmt" disp="&lt;br&gt;"/> The selected datetime will be converted to a timestamp. </target>
       </segment>
     </unit>
+    <unit id="page.password.card.input.characterType">
+      <segment state="final">
+        <source>文字</source>
+        <target>Characters</target>
+      </segment>
+    </unit>
+    <unit id="page.password.card.input.characterType.alphanumeric">
+      <segment state="final">
+        <source>英数字</source>
+        <target>Alphanumeric</target>
+      </segment>
+    </unit>
+    <unit id="page.password.card.input.characterType.alphanumericSymbols">
+      <segment state="final">
+        <source>英数字 + 記号</source>
+        <target>Alphanumeric + Symbols</target>
+      </segment>
+    </unit>
+    <unit id="page.password.card.input.characterType.digits">
+      <segment state="final">
+        <source>数字のみ</source>
+        <target>Digits Only</target>
+      </segment>
+    </unit>
+    <unit id="page.password.card.input.characterType.lowercaseDigits">
+      <segment state="final">
+        <source>英小文字 + 数字</source>
+        <target>Lowercase + Digits</target>
+      </segment>
+    </unit>
+    <unit id="page.password.card.input.count">
+      <segment state="final">
+        <source>個数</source>
+        <target>Count</target>
+      </segment>
+    </unit>
+    <unit id="page.password.card.input.error.countRange">
+      <segment state="final">
+        <source>個数は1以上50以下で入力してください。</source>
+        <target>Count must be between 1 and 50.</target>
+      </segment>
+    </unit>
+    <unit id="page.password.card.input.error.lengthRange">
+      <segment state="final">
+        <source>文字数は1以上50以下で入力してください。</source>
+        <target>Length must be between 1 and 50.</target>
+      </segment>
+    </unit>
+    <unit id="page.password.card.input.error.required">
+      <segment state="final">
+        <source>必須項目を入力してください。</source>
+        <target>Required field.</target>
+      </segment>
+    </unit>
+    <unit id="page.password.card.input.excludeSimilar">
+      <segment state="final">
+        <source>類似文字を除く</source>
+        <target>Exclude Similar Characters</target>
+      </segment>
+    </unit>
+    <unit id="page.password.card.input.excludeSimilarHint">
+      <segment state="initial">
+        <source>1・l・I・0・O など見た目が似ている文字を除外します。</source>
+        <target>Excludes characters that look similar, such as 1, l, I, 0, and O.</target>
+      </segment>
+    </unit>
+    <unit id="page.password.card.input.generate">
+      <segment state="final">
+        <source>生成</source>
+        <target>Generate</target>
+      </segment>
+    </unit>
+    <unit id="page.password.card.input.heading">
+      <segment state="final">
+        <source>生成条件</source>
+        <target>Conditions</target>
+      </segment>
+    </unit>
+    <unit id="page.password.card.input.length">
+      <segment state="final">
+        <source>文字数</source>
+        <target>Length</target>
+      </segment>
+    </unit>
+    <unit id="page.password.card.input.placeholder.count">
+      <segment state="final">
+        <source>1〜50</source>
+        <target>1-50</target>
+      </segment>
+    </unit>
+    <unit id="page.password.card.input.placeholder.length">
+      <segment state="final">
+        <source>1〜50</source>
+        <target>1-50</target>
+      </segment>
+    </unit>
+    <unit id="page.password.card.output.heading">
+      <segment state="final">
+        <source>生成結果</source>
+        <target>Result</target>
+      </segment>
+    </unit>
+    <unit id="page.password.menu">
+      <segment state="final">
+        <source>パスワード生成</source>
+        <target>Password Generator</target>
+      </segment>
+    </unit>
+    <unit id="page.password.title">
+      <segment state="final">
+        <source>パスワード生成ツール</source>
+        <target>Password Generator</target>
+      </segment>
+    </unit>
     <unit id="page.ulid.card.dialog.datetimeMaker.date">
       <segment>
         <source>基準日</source>
@@ -413,6 +527,12 @@
       <segment state="initial">
         <source>JSON整形ツールを実装しました。</source>
         <target>Implemented JSON formatter tool.</target>
+      </segment>
+    </unit>
+    <unit id="update.home.20260120">
+      <segment state="final">
+        <source>パスワード生成ツールを実装しました。</source>
+        <target>Implemented Password Generator.</target>
       </segment>
     </unit>
   </file>

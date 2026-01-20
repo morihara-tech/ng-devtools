@@ -156,6 +156,101 @@
         <source> 基準日時を入力してください。<ph id="0" equiv="LINE_BREAK" type="fmt" disp="&lt;br&gt;"/> 選択された日時はタイムスタンプへと変換されます。 </source>
       </segment>
     </unit>
+    <unit id="page.password.card.input.characterType">
+      <segment>
+        <source>文字</source>
+      </segment>
+    </unit>
+    <unit id="page.password.card.input.characterType.alphanumeric">
+      <segment>
+        <source>英数字</source>
+      </segment>
+    </unit>
+    <unit id="page.password.card.input.characterType.alphanumericSymbols">
+      <segment>
+        <source>英数字 + 記号</source>
+      </segment>
+    </unit>
+    <unit id="page.password.card.input.characterType.digits">
+      <segment>
+        <source>数字のみ</source>
+      </segment>
+    </unit>
+    <unit id="page.password.card.input.characterType.lowercaseDigits">
+      <segment>
+        <source>英小文字 + 数字</source>
+      </segment>
+    </unit>
+    <unit id="page.password.card.input.count">
+      <segment>
+        <source>個数</source>
+      </segment>
+    </unit>
+    <unit id="page.password.card.input.error.countRange">
+      <segment>
+        <source>個数は1以上50以下で入力してください。</source>
+      </segment>
+    </unit>
+    <unit id="page.password.card.input.error.lengthRange">
+      <segment>
+        <source>文字数は1以上50以下で入力してください。</source>
+      </segment>
+    </unit>
+    <unit id="page.password.card.input.error.required">
+      <segment>
+        <source>必須項目を入力してください。</source>
+      </segment>
+    </unit>
+    <unit id="page.password.card.input.excludeSimilar">
+      <segment>
+        <source>類似文字を除く</source>
+      </segment>
+    </unit>
+    <unit id="page.password.card.input.excludeSimilarHint">
+      <segment>
+        <source>1・l・I・0・O など見た目が似ている文字を除外します。</source>
+      </segment>
+    </unit>
+    <unit id="page.password.card.input.generate">
+      <segment>
+        <source>生成</source>
+      </segment>
+    </unit>
+    <unit id="page.password.card.input.heading">
+      <segment>
+        <source>生成条件</source>
+      </segment>
+    </unit>
+    <unit id="page.password.card.input.length">
+      <segment>
+        <source>文字数</source>
+      </segment>
+    </unit>
+    <unit id="page.password.card.input.placeholder.count">
+      <segment>
+        <source>1〜50</source>
+      </segment>
+    </unit>
+    <unit id="page.password.card.input.placeholder.length">
+      <segment>
+        <source>1〜50</source>
+      </segment>
+    </unit>
+    <unit id="page.password.card.output.heading">
+      <segment>
+        <source>生成結果</source>
+      </segment>
+    </unit>
+    <unit id="page.password.menu">
+      <segment>
+        <source>パスワード生成</source>
+      </segment>
+    </unit>
+    <unit id="page.password.title">
+      <segment>
+        <source>パスワード生成ツール</source>
+      </segment>
+    </unit>
     <unit id="page.ulid.card.dialog.datetimeMaker.date">
       <segment>
         <source>基準日</source>
@@ -334,6 +429,11 @@
     <unit id="update.home.20260113">
       <segment>
         <source>JSON整形ツールを実装しました。</source>
+      </segment>
+    </unit>
+    <unit id="update.home.20260120">
+      <segment>
+        <source>パスワード生成ツールを実装しました。</source>
       </segment>
     </unit>
     <unit id="update.home.20250820">
