@@ -31,18 +31,18 @@
         <div class="input-form-wrapper">
           <div class="flex wrap">
             <mat-form-field class="input-form">
+              <mat-label i18n="@@page.sqlFormatter.card.input.mode.label">モード</mat-label>
+              <mat-select formControlName="mode" aria-label="sql format mode">
+                <mat-option value="standard" i18n="@@page.sqlFormatter.card.input.mode.standard">標準整形</mat-option>
+                <mat-option value="tabularRight" i18n="@@page.sqlFormatter.card.input.mode.tabularRight">右揃え/表形式</mat-option>
+                <mat-option value="minify" i18n="@@page.sqlFormatter.card.input.mode.minify">圧縮</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field class="input-form">
               <mat-label i18n="@@page.sqlFormatter.card.input.indentSpaceSize">インデント</mat-label>
               <mat-select formControlName="indentSpaceSize" aria-label="indent space size">
                 <mat-option value="2">2</mat-option>
                 <mat-option value="4">4</mat-option>
-              </mat-select>
-            </mat-form-field>
-            <mat-form-field class="input-form">
-              <mat-label i18n="@@page.sqlFormatter.card.input.mode.label">モード</mat-label>
-              <mat-select formControlName="mode" aria-label="sql format mode">
-                <mat-option value="standard" i18n="@@page.sqlFormatter.card.input.mode.standard">標準整形</mat-option>
-                <mat-option value="tabularLeft" i18n="@@page.sqlFormatter.card.input.mode.tabularLeft">左揃え/表形式</mat-option>
-                <mat-option value="minify" i18n="@@page.sqlFormatter.card.input.mode.minify">圧縮</mat-option>
               </mat-select>
             </mat-form-field>
             <mat-form-field class="input-form">

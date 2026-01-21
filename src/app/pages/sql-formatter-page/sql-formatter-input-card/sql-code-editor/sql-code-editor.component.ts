@@ -7,7 +7,7 @@ import { defaultKeymap, historyKeymap } from '@codemirror/commands';
 import { history } from '@codemirror/commands';
 import { keymap, EditorView, lineNumbers, highlightActiveLine } from '@codemirror/view';
 import { autocompletion, completionKeymap, closeBrackets } from '@codemirror/autocomplete';
-import { lintGutter, lintKeymap } from '@codemirror/lint';
+
 import { SqlFormatterInputModel } from '../../sql-formatter-model';
 import { format } from 'sql-formatter';
 
@@ -43,12 +43,10 @@ LIMIT 10`;
     EditorView.lineWrapping,
     highlightActiveLine(),
     foldGutter(),
-    lintGutter(),
     keymap.of([
       ...defaultKeymap,
       ...historyKeymap,
       ...completionKeymap,
-      ...lintKeymap,
     ]),
   ];
 
@@ -71,7 +69,7 @@ LIMIT 10`;
         this.value = this.value.replace(/\s+/g, ' ').trim();
       } else {
         const formatted = format(this.value, {
-          language: 'postgresql',
+          language: 'sql',
           indentStyle: model.mode,
           tabWidth: model.indentSpaceSize,
           keywordCase: model.keywordCase,

@@ -595,10 +595,10 @@
         <target>Standard Format</target>
       </segment>
     </unit>
-    <unit id="page.sqlFormatter.card.input.mode.tabularLeft">
+    <unit id="page.sqlFormatter.card.input.mode.tabularRight">
       <segment state="initial">
-        <source>左揃え/表形式</source>
-        <target>Left-aligned/Tabular</target>
+        <source>右揃え/表形式</source>
+        <target>Right-aligned/Tabular</target>
       </segment>
     </unit>
     <unit id="page.sqlFormatter.card.input.mode.minify">

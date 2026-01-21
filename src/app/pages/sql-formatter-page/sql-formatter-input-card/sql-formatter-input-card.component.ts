@@ -41,6 +41,20 @@ export class SqlFormatterInputCardComponent {
 
   ngOnInit(): void {
     this.resetForm();
+    this.setupModeListener();
+  }
+
+  setupModeListener(): void {
+    if (!this.formGroup) return;
+    
+    this.formGroup.get('mode')?.valueChanges.subscribe((mode) => {
+      const indentControl = this.formGroup?.get('indentSpaceSize');
+      if (mode === 'standard') {
+        indentControl?.enable();
+      } else {
+        indentControl?.disable();
+      }
+    });
   }
 
   onSubmit(): void {
@@ -107,7 +121,7 @@ export class SqlFormatterInputCardComponent {
     }
     return {
       indentSpaceSize: Number(this.formGroup.controls['indentSpaceSize'].value),
-      mode: this.formGroup.controls['mode'].value as 'standard' | 'tabularLeft' | 'minify',
+      mode: this.formGroup.controls['mode'].value as 'standard' | 'tabularRight' | 'minify',
       keywordCase: this.formGroup.controls['keywordCase'].value as 'upper' | 'lower' | 'preserve',
       identifierCase: this.formGroup.controls['identifierCase'].value as 'upper' | 'lower' | 'preserve',
     };

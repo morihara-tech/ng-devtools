@@ -341,9 +341,9 @@
         <source>標準整形</source>
       </segment>
     </unit>
-    <unit id="page.sqlFormatter.card.input.mode.tabularLeft">
+    <unit id="page.sqlFormatter.card.input.mode.tabularRight">
       <segment>
-        <source>左揃え/表形式</source>
+        <source>右揃え/表形式</source>
       </segment>
     </unit>
     <unit id="page.sqlFormatter.card.input.quoteCopy">
