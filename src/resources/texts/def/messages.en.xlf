@@ -541,7 +541,7 @@
         <target>Implemented SQL Formatter tool.</target>
       </segment>
     </unit>
-    <unit id="update.home.20260121b">
+    <unit id="update.home.20260122">
       <segment state="initial">
         <source>SVG描画ツールを実装しました。</source>
         <target>Implemented SVG to PNG Converter.</target>
@@ -597,13 +597,13 @@
     </unit>
     <unit id="page.svgToPng.card.input.canvasHeight">
       <segment state="initial">
-        <source>高さ (Height)</source>
+        <source>高さ</source>
         <target>Height</target>
       </segment>
     </unit>
     <unit id="page.svgToPng.card.input.canvasWidth">
       <segment state="initial">
-        <source>幅 (Width)</source>
+        <source>幅</source>
         <target>Width</target>
       </segment>
     </unit>
@@ -627,7 +627,7 @@
     </unit>
     <unit id="page.svgToPng.card.input.scale">
       <segment state="initial">
-        <source>拡大率 (Scale)</source>
+        <source>拡大率</source>
         <target>Scale</target>
       </segment>
     </unit>

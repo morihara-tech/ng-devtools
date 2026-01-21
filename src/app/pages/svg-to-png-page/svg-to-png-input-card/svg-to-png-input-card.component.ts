@@ -40,6 +40,7 @@ export class SvgToPngInputCardComponent implements OnInit {
   ngOnInit(): void {
     this.resetForm();
     this.formGroup?.valueChanges.subscribe(() => {
+      this.handleTransparentToggle();
       this.emitSettings();
     });
   }
@@ -57,10 +58,6 @@ export class SvgToPngInputCardComponent implements OnInit {
       return true;
     }
     return this.formGroup.status !== 'VALID';
-  }
-
-  get isTransparent(): boolean {
-    return this.formGroup?.controls['transparent'].value ?? false;
   }
 
   get scaleValue(): number {
@@ -99,6 +96,20 @@ export class SvgToPngInputCardComponent implements OnInit {
     });
   }
 
+  private handleTransparentToggle(): void {
+    if (!this.formGroup) {
+      return;
+    }
+    const isTransparent = this.formGroup.controls['transparent'].value;
+    const backgroundColorControl = this.formGroup.controls['backgroundColor'];
+    
+    if (isTransparent) {
+      backgroundColorControl.disable();
+    } else {
+      backgroundColorControl.enable();
+    }
+  }
+
   private emitSettings(): void {
     if (!this.formGroup || this.hasError) {
       return;
@@ -107,7 +118,7 @@ export class SvgToPngInputCardComponent implements OnInit {
       canvasWidth: Number(this.formGroup.controls['canvasWidth'].value),
       canvasHeight: Number(this.formGroup.controls['canvasHeight'].value),
       transparent: Boolean(this.formGroup.controls['transparent'].value),
-      backgroundColor: this.formGroup.controls['backgroundColor'].value,
+      backgroundColor: this.formGroup.controls['backgroundColor'].value ?? '#ffffff',
       scale: Number(this.formGroup.controls['scale'].value),
       offsetX: Number(this.formGroup.controls['offsetX'].value),
       offsetY: Number(this.formGroup.controls['offsetY'].value),

@@ -10,17 +10,17 @@
           <app-heading headingType="h4" i18n="@@page.svgToPng.card.input.settings.heading">出力設定</app-heading>
           
           <div class="settings-group">
-            <h5 i18n="@@page.svgToPng.card.input.settings.canvas">Canvas設定</h5>
+            <app-heading headingType="h4" i18n="@@page.svgToPng.card.input.settings.canvas">Canvas設定</app-heading>
             <div class="input-form-wrapper flex wrap">
               <mat-form-field class="input-form">
-                <mat-label i18n="@@page.svgToPng.card.input.canvasWidth">幅 (Width)</mat-label>
+                <mat-label i18n="@@page.svgToPng.card.input.canvasWidth">幅</mat-label>
                 <input matInput type="number"
                   placeholder="500"
                   formControlName="canvasWidth">
                 <span matTextSuffix>px</span>
               </mat-form-field>
               <mat-form-field class="input-form">
-                <mat-label i18n="@@page.svgToPng.card.input.canvasHeight">高さ (Height)</mat-label>
+                <mat-label i18n="@@page.svgToPng.card.input.canvasHeight">高さ</mat-label>
                 <input matInput type="number"
                   placeholder="500"
                   formControlName="canvasHeight">
@@ -31,19 +31,18 @@
               <mat-slide-toggle formControlName="transparent" i18n="@@page.svgToPng.card.input.transparent">背景を透過</mat-slide-toggle>
             </div>
             <div class="input-form-wrapper flex wrap">
-              <mat-form-field class="input-form" [class.disabled]="isTransparent">
+              <mat-form-field class="input-form">
                 <mat-label i18n="@@page.svgToPng.card.input.backgroundColor">背景色</mat-label>
                 <input matInput type="color"
-                  formControlName="backgroundColor"
-                  [disabled]="isTransparent">
+                  formControlName="backgroundColor">
               </mat-form-field>
             </div>
           </div>
 
           <div class="settings-group">
-            <h5 i18n="@@page.svgToPng.card.input.settings.svg">SVG設定</h5>
+            <app-heading headingType="h4" i18n="@@page.svgToPng.card.input.settings.svg">SVG設定</app-heading>
             <div class="scale-wrapper">
-              <label i18n="@@page.svgToPng.card.input.scale">拡大率 (Scale)</label>
+              <span class="scale-label" i18n="@@page.svgToPng.card.input.scale">拡大率</span>
               <div class="scale-control">
                 <mat-slider min="1" max="500" step="1" showTickMarks discrete [displayWith]="formatLabel">
                   <input matSliderThumb formControlName="scale">
