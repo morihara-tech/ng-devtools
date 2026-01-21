@@ -8,7 +8,6 @@ import { history } from '@codemirror/commands';
 import { keymap, EditorView, lineNumbers, highlightActiveLine } from '@codemirror/view';
 import { autocompletion, completionKeymap, closeBrackets } from '@codemirror/autocomplete';
 import { lintGutter, lintKeymap } from '@codemirror/lint';
-import { color } from '@codemirror/theme-one-dark';
 import { autoCloseTags } from '@codemirror/lang-xml';
 import { bracketMatching } from '@codemirror/language';
 
@@ -23,7 +22,6 @@ import { bracketMatching } from '@codemirror/language';
 export class SvgCodeEditorComponent implements OnInit {
   @ViewChild(CodemirrorComponent) codemirrorComponent!: CodemirrorComponent;
   @Output() valueChange: EventEmitter<string> = new EventEmitter();
-  private isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
   value: string = '';
 
@@ -53,8 +51,6 @@ export class SvgCodeEditorComponent implements OnInit {
       ...lintKeymap,
     ]),
   ];
-
-  backgroundColor: string | null = this.isDarkMode ? color.background : null;
 
   ngOnInit(): void {
     this.value = this.sampleSvg;
