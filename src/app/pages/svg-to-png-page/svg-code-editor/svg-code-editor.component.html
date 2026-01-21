@@ -1,0 +1,7 @@
+<div class="editor-wrapper" (click)="onWrapperClick()">
+  <app-codemirror
+    [(value)]="value"
+    [extensions]="extensions"
+    (valueChange)="onValueChange($event)"
+  ></app-codemirror>
+</div>

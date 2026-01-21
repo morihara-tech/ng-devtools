@@ -1,0 +1,11 @@
+.editor-wrapper {
+  min-height: 400px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: text;
+}
+
+:host-context(.dark-theme) .editor-wrapper {
+  border-color: #555;
+}

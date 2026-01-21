@@ -67,6 +67,7 @@ export class SidenavComponent implements OnChanges, OnInit {
       { svgIcon: 'json', label: $localize`:@@page.jsonFormatter.menu:JSON整形`, routerLink: '/json-formatter' },
       { icon: 'storage', label: $localize`:@@page.sql.menu:SQL整形`, routerLink: '/sql-formatter' },
       { icon: 'password', label: $localize`:@@page.password.menu:パスワード生成`, routerLink: '/password-generator' },
+      { icon: 'image', label: $localize`:@@page.svgToPng.menu:SVG描画`, routerLink: '/svg-to-png' },
     ];
   }
 

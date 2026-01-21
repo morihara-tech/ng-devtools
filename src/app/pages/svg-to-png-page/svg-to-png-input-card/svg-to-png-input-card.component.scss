@@ -1,0 +1,78 @@
+.svg-area {
+  margin-bottom: 24px;
+}
+
+.settings-wrapper {
+  margin-top: 24px;
+}
+
+.settings-group {
+  margin-bottom: 24px;
+
+  h5 {
+    font-size: 14px;
+    font-weight: 500;
+    margin: 16px 0 8px 0;
+    color: rgba(0, 0, 0, 0.6);
+  }
+}
+
+:host-context(.dark-theme) .settings-group h5 {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.input-form-wrapper {
+  gap: 16px;
+  margin-bottom: 16px;
+
+  .input-form {
+    flex: 1;
+    min-width: 150px;
+
+    &.disabled {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+  }
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &.wrap {
+    flex-wrap: wrap;
+  }
+}
+
+.scale-wrapper {
+  margin-bottom: 16px;
+
+  label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  .scale-control {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    mat-slider {
+      flex: 1;
+    }
+
+    .scale-value {
+      min-width: 60px;
+      text-align: right;
+      font-weight: 500;
+    }
+  }
+}
+
+:host-context(.dark-theme) .scale-wrapper label {
+  color: rgba(255, 255, 255, 0.7);
+}

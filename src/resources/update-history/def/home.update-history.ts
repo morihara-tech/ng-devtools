@@ -4,6 +4,10 @@ export const HOME_UPDATE_HISTORIES: Array<UpdateHistoryModel> = [
   // add new update history here
   {
     date: '2026-01-21',
+    description: $localize`:@@update.home.20260121b:SVG描画ツールを実装しました。`
+  },
+  {
+    date: '2026-01-21',
     description: $localize`:@@update.home.20260121:SQL整形ツールを実装しました。`
   },
   {
