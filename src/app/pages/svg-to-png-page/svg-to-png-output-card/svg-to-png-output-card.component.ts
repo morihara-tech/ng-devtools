@@ -1,4 +1,4 @@
-import { Component, inject, ElementRef, ViewChild } from '@angular/core';
+import { Component, inject, ElementRef, ViewChild, SecurityContext } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { HeadingComponent } from '../../../components/heading/heading.component';
@@ -46,7 +46,7 @@ export class SvgToPngOutputCardComponent {
     this.settings = settings;
     
     if (this.svgCode) {
-      this.safeHtml = this.sanitizer.sanitize(1, this.svgCode) as SafeHtml;
+      this.safeHtml = this.sanitizer.sanitize(SecurityContext.HTML, this.svgCode) as SafeHtml;
     } else {
       this.safeHtml = undefined;
     }
