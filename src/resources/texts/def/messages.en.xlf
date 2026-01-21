@@ -535,5 +535,131 @@
         <target>Implemented Password Generator.</target>
       </segment>
     </unit>
+    <unit id="update.home.20260121">
+      <segment state="initial">
+        <source>SQL整形ツールを実装しました。</source>
+        <target>Implemented SQL Formatter tool.</target>
+      </segment>
+    </unit>
+    <unit id="page.sql.menu">
+      <segment state="initial">
+        <source>SQL整形</source>
+        <target>SQL Formatter</target>
+      </segment>
+    </unit>
+    <unit id="page.sql.title">
+      <segment state="initial">
+        <source>SQL整形ツール</source>
+        <target>SQL Formatter Tool</target>
+      </segment>
+    </unit>
+    <unit id="page.sql.formatter.errorMessage">
+      <segment state="initial">
+        <source>無効なSQLです。</source>
+        <target>Invalid SQL.</target>
+      </segment>
+    </unit>
+    <unit id="page.sqlFormatter.card.input.heading">
+      <segment state="initial">
+        <source>SQL</source>
+        <target>SQL</target>
+      </segment>
+    </unit>
+    <unit id="page.sqlFormatter.card.input.codeEmbedCopy">
+      <segment state="initial">
+        <source>コード埋め込み形式でコピー</source>
+        <target>Copy in Code Embedded Format</target>
+      </segment>
+    </unit>
+    <unit id="page.sqlFormatter.card.input.quoteCopy">
+      <segment state="initial">
+        <source>ダブルクォートで囲んでコピー</source>
+        <target>Copy with Double Quotes</target>
+      </segment>
+    </unit>
+    <unit id="page.sqlFormatter.card.input.indentSpaceSize">
+      <segment state="initial">
+        <source>インデント</source>
+        <target>Indentation</target>
+      </segment>
+    </unit>
+    <unit id="page.sqlFormatter.card.input.mode.label">
+      <segment state="initial">
+        <source>モード</source>
+        <target>Mode</target>
+      </segment>
+    </unit>
+    <unit id="page.sqlFormatter.card.input.mode.standard">
+      <segment state="initial">
+        <source>標準整形</source>
+        <target>Standard Format</target>
+      </segment>
+    </unit>
+    <unit id="page.sqlFormatter.card.input.mode.tabularRight">
+      <segment state="initial">
+        <source>右揃え/表形式</source>
+        <target>Right-aligned/Tabular</target>
+      </segment>
+    </unit>
+    <unit id="page.sqlFormatter.card.input.mode.minify">
+      <segment state="initial">
+        <source>圧縮</source>
+        <target>Minify</target>
+      </segment>
+    </unit>
+    <unit id="page.sqlFormatter.card.input.keywordCase.label">
+      <segment state="initial">
+        <source>予約語</source>
+        <target>Keywords</target>
+      </segment>
+    </unit>
+    <unit id="page.sqlFormatter.card.input.keywordCase.upper">
+      <segment state="initial">
+        <source>大文字</source>
+        <target>Uppercase</target>
+      </segment>
+    </unit>
+    <unit id="page.sqlFormatter.card.input.keywordCase.lower">
+      <segment state="initial">
+        <source>小文字</source>
+        <target>Lowercase</target>
+      </segment>
+    </unit>
+    <unit id="page.sqlFormatter.card.input.keywordCase.preserve">
+      <segment state="initial">
+        <source>変更しない</source>
+        <target>Preserve</target>
+      </segment>
+    </unit>
+    <unit id="page.sqlFormatter.card.input.identifierCase.label">
+      <segment state="initial">
+        <source>識別子</source>
+        <target>Identifiers</target>
+      </segment>
+    </unit>
+    <unit id="page.sqlFormatter.card.input.identifierCase.upper">
+      <segment state="initial">
+        <source>大文字</source>
+        <target>Uppercase</target>
+      </segment>
+    </unit>
+    <unit id="page.sqlFormatter.card.input.identifierCase.lower">
+      <segment state="initial">
+        <source>小文字</source>
+        <target>Lowercase</target>
+      </segment>
+    </unit>
+    <unit id="page.sqlFormatter.card.input.identifierCase.preserve">
+      <segment state="initial">
+        <source>変更しない</source>
+        <target>Preserve</target>
+      </segment>
+    </unit>
+    <unit id="page.sqlFormatter.card.input.format">
+      <segment state="initial">
+        <source>変換</source>
+        <target>Format</target>
+      </segment>
+    </unit>
   </file>
 </xliff>

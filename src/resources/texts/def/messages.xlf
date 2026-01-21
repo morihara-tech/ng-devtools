@@ -251,6 +251,106 @@
         <source>パスワード生成ツール</source>
       </segment>
     </unit>
+    <unit id="page.sql.formatter.errorMessage">
+      <segment>
+        <source>無効なSQLです。</source>
+      </segment>
+    </unit>
+    <unit id="page.sql.menu">
+      <segment>
+        <source>SQL整形</source>
+      </segment>
+    </unit>
+    <unit id="page.sql.title">
+      <segment>
+        <source>SQL整形ツール</source>
+      </segment>
+    </unit>
+    <unit id="page.sqlFormatter.card.input.codeEmbedCopy">
+      <segment>
+        <source>コード埋め込み形式でコピー</source>
+      </segment>
+    </unit>
+    <unit id="page.sqlFormatter.card.input.format">
+      <segment>
+        <source>変換</source>
+      </segment>
+    </unit>
+    <unit id="page.sqlFormatter.card.input.heading">
+      <segment>
+        <source>SQL</source>
+      </segment>
+    </unit>
+    <unit id="page.sqlFormatter.card.input.identifierCase.label">
+      <segment>
+        <source>識別子</source>
+      </segment>
+    </unit>
+    <unit id="page.sqlFormatter.card.input.identifierCase.lower">
+      <segment>
+        <source>小文字</source>
+      </segment>
+    </unit>
+    <unit id="page.sqlFormatter.card.input.identifierCase.preserve">
+      <segment>
+        <source>変更しない</source>
+      </segment>
+    </unit>
+    <unit id="page.sqlFormatter.card.input.identifierCase.upper">
+      <segment>
+        <source>大文字</source>
+      </segment>
+    </unit>
+    <unit id="page.sqlFormatter.card.input.indentSpaceSize">
+      <segment>
+        <source>インデント</source>
+      </segment>
+    </unit>
+    <unit id="page.sqlFormatter.card.input.keywordCase.label">
+      <segment>
+        <source>予約語</source>
+      </segment>
+    </unit>
+    <unit id="page.sqlFormatter.card.input.keywordCase.lower">
+      <segment>
+        <source>小文字</source>
+      </segment>
+    </unit>
+    <unit id="page.sqlFormatter.card.input.keywordCase.preserve">
+      <segment>
+        <source>変更しない</source>
+      </segment>
+    </unit>
+    <unit id="page.sqlFormatter.card.input.keywordCase.upper">
+      <segment>
+        <source>大文字</source>
+      </segment>
+    </unit>
+    <unit id="page.sqlFormatter.card.input.mode.label">
+      <segment>
+        <source>モード</source>
+      </segment>
+    </unit>
+    <unit id="page.sqlFormatter.card.input.mode.minify">
+      <segment>
+        <source>圧縮</source>
+      </segment>
+    </unit>
+    <unit id="page.sqlFormatter.card.input.mode.standard">
+      <segment>
+        <source>標準整形</source>
+      </segment>
+    </unit>
+    <unit id="page.sqlFormatter.card.input.mode.tabularRight">
+      <segment>
+        <source>右揃え/表形式</source>
+      </segment>
+    </unit>
+    <unit id="page.sqlFormatter.card.input.quoteCopy">
+      <segment>
+        <source>ダブルクォートで囲んでコピー</source>
+      </segment>
+    </unit>
     <unit id="page.ulid.card.dialog.datetimeMaker.date">
       <segment>
         <source>基準日</source>
@@ -434,6 +534,11 @@
     <unit id="update.home.20260120">
       <segment>
         <source>パスワード生成ツールを実装しました。</source>
+      </segment>
+    </unit>
+    <unit id="update.home.20260121">
+      <segment>
+        <source>SQL整形ツールを実装しました。</source>
       </segment>
     </unit>
     <unit id="update.home.20250820">

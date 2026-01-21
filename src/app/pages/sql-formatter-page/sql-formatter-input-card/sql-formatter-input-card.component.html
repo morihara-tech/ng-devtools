@@ -1,0 +1,73 @@
+<mat-card appearance="raised">
+  @if (formGroup) {
+    <mat-card-content>
+      <app-heading headingType="h3">
+        <span i18n="@@page.sqlFormatter.card.input.heading">SQL</span>
+        <div class="right">
+          <button mat-icon-button
+            matTooltip="コード埋め込み形式でコピー"
+            i18n-matTooltip="@@page.sqlFormatter.card.input.codeEmbedCopy"
+            (click)="onClickCopyMenu('code')">
+            <mat-icon>code</mat-icon>
+          </button>
+          <button mat-icon-button
+            matTooltip="ダブルクォートで囲んでコピー"
+            i18n-matTooltip="@@page.sqlFormatter.card.input.quoteCopy"
+            (click)="onClickCopyMenu('quote')">
+            <mat-icon>format_quote</mat-icon>
+          </button>
+          <button mat-icon-button
+            matTooltip="クリップボードにコピー"
+            i18n-matTooltip="@@common.copyToClipboard"
+            (click)="onClickCopyMenu('plain')">
+            <mat-icon>content_copy</mat-icon>
+          </button>
+        </div>
+      </app-heading>
+      <div class="sql-area">
+        <app-sql-code-editor (catchError)="onCatchError($event)"></app-sql-code-editor>
+      </div>
+      <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+        <div class="input-form-wrapper">
+          <div class="flex wrap">
+            <mat-form-field class="input-form">
+              <mat-label i18n="@@page.sqlFormatter.card.input.mode.label">モード</mat-label>
+              <mat-select formControlName="mode" aria-label="sql format mode">
+                <mat-option value="standard" i18n="@@page.sqlFormatter.card.input.mode.standard">標準整形</mat-option>
+                <mat-option value="tabularRight" i18n="@@page.sqlFormatter.card.input.mode.tabularRight">右揃え/表形式</mat-option>
+                <mat-option value="minify" i18n="@@page.sqlFormatter.card.input.mode.minify">圧縮</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field class="input-form">
+              <mat-label i18n="@@page.sqlFormatter.card.input.indentSpaceSize">インデント</mat-label>
+              <mat-select formControlName="indentSpaceSize" aria-label="indent space size">
+                <mat-option value="2">2</mat-option>
+                <mat-option value="4">4</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field class="input-form">
+              <mat-label i18n="@@page.sqlFormatter.card.input.keywordCase.label">予約語</mat-label>
+              <mat-select formControlName="keywordCase" aria-label="keyword case">
+                <mat-option value="upper" i18n="@@page.sqlFormatter.card.input.keywordCase.upper">大文字</mat-option>
+                <mat-option value="lower" i18n="@@page.sqlFormatter.card.input.keywordCase.lower">小文字</mat-option>
+                <mat-option value="preserve" i18n="@@page.sqlFormatter.card.input.keywordCase.preserve">変更しない</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field class="input-form">
+              <mat-label i18n="@@page.sqlFormatter.card.input.identifierCase.label">識別子</mat-label>
+              <mat-select formControlName="identifierCase" aria-label="identifier case">
+                <mat-option value="upper" i18n="@@page.sqlFormatter.card.input.identifierCase.upper">大文字</mat-option>
+                <mat-option value="lower" i18n="@@page.sqlFormatter.card.input.identifierCase.lower">小文字</mat-option>
+                <mat-option value="preserve" i18n="@@page.sqlFormatter.card.input.identifierCase.preserve">変更しない</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <button mat-flat-button [disabled]="hasError" type="submit" class="button" i18n="@@page.sqlFormatter.card.input.format">変換</button>
+          </div>
+        </div>
+        @if (errorMessage !== undefined) {
+          <mat-error>{{ errorMessage }}</mat-error>
+        }
+      </form>
+    </mat-card-content>
+  }
+</mat-card>

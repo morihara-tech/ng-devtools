@@ -2,44 +2,17 @@
 
 Copilot must follow these rules strictly within this repository.
 
-## 1. Branch Naming Rules
-When asked to propose or create a branch, use the following format only:
-
-- **Format**: `copilot/issue-{number}`
-- **Rules**:
-  - `{number}` is the related Issue number (digits only).
-  - Do NOT include any description or text after the number.
-  - Example: `copilot/issue-123`
+## 1. General Guidelines
+- **Language**: Always write code in **TypeScript** for Angular projects unless explicitly requested
+- **Framework**: Use Angular best practices and conventions.
+- **Styling**: Use SCSS for styling components.
+- **File Structure**: Follow the existing file and folder structure conventions of the project.
 
 ## 2. Commit Message Rules
-When generating commit messages, follow this specific structure:
-
-### Format & Style
-1. **Prefix**:
-   - The message MUST start with `refs #{number}`.
-
-2. **Issue Number Extraction**:
-   - Extract the `{number}` from the current branch name (assuming format `copilot/issue-{number}`).
-
-3. **Language**:
-   - Write the commit message in **English**.
-   - Use the imperative mood (e.g., "Add", "Fix", "Update", not "Added").
-
-### Output Structure
-- First line: `refs #{number} {Summary of changes in English}`
-- Second line: (Empty)
-- Third line+: Detailed description (if necessary)
-
-### Examples
-(Current branch: `copilot/issue-88`)
-
-**Good:**
-refs #88 Implement user list API endpoint
-
-**Bad:**
-feat: Implement user list API endpoint
-refs #88
-(Reason: "feat:" is not allowed, and "refs #" must be at the start.)
+When generating commit messages:
+- Extract issue number from environment variable: `process.env.COPILOT_ISSUE_NUMBER` or `$COPILOT_ISSUE_NUMBER`
+- Format: `refs #{number} {description}`
+- **NEVER** assume or guess the issue number from branch names.
 
 ## 3. Clean Code & Quality Principles
 - **Modern Syntax**: Always use the latest stable version syntax of the language (e.g., modern JavaScript ES6+, Python 3.10+, Java 17+).
