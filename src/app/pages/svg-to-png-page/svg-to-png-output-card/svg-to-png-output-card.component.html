@@ -1,0 +1,28 @@
+<mat-card appearance="raised">
+  <mat-card-content>
+    <app-heading headingType="h3">
+      <span i18n="@@page.svgToPng.card.output.heading">プレビュー</span>
+      <div class="right">
+        <button mat-icon-button
+          matTooltip="クリップボードにコピー"
+          i18n-matTooltip="@@common.copyToClipboard"
+          (click)="onClickCopy()">
+          <mat-icon>content_copy</mat-icon>
+        </button>
+        <button mat-icon-button
+          matTooltip="PNG形式でダウンロード"
+          i18n-matTooltip="@@page.svgToPng.card.output.downloadPng"
+          (click)="onClickDownload()">
+          <mat-icon>download</mat-icon>
+        </button>
+      </div>
+    </app-heading>
+    <div class="preview-wrapper">
+      <div class="canvas-container" [ngStyle]="canvasStyle" [class.transparent]="settings.transparent">
+        @if (safeHtml) {
+          <div class="svg-content" [innerHTML]="safeHtml" [ngStyle]="svgStyle"></div>
+        }
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

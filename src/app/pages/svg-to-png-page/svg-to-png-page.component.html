@@ -1,0 +1,14 @@
+<app-application-page-template>
+  <div class="margin-bottom-16">
+    <app-heading headingType="h2" i18n="@@page.svgToPng.title">SVG描画ツール</app-heading>
+  </div>
+  <app-svg-to-png-input-card
+    #input
+    (settingsChange)="onSettingsChange($event)"
+    (svgCodeChange)="onSvgCodeChange($event)"
+  ></app-svg-to-png-input-card>
+  <div class="spacer"></div>
+  <app-svg-to-png-output-card
+    #output
+  ></app-svg-to-png-output-card>  
+</app-application-page-template>

@@ -1,0 +1,75 @@
+<mat-card appearance="raised">
+  @if (formGroup) {
+    <mat-card-content>
+      <app-heading headingType="h3" i18n="@@page.svgToPng.card.input.heading">SVGコード</app-heading>
+      <div class="svg-area">
+        <app-svg-code-editor (valueChange)="onSvgCodeChange($event)"></app-svg-code-editor>
+      </div>
+      <form [formGroup]="formGroup">
+        <div class="settings-wrapper">
+          <app-heading headingType="h4" i18n="@@page.svgToPng.card.input.settings.heading">出力設定</app-heading>
+          
+          <div class="settings-group">
+            <h5 i18n="@@page.svgToPng.card.input.settings.canvas">Canvas設定</h5>
+            <div class="input-form-wrapper flex wrap">
+              <mat-form-field class="input-form">
+                <mat-label i18n="@@page.svgToPng.card.input.canvasWidth">幅 (Width)</mat-label>
+                <input matInput type="number"
+                  placeholder="500"
+                  formControlName="canvasWidth">
+                <span matTextSuffix>px</span>
+              </mat-form-field>
+              <mat-form-field class="input-form">
+                <mat-label i18n="@@page.svgToPng.card.input.canvasHeight">高さ (Height)</mat-label>
+                <input matInput type="number"
+                  placeholder="500"
+                  formControlName="canvasHeight">
+                <span matTextSuffix>px</span>
+              </mat-form-field>
+            </div>
+            <div class="flex wrap">
+              <mat-slide-toggle formControlName="transparent" i18n="@@page.svgToPng.card.input.transparent">背景を透過</mat-slide-toggle>
+            </div>
+            <div class="input-form-wrapper flex wrap">
+              <mat-form-field class="input-form" [class.disabled]="isTransparent">
+                <mat-label i18n="@@page.svgToPng.card.input.backgroundColor">背景色</mat-label>
+                <input matInput type="color"
+                  formControlName="backgroundColor"
+                  [disabled]="isTransparent">
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="settings-group">
+            <h5 i18n="@@page.svgToPng.card.input.settings.svg">SVG設定</h5>
+            <div class="scale-wrapper">
+              <label i18n="@@page.svgToPng.card.input.scale">拡大率 (Scale)</label>
+              <div class="scale-control">
+                <mat-slider min="1" max="500" step="1" showTickMarks discrete [displayWith]="formatLabel">
+                  <input matSliderThumb formControlName="scale">
+                </mat-slider>
+                <span class="scale-value">{{ scaleValue }}%</span>
+              </div>
+            </div>
+            <div class="input-form-wrapper flex wrap">
+              <mat-form-field class="input-form">
+                <mat-label i18n="@@page.svgToPng.card.input.offsetX">X座標</mat-label>
+                <input matInput type="number"
+                  placeholder="0"
+                  formControlName="offsetX">
+                <span matTextSuffix>px</span>
+              </mat-form-field>
+              <mat-form-field class="input-form">
+                <mat-label i18n="@@page.svgToPng.card.input.offsetY">Y座標</mat-label>
+                <input matInput type="number"
+                  placeholder="0"
+                  formControlName="offsetY">
+                <span matTextSuffix>px</span>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </form>
+    </mat-card-content>
+  }
+</mat-card>

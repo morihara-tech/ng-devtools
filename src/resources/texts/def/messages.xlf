@@ -351,6 +351,96 @@
         <source>ダブルクォートで囲んでコピー</source>
       </segment>
     </unit>
+    <unit id="page.sqlFormatter.menu">
+      <segment>
+        <source>SQL整形</source>
+      </segment>
+    </unit>
+    <unit id="page.svgToPng.card.input.backgroundColor">
+      <segment>
+        <source>背景色</source>
+      </segment>
+    </unit>
+    <unit id="page.svgToPng.card.input.canvasHeight">
+      <segment>
+        <source>高さ (Height)</source>
+      </segment>
+    </unit>
+    <unit id="page.svgToPng.card.input.canvasWidth">
+      <segment>
+        <source>幅 (Width)</source>
+      </segment>
+    </unit>
+    <unit id="page.svgToPng.card.input.heading">
+      <segment>
+        <source>SVGコード</source>
+      </segment>
+    </unit>
+    <unit id="page.svgToPng.card.input.offsetX">
+      <segment>
+        <source>X座標</source>
+      </segment>
+    </unit>
+    <unit id="page.svgToPng.card.input.offsetY">
+      <segment>
+        <source>Y座標</source>
+      </segment>
+    </unit>
+    <unit id="page.svgToPng.card.input.scale">
+      <segment>
+        <source>拡大率 (Scale)</source>
+      </segment>
+    </unit>
+    <unit id="page.svgToPng.card.input.settings.canvas">
+      <segment>
+        <source>Canvas設定</source>
+      </segment>
+    </unit>
+    <unit id="page.svgToPng.card.input.settings.heading">
+      <segment>
+        <source>出力設定</source>
+      </segment>
+    </unit>
+    <unit id="page.svgToPng.card.input.settings.svg">
+      <segment>
+        <source>SVG設定</source>
+      </segment>
+    </unit>
+    <unit id="page.svgToPng.card.input.transparent">
+      <segment>
+        <source>背景を透過</source>
+      </segment>
+    </unit>
+    <unit id="page.svgToPng.card.output.downloaded">
+      <segment>
+        <source>ダウンロードしました。</source>
+      </segment>
+    </unit>
+    <unit id="page.svgToPng.card.output.downloadError">
+      <segment>
+        <source>ダウンロードに失敗しました。</source>
+      </segment>
+    </unit>
+    <unit id="page.svgToPng.card.output.downloadPng">
+      <segment>
+        <source>PNG形式でダウンロード</source>
+      </segment>
+    </unit>
+    <unit id="page.svgToPng.card.output.heading">
+      <segment>
+        <source>プレビュー</source>
+      </segment>
+    </unit>
+    <unit id="page.svgToPng.menu">
+      <segment>
+        <source>SVG描画</source>
+      </segment>
+    </unit>
+    <unit id="page.svgToPng.title">
+      <segment>
+        <source>SVG描画ツール</source>
+      </segment>
+    </unit>
     <unit id="page.ulid.card.dialog.datetimeMaker.date">
       <segment>
         <source>基準日</source>
@@ -539,6 +629,11 @@
     <unit id="update.home.20260121">
       <segment>
         <source>SQL整形ツールを実装しました。</source>
+      </segment>
+    </unit>
+    <unit id="update.home.20260121b">
+      <segment>
+        <source>SVG描画ツールを実装しました。</source>
       </segment>
     </unit>
     <unit id="update.home.20250820">
