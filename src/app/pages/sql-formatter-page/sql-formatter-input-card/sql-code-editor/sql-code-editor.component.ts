@@ -2,7 +2,7 @@ import { Component, ViewChild, Output, EventEmitter, OnInit } from '@angular/cor
 import { CodemirrorComponent } from '../../../../components/codemirror/codemirror.component';
 import { Extension } from '@codemirror/state';
 import { sql } from '@codemirror/lang-sql';
-import { syntaxHighlighting, defaultHighlightStyle, indentOnInput, foldGutter } from '@codemirror/language';
+import { indentOnInput, foldGutter } from '@codemirror/language';
 import { defaultKeymap, historyKeymap } from '@codemirror/commands';
 import { history } from '@codemirror/commands';
 import { keymap, EditorView, lineNumbers, highlightActiveLine } from '@codemirror/view';
@@ -10,12 +10,14 @@ import { autocompletion, completionKeymap, closeBrackets } from '@codemirror/aut
 
 import { SqlFormatterInputModel } from '../../sql-formatter-model';
 import { format } from 'sql-formatter';
+import { A11yModule } from "@angular/cdk/a11y";
 
 @Component({
   selector: 'app-sql-code-editor',
   imports: [
     CodemirrorComponent,
-  ],
+    A11yModule
+],
   templateUrl: './sql-code-editor.component.html',
   styleUrl: './sql-code-editor.component.scss',
 })
@@ -34,7 +36,6 @@ LIMIT 10`;
 
   extensions: Extension[] = [
     sql(),
-    syntaxHighlighting(defaultHighlightStyle),
     indentOnInput(),
     history(),
     closeBrackets(),
@@ -50,6 +51,7 @@ LIMIT 10`;
     ]),
   ];
 
+  backgroundColor: string | null = null;
   errorMessage: string | null = null;
 
   ngOnInit(): void {
@@ -59,6 +61,10 @@ LIMIT 10`;
 
   onWrapperClick(): void {
     this.codemirrorComponent.focus();
+  }
+
+  onChangeBgColor(color: string): void {
+    this.backgroundColor = color;
   }
 
   formatSql(model: SqlFormatterInputModel): void {

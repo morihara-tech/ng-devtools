@@ -3,16 +3,24 @@
 Copilot must follow these rules strictly within this repository.
 
 ## 1. General Guidelines
-- **Language**: Always write code in **TypeScript** for Angular projects unless explicitly requested
+- **Language**: Always write code in **TypeScript** for Angular projects unless explicitly requested.
 - **Framework**: Use Angular best practices and conventions.
-- **Styling**: Use SCSS for styling components.
+- **Styling & Theming**: 
+  - Use **SCSS** for styling.
+  - **Strictly follow Angular Material (M3) theming rules.**
+  - **Color Access**: Always use **Material System CSS Variables** (`--mat-sys-...`) instead of SCSS mixins or functions.
+    - *Good*: `color: var(--mat-sys-on-surface);`, `background: var(--mat-sys-primary-container);`
+    - *Bad*: `mat.get-theme-color(...)`, `map.get(...)`
+  - **FORBIDDEN**: NEVER use hardcoded colors (e.g., `#ffffff`, `rgb(...)`) or magic font sizes.
 - **File Structure**: Follow the existing file and folder structure conventions of the project.
 
 ## 2. Commit Message Rules
 When generating commit messages:
-- Extract issue number from environment variable: `process.env.COPILOT_ISSUE_NUMBER` or `$COPILOT_ISSUE_NUMBER`
-- Format: `refs #{number} {description}`
-- **NEVER** assume or guess the issue number from branch names.
+- **Source of Truth**: Identify the issue number from the **active Issue context**, **Issue title**, or the **task description** provided in the workspace.
+- **Format**: `refs #{number} {description}`
+  - Example: `refs #123 fix login validation logic`
+- **Fallback**: If the issue number is explicitly provided in the prompt, use it.
+- **Restriction**: **NEVER** assume or guess the issue number from branch names alone (unless it matches the active issue context).
 
 ## 3. Clean Code & Quality Principles
 - **Modern Syntax**: Always use the latest stable version syntax of the language (e.g., modern JavaScript ES6+, Python 3.10+, Java 17+).
@@ -42,7 +50,7 @@ When generating commit messages:
 ## 6. Security
 - **No Secrets**: NEVER hardcode API keys, passwords, or tokens. Always suggest using environment variables.
 - **Input Validation**: Always validate and sanitize user inputs to prevent injection attacks.
-- **Dependencies**: Suggest using the latest stable versions of libraries and frameworks to avoid known vulnerabilities
+- **Dependencies**: Suggest using the latest stable versions of libraries and frameworks to avoid known vulnerabilities.
 - **Sensitive Data**: Ensure sensitive data is handled securely (e.g., encryption, secure storage).
 
 ## 7. Accessibility (A11y)

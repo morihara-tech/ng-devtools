@@ -541,6 +541,12 @@
         <target>Implemented SQL Formatter tool.</target>
       </segment>
     </unit>
+    <unit id="update.home.20260123">
+      <segment state="initial">
+        <source>SVG描画ツールを実装しました。</source>
+        <target>Implemented SVG to PNG Converter.</target>
+      </segment>
+    </unit>
     <unit id="page.sql.menu">
       <segment state="initial">
         <source>SQL整形</source>
@@ -575,6 +581,108 @@
       <segment state="initial">
         <source>ダブルクォートで囲んでコピー</source>
         <target>Copy with Double Quotes</target>
+      </segment>
+    </unit>
+    <unit id="page.sqlFormatter.menu">
+      <segment state="initial">
+        <source>SQL整形</source>
+        <target/>
+      </segment>
+    </unit>
+    <unit id="page.svgToPng.card.input.backgroundColor">
+      <segment state="initial">
+        <source>背景色</source>
+        <target>Background Color</target>
+      </segment>
+    </unit>
+    <unit id="page.svgToPng.card.input.canvasHeight">
+      <segment state="initial">
+        <source>高さ</source>
+        <target>Height</target>
+      </segment>
+    </unit>
+    <unit id="page.svgToPng.card.input.canvasWidth">
+      <segment state="initial">
+        <source>幅</source>
+        <target>Width</target>
+      </segment>
+    </unit>
+    <unit id="page.svgToPng.card.input.heading">
+      <segment state="initial">
+        <source>SVGコード</source>
+        <target>SVG Code</target>
+      </segment>
+    </unit>
+    <unit id="page.svgToPng.card.input.offsetX">
+      <segment state="initial">
+        <source>X座標</source>
+        <target>X Offset</target>
+      </segment>
+    </unit>
+    <unit id="page.svgToPng.card.input.offsetY">
+      <segment state="initial">
+        <source>Y座標</source>
+        <target>Y Offset</target>
+      </segment>
+    </unit>
+    <unit id="page.svgToPng.card.input.scale">
+      <segment state="initial">
+        <source>拡大率</source>
+        <target>Scale</target>
+      </segment>
+    </unit>
+    <unit id="page.svgToPng.card.input.settings.canvas">
+      <segment state="initial">
+        <source>Canvas設定</source>
+        <target>Canvas Settings</target>
+      </segment>
+    </unit>
+    <unit id="page.svgToPng.card.input.settings.svg">
+      <segment state="initial">
+        <source>SVG設定</source>
+        <target>SVG Settings</target>
+      </segment>
+    </unit>
+    <unit id="page.svgToPng.card.input.transparent">
+      <segment state="initial">
+        <source>背景を透過</source>
+        <target>Transparent Background</target>
+      </segment>
+    </unit>
+    <unit id="page.svgToPng.card.output.downloaded">
+      <segment state="initial">
+        <source>ダウンロードしました。</source>
+        <target>Downloaded successfully.</target>
+      </segment>
+    </unit>
+    <unit id="page.svgToPng.card.output.downloadError">
+      <segment state="initial">
+        <source>ダウンロードに失敗しました。</source>
+        <target>Download failed.</target>
+      </segment>
+    </unit>
+    <unit id="page.svgToPng.card.output.downloadPng">
+      <segment state="initial">
+        <source>PNG形式でダウンロード</source>
+        <target>Download as PNG</target>
+      </segment>
+    </unit>
+    <unit id="page.svgToPng.card.output.heading">
+      <segment state="initial">
+        <source>プレビュー</source>
+        <target>Preview</target>
+      </segment>
+    </unit>
+    <unit id="page.svgToPng.menu">
+      <segment state="initial">
+        <source>SVG描画</source>
+        <target>SVG Renderer</target>
+      </segment>
+    </unit>
+    <unit id="page.svgToPng.title">
+      <segment state="initial">
+        <source>SVG描画ツール</source>
+        <target>SVG to PNG Converter</target>
       </segment>
     </unit>
     <unit id="page.sqlFormatter.card.input.indentSpaceSize">

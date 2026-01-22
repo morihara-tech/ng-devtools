@@ -2,7 +2,7 @@ import { Component, ElementRef, EventEmitter, forwardRef, Input, OnChanges, OnDe
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Compartment, EditorState, type Extension } from '@codemirror/state';
 import { EditorView } from '@codemirror/view';
-import { oneDark } from '@codemirror/theme-one-dark';
+import { githubLight, githubDark } from '@uiw/codemirror-theme-github';
 
 @Component({
   selector: 'app-codemirror',
@@ -20,20 +20,21 @@ export class CodemirrorComponent implements OnInit, OnChanges, OnDestroy {
   @Input() value: string = '';
   @Input() extensions: Extension[] = [];
   @Output() valueChange = new EventEmitter<string>();
+  @Output() changeBgColor = new EventEmitter<string>();
 
   private view?: EditorView;
   private extensionCompartment = new Compartment();
   private themeCompartment = new Compartment();
+  private mediaQueryList = window.matchMedia('(prefers-color-scheme: dark)');
+  private themeListener = (e: MediaQueryListEvent) => this.updateTheme(e.matches);
 
   ngOnInit(): void {
-    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const initialTheme = isDarkMode ? oneDark : [];
-
+    const isDark = this.mediaQueryList.matches;
     const state = EditorState.create({
       doc: this.value,
       extensions: [
         this.extensionCompartment.of(this.extensions),
-        this.themeCompartment.of(initialTheme),
+        this.themeCompartment.of(this.getTheme(isDark)),
         EditorView.updateListener.of((update) => {
           if (update.docChanged) {
             this.valueChange.emit(update.state.doc.toString());
@@ -51,13 +52,8 @@ export class CodemirrorComponent implements OnInit, OnChanges, OnDestroy {
       parent: this.hostEl.nativeElement,
     });
 
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    mediaQuery.addEventListener('change', (e) => {
-      const newTheme = e.matches ? oneDark : [];
-      this.view?.dispatch({
-        effects: this.themeCompartment.reconfigure(newTheme),
-      });
-    });
+    this.mediaQueryList.addEventListener('change', this.themeListener);
+    this.changeBgColor.emit(isDark ? "#0d1117" : "#ffffff");
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -84,10 +80,27 @@ export class CodemirrorComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.mediaQueryList.removeEventListener('change', this.themeListener);
     this.view?.destroy();
     this.view = undefined;
   }
 
   focus(): void {
     this.view?.focus();
-  }}
+  }
+
+  private getTheme(isDark: boolean): Extension {
+    return isDark ? githubDark : githubLight;
+  }
+
+  private updateTheme(isDark: boolean) {
+    if (!this.view) {
+      return;
+    }
+    this.view.dispatch({
+      effects: this.themeCompartment.reconfigure(this.getTheme(isDark)),
+    });
+    this.changeBgColor.emit(isDark ? "#0d1117" : "#ffffff");
+  }
+
+}

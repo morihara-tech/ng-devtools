@@ -2,13 +2,12 @@ import { Component, ViewChild, Output, EventEmitter, OnInit } from '@angular/cor
 import { CodemirrorComponent } from '../../../../components/codemirror/codemirror.component';
 import { Extension } from '@codemirror/state';
 import { json, jsonParseLinter } from '@codemirror/lang-json';
-import { syntaxHighlighting, defaultHighlightStyle, indentOnInput, foldGutter } from '@codemirror/language';
+import { indentOnInput, foldGutter } from '@codemirror/language';
 import { defaultKeymap, historyKeymap } from '@codemirror/commands';
 import { history } from '@codemirror/commands';
 import { keymap, EditorView, lineNumbers, highlightActiveLine } from '@codemirror/view';
 import { autocompletion, completionKeymap, closeBrackets } from '@codemirror/autocomplete';
 import { linter, lintGutter, lintKeymap } from '@codemirror/lint';
-import { color } from '@codemirror/theme-one-dark';
 import { JsonFormatterInputModel } from '../../json-formatter-model';
 
 @Component({
@@ -22,7 +21,6 @@ import { JsonFormatterInputModel } from '../../json-formatter-model';
 export class JsonCodeEditorComponent implements OnInit{
   @ViewChild(CodemirrorComponent) codemirrorComponent!: CodemirrorComponent;
   @Output() catchError: EventEmitter<string> = new EventEmitter();
-  private isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
   value: string = '';
 
@@ -38,7 +36,6 @@ export class JsonCodeEditorComponent implements OnInit{
 
   extensions: Extension[] = [
     json(),
-    syntaxHighlighting(defaultHighlightStyle),
     indentOnInput(),
     history(),
     closeBrackets(),
@@ -57,7 +54,7 @@ export class JsonCodeEditorComponent implements OnInit{
     ]),
   ];
 
-  backgroundColor: string | null = this.isDarkMode ? color.background : null;
+  backgroundColor: string | null = null;
   errorMessage: string | null = null;
 
   ngOnInit(): void {
@@ -84,6 +81,10 @@ export class JsonCodeEditorComponent implements OnInit{
     } catch (error) {
       this.catchError.emit($localize`:@@page.json.formatter.errorMessage:無効なJSONです。`);
     }
+  }
+
+  onChangeBgColor(color: string): void {
+    this.backgroundColor = color;
   }
 
   private compactSimpleArrays(json: string): string {
