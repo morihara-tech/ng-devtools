@@ -1,6 +1,7 @@
 .codemirror-wrapper {
   min-height: 200px;
   border: 1px solid var(--mat-sys-outline-variant);
+  cursor: text;
 
   &:focus-within {
     border-color: var(--mat-sys-primary);

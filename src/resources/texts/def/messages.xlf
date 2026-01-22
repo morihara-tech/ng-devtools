@@ -396,11 +396,6 @@
         <source>Canvas設定</source>
       </segment>
     </unit>
-    <unit id="page.svgToPng.card.input.settings.heading">
-      <segment>
-        <source>出力設定</source>
-      </segment>
-    </unit>
     <unit id="page.svgToPng.card.input.settings.svg">
       <segment>
         <source>SVG設定</source>
@@ -631,7 +626,7 @@
         <source>SQL整形ツールを実装しました。</source>
       </segment>
     </unit>
-    <unit id="update.home.20260122">
+    <unit id="update.home.20260123">
       <segment>
         <source>SVG描画ツールを実装しました。</source>
       </segment>

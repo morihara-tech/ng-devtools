@@ -541,7 +541,7 @@
         <target>Implemented SQL Formatter tool.</target>
       </segment>
     </unit>
-    <unit id="update.home.20260122">
+    <unit id="update.home.20260123">
       <segment state="initial">
         <source>SVG描画ツールを実装しました。</source>
         <target>Implemented SVG to PNG Converter.</target>
@@ -635,12 +635,6 @@
       <segment state="initial">
         <source>Canvas設定</source>
         <target>Canvas Settings</target>
-      </segment>
-    </unit>
-    <unit id="page.svgToPng.card.input.settings.heading">
-      <segment state="initial">
-        <source>出力設定</source>
-        <target>Output Settings</target>
       </segment>
     </unit>
     <unit id="page.svgToPng.card.input.settings.svg">

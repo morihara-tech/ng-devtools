@@ -1,15 +1,14 @@
 import { Component, ViewChild, Output, EventEmitter, OnInit } from '@angular/core';
 import { CodemirrorComponent } from '../../../components/codemirror/codemirror.component';
 import { Extension } from '@codemirror/state';
-import { xml } from '@codemirror/lang-xml';
-import { syntaxHighlighting, defaultHighlightStyle, indentOnInput, foldGutter } from '@codemirror/language';
+import { html, autoCloseTags } from '@codemirror/lang-html';
+import { indentOnInput, foldGutter } from '@codemirror/language';
 import { defaultKeymap, historyKeymap } from '@codemirror/commands';
 import { history } from '@codemirror/commands';
 import { keymap, EditorView, lineNumbers, highlightActiveLine } from '@codemirror/view';
 import { autocompletion, completionKeymap, closeBrackets } from '@codemirror/autocomplete';
-import { lintGutter, lintKeymap } from '@codemirror/lint';
-import { autoCloseTags } from '@codemirror/lang-xml';
 import { bracketMatching } from '@codemirror/language';
+import { lintGutter } from '@codemirror/lint';
 
 @Component({
   selector: 'app-svg-code-editor',
@@ -26,13 +25,12 @@ export class SvgCodeEditorComponent implements OnInit {
   value: string = '';
 
   sampleSvg = `<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="100" cy="100" r="80" fill="#4CAF50" />
+  <circle cx="100" cy="100" r="80" fill="#AE1C1D" />
   <text x="100" y="110" text-anchor="middle" font-size="24" fill="white">SVG</text>
 </svg>`;
 
   extensions: Extension[] = [
-    xml(),
-    syntaxHighlighting(defaultHighlightStyle),
+    html(),
     indentOnInput(),
     history(),
     closeBrackets(),
@@ -48,9 +46,10 @@ export class SvgCodeEditorComponent implements OnInit {
       ...defaultKeymap,
       ...historyKeymap,
       ...completionKeymap,
-      ...lintKeymap,
     ]),
   ];
+
+  backgroundColor: string | null = null;
 
   ngOnInit(): void {
     this.value = this.sampleSvg;
@@ -64,4 +63,9 @@ export class SvgCodeEditorComponent implements OnInit {
     this.value = newValue;
     this.valueChange.emit(newValue);
   }
+
+  onChangeBgColor(color: string): void {
+    this.backgroundColor = color;
+  }
+
 }

@@ -1,8 +1,8 @@
-import { Component, inject, ElementRef, ViewChild, SecurityContext } from '@angular/core';
+import { Component, inject, ElementRef, ViewChild } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { HeadingComponent } from '../../../components/heading/heading.component';
-import { SvgToPngSettingsModel } from '../svg-to-png-model';
+import { SvgToPngSettingsModel, DEFAULT_SVG_TO_PNG_SETTINGS } from '../svg-to-png-model';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -25,17 +25,9 @@ import { CommonModule } from '@angular/common';
 })
 export class SvgToPngOutputCardComponent {
   @ViewChild('canvas', { static: false }) canvasElement?: ElementRef<HTMLCanvasElement>;
-  
+
   svgCode: string = '';
-  settings: SvgToPngSettingsModel = {
-    canvasWidth: 500,
-    canvasHeight: 500,
-    transparent: false,
-    backgroundColor: '#ffffff',
-    scale: 100,
-    offsetX: 0,
-    offsetY: 0,
-  };
+  settings: SvgToPngSettingsModel = { ...DEFAULT_SVG_TO_PNG_SETTINGS };
   safeHtml?: SafeHtml;
 
   private snackBar = inject(MatSnackBar);
@@ -44,21 +36,35 @@ export class SvgToPngOutputCardComponent {
   updatePreview(svgCode: string, settings: SvgToPngSettingsModel): void {
     this.svgCode = svgCode;
     this.settings = settings;
-    
+
     if (this.svgCode) {
-      this.safeHtml = this.sanitizer.sanitize(SecurityContext.HTML, this.svgCode) as SafeHtml;
+      this.safeHtml = this.sanitizer.bypassSecurityTrustHtml(this.svgCode);
     } else {
       this.safeHtml = undefined;
     }
   }
 
-  onClickCopy(): void {
+  async onClickCopy(): Promise<void> {
     if (!this.svgCode) {
       return;
     }
-    navigator.clipboard.writeText(this.svgCode);
-    this.snackBar.open($localize`:@@common.copiedMessage:コピーしました。`,
-      $localize`:@@common.ok:はい`, { duration: 2000, horizontalPosition: 'start' });
+
+    try {
+      const pngDataUrl = await this.convertSvgToPng();
+      const response = await fetch(pngDataUrl);
+      const blob = await response.blob();
+
+      await navigator.clipboard.write([
+        new ClipboardItem({ 'image/png': blob })
+      ]);
+
+      this.snackBar.open($localize`:@@common.copiedMessage:コピーしました。`,
+        $localize`:@@common.ok:はい`, { duration: 2000, horizontalPosition: 'start' });
+    } catch (error) {
+      console.error('Failed to copy PNG:', error);
+      this.snackBar.open($localize`:@@page.svgToPng.card.output.copyError:コピーに失敗しました。`,
+        $localize`:@@common.ok:はい`, { duration: 2000, horizontalPosition: 'start' });
+    }
   }
 
   async onClickDownload(): Promise<void> {
@@ -73,7 +79,7 @@ export class SvgToPngOutputCardComponent {
       link.download = `svg-image-${timestamp}.png`;
       link.href = pngDataUrl;
       link.click();
-      
+
       this.snackBar.open($localize`:@@page.svgToPng.card.output.downloaded:ダウンロードしました。`,
         $localize`:@@common.ok:はい`, { duration: 2000, horizontalPosition: 'start' });
     } catch (error) {
@@ -105,7 +111,7 @@ export class SvgToPngOutputCardComponent {
       canvas.width = this.settings.canvasWidth;
       canvas.height = this.settings.canvasHeight;
       const ctx = canvas.getContext('2d');
-      
+
       if (!ctx) {
         reject(new Error('Failed to get canvas context'));
         return;
@@ -124,7 +130,7 @@ export class SvgToPngOutputCardComponent {
         const scaleValue = this.settings.scale / 100;
         const scaledWidth = img.width * scaleValue;
         const scaledHeight = img.height * scaleValue;
-        
+
         ctx.drawImage(
           img,
           this.settings.offsetX,
@@ -132,7 +138,7 @@ export class SvgToPngOutputCardComponent {
           scaledWidth,
           scaledHeight
         );
-        
+
         URL.revokeObjectURL(url);
         const pngDataUrl = canvas.toDataURL('image/png');
         resolve(pngDataUrl);

@@ -7,10 +7,8 @@
       </div>
       <form [formGroup]="formGroup">
         <div class="settings-wrapper">
-          <app-heading headingType="h4" i18n="@@page.svgToPng.card.input.settings.heading">出力設定</app-heading>
-          
-          <div class="settings-group">
-            <app-heading headingType="h4" i18n="@@page.svgToPng.card.input.settings.canvas">Canvas設定</app-heading>
+          <app-heading headingType="h4" i18n="@@page.svgToPng.card.input.settings.canvas">Canvas設定</app-heading>
+          <div class="settings-group flex wrap">
             <div class="input-form-wrapper flex wrap">
               <mat-form-field class="input-form">
                 <mat-label i18n="@@page.svgToPng.card.input.canvasWidth">幅</mat-label>
@@ -27,20 +25,25 @@
                 <span matTextSuffix>px</span>
               </mat-form-field>
             </div>
-            <div class="flex wrap">
-              <mat-slide-toggle formControlName="transparent" i18n="@@page.svgToPng.card.input.transparent">背景を透過</mat-slide-toggle>
-            </div>
             <div class="input-form-wrapper flex wrap">
-              <mat-form-field class="input-form">
+              <mat-form-field class="input-form background-color-field">
                 <mat-label i18n="@@page.svgToPng.card.input.backgroundColor">背景色</mat-label>
-                <input matInput type="color"
-                  formControlName="backgroundColor">
+                <input matInput type="text"
+                  placeholder="#ffffff"
+                  formControlName="backgroundColor"
+                  (input)="onBackgroundColorChange($any($event.target).value)">
+                <input type="color"
+                  formControlName="backgroundColor"
+                  matSuffix
+                  class="color-picker-input"
+                  (input)="onBackgroundColorChange($any($event.target).value)">
               </mat-form-field>
+              <mat-slide-toggle formControlName="transparent" i18n="@@page.svgToPng.card.input.transparent">背景を透過</mat-slide-toggle>
             </div>
           </div>
 
-          <div class="settings-group">
-            <app-heading headingType="h4" i18n="@@page.svgToPng.card.input.settings.svg">SVG設定</app-heading>
+          <app-heading headingType="h4" i18n="@@page.svgToPng.card.input.settings.svg">SVG設定</app-heading>
+          <div class="settings-group flex wrap">
             <div class="scale-wrapper">
               <span class="scale-label" i18n="@@page.svgToPng.card.input.scale">拡大率</span>
               <div class="scale-control">

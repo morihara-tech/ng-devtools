@@ -3,7 +3,7 @@ import { SvgToPngInputCardComponent } from './svg-to-png-input-card/svg-to-png-i
 import { SvgToPngOutputCardComponent } from './svg-to-png-output-card/svg-to-png-output-card.component';
 import { HeadingComponent } from '../../components/heading/heading.component';
 import { ApplicationPageTemplateComponent } from '../../components/application-page-template/application-page-template.component';
-import { SvgToPngSettingsModel } from './svg-to-png-model';
+import { SvgToPngSettingsModel, DEFAULT_SVG_TO_PNG_SETTINGS } from './svg-to-png-model';
 
 @Component({
   selector: 'app-svg-to-png-page',
@@ -20,15 +20,7 @@ export class SvgToPngPageComponent {
   @ViewChild('output') output?: SvgToPngOutputCardComponent;
   @ViewChild('input') input?: SvgToPngInputCardComponent;
 
-  currentSettings: SvgToPngSettingsModel = {
-    canvasWidth: 500,
-    canvasHeight: 500,
-    transparent: false,
-    backgroundColor: '#ffffff',
-    scale: 100,
-    offsetX: 0,
-    offsetY: 0,
-  };
+  currentSettings: SvgToPngSettingsModel = { ...DEFAULT_SVG_TO_PNG_SETTINGS };
   currentSvgCode: string = '';
 
   ngAfterViewInit(): void {

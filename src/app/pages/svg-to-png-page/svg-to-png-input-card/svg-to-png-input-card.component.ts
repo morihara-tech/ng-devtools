@@ -1,7 +1,7 @@
 import { Component, ViewChild, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
-import { SvgToPngSettingsModel } from '../svg-to-png-model';
+import { SvgToPngSettingsModel, DEFAULT_SVG_TO_PNG_SETTINGS } from '../svg-to-png-model';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -68,29 +68,36 @@ export class SvgToPngInputCardComponent implements OnInit {
     return `${value}%`;
   }
 
+  onBackgroundColorChange(value: string): void {
+    if (this.formGroup) {
+      this.formGroup.controls['backgroundColor'].setValue(value, { emitEvent: false });
+      this.emitSettings();
+    }
+  }
+
   private resetForm(): void {
     this.formGroup = this.fb.group({
-      canvasWidth: this.fb.control<number>(500, [
+      canvasWidth: this.fb.control<number>(DEFAULT_SVG_TO_PNG_SETTINGS.canvasWidth, [
         Validators.required,
         Validators.min(1),
         Validators.max(5000)
       ]),
-      canvasHeight: this.fb.control<number>(500, [
+      canvasHeight: this.fb.control<number>(DEFAULT_SVG_TO_PNG_SETTINGS.canvasHeight, [
         Validators.required,
         Validators.min(1),
         Validators.max(5000)
       ]),
-      transparent: this.fb.control<boolean>(false),
-      backgroundColor: this.fb.control<string>('#ffffff'),
-      scale: this.fb.control<number>(100, [
+      transparent: this.fb.control<boolean>(DEFAULT_SVG_TO_PNG_SETTINGS.transparent),
+      backgroundColor: this.fb.control<string>(DEFAULT_SVG_TO_PNG_SETTINGS.backgroundColor),
+      scale: this.fb.control<number>(DEFAULT_SVG_TO_PNG_SETTINGS.scale, [
         Validators.required,
         Validators.min(1),
         Validators.max(500)
       ]),
-      offsetX: this.fb.control<number>(0, [
+      offsetX: this.fb.control<number>(DEFAULT_SVG_TO_PNG_SETTINGS.offsetX, [
         Validators.required
       ]),
-      offsetY: this.fb.control<number>(0, [
+      offsetY: this.fb.control<number>(DEFAULT_SVG_TO_PNG_SETTINGS.offsetY, [
         Validators.required
       ]),
     });
@@ -104,9 +111,9 @@ export class SvgToPngInputCardComponent implements OnInit {
     const backgroundColorControl = this.formGroup.controls['backgroundColor'];
     
     if (isTransparent) {
-      backgroundColorControl.disable();
+      backgroundColorControl.disable({ emitEvent: false });
     } else {
-      backgroundColorControl.enable();
+      backgroundColorControl.enable({ emitEvent: false });
     }
   }
 
