@@ -68,9 +68,16 @@ export class IpCidrOutputCardComponent {
     }
     
     const json = JSON.stringify(this.result, null, 2);
-    navigator.clipboard.writeText(json);
-    this.snackBar.open($localize`:@@common.copiedMessage:コピーしました。`,
-      $localize`:@@common.ok:はい`, { duration: 2000, horizontalPosition: 'start' });
+    
+    try {
+      navigator.clipboard.writeText(json);
+      this.snackBar.open($localize`:@@common.copiedMessage:コピーしました。`,
+        $localize`:@@common.ok:はい`, { duration: 2000, horizontalPosition: 'start' });
+    } catch (error) {
+      console.error('Failed to copy to clipboard:', error);
+      this.snackBar.open($localize`:@@common.copyError:コピーに失敗しました。`,
+        $localize`:@@common.ok:はい`, { duration: 2000, horizontalPosition: 'start' });
+    }
   }
 
   get networkPart(): string {

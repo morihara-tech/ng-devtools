@@ -30,6 +30,12 @@ export class IpCidrInputCardComponent implements OnInit {
   formGroup?: FormGroup;
   protocol: IpProtocol = 'ipv4';
 
+  // IPv4 pattern: xxx.xxx.xxx.xxx where xxx is 0-255
+  private readonly IPV4_PATTERN = /^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
+  
+  // IPv6 pattern: supports full, compressed, and mixed notations
+  private readonly IPV6_PATTERN = /^(([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}|::([0-9a-fA-F]{1,4}:){0,6}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1}(:[0-9a-fA-F]{1,4}){1,6}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4})$/;
+
   constructor(
     private fb: FormBuilder
   ) {}
@@ -49,17 +55,22 @@ export class IpCidrInputCardComponent implements OnInit {
     
     // Update CIDR range based on protocol
     const cidrControl = this.formGroup.controls['cidr'];
+    const ipControl = this.formGroup.controls['ipAddress'];
+    
     if (protocol === 'ipv4') {
       cidrControl.setValue(24);
       cidrControl.setValidators([Validators.required, Validators.min(0), Validators.max(32)]);
+      ipControl.setValidators([Validators.required, Validators.pattern(this.IPV4_PATTERN)]);
+      ipControl.setValue('192.168.1.1');
     } else {
       cidrControl.setValue(64);
       cidrControl.setValidators([Validators.required, Validators.min(0), Validators.max(128)]);
+      ipControl.setValidators([Validators.required, Validators.pattern(this.IPV6_PATTERN)]);
+      ipControl.setValue('2001:db8::1');
     }
-    cidrControl.updateValueAndValidity();
     
-    // Clear IP address to avoid confusion
-    this.formGroup.controls['ipAddress'].setValue('');
+    cidrControl.updateValueAndValidity();
+    ipControl.updateValueAndValidity();
   }
 
   onIpAddressInput(event: Event): void {
@@ -139,12 +150,10 @@ export class IpCidrInputCardComponent implements OnInit {
   }
 
   private resetForm(): void {
-    const ipv4Pattern = /^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
-    
     this.formGroup = this.fb.group({
       ipAddress: this.fb.control<string>('192.168.1.1', [
         Validators.required,
-        Validators.pattern(ipv4Pattern)
+        Validators.pattern(this.IPV4_PATTERN)
       ]),
       cidr: this.fb.control<number>(24, [
         Validators.required,

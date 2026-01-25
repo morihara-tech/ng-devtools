@@ -6,6 +6,11 @@
         <source>ホームに戻る</source>
       </segment>
     </unit>
+    <unit id="common.copyError">
+      <segment>
+        <source>コピーに失敗しました。</source>
+      </segment>
+    </unit>
     <unit id="common.copyRight">
       <segment>
         <source>© 2026 Yutaka Morihara</source>
