@@ -1,0 +1,53 @@
+<mat-card appearance="raised">
+  <mat-card-content>
+    <app-heading headingType="h3">
+      <span i18n="@@page.ipCidr.card.output.heading">計算結果</span>
+      <div class="right">
+        <button mat-icon-button
+          matTooltip="JSONをコピー"
+          i18n-matTooltip="@@page.ipCidr.card.output.copyJson"
+          (click)="onClickCopyJson()">
+          <mat-icon>content_copy</mat-icon>
+        </button>
+      </div>
+    </app-heading>
+    
+    <!-- Results Grid -->
+    <div class="grid-wrapper">
+      @if (gridSource.length > 0) {
+        <revo-grid 
+          [source]="gridSource" 
+          [columns]="columns"
+          [readonly]="true"
+          theme="compact"
+          [autoSizeColumn]="true">
+        </revo-grid>
+      } @else {
+        <div class="no-data" i18n="@@page.ipCidr.card.output.noData">
+          IPアドレスとCIDRを入力してください。
+        </div>
+      }
+    </div>
+
+    <!-- Bit Visualization -->
+    @if (result) {
+      <div class="visualization-wrapper">
+        <h4 i18n="@@page.ipCidr.card.output.visualization">ビット視覚化</h4>
+        <div class="bit-display">
+          <span class="network-bits">{{ networkPart }}</span>
+          <span class="host-bits">{{ hostPart }}</span>
+        </div>
+        <div class="legend">
+          <span class="legend-item">
+            <span class="legend-color network"></span>
+            <span i18n="@@page.ipCidr.card.output.networkPart">ネットワーク部</span>
+          </span>
+          <span class="legend-item">
+            <span class="legend-color host"></span>
+            <span i18n="@@page.ipCidr.card.output.hostPart">ホスト部</span>
+          </span>
+        </div>
+      </div>
+    }
+  </mat-card-content>
+</mat-card>

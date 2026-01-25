@@ -103,6 +103,144 @@
         <target>Page Not Found</target>
       </segment>
     </unit>
+    <unit id="page.ipCidr.card.input.cidr">
+      <segment state="initial">
+        <source>CIDR</source>
+        <target>CIDR</target>
+      </segment>
+    </unit>
+    <unit id="page.ipCidr.card.input.error.cidrRange">
+      <segment state="initial">
+        <source>CIDRは0以上<ph id="0" equiv="PH" disp="maxCidr"/>以下で入力してください。</source>
+        <target>Please enter a CIDR value between 0 and <ph id="0" equiv="PH" disp="maxCidr"/>.</target>
+      </segment>
+    </unit>
+    <unit id="page.ipCidr.card.input.error.invalidIpv4">
+      <segment state="initial">
+        <source>有効なIPv4アドレスを入力してください。</source>
+        <target>Please enter a valid IPv4 address.</target>
+      </segment>
+    </unit>
+    <unit id="page.ipCidr.card.input.error.invalidIpv6">
+      <segment state="initial">
+        <source>有効なIPv6アドレスを入力してください。</source>
+        <target>Please enter a valid IPv6 address.</target>
+      </segment>
+    </unit>
+    <unit id="page.ipCidr.card.input.error.required">
+      <segment state="initial">
+        <source>必須項目を入力してください。</source>
+        <target>Please fill in all required fields.</target>
+      </segment>
+    </unit>
+    <unit id="page.ipCidr.card.input.heading">
+      <segment state="initial">
+        <source>入力設定</source>
+        <target>Input Settings</target>
+      </segment>
+    </unit>
+    <unit id="page.ipCidr.card.input.ipAddress">
+      <segment state="initial">
+        <source>IPアドレス</source>
+        <target>IP Address</target>
+      </segment>
+    </unit>
+    <unit id="page.ipCidr.card.output.cidrNotation">
+      <segment state="initial">
+        <source>CIDR表記</source>
+        <target>CIDR Notation</target>
+      </segment>
+    </unit>
+    <unit id="page.ipCidr.card.output.copyJson">
+      <segment state="initial">
+        <source>JSONをコピー</source>
+        <target>Copy JSON</target>
+      </segment>
+    </unit>
+    <unit id="page.ipCidr.card.output.firstHost">
+      <segment state="initial">
+        <source>最初のホスト</source>
+        <target>First Host</target>
+      </segment>
+    </unit>
+    <unit id="page.ipCidr.card.output.grid.columnName">
+      <segment state="initial">
+        <source>項目</source>
+        <target>Item</target>
+      </segment>
+    </unit>
+    <unit id="page.ipCidr.card.output.grid.columnValue">
+      <segment state="initial">
+        <source>値</source>
+        <target>Value</target>
+      </segment>
+    </unit>
+    <unit id="page.ipCidr.card.output.heading">
+      <segment state="initial">
+        <source>計算結果</source>
+        <target>Calculation Results</target>
+      </segment>
+    </unit>
+    <unit id="page.ipCidr.card.output.hostPart">
+      <segment state="initial">
+        <source>ホスト部</source>
+        <target>Host Part</target>
+      </segment>
+    </unit>
+    <unit id="page.ipCidr.card.output.ipType">
+      <segment state="initial">
+        <source>IPタイプ</source>
+        <target>IP Type</target>
+      </segment>
+    </unit>
+    <unit id="page.ipCidr.card.output.lastHost">
+      <segment state="initial">
+        <source>最後のホスト</source>
+        <target>Last Host</target>
+      </segment>
+    </unit>
+    <unit id="page.ipCidr.card.output.netmask">
+      <segment state="initial">
+        <source>ネットマスク</source>
+        <target>Netmask</target>
+      </segment>
+    </unit>
+    <unit id="page.ipCidr.card.output.networkAddress">
+      <segment state="initial">
+        <source>ネットワークアドレス</source>
+        <target>Network Address</target>
+      </segment>
+    </unit>
+    <unit id="page.ipCidr.card.output.networkPart">
+      <segment state="initial">
+        <source>ネットワーク部</source>
+        <target>Network Part</target>
+      </segment>
+    </unit>
+    <unit id="page.ipCidr.card.output.noData">
+      <segment state="initial">
+        <source> IPアドレスとCIDRを入力してください。 </source>
+        <target>Please enter an IP address and CIDR.</target>
+      </segment>
+    </unit>
+    <unit id="page.ipCidr.card.output.totalHosts">
+      <segment state="initial">
+        <source>合計ホスト数</source>
+        <target>Total Hosts</target>
+      </segment>
+    </unit>
+    <unit id="page.ipCidr.card.output.visualization">
+      <segment state="initial">
+        <source>ビット視覚化</source>
+        <target>Bit Visualization</target>
+      </segment>
+    </unit>
+    <unit id="page.ipCidr.title">
+      <segment state="initial">
+        <source>IP/CIDR計算機</source>
+        <target>IP/CIDR Calculator</target>
+      </segment>
+    </unit>
     <unit id="page.json.formatter.errorMessage">
       <segment state="initial">
         <source>無効なJSONです。</source>
@@ -547,6 +685,12 @@
         <target>Implemented SVG to PNG Converter.</target>
       </segment>
     </unit>
+    <unit id="update.home.20260125">
+      <segment state="initial">
+        <source>IP/CIDR計算機を実装しました。</source>
+        <target>Implemented IP/CIDR Calculator.</target>
+      </segment>
+    </unit>
     <unit id="page.sql.menu">
       <segment state="initial">
         <source>SQL整形</source>
@@ -647,6 +791,12 @@
       <segment state="initial">
         <source>背景を透過</source>
         <target>Transparent Background</target>
+      </segment>
+    </unit>
+    <unit id="page.svgToPng.card.output.copyError">
+      <segment state="initial">
+        <source>コピーに失敗しました。</source>
+        <target/>
       </segment>
     </unit>
     <unit id="page.svgToPng.card.output.downloaded">

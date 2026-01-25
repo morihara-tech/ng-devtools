@@ -1,0 +1,50 @@
+.margin-bottom-8 {
+  margin-bottom: 8px;
+}
+
+.margin-bottom-16 {
+  margin-bottom: 16px;
+}
+
+.protocol-toggle-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.input-form-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.input-form-l {
+  width: 100%;
+}
+
+.cidr-slider-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cidr-label {
+  font-size: 14px;
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.slider-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.slider-container mat-slider {
+  flex: 1;
+}
+
+.cidr-value {
+  min-width: 40px;
+  text-align: right;
+  font-weight: 500;
+  color: var(--mat-sys-primary);
+}
