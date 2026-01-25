@@ -802,7 +802,7 @@
     <unit id="page.svgToPng.card.output.copyError">
       <segment state="initial">
         <source>コピーに失敗しました。</source>
-        <target/>
+        <target>Failed to copy.</target>
       </segment>
     </unit>
     <unit id="page.svgToPng.card.output.downloaded">

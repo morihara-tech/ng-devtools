@@ -69,6 +69,14 @@ export class IpCidrOutputCardComponent {
     
     const json = JSON.stringify(this.result, null, 2);
     
+    // Check if clipboard API is available
+    if (!navigator.clipboard) {
+      console.error('Clipboard API not available');
+      this.snackBar.open($localize`:@@common.copyError:コピーに失敗しました。`,
+        $localize`:@@common.ok:はい`, { duration: 2000, horizontalPosition: 'start' });
+      return;
+    }
+    
     try {
       navigator.clipboard.writeText(json);
       this.snackBar.open($localize`:@@common.copiedMessage:コピーしました。`,

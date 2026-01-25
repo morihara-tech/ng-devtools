@@ -100,9 +100,10 @@ export class IpCidrCalculatorService {
     
     // Total hosts
     const totalHosts = BigInt(2) ** BigInt(128 - cidr);
+    // For very large numbers, use toString(); for smaller ones, convert to Number and use toLocaleString()
     const totalHostsStr = totalHosts > BigInt(Number.MAX_SAFE_INTEGER) 
       ? totalHosts.toString() 
-      : totalHosts.toLocaleString();
+      : Number(totalHosts).toLocaleString();
     
     // Convert back to IPv6 addresses
     const networkAddr = this.bigIntToIpv6(networkBigInt);

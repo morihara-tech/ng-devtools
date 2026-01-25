@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, AfterViewInit, Output } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -24,7 +24,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
   templateUrl: './ip-cidr-input-card.component.html',
   styleUrl: './ip-cidr-input-card.component.scss'
 })
-export class IpCidrInputCardComponent implements OnInit {
+export class IpCidrInputCardComponent implements OnInit, AfterViewInit {
   @Output() calculate: EventEmitter<IpCidrInputModel> = new EventEmitter();
 
   formGroup?: FormGroup;
@@ -42,9 +42,11 @@ export class IpCidrInputCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.resetForm();
-    setTimeout(() => {
-      this.onCalculate();
-    }, 10);
+  }
+
+  ngAfterViewInit(): void {
+    // Trigger initial calculation after view is initialized
+    this.onCalculate();
   }
 
   onProtocolChange(protocol: IpProtocol): void {
