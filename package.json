@@ -34,6 +34,8 @@
     "@codemirror/search": "^6.6.0",
     "@codemirror/state": "^6.5.2",
     "@codemirror/view": "^6.38.6",
+    "@revolist/angular-datagrid": "^4.20.2",
+    "@revolist/revogrid": "^4.20.2",
     "@uiw/codemirror-theme-github": "^4.25.4",
     "express": "^4.18.2",
     "moment": "^2.18.1",
