@@ -691,7 +691,7 @@
         <target>Implemented SVG to PNG Converter.</target>
       </segment>
     </unit>
-    <unit id="update.home.20260125">
+    <unit id="update.home.20260126">
       <segment state="initial">
         <source>IP/CIDR計算機を実装しました。</source>
         <target>Implemented IP/CIDR Calculator.</target>

@@ -3,8 +3,8 @@ import { UpdateHistoryModel } from "../../../app/components/update-history/updat
 export const HOME_UPDATE_HISTORIES: Array<UpdateHistoryModel> = [
   // add new update history here
   {
-    date: '2026-01-25',
-    description: $localize`:@@update.home.20260125:IP/CIDR計算機を実装しました。`
+    date: '2026-01-26',
+    description: $localize`:@@update.home.20260126:IP/CIDR計算機を実装しました。`
   },
   {
     date: '2026-01-23',

@@ -17,11 +17,8 @@
   border-radius: 8px;
 }
 
-.visualization-wrapper h4 {
-  margin: 0 0 12px 0;
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--mat-sys-on-surface);
+.visualization-wrapper app-heading {
+  margin-bottom: 12px;
 }
 
 .bit-display {
