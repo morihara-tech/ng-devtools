@@ -241,6 +241,12 @@
         <target>Bit Visualization</target>
       </segment>
     </unit>
+    <unit id="page.ipCidr.menu">
+      <segment state="initial">
+        <source>IP/CIDR計算機</source>
+        <target>IP/CIDR Calculator</target>
+      </segment>
+    </unit>
     <unit id="page.ipCidr.title">
       <segment state="initial">
         <source>IP/CIDR計算機</source>

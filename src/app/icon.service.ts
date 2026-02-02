@@ -14,5 +14,6 @@ export class IconService {
     iconRegistry.addSvgIcon('ulid', sanitizer.bypassSecurityTrustResourceUrl('icons/ulid.svg'));
     iconRegistry.addSvgIcon('uuid', sanitizer.bypassSecurityTrustResourceUrl('icons/uuid.svg'));
     iconRegistry.addSvgIcon('json', sanitizer.bypassSecurityTrustResourceUrl('icons/json.svg'));
+    iconRegistry.addSvgIcon('ipCidr', sanitizer.bypassSecurityTrustResourceUrl('icons/ipcidr.svg'));
   }
 }

@@ -201,6 +201,11 @@
         <source>ビット視覚化</source>
       </segment>
     </unit>
+    <unit id="page.ipCidr.menu">
+      <segment>
+        <source>IP/CIDR計算機</source>
+      </segment>
+    </unit>
     <unit id="page.ipCidr.title">
       <segment>
         <source>IP/CIDR計算機</source>
