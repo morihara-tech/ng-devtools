@@ -4,6 +4,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatSelectModule } from '@angular/material/select';
 import { MatSliderModule } from '@angular/material/slider';
 import { HeadingComponent } from '../../../components/heading/heading.component';
 import { IpCidrInputModel, IpProtocol } from '../ip-cidr-model';
@@ -18,6 +19,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
     MatButtonToggleModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSelectModule,
     MatSliderModule,
     HeadingComponent,
   ],
@@ -30,22 +32,21 @@ export class IpCidrInputCardComponent implements OnInit, AfterViewInit {
   formGroup?: FormGroup;
   protocol: IpProtocol = 'ipv4';
 
-  // IPv4 pattern: xxx.xxx.xxx.xxx where xxx is 0-255
-  private readonly IPV4_PATTERN = /^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
-  
-  // IPv6 pattern: supports full, compressed, and mixed notations
-  private readonly IPV6_PATTERN = /^(([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}|::([0-9a-fA-F]{1,4}:){0,6}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1}(:[0-9a-fA-F]{1,4}){1,6}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4})$/;
+  // IPv4 pattern: xxx.xxx.xxx.xxx or xxx.xxx.xxx.xxx/cidr where xxx is 0-255
+  private readonly IPV4_PATTERN = /^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(?:\/\d*)?$/;
+
+  // IPv6 pattern: supports full, compressed, and mixed notations, with optional CIDR notation
+  private readonly IPV6_PATTERN = /^(([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}|::([0-9a-fA-F]{1,4}:){0,6}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1}(:[0-9a-fA-F]{1,4}){1,6}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4})(?:\/\d*)?$/;
 
   constructor(
     private fb: FormBuilder
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.resetForm();
   }
 
   ngAfterViewInit(): void {
-    // Trigger initial calculation after view is initialized
     this.onCalculate();
   }
 
@@ -54,11 +55,9 @@ export class IpCidrInputCardComponent implements OnInit, AfterViewInit {
       return;
     }
     this.protocol = protocol;
-    
-    // Update CIDR range based on protocol
     const cidrControl = this.formGroup.controls['cidr'];
     const ipControl = this.formGroup.controls['ipAddress'];
-    
+
     if (protocol === 'ipv4') {
       cidrControl.setValue(24);
       cidrControl.setValidators([Validators.required, Validators.min(0), Validators.max(32)]);
@@ -70,38 +69,66 @@ export class IpCidrInputCardComponent implements OnInit, AfterViewInit {
       ipControl.setValidators([Validators.required, Validators.pattern(this.IPV6_PATTERN)]);
       ipControl.setValue('2001:db8::1');
     }
-    
+
     cidrControl.updateValueAndValidity();
     ipControl.updateValueAndValidity();
   }
 
-  onIpAddressInput(event: Event): void {
+  onIpAddressBlur(event: Event): void {
     const input = (event.target as HTMLInputElement).value;
-    
-    // Smart input: detect CIDR notation and auto-split
-    const match = input.match(/^(.+)\/(\d+)$/);
-    if (match && this.formGroup) {
+    const ipControl = this.formGroup?.controls['ipAddress'];
+    const cidrControl = this.formGroup?.controls['cidr'];
+
+    if (!ipControl || !cidrControl) {
+      return;
+    }
+
+    const match = input.match(/^(.+?)(?:\/(\d+))?$/);
+    if (match) {
       const ipPart = match[1];
-      const cidrPart = parseInt(match[2], 10);
-      
-      // Set IP address without CIDR
-      this.formGroup.controls['ipAddress'].setValue(ipPart);
-      
-      // Set CIDR if valid
-      const maxCidr = this.protocol === 'ipv4' ? 32 : 128;
-      if (cidrPart >= 0 && cidrPart <= maxCidr) {
-        this.formGroup.controls['cidr'].setValue(cidrPart);
+      const cidrPart = match[2];
+
+      if (cidrPart) {
+        const cidrValue = parseInt(cidrPart, 10);
+        const maxCidr = this.protocol === 'ipv4' ? 32 : 128;
+        if (!isNaN(cidrValue) && cidrValue >= 0 && cidrValue <= maxCidr) {
+          cidrControl.setValue(cidrValue, { emitEvent: false });
+          cidrControl.updateValueAndValidity();
+        }
       }
     }
+  }
+
+  onCidrChange(event: any): void {
+    const ipControl = this.formGroup?.controls['ipAddress'];
+    const cidrControl = this.formGroup?.controls['cidr'];
+
+    if (!ipControl || !cidrControl) {
+      return;
+    }
+
+    let currentIp = ipControl.value;
+    const newCidr = cidrControl.value;
+    if (currentIp.includes('/')) {
+      currentIp = currentIp.split('/')[0];
+    }
+    const ipWithCidr = `${currentIp}/${newCidr}`;
+    ipControl.setValue(ipWithCidr, { emitEvent: false });
   }
 
   onCalculate(): void {
     if (!this.formGroup || this.hasError) {
       return;
     }
+
+    let ipAddress = this.formGroup.controls['ipAddress'].value;
+    if (ipAddress.includes('/')) {
+      ipAddress = ipAddress.split('/')[0];
+    }
+
     const model: IpCidrInputModel = {
       protocol: this.protocol,
-      ipAddress: this.formGroup.controls['ipAddress'].value,
+      ipAddress: ipAddress,
       cidr: Number(this.formGroup.controls['cidr'].value),
     };
     this.calculate.emit(model);
@@ -124,7 +151,7 @@ export class IpCidrInputCardComponent implements OnInit, AfterViewInit {
         return $localize`:@@page.ipCidr.card.input.error.required:必須項目を入力してください。`;
       }
     }
-    
+
     const ipControl = this.formGroup.controls['ipAddress'];
     if (ipControl.errors?.['pattern']) {
       if (this.protocol === 'ipv4') {
@@ -133,13 +160,13 @@ export class IpCidrInputCardComponent implements OnInit, AfterViewInit {
         return $localize`:@@page.ipCidr.card.input.error.invalidIpv6:有効なIPv6アドレスを入力してください。`;
       }
     }
-    
+
     const cidrControl = this.formGroup.controls['cidr'];
     if (cidrControl.errors?.['min'] || cidrControl.errors?.['max']) {
       const maxCidr = this.protocol === 'ipv4' ? 32 : 128;
       return $localize`:@@page.ipCidr.card.input.error.cidrRange:CIDRは0以上${maxCidr}以下で入力してください。`;
     }
-    
+
     return null;
   }
 

@@ -3,33 +3,27 @@
     <form [formGroup]="formGroup">
       <mat-card-content>
         <app-heading headingType="h3" i18n="@@page.ipCidr.card.input.heading">入力設定</app-heading>
-        
-        <!-- Protocol Toggle -->
-        <div class="protocol-toggle-wrapper margin-bottom-16">
-          <mat-button-toggle-group 
-            [value]="protocol" 
-            (change)="onProtocolChange($event.value)"
-            aria-label="Protocol selection">
-            <mat-button-toggle value="ipv4">IPv4</mat-button-toggle>
-            <mat-button-toggle value="ipv6">IPv6</mat-button-toggle>
-          </mat-button-toggle-group>
-        </div>
-
-        <div class="input-form-wrapper">
-          <!-- IP Address Input -->
-          <mat-form-field class="input-form-l">
-            <mat-label i18n="@@page.ipCidr.card.input.ipAddress">IPアドレス</mat-label>
-            <input matInput type="text"
-              [placeholder]="protocol === 'ipv4' ? '192.168.1.1 or 192.168.1.1/24' : '2001:db8::1 or 2001:db8::1/64'"
-              formControlName="ipAddress"
-              (input)="onIpAddressInput($event)">
-          </mat-form-field>
-
-          <!-- CIDR Slider -->
+        <div class="flex wrap">
+          <div class="input-form-wrapper flex wrap">
+            <mat-form-field class="input-form">
+              <mat-label i18n="@@page.ipCidr.card.input.protocol">プロトコル</mat-label>
+              <mat-select [value]="protocol" (selectionChange)="onProtocolChange($event.value)">
+                <mat-option value="ipv4">IPv4</mat-option>
+                <mat-option value="ipv6">IPv6</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field class="input-form">
+              <mat-label i18n="@@page.ipCidr.card.input.ipAddress">IPアドレス</mat-label>
+              <input matInput type="text"
+                [placeholder]="protocol === 'ipv4' ? '192.168.1.1 or 192.168.1.1/24' : '2001:db8::1 or 2001:db8::1/64'"
+                formControlName="ipAddress"
+                (blur)="onIpAddressBlur($event)">
+            </mat-form-field>
+          </div>
           <div class="cidr-slider-wrapper">
-            <label class="cidr-label" i18n="@@page.ipCidr.card.input.cidr">CIDR</label>
+            <span class="cidr-label" i18n="@@page.ipCidr.card.input.cidr">CIDR</span>
             <div class="slider-container">
-              <mat-slider [min]="0" [max]="maxCidr" [step]="1" discrete>
+              <mat-slider [min]="0" [max]="maxCidr" [step]="1" discrete (change)="onCidrChange($event)">
                 <input matSliderThumb formControlName="cidr">
               </mat-slider>
               <span class="cidr-value">{{ cidrValue }}</span>

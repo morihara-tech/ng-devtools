@@ -11,23 +11,41 @@
   justify-content: center;
 }
 
-.input-form-wrapper {
+.flex {
   display: flex;
-  flex-direction: column;
-  gap: 16px;
+  gap: 8px 32px;
+  align-items: center;
 }
 
-.input-form-l {
-  width: 100%;
+.wrap {
+  flex-wrap: wrap;
+}
+
+.input-form-wrapper {
+  margin-top: 16px;
+}
+
+.input-form {
+  width: 144px;
+  margin-bottom: 0;
+
+  ::ng-deep .mat-mdc-form-field-bottom-align::before {
+    height: 0 !important;
+  }
+
+  ::ng-deep .mat-mdc-form-field-subscript-wrapper {
+    height: 0;
+    margin-top: 0;
+  }
 }
 
 .cidr-slider-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  margin-top: 8px;
+  width: 320px;
 }
 
 .cidr-label {
+  display: block;
   font-size: 14px;
   color: var(--mat-sys-on-surface-variant);
 }
@@ -43,7 +61,7 @@
 }
 
 .cidr-value {
-  min-width: 40px;
+  min-width: 60px;
   text-align: right;
   font-weight: 500;
   color: var(--mat-sys-primary);
