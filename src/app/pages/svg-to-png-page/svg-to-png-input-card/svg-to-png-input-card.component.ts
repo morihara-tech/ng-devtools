@@ -38,6 +38,10 @@ export class SvgToPngInputCardComponent implements OnInit {
   @Output() svgCodeChange: EventEmitter<string> = new EventEmitter();
 
   formGroup?: FormGroup;
+  editorValue: string = `<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="100" cy="100" r="80" fill="#AE1C1D" />
+  <text x="100" y="110" text-anchor="middle" font-size="24" fill="white">SVG</text>
+</svg>`;
   private snackBar = inject(MatSnackBar);
 
   constructor(
@@ -57,7 +61,7 @@ export class SvgToPngInputCardComponent implements OnInit {
   }
 
   getSvgCode(): string {
-    return this.svgCodeEditorComponent?.value ?? '';
+    return this.editorValue ?? '';
   }
 
   get hasError(): boolean {
@@ -83,11 +87,8 @@ export class SvgToPngInputCardComponent implements OnInit {
   }
 
   onClickClear(): void {
-    if (!this.svgCodeEditorComponent) {
-      return;
-    }
-    const previousValue = this.svgCodeEditorComponent.value;
-    this.svgCodeEditorComponent.value = '';
+    const previousValue = this.editorValue;
+    this.editorValue = '';
     
     const snackBarRef = this.snackBar.open(
       $localize`:@@common.clearedMessage:クリアしました。`,
@@ -96,9 +97,7 @@ export class SvgToPngInputCardComponent implements OnInit {
     );
 
     snackBarRef.onAction().subscribe(() => {
-      if (this.svgCodeEditorComponent) {
-        this.svgCodeEditorComponent.value = previousValue;
-      }
+      this.editorValue = previousValue;
     });
   }
 

@@ -31,7 +31,7 @@
         </div>
       </app-heading>
       <div class="sql-area">
-        <app-sql-code-editor (catchError)="onCatchError($event)"></app-sql-code-editor>
+        <app-sql-code-editor [(value)]="editorValue" (catchError)="onCatchError($event)"></app-sql-code-editor>
       </div>
       <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
         <div class="input-form-wrapper">

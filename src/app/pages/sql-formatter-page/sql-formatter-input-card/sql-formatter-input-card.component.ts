@@ -35,6 +35,12 @@ export class SqlFormatterInputCardComponent {
 
   formGroup?: FormGroup;
   errorMessage?: string;
+  editorValue: string = `SELECT users.id, users.name, orders.order_date, orders.total
+FROM users
+INNER JOIN orders ON users.id = orders.user_id
+WHERE orders.status = 'completed' AND orders.total > 100
+ORDER BY orders.order_date DESC
+LIMIT 10`;
 
   private readonly fb: FormBuilder = inject(FormBuilder);
   private snackBar = inject(MatSnackBar);
@@ -69,11 +75,7 @@ export class SqlFormatterInputCardComponent {
   }
 
   onClickCopyMenu(copyMode: 'plain' | 'quote' | 'code'): void {
-    if (!this.sqlCodeEditorComponent) {
-      return;
-    }
-    
-    const value = this.sqlCodeEditorComponent.value ?? '';
+    const value = this.editorValue ?? '';
     let text = '';
 
     switch (copyMode) {
@@ -100,11 +102,8 @@ export class SqlFormatterInputCardComponent {
   }
 
   onClickClear(): void {
-    if (!this.sqlCodeEditorComponent) {
-      return;
-    }
-    const previousValue = this.sqlCodeEditorComponent.value;
-    this.sqlCodeEditorComponent.value = '';
+    const previousValue = this.editorValue;
+    this.editorValue = '';
     
     const snackBarRef = this.snackBar.open(
       $localize`:@@common.clearedMessage:クリアしました。`,
@@ -113,9 +112,7 @@ export class SqlFormatterInputCardComponent {
     );
 
     snackBarRef.onAction().subscribe(() => {
-      if (this.sqlCodeEditorComponent) {
-        this.sqlCodeEditorComponent.value = previousValue;
-      }
+      this.editorValue = previousValue;
     });
   }
 

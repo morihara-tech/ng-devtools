@@ -25,7 +25,7 @@
         </div>
       </app-heading>
       <div class="json-area">
-        <app-json-code-editor (catchError)="onCatchError($event)"></app-json-code-editor>
+        <app-json-code-editor [(value)]="editorValue" (catchError)="onCatchError($event)"></app-json-code-editor>
       </div>
       <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
         <div class="input-form-wrapper">

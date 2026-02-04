@@ -13,7 +13,7 @@
         </div>
       </app-heading>
       <div class="svg-area">
-        <app-svg-code-editor (valueChange)="onSvgCodeChange($event)"></app-svg-code-editor>
+        <app-svg-code-editor [(value)]="editorValue" (valueChange)="onSvgCodeChange($event)"></app-svg-code-editor>
       </div>
       <form [formGroup]="formGroup">
         <div class="settings-wrapper">

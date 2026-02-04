@@ -37,6 +37,15 @@ export class JsonFormatterInputCardComponent {
 
   formGroup?: FormGroup;
   errorMessage?: string;
+  editorValue: string = JSON.stringify({
+    status: 'success',
+    data: {
+      id: '123abc',
+      title: 'Sample API Response',
+      items: [1, 2, 3]
+    },
+    timestamp: '2024-01-13T10:30:00Z'
+  }, null, 2);
 
   private readonly fb: FormBuilder = inject(FormBuilder);
   private snackBar = inject(MatSnackBar);
@@ -57,21 +66,15 @@ export class JsonFormatterInputCardComponent {
   }
 
   onClickCopyMenu(isEscapeMode: boolean): void {
-    if (!this.jsonCodeEditorComponent) {
-      return;
-    }
-    const text = (isEscapeMode) ? JSON.stringify(this.jsonCodeEditorComponent.value) : this.jsonCodeEditorComponent.value ?? '';
+    const text = (isEscapeMode) ? JSON.stringify(this.editorValue) : this.editorValue ?? '';
     navigator.clipboard.writeText(text);
     this.snackBar.open($localize`:@@common.copiedMessage:コピーしました。`,
       $localize`:@@common.ok:はい`, { duration: 2000, horizontalPosition: 'start' });
   }
 
   onClickClear(): void {
-    if (!this.jsonCodeEditorComponent) {
-      return;
-    }
-    const previousValue = this.jsonCodeEditorComponent.value;
-    this.jsonCodeEditorComponent.value = '';
+    const previousValue = this.editorValue;
+    this.editorValue = '';
     
     const snackBarRef = this.snackBar.open(
       $localize`:@@common.clearedMessage:クリアしました。`,
@@ -80,9 +83,7 @@ export class JsonFormatterInputCardComponent {
     );
 
     snackBarRef.onAction().subscribe(() => {
-      if (this.jsonCodeEditorComponent) {
-        this.jsonCodeEditorComponent.value = previousValue;
-      }
+      this.editorValue = previousValue;
     });
   }
 
