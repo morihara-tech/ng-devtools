@@ -6,6 +6,11 @@
         <source>ホームに戻る</source>
       </segment>
     </unit>
+    <unit id="common.copyError">
+      <segment>
+        <source>コピーに失敗しました。</source>
+      </segment>
+    </unit>
     <unit id="common.copyRight">
       <segment>
         <source>© 2026 Yutaka Morihara</source>
@@ -84,6 +89,111 @@
     <unit id="page.error.404.title">
       <segment>
         <source>ページが見つかりません</source>
+      </segment>
+    </unit>
+    <unit id="page.ipCidr.card.input.cidr">
+      <segment>
+        <source>CIDR</source>
+      </segment>
+    </unit>
+    <unit id="page.ipCidr.card.input.error.cidrRange">
+      <segment>
+        <source>CIDRは0以上<ph id="0" equiv="PH" disp="maxCidr"/>以下で入力してください。</source>
+      </segment>
+    </unit>
+    <unit id="page.ipCidr.card.input.error.invalidIpv4">
+      <segment>
+        <source>有効なIPv4アドレスを入力してください。</source>
+      </segment>
+    </unit>
+    <unit id="page.ipCidr.card.input.error.invalidIpv6">
+      <segment>
+        <source>有効なIPv6アドレスを入力してください。</source>
+      </segment>
+    </unit>
+    <unit id="page.ipCidr.card.input.error.required">
+      <segment>
+        <source>必須項目を入力してください。</source>
+      </segment>
+    </unit>
+    <unit id="page.ipCidr.card.input.heading">
+      <segment>
+        <source>入力設定</source>
+      </segment>
+    </unit>
+    <unit id="page.ipCidr.card.input.ipAddress">
+      <segment>
+        <source>IPアドレス</source>
+      </segment>
+    </unit>
+    <unit id="page.ipCidr.card.output.cidrNotation">
+      <segment>
+        <source>CIDR表記</source>
+      </segment>
+    </unit>
+    <unit id="page.ipCidr.card.output.copyJson">
+      <segment>
+        <source>JSONをコピー</source>
+      </segment>
+    </unit>
+    <unit id="page.ipCidr.card.output.firstHost">
+      <segment>
+        <source>最初のホスト</source>
+      </segment>
+    </unit>
+    <unit id="page.ipCidr.card.output.grid.columnName">
+      <segment>
+        <source>項目</source>
+      </segment>
+    </unit>
+    <unit id="page.ipCidr.card.output.grid.columnValue">
+      <segment>
+        <source>値</source>
+      </segment>
+    </unit>
+    <unit id="page.ipCidr.card.output.heading">
+      <segment>
+        <source>計算結果</source>
+      </segment>
+    </unit>
+    <unit id="page.ipCidr.card.output.ipType">
+      <segment>
+        <source>IPタイプ</source>
+      </segment>
+    </unit>
+    <unit id="page.ipCidr.card.output.lastHost">
+      <segment>
+        <source>最後のホスト</source>
+      </segment>
+    </unit>
+    <unit id="page.ipCidr.card.output.netmask">
+      <segment>
+        <source>ネットマスク</source>
+      </segment>
+    </unit>
+    <unit id="page.ipCidr.card.output.networkAddress">
+      <segment>
+        <source>ネットワークアドレス</source>
+      </segment>
+    </unit>
+    <unit id="page.ipCidr.card.output.noData">
+      <segment>
+        <source> IPアドレスとCIDRを入力してください。 </source>
+      </segment>
+    </unit>
+    <unit id="page.ipCidr.card.output.totalHosts">
+      <segment>
+        <source>合計ホスト数</source>
+      </segment>
+    </unit>
+    <unit id="page.ipCidr.menu">
+      <segment>
+        <source>IP/CIDR計算機</source>
+      </segment>
+    </unit>
+    <unit id="page.ipCidr.title">
+      <segment>
+        <source>IP/CIDR計算機</source>
       </segment>
     </unit>
     <unit id="page.json.formatter.errorMessage">
@@ -406,6 +516,11 @@
         <source>背景を透過</source>
       </segment>
     </unit>
+    <unit id="page.svgToPng.card.output.copyError">
+      <segment>
+        <source>コピーに失敗しました。</source>
+      </segment>
+    </unit>
     <unit id="page.svgToPng.card.output.downloaded">
       <segment>
         <source>ダウンロードしました。</source>
@@ -629,6 +744,11 @@
     <unit id="update.home.20260123">
       <segment>
         <source>SVG描画ツールを実装しました。</source>
+      </segment>
+    </unit>
+    <unit id="update.home.20260126">
+      <segment>
+        <source>IP/CIDR計算機を実装しました。</source>
       </segment>
     </unit>
     <unit id="update.home.20250820">

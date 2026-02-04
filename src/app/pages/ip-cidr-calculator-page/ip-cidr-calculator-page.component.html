@@ -1,0 +1,12 @@
+<app-application-page-template>
+  <div class="margin-bottom-16">
+    <app-heading headingType="h2" i18n="@@page.ipCidr.title">IP/CIDR計算機</app-heading>
+  </div>
+  <app-ip-cidr-input-card
+    (calculate)="onCalculate($event)"
+  ></app-ip-cidr-input-card>
+  <div class="spacer"></div>
+  <app-ip-cidr-output-card
+    #output
+  ></app-ip-cidr-output-card>
+</app-application-page-template>

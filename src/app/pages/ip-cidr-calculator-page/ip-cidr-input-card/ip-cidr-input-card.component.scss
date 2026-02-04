@@ -1,0 +1,94 @@
+.margin-bottom-8 {
+  margin-bottom: 8px;
+}
+
+.margin-bottom-16 {
+  margin-bottom: 16px;
+}
+
+.protocol-toggle-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.flex {
+  display: flex;
+  gap: 8px 32px;
+  align-items: center;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+.input-form-wrapper {
+  margin-top: 16px;
+}
+
+.input-form-m {
+  width: 320px;
+}
+
+.input-form {
+  margin-bottom: 0;
+
+  ::ng-deep .mat-mdc-form-field-bottom-align::before {
+    height: 0 !important;
+  }
+
+  ::ng-deep .mat-mdc-form-field-subscript-wrapper {
+    height: 0;
+    margin-top: 0;
+  }
+}
+
+.cidr-slider-wrapper {
+  margin-top: 8px;
+}
+
+.cidr-label {
+  display: block;
+  font-size: 14px;
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.slider-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.slider-container mat-slider {
+  flex: 1;
+}
+
+.cidr-value {
+  min-width: 60px;
+  text-align: right;
+  font-weight: 500;
+  color: var(--mat-sys-primary);
+}
+
+.protocol-toggle {
+  margin: 8px 0;
+
+  ::ng-deep .mat-button-toggle-button {
+    height: 24px;
+    padding: 0 12px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  ::ng-deep .mat-button-toggle-label-content {
+    display: flex;
+    align-items: center;
+  }
+
+  ::ng-deep .mat-button-toggle-checkbox-wrapper {
+    display: flex;
+    align-items: center;
+  }
+}

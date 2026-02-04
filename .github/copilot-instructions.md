@@ -40,7 +40,14 @@ When generating commit messages:
 ## 4. Documentation & Comments
 - **Docstrings**: Add documentation (JSDoc, Docstring, etc.) for all public functions and classes.
 - **Intent over Implementation**: Comments should explain *why* the code exists, not just *what* it does.
-- **No Dead Code**: Do not leave commented-out code blocks.
+  - *Bad*: `// increment counter` above `counter++;`
+  - *Good*: `// reset counter to start a new calculation cycle`
+  - Avoid comments that merely restate what the code already clearly communicates.
+- **No Dead Code**: Do not leave commented-out code blocks. This includes:
+  - Debug code or temporary logging statements
+  - Old implementations that have been replaced
+  - Code snippets from development/testing phases
+  - If code is no longer needed, delete it entirely (Git history preserves it).
 
 ## 5. Testing
 - **Testability**: Write code that is easy to test (avoid global state, use dependency injection where appropriate).

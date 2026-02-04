@@ -1,0 +1,31 @@
+<mat-card appearance="raised">
+  <mat-card-content>
+    <app-heading headingType="h3">
+      <span i18n="@@page.ipCidr.card.output.heading">計算結果</span>
+      <div class="right">
+        <button mat-icon-button
+          matTooltip="JSONをコピー"
+          i18n-matTooltip="@@page.ipCidr.card.output.copyJson"
+          (click)="onClickCopyJson()">
+          <mat-icon>content_copy</mat-icon>
+        </button>
+      </div>
+    </app-heading>
+    
+    <!-- Results Grid -->
+    <div class="grid-wrapper">
+      @if (gridSource.length > 0) {
+        <revo-grid 
+          [source]="gridSource" 
+          [columns]="columns"
+          [theme]="theme"
+          resize hideAttribution range useClipboard>
+        </revo-grid>
+      } @else {
+        <div class="no-data" i18n="@@page.ipCidr.card.output.noData">
+          IPアドレスとCIDRを入力してください。
+        </div>
+      }
+    </div>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,44 @@
+<mat-card appearance="raised">
+  @if (formGroup) {
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+      <mat-card-content>
+        <app-heading headingType="h3">
+          <span i18n="@@page.ipCidr.card.input.heading">入力設定</span>
+          <div class="right">
+            <mat-button-toggle-group class="protocol-toggle" [value]="protocol" (change)="onProtocolChange($event.value)">
+              <mat-button-toggle value="ipv4">IPv4</mat-button-toggle>
+              <mat-button-toggle value="ipv6">IPv6</mat-button-toggle>
+            </mat-button-toggle-group>
+          </div>
+        </app-heading>
+        <div class="flex wrap">
+          <div class="input-form-wrapper flex wrap">
+            <mat-form-field class="input-form input-form-m">
+              <mat-label i18n="@@page.ipCidr.card.input.ipAddress">IPアドレス</mat-label>
+              <input matInput type="text"
+                [placeholder]="protocol === 'ipv4' ? '192.168.1.1 or 192.168.1.1/24' : '2001:db8::1 or 2001:db8::1/64'"
+                formControlName="ipAddress"
+                (blur)="onIpAddressBlur($event)">
+            </mat-form-field>
+          </div>
+          <div class="cidr-slider-wrapper input-form-m">
+            <span class="cidr-label" i18n="@@page.ipCidr.card.input.cidr">CIDR</span>
+            <div class="slider-container">
+              <mat-slider [min]="0" [max]="maxCidr" [step]="1" discrete (change)="onCidrChange($event)">
+                <input matSliderThumb formControlName="cidr">
+              </mat-slider>
+              <span class="cidr-value">{{ cidrValue }}</span>
+            </div>
+          </div>
+        </div>
+
+        @if (errorMessage !== null) {
+          <mat-error>{{ errorMessage }}</mat-error>
+        }
+      </mat-card-content>
+      <mat-card-actions align="end">
+        <button mat-flat-button [disabled]="hasError" type="submit" i18n="@@page.password.card.input.generate">生成</button>
+      </mat-card-actions>
+    </form>
+  }
+</mat-card>
