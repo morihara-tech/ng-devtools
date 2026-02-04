@@ -457,6 +457,12 @@
         <target>Seconds</target>
       </segment>
     </unit>
+    <unit id="common.undo">
+      <segment state="initial">
+        <source>元に戻す</source>
+        <target>Undo</target>
+      </segment>
+    </unit>
     <unit id="common.cancel">
       <segment>
         <source>キャンセル</source>
@@ -563,6 +569,18 @@
       <segment>
         <source>生成結果</source>
         <target>Results</target>
+      </segment>
+    </unit>
+    <unit id="common.clear">
+      <segment state="initial">
+        <source>クリア</source>
+        <target>Clear</target>
+      </segment>
+    </unit>
+    <unit id="common.clearedMessage">
+      <segment state="initial">
+        <source>クリアしました。</source>
+        <target>Cleared.</target>
       </segment>
     </unit>
     <unit id="common.copiedMessage">
@@ -683,6 +701,12 @@
       <segment state="initial">
         <source>IP/CIDR計算機を実装しました。</source>
         <target>Implemented IP/CIDR Calculator.</target>
+      </segment>
+    </unit>
+    <unit id="update.home.20260204">
+      <segment state="initial">
+        <source>JSON整形、SQL整形、SVG描画ツールにクリアボタンを追加しました。</source>
+        <target>Added clear button to JSON Formatter, SQL Formatter, and SVG Drawing tools.</target>
       </segment>
     </unit>
     <unit id="page.sql.menu">

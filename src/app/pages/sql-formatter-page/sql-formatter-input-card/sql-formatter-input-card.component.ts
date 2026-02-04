@@ -99,6 +99,26 @@ export class SqlFormatterInputCardComponent {
       $localize`:@@common.ok:はい`, { duration: 2000, horizontalPosition: 'start' });
   }
 
+  onClickClear(): void {
+    if (!this.sqlCodeEditorComponent) {
+      return;
+    }
+    const previousValue = this.sqlCodeEditorComponent.value;
+    this.sqlCodeEditorComponent.value = '';
+    
+    const snackBarRef = this.snackBar.open(
+      $localize`:@@common.clearedMessage:クリアしました。`,
+      $localize`:@@common.undo:元に戻す`,
+      { duration: 5000, horizontalPosition: 'start' }
+    );
+
+    snackBarRef.onAction().subscribe(() => {
+      if (this.sqlCodeEditorComponent) {
+        this.sqlCodeEditorComponent.value = previousValue;
+      }
+    });
+  }
+
   get hasError(): boolean {
     if (!this.formGroup) {
       return true;

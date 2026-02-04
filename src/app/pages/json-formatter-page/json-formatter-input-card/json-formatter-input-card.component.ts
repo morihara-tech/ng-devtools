@@ -66,6 +66,26 @@ export class JsonFormatterInputCardComponent {
       $localize`:@@common.ok:はい`, { duration: 2000, horizontalPosition: 'start' });
   }
 
+  onClickClear(): void {
+    if (!this.jsonCodeEditorComponent) {
+      return;
+    }
+    const previousValue = this.jsonCodeEditorComponent.value;
+    this.jsonCodeEditorComponent.value = '';
+    
+    const snackBarRef = this.snackBar.open(
+      $localize`:@@common.clearedMessage:クリアしました。`,
+      $localize`:@@common.undo:元に戻す`,
+      { duration: 5000, horizontalPosition: 'start' }
+    );
+
+    snackBarRef.onAction().subscribe(() => {
+      if (this.jsonCodeEditorComponent) {
+        this.jsonCodeEditorComponent.value = previousValue;
+      }
+    });
+  }
+
   get hasError(): boolean {
     if (!this.formGroup) {
       return true;

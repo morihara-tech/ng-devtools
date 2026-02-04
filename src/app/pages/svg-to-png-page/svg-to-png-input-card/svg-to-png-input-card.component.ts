@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, ViewChild, OnInit, Output, EventEmitter, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { SvgToPngSettingsModel, DEFAULT_SVG_TO_PNG_SETTINGS } from '../svg-to-png-model';
@@ -9,6 +9,9 @@ import { HeadingComponent } from '../../../components/heading/heading.component'
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { SvgCodeEditorComponent } from '../svg-code-editor/svg-code-editor.component';
 import { MatSliderModule } from '@angular/material/slider';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-svg-to-png-input-card',
@@ -20,6 +23,9 @@ import { MatSliderModule } from '@angular/material/slider';
     MatInputModule,
     MatSlideToggleModule,
     MatSliderModule,
+    MatIconModule,
+    MatTooltipModule,
+    MatSnackBarModule,
     HeadingComponent,
     SvgCodeEditorComponent,
   ],
@@ -32,6 +38,7 @@ export class SvgToPngInputCardComponent implements OnInit {
   @Output() svgCodeChange: EventEmitter<string> = new EventEmitter();
 
   formGroup?: FormGroup;
+  private snackBar = inject(MatSnackBar);
 
   constructor(
     private fb: FormBuilder
@@ -73,6 +80,26 @@ export class SvgToPngInputCardComponent implements OnInit {
       this.formGroup.controls['backgroundColor'].setValue(value, { emitEvent: false });
       this.emitSettings();
     }
+  }
+
+  onClickClear(): void {
+    if (!this.svgCodeEditorComponent) {
+      return;
+    }
+    const previousValue = this.svgCodeEditorComponent.value;
+    this.svgCodeEditorComponent.value = '';
+    
+    const snackBarRef = this.snackBar.open(
+      $localize`:@@common.clearedMessage:クリアしました。`,
+      $localize`:@@common.undo:元に戻す`,
+      { duration: 5000, horizontalPosition: 'start' }
+    );
+
+    snackBarRef.onAction().subscribe(() => {
+      if (this.svgCodeEditorComponent) {
+        this.svgCodeEditorComponent.value = previousValue;
+      }
+    });
   }
 
   private resetForm(): void {

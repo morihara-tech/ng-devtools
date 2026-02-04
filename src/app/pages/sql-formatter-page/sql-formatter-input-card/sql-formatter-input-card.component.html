@@ -5,6 +5,12 @@
         <span i18n="@@page.sqlFormatter.card.input.heading">SQL</span>
         <div class="right">
           <button mat-icon-button
+            matTooltip="クリア"
+            i18n-matTooltip="@@common.clear"
+            (click)="onClickClear()">
+            <mat-icon>delete</mat-icon>
+          </button>
+          <button mat-icon-button
             matTooltip="コード埋め込み形式でコピー"
             i18n-matTooltip="@@page.sqlFormatter.card.input.codeEmbedCopy"
             (click)="onClickCopyMenu('code')">
