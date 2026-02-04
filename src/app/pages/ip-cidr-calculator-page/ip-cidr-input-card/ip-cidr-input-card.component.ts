@@ -26,7 +26,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
   templateUrl: './ip-cidr-input-card.component.html',
   styleUrl: './ip-cidr-input-card.component.scss'
 })
-export class IpCidrInputCardComponent implements OnInit, AfterViewInit {
+export class IpCidrInputCardComponent implements OnInit {
   @Output() calculate: EventEmitter<IpCidrInputModel> = new EventEmitter();
 
   formGroup?: FormGroup;
@@ -44,10 +44,9 @@ export class IpCidrInputCardComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.resetForm();
-  }
-
-  ngAfterViewInit(): void {
-    this.onCalculate();
+    setTimeout(() => {
+      this.onSubmit();
+    }, 10);
   }
 
   onProtocolChange(protocol: IpProtocol): void {
@@ -116,7 +115,7 @@ export class IpCidrInputCardComponent implements OnInit, AfterViewInit {
     ipControl.setValue(ipWithCidr, { emitEvent: false });
   }
 
-  onCalculate(): void {
+  onSubmit(): void {
     if (!this.formGroup || this.hasError) {
       return;
     }
@@ -189,13 +188,6 @@ export class IpCidrInputCardComponent implements OnInit, AfterViewInit {
         Validators.min(0),
         Validators.max(32)
       ]),
-    });
-
-    // Listen to form changes for real-time calculation
-    this.formGroup.valueChanges.subscribe(() => {
-      if (!this.hasError) {
-        this.onCalculate();
-      }
     });
   }
 }

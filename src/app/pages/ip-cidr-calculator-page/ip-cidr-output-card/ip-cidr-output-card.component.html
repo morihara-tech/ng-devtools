@@ -18,9 +18,8 @@
         <revo-grid 
           [source]="gridSource" 
           [columns]="columns"
-          [readonly]="true"
-          theme="compact"
-          [autoSizeColumn]="true">
+          [theme]="theme"
+          resize hideAttribution range useClipboard>
         </revo-grid>
       } @else {
         <div class="no-data" i18n="@@page.ipCidr.card.output.noData">
@@ -28,26 +27,5 @@
         </div>
       }
     </div>
-
-    <!-- Bit Visualization -->
-    @if (result) {
-      <div class="visualization-wrapper">
-        <app-heading headingType="h4" i18n="@@page.ipCidr.card.output.visualization">ビット視覚化</app-heading>
-        <div class="bit-display">
-          <span class="network-bits">{{ networkPart }}</span>
-          <span class="host-bits">{{ hostPart }}</span>
-        </div>
-        <div class="legend">
-          <span class="legend-item">
-            <span class="legend-color network"></span>
-            <span i18n="@@page.ipCidr.card.output.networkPart">ネットワーク部</span>
-          </span>
-          <span class="legend-item">
-            <span class="legend-color host"></span>
-            <span i18n="@@page.ipCidr.card.output.hostPart">ホスト部</span>
-          </span>
-        </div>
-      </div>
-    }
   </mat-card-content>
 </mat-card>

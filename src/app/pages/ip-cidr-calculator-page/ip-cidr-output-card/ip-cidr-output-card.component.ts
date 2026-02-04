@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit, OnDestroy } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -29,9 +29,14 @@ interface GridRow {
   templateUrl: './ip-cidr-output-card.component.html',
   styleUrl: './ip-cidr-output-card.component.scss'
 })
-export class IpCidrOutputCardComponent {
+export class IpCidrOutputCardComponent implements OnInit, OnDestroy {
   result?: IpCidrResult;
   gridSource: GridRow[] = [];
+  theme: 'compact' | 'darkCompact' = 'compact';
+  
+  private mediaQueryList = window.matchMedia('(prefers-color-scheme: dark)');
+  private themeListener = (e: MediaQueryListEvent) => this.updateTheme(e.matches);
+
   columns: ColumnRegular[] = [
     { 
       prop: 'name', 
@@ -43,12 +48,22 @@ export class IpCidrOutputCardComponent {
       prop: 'value', 
       name: $localize`:@@page.ipCidr.card.output.grid.columnValue:値`,
       readonly: true,
-      autoSize: true
+      size: 240
     },
   ];
 
   private snackBar = inject(MatSnackBar);
   private calculatorService = inject(IpCidrCalculatorService);
+
+  ngOnInit(): void {
+    const isDark = this.mediaQueryList.matches;
+    this.updateTheme(isDark);
+    this.mediaQueryList.addEventListener('change', this.themeListener);
+  }
+
+  ngOnDestroy(): void {
+    this.mediaQueryList.removeEventListener('change', this.themeListener);
+  }
 
   calculateResult(input: IpCidrInputModel): void {
     const result = this.calculatorService.calculate(input.protocol, input.ipAddress, input.cidr);
@@ -88,90 +103,6 @@ export class IpCidrOutputCardComponent {
     }
   }
 
-  get networkPart(): string {
-    if (!this.result?.binaryRepresentation || !this.result.networkBits) {
-      return '';
-    }
-    
-    const binary = this.result.binaryRepresentation;
-    const networkBits = this.result.networkBits;
-    
-    if (binary.includes('.')) {
-      // IPv4 binary format: "11000000.10101000.00000001.00000001"
-      const bitsOnly = binary.replace(/\./g, '');
-      const networkPart = bitsOnly.substring(0, networkBits);
-      
-      // Re-add dots every 8 bits
-      let result = '';
-      for (let i = 0; i < networkPart.length; i++) {
-        if (i > 0 && i % 8 === 0) {
-          result += '.';
-        }
-        result += networkPart[i];
-      }
-      return result;
-    } else {
-      // IPv6 hex format: "2001:0db8:0000:0000:0000:0000:0000:0001"
-      const hexOnly = binary.replace(/:/g, '');
-      const bitsNeeded = Math.ceil(networkBits / 4);
-      const networkHex = hexOnly.substring(0, bitsNeeded);
-      
-      // Re-add colons every 4 characters
-      let result = '';
-      for (let i = 0; i < networkHex.length; i++) {
-        if (i > 0 && i % 4 === 0) {
-          result += ':';
-        }
-        result += networkHex[i];
-      }
-      return result;
-    }
-  }
-
-  get hostPart(): string {
-    if (!this.result?.binaryRepresentation || !this.result.networkBits) {
-      return '';
-    }
-    
-    const binary = this.result.binaryRepresentation;
-    const networkBits = this.result.networkBits;
-    
-    if (binary.includes('.')) {
-      // IPv4
-      const bitsOnly = binary.replace(/\./g, '');
-      const hostPart = bitsOnly.substring(networkBits);
-      
-      // Re-add dots
-      let result = '';
-      let bitCount = networkBits;
-      for (let i = 0; i < hostPart.length; i++) {
-        if (bitCount > 0 && bitCount % 8 === 0 && i > 0) {
-          result += '.';
-        }
-        result += hostPart[i];
-        bitCount++;
-      }
-      return result;
-    } else {
-      // IPv6
-      const hexOnly = binary.replace(/:/g, '');
-      const bitsNeeded = Math.ceil(networkBits / 4);
-      const hostHex = hexOnly.substring(bitsNeeded);
-      
-      // Re-add colons
-      let result = '';
-      let charCount = bitsNeeded;
-      for (let i = 0; i < hostHex.length; i++) {
-        if (charCount > 0 && charCount % 4 === 0 && i > 0) {
-          result += ':';
-        }
-        result += hostHex[i];
-        charCount++;
-      }
-      return result;
-    }
-  }
-
   private updateGridSource(result: IpCidrResult): void {
     this.gridSource = [
       { 
@@ -203,5 +134,9 @@ export class IpCidrOutputCardComponent {
         value: result.ipType 
       },
     ];
+  }
+
+  private updateTheme(isDark: boolean): void {
+    this.theme = isDark ? 'darkCompact' : 'compact';
   }
 }

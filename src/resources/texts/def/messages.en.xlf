@@ -187,12 +187,6 @@
         <target>Calculation Results</target>
       </segment>
     </unit>
-    <unit id="page.ipCidr.card.output.hostPart">
-      <segment state="initial">
-        <source>ホスト部</source>
-        <target>Host Part</target>
-      </segment>
-    </unit>
     <unit id="page.ipCidr.card.output.ipType">
       <segment state="initial">
         <source>IPタイプ</source>
@@ -217,12 +211,6 @@
         <target>Network Address</target>
       </segment>
     </unit>
-    <unit id="page.ipCidr.card.output.networkPart">
-      <segment state="initial">
-        <source>ネットワーク部</source>
-        <target>Network Part</target>
-      </segment>
-    </unit>
     <unit id="page.ipCidr.card.output.noData">
       <segment state="initial">
         <source> IPアドレスとCIDRを入力してください。 </source>
@@ -233,12 +221,6 @@
       <segment state="initial">
         <source>合計ホスト数</source>
         <target>Total Hosts</target>
-      </segment>
-    </unit>
-    <unit id="page.ipCidr.card.output.visualization">
-      <segment state="initial">
-        <source>ビット視覚化</source>
-        <target>Bit Visualization</target>
       </segment>
     </unit>
     <unit id="page.ipCidr.menu">
