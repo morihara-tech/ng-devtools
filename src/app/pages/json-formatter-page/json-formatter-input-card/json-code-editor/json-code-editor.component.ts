@@ -54,7 +54,6 @@ export class JsonCodeEditorComponent implements OnInit{
     ]),
   ];
 
-  backgroundColor: string | null = null;
   errorMessage: string | null = null;
 
   ngOnInit(): void {
@@ -79,10 +78,6 @@ export class JsonCodeEditorComponent implements OnInit{
     } catch (error) {
       this.catchError.emit($localize`:@@page.json.formatter.errorMessage:無効なJSONです。`);
     }
-  }
-
-  onChangeBgColor(color: string): void {
-    this.backgroundColor = color;
   }
 
   private compactSimpleArrays(json: string): string {

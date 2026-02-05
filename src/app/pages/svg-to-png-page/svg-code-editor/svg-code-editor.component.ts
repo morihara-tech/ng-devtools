@@ -48,8 +48,6 @@ export class SvgCodeEditorComponent implements OnInit {
     ]),
   ];
 
-  backgroundColor: string | null = null;
-
   ngOnInit(): void {
   }
 
@@ -60,10 +58,6 @@ export class SvgCodeEditorComponent implements OnInit {
   onValueChange(newValue: string): void {
     this.value = newValue;
     this.valueChange.emit(newValue);
-  }
-
-  onChangeBgColor(color: string): void {
-    this.backgroundColor = color;
   }
 
 }

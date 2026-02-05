@@ -51,7 +51,6 @@ LIMIT 10`;
     ]),
   ];
 
-  backgroundColor: string | null = null;
   errorMessage: string | null = null;
 
   ngOnInit(): void {
@@ -59,10 +58,6 @@ LIMIT 10`;
 
   onWrapperClick(): void {
     this.codemirrorComponent.focus();
-  }
-
-  onChangeBgColor(color: string): void {
-    this.backgroundColor = color;
   }
 
   formatSql(model: SqlFormatterInputModel): void {
