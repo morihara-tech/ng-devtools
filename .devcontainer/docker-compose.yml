@@ -3,11 +3,12 @@ services:
   workspace:
     container_name: ng-devtools
     build: workspace
+    user: node
     environment:
       GIT_PAGER: "LESSCHARSET=utf-8 less"
     volumes:
       - ../:/ng-devtools
-      - $HOME/.aws/:/root/.aws/
+      - $HOME/.aws/:/home/node/.aws/
     ports:
       - "6200:6200"
     stdin_open: true

@@ -1,9 +1,19 @@
 <mat-card appearance="raised">
   @if (formGroup) {
     <mat-card-content>
-      <app-heading headingType="h3" i18n="@@page.svgToPng.card.input.heading">SVGコード</app-heading>
+      <app-heading headingType="h3">
+        <span i18n="@@page.svgToPng.card.input.heading">SVGコード</span>
+        <div class="right">
+          <button mat-icon-button
+            matTooltip="クリア"
+            i18n-matTooltip="@@common.clear"
+            (click)="onClickClear()">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </app-heading>
       <div class="svg-area">
-        <app-svg-code-editor (valueChange)="onSvgCodeChange($event)"></app-svg-code-editor>
+        <app-svg-code-editor [(value)]="editorValue" (valueChange)="onSvgCodeChange($event)"></app-svg-code-editor>
       </div>
       <form [formGroup]="formGroup">
         <div class="settings-wrapper">

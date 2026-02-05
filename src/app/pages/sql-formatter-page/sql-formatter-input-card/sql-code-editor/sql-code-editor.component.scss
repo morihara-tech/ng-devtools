@@ -1,6 +1,9 @@
 .codemirror-wrapper {
-  min-height: 200px;
+  min-height: 189.875px;
+  background-color: var(--mat-sys-surface);
   border: 1px solid var(--mat-sys-outline-variant);
+  border-radius: 8px;
+  overflow: hidden;
   cursor: text;
 
   &:focus-within {

@@ -20,7 +20,6 @@ export class CodemirrorComponent implements OnInit, OnChanges, OnDestroy {
   @Input() value: string = '';
   @Input() extensions: Extension[] = [];
   @Output() valueChange = new EventEmitter<string>();
-  @Output() changeBgColor = new EventEmitter<string>();
 
   private view?: EditorView;
   private extensionCompartment = new Compartment();
@@ -53,7 +52,6 @@ export class CodemirrorComponent implements OnInit, OnChanges, OnDestroy {
     });
 
     this.mediaQueryList.addEventListener('change', this.themeListener);
-    this.changeBgColor.emit(isDark ? "#0d1117" : "#ffffff");
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -100,7 +98,6 @@ export class CodemirrorComponent implements OnInit, OnChanges, OnDestroy {
     this.view.dispatch({
       effects: this.themeCompartment.reconfigure(this.getTheme(isDark)),
     });
-    this.changeBgColor.emit(isDark ? "#0d1117" : "#ffffff");
   }
 
 }

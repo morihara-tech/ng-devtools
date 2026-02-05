@@ -1,4 +1,4 @@
-import { Component, ViewChild, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, ViewChild, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { CodemirrorComponent } from '../../../../components/codemirror/codemirror.component';
 import { Extension } from '@codemirror/state';
 import { sql } from '@codemirror/lang-sql';
@@ -23,9 +23,9 @@ import { A11yModule } from "@angular/cdk/a11y";
 })
 export class SqlCodeEditorComponent implements OnInit {
   @ViewChild(CodemirrorComponent) codemirrorComponent!: CodemirrorComponent;
+  @Input() value: string = '';
+  @Output() valueChange: EventEmitter<string> = new EventEmitter();
   @Output() catchError: EventEmitter<string> = new EventEmitter();
-
-  value: string = '';
 
   sampleSql = `SELECT users.id, users.name, orders.order_date, orders.total
 FROM users
@@ -51,20 +51,13 @@ LIMIT 10`;
     ]),
   ];
 
-  backgroundColor: string | null = null;
   errorMessage: string | null = null;
 
   ngOnInit(): void {
-    this.value = this.sampleSql;
-    this.formatSql({ indentSpaceSize: 2, mode: 'standard', keywordCase: 'upper', identifierCase: 'lower' });
   }
 
   onWrapperClick(): void {
     this.codemirrorComponent.focus();
-  }
-
-  onChangeBgColor(color: string): void {
-    this.backgroundColor = color;
   }
 
   formatSql(model: SqlFormatterInputModel): void {

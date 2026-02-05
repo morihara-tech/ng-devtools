@@ -5,6 +5,12 @@
         <span i18n="@@page.jsonFormatter.card.input.heading">JSON</span>
         <div class="right">
           <button mat-icon-button
+            matTooltip="クリア"
+            i18n-matTooltip="@@common.clear"
+            (click)="onClickClear()">
+            <mat-icon>delete</mat-icon>
+          </button>
+          <button mat-icon-button
             matTooltip="エスケープしてコピー"
             i18n-matTooltip="@@page.jsonFormatter.card.input.escapeAndCopy"
             (click)="onClickCopyMenu(true)">
@@ -19,7 +25,7 @@
         </div>
       </app-heading>
       <div class="json-area">
-        <app-json-code-editor (catchError)="onCatchError($event)"></app-json-code-editor>
+        <app-json-code-editor [(value)]="editorValue" (catchError)="onCatchError($event)"></app-json-code-editor>
       </div>
       <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
         <div class="input-form-wrapper">

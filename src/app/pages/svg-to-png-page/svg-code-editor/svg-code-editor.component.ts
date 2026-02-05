@@ -1,4 +1,4 @@
-import { Component, ViewChild, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, ViewChild, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { CodemirrorComponent } from '../../../components/codemirror/codemirror.component';
 import { Extension } from '@codemirror/state';
 import { html, autoCloseTags } from '@codemirror/lang-html';
@@ -20,9 +20,8 @@ import { lintGutter } from '@codemirror/lint';
 })
 export class SvgCodeEditorComponent implements OnInit {
   @ViewChild(CodemirrorComponent) codemirrorComponent!: CodemirrorComponent;
+  @Input() value: string = '';
   @Output() valueChange: EventEmitter<string> = new EventEmitter();
-
-  value: string = '';
 
   sampleSvg = `<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
   <circle cx="100" cy="100" r="80" fill="#AE1C1D" />
@@ -49,10 +48,7 @@ export class SvgCodeEditorComponent implements OnInit {
     ]),
   ];
 
-  backgroundColor: string | null = null;
-
   ngOnInit(): void {
-    this.value = this.sampleSvg;
   }
 
   onWrapperClick(): void {
@@ -62,10 +58,6 @@ export class SvgCodeEditorComponent implements OnInit {
   onValueChange(newValue: string): void {
     this.value = newValue;
     this.valueChange.emit(newValue);
-  }
-
-  onChangeBgColor(color: string): void {
-    this.backgroundColor = color;
   }
 
 }

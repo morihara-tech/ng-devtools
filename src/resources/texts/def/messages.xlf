@@ -571,6 +571,11 @@
         <source>秒</source>
       </segment>
     </unit>
+    <unit id="common.undo">
+      <segment>
+        <source>元に戻す</source>
+      </segment>
+    </unit>
     <unit id="common.cancel">
       <segment>
         <source>キャンセル</source>
@@ -661,6 +666,16 @@
         <source>生成結果</source>
       </segment>
     </unit>
+    <unit id="common.clear">
+      <segment>
+        <source>クリア</source>
+      </segment>
+    </unit>
+    <unit id="common.clearedMessage">
+      <segment>
+        <source>クリアしました。</source>
+      </segment>
+    </unit>
     <unit id="common.copiedMessage">
       <segment>
         <source>コピーしました。</source>
@@ -749,6 +764,11 @@
     <unit id="update.home.20260126">
       <segment>
         <source>IP/CIDR計算機を実装しました。</source>
+      </segment>
+    </unit>
+    <unit id="update.home.20260204">
+      <segment>
+        <source>JSON整形、SQL整形、SVG描画ツールにクリアボタンを追加しました。</source>
       </segment>
     </unit>
     <unit id="update.home.20250820">

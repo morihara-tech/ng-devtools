@@ -1,4 +1,4 @@
-import { Component, ViewChild, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, ViewChild, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { CodemirrorComponent } from '../../../../components/codemirror/codemirror.component';
 import { Extension } from '@codemirror/state';
 import { json, jsonParseLinter } from '@codemirror/lang-json';
@@ -20,9 +20,9 @@ import { JsonFormatterInputModel } from '../../json-formatter-model';
 })
 export class JsonCodeEditorComponent implements OnInit{
   @ViewChild(CodemirrorComponent) codemirrorComponent!: CodemirrorComponent;
+  @Input() value: string = '';
+  @Output() valueChange: EventEmitter<string> = new EventEmitter();
   @Output() catchError: EventEmitter<string> = new EventEmitter();
-
-  value: string = '';
 
   sampleJson = {
     status: 'success',
@@ -54,12 +54,9 @@ export class JsonCodeEditorComponent implements OnInit{
     ]),
   ];
 
-  backgroundColor: string | null = null;
   errorMessage: string | null = null;
 
   ngOnInit(): void {
-    this.value = JSON.stringify(this.sampleJson);
-    this.formatJson({ indentSpaceSize: 2, mode: 'format' });
   }
 
   onWrapperClick(): void {
@@ -81,10 +78,6 @@ export class JsonCodeEditorComponent implements OnInit{
     } catch (error) {
       this.catchError.emit($localize`:@@page.json.formatter.errorMessage:無効なJSONです。`);
     }
-  }
-
-  onChangeBgColor(color: string): void {
-    this.backgroundColor = color;
   }
 
   private compactSimpleArrays(json: string): string {

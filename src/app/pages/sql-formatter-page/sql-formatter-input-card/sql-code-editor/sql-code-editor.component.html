@@ -1,7 +1,7 @@
-<div class="codemirror-wrapper" [style.backgroundColor]="backgroundColor" (click)="onWrapperClick()">
+<div class="codemirror-wrapper" (click)="onWrapperClick()">
   <app-codemirror
     [extensions]="extensions"
     [(value)]="value"
-    (changeBgColor)="onChangeBgColor($event)"
+    (valueChange)="valueChange.emit($event)"
   ></app-codemirror>
 </div>
