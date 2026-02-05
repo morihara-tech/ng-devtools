@@ -5,4 +5,7 @@ RUN apt-get update && \
   npm install -g @angular/cli@20.3.9 && \
   curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
   unzip awscliv2.zip && \
-  ./aws/install
+  ./aws/install && \
+  rm -rf awscliv2.zip aws/
+
+USER node
