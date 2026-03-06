@@ -758,7 +758,7 @@
     </unit>
     <unit id="update.home.20260123">
       <segment>
-        <source>SVG描画ツールを実装しました。</source>
+        <source>SVGビューアーツールを実装しました。</source>
       </segment>
     </unit>
     <unit id="update.home.20260126">
@@ -768,7 +768,7 @@
     </unit>
     <unit id="update.home.20260204">
       <segment>
-        <source>JSON整形、SQL整形、SVG描画ツールにクリアボタンを追加しました。</source>
+        <source>JSON整形、SQL整形、SVGビューアーツールにクリアボタンを追加しました。</source>
       </segment>
     </unit>
     <unit id="update.home.20260306">

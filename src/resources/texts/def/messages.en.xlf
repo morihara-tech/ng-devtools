@@ -693,8 +693,8 @@
     </unit>
     <unit id="update.home.20260123">
       <segment state="initial">
-        <source>SVG描画ツールを実装しました。</source>
-        <target>Implemented SVG to PNG Converter.</target>
+        <source>SVGビューアーツールを実装しました。</source>
+        <target>Implemented SVG Viewer tool.</target>
       </segment>
     </unit>
     <unit id="update.home.20260126">
@@ -705,8 +705,8 @@
     </unit>
     <unit id="update.home.20260204">
       <segment state="initial">
-        <source>JSON整形、SQL整形、SVG描画ツールにクリアボタンを追加しました。</source>
-        <target>Added clear button to JSON Formatter, SQL Formatter, and SVG Drawing tools.</target>
+        <source>JSON整形、SQL整形、SVGビューアーツールにクリアボタンを追加しました。</source>
+        <target>Added clear button to JSON Formatter, SQL Formatter, and SVG Viewer tools.</target>
       </segment>
     </unit>
     <unit id="update.home.20260306">
