@@ -1,12 +1,12 @@
-// Note: Brand Color is #AE1C1D
+// Note: Brand Color is #005B7F
 $_brand-color: (
-  darkest: #2B0707,
-  dark: #530D0E,
-  normal: #AE1C1D,
-  light: #E14B4D,
-  lightest: #FBE9E9,
-  header: #543030,
-  header-dark: #301B1B,
+  darkest: #001D29,
+  dark: #003B53,
+  normal: #005B7F,
+  light: #4DB2D6,
+  lightest: #E5F2F7,
+  header: #20404F,
+  header-dark: #102630,
 );
 
 @mixin init() {
