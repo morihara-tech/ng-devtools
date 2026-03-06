@@ -57,6 +57,7 @@ export class SvgToPngInputCardComponent implements OnInit {
   }
 
   onSvgCodeChange(svgCode: string): void {
+    this.extractAndApplySvgDimensions(svgCode);
     this.svgCodeChange.emit(svgCode);
   }
 
@@ -141,6 +142,57 @@ export class SvgToPngInputCardComponent implements OnInit {
     } else {
       backgroundColorControl.enable({ emitEvent: false });
     }
+  }
+
+  /**
+   * Extracts width, height, and viewBox from the SVG root element.
+   * When both viewBox and width/height attributes are present, patches the form
+   * with those values so the canvas matches the SVG's declared dimensions and origin.
+   */
+  private extractAndApplySvgDimensions(svgCode: string): void {
+    if (!this.formGroup || !svgCode) {
+      return;
+    }
+
+    const svgTagMatch = svgCode.match(/<svg([^>]*)>/i);
+    if (!svgTagMatch) {
+      return;
+    }
+
+    const svgTag = svgTagMatch[1];
+    const widthMatch = svgTag.match(/width=["']([^"']+)["']/i);
+    const heightMatch = svgTag.match(/height=["']([^"']+)["']/i);
+    const viewBoxMatch = svgTag.match(/viewBox=["']([^"']+)["']/i);
+
+    if (!widthMatch || !heightMatch || !viewBoxMatch) {
+      return;
+    }
+
+    const width = parseFloat(widthMatch[1]);
+    const height = parseFloat(heightMatch[1]);
+    const viewBoxParts = viewBoxMatch[1].trim().split(/[\s,]+/);
+
+    if (viewBoxParts.length !== 4) {
+      return;
+    }
+
+    const minX = parseFloat(viewBoxParts[0]);
+    const minY = parseFloat(viewBoxParts[1]);
+
+    if (isNaN(width) || isNaN(height) || isNaN(minX) || isNaN(minY)) {
+      return;
+    }
+
+    if (width <= 0 || height <= 0) {
+      return;
+    }
+
+    this.formGroup.patchValue({
+      canvasWidth: width,
+      canvasHeight: height,
+      offsetX: minX,
+      offsetY: minY,
+    });
   }
 
   private emitSettings(): void {
