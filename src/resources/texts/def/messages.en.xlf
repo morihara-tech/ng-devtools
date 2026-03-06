@@ -693,8 +693,8 @@
     </unit>
     <unit id="update.home.20260123">
       <segment state="initial">
-        <source>SVG描画ツールを実装しました。</source>
-        <target>Implemented SVG to PNG Converter.</target>
+        <source>SVGビューアーツールを実装しました。</source>
+        <target>Implemented SVG Viewer tool.</target>
       </segment>
     </unit>
     <unit id="update.home.20260126">
@@ -705,8 +705,14 @@
     </unit>
     <unit id="update.home.20260204">
       <segment state="initial">
-        <source>JSON整形、SQL整形、SVG描画ツールにクリアボタンを追加しました。</source>
-        <target>Added clear button to JSON Formatter, SQL Formatter, and SVG Drawing tools.</target>
+        <source>JSON整形、SQL整形、SVGビューアーツールにクリアボタンを追加しました。</source>
+        <target>Added clear button to JSON Formatter, SQL Formatter, and SVG Viewer tools.</target>
+      </segment>
+    </unit>
+    <unit id="update.home.20260306">
+      <segment state="initial">
+        <source>SVGビューアーに入力SVGのviewBox/widthを設定に反映する機能を追加しました。</source>
+        <target>Added feature to SVG Viewer that auto-fills canvas settings from the input SVG's viewBox and width/height attributes.</target>
       </segment>
     </unit>
     <unit id="page.sql.menu">
@@ -843,14 +849,14 @@
     </unit>
     <unit id="page.svgToPng.menu">
       <segment state="initial">
-        <source>SVG描画</source>
-        <target>SVG Renderer</target>
+        <source>SVGビューアー</source>
+        <target>SVG Viewer</target>
       </segment>
     </unit>
     <unit id="page.svgToPng.title">
       <segment state="initial">
-        <source>SVG描画ツール</source>
-        <target>SVG to PNG Converter</target>
+        <source>SVGビューアー</source>
+        <target>SVG Viewer</target>
       </segment>
     </unit>
     <unit id="page.sqlFormatter.card.input.indentSpaceSize">

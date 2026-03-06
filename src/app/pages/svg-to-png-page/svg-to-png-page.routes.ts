@@ -5,5 +5,6 @@ export const svgToPngPageRoutes: Routes = [
   {
     path: '',
     component: SvgToPngPageComponent,
+    data: { title: $localize`:@@page.svgToPng.menu:SVGビューアー` }
   },
 ];
