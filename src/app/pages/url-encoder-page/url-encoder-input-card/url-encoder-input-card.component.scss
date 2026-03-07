@@ -1,0 +1,31 @@
+.input-section {
+  margin-top: 24px;
+}
+
+.input-field {
+  width: 100%;
+}
+
+.options-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 32px;
+  margin-top: 16px;
+}
+
+.option-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.option-label {
+  color: var(--mat-sys-on-surface-variant);
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+mat-radio-group {
+  display: flex;
+  gap: 8px;
+}

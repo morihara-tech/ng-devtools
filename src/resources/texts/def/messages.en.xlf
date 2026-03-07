@@ -235,6 +235,84 @@
         <target>IP/CIDR Calculator</target>
       </segment>
     </unit>
+    <unit id="page.urlEncoder.menu">
+      <segment state="initial">
+        <source>URLエンコーダー</source>
+        <target>URL Encoder</target>
+      </segment>
+    </unit>
+    <unit id="page.urlEncoder.title">
+      <segment state="initial">
+        <source>URLエンコード・デコードツール</source>
+        <target>URL Encode / Decode Tool</target>
+      </segment>
+    </unit>
+    <unit id="page.urlEncoder.hint">
+      <segment state="initial">
+        <source>URLエンコード・デコードとは、URL内で使用できない文字を%XX形式に変換（エンコード）したり、逆にデコードしたりする処理です。</source>
+        <target>URL encoding/decoding converts characters that cannot be used in a URL to %XX format (encoding), or reverses the process (decoding).</target>
+      </segment>
+    </unit>
+    <unit id="page.urlEncoder.card.input.heading">
+      <segment state="initial">
+        <source>入力設定</source>
+        <target>Input Settings</target>
+      </segment>
+    </unit>
+    <unit id="page.urlEncoder.card.input.text">
+      <segment state="initial">
+        <source>変換する文字列</source>
+        <target>String to convert</target>
+      </segment>
+    </unit>
+    <unit id="page.urlEncoder.card.input.mode">
+      <segment state="initial">
+        <source>モード</source>
+        <target>Mode</target>
+      </segment>
+    </unit>
+    <unit id="page.urlEncoder.card.input.mode.encode">
+      <segment state="initial">
+        <source>エンコード</source>
+        <target>Encode</target>
+      </segment>
+    </unit>
+    <unit id="page.urlEncoder.card.input.mode.decode">
+      <segment state="initial">
+        <source>デコード</source>
+        <target>Decode</target>
+      </segment>
+    </unit>
+    <unit id="page.urlEncoder.card.input.method">
+      <segment state="initial">
+        <source>変換方式</source>
+        <target>Method</target>
+      </segment>
+    </unit>
+    <unit id="page.urlEncoder.card.input.convert">
+      <segment state="initial">
+        <source>変換</source>
+        <target>Convert</target>
+      </segment>
+    </unit>
+    <unit id="page.urlEncoder.card.input.clear">
+      <segment state="initial">
+        <source>クリア</source>
+        <target>Clear</target>
+      </segment>
+    </unit>
+    <unit id="page.urlEncoder.card.output.heading">
+      <segment state="initial">
+        <source>変換結果</source>
+        <target>Result</target>
+      </segment>
+    </unit>
+    <unit id="page.urlEncoder.error.decode">
+      <segment state="initial">
+        <source>デコードに失敗しました。入力文字列を確認してください。</source>
+        <target>Decoding failed. Please check the input string.</target>
+      </segment>
+    </unit>
     <unit id="page.json.formatter.errorMessage">
       <segment state="initial">
         <source>無効なJSONです。</source>
@@ -715,6 +793,12 @@
 アプリアイコンとブランドカラーをリニューアルしました。</source>
         <target>Improved the UI of the SVG Viewer.
 Renewed the app icon and brand color.</target>
+      </segment>
+    </unit>
+    <unit id="update.home.20260307">
+      <segment state="initial">
+        <source>URLエンコード・デコードツールを実装しました。</source>
+        <target>Implemented the URL Encode / Decode tool.</target>
       </segment>
     </unit>
     <unit id="page.sql.menu">

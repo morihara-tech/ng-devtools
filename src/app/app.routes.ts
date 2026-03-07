@@ -8,6 +8,7 @@ import { sqlFormatterPageRoutes } from './pages/sql-formatter-page/sql-formatter
 import { passwordGenPageRoutes } from './pages/password-gen-page/password-gen-page.routes';
 import { svgToPngPageRoutes } from './pages/svg-to-png-page/svg-to-png-page.routes';
 import { ipCidrCalculatorPageRoutes } from './pages/ip-cidr-calculator-page/ip-cidr-calculator-page.routes';
+import { urlEncoderPageRoutes } from './pages/url-encoder-page/url-encoder-page.routes';
 
 export const routes: Routes = [
   { path: 'dashboard', children: dashboardPageRoutes },
@@ -18,6 +19,7 @@ export const routes: Routes = [
   { path: 'password-generator', children: passwordGenPageRoutes },
   { path: 'svg-to-png', children: svgToPngPageRoutes },
   { path: 'ip-cidr-calculator', children: ipCidrCalculatorPageRoutes },
+  { path: 'url-encoder', children: urlEncoderPageRoutes },
   { path: 'error', children: errorPageRoutes },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: '**', redirectTo: '/error/404' }

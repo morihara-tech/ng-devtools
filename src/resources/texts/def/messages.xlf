@@ -196,6 +196,71 @@
         <source>IP/CIDR計算機</source>
       </segment>
     </unit>
+    <unit id="page.urlEncoder.menu">
+      <segment>
+        <source>URLエンコーダー</source>
+      </segment>
+    </unit>
+    <unit id="page.urlEncoder.title">
+      <segment>
+        <source>URLエンコード・デコードツール</source>
+      </segment>
+    </unit>
+    <unit id="page.urlEncoder.hint">
+      <segment>
+        <source>URLエンコード・デコードとは、URL内で使用できない文字を%XX形式に変換（エンコード）したり、逆にデコードしたりする処理です。</source>
+      </segment>
+    </unit>
+    <unit id="page.urlEncoder.card.input.heading">
+      <segment>
+        <source>入力設定</source>
+      </segment>
+    </unit>
+    <unit id="page.urlEncoder.card.input.text">
+      <segment>
+        <source>変換する文字列</source>
+      </segment>
+    </unit>
+    <unit id="page.urlEncoder.card.input.mode">
+      <segment>
+        <source>モード</source>
+      </segment>
+    </unit>
+    <unit id="page.urlEncoder.card.input.mode.encode">
+      <segment>
+        <source>エンコード</source>
+      </segment>
+    </unit>
+    <unit id="page.urlEncoder.card.input.mode.decode">
+      <segment>
+        <source>デコード</source>
+      </segment>
+    </unit>
+    <unit id="page.urlEncoder.card.input.method">
+      <segment>
+        <source>変換方式</source>
+      </segment>
+    </unit>
+    <unit id="page.urlEncoder.card.input.convert">
+      <segment>
+        <source>変換</source>
+      </segment>
+    </unit>
+    <unit id="page.urlEncoder.card.input.clear">
+      <segment>
+        <source>クリア</source>
+      </segment>
+    </unit>
+    <unit id="page.urlEncoder.card.output.heading">
+      <segment>
+        <source>変換結果</source>
+      </segment>
+    </unit>
+    <unit id="page.urlEncoder.error.decode">
+      <segment>
+        <source>デコードに失敗しました。入力文字列を確認してください。</source>
+      </segment>
+    </unit>
     <unit id="page.json.formatter.errorMessage">
       <segment>
         <source>無効なJSONです。</source>
@@ -775,6 +840,11 @@
       <segment>
         <source>SVGビューアーのUIを改善しました。
 アプリアイコンとブランドカラーをリニューアルしました。</source>
+      </segment>
+    </unit>
+    <unit id="update.home.20260307">
+      <segment>
+        <source>URLエンコード・デコードツールを実装しました。</source>
       </segment>
     </unit>
     <unit id="update.home.20250820">

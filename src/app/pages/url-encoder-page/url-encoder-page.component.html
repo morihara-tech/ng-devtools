@@ -1,0 +1,17 @@
+<app-application-page-template>
+  <div class="margin-bottom-16">
+    <app-heading headingType="h2"
+      hintMessage="URLエンコード・デコードとは、URL内で使用できない文字を%XX形式に変換（エンコード）したり、逆にデコードしたりする処理です。"
+      i18n-hintMessage="@@page.urlEncoder.hint"
+      i18n="@@page.urlEncoder.title"
+    >URLエンコード・デコードツール</app-heading>
+  </div>
+  <app-url-encoder-input-card
+    (convert)="onConvert($event)"
+    (clear)="onClear()"
+  ></app-url-encoder-input-card>
+  <div class="spacer"></div>
+  <app-url-encoder-output-card
+    #output
+  ></app-url-encoder-output-card>
+</app-application-page-template>
