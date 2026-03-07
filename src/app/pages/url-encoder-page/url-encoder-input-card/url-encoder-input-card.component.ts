@@ -67,7 +67,7 @@ export class UrlEncoderInputCardComponent implements OnInit {
   }
 
   private getMethod(): UrlEncoderMethod {
-    const encodeAll: boolean = this.formGroup?.controls['encodeAll'].value ?? true;
+    const encodeAll: boolean = this.formGroup!.controls['encodeAll'].value ?? true;
     return encodeAll ? 'encodeURIComponent' : 'encodeURI';
   }
 
