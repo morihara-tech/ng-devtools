@@ -14,6 +14,6 @@ export const DEFAULT_SVG_TO_PNG_SETTINGS: SvgToPngSettingsModel = {
   transparent: false,
   backgroundColor: '#ffffff',
   scale: 100,
-  offsetX: 28,
-  offsetY: 28,
+  offsetX: 0,
+  offsetY: 0,
 };
