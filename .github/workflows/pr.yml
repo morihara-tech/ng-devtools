@@ -40,8 +40,6 @@ jobs:
           fi
 
   auto-approve:
-    if: |
-      ! github.event.pull_request.draft
     needs: check-i18n
     if: "! github.event.pull_request.draft"
     runs-on: ubuntu-latest
