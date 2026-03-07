@@ -23,7 +23,7 @@ import { UrlEncoderInputModel } from '../url-encoder-model';
   styleUrl: './url-encoder-output-card.component.scss',
 })
 export class UrlEncoderOutputCardComponent {
-  result?: string;
+  result: string = '';
 
   private readonly snackBar = inject(MatSnackBar);
 
@@ -54,7 +54,7 @@ export class UrlEncoderOutputCardComponent {
   }
 
   clear(): void {
-    this.result = undefined;
+    this.result = '';
   }
 
   onClickCopy(): void {

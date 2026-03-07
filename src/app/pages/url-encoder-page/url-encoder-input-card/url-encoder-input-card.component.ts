@@ -10,9 +10,6 @@ import { HeadingComponent } from '../../../components/heading/heading.component'
 import { HintIconComponent } from '../../../components/hint-icon/hint-icon.component';
 import { UrlEncoderInputModel, UrlEncoderMethod, UrlEncoderMode } from '../url-encoder-model';
 
-/** Default sample string shown on initial load to guide the user. */
-const DEFAULT_INPUT = 'https://example.com/検索?q=Angular フレームワーク&lang=ja';
-
 @Component({
   selector: 'app-url-encoder-input-card',
   imports: [
@@ -38,7 +35,8 @@ export class UrlEncoderInputCardComponent implements OnInit {
   private readonly fb: FormBuilder = inject(FormBuilder);
 
   ngOnInit(): void {
-    this.resetForm(DEFAULT_INPUT);
+    this.resetForm();
+    this.onSubmit();
   }
 
   onSubmit(): void {
@@ -71,11 +69,11 @@ export class UrlEncoderInputCardComponent implements OnInit {
     return encodeAll ? 'encodeURIComponent' : 'encodeURI';
   }
 
-  private resetForm(defaultInput: string = ''): void {
+  private resetForm(): void {
     this.formGroup = this.fb.group({
-      input: this.fb.control<string>(defaultInput, [Validators.required]),
+      input: this.fb.control<string>('', [Validators.required]),
       mode: this.fb.control<UrlEncoderMode>('encode', []),
-      encodeAll: this.fb.control<boolean>(true, []),
+      encodeAll: this.fb.control<boolean>(false, []),
     });
   }
 }

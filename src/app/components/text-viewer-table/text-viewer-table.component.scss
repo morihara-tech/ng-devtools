@@ -28,5 +28,12 @@
 }
 
 .mat-mdc-row {
-  height: 24px;
+  min-height: 24px;
+  height: auto;
+}
+
+.mat-column-line {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }

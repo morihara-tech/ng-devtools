@@ -17,7 +17,7 @@ export class TextViewerTableComponent {
 
   get valueModels(): TextViewerTableModel[] {
     if (!this.value) {
-      return [];
+      return [{ position: 1, line: '' }];
     }
     const models = this.value.split('\n')
       .map((line, i) => ({ position: i + 1, line: line }));
