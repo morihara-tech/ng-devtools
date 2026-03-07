@@ -1,12 +1,6 @@
 name: Check i18n
 
 on:
-  pull_request:
-    types:
-      - opened
-      - reopened
-      - synchronize
-      - ready_for_review
   workflow_call:
 
 env:
@@ -14,7 +8,6 @@ env:
 
 jobs:
   check-i18n:
-    if: "! github.event.pull_request.draft"
     runs-on: ubuntu-latest
     permissions:
       contents: read

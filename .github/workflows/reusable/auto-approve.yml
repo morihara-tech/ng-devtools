@@ -1,21 +1,10 @@
 name: Auto approve
+
 on:
-  pull_request:
-    types:
-      - opened
-      - reopened
-      - synchronize
-      - ready_for_review
+  workflow_call:
 
 jobs:
-  check-i18n:
-    if: "! github.event.pull_request.draft"
-    uses: ./.github/workflows/check-i18n.yml
-    permissions:
-      contents: read
-
   auto-approve:
-    needs: check-i18n
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
