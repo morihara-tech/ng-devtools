@@ -255,8 +255,8 @@
     </unit>
     <unit id="page.urlEncoder.card.input.heading">
       <segment state="initial">
-        <source>入力設定</source>
-        <target>Input Settings</target>
+        <source>URL入力</source>
+        <target>URL Input</target>
       </segment>
     </unit>
     <unit id="page.urlEncoder.card.input.text">
@@ -815,6 +815,12 @@ Renewed the app icon and brand color.</target>
       <segment state="initial">
         <source>URLエンコード・デコードツールを実装しました。</source>
         <target>Implemented the URL Encode / Decode tool.</target>
+      </segment>
+    </unit>
+    <unit id="update.home.20260307b">
+      <segment state="initial">
+        <source>URLエンコーダーの「入力設定」表記を「URL入力」に修正し、IP/CIDR計算機のページタイトルを追加しました。</source>
+        <target>Fixed the label "Input Settings" to "URL Input" in the URL Encoder, and added a page title to the IP/CIDR Calculator.</target>
       </segment>
     </unit>
     <unit id="page.sql.menu">
