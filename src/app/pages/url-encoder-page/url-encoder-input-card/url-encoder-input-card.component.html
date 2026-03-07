@@ -22,8 +22,7 @@
               URLの記号（/ や ? など）もすべて変換する
             </mat-slide-toggle>
             <app-hint-icon
-              message="ONの場合はencodeURIComponent / decodeURIComponentを使用し、スラッシュや疑問符などのURL記号も含めてすべてエンコード・デコードします。OFFの場合はencodeURI / decodeURIを使用し、URL構造を維持したままエンコード・デコードします。"
-              i18n-message="@@page.urlEncoder.card.input.encodeAll.hint"
+              [message]="encodeAllHintMessage"
               class="hint"
             ></app-hint-icon>
           </div>

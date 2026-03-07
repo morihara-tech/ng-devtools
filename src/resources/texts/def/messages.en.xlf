@@ -289,10 +289,16 @@
         <target>Convert all URL symbols (e.g. / and ?) as well</target>
       </segment>
     </unit>
-    <unit id="page.urlEncoder.card.input.encodeAll.hint">
+    <unit id="page.urlEncoder.card.input.encodeAll.hint.encode">
       <segment state="initial">
-        <source>ONの場合はencodeURIComponent / decodeURIComponentを使用し、スラッシュや疑問符などのURL記号も含めてすべてエンコード・デコードします。OFFの場合はencodeURI / decodeURIを使用し、URL構造を維持したままエンコード・デコードします。</source>
-        <target>When ON, uses encodeURIComponent / decodeURIComponent to encode/decode everything including URL symbols such as slashes and question marks. When OFF, uses encodeURI / decodeURI to encode/decode while preserving the URL structure.</target>
+        <source>ONの場合はencodeURIComponentを使用し、スラッシュや疑問符などのURL記号も含めてすべてエンコードします。OFFの場合はencodeURIを使用し、URL構造を維持したままエンコードします。</source>
+        <target>When ON, uses encodeURIComponent to encode everything including URL symbols such as slashes and question marks. When OFF, uses encodeURI to encode while preserving the URL structure.</target>
+      </segment>
+    </unit>
+    <unit id="page.urlEncoder.card.input.encodeAll.hint.decode">
+      <segment state="initial">
+        <source>ONの場合はdecodeURIComponentを使用し、スラッシュや疑問符などのURL記号も含めてすべてデコードします。OFFの場合はdecodeURIを使用し、URL構造を維持したままデコードします。</source>
+        <target>When ON, uses decodeURIComponent to decode everything including URL symbols such as slashes and question marks. When OFF, uses decodeURI to decode while preserving the URL structure.</target>
       </segment>
     </unit>
     <unit id="page.urlEncoder.card.input.convert">

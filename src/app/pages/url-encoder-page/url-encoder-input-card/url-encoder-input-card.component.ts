@@ -36,7 +36,6 @@ export class UrlEncoderInputCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.resetForm();
-    this.onSubmit();
   }
 
   onSubmit(): void {
@@ -64,6 +63,14 @@ export class UrlEncoderInputCardComponent implements OnInit {
     return inputValue.trim() === '';
   }
 
+  get encodeAllHintMessage(): string {
+    const mode = (this.formGroup?.controls['mode'].value as UrlEncoderMode) ?? 'encode';
+    if (mode === 'decode') {
+      return $localize`:@@page.urlEncoder.card.input.encodeAll.hint.decode:ONの場合はdecodeURIComponentを使用し、スラッシュや疑問符などのURL記号も含めてすべてデコードします。OFFの場合はdecodeURIを使用し、URL構造を維持したままデコードします。`;
+    }
+    return $localize`:@@page.urlEncoder.card.input.encodeAll.hint.encode:ONの場合はencodeURIComponentを使用し、スラッシュや疑問符などのURL記号も含めてすべてエンコードします。OFFの場合はencodeURIを使用し、URL構造を維持したままエンコードします。`;
+  }
+
   private getMethod(): UrlEncoderMethod {
     const encodeAll: boolean = this.formGroup!.controls['encodeAll'].value ?? true;
     return encodeAll ? 'encodeURIComponent' : 'encodeURI';
@@ -73,7 +80,7 @@ export class UrlEncoderInputCardComponent implements OnInit {
     this.formGroup = this.fb.group({
       input: this.fb.control<string>('', [Validators.required]),
       mode: this.fb.control<UrlEncoderMode>('encode', []),
-      encodeAll: this.fb.control<boolean>(false, []),
+      encodeAll: this.fb.control<boolean>(true, []),
     });
   }
 }

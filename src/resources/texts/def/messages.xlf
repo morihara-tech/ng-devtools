@@ -241,9 +241,14 @@
         <source>URLの記号（/ や ? など）もすべて変換する</source>
       </segment>
     </unit>
-    <unit id="page.urlEncoder.card.input.encodeAll.hint">
+    <unit id="page.urlEncoder.card.input.encodeAll.hint.encode">
       <segment>
-        <source>ONの場合はencodeURIComponent / decodeURIComponentを使用し、スラッシュや疑問符などのURL記号も含めてすべてエンコード・デコードします。OFFの場合はencodeURI / decodeURIを使用し、URL構造を維持したままエンコード・デコードします。</source>
+        <source>ONの場合はencodeURIComponentを使用し、スラッシュや疑問符などのURL記号も含めてすべてエンコードします。OFFの場合はencodeURIを使用し、URL構造を維持したままエンコードします。</source>
+      </segment>
+    </unit>
+    <unit id="page.urlEncoder.card.input.encodeAll.hint.decode">
+      <segment>
+        <source>ONの場合はdecodeURIComponentを使用し、スラッシュや疑問符などのURL記号も含めてすべてデコードします。OFFの場合はdecodeURIを使用し、URL構造を維持したままデコードします。</source>
       </segment>
     </unit>
     <unit id="page.urlEncoder.card.input.convert">
