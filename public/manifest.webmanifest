@@ -1,0 +1,12 @@
+{
+  "name": "DevTools",
+  "short_name": "DevTools",
+  "icons": [
+    { "src": "icon-192x192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512x512.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#E5F2F7",
+  "theme_color": "#005B7F"
+}

@@ -4,6 +4,10 @@ export const HOME_UPDATE_HISTORIES: Array<UpdateHistoryModel> = [
   // add new update history here
   {
     date: '2026-03-06',
+    description: $localize`:@@update.home.20260306b:アプリアイコンとブランドカラーをリニューアルしました。`
+  },
+  {
+    date: '2026-03-06',
     description: $localize`:@@update.home.20260306:SVGビューアーに入力SVGのviewBox/widthを設定に反映する機能を追加しました。`
   },
   {

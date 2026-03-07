@@ -24,8 +24,8 @@
 @media screen and (max-width: 600px) {
   /*for smart phone*/
   .logo {
-    width: 24px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
     position: absolute;
     left: 50%;
     transform: translate(-50%,-50%);
@@ -39,7 +39,7 @@
 @media screen and (min-width: 600px) {
   /*for pc*/
   .logo {
-    width: 40px;
-    height: 40px;
+    width: 48px;
+    height: 48px;
   }
 }

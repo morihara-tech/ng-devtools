@@ -38,9 +38,9 @@ export class SvgToPngInputCardComponent implements OnInit {
   @Output() svgCodeChange: EventEmitter<string> = new EventEmitter();
 
   formGroup?: FormGroup;
-  editorValue: string = `<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="100" cy="100" r="80" fill="#AE1C1D" />
-  <text x="100" y="110" text-anchor="middle" font-size="24" fill="white">SVG</text>
+  editorValue: string = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <circle cx="128" cy="128" r="80" fill="#AE1C1D" />
+  <text x="128" y="138" text-anchor="middle" font-size="24" fill="white">SVG</text>
 </svg>`;
   private snackBar = inject(MatSnackBar);
 

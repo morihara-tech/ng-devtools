@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="arc-gradient" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#005B7F;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4EC9B0;stop-opacity:1" />
+    </linearGradient>
+    
+    <filter id="glow-mild" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
+      <feColorMatrix in="blur" type="matrix" values="
+          1 0 0 0 0
+          0 1 0 0 0
+          0 0 1 0 0
+          0 0 0 0.5 0" result="brightBlur"/>
+      <feMerge>
+        <feMergeNode in="brightBlur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <g filter="url(#glow-mild)">
+    <path d="M 182,76 C 146,112 98,184 74,184 C 42,184 42,72 90,72 C 130,72 160,144 182,184" 
+          fill="none" 
+          stroke="url(#arc-gradient)" 
+          stroke-width="24" 
+          stroke-linecap="round" 
+          stroke-linejoin="round"/>
+    
+    <circle cx="218" cy="184" r="15" fill="url(#arc-gradient)" stroke="none" />
+  </g>
+</svg>
