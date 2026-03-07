@@ -213,7 +213,7 @@
     </unit>
     <unit id="page.urlEncoder.card.input.heading">
       <segment>
-        <source>入力設定</source>
+        <source>URL入力</source>
       </segment>
     </unit>
     <unit id="page.urlEncoder.card.input.text">

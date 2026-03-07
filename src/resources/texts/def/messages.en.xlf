@@ -255,8 +255,8 @@
     </unit>
     <unit id="page.urlEncoder.card.input.heading">
       <segment state="initial">
-        <source>入力設定</source>
-        <target>Input Settings</target>
+        <source>URL入力</source>
+        <target>URL Input</target>
       </segment>
     </unit>
     <unit id="page.urlEncoder.card.input.text">
