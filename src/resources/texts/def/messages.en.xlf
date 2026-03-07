@@ -709,6 +709,12 @@
         <target>Added clear button to JSON Formatter, SQL Formatter, and SVG Viewer tools.</target>
       </segment>
     </unit>
+    <unit id="update.home.20260307">
+      <segment state="initial">
+        <source>i18nチェックのGitHub Actionを追加しました。</source>
+        <target>Added GitHub Action for i18n validation.</target>
+      </segment>
+    </unit>
     <unit id="update.home.20260306b">
       <segment state="initial">
         <source>アプリアイコンとブランドカラーをリニューアルしました。</source>
@@ -760,7 +766,7 @@
     <unit id="page.sqlFormatter.menu">
       <segment state="initial">
         <source>SQL整形</source>
-        <target/>
+        <target>SQL Formatter</target>
       </segment>
     </unit>
     <unit id="page.svgToPng.card.input.backgroundColor">

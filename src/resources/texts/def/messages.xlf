@@ -771,6 +771,11 @@
         <source>JSON整形、SQL整形、SVGビューアーツールにクリアボタンを追加しました。</source>
       </segment>
     </unit>
+    <unit id="update.home.20260307">
+      <segment>
+        <source>i18nチェックのGitHub Actionを追加しました。</source>
+      </segment>
+    </unit>
     <unit id="update.home.20260306b">
       <segment>
         <source>アプリアイコンとブランドカラーをリニューアルしました。</source>
