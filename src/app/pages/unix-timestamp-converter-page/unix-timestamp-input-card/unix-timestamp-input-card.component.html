@@ -1,0 +1,94 @@
+<mat-card appearance="raised">
+  @if (formGroup) {
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+      <mat-card-content>
+        <app-heading headingType="h3">
+          <span i18n="@@page.unixTimestamp.card.input.heading">入力設定</span>
+          <div class="right">
+            <mat-button-toggle-group
+              class="mode-toggle"
+              [value]="mode"
+              (change)="onModeChange($event.value)">
+              <mat-button-toggle value="toDateTime" i18n="@@page.unixTimestamp.card.input.mode.toDateTime">
+                日時に変換
+              </mat-button-toggle>
+              <mat-button-toggle value="toTimestamp" i18n="@@page.unixTimestamp.card.input.mode.toTimestamp">
+                UNIXタイムスタンプに変換
+              </mat-button-toggle>
+            </mat-button-toggle-group>
+          </div>
+        </app-heading>
+
+        <div class="flex wrap">
+          @if (mode === 'toDateTime') {
+            <mat-form-field class="input-form input-form-m">
+              <mat-label i18n="@@page.unixTimestamp.card.input.unixTimestamp">UNIXタイムスタンプ</mat-label>
+              <input
+                matInput
+                type="number"
+                min="0"
+                formControlName="unixTimestamp"
+                placeholder="1741312642"
+                aria-label="UNIX timestamp">
+            </mat-form-field>
+          }
+
+          @if (mode === 'toTimestamp') {
+            <mat-form-field class="input-form input-form-m">
+              <mat-label i18n="@@page.unixTimestamp.card.input.date">日付</mat-label>
+              <input
+                matInput
+                [placeholder]="dateFormatPlaceholder"
+                formControlName="date"
+                [matDatepicker]="picker"
+                aria-label="Date">
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+            <div class="time-wrapper flex">
+              <mat-form-field class="input-form input-form-s">
+                <mat-label i18n="@@common.hours">時</mat-label>
+                <input matInput type="number" min="0" max="23" formControlName="hours">
+              </mat-form-field>
+              <mat-form-field class="input-form input-form-s">
+                <mat-label i18n="@@common.minutes">分</mat-label>
+                <input matInput type="number" min="0" max="59" formControlName="minutes">
+              </mat-form-field>
+              <mat-form-field class="input-form input-form-s">
+                <mat-label i18n="@@common.seconds">秒</mat-label>
+                <input matInput type="number" min="0" max="59" formControlName="seconds">
+              </mat-form-field>
+            </div>
+          }
+
+          <mat-form-field class="input-form input-form-m">
+            <mat-label i18n="@@page.unixTimestamp.card.input.timezone">タイムゾーン</mat-label>
+            <input
+              matInput
+              formControlName="timezone"
+              [matAutocomplete]="tzAuto"
+              (input)="onTimezoneInput($event)"
+              aria-label="Timezone">
+            <mat-autocomplete #tzAuto="matAutocomplete">
+              @for (tz of filteredTimezones; track tz) {
+                <mat-option [value]="tz">{{ tz }}</mat-option>
+              }
+            </mat-autocomplete>
+          </mat-form-field>
+        </div>
+
+        @if (errorMessage !== null) {
+          <mat-error>{{ errorMessage }}</mat-error>
+        }
+      </mat-card-content>
+      <mat-card-actions align="end">
+        <button
+          mat-flat-button
+          [disabled]="hasError"
+          type="submit"
+          i18n="@@page.unixTimestamp.card.input.convert">変換</button>
+      </mat-card-actions>
+    </form>
+  }
+</mat-card>

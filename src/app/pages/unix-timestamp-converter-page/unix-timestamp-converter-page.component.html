@@ -1,0 +1,12 @@
+<app-application-page-template>
+  <div class="margin-bottom-16">
+    <app-heading headingType="h2" i18n="@@page.unixTimestamp.title">UNIXタイム変換</app-heading>
+  </div>
+  <app-unix-timestamp-input-card
+    (convert)="onConvert($event)">
+  </app-unix-timestamp-input-card>
+  <div class="spacer"></div>
+  <app-unix-timestamp-output-card
+    #output>
+  </app-unix-timestamp-output-card>
+</app-application-page-template>

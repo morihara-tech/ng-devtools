@@ -817,6 +817,150 @@ Renewed the app icon and brand color.</target>
         <target>Implemented the URL Encode / Decode tool.</target>
       </segment>
     </unit>
+    <unit id="update.home.20260308">
+      <segment state="initial">
+        <source>UNIXタイム変換ツールを実装しました。</source>
+        <target>Implemented the UNIX Timestamp Converter tool.</target>
+      </segment>
+    </unit>
+    <unit id="page.unixTimestamp.menu">
+      <segment state="initial">
+        <source>UNIXタイム変換</source>
+        <target>UNIX Timestamp Converter</target>
+      </segment>
+    </unit>
+    <unit id="page.unixTimestamp.title">
+      <segment state="initial">
+        <source>UNIXタイム変換</source>
+        <target>UNIX Timestamp Converter</target>
+      </segment>
+    </unit>
+    <unit id="page.unixTimestamp.card.input.heading">
+      <segment state="initial">
+        <source>入力設定</source>
+        <target>Input Settings</target>
+      </segment>
+    </unit>
+    <unit id="page.unixTimestamp.card.input.mode.toDateTime">
+      <segment state="initial">
+        <source>日時に変換</source>
+        <target>To Date/Time</target>
+      </segment>
+    </unit>
+    <unit id="page.unixTimestamp.card.input.mode.toTimestamp">
+      <segment state="initial">
+        <source>UNIXタイムスタンプに変換</source>
+        <target>To UNIX Timestamp</target>
+      </segment>
+    </unit>
+    <unit id="page.unixTimestamp.card.input.unixTimestamp">
+      <segment state="initial">
+        <source>UNIXタイムスタンプ</source>
+        <target>UNIX Timestamp</target>
+      </segment>
+    </unit>
+    <unit id="page.unixTimestamp.card.input.date">
+      <segment state="initial">
+        <source>日付</source>
+        <target>Date</target>
+      </segment>
+    </unit>
+    <unit id="page.unixTimestamp.card.input.timezone">
+      <segment state="initial">
+        <source>タイムゾーン</source>
+        <target>Timezone</target>
+      </segment>
+    </unit>
+    <unit id="page.unixTimestamp.card.input.convert">
+      <segment state="initial">
+        <source>変換</source>
+        <target>Convert</target>
+      </segment>
+    </unit>
+    <unit id="page.unixTimestamp.card.input.error.required">
+      <segment state="initial">
+        <source>必須項目を入力してください。</source>
+        <target>Please fill in the required fields.</target>
+      </segment>
+    </unit>
+    <unit id="page.unixTimestamp.card.input.error.invalidTimestamp">
+      <segment state="initial">
+        <source>有効なUNIXタイムスタンプを入力してください。</source>
+        <target>Please enter a valid UNIX timestamp.</target>
+      </segment>
+    </unit>
+    <unit id="page.unixTimestamp.card.output.heading">
+      <segment state="initial">
+        <source>変換結果</source>
+        <target>Conversion Result</target>
+      </segment>
+    </unit>
+    <unit id="page.unixTimestamp.card.output.noData">
+      <segment state="initial">
+        <source>UNIXタイムスタンプまたは日時を入力してください。</source>
+        <target>Please enter a UNIX timestamp or date/time.</target>
+      </segment>
+    </unit>
+    <unit id="page.unixTimestamp.card.output.grid.columnName">
+      <segment state="initial">
+        <source>項目</source>
+        <target>Item</target>
+      </segment>
+    </unit>
+    <unit id="page.unixTimestamp.card.output.grid.columnValue">
+      <segment state="initial">
+        <source>値</source>
+        <target>Value</target>
+      </segment>
+    </unit>
+    <unit id="page.unixTimestamp.card.output.localDateTime">
+      <segment state="initial">
+        <source>日時 (ローカル)</source>
+        <target>Date/Time (Local)</target>
+      </segment>
+    </unit>
+    <unit id="page.unixTimestamp.card.output.iso8601">
+      <segment state="initial">
+        <source>ISO 8601</source>
+        <target>ISO 8601</target>
+      </segment>
+    </unit>
+    <unit id="page.unixTimestamp.card.output.unixSeconds">
+      <segment state="initial">
+        <source>UNIXタイムスタンプ (秒)</source>
+        <target>UNIX Timestamp (seconds)</target>
+      </segment>
+    </unit>
+    <unit id="page.unixTimestamp.card.output.unixMilliseconds">
+      <segment state="initial">
+        <source>UNIXタイムスタンプ (ミリ秒)</source>
+        <target>UNIX Timestamp (milliseconds)</target>
+      </segment>
+    </unit>
+    <unit id="page.unixTimestamp.card.output.utcDateTime">
+      <segment state="initial">
+        <source>日時 (UTC)</source>
+        <target>Date/Time (UTC)</target>
+      </segment>
+    </unit>
+    <unit id="page.unixTimestamp.card.output.timezoneDateTime">
+      <segment state="initial">
+        <source>日時 (指定タイムゾーン)</source>
+        <target>Date/Time (Selected Timezone)</target>
+      </segment>
+    </unit>
+    <unit id="page.unixTimestamp.card.output.rfc2822">
+      <segment state="initial">
+        <source>RFC 2822</source>
+        <target>RFC 2822</target>
+      </segment>
+    </unit>
+    <unit id="page.unixTimestamp.card.output.weekday">
+      <segment state="initial">
+        <source>曜日</source>
+        <target>Day of Week</target>
+      </segment>
+    </unit>
     <unit id="page.sql.menu">
       <segment state="initial">
         <source>SQL整形</source>

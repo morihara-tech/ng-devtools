@@ -1,0 +1,31 @@
+<mat-card appearance="raised">
+  <mat-card-content>
+    <app-heading headingType="h3">
+      <span i18n="@@page.unixTimestamp.card.output.heading">変換結果</span>
+      <div class="right">
+        <button
+          mat-icon-button
+          matTooltip="クリップボードにコピー"
+          i18n-matTooltip="@@common.copyToClipboard"
+          (click)="onClickCopy()">
+          <mat-icon>content_copy</mat-icon>
+        </button>
+      </div>
+    </app-heading>
+
+    <div class="grid-wrapper">
+      @if (gridSource.length > 0) {
+        <revo-grid
+          [source]="gridSource"
+          [columns]="columns"
+          [theme]="theme"
+          resize hideAttribution range useClipboard>
+        </revo-grid>
+      } @else {
+        <div class="no-data" i18n="@@page.unixTimestamp.card.output.noData">
+          UNIXタイムスタンプまたは日時を入力してください。
+        </div>
+      }
+    </div>
+  </mat-card-content>
+</mat-card>
