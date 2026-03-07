@@ -61,17 +61,18 @@ export class UrlEncoderOutputCardComponent {
     if (!this.result) {
       return;
     }
-    navigator.clipboard.writeText(this.result).catch(() => {
+    navigator.clipboard.writeText(this.result).then(() => {
+      this.snackBar.open(
+        $localize`:@@common.copiedMessage:コピーしました。`,
+        $localize`:@@common.ok:はい`,
+        { duration: 2000, horizontalPosition: 'start' }
+      );
+    }).catch(() => {
       this.snackBar.open(
         $localize`:@@common.copyError:コピーに失敗しました。`,
         $localize`:@@common.ok:はい`,
         { duration: 2000, horizontalPosition: 'start' }
       );
     });
-    this.snackBar.open(
-      $localize`:@@common.copiedMessage:コピーしました。`,
-      $localize`:@@common.ok:はい`,
-      { duration: 2000, horizontalPosition: 'start' }
-    );
   }
 }
