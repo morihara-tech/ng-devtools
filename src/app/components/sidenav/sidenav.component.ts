@@ -62,14 +62,14 @@ export class SidenavComponent implements OnChanges, OnInit {
   private setSidemenu(): void {
     this.sidemenuItems = [
       { icon: 'dashboard', label: $localize`:@@page.dashboard.menu:ダッシュボード`, routerLink: '/dashboard' },
-      { svgIcon: 'ulid', label: $localize`:@@page.ulid.menu:ULID生成`, routerLink: '/ulid-generator' },
-      { svgIcon: 'uuid', label: $localize`:@@page.uuid.menu:UUID生成`, routerLink: '/uuid-generator' },
       { svgIcon: 'json', label: $localize`:@@page.jsonFormatter.menu:JSON整形`, routerLink: '/json-formatter' },
       { icon: 'storage', label: $localize`:@@page.sql.menu:SQL整形`, routerLink: '/sql-formatter' },
-      { icon: 'password', label: $localize`:@@page.password.menu:パスワード生成`, routerLink: '/password-generator' },
-      { icon: 'image', label: $localize`:@@page.svgToPng.menu:SVGビューアー`, routerLink: '/svg-to-png' },
-      { svgIcon: 'ipCidr', label: $localize`:@@page.ipCidr.menu:IP/CIDR計算機`, routerLink: '/ip-cidr-calculator' },
       { icon: 'link', label: $localize`:@@page.urlEncoder.menu:URLエンコーダー`, routerLink: '/url-encoder' },
+      { icon: 'image', label: $localize`:@@page.svgToPng.menu:SVGビューアー`, routerLink: '/svg-to-png' },
+      { svgIcon: 'uuid', label: $localize`:@@page.uuid.menu:UUID生成`, routerLink: '/uuid-generator' },
+      { svgIcon: 'ulid', label: $localize`:@@page.ulid.menu:ULID生成`, routerLink: '/ulid-generator' },
+      { icon: 'password', label: $localize`:@@page.password.menu:パスワード生成`, routerLink: '/password-generator' },
+      { svgIcon: 'ipCidr', label: $localize`:@@page.ipCidr.menu:IP/CIDR計算機`, routerLink: '/ip-cidr-calculator' },
     ];
   }
 

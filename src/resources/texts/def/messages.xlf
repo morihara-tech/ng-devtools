@@ -243,12 +243,14 @@
     </unit>
     <unit id="page.urlEncoder.card.input.encodeAll.hint.encode">
       <segment>
-        <source>ONの場合はencodeURIComponentを使用し、スラッシュや疑問符などのURL記号も含めてすべてエンコードします。OFFの場合はencodeURIを使用し、URL構造を維持したままエンコードします。</source>
+        <source>ONの場合はencodeURIComponentを使用し、スラッシュや疑問符などのURL記号も含めてすべてエンコードします。
+OFFの場合はencodeURIを使用し、URL構造を維持したままエンコードします。</source>
       </segment>
     </unit>
     <unit id="page.urlEncoder.card.input.encodeAll.hint.decode">
       <segment>
-        <source>ONの場合はdecodeURIComponentを使用し、スラッシュや疑問符などのURL記号も含めてすべてデコードします。OFFの場合はdecodeURIを使用し、URL構造を維持したままデコードします。</source>
+        <source>ONの場合はdecodeURIComponentを使用し、スラッシュや疑問符などのURL記号も含めてすべてデコードします。
+OFFの場合はdecodeURIを使用し、URL構造を維持したままデコードします。</source>
       </segment>
     </unit>
     <unit id="page.urlEncoder.card.input.convert">

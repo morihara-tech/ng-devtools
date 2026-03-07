@@ -66,9 +66,11 @@ export class UrlEncoderInputCardComponent implements OnInit {
   get encodeAllHintMessage(): string {
     const mode = (this.formGroup?.controls['mode'].value as UrlEncoderMode) ?? 'encode';
     if (mode === 'decode') {
-      return $localize`:@@page.urlEncoder.card.input.encodeAll.hint.decode:ONの場合はdecodeURIComponentを使用し、スラッシュや疑問符などのURL記号も含めてすべてデコードします。OFFの場合はdecodeURIを使用し、URL構造を維持したままデコードします。`;
+      return $localize`:@@page.urlEncoder.card.input.encodeAll.hint.decode:ONの場合はdecodeURIComponentを使用し、スラッシュや疑問符などのURL記号も含めてすべてデコードします。
+OFFの場合はdecodeURIを使用し、URL構造を維持したままデコードします。`;
     }
-    return $localize`:@@page.urlEncoder.card.input.encodeAll.hint.encode:ONの場合はencodeURIComponentを使用し、スラッシュや疑問符などのURL記号も含めてすべてエンコードします。OFFの場合はencodeURIを使用し、URL構造を維持したままエンコードします。`;
+    return $localize`:@@page.urlEncoder.card.input.encodeAll.hint.encode:ONの場合はencodeURIComponentを使用し、スラッシュや疑問符などのURL記号も含めてすべてエンコードします。
+OFFの場合はencodeURIを使用し、URL構造を維持したままエンコードします。`;
   }
 
   private getMethod(): UrlEncoderMethod {
