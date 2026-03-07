@@ -80,7 +80,7 @@ export class UrlEncoderInputCardComponent implements OnInit {
     this.formGroup = this.fb.group({
       input: this.fb.control<string>('', [Validators.required]),
       mode: this.fb.control<UrlEncoderMode>('encode', []),
-      encodeAll: this.fb.control<boolean>(true, []),
+      encodeAll: this.fb.control<boolean>(false, []),
     });
   }
 }

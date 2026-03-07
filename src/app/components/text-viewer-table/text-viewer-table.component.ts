@@ -12,6 +12,9 @@ import { TextViewerTableModel } from './text-viewer-table-model';
 })
 export class TextViewerTableComponent {
   @Input() value?: string;
+  /** When true, long lines wrap and the line-number column is top-aligned.
+   *  When false, lines do not wrap and the content scrolls horizontally. */
+  @Input() wordWrap: boolean = true;
 
   displayedColumns: string[] = ['position', 'line'];
 

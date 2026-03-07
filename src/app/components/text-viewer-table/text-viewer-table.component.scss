@@ -32,8 +32,22 @@
   height: auto;
 }
 
-.mat-column-line {
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
-  word-break: break-word;
+.word-wrap {
+  .mat-column-position {
+    vertical-align: top;
+  }
+
+  .mat-column-line {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+}
+
+.no-wrap {
+  overflow-x: auto;
+
+  .mat-column-line {
+    white-space: pre;
+  }
 }
