@@ -5,5 +5,6 @@ export const unixTimestampConverterPageRoutes: Routes = [
   {
     path: '',
     component: UnixTimestampConverterPageComponent,
+    data: { title: $localize`:@@page.unixTimestamp.menu:UNIXタイム変換` },
   },
 ];
