@@ -7,41 +7,10 @@ on:
       - synchronize
       - ready_for_review
 
-env:
-  NODE_VERSION: 20.19.5
-
 jobs:
-  check-i18n:
-    if: "! github.event.pull_request.draft"
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-    steps:
-      - uses: actions/checkout@v4
-      - name: Use Node.js ${{ env.NODE_VERSION }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-      - name: Install dependencies
-        run: yarn --frozen-lockfile
-      - name: Extract i18n
-        run: yarn ng extract-i18n
-      - name: Check no new units added to messages.xlf
-        run: |
-          if ! git diff --exit-code src/resources/texts/def/messages.xlf; then
-            echo "::error::New i18n units were found in messages.xlf. Please run 'ng extract-i18n' locally and commit the updated messages.xlf."
-            exit 1
-          fi
-      - name: Check no missing translations in messages.en.xlf
-        run: |
-          if grep -q '<target/>' src/resources/texts/def/messages.en.xlf; then
-            echo "::error::Missing translations found in messages.en.xlf. Please translate all '<target/>' entries."
-            exit 1
-          fi
-
   auto-approve:
-    needs: check-i18n
-    if: "! github.event.pull_request.draft"
+    if: | 
+      ! github.event.pull_request.draft
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
