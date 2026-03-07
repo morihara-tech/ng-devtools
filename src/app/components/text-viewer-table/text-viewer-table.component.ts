@@ -12,12 +12,15 @@ import { TextViewerTableModel } from './text-viewer-table-model';
 })
 export class TextViewerTableComponent {
   @Input() value?: string;
+  /** When true, long lines wrap and the line-number column is top-aligned.
+   *  When false, lines do not wrap and the content scrolls horizontally. */
+  @Input() wordWrap: boolean = false;
 
   displayedColumns: string[] = ['position', 'line'];
 
   get valueModels(): TextViewerTableModel[] {
     if (!this.value) {
-      return [];
+      return [{ position: 1, line: '' }];
     }
     const models = this.value.split('\n')
       .map((line, i) => ({ position: i + 1, line: line }));

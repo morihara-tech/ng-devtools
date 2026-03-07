@@ -1,0 +1,35 @@
+<mat-card appearance="raised">
+  @if (formGroup) {
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+      <mat-card-content>
+        <app-heading headingType="h3" i18n="@@page.urlEncoder.card.input.heading">入力設定</app-heading>
+        <div class="input-section">
+          <mat-form-field class="input-field">
+            <mat-label i18n="@@page.urlEncoder.card.input.text">変換する文字列</mat-label>
+            <input matInput type="text" formControlName="input">
+          </mat-form-field>
+        </div>
+        <div class="options-section">
+          <mat-form-field class="mode-field">
+            <mat-label i18n="@@page.urlEncoder.card.input.mode">モード</mat-label>
+            <mat-select formControlName="mode" aria-label="URL encoder mode">
+              <mat-option value="encode" i18n="@@page.urlEncoder.card.input.mode.encode">エンコード</mat-option>
+              <mat-option value="decode" i18n="@@page.urlEncoder.card.input.mode.decode">デコード</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div class="toggle-group">
+            <mat-slide-toggle formControlName="encodeAll" i18n="@@page.urlEncoder.card.input.encodeAll">URLの記号（/ や ? など）もすべて変換する</mat-slide-toggle>
+            <app-hint-icon
+              [message]="encodeAllHintMessage"
+              class="hint"
+            ></app-hint-icon>
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-card-actions align="end">
+        <button mat-button type="button" (click)="onClear()" i18n="@@page.urlEncoder.card.input.clear">クリア</button>
+        <button mat-flat-button color="primary" [disabled]="isInputEmpty" type="submit" i18n="@@page.urlEncoder.card.input.convert">変換</button>
+      </mat-card-actions>
+    </form>
+  }
+</mat-card>

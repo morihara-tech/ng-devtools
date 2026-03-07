@@ -1,20 +1,6 @@
 <mat-nav-list class="list">
   <mat-list>
     <mat-list-item class="item">
-      <mat-icon matListItemIcon class="icon" svgIcon="ulid"></mat-icon>
-      <div matListItemLine class="line">
-        <app-hyper-link-text url="/ulid-generator" i18n="@@page.ulid.menu">ULID生成</app-hyper-link-text>
-      </div>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item class="item">
-      <mat-icon matListItemIcon class="icon" svgIcon="uuid"></mat-icon>
-      <div matListItemLine class="line">
-        <app-hyper-link-text url="/uuid-generator" i18n="@@page.uuid.menu">UUID生成</app-hyper-link-text>
-      </div>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item class="item">
       <mat-icon matListItemIcon class="icon" svgIcon="json"></mat-icon>
       <div matListItemLine class="line">
         <app-hyper-link-text url="/json-formatter" i18n="@@page.jsonFormatter.menu">JSON整形</app-hyper-link-text>
@@ -29,9 +15,9 @@
     </mat-list-item>
     <mat-divider></mat-divider>
     <mat-list-item class="item">
-      <mat-icon matListItemIcon class="icon">password</mat-icon>
+      <mat-icon matListItemIcon class="icon">link</mat-icon>
       <div matListItemLine class="line">
-        <app-hyper-link-text url="/password-generator" i18n="@@page.password.menu">パスワード生成</app-hyper-link-text>
+        <app-hyper-link-text url="/url-encoder" i18n="@@page.urlEncoder.menu">URLエンコーダー</app-hyper-link-text>
       </div>
     </mat-list-item>
     <mat-divider></mat-divider>
@@ -39,6 +25,27 @@
       <mat-icon matListItemIcon class="icon">image</mat-icon>
       <div matListItemLine class="line">
         <app-hyper-link-text url="/svg-to-png" i18n="@@page.svgToPng.menu">SVGビューアー</app-hyper-link-text>
+      </div>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item class="item">
+      <mat-icon matListItemIcon class="icon" svgIcon="uuid"></mat-icon>
+      <div matListItemLine class="line">
+        <app-hyper-link-text url="/uuid-generator" i18n="@@page.uuid.menu">UUID生成</app-hyper-link-text>
+      </div>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item class="item">
+      <mat-icon matListItemIcon class="icon" svgIcon="ulid"></mat-icon>
+      <div matListItemLine class="line">
+        <app-hyper-link-text url="/ulid-generator" i18n="@@page.ulid.menu">ULID生成</app-hyper-link-text>
+      </div>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item class="item">
+      <mat-icon matListItemIcon class="icon">password</mat-icon>
+      <div matListItemLine class="line">
+        <app-hyper-link-text url="/password-generator" i18n="@@page.password.menu">パスワード生成</app-hyper-link-text>
       </div>
     </mat-list-item>
     <mat-divider></mat-divider>
