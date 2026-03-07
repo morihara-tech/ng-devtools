@@ -10,19 +10,22 @@
           </mat-form-field>
         </div>
         <div class="options-section">
-          <div class="option-group">
-            <span class="option-label" i18n="@@page.urlEncoder.card.input.mode">モード</span>
-            <mat-radio-group formControlName="mode" aria-label="URL encoder mode">
-              <mat-radio-button value="encode" i18n="@@page.urlEncoder.card.input.mode.encode">エンコード</mat-radio-button>
-              <mat-radio-button value="decode" i18n="@@page.urlEncoder.card.input.mode.decode">デコード</mat-radio-button>
-            </mat-radio-group>
-          </div>
-          <div class="option-group">
-            <span class="option-label" i18n="@@page.urlEncoder.card.input.method">変換方式</span>
-            <mat-button-toggle-group formControlName="method" aria-label="URL encoder method">
-              <mat-button-toggle value="encodeURIComponent">encodeURIComponent</mat-button-toggle>
-              <mat-button-toggle value="encodeURI">encodeURI</mat-button-toggle>
-            </mat-button-toggle-group>
+          <mat-form-field class="mode-field">
+            <mat-label i18n="@@page.urlEncoder.card.input.mode">モード</mat-label>
+            <mat-select formControlName="mode" aria-label="URL encoder mode">
+              <mat-option value="encode" i18n="@@page.urlEncoder.card.input.mode.encode">エンコード</mat-option>
+              <mat-option value="decode" i18n="@@page.urlEncoder.card.input.mode.decode">デコード</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div class="toggle-group">
+            <mat-slide-toggle formControlName="encodeAll" i18n="@@page.urlEncoder.card.input.encodeAll">
+              URLの記号（/ や ? など）もすべて変換する
+            </mat-slide-toggle>
+            <app-hint-icon
+              message="ONの場合はencodeURIComponent / decodeURIComponentを使用し、スラッシュや疑問符などのURL記号も含めてすべてエンコード・デコードします。OFFの場合はencodeURI / decodeURIを使用し、URL構造を維持したままエンコード・デコードします。"
+              i18n-message="@@page.urlEncoder.card.input.encodeAll.hint"
+              class="hint"
+            ></app-hint-icon>
           </div>
         </div>
       </mat-card-content>

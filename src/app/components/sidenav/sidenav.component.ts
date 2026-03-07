@@ -69,6 +69,7 @@ export class SidenavComponent implements OnChanges, OnInit {
       { icon: 'password', label: $localize`:@@page.password.menu:パスワード生成`, routerLink: '/password-generator' },
       { icon: 'image', label: $localize`:@@page.svgToPng.menu:SVGビューアー`, routerLink: '/svg-to-png' },
       { svgIcon: 'ipCidr', label: $localize`:@@page.ipCidr.menu:IP/CIDR計算機`, routerLink: '/ip-cidr-calculator' },
+      { icon: 'link', label: $localize`:@@page.urlEncoder.menu:URLエンコーダー`, routerLink: '/url-encoder' },
     ];
   }
 

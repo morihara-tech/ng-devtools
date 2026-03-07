@@ -1,13 +1,17 @@
 import { Component, EventEmitter, OnInit, Output, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { HeadingComponent } from '../../../components/heading/heading.component';
+import { HintIconComponent } from '../../../components/hint-icon/hint-icon.component';
 import { UrlEncoderInputModel, UrlEncoderMethod, UrlEncoderMode } from '../url-encoder-model';
+
+/** Default sample string shown on initial load to guide the user. */
+const DEFAULT_INPUT = 'https://example.com/検索?q=Angular フレームワーク&lang=ja';
 
 @Component({
   selector: 'app-url-encoder-input-card',
@@ -15,11 +19,12 @@ import { UrlEncoderInputModel, UrlEncoderMethod, UrlEncoderMode } from '../url-e
     ReactiveFormsModule,
     MatCardModule,
     MatButtonModule,
-    MatButtonToggleModule,
     MatFormFieldModule,
     MatInputModule,
-    MatRadioModule,
+    MatSelectModule,
+    MatSlideToggleModule,
     HeadingComponent,
+    HintIconComponent,
   ],
   templateUrl: './url-encoder-input-card.component.html',
   styleUrl: './url-encoder-input-card.component.scss',
@@ -33,7 +38,7 @@ export class UrlEncoderInputCardComponent implements OnInit {
   private readonly fb: FormBuilder = inject(FormBuilder);
 
   ngOnInit(): void {
-    this.resetForm();
+    this.resetForm(DEFAULT_INPUT);
   }
 
   onSubmit(): void {
@@ -43,7 +48,7 @@ export class UrlEncoderInputCardComponent implements OnInit {
     const model: UrlEncoderInputModel = {
       input: this.formGroup.controls['input'].value,
       mode: this.formGroup.controls['mode'].value as UrlEncoderMode,
-      method: this.formGroup.controls['method'].value as UrlEncoderMethod,
+      method: this.getMethod(),
     };
     this.convert.emit(model);
   }
@@ -61,11 +66,16 @@ export class UrlEncoderInputCardComponent implements OnInit {
     return inputValue.trim() === '';
   }
 
-  private resetForm(): void {
+  private getMethod(): UrlEncoderMethod {
+    const encodeAll: boolean = this.formGroup?.controls['encodeAll'].value ?? true;
+    return encodeAll ? 'encodeURIComponent' : 'encodeURI';
+  }
+
+  private resetForm(defaultInput: string = ''): void {
     this.formGroup = this.fb.group({
-      input: this.fb.control<string>('', [Validators.required]),
+      input: this.fb.control<string>(defaultInput, [Validators.required]),
       mode: this.fb.control<UrlEncoderMode>('encode', []),
-      method: this.fb.control<UrlEncoderMethod>('encodeURIComponent', []),
+      encodeAll: this.fb.control<boolean>(true, []),
     });
   }
 }

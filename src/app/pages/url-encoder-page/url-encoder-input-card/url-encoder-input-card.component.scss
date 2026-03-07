@@ -9,23 +9,21 @@
 .options-section {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 16px 32px;
-  margin-top: 16px;
+  margin-top: 8px;
 }
 
-.option-group {
+.mode-field {
+  width: 160px;
+}
+
+.toggle-group {
   display: flex;
   align-items: center;
-  gap: 12px;
-}
-
-.option-label {
-  color: var(--mat-sys-on-surface-variant);
-  font-size: 14px;
-  white-space: nowrap;
-}
-
-mat-radio-group {
-  display: flex;
   gap: 8px;
+}
+
+.hint {
+  margin-bottom: 2px;
 }
