@@ -8,9 +8,14 @@ on:
       - ready_for_review
 
 jobs:
+  check-i18n:
+    if: "! github.event.pull_request.draft"
+    uses: ./.github/workflows/check-i18n.yml
+    permissions:
+      contents: read
+
   auto-approve:
-    if: | 
-      ! github.event.pull_request.draft
+    needs: check-i18n
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
