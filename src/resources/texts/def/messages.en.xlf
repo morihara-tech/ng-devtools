@@ -756,7 +756,7 @@ Renewed the app icon and brand color.</target>
     <unit id="page.sqlFormatter.menu">
       <segment state="initial">
         <source>SQL整形</source>
-        <target/>
+        <target>SQL Formatter</target>
       </segment>
     </unit>
     <unit id="page.svgToPng.card.input.backgroundColor">
