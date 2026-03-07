@@ -766,7 +766,7 @@
     <unit id="page.sqlFormatter.menu">
       <segment state="initial">
         <source>SQL整形</source>
-        <target>SQL Formatter</target>
+        <target/>
       </segment>
     </unit>
     <unit id="page.svgToPng.card.input.backgroundColor">

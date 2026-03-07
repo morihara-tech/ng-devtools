@@ -3,16 +3,8 @@ import { UpdateHistoryModel } from "../../../app/components/update-history/updat
 export const HOME_UPDATE_HISTORIES: Array<UpdateHistoryModel> = [
   // add new update history here
   {
-    date: '2026-03-07',
-    description: $localize`:@@update.home.20260307:i18nチェックのGitHub Actionを追加しました。`
-  },
-  {
     date: '2026-03-06',
-    description: $localize`:@@update.home.20260306b:アプリアイコンとブランドカラーをリニューアルしました。`
-  },
-  {
-    date: '2026-03-06',
-    description: $localize`:@@update.home.20260306:SVGビューアーに入力SVGのviewBox/widthを設定に反映する機能を追加しました。`
+    description: $localize`:@@update.home.20260306:SVGビューアーのUIを改善しました。\nアプリアイコンとブランドカラーをリニューアルしました。`
   },
   {
     date: '2026-02-04',
