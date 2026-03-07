@@ -115,7 +115,7 @@
             ],
             "newTranslationTargetsBlank": true,
             "includeMeaningAndDescription": true,
-            "collapseWhitespace": true,
+            "collapseWhitespace": false,
             "sort": "stableAlphabetNew"
           }
         },

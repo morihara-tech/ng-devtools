@@ -4,7 +4,8 @@ export const HOME_UPDATE_HISTORIES: Array<UpdateHistoryModel> = [
   // add new update history here
   {
     date: '2026-03-06',
-    description: $localize`:@@update.home.20260306:SVGビューアーのUIを改善しました。\nアプリアイコンとブランドカラーをリニューアルしました。`
+    description: $localize`:@@update.home.20260306:SVGビューアーのUIを改善しました。
+アプリアイコンとブランドカラーをリニューアルしました。`
   },
   {
     date: '2026-02-04',
