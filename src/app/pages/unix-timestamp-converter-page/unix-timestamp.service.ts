@@ -26,7 +26,7 @@ export class UnixTimestampService {
     if (!date || isNaN(date.getTime())) {
       return null;
     }
-    return this.buildResult(date, input.timezone);
+    return this.buildResult(date, input.timezone, input.locale);
   }
 
   private resolveDate(input: UnixTimestampInputModel): Date | null {
@@ -55,30 +55,31 @@ export class UnixTimestampService {
     return new Date(isMilliseconds ? timestamp : timestamp * 1000);
   }
 
-  private buildResult(date: Date, timezone: string): UnixTimestampResult {
+  private buildResult(date: Date, timezone: string, locale?: string): UnixTimestampResult {
     const unixMs = date.getTime();
     const unixSeconds = Math.floor(unixMs / 1000);
+    const resolvedLocale = locale || undefined;
 
     return {
-      localDateTime: new Intl.DateTimeFormat(undefined, {
+      localDateTime: new Intl.DateTimeFormat(resolvedLocale, {
         dateStyle: 'full',
         timeStyle: 'medium',
       }).format(date),
       iso8601: date.toISOString(),
       unixSeconds: unixSeconds.toString(),
       unixMilliseconds: unixMs.toString(),
-      utcDateTime: new Intl.DateTimeFormat(undefined, {
+      utcDateTime: new Intl.DateTimeFormat(resolvedLocale, {
         dateStyle: 'full',
         timeStyle: 'medium',
         timeZone: 'UTC',
       }).format(date),
-      timezoneDateTime: new Intl.DateTimeFormat(undefined, {
+      timezoneDateTime: new Intl.DateTimeFormat(resolvedLocale, {
         dateStyle: 'full',
         timeStyle: 'medium',
         timeZone: timezone,
       }).format(date),
       rfc2822: this.toRfc2822(date),
-      weekday: new Intl.DateTimeFormat(undefined, {
+      weekday: new Intl.DateTimeFormat(resolvedLocale, {
         weekday: 'long',
       }).format(date),
     };

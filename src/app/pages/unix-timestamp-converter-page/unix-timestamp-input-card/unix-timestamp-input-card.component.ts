@@ -86,6 +86,7 @@ export class UnixTimestampInputCardComponent implements OnInit {
     const model: UnixTimestampInputModel = {
       mode: this.mode,
       timezone: this.formGroup.value['timezone'] ?? 'UTC',
+      locale: String(this.calendarLocale()),
     };
 
     if (this.mode === 'toDateTime') {
@@ -129,8 +130,9 @@ export class UnixTimestampInputCardComponent implements OnInit {
 
   private resetForm(): void {
     if (this.mode === 'toDateTime') {
+      const currentUnixTimestamp = Math.floor(Date.now() / 1000);
       this.formGroup = this.fb.group({
-        unixTimestamp: this.fb.control<number | null>(null, [
+        unixTimestamp: this.fb.control<number | null>(currentUnixTimestamp, [
           Validators.required,
           Validators.min(0),
         ]),

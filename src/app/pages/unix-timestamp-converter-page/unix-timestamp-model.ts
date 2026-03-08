@@ -14,6 +14,8 @@ export interface UnixTimestampInputModel {
   seconds?: number;
   /** IANA timezone identifier (e.g. "Asia/Tokyo"). */
   timezone: string;
+  /** BCP 47 language tag for locale (e.g. "ja", "en-US"). Defaults to browser locale if not specified. */
+  locale?: string;
 }
 
 /** Calculated result displayed in the output grid. */

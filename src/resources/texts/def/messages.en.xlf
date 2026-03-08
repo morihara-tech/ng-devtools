@@ -813,14 +813,9 @@ Renewed the app icon and brand color.</target>
     </unit>
     <unit id="update.home.20260307">
       <segment state="initial">
-        <source>URLエンコード・デコードツールを実装しました。</source>
+        <source>URLエンコード・デコードツールを実装しました。
+UNIXタイム変換ツールを実装しました。</source>
         <target>Implemented the URL Encode / Decode tool.</target>
-      </segment>
-    </unit>
-    <unit id="update.home.20260308">
-      <segment state="initial">
-        <source>UNIXタイム変換ツールを実装しました。</source>
-        <target>Implemented the UNIX Timestamp Converter tool.</target>
       </segment>
     </unit>
     <unit id="page.unixTimestamp.menu">
