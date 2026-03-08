@@ -843,8 +843,8 @@ Renewed the app icon and brand color.</target>
     </unit>
     <unit id="page.textDiff.card.input.heading">
       <segment state="initial">
-        <source>入力設定</source>
-        <target>Input Settings</target>
+        <source>テキスト</source>
+        <target>Text</target>
       </segment>
     </unit>
     <unit id="page.textDiff.card.input.clear.tooltip">

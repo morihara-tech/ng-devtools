@@ -28,7 +28,7 @@
   overflow-y: auto;
 }
 
-::ng-deep {
+:host ::ng-deep {
   .diff-added {
     background-color: color-mix(in srgb, var(--mat-sys-tertiary) 20%, transparent);
   }
