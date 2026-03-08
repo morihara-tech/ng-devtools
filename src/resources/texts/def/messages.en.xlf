@@ -817,6 +817,78 @@ Renewed the app icon and brand color.</target>
         <target>Implemented the URL Encode / Decode tool.</target>
       </segment>
     </unit>
+    <unit id="update.home.20260308">
+      <segment state="initial">
+        <source>テキスト比較ツールを実装しました。</source>
+        <target>Implemented the Text Diff tool.</target>
+      </segment>
+    </unit>
+    <unit id="page.textDiff.menu">
+      <segment state="initial">
+        <source>テキスト比較</source>
+        <target>Text Diff</target>
+      </segment>
+    </unit>
+    <unit id="page.textDiff.title">
+      <segment state="initial">
+        <source>テキスト比較ツール</source>
+        <target>Text Diff Tool</target>
+      </segment>
+    </unit>
+    <unit id="page.textDiff.hint">
+      <segment state="initial">
+        <source>2つのテキストの差分を比較し、追加・削除・変更箇所をハイライト表示します。</source>
+        <target>Compare the differences between two texts and highlight added, removed, and modified lines.</target>
+      </segment>
+    </unit>
+    <unit id="page.textDiff.card.input.heading">
+      <segment state="initial">
+        <source>入力設定</source>
+        <target>Input Settings</target>
+      </segment>
+    </unit>
+    <unit id="page.textDiff.card.input.clear.tooltip">
+      <segment state="initial">
+        <source>クリア</source>
+        <target>Clear</target>
+      </segment>
+    </unit>
+    <unit id="page.textDiff.card.input.original">
+      <segment state="initial">
+        <source>比較元テキスト</source>
+        <target>Original Text</target>
+      </segment>
+    </unit>
+    <unit id="page.textDiff.card.input.modified">
+      <segment state="initial">
+        <source>比較先テキスト</source>
+        <target>Modified Text</target>
+      </segment>
+    </unit>
+    <unit id="page.textDiff.card.input.compare">
+      <segment state="initial">
+        <source>比較</source>
+        <target>Compare</target>
+      </segment>
+    </unit>
+    <unit id="page.textDiff.card.output.heading">
+      <segment state="initial">
+        <source>比較結果</source>
+        <target>Diff Result</target>
+      </segment>
+    </unit>
+    <unit id="page.textDiff.card.output.original">
+      <segment state="initial">
+        <source>比較元</source>
+        <target>Original</target>
+      </segment>
+    </unit>
+    <unit id="page.textDiff.card.output.modified">
+      <segment state="initial">
+        <source>比較先</source>
+        <target>Modified</target>
+      </segment>
+    </unit>
     <unit id="page.sql.menu">
       <segment state="initial">
         <source>SQL整形</source>

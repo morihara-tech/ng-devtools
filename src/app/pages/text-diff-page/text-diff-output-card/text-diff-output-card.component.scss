@@ -1,0 +1,54 @@
+.split-view {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.split-pane {
+  flex: 1 1 300px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pane-label {
+  color: var(--mat-sys-on-surface-variant);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.text-viewer-table-wrapper {
+  background-color: var(--mat-sys-surface);
+  border: 1px solid var(--mat-sys-outline-variant);
+  border-radius: 8px;
+  overflow: hidden;
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+::ng-deep {
+  .diff-added {
+    background-color: color-mix(in srgb, var(--mat-sys-tertiary) 20%, transparent);
+  }
+
+  .diff-removed {
+    background-color: color-mix(in srgb, var(--mat-sys-error) 20%, transparent);
+  }
+
+  .diff-modified {
+    background-color: color-mix(in srgb, var(--mat-sys-secondary) 20%, transparent);
+  }
+
+  .diff-added-char {
+    background-color: color-mix(in srgb, var(--mat-sys-tertiary) 40%, transparent);
+    border-radius: 2px;
+  }
+
+  .diff-removed-char {
+    background-color: color-mix(in srgb, var(--mat-sys-error) 40%, transparent);
+    border-radius: 2px;
+    text-decoration: line-through;
+  }
+}

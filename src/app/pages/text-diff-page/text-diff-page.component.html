@@ -1,0 +1,17 @@
+<app-application-page-template>
+  <div class="margin-bottom-16">
+    <app-heading headingType="h2"
+      hintMessage="2つのテキストの差分を比較し、追加・削除・変更箇所をハイライト表示します。"
+      i18n-hintMessage="@@page.textDiff.hint"
+      i18n="@@page.textDiff.title"
+    >テキスト比較ツール</app-heading>
+  </div>
+  <app-text-diff-input-card
+    (compare)="onCompare($event)"
+    (clear)="onClear()"
+  ></app-text-diff-input-card>
+  <div class="spacer"></div>
+  <app-text-diff-output-card
+    #output
+  ></app-text-diff-output-card>
+</app-application-page-template>

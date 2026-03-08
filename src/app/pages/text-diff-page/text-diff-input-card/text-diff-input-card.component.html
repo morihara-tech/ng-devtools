@@ -1,0 +1,33 @@
+<mat-card appearance="raised">
+  <mat-card-content>
+    <app-heading headingType="h3">
+      <span i18n="@@page.textDiff.card.input.heading">入力設定</span>
+      <div class="right">
+        <button mat-icon-button
+          matTooltip="クリア"
+          i18n-matTooltip="@@page.textDiff.card.input.clear.tooltip"
+          (click)="onClear()"
+          aria-label="clear inputs">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </app-heading>
+    <div class="editors-section">
+      <div class="editor-wrapper">
+        <label class="editor-label" i18n="@@page.textDiff.card.input.original">比較元テキスト</label>
+        <div class="codemirror-wrapper">
+          <app-codemirror [(value)]="originalText" [extensions]="[]"></app-codemirror>
+        </div>
+      </div>
+      <div class="editor-wrapper">
+        <label class="editor-label" i18n="@@page.textDiff.card.input.modified">比較先テキスト</label>
+        <div class="codemirror-wrapper">
+          <app-codemirror [(value)]="modifiedText" [extensions]="[]"></app-codemirror>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <button mat-flat-button color="primary" (click)="onCompare()" i18n="@@page.textDiff.card.input.compare">比較</button>
+  </mat-card-actions>
+</mat-card>

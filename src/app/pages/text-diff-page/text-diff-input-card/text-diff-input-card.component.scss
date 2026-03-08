@@ -1,0 +1,30 @@
+.editors-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.editor-wrapper {
+  flex: 1 1 300px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.editor-label {
+  color: var(--mat-sys-on-surface-variant);
+  font-size: 14px;
+}
+
+.codemirror-wrapper {
+  border: 1px solid var(--mat-sys-outline-variant);
+  border-radius: 4px;
+  min-height: 200px;
+  overflow: hidden;
+
+  ::ng-deep .cm-editor {
+    min-height: 200px;
+  }
+}
