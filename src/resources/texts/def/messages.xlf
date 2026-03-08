@@ -915,6 +915,21 @@ UNIXタイム変換ツールを実装しました。</source>
         <source>比較元</source>
       </segment>
     </unit>
+    <unit id="page.textDiff.card.output.legend.added">
+      <segment>
+        <source>追加</source>
+      </segment>
+    </unit>
+    <unit id="page.textDiff.card.output.legend.modified">
+      <segment>
+        <source>変更</source>
+      </segment>
+    </unit>
+    <unit id="page.textDiff.card.output.legend.removed">
+      <segment>
+        <source>削除</source>
+      </segment>
+    </unit>
     <unit id="page.textDiff.card.output.modified">
       <segment>
         <source>比較先</source>

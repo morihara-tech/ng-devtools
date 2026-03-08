@@ -13,16 +13,16 @@
       </div>
     </app-heading>
     <div class="editors-section">
-      <div class="editor-wrapper">
+      <div class="editor-wrapper" (click)="onWrapperClick('original')">
         <label class="editor-label" i18n="@@page.textDiff.card.input.original">比較元テキスト</label>
         <div class="codemirror-wrapper">
-          <app-codemirror [(value)]="originalText" [extensions]="[]"></app-codemirror>
+          <app-codemirror #originalEditor [(value)]="originalText" [extensions]="extensions"></app-codemirror>
         </div>
       </div>
-      <div class="editor-wrapper">
+      <div class="editor-wrapper" (click)="onWrapperClick('modified')">
         <label class="editor-label" i18n="@@page.textDiff.card.input.modified">比較先テキスト</label>
         <div class="codemirror-wrapper">
-          <app-codemirror [(value)]="modifiedText" [extensions]="[]"></app-codemirror>
+          <app-codemirror #modifiedEditor [(value)]="modifiedText" [extensions]="extensions"></app-codemirror>
         </div>
       </div>
     </div>

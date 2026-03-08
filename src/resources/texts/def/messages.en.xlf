@@ -884,6 +884,24 @@ UNIXタイム変換ツールを実装しました。</source>
         <target>Original</target>
       </segment>
     </unit>
+    <unit id="page.textDiff.card.output.legend.added">
+      <segment state="initial">
+        <source>追加</source>
+        <target>Added</target>
+      </segment>
+    </unit>
+    <unit id="page.textDiff.card.output.legend.modified">
+      <segment state="initial">
+        <source>変更</source>
+        <target>Modified</target>
+      </segment>
+    </unit>
+    <unit id="page.textDiff.card.output.legend.removed">
+      <segment state="initial">
+        <source>削除</source>
+        <target>Removed</target>
+      </segment>
+    </unit>
     <unit id="page.textDiff.card.output.modified">
       <segment state="initial">
         <source>比較先</source>

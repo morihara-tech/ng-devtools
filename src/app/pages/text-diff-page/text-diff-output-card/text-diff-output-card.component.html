@@ -1,27 +1,39 @@
 <mat-card appearance="raised">
   <mat-card-content>
     <app-heading headingType="h3" i18n="@@page.textDiff.card.output.heading">比較結果</app-heading>
-    @if (result) {
-      <div class="split-view">
-        <div class="split-pane">
-          <div class="pane-label" i18n="@@page.textDiff.card.output.original">比較元</div>
-          <div class="text-viewer-table-wrapper">
-            <app-text-viewer-table
-              [value]="result.originalValue"
-              [rowHighlights]="result.originalRowHighlights"
-            ></app-text-viewer-table>
-          </div>
-        </div>
-        <div class="split-pane">
-          <div class="pane-label" i18n="@@page.textDiff.card.output.modified">比較先</div>
-          <div class="text-viewer-table-wrapper">
-            <app-text-viewer-table
-              [value]="result.modifiedValue"
-              [rowHighlights]="result.modifiedRowHighlights"
-            ></app-text-viewer-table>
-          </div>
+    <div class="split-view">
+      <div class="split-pane">
+        <div class="pane-label" i18n="@@page.textDiff.card.output.original">比較元</div>
+        <div class="text-viewer-table-wrapper">
+          <app-text-viewer-table
+            [value]="(result && result.originalValue) ? result.originalValue : ''"
+            [rowHighlights]="(result && result.originalRowHighlights) ? result.originalRowHighlights : []"
+          ></app-text-viewer-table>
         </div>
       </div>
-    }
+      <div class="split-pane">
+        <div class="pane-label" i18n="@@page.textDiff.card.output.modified">比較先</div>
+        <div class="text-viewer-table-wrapper">
+          <app-text-viewer-table
+            [value]="(result && result.modifiedValue) ? result.modifiedValue : ''"
+            [rowHighlights]="(result && result.modifiedRowHighlights) ? result.modifiedRowHighlights : []"
+          ></app-text-viewer-table>
+        </div>
+      </div>
+    </div>
+    <div class="legend">
+      <div class="legend-item">
+        <span class="legend-color legend-added"></span>
+        <span i18n="@@page.textDiff.card.output.legend.added">追加</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-color legend-modified"></span>
+        <span i18n="@@page.textDiff.card.output.legend.modified">変更</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-color legend-removed"></span>
+        <span i18n="@@page.textDiff.card.output.legend.removed">削除</span>
+      </div>
+    </div>
   </mat-card-content>
 </mat-card>

@@ -19,12 +19,15 @@
 }
 
 .codemirror-wrapper {
+  min-height: 189.875px;
+  max-height: 600px;
+  background-color: var(--mat-sys-surface);
   border: 1px solid var(--mat-sys-outline-variant);
-  border-radius: 4px;
-  min-height: 200px;
-  overflow: hidden;
+  border-radius: 8px;
+  overflow-y: auto;
+  cursor: text;
 
-  ::ng-deep .cm-editor {
-    min-height: 200px;
+  &:focus-within {
+    border-color: var(--mat-sys-primary);
   }
 }

@@ -1,6 +1,6 @@
 .content {
   padding: 8px 0;
-  height: 100%;
+  height: calc(100% - 16px);
   background: var(--mat-sys-surface-container);
 
   .mat-mdc-table {

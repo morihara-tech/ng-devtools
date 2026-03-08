@@ -28,26 +28,61 @@
   overflow-y: auto;
 }
 
+.legend {
+  display: flex;
+  gap: 24px;
+  margin-top: 16px;
+  padding: 12px;
+  background-color: var(--mat-sys-surface-container-low);
+  border-radius: 8px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--mat-sys-on-surface);
+}
+
+.legend-color {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+}
+
+.legend-removed {
+  background-color: color-mix(in srgb, var(--mat-sys-error) 40%, transparent);
+}
+
+.legend-added {
+  background-color: color-mix(in srgb, var(--mat-sys-secondary) 40%, transparent);
+}
+
+.legend-modified {
+  background-color: color-mix(in srgb, var(--mat-sys-tertiary) 40%, transparent);
+}
+
 :host ::ng-deep {
   .diff-added {
-    background-color: color-mix(in srgb, var(--mat-sys-tertiary) 20%, transparent);
+    background-color: color-mix(in srgb, var(--mat-sys-secondary) 10%, transparent);
   }
 
   .diff-removed {
-    background-color: color-mix(in srgb, var(--mat-sys-error) 20%, transparent);
+    background-color: color-mix(in srgb, var(--mat-sys-error) 10%, transparent);
   }
 
   .diff-modified {
-    background-color: color-mix(in srgb, var(--mat-sys-secondary) 20%, transparent);
+    background-color: color-mix(in srgb, var(--mat-sys-tertiary) 10%, transparent);
   }
 
   .diff-added-char {
-    background-color: color-mix(in srgb, var(--mat-sys-tertiary) 40%, transparent);
+    background-color: color-mix(in srgb, var(--mat-sys-secondary) 30%, transparent);
     border-radius: 2px;
   }
 
   .diff-removed-char {
-    background-color: color-mix(in srgb, var(--mat-sys-error) 40%, transparent);
+    background-color: color-mix(in srgb, var(--mat-sys-error) 30%, transparent);
     border-radius: 2px;
     text-decoration: line-through;
   }
