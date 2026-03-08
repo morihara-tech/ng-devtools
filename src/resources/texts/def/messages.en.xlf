@@ -818,6 +818,96 @@ UNIXタイム変換ツールを実装しました。</source>
         <target>Implemented the URL Encode / Decode tool.</target>
       </segment>
     </unit>
+    <unit id="update.home.20260308">
+      <segment state="initial">
+        <source>テキスト比較ツールを実装しました。</source>
+        <target>Implemented the Text Diff tool.</target>
+      </segment>
+    </unit>
+    <unit id="page.textDiff.menu">
+      <segment state="initial">
+        <source>テキスト比較</source>
+        <target>Text Diff</target>
+      </segment>
+    </unit>
+    <unit id="page.textDiff.title">
+      <segment state="initial">
+        <source>テキスト比較ツール</source>
+        <target>Text Diff Tool</target>
+      </segment>
+    </unit>
+    <unit id="page.textDiff.hint">
+      <segment state="initial">
+        <source>2つのテキストの差分を比較し、追加・削除・変更箇所をハイライト表示します。</source>
+        <target>Compare the differences between two texts and highlight added, removed, and modified lines.</target>
+      </segment>
+    </unit>
+    <unit id="page.textDiff.card.input.heading">
+      <segment state="initial">
+        <source>テキスト</source>
+        <target>Text</target>
+      </segment>
+    </unit>
+    <unit id="page.textDiff.card.input.clear.tooltip">
+      <segment state="initial">
+        <source>クリア</source>
+        <target>Clear</target>
+      </segment>
+    </unit>
+    <unit id="page.textDiff.card.input.original">
+      <segment state="initial">
+        <source>比較元テキスト</source>
+        <target>Original Text</target>
+      </segment>
+    </unit>
+    <unit id="page.textDiff.card.input.modified">
+      <segment state="initial">
+        <source>比較先テキスト</source>
+        <target>Modified Text</target>
+      </segment>
+    </unit>
+    <unit id="page.textDiff.card.input.compare">
+      <segment state="initial">
+        <source>比較</source>
+        <target>Compare</target>
+      </segment>
+    </unit>
+    <unit id="page.textDiff.card.output.heading">
+      <segment state="initial">
+        <source>比較結果</source>
+        <target>Diff Result</target>
+      </segment>
+    </unit>
+    <unit id="page.textDiff.card.output.original">
+      <segment state="initial">
+        <source>比較元</source>
+        <target>Original</target>
+      </segment>
+    </unit>
+    <unit id="page.textDiff.card.output.legend.added">
+      <segment state="initial">
+        <source>追加</source>
+        <target>Added</target>
+      </segment>
+    </unit>
+    <unit id="page.textDiff.card.output.legend.modified">
+      <segment state="initial">
+        <source>変更</source>
+        <target>Modified</target>
+      </segment>
+    </unit>
+    <unit id="page.textDiff.card.output.legend.removed">
+      <segment state="initial">
+        <source>削除</source>
+        <target>Removed</target>
+      </segment>
+    </unit>
+    <unit id="page.textDiff.card.output.modified">
+      <segment state="initial">
+        <source>比較先</source>
+        <target>Modified</target>
+      </segment>
+    </unit>
     <unit id="page.unixTimestamp.menu">
       <segment state="initial">
         <source>UNIXタイム変換</source>

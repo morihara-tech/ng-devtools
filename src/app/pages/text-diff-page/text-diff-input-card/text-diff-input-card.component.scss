@@ -1,0 +1,33 @@
+.editors-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.editor-wrapper {
+  flex: 1 1 300px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.editor-label {
+  color: var(--mat-sys-on-surface-variant);
+  font-size: 14px;
+}
+
+.codemirror-wrapper {
+  min-height: 189.875px;
+  max-height: 600px;
+  background-color: var(--mat-sys-surface);
+  border: 1px solid var(--mat-sys-outline-variant);
+  border-radius: 8px;
+  overflow-y: auto;
+  cursor: text;
+
+  &:focus-within {
+    border-color: var(--mat-sys-primary);
+  }
+}
