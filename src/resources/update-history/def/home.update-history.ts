@@ -8,7 +8,8 @@ export const HOME_UPDATE_HISTORIES: Array<UpdateHistoryModel> = [
   },
   {
     date: '2026-03-07',
-    description: $localize`:@@update.home.20260307:URLエンコード・デコードツールを実装しました。`
+    description: $localize`:@@update.home.20260307:URLエンコード・デコードツールを実装しました。
+UNIXタイム変換ツールを実装しました。`
   },
   {
     date: '2026-03-06',

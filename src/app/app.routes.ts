@@ -9,6 +9,7 @@ import { passwordGenPageRoutes } from './pages/password-gen-page/password-gen-pa
 import { svgToPngPageRoutes } from './pages/svg-to-png-page/svg-to-png-page.routes';
 import { ipCidrCalculatorPageRoutes } from './pages/ip-cidr-calculator-page/ip-cidr-calculator-page.routes';
 import { urlEncoderPageRoutes } from './pages/url-encoder-page/url-encoder-page.routes';
+import { unixTimestampConverterPageRoutes } from './pages/unix-timestamp-converter-page/unix-timestamp-converter-page.routes';
 import { textDiffPageRoutes } from './pages/text-diff-page/text-diff-page.routes';
 
 export const routes: Routes = [
@@ -21,6 +22,7 @@ export const routes: Routes = [
   { path: 'svg-to-png', children: svgToPngPageRoutes },
   { path: 'ip-cidr-calculator', children: ipCidrCalculatorPageRoutes },
   { path: 'url-encoder', children: urlEncoderPageRoutes },
+  { path: 'unix-timestamp-converter', children: unixTimestampConverterPageRoutes },
   { path: 'text-diff', children: textDiffPageRoutes },
   { path: 'error', children: errorPageRoutes },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
