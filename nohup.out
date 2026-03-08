@@ -1,0 +1,39 @@
+[1m[33mPrebundling has been configured but will not be used because caching has been disabled.[39m[22m
+[1m[33mLocalization (`localize` option) has been disabled. The development server only supports localizing a single locale per build.[39m[22m
+[33m❯[39m Building...
+[32m✔[39m Building...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m                     [2m | [22m [1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m                      [2m | [22m  [36m5.10 MB[39m[2m | [22m
+[32mchunk-7HCQKS4T.js[39m  [2m | [22m[2m-[22m                         [2m | [22m  [36m1.10 MB[39m[2m | [22m
+[32mpolyfills.js[39m       [2m | [22m[2mpolyfills[22m                 [2m | [22m [36m93.28 kB[39m[2m | [22m
+[32mchunk-D5433TNO.js[39m  [2m | [22m[2m-[22m                         [2m | [22m [36m91.34 kB[39m[2m | [22m
+[32mchunk-PCMBJHN6.js[39m  [2m | [22m[2m-[22m                         [2m | [22m [36m69.99 kB[39m[2m | [22m
+[32mchunk-5N2SSJWV.js[39m  [2m | [22m[2m-[22m                         [2m | [22m [36m53.46 kB[39m[2m | [22m
+[32mstyles.css[39m         [2m | [22m[2mstyles[22m                    [2m | [22m [36m23.48 kB[39m[2m | [22m
+[32mchunk-MS45HGAK.js[39m  [2m | [22m[2m-[22m                         [2m | [22m [36m22.42 kB[39m[2m | [22m
+[32mchunk-K4B3WU47.js[39m  [2m | [22m[2m-[22m                         [2m | [22m [36m11.35 kB[39m[2m | [22m
+[32mchunk-LWDENVSH.js[39m  [2m | [22m[2m-[22m                         [2m | [22m  [36m9.94 kB[39m[2m | [22m
+[32mchunk-BDOBSMOR.js[39m  [2m | [22m[2m-[22m                         [2m | [22m  [36m4.16 kB[39m[2m | [22m
+[32mchunk-N3534FJA.js[39m  [2m | [22m[2m-[22m                         [2m | [22m  [36m3.85 kB[39m[2m | [22m
+[32mchunk-CVQKEYWJ.js[39m  [2m | [22m[2m-[22m                         [2m | [22m  [36m2.36 kB[39m[2m | [22m
+[32mchunk-APRXRTIH.js[39m  [2m | [22m[2m-[22m                         [2m | [22m  [36m1.82 kB[39m[2m | [22m
+[32mchunk-VCODOYYV.js[39m  [2m | [22m[2m-[22m                         [2m | [22m  [36m1.50 kB[39m[2m | [22m
+
+[1m [22m                  [2m | [22m[1mInitial total[22m             [2m | [22m  [1m6.59 MB[22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m                     [2m | [22m [1mRaw size[22m
+[32mchunk-U2EKA7I3.js[39m  [2m | [22m[2mbrowser[22m                   [2m | [22m[36m155.81 kB[39m[2m | [22m
+[32mchunk-5ZJH5J2W.js[39m  [2m | [22m[2mrevo-grid-entry[22m           [2m | [22m [36m94.34 kB[39m[2m | [22m
+[32mchunk-JLJDY62I.js[39m  [2m | [22m[2mrevogr-attribution_7-entry[22m[2m | [22m [36m47.15 kB[39m[2m | [22m
+[32mchunk-UA6G3OY5.js[39m  [2m | [22m[2mrevogr-data_4-entry[22m       [2m | [22m [36m40.30 kB[39m[2m | [22m
+[32mchunk-GMN3SCKQ.js[39m  [2m | [22m[2mrevogr-filter-panel-entry[22m [2m | [22m [36m17.17 kB[39m[2m | [22m
+[32mchunk-PGNW6ROG.js[39m  [2m | [22m[2mrevogr-clipboard_3-entry[22m  [2m | [22m [36m13.77 kB[39m[2m | [22m
+[32mchunk-CMXC4DR3.js[39m  [2m | [22m[2m-[22m                         [2m | [22m  [36m6.36 kB[39m[2m | [22m
+[32mchunk-ZV5NRNLA.js[39m  [2m | [22m[2m-[22m                         [2m | [22m  [36m1.38 kB[39m[2m | [22m
+[32mchunk-HORZT2X7.js[39m  [2m | [22m[2m-[22m                         [2m | [22m[36m893 bytes[39m[2m | [22m
+
+Application bundle generation complete. [6.897 seconds] - 2026-03-08T02:07:08.075Z
+
+Watch mode enabled. Watching for file changes...
+NOTE: Raw file sizes do not reflect development server per-request transformations.
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://127.0.0.1:[1m4200[22m/[39m
