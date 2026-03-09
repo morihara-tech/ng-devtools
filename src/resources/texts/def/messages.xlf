@@ -947,7 +947,7 @@ UNIXタイム変換ツールを実装しました。</source>
     </unit>
     <unit id="page.unixTimestamp.card.input.heading">
       <segment>
-        <source>日時</source>
+        <source>日時入力</source>
       </segment>
     </unit>
     <unit id="page.unixTimestamp.card.input.mode.label">
