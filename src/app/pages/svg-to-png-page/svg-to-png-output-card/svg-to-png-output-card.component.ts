@@ -128,16 +128,15 @@ export class SvgToPngOutputCardComponent {
 
       img.onload = () => {
         const scaleValue = this.settings.scale / 100;
-        const scaledWidth = img.width * scaleValue;
-        const scaledHeight = img.height * scaleValue;
 
-        ctx.drawImage(
-          img,
-          this.settings.offsetX,
-          this.settings.offsetY,
-          scaledWidth,
-          scaledHeight
-        );
+        // Apply transform to canvas context (same as CSS transform)
+        ctx.save();
+        ctx.translate(this.settings.offsetX, this.settings.offsetY);
+        ctx.scale(scaleValue, scaleValue);
+
+        ctx.drawImage(img, 0, 0);
+
+        ctx.restore();
 
         URL.revokeObjectURL(url);
         const pngDataUrl = canvas.toDataURL('image/png');
