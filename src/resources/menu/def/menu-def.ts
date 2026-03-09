@@ -1,5 +1,5 @@
 /** Represents a single tool menu item */
-export interface MenuItemDef {
+export interface MenuItem {
   /** Display label (i18n) */
   label: string;
   /** Description for /menu page (i18n) */
@@ -13,15 +13,15 @@ export interface MenuItemDef {
 }
 
 /** Represents a category grouping tool menu items */
-export interface MenuCategoryDef {
+export interface MenuCategory {
   /** Category display label (i18n) */
   label: string;
   /** Tool items belonging to this category */
-  items: MenuItemDef[];
+  items: MenuItem[];
 }
 
 /** Dashboard top-level menu item (displayed outside accordion in sidenav) */
-export const MENU_DASHBOARD: MenuItemDef = {
+export const MENU_DASHBOARD: MenuItem = {
   label: $localize`:@@page.dashboard.menu:ダッシュボード`,
   description: $localize`:@@page.dashboard.description:ツールの一覧と更新履歴を確認できます。`,
   routerLink: '/dashboard',
@@ -29,7 +29,7 @@ export const MENU_DASHBOARD: MenuItemDef = {
 };
 
 /** All tool categories with their items */
-export const MENU_CATEGORIES: MenuCategoryDef[] = [
+export const MENU_CATEGORIES: MenuCategory[] = [
   {
     label: $localize`:@@menu.category.formatter:フォーマッター`,
     items: [

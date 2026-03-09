@@ -26,7 +26,11 @@ export class AppComponent {
   text?: Text;
 
   headerModel: HeaderModel = {
-    logo: { logoUrl: 'logo.svg', routerLink: '/' }
+    logo: { logoUrl: 'logo.svg', routerLink: '/' },
+    appsButton: {
+      routerLink: '/menu',
+      label: $localize`:@@header.appsButton.label:メニュー一覧`,
+    },
   };
 
   toggle: boolean = false;

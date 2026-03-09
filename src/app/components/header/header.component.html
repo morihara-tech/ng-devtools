@@ -6,9 +6,11 @@
     <a [routerLink]="model.logo.routerLink">
       <img class="logo" [src]="model.logo.logoUrl">
     </a>
-    <button mat-icon-button [routerLink]="'/menu'" [attr.aria-label]="appsButtonLabel">
-      <mat-icon>apps</mat-icon>
-    </button>
+    @if (model.appsButton) {
+      <button mat-icon-button [routerLink]="model.appsButton.routerLink" [attr.aria-label]="model.appsButton.label">
+        <mat-icon>apps</mat-icon>
+      </button>
+    }
     <span class="title">{{ getTitle }}</span>
     <span class="spacer"></span>
     <app-language-button></app-language-button>

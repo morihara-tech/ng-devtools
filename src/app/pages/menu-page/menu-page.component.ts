@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { Subscription } from 'rxjs';
 import { ApplicationPageTemplateComponent } from '../../components/application-page-template/application-page-template.component';
 import { HeadingComponent } from '../../components/heading/heading.component';
 import { MenuService } from '../../services/menu.service';
-import { MenuCategoryDef } from '../../../resources/menu/def/menu-def';
+import { MenuCategory } from '../../../resources/menu/def/menu-def';
 
 @Component({
   selector: 'app-menu-page',
@@ -19,10 +20,22 @@ import { MenuCategoryDef } from '../../../resources/menu/def/menu-def';
   templateUrl: './menu-page.component.html',
   styleUrl: './menu-page.component.scss',
 })
-export class MenuPageComponent {
-  readonly categories: MenuCategoryDef[];
+export class MenuPageComponent implements OnInit, OnDestroy {
+  categories: MenuCategory[] = [];
 
-  constructor(menuService: MenuService) {
-    this.categories = menuService.getMenuTree();
+  private subscription = new Subscription();
+
+  constructor(private menuService: MenuService) {}
+
+  ngOnInit(): void {
+    this.subscription.add(
+      this.menuService.getMenuTree().subscribe((categories) => {
+        this.categories = categories;
+      })
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

@@ -10,21 +10,65 @@
     </div>
   </div>
 }
-<div class="sidenav-width">
+@if (topItem) {
   <mat-nav-list>
-    @for (item of items; track $index) {
-      <a mat-list-item
-        class="item"
-        [routerLink]="item.routerLink"
-        (click)="this.clickMenu.emit()">
-        @if (item.icon) {
-          <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
-        }
-        @if (item.svgIcon) {
-          <mat-icon matListItemIcon [svgIcon]="item.svgIcon"></mat-icon>
-        }
-        <span matLine>{{ item.label }}</span>
-      </a>
-    }
+    <a mat-list-item class="item"
+      [routerLink]="topItem.routerLink"
+      (click)="this.clickMenu.emit()">
+      @if (topItem.icon) {
+        <mat-icon matListItemIcon>{{ topItem.icon }}</mat-icon>
+      }
+      @if (topItem.svgIcon) {
+        <mat-icon matListItemIcon [svgIcon]="topItem.svgIcon"></mat-icon>
+      }
+      <span matListItemTitle>{{ topItem.label }}</span>
+    </a>
   </mat-nav-list>
-</div>
+}
+@if (categories) {
+  <mat-accordion multi class="accordion">
+    @for (category of categories; track $index) {
+      <mat-expansion-panel class="expansion-panel">
+        <mat-expansion-panel-header>
+          <mat-panel-title>{{ category.label }}</mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          @for (item of category.items; track $index) {
+            <a mat-list-item class="item"
+              [routerLink]="item.routerLink"
+              (click)="this.clickMenu.emit()">
+              @if (item.icon) {
+                <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+              }
+              @if (item.svgIcon) {
+                <mat-icon matListItemIcon [svgIcon]="item.svgIcon"></mat-icon>
+              }
+              <span matListItemTitle>{{ item.label }}</span>
+            </a>
+          }
+        </mat-nav-list>
+      </mat-expansion-panel>
+    }
+  </mat-accordion>
+}
+@if (items && !categories) {
+  <!-- Fallback flat list: only rendered when `categories` is not provided (@deprecated) -->
+  <div class="sidenav-width">
+    <mat-nav-list>
+      @for (item of items; track $index) {
+        <a mat-list-item
+          class="item"
+          [routerLink]="item.routerLink"
+          (click)="this.clickMenu.emit()">
+          @if (item.icon) {
+            <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+          }
+          @if (item.svgIcon) {
+            <mat-icon matListItemIcon [svgIcon]="item.svgIcon"></mat-icon>
+          }
+          <span matLine>{{ item.label }}</span>
+        </a>
+      }
+    </mat-nav-list>
+  </div>
+}

@@ -1,32 +1,29 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { MatDrawerMode, MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
-import { MatExpansionModule } from '@angular/material/expansion';
-import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
-import { RouterModule } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { SidemenuComponent } from '../sidemenu/sidemenu.component';
+import { SidemenuCategoryModel, SidemenuItemModel } from '../sidemenu/sidemenu-model';
 import { MenuService } from '../../services/menu.service';
-import { MenuCategoryDef, MenuItemDef } from '../../../resources/menu/def/menu-def';
 
 @Component({
   selector: 'app-sidenav',
   imports: [
     MatSidenavModule,
-    MatExpansionModule,
-    MatIconModule,
-    MatListModule,
-    RouterModule,
+    SidemenuComponent,
   ],
   templateUrl: './sidenav.component.html',
   styleUrl: './sidenav.component.scss',
 })
-export class SidenavComponent implements OnChanges, OnInit {
+export class SidenavComponent implements OnChanges, OnInit, OnDestroy {
   @ViewChild('sidenav') sidenav?: MatSidenav;
 
   @Input() toggle: boolean = false;
   @Output() toggleChange: EventEmitter<boolean> = new EventEmitter();
 
-  dashboard!: MenuItemDef;
-  categories!: MenuCategoryDef[];
+  topItem?: SidemenuItemModel;
+  categories?: SidemenuCategoryModel[];
+
+  private subscriptions = new Subscription();
 
   constructor(private menuService: MenuService) {}
 
@@ -42,12 +39,24 @@ export class SidenavComponent implements OnChanges, OnInit {
   }
 
   ngOnInit(): void {
-    this.dashboard = this.menuService.getDashboard();
-    this.categories = this.menuService.getMenuTree();
+    this.subscriptions.add(
+      this.menuService.getDashboard().subscribe((item) => {
+        this.topItem = item;
+      })
+    );
+    this.subscriptions.add(
+      this.menuService.getMenuTree().subscribe((categories) => {
+        this.categories = categories;
+      })
+    );
     this.setVhVariable();
     window.addEventListener('resize', () => {
       this.setVhVariable();
     });
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
   }
 
   onClickMenu(): void {

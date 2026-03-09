@@ -6,7 +6,7 @@ export const HOME_UPDATE_HISTORIES: Array<UpdateHistoryModel> = [
     date: '2026-03-09',
     description: $localize`:@@update.home.20260309:メニューのコンポーネント化を実施しました。
 サイドナビをカテゴリ別アコーディオンに変更しました。
-メニュー一覧画面 (/menu) を追加しました。`
+ツール一覧画面を追加しました。`
   },
   {
     date: '2026-03-08',

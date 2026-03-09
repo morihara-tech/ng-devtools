@@ -5,6 +5,11 @@ export interface SidemenuItemModel {
   routerLink: string;
 }
 
+export interface SidemenuCategoryModel {
+  label: string;
+  items: SidemenuItemModel[];
+}
+
 export interface SidemenuPersonModel {
   personName: string;
   // iconUrl?: string;

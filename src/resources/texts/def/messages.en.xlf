@@ -948,10 +948,10 @@ UNIXタイム変換ツールを実装しました。</source>
       <segment>
         <source>メニューのコンポーネント化を実施しました。
 サイドナビをカテゴリ別アコーディオンに変更しました。
-メニュー一覧画面 (/menu) を追加しました。</source>
+ツール一覧画面を追加しました。</source>
         <target>Componentized the menu definitions.
 Changed the sidenav to a category-based accordion.
-Added the tool list page (/menu).</target>
+Added the tool list page.</target>
       </segment>
     </unit>
     <unit id="update.home.20260308">
