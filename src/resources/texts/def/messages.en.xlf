@@ -141,8 +141,8 @@
     </unit>
     <unit id="page.ipCidr.card.input.heading">
       <segment state="initial">
-        <source>入力設定</source>
-        <target>Input Settings</target>
+        <source>CIDR入力</source>
+        <target>CIDR Input</target>
       </segment>
     </unit>
     <unit id="page.ipCidr.card.input.ipAddress">
@@ -922,8 +922,14 @@ UNIXタイム変換ツールを実装しました。</source>
     </unit>
     <unit id="page.unixTimestamp.card.input.heading">
       <segment state="initial">
-        <source>入力設定</source>
-        <target>Input Settings</target>
+        <source>日時入力</source>
+        <target>Date/Time Input</target>
+      </segment>
+    </unit>
+    <unit id="page.unixTimestamp.card.input.mode.label">
+      <segment state="initial">
+        <source>変換モード</source>
+        <target>Conversion Mode</target>
       </segment>
     </unit>
     <unit id="page.unixTimestamp.card.input.mode.toDateTime">
