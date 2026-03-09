@@ -1,16 +1,23 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
-import { SidemenuComponent } from '../sidemenu/sidemenu.component';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, ViewChild } from '@angular/core';
 import { MatDrawerMode, MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
-import { SidemenuItemModel, SidemenuPersonModel } from '../sidemenu/sidemenu-model';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { RouterModule } from '@angular/router';
+import { MenuService } from '../../services/menu.service';
+import { MenuCategoryDef, MenuItemDef } from '../../../resources/menu/def/menu-def';
 
 @Component({
-    selector: 'app-sidenav',
-    imports: [
-        SidemenuComponent,
-        MatSidenavModule
-    ],
-    templateUrl: './sidenav.component.html',
-    styleUrl: './sidenav.component.scss'
+  selector: 'app-sidenav',
+  imports: [
+    MatSidenavModule,
+    MatExpansionModule,
+    MatIconModule,
+    MatListModule,
+    RouterModule,
+  ],
+  templateUrl: './sidenav.component.html',
+  styleUrl: './sidenav.component.scss',
 })
 export class SidenavComponent implements OnChanges, OnInit {
   @ViewChild('sidenav') sidenav?: MatSidenav;
@@ -18,12 +25,10 @@ export class SidenavComponent implements OnChanges, OnInit {
   @Input() toggle: boolean = false;
   @Output() toggleChange: EventEmitter<boolean> = new EventEmitter();
 
-  sidemenuItems?: Array<SidemenuItemModel>;
-  sidemenuPerson?: SidemenuPersonModel;
+  dashboard!: MenuItemDef;
+  categories!: MenuCategoryDef[];
 
-  constructor(
-    // @Inject(ENVIRONMENT) env: Environment
-  ) {}
+  constructor(private menuService: MenuService) {}
 
   ngOnChanges(): void {
     if (!this.sidenav) {
@@ -37,7 +42,8 @@ export class SidenavComponent implements OnChanges, OnInit {
   }
 
   ngOnInit(): void {
-    this.setSidemenu();
+    this.dashboard = this.menuService.getDashboard();
+    this.categories = this.menuService.getMenuTree();
     this.setVhVariable();
     window.addEventListener('resize', () => {
       this.setVhVariable();
@@ -54,25 +60,7 @@ export class SidenavComponent implements OnChanges, OnInit {
   }
 
   get mode(): MatDrawerMode {
-    return (window.innerWidth < 600)
-      ? 'over'
-      : 'side';
-  }
-
-  private setSidemenu(): void {
-    this.sidemenuItems = [
-      { icon: 'dashboard', label: $localize`:@@page.dashboard.menu:ダッシュボード`, routerLink: '/dashboard' },
-      { svgIcon: 'json', label: $localize`:@@page.jsonFormatter.menu:JSON整形`, routerLink: '/json-formatter' },
-      { icon: 'storage', label: $localize`:@@page.sql.menu:SQL整形`, routerLink: '/sql-formatter' },
-      { icon: 'link', label: $localize`:@@page.urlEncoder.menu:URLエンコーダー`, routerLink: '/url-encoder' },
-      { icon: 'difference', label: $localize`:@@page.textDiff.menu:テキスト比較`, routerLink: '/text-diff' },
-      { icon: 'image', label: $localize`:@@page.svgToPng.menu:SVGビューアー`, routerLink: '/svg-to-png' },
-      { svgIcon: 'uuid', label: $localize`:@@page.uuid.menu:UUID生成`, routerLink: '/uuid-generator' },
-      { svgIcon: 'ulid', label: $localize`:@@page.ulid.menu:ULID生成`, routerLink: '/ulid-generator' },
-      { icon: 'password', label: $localize`:@@page.password.menu:パスワード生成`, routerLink: '/password-generator' },
-      { svgIcon: 'ipCidr', label: $localize`:@@page.ipCidr.menu:IP/CIDR計算機`, routerLink: '/ip-cidr-calculator' },
-      { icon: 'schedule', label: $localize`:@@page.unixTimestamp.menu:UNIXタイム変換`, routerLink: '/unix-timestamp-converter' },
-    ];
+    return window.innerWidth < 600 ? 'over' : 'side';
   }
 
   private setVhVariable(): void {

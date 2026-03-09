@@ -1,0 +1,30 @@
+<app-application-page-template>
+  <div class="page-container">
+    <app-heading i18n="@@page.menu.heading">メニュー一覧</app-heading>
+    @for (category of categories; track $index) {
+      <section class="category-section">
+        <app-heading headingType="h2">{{ category.label }}</app-heading>
+        <div class="card-grid">
+          @for (item of category.items; track item.routerLink) {
+            <mat-card class="tool-card" [routerLink]="item.routerLink">
+              <mat-card-content class="card-content">
+                <div class="card-icon">
+                  @if (item.svgIcon) {
+                    <mat-icon [svgIcon]="item.svgIcon"></mat-icon>
+                  }
+                  @if (item.icon) {
+                    <mat-icon>{{ item.icon }}</mat-icon>
+                  }
+                </div>
+                <div class="card-text">
+                  <div class="card-label">{{ item.label }}</div>
+                  <div class="card-description">{{ item.description }}</div>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          }
+        </div>
+      </section>
+    }
+  </div>
+</app-application-page-template>

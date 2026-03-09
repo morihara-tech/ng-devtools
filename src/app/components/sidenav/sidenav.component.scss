@@ -15,6 +15,19 @@
   width: 288px;
 }
 
+.accordion {
+  display: block;
+}
+
+.expansion-panel {
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.item {
+  border-radius: 4px;
+}
+
 @media screen and (max-width:600px) {
   /*for smart phone*/
   .container {

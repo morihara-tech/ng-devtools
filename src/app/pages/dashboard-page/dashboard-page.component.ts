@@ -41,6 +41,10 @@ export class DashboardPageComponent implements OnInit {
         title: $localize`:@@page.dashboard.card.menu.title:メニュー`,
         component: MenuCardComponent,
         size: { x: 's', y: 'm' },
+        destination: {
+          linkText: $localize`:@@page.dashboard.card.menu.linkText:メニュー一覧を見る`,
+          url: '/menu',
+        },
       },{
         title: $localize`:@@page.dashboard.card.updateHistory.title:更新履歴`,
         component: UpdateHistoryCardComponent,

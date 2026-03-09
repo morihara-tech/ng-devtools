@@ -1,13 +1,41 @@
 <mat-sidenav-container class="container">
   <mat-sidenav #sidenav class="sidenav" [mode]="mode">
-    <app-sidemenu
-      [items]="sidemenuItems"
-      [person]="sidemenuPerson"
-      (clickMenu)="onClickMenu()"
-    ></app-sidemenu>
+    <mat-nav-list>
+      @if (dashboard) {
+        <a mat-list-item class="item"
+          [routerLink]="dashboard.routerLink"
+          (click)="onClickMenu()">
+          <mat-icon matListItemIcon>{{ dashboard.icon }}</mat-icon>
+          <span matListItemTitle>{{ dashboard.label }}</span>
+        </a>
+      }
+    </mat-nav-list>
+    <mat-accordion multi class="accordion">
+      @for (category of categories; track $index) {
+        <mat-expansion-panel class="expansion-panel">
+          <mat-expansion-panel-header>
+            <mat-panel-title>{{ category.label }}</mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-nav-list>
+            @for (item of category.items; track $index) {
+              <a mat-list-item class="item"
+                [routerLink]="item.routerLink"
+                (click)="onClickMenu()">
+                @if (item.icon) {
+                  <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+                }
+                @if (item.svgIcon) {
+                  <mat-icon matListItemIcon [svgIcon]="item.svgIcon"></mat-icon>
+                }
+                <span matListItemTitle>{{ item.label }}</span>
+              </a>
+            }
+          </mat-nav-list>
+        </mat-expansion-panel>
+      }
+    </mat-accordion>
   </mat-sidenav>
   <mat-sidenav-content class="sidenav-content">
-    <!-- <app-breadcrumb></app-breadcrumb> -->
     <div class="content">
       <ng-content></ng-content>
     </div>

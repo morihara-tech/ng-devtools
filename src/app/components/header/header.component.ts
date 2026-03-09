@@ -46,6 +46,8 @@ export class HeaderComponent {
     return $localize`:@@app.title:devTools`;
   }
 
+  readonly appsButtonLabel: string = $localize`:@@header.appsButton.label:メニュー一覧`;
+
   private initTitle(): void {
     this.route.events.pipe(
       filter((event) => event instanceof NavigationEnd),

@@ -79,6 +79,12 @@
         <target>Menu</target>
       </segment>
     </unit>
+    <unit id="page.dashboard.card.menu.linkText">
+      <segment>
+        <source>メニュー一覧を見る</source>
+        <target>View All Tools</target>
+      </segment>
+    </unit>
     <unit id="page.dashboard.card.updateHistory.title">
       <segment>
         <source>更新履歴</source>
@@ -89,6 +95,126 @@
       <segment>
         <source>ダッシュボード</source>
         <target>Dashboard</target>
+      </segment>
+    </unit>
+    <unit id="page.dashboard.description">
+      <segment>
+        <source>ツールの一覧と更新履歴を確認できます。</source>
+        <target>View tool overview and update history.</target>
+      </segment>
+    </unit>
+    <unit id="page.menu.title">
+      <segment>
+        <source>メニュー一覧</source>
+        <target>All Tools</target>
+      </segment>
+    </unit>
+    <unit id="page.menu.heading">
+      <segment>
+        <source>メニュー一覧</source>
+        <target>All Tools</target>
+      </segment>
+    </unit>
+    <unit id="menu.category.formatter">
+      <segment>
+        <source>フォーマッター</source>
+        <target>Formatter</target>
+      </segment>
+    </unit>
+    <unit id="menu.category.generator">
+      <segment>
+        <source>ジェネレーター</source>
+        <target>Generator</target>
+      </segment>
+    </unit>
+    <unit id="menu.category.converter">
+      <segment>
+        <source>コンバーター</source>
+        <target>Converter</target>
+      </segment>
+    </unit>
+    <unit id="menu.category.network">
+      <segment>
+        <source>ネットワーク</source>
+        <target>Network</target>
+      </segment>
+    </unit>
+    <unit id="menu.category.textCode">
+      <segment>
+        <source>テキスト・コード</source>
+        <target>Text &amp; Code</target>
+      </segment>
+    </unit>
+    <unit id="menu.category.imageDesign">
+      <segment>
+        <source>画像・デザイン</source>
+        <target>Image &amp; Design</target>
+      </segment>
+    </unit>
+    <unit id="header.appsButton.label">
+      <segment>
+        <source>メニュー一覧</source>
+        <target>All Tools</target>
+      </segment>
+    </unit>
+    <unit id="page.jsonFormatter.description">
+      <segment>
+        <source>JSONデータを見やすく整形します。</source>
+        <target>Format and beautify JSON data.</target>
+      </segment>
+    </unit>
+    <unit id="page.sql.description">
+      <segment>
+        <source>SQLクエリを読みやすく整形します。</source>
+        <target>Format SQL queries for readability.</target>
+      </segment>
+    </unit>
+    <unit id="page.uuid.description">
+      <segment>
+        <source>UUID (v1/v4/v7) を一括生成します。</source>
+        <target>Bulk generate UUIDs (v1/v4/v7).</target>
+      </segment>
+    </unit>
+    <unit id="page.ulid.description">
+      <segment>
+        <source>タイムスタンプ付きの ULID を生成します。</source>
+        <target>Generate ULIDs with timestamp support.</target>
+      </segment>
+    </unit>
+    <unit id="page.password.description">
+      <segment>
+        <source>安全なランダムパスワードを生成します。</source>
+        <target>Generate secure random passwords.</target>
+      </segment>
+    </unit>
+    <unit id="page.urlEncoder.description">
+      <segment>
+        <source>URLのエンコード・デコードを行います。</source>
+        <target>Encode and decode URLs.</target>
+      </segment>
+    </unit>
+    <unit id="page.unixTimestamp.description">
+      <segment>
+        <source>UNIXタイムスタンプと日時を相互変換します。</source>
+        <target>Convert between UNIX timestamps and human-readable dates.</target>
+      </segment>
+    </unit>
+    <unit id="page.ipCidr.description">
+      <segment>
+        <source>IPアドレスとCIDRからネットワーク情報を計算します。</source>
+        <target>Calculate network information from IP address and CIDR.</target>
+      </segment>
+    </unit>
+    <unit id="page.textDiff.description">
+      <segment>
+        <source>2つのテキストを比較して差分を表示します。</source>
+        <target>Compare two texts and display the difference.</target>
+      </segment>
+    </unit>
+    <unit id="page.svgToPng.description">
+      <segment>
+        <source>SVGファイルをプレビュー・変換します。</source>
+        <target>Preview and convert SVG files.</target>
       </segment>
     </unit>
     <unit id="page.dashboard.card.github.description">
@@ -816,6 +942,16 @@ Renewed the app icon and brand color.</target>
         <source>URLエンコード・デコードツールを実装しました。
 UNIXタイム変換ツールを実装しました。</source>
         <target>Implemented the URL Encode / Decode tool.</target>
+      </segment>
+    </unit>
+    <unit id="update.home.20260309">
+      <segment>
+        <source>メニューのコンポーネント化を実施しました。
+サイドナビをカテゴリ別アコーディオンに変更しました。
+メニュー一覧画面 (/menu) を追加しました。</source>
+        <target>Componentized the menu definitions.
+Changed the sidenav to a category-based accordion.
+Added the tool list page (/menu).</target>
       </segment>
     </unit>
     <unit id="update.home.20260308">
