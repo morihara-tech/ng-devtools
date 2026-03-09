@@ -928,14 +928,14 @@ UNIXタイム変換ツールを実装しました。</source>
     </unit>
     <unit id="page.unixTimestamp.card.input.mode.toDateTime">
       <segment state="initial">
-        <source>日時に変換</source>
-        <target>To Date/Time</target>
+        <source>日時</source>
+        <target>Date/Time</target>
       </segment>
     </unit>
     <unit id="page.unixTimestamp.card.input.mode.toTimestamp">
       <segment state="initial">
-        <source>UNIXタイムスタンプに変換</source>
-        <target>To UNIX Timestamp</target>
+        <source>UNIX</source>
+        <target>UNIX</target>
       </segment>
     </unit>
     <unit id="page.unixTimestamp.card.input.unixTimestamp">
