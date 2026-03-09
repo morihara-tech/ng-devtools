@@ -952,12 +952,12 @@ UNIXタイム変換ツールを実装しました。</source>
     </unit>
     <unit id="page.unixTimestamp.card.input.mode.toDateTime">
       <segment>
-        <source>日時</source>
+        <source>日時に変換</source>
       </segment>
     </unit>
     <unit id="page.unixTimestamp.card.input.mode.toTimestamp">
       <segment>
-        <source>UNIX</source>
+        <source>UNIXタイムスタンプに変換</source>
       </segment>
     </unit>
     <unit id="page.unixTimestamp.card.input.unixTimestamp">
