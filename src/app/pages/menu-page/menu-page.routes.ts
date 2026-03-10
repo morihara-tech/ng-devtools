@@ -5,6 +5,6 @@ export const menuPageRoutes: Routes = [
   {
     path: '',
     component: MenuPageComponent,
-    data: { title: $localize`:@@page.menu.title:メニュー一覧` },
+    data: { title: $localize`:@@page.menu.title:メニュー` },
   },
 ];

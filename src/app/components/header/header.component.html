@@ -1,17 +1,22 @@
 @if (model) {
   <mat-toolbar class="header-toolbar">
-    <button mat-icon-button (click)="onToggleMenu()">
+    <button mat-icon-button (click)="onToggleMenu()" class="menu">
       <mat-icon>menu</mat-icon>
     </button>
-    <a [routerLink]="model.logo.routerLink">
+    <div class="separator"></div>
+    <a [routerLink]="model.logo.routerLink" class="content">
       <img class="logo" [src]="model.logo.logoUrl">
     </a>
     @if (model.appsButton) {
-      <button mat-icon-button [routerLink]="model.appsButton.routerLink" [attr.aria-label]="model.appsButton.label">
+      <div class="separator"></div>
+      <button mat-icon-button [routerLink]="model.appsButton.routerLink" [attr.aria-label]="model.appsButton.label" class="apps content">
         <mat-icon>apps</mat-icon>
       </button>
+      <div class="separator"></div>
     }
-    <span class="title">{{ getTitle }}</span>
+    <div class="content">
+      <span class="title">{{ getTitle }}</span>
+    </div>
     <span class="spacer"></span>
     <app-language-button></app-language-button>
     <app-person-button [person]="model.person" (clickMenu)="clickPersonContext.emit($event)"></app-person-button>

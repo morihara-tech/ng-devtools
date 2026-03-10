@@ -1,9 +1,9 @@
-<app-application-page-template>
+<div class="container">
   <div class="page-container">
-    <app-heading i18n="@@page.menu.heading">メニュー一覧</app-heading>
+    <app-heading i18n="@@page.menu.heading" headingType="h2">メニュー</app-heading>
     @for (category of categories; track $index) {
       <section class="category-section">
-        <app-heading headingType="h2">{{ category.label }}</app-heading>
+        <app-heading headingType="h4">{{ category.label }}</app-heading>
         <div class="card-grid">
           @for (item of category.items; track item.routerLink) {
             <mat-card class="tool-card" [routerLink]="item.routerLink">
@@ -27,4 +27,4 @@
       </section>
     }
   </div>
-</app-application-page-template>
+</div>

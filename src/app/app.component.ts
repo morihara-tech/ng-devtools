@@ -29,7 +29,7 @@ export class AppComponent {
     logo: { logoUrl: 'logo.svg', routerLink: '/' },
     appsButton: {
       routerLink: '/menu',
-      label: $localize`:@@header.appsButton.label:メニュー一覧`,
+      label: $localize`:@@header.appsButton.label:メニュー`,
     },
   };
 

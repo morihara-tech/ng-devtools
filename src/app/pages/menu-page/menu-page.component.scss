@@ -1,9 +1,16 @@
 $tool-card-width: 240px;
+$card-gap-width: 16px;
+
+.container {
+  width: 100%
+}
 
 .page-container {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  margin: 0 auto;
+  max-width: calc($tool-card-width * 3 + $card-gap-width * 2);
 }
 
 .category-section {
@@ -15,7 +22,7 @@ $tool-card-width: 240px;
 .card-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: $card-gap-width;
 }
 
 .tool-card {

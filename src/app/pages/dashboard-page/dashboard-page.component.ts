@@ -42,7 +42,7 @@ export class DashboardPageComponent implements OnInit {
         component: MenuCardComponent,
         size: { x: 's', y: 'm' },
         destination: {
-          linkText: $localize`:@@page.dashboard.card.menu.linkText:メニュー一覧を見る`,
+          linkText: $localize`:@@page.dashboard.card.menu.linkText:すべてのメニューを見る`,
           url: '/menu',
         },
       },{
