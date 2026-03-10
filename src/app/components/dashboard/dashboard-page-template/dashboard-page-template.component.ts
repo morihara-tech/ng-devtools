@@ -39,6 +39,12 @@ const STORAGE_KEY = 'dashboard_layout';
 /** Threshold (px) between snap sizes; halfway between adjacent sizes + gap */
 const RESIZE_SNAP_THRESHOLD = (MAX_CARD_HEIGHT + GAP_SIZE) / 2;
 
+/** Height of mat-card-header used to offset the resize placeholder overlay. */
+const CARD_HEADER_HEIGHT = 52;
+
+const SIZE_M_MULTIPLIER = 2;
+const SIZE_L_MULTIPLIER = 3;
+
 type CardSize = 's' | 'm' | 'l';
 
 interface ResizeState {
@@ -82,6 +88,8 @@ export class DashboardPageTemplateComponent implements AfterViewInit, OnDestroy 
   cardModels: DashboardCardModel[] = [];
   wrapperWidth: number = 0;
   resizeState: ResizeState | null = null;
+  /** Exposed for use in the template. */
+  readonly cardHeaderHeight = CARD_HEADER_HEIGHT;
 
   private subscription: Subscription | null = null;
   private resizeObserver!: ResizeObserver;
@@ -256,8 +264,8 @@ export class DashboardPageTemplateComponent implements AfterViewInit, OnDestroy 
   private getCardWidthForSize(size: CardSize | undefined): number {
     const base = this.getBaseCardWidth();
     switch (size) {
-      case 'm': return base * 2 + GAP_SIZE;
-      case 'l': return base * 3 + GAP_SIZE * 2;
+      case 'm': return base * SIZE_M_MULTIPLIER + GAP_SIZE;
+      case 'l': return base * SIZE_L_MULTIPLIER + GAP_SIZE * (SIZE_L_MULTIPLIER - 1);
       case 's':
       default:  return base;
     }
@@ -265,8 +273,8 @@ export class DashboardPageTemplateComponent implements AfterViewInit, OnDestroy 
 
   private getCardHeightForSize(size: CardSize | undefined): number {
     switch (size) {
-      case 'm': return MAX_CARD_HEIGHT * 2 + GAP_SIZE;
-      case 'l': return MAX_CARD_HEIGHT * 3 + GAP_SIZE * 2;
+      case 'm': return MAX_CARD_HEIGHT * SIZE_M_MULTIPLIER + GAP_SIZE;
+      case 'l': return MAX_CARD_HEIGHT * SIZE_L_MULTIPLIER + GAP_SIZE * (SIZE_L_MULTIPLIER - 1);
       case 's':
       default:  return MAX_CARD_HEIGHT;
     }
