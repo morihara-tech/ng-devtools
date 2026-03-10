@@ -77,6 +77,7 @@
   color: var(--mat-sys-on-surface-variant);
   opacity: 0.4;
   transition: opacity 0.2s;
+  user-select: none;
 
   &:hover {
     opacity: 0.9;
@@ -89,12 +90,6 @@
     transform: rotate(90deg);
     pointer-events: none;
   }
-}
-
-// Disable the CDK drag visual for the resize handle itself
-// (we handle visual feedback via the placeholder overlay)
-.resize-handle.cdk-drag-preview {
-  display: none;
 }
 
 // ── Resize placeholder overlay ───────────────────────────────────────────────

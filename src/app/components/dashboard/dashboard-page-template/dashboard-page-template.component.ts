@@ -3,6 +3,7 @@ import {
   ChangeDetectorRef,
   Component,
   Input,
+  NgZone,
   OnDestroy,
   QueryList,
   ViewChild,
@@ -12,9 +13,7 @@ import {
 import {
   CdkDrag,
   CdkDragDrop,
-  CdkDragEnd,
   CdkDragHandle,
-  CdkDragMove,
   CdkDragPlaceholder,
   CdkDropList,
 } from '@angular/cdk/drag-drop';
@@ -39,8 +38,8 @@ const STORAGE_KEY = 'dashboard_layout';
 /** Threshold (px) between snap sizes; halfway between adjacent sizes + gap */
 const RESIZE_SNAP_THRESHOLD = (MAX_CARD_HEIGHT + GAP_SIZE) / 2;
 
-/** Height of mat-card-header used to offset the resize placeholder overlay. */
-const CARD_HEADER_HEIGHT = 52;
+/** Minimum card dimension (px) allowed during a free-form resize drag. */
+const MIN_CARD_SIZE = 80;
 
 const SIZE_M_MULTIPLIER = 2;
 const SIZE_L_MULTIPLIER = 3;
@@ -48,11 +47,18 @@ const SIZE_L_MULTIPLIER = 3;
 type CardSize = 's' | 'm' | 'l';
 
 interface ResizeState {
-  model: DashboardCardModel;
+  /** Width of the blue placeholder (snapped to s/m/l). */
   placeholderWidth: number;
+  /** Height of the blue placeholder (snapped to s/m/l). */
   placeholderHeight: number;
+  /** Left offset of the placeholder relative to .card-container. */
   placeholderLeft: number;
+  /** Top offset of the placeholder relative to .card-container. */
   placeholderTop: number;
+  /** The card's current free-form width during drag (not snapped). */
+  freeWidth: number;
+  /** The card's current free-form height during drag (not snapped). */
+  freeHeight: number;
 }
 
 interface LayoutEntry {
@@ -87,15 +93,27 @@ export class DashboardPageTemplateComponent implements AfterViewInit, OnDestroy 
 
   cardModels: DashboardCardModel[] = [];
   wrapperWidth: number = 0;
+
+  /** Non-null while a card resize drag is in progress. */
   resizeState: ResizeState | null = null;
-  /** Exposed for use in the template. */
-  readonly cardHeaderHeight = CARD_HEADER_HEIGHT;
+  /** The model being resized (used to override its width/height in the template). */
+  resizingModel: DashboardCardModel | null = null;
 
   private subscription: Subscription | null = null;
   private resizeObserver!: ResizeObserver;
   private debounceTimeout!: ReturnType<typeof setTimeout>;
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  /** Mouse event listeners added to document during a resize drag. */
+  private resizeMouseMove?: (e: MouseEvent) => void;
+  private resizeMouseUp?: (e: MouseEvent) => void;
+
+  /** Tracks the starting position when a resize drag begins. */
+  private resizeStart = { clientX: 0, clientY: 0, width: 0, height: 0 };
+
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private zone: NgZone,
+  ) {}
 
   ngAfterViewInit(): void {
     this.resizeObserver = new ResizeObserver((entries) => {
@@ -116,6 +134,7 @@ export class DashboardPageTemplateComponent implements AfterViewInit, OnDestroy 
     this.subscription?.unsubscribe();
     this.resizeObserver?.disconnect();
     clearTimeout(this.debounceTimeout);
+    this.removeResizeListeners();
   }
 
   // ── Drag-and-drop reorder ──────────────────────────────────────────────────
@@ -138,61 +157,113 @@ export class DashboardPageTemplateComponent implements AfterViewInit, OnDestroy 
     return this.getCardHeightForSize(model.size?.y ?? 's');
   }
 
-  // ── Resize handle ──────────────────────────────────────────────────────────
+  // ── Resize via mouse events ────────────────────────────────────────────────
 
-  onResizeDragStarted(model: DashboardCardModel, resizeHandleElement: HTMLElement): void {
-    const cardElement = resizeHandleElement.closest('mat-card') as HTMLElement | null;
-    const rect = (cardElement ?? resizeHandleElement).getBoundingClientRect();
-    const containerRect = resizeHandleElement.closest('.card-container')?.getBoundingClientRect();
+  /**
+   * Starts a resize drag sequence for the given card.
+   * Binds mousemove/mouseup listeners to the document for the duration of the drag.
+   */
+  onResizeMouseDown(event: MouseEvent, model: DashboardCardModel): void {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const handleEl = event.currentTarget as HTMLElement;
+    const cardEl = handleEl.closest('mat-card') as HTMLElement | null;
+    const containerEl = handleEl.closest('.card-container') as HTMLElement | null;
+    const cardRect = (cardEl ?? handleEl).getBoundingClientRect();
+    const containerRect = containerEl?.getBoundingClientRect() ?? { left: 0, top: 0 };
+
+    this.resizingModel = model;
+    this.resizeStart = {
+      clientX: event.clientX,
+      clientY: event.clientY,
+      width: this.getCardWidth(model),
+      height: this.getCardHeight(model),
+    };
+
     this.resizeState = {
-      model,
       placeholderWidth: this.getCardWidth(model),
       placeholderHeight: this.getCardHeight(model),
-      placeholderLeft: containerRect ? rect.left - containerRect.left : 0,
-      placeholderTop: containerRect ? rect.top - containerRect.top : 0,
+      placeholderLeft: cardRect.left - containerRect.left,
+      placeholderTop: cardRect.top - containerRect.top,
+      freeWidth: this.getCardWidth(model),
+      freeHeight: this.getCardHeight(model),
     };
+
+    // Run listeners outside Angular zone to avoid excessive change detection,
+    // then re-enter for state updates.
+    this.zone.runOutsideAngular(() => {
+      this.resizeMouseMove = (e: MouseEvent) => this.onResizeMove(e);
+      this.resizeMouseUp = (e: MouseEvent) => this.onResizeEnd(e);
+      document.addEventListener('mousemove', this.resizeMouseMove);
+      document.addEventListener('mouseup', this.resizeMouseUp);
+    });
   }
 
-  onResizeDragMoved(event: CdkDragMove, model: DashboardCardModel): void {
-    if (!this.resizeState) return;
-    const baseWidth = this.getCardWidthForSize('s');
-    const baseHeight = this.getCardHeightForSize('s');
-    const currentWidth = this.getCardWidth(model);
-    const currentHeight = this.getCardHeight(model);
+  private onResizeMove(event: MouseEvent): void {
+    if (!this.resizeState || !this.resizingModel) return;
 
-    const targetX = this.snapWidth(currentWidth + event.distance.x, baseWidth);
-    const targetY = this.snapHeight(currentHeight + event.distance.y, baseHeight);
+    const dx = event.clientX - this.resizeStart.clientX;
+    const dy = event.clientY - this.resizeStart.clientY;
 
-    this.resizeState = {
-      ...this.resizeState,
-      placeholderWidth: this.getCardWidthForSize(targetX),
-      placeholderHeight: this.getCardHeightForSize(targetY),
-    };
+    const freeWidth = Math.max(MIN_CARD_SIZE, this.resizeStart.width + dx);
+    const freeHeight = Math.max(MIN_CARD_SIZE, this.resizeStart.height + dy);
+
+    const snappedX = this.snapWidth(freeWidth, this.getCardWidthForSize('s'));
+    const snappedY = this.snapHeight(freeHeight, this.getCardHeightForSize('s'));
+
+    this.zone.run(() => {
+      this.resizeState = {
+        ...this.resizeState!,
+        freeWidth,
+        freeHeight,
+        placeholderWidth: this.getCardWidthForSize(snappedX),
+        placeholderHeight: this.getCardHeightForSize(snappedY),
+      };
+    });
   }
 
-  onResizeDragEnded(event: CdkDragEnd, model: DashboardCardModel): void {
-    if (!this.resizeState) return;
+  private onResizeEnd(event: MouseEvent): void {
+    this.removeResizeListeners();
 
-    const baseWidth = this.getCardWidthForSize('s');
-    const baseHeight = this.getCardHeightForSize('s');
-    const currentWidth = this.getCardWidth(model);
-    const currentHeight = this.getCardHeight(model);
-
-    const newX = this.snapWidth(currentWidth + event.distance.x, baseWidth);
-    const newY = this.snapHeight(currentHeight + event.distance.y, baseHeight);
-
-    if (!model.size) {
-      model.size = {};
+    if (!this.resizeState || !this.resizingModel) {
+      this.resizeState = null;
+      this.resizingModel = null;
+      return;
     }
-    model.size.x = newX;
-    model.size.y = newY;
 
-    this.resizeState = null;
-    this.saveLayout();
-    this.cdr.detectChanges();
+    const dx = event.clientX - this.resizeStart.clientX;
+    const dy = event.clientY - this.resizeStart.clientY;
+    const finalWidth = Math.max(MIN_CARD_SIZE, this.resizeStart.width + dx);
+    const finalHeight = Math.max(MIN_CARD_SIZE, this.resizeStart.height + dy);
 
-    // Return the drag handle to its original position
-    event.source.reset();
+    const newX = this.snapWidth(finalWidth, this.getCardWidthForSize('s'));
+    const newY = this.snapHeight(finalHeight, this.getCardHeightForSize('s'));
+
+    this.zone.run(() => {
+      const model = this.resizingModel!;
+      if (!model.size) {
+        model.size = {};
+      }
+      model.size.x = newX;
+      model.size.y = newY;
+
+      this.resizeState = null;
+      this.resizingModel = null;
+      this.saveLayout();
+      this.cdr.detectChanges();
+    });
+  }
+
+  private removeResizeListeners(): void {
+    if (this.resizeMouseMove) {
+      document.removeEventListener('mousemove', this.resizeMouseMove);
+      this.resizeMouseMove = undefined;
+    }
+    if (this.resizeMouseUp) {
+      document.removeEventListener('mouseup', this.resizeMouseUp);
+      this.resizeMouseUp = undefined;
+    }
   }
 
   // ── Layout persistence ─────────────────────────────────────────────────────

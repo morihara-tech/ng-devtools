@@ -3,7 +3,6 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { RouterModule } from '@angular/router';
-import { RecentMenuService } from '../../services/recent-menu.service';
 import { SidemenuCategoryModel, SidemenuItemModel, SidemenuPersonModel } from './sidemenu-model';
 
 @Component({
@@ -30,15 +29,4 @@ export class SidemenuComponent {
   @Input() items?: SidemenuItemModel[];
   @Input() person?: SidemenuPersonModel;
   @Output() clickMenu: EventEmitter<void> = new EventEmitter();
-
-  constructor(private recentMenuService: RecentMenuService) {}
-
-  /**
-   * Tracks a navigation click for the given router link and emits
-   * the clickMenu event so the parent can close the sidenav.
-   */
-  onItemClick(routerLink: string): void {
-    this.recentMenuService.track(routerLink);
-    this.clickMenu.emit();
-  }
 }

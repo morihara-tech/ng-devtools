@@ -5,7 +5,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { Subscription } from 'rxjs';
 import { HeadingComponent } from '../../components/heading/heading.component';
 import { MenuService } from '../../services/menu.service';
-import { RecentMenuService } from '../../services/recent-menu.service';
 import { MenuCategory } from '../../../resources/menu/def/menu-def';
 
 @Component({
@@ -24,10 +23,7 @@ export class MenuPageComponent implements OnInit, OnDestroy {
 
   private subscription = new Subscription();
 
-  constructor(
-    private menuService: MenuService,
-    private recentMenuService: RecentMenuService,
-  ) {}
+  constructor(private menuService: MenuService) {}
 
   ngOnInit(): void {
     this.subscription.add(
@@ -39,10 +35,5 @@ export class MenuPageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
-  }
-
-  /** Tracks navigation to a tool so it appears in recent menu history. */
-  onToolClick(routerLink: string): void {
-    this.recentMenuService.track(routerLink);
   }
 }

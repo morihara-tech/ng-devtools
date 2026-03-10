@@ -17,8 +17,8 @@
     @for (model of cardModels; track $index) {
       <mat-card
         cdkDrag
-        [style.width.px]="getCardWidth(model)"
-        [style.height.px]="getCardHeight(model)"
+        [style.width.px]="resizingModel === model ? resizeState!.freeWidth : getCardWidth(model)"
+        [style.height.px]="resizingModel === model ? resizeState!.freeHeight : getCardHeight(model)"
       >
         <!-- Drag-reorder placeholder -->
         <div
@@ -54,14 +54,10 @@
           </mat-card-footer>
         }
 
-        <!-- Resize handle (free-drag, bottom-right corner) -->
+        <!-- Resize handle (bottom-right corner, mouse-event-based) -->
         <div
           class="resize-handle"
-          cdkDrag
-          cdkDragBoundary=".card-container"
-          (cdkDragStarted)="onResizeDragStarted(model, $event.source.element.nativeElement)"
-          (cdkDragMoved)="onResizeDragMoved($event, model)"
-          (cdkDragEnded)="onResizeDragEnded($event, model)"
+          (mousedown)="onResizeMouseDown($event, model)"
         >
           <mat-icon class="resize-icon">open_in_full</mat-icon>
         </div>
@@ -76,7 +72,7 @@
       [style.width.px]="resizeState.placeholderWidth"
       [style.height.px]="resizeState.placeholderHeight"
       [style.left.px]="resizeState.placeholderLeft"
-      [style.top.px]="resizeState.placeholderTop + cardHeaderHeight"
+      [style.top.px]="resizeState.placeholderTop"
     ></div>
   }
 </div>

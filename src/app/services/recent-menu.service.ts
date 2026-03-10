@@ -1,29 +1,47 @@
 import { Injectable } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
+import { filter, take } from 'rxjs/operators';
+import { MenuService } from './menu.service';
 
 const STORAGE_KEY = 'recent_menus';
 const MAX_RECENT = 50;
 
-/** Persists and retrieves recently-used menu item history. */
+interface RecentEntry {
+  routerLink: string;
+  timestamp: number;
+}
+
+/**
+ * Persists and retrieves recently-used menu item history.
+ * Automatically tracks navigation to known menu routes via the Angular Router,
+ * so all navigation methods (sidenav, menu page, dashboard card, direct URL)
+ * are captured without requiring manual track() calls.
+ */
 @Injectable({
   providedIn: 'root',
 })
 export class RecentMenuService {
-  /**
-   * Records a visit to the given router link.
-   * Updates the timestamp if the link already exists in history.
-   */
-  track(routerLink: string): void {
-    const history = this.loadHistory();
-    const existing = history.find((item) => item.routerLink === routerLink);
-    if (existing) {
-      existing.timestamp = Date.now();
-    } else {
-      history.push({ routerLink, timestamp: Date.now() });
-      if (history.length > MAX_RECENT) {
-        history.splice(0, history.length - MAX_RECENT);
-      }
-    }
-    this.saveHistory(history);
+  private readonly historySubject = new BehaviorSubject<RecentEntry[]>(this.loadHistory());
+
+  /** Emits whenever the recent-menu history changes. */
+  readonly history$ = this.historySubject.asObservable();
+
+  constructor(router: Router, menuService: MenuService) {
+    router.events
+      .pipe(filter((e): e is NavigationEnd => e instanceof NavigationEnd))
+      .subscribe((event) => {
+        const url = event.urlAfterRedirects.split('?')[0];
+        menuService
+          .getFlatMenu()
+          .pipe(take(1))
+          .subscribe((items) => {
+            const match = items.find((item) => item.routerLink === url);
+            if (match) {
+              this.trackInternal(url);
+            }
+          });
+      });
   }
 
   /**
@@ -32,7 +50,7 @@ export class RecentMenuService {
    * original relative order.
    */
   sortByRecent<T extends { routerLink: string }>(items: T[]): T[] {
-    const history = this.loadHistory();
+    const history = this.historySubject.getValue();
     const timestampMap = new Map<string, number>(
       history.map((h) => [h.routerLink, h.timestamp])
     );
@@ -43,7 +61,22 @@ export class RecentMenuService {
     });
   }
 
-  private loadHistory(): Array<{ routerLink: string; timestamp: number }> {
+  private trackInternal(routerLink: string): void {
+    const history = [...this.historySubject.getValue()];
+    const existing = history.find((item) => item.routerLink === routerLink);
+    if (existing) {
+      existing.timestamp = Date.now();
+    } else {
+      history.push({ routerLink, timestamp: Date.now() });
+      if (history.length > MAX_RECENT) {
+        history.splice(0, history.length - MAX_RECENT);
+      }
+    }
+    this.saveHistory(history);
+    this.historySubject.next(history);
+  }
+
+  private loadHistory(): RecentEntry[] {
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
       return raw ? JSON.parse(raw) : [];
@@ -52,7 +85,7 @@ export class RecentMenuService {
     }
   }
 
-  private saveHistory(history: Array<{ routerLink: string; timestamp: number }>): void {
+  private saveHistory(history: RecentEntry[]): void {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(history));
     } catch {

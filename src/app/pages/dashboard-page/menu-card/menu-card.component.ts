@@ -3,7 +3,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { RouterModule } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { combineLatest, Subscription } from 'rxjs';
 import { HyperLinkTextComponent } from '../../../components/hyper-link-text/hyper-link-text.component';
 import { MenuService } from '../../../services/menu.service';
 import { RecentMenuService } from '../../../services/recent-menu.service';
@@ -32,19 +32,19 @@ export class MenuCardComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    // Re-sort whenever the flat menu or recent history changes.
+    // history$ is included solely to trigger re-sorting on navigation events.
     this.subscription.add(
-      this.menuService.getFlatMenu().subscribe((items) => {
-        this.items = this.recentMenuService.sortByRecent(items);
+      combineLatest([
+        this.menuService.getFlatMenu(),
+        this.recentMenuService.history$,
+      ]).subscribe(([allItems, _history]) => {
+        this.items = this.recentMenuService.sortByRecent(allItems);
       })
     );
   }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
-  }
-
-  /** Tracks a click on a menu item so it appears at the top of recent items. */
-  onItemClick(routerLink: string): void {
-    this.recentMenuService.track(routerLink);
   }
 }
