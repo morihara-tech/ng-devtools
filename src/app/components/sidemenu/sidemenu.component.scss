@@ -21,3 +21,16 @@
   font-size: 48px;
   padding-bottom: 16px;
 }
+
+.accordion {
+  display: block;
+}
+
+.expansion-panel {
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.item {
+  border-radius: 4px;
+}

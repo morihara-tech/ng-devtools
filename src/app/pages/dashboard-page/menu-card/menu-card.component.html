@@ -1,74 +1,18 @@
 <mat-nav-list class="list">
   <mat-list>
-    <mat-list-item class="item">
-      <mat-icon matListItemIcon class="icon" svgIcon="json"></mat-icon>
-      <div matListItemLine class="line">
-        <app-hyper-link-text url="/json-formatter" i18n="@@page.jsonFormatter.menu">JSON整形</app-hyper-link-text>
-      </div>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item class="item">
-      <mat-icon matListItemIcon class="icon">storage</mat-icon>
-      <div matListItemLine class="line">
-        <app-hyper-link-text url="/sql-formatter" i18n="@@page.sqlFormatter.menu">SQL整形</app-hyper-link-text>
-      </div>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item class="item">
-      <mat-icon matListItemIcon class="icon">link</mat-icon>
-      <div matListItemLine class="line">
-        <app-hyper-link-text url="/url-encoder" i18n="@@page.urlEncoder.menu">URLエンコーダー</app-hyper-link-text>
-      </div>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item class="item">
-      <mat-icon matListItemIcon class="icon">difference</mat-icon>
-      <div matListItemLine class="line">
-        <app-hyper-link-text url="/text-diff" i18n="@@page.textDiff.menu">テキスト比較</app-hyper-link-text>
-      </div>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item class="item">
-      <mat-icon matListItemIcon class="icon">image</mat-icon>
-      <div matListItemLine class="line">
-        <app-hyper-link-text url="/svg-to-png" i18n="@@page.svgToPng.menu">SVGビューアー</app-hyper-link-text>
-      </div>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item class="item">
-      <mat-icon matListItemIcon class="icon" svgIcon="uuid"></mat-icon>
-      <div matListItemLine class="line">
-        <app-hyper-link-text url="/uuid-generator" i18n="@@page.uuid.menu">UUID生成</app-hyper-link-text>
-      </div>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item class="item">
-      <mat-icon matListItemIcon class="icon" svgIcon="ulid"></mat-icon>
-      <div matListItemLine class="line">
-        <app-hyper-link-text url="/ulid-generator" i18n="@@page.ulid.menu">ULID生成</app-hyper-link-text>
-      </div>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item class="item">
-      <mat-icon matListItemIcon class="icon">password</mat-icon>
-      <div matListItemLine class="line">
-        <app-hyper-link-text url="/password-generator" i18n="@@page.password.menu">パスワード生成</app-hyper-link-text>
-      </div>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item class="item">
-      <mat-icon matListItemIcon class="icon" svgIcon="ipCidr"></mat-icon>
-      <div matListItemLine class="line">
-        <app-hyper-link-text url="/ip-cidr-calculator" i18n="@@page.ipCidr.menu">IP/CIDR計算機</app-hyper-link-text>
-      </div>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item class="item">
-      <mat-icon matListItemIcon class="icon">schedule</mat-icon>
-      <div matListItemLine class="line">
-        <app-hyper-link-text url="/unix-timestamp-converter" i18n="@@page.unixTimestamp.menu">UNIXタイム変換</app-hyper-link-text>
-      </div>
-    </mat-list-item>
-    <mat-divider></mat-divider>
+    @for (item of items; track item.routerLink) {
+      <mat-list-item class="item">
+        @if (item.svgIcon) {
+          <mat-icon matListItemIcon class="icon" [svgIcon]="item.svgIcon"></mat-icon>
+        }
+        @if (item.icon) {
+          <mat-icon matListItemIcon class="icon">{{ item.icon }}</mat-icon>
+        }
+        <span matListItemTitle>
+          <app-hyper-link-text [url]="item.routerLink">{{ item.label }}</app-hyper-link-text>
+        </span>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    }
   </mat-list>
 </mat-nav-list>

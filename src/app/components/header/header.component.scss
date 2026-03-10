@@ -12,13 +12,29 @@
   }
 }
 
+.menu {
+  margin-right: 8px;
+}
+
+.content {
+  margin: 0 8px;
+}
+
 .spacer {
   flex: 1 1 auto;
 }
 
 .logo {
   display: block;
-  padding: 0 16px;
+}
+
+.separator {
+  border-left: 1px solid var(--mat-sys-outline-variant);
+  height: 32px;
+}
+
+.title {
+  margin: 0 8px;
 }
 
 @media screen and (max-width: 600px) {
@@ -32,6 +48,14 @@
   }
 
   .title {
+    display: none;
+  }
+
+  .separator {
+    display: none;
+  }
+
+  .apps {
     display: none;
   }
 }
