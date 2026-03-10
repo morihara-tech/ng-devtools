@@ -1410,5 +1410,23 @@ Added the tool list page.</target>
         <target>Format</target>
       </segment>
     </unit>
+    <unit id="dashboard.resetLayout">
+      <segment>
+        <source>初期設定に戻す</source>
+        <target>Reset to Default</target>
+      </segment>
+    </unit>
+    <unit id="update.home.20260310">
+      <segment>
+        <source>ダッシュボードカードのリサイズ機能を追加しました。
+カードの並び順・サイズをlocalStorageに保存するようにしました。
+最近使ったメニューをダッシュボードに表示するようにしました。
+メニュー画面のスマートフォン表示を最適化しました。</source>
+        <target>Added card resize functionality to the dashboard.
+Card order and sizes are now saved to localStorage.
+Recently used menu items are now shown on the dashboard.
+Optimized the menu page layout for smartphone screens.</target>
+      </segment>
+    </unit>
   </file>
 </xliff>

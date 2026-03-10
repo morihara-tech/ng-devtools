@@ -1,7 +1,7 @@
 <mat-nav-list class="list">
   <mat-list>
     @for (item of items; track item.routerLink) {
-      <mat-list-item class="item">
+      <mat-list-item class="item" (click)="onItemClick(item.routerLink)">
         @if (item.svgIcon) {
           <mat-icon matListItemIcon class="icon" [svgIcon]="item.svgIcon"></mat-icon>
         }

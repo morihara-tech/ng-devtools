@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { HyperLinkTextComponent } from '../../../components/hyper-link-text/hyper-link-text.component';
 import { MenuService } from '../../../services/menu.service';
+import { RecentMenuService } from '../../../services/recent-menu.service';
 import { MenuItem } from '../../../../resources/menu/def/menu-def';
 
 @Component({
@@ -25,17 +26,25 @@ export class MenuCardComponent implements OnInit, OnDestroy {
 
   private subscription = new Subscription();
 
-  constructor(private menuService: MenuService) {}
+  constructor(
+    private menuService: MenuService,
+    private recentMenuService: RecentMenuService,
+  ) {}
 
   ngOnInit(): void {
     this.subscription.add(
       this.menuService.getFlatMenu().subscribe((items) => {
-        this.items = items;
+        this.items = this.recentMenuService.sortByRecent(items);
       })
     );
   }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+  }
+
+  /** Tracks a click on a menu item so it appears at the top of recent items. */
+  onItemClick(routerLink: string): void {
+    this.recentMenuService.track(routerLink);
   }
 }

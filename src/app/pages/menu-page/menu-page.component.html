@@ -6,7 +6,7 @@
         <app-heading headingType="h4">{{ category.label }}</app-heading>
         <div class="card-grid">
           @for (item of category.items; track item.routerLink) {
-            <mat-card class="tool-card" [routerLink]="item.routerLink">
+            <mat-card class="tool-card" [routerLink]="item.routerLink" (click)="onToolClick(item.routerLink)">
               <mat-card-content class="card-content">
                 <div class="card-icon">
                   @if (item.svgIcon) {

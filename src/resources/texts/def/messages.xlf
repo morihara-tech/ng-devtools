@@ -1172,5 +1172,18 @@ UNIXタイム変換ツールを実装しました。</source>
         <source>ダッシュボードを実装しました。</source>
       </segment>
     </unit>
+    <unit id="dashboard.resetLayout">
+      <segment>
+        <source>初期設定に戻す</source>
+      </segment>
+    </unit>
+    <unit id="update.home.20260310">
+      <segment>
+        <source>ダッシュボードカードのリサイズ機能を追加しました。
+カードの並び順・サイズをlocalStorageに保存するようにしました。
+最近使ったメニューをダッシュボードに表示するようにしました。
+メニュー画面のスマートフォン表示を最適化しました。</source>
+      </segment>
+    </unit>
   </file>
 </xliff>

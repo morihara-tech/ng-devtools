@@ -36,7 +36,7 @@
           @for (item of category.items; track $index) {
             <a mat-list-item class="item"
               [routerLink]="item.routerLink"
-              (click)="this.clickMenu.emit()">
+              (click)="onItemClick(item.routerLink)">
               @if (item.icon) {
                 <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
               }
@@ -59,7 +59,7 @@
         <a mat-list-item
           class="item"
           [routerLink]="item.routerLink"
-          (click)="this.clickMenu.emit()">
+          (click)="onItemClick(item.routerLink)">
           @if (item.icon) {
             <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
           }
