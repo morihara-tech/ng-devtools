@@ -4,10 +4,7 @@ export const HOME_UPDATE_HISTORIES: Array<UpdateHistoryModel> = [
   // add new update history here
   {
     date: '2026-03-10',
-    description: $localize`:@@update.home.20260310:ダッシュボードカードのリサイズ機能を追加しました。
-カードの並び順・サイズをlocalStorageに保存するようにしました。
-最近使ったメニューをダッシュボードに表示するようにしました。
-メニュー画面のスマートフォン表示を最適化しました。`
+    description: $localize`:@@update.home.20260310:ダッシュボードカードのリサイズ機能を追加しました。`
   },
   {
     date: '2026-03-09',

@@ -76,11 +76,6 @@
         <source>更新履歴</source>
       </segment>
     </unit>
-    <unit id="page.dashboard.title">
-      <segment>
-        <source>ダッシュボード</source>
-      </segment>
-    </unit>
     <unit id="page.dashboard.description">
       <segment>
         <source>ツールの一覧と更新履歴を確認できます。</source>
@@ -1179,10 +1174,7 @@ UNIXタイム変換ツールを実装しました。</source>
     </unit>
     <unit id="update.home.20260310">
       <segment>
-        <source>ダッシュボードカードのリサイズ機能を追加しました。
-カードの並び順・サイズをlocalStorageに保存するようにしました。
-最近使ったメニューをダッシュボードに表示するようにしました。
-メニュー画面のスマートフォン表示を最適化しました。</source>
+        <source>ダッシュボードカードのリサイズ機能を追加しました。</source>
       </segment>
     </unit>
   </file>

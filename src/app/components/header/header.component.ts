@@ -43,7 +43,7 @@ export class HeaderComponent {
     if (this.title) {
       return this.title;
     }
-    return $localize`:@@app.title:devTools`;
+    return this.model?.defaultTitle ?? '';
   }
 
   private initTitle(): void {
