@@ -1,5 +1,16 @@
 <div class="card-container" #cardContainer>
-  <div class="reset-bar">
+  <!-- Resize size-preview placeholder (rendered first so cards appear above it) -->
+  @if (resizeState) {
+    <div
+      class="resize-placeholder"
+      [style.width.px]="resizeState.placeholderWidth"
+      [style.height.px]="resizeState.placeholderHeight"
+      [style.left.px]="resizeState.placeholderLeft"
+      [style.top.px]="resizeState.placeholderTop"
+    ></div>
+  }
+
+  <div class="reset-bar" [style.width.px]="wrapperWidth">
     <button mat-button (click)="resetLayout()">
       <mat-icon>restart_alt</mat-icon>
       <span i18n="@@dashboard.resetLayout">初期設定に戻す</span>
@@ -64,15 +75,4 @@
       </mat-card>
     }
   </div>
-
-  <!-- Resize size-preview placeholder -->
-  @if (resizeState) {
-    <div
-      class="resize-placeholder"
-      [style.width.px]="resizeState.placeholderWidth"
-      [style.height.px]="resizeState.placeholderHeight"
-      [style.left.px]="resizeState.placeholderLeft"
-      [style.top.px]="resizeState.placeholderTop"
-    ></div>
-  }
 </div>
