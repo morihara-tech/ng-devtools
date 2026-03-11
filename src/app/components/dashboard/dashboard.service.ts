@@ -1,6 +1,8 @@
+import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { DashboardCardModel } from './dashboard-card-model';
 
+@Injectable()
 export class DashboardService {
   private cardsSubject: BehaviorSubject<Array<DashboardCardModel>> = new BehaviorSubject<Array<DashboardCardModel>>([]);
 
@@ -21,13 +23,13 @@ export class DashboardService {
   }
 
   move(fromIndex: number, toIndex: number): void {
-    const cards = this.getAll();
+    const cards = [...this.getAll()];
     if (fromIndex < 0 || fromIndex >= cards.length || toIndex < 0 || toIndex > cards.length) {
       return;
     }
     const [item] = cards.splice(fromIndex, 1);
-    const adjustedToIndex = fromIndex < toIndex ? toIndex : toIndex;
-    cards.splice(adjustedToIndex, 0, item);
+    cards.splice(toIndex, 0, item);
+    this.cardsSubject.next(cards);
   }
-
 }
+

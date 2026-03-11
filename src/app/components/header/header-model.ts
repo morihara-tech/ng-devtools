@@ -1,4 +1,5 @@
 export interface HeaderModel {
+  defaultTitle: string;
   logo: HeaderLogoModel;
   person?: PersonButtonModel;
   appsButton?: HeaderAppsButtonModel;

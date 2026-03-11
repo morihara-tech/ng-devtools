@@ -67,3 +67,13 @@ $card-gap-width: 16px;
   font-size: var(--mat-sys-body-small-size);
   color: var(--mat-sys-on-surface-variant);
 }
+
+@media screen and (max-width: 600px) {
+  .page-container {
+    max-width: 100%;
+  }
+
+  .tool-card {
+    width: 100%;
+  }
+}

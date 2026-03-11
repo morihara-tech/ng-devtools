@@ -1,5 +1,12 @@
 .card-container {
   width: 100%;
+  position: relative;
+}
+
+.reset-bar {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 auto 8px;
 }
 
 .card-wrapper {
@@ -30,10 +37,10 @@
 
 .indicator {
   cursor: grab;
-}
 
-.indicator:active {
-  cursor: grabbing;
+  &:active {
+    cursor: grabbing;
+  }
 }
 
 .custom-drag-placeholder {
@@ -53,4 +60,46 @@
 
 .card-container.cdk-drop-list-dragging .card:not(.cdk-drag-placeholder) {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+// ── Resize handle ────────────────────────────────────────────────────────────
+
+.resize-handle {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  width: 24px;
+  height: 24px;
+  cursor: se-resize;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--mat-sys-on-surface-variant);
+  opacity: 0.4;
+  transition: opacity 0.2s;
+  user-select: none;
+
+  &:hover {
+    opacity: 0.9;
+  }
+
+  .resize-icon {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+    transform: rotate(90deg);
+    pointer-events: none;
+  }
+}
+
+// ── Resize placeholder overlay ───────────────────────────────────────────────
+
+.resize-placeholder {
+  position: absolute;
+  border-radius: var(--mat-card-elevated-container-shape, var(--mat-sys-corner-medium));
+  background: var(--mat-sys-primary-container);
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 0;
+  transition: width 150ms ease, height 150ms ease;
 }

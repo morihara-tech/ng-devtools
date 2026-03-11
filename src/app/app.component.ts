@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, model, ViewChild } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
@@ -26,6 +26,7 @@ export class AppComponent {
   text?: Text;
 
   headerModel: HeaderModel = {
+    defaultTitle: $localize`:@@app.title:devTools`,
     logo: { logoUrl: 'logo.svg', routerLink: '/' },
     appsButton: {
       routerLink: '/menu',
@@ -71,10 +72,11 @@ export class AppComponent {
         mergeMap((route) => route.data)
       )
       .subscribe((event) => {
-        const title = event['title'];
-        if (title) {
-          this.titleService.setTitle(title);
+        let title = this.headerModel.defaultTitle;
+        if (event['title']) {
+          title = event['title'] + ' | ' + title;
         }
+        this.titleService.setTitle(title);
         this.toggle = (event['menuToggle']);
       });
   }
