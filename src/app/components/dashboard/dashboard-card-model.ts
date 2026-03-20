@@ -1,6 +1,7 @@
 import { Type } from "@angular/core";
 
 export interface DashboardCardModel {
+  id: string;
   title: string;
   information?: string;
   component: Type<any>;

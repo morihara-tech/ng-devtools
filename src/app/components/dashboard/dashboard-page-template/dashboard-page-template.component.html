@@ -1,16 +1,46 @@
 <div class="card-container" #cardContainer>
-  <div class="card-wrapper" #cardWrapper
+  <!-- Resize size-preview placeholder (rendered first so cards appear above it) -->
+  @if (resizeState) {
+    <div
+      class="resize-placeholder"
+      [style.width.px]="resizeState.placeholderWidth"
+      [style.height.px]="resizeState.placeholderHeight"
+      [style.left.px]="resizeState.placeholderLeft"
+      [style.top.px]="resizeState.placeholderTop"
+    ></div>
+  }
+
+  <div class="reset-bar" [style.width.px]="wrapperWidth">
+    @if (isReady) {
+      <button mat-button (click)="resetLayout()">
+        <mat-icon>restart_alt</mat-icon>
+        <span i18n="@@dashboard.resetLayout">初期設定に戻す</span>
+      </button>
+    }
+  </div>
+
+  <div
+    class="card-wrapper"
+    #cardWrapper
     cdkDropList
     cdkDropListOrientation="mixed"
     [style.width.px]="wrapperWidth"
-    (cdkDropListDropped)="onDrop($event)">
+    (cdkDropListDropped)="onDrop($event)"
+  >
     @for (model of cardModels; track $index) {
-      <mat-card cdkDrag [style.width.px]="getCardWidth(model)" [style.height.px]="getCardHeight(model)">
-        <div class="custom-drag-placeholder"
+      <mat-card
+        cdkDrag
+        [style.width.px]="resizingModel === model ? resizeState!.freeWidth : getCardWidth(model)"
+        [style.height.px]="resizingModel === model ? resizeState!.freeHeight : getCardHeight(model)"
+      >
+        <!-- Drag-reorder placeholder -->
+        <div
+          class="custom-drag-placeholder"
           [style.width.px]="getCardWidth(model)"
           [style.height.px]="getCardHeight(model)"
           *cdkDragPlaceholder
         ></div>
+
         <mat-card-header class="card-header">
           <div mat-card-avatar cdkDragHandle class="indicator">
             <mat-icon>drag_indicator</mat-icon>
@@ -19,20 +49,31 @@
             <mat-card-title>{{ model.title }}</mat-card-title>
           </mat-card-title-group>
         </mat-card-header>
+
         <mat-card-content class="card-content">
           <ng-container #cardContent></ng-container>
         </mat-card-content>
+
         @if (model.destination) {
           <mat-divider class="divider"></mat-divider>
           <mat-card-footer class="card-footer">
             <app-hyper-link-text
               [url]="model.destination.url"
               [external]="model.destination.external"
-              [openInNewTab]="model.destination.openInNewTab">
+              [openInNewTab]="model.destination.openInNewTab"
+            >
               {{ model.destination.linkText }}
             </app-hyper-link-text>
           </mat-card-footer>
         }
+
+        <!-- Resize handle (bottom-right corner, mouse-event-based) -->
+        <div
+          class="resize-handle"
+          (mousedown)="onResizeMouseDown($event, model)"
+        >
+          <mat-icon class="resize-icon">open_in_full</mat-icon>
+        </div>
       </mat-card>
     }
   </div>
