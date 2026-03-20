@@ -11,10 +11,12 @@
   }
 
   <div class="reset-bar" [style.width.px]="wrapperWidth">
-    <button mat-button (click)="resetLayout()">
-      <mat-icon>restart_alt</mat-icon>
-      <span i18n="@@dashboard.resetLayout">初期設定に戻す</span>
-    </button>
+    @if (isReady) {
+      <button mat-button (click)="resetLayout()">
+        <mat-icon>restart_alt</mat-icon>
+        <span i18n="@@dashboard.resetLayout">初期設定に戻す</span>
+      </button>
+    }
   </div>
 
   <div

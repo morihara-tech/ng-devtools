@@ -91,6 +91,7 @@ export class DashboardPageTemplateComponent implements AfterViewInit, OnDestroy 
   @Input() api!: DashboardService;
   @Input() defaultCards: DashboardCardModel[] = [];
 
+  isReady: boolean = false;
   cardModels: DashboardCardModel[] = [];
   wrapperWidth: number = 0;
 
@@ -378,5 +379,6 @@ export class DashboardPageTemplateComponent implements AfterViewInit, OnDestroy 
       cardContent.clear();
       cardContent.createComponent(model.component);
     });
+    this.isReady = true;
   }
 }
