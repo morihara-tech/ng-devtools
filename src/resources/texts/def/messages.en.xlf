@@ -1416,5 +1416,11 @@ Added the tool list page.</target>
         <target>Added dashboard card resizing feature.</target>
       </segment>
     </unit>
+    <unit id="update.home.20260320">
+      <segment state="initial">
+        <source>SSG（静的サイト生成）を導入し、初期表示速度とSEOを改善しました。</source>
+        <target>Introduced SSG (Static Site Generation) to improve initial load speed and SEO.</target>
+      </segment>
+    </unit>
   </file>
 </xliff>

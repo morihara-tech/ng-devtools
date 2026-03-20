@@ -1177,5 +1177,10 @@ UNIXタイム変換ツールを実装しました。</source>
         <source>ダッシュボードカードのリサイズ機能を追加しました。</source>
       </segment>
     </unit>
+    <unit id="update.home.20260320">
+      <segment>
+        <source>SSG（静的サイト生成）を導入し、初期表示速度とSEOを改善しました。</source>
+      </segment>
+    </unit>
   </file>
 </xliff>

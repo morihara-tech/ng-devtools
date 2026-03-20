@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
+import { PlatformService } from '../../../core/services/platform.service';
 
 @Component({
   selector: 'app-svg-to-png-output-card',
@@ -32,6 +33,7 @@ export class SvgToPngOutputCardComponent {
 
   private snackBar = inject(MatSnackBar);
   private sanitizer = inject(DomSanitizer);
+  private platformService = inject(PlatformService);
 
   updatePreview(svgCode: string, settings: SvgToPngSettingsModel): void {
     this.svgCode = svgCode;
@@ -74,7 +76,7 @@ export class SvgToPngOutputCardComponent {
 
     try {
       const pngDataUrl = await this.convertSvgToPng();
-      const link = document.createElement('a');
+      const link = this.platformService.nativeDocument.createElement('a');
       const timestamp = new Date().getTime();
       link.download = `svg-image-${timestamp}.png`;
       link.href = pngDataUrl;
@@ -107,7 +109,7 @@ export class SvgToPngOutputCardComponent {
 
   private async convertSvgToPng(): Promise<string> {
     return new Promise((resolve, reject) => {
-      const canvas = document.createElement('canvas');
+      const canvas = this.platformService.nativeDocument.createElement('canvas');
       canvas.width = this.settings.canvasWidth;
       canvas.height = this.settings.canvasHeight;
       const ctx = canvas.getContext('2d');
