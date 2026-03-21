@@ -9,7 +9,6 @@ import { ColumnRegular } from '@revolist/revogrid';
 import { HeadingComponent } from '../../../components/heading/heading.component';
 import { UnixTimestampInputModel, UnixTimestampResult } from '../unix-timestamp-model';
 import { UnixTimestampService } from '../unix-timestamp.service';
-import { PlatformService } from '../../../core/services/platform.service';
 
 interface GridRow {
   name: string;
@@ -52,18 +51,16 @@ export class UnixTimestampOutputCardComponent implements OnInit, OnDestroy {
 
   private readonly snackBar = inject(MatSnackBar);
   private readonly converterService = inject(UnixTimestampService);
-  private readonly platformService = inject(PlatformService);
-  private mediaQueryList: MediaQueryList | null = null;
+  private readonly mediaQueryList = window.matchMedia('(prefers-color-scheme: dark)');
   private readonly themeListener = (e: MediaQueryListEvent) => this.updateTheme(e.matches);
 
   ngOnInit(): void {
-    this.mediaQueryList = this.platformService.matchMedia('(prefers-color-scheme: dark)');
-    this.updateTheme(this.mediaQueryList?.matches ?? false);
-    this.mediaQueryList?.addEventListener('change', this.themeListener);
+    this.updateTheme(this.mediaQueryList.matches);
+    this.mediaQueryList.addEventListener('change', this.themeListener);
   }
 
   ngOnDestroy(): void {
-    this.mediaQueryList?.removeEventListener('change', this.themeListener);
+    this.mediaQueryList.removeEventListener('change', this.themeListener);
   }
 
   /** Runs the conversion and refreshes the grid. */

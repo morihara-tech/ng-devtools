@@ -2,7 +2,6 @@ import {
   AfterViewInit,
   ChangeDetectorRef,
   Component,
-  inject,
   Input,
   NgZone,
   OnDestroy,
@@ -27,7 +26,6 @@ import { Subscription } from 'rxjs';
 import { DashboardCardModel } from '../dashboard-card-model';
 import { DashboardService } from '../dashboard.service';
 import { HyperLinkTextComponent } from '../../hyper-link-text/hyper-link-text.component';
-import { PlatformService } from '../../../core/services/platform.service';
 
 const DEBOUNCE_DELAY = 50;
 const MAX_CARD_WIDTH = 360;
@@ -118,12 +116,7 @@ export class DashboardPageTemplateComponent implements AfterViewInit, OnDestroy 
     private zone: NgZone,
   ) {}
 
-  private readonly platformService = inject(PlatformService);
-
   ngAfterViewInit(): void {
-    if (!this.platformService.isBrowser()) {
-      return;
-    }
     this.resizeObserver = new ResizeObserver((entries) => {
       for (const entry of entries) {
         const width = entry.contentRect.width;
@@ -203,8 +196,8 @@ export class DashboardPageTemplateComponent implements AfterViewInit, OnDestroy 
     this.zone.runOutsideAngular(() => {
       this.resizeMouseMove = (e: MouseEvent) => this.onResizeMove(e);
       this.resizeMouseUp = (e: MouseEvent) => this.onResizeEnd(e);
-      this.platformService.nativeDocument.addEventListener('mousemove', this.resizeMouseMove);
-      this.platformService.nativeDocument.addEventListener('mouseup', this.resizeMouseUp);
+      document.addEventListener('mousemove', this.resizeMouseMove);
+      document.addEventListener('mouseup', this.resizeMouseUp);
     });
   }
 
@@ -265,11 +258,11 @@ export class DashboardPageTemplateComponent implements AfterViewInit, OnDestroy 
 
   private removeResizeListeners(): void {
     if (this.resizeMouseMove) {
-      this.platformService.nativeDocument.removeEventListener('mousemove', this.resizeMouseMove);
+      document.removeEventListener('mousemove', this.resizeMouseMove);
       this.resizeMouseMove = undefined;
     }
     if (this.resizeMouseUp) {
-      this.platformService.nativeDocument.removeEventListener('mouseup', this.resizeMouseUp);
+      document.removeEventListener('mouseup', this.resizeMouseUp);
       this.resizeMouseUp = undefined;
     }
   }
@@ -283,7 +276,7 @@ export class DashboardPageTemplateComponent implements AfterViewInit, OnDestroy 
       size: { x: m.size?.x, y: m.size?.y },
     }));
     try {
-      this.platformService.localStorage?.setItem(STORAGE_KEY, JSON.stringify(layout));
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(layout));
     } catch {
       // Ignore quota errors
     }
@@ -292,7 +285,7 @@ export class DashboardPageTemplateComponent implements AfterViewInit, OnDestroy 
   /** Clears saved layout and resets to defaults. */
   resetLayout(): void {
     try {
-      this.platformService.localStorage?.removeItem(STORAGE_KEY);
+      localStorage.removeItem(STORAGE_KEY);
     } catch {
       // Ignore errors
     }

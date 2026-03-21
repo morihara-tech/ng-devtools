@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DashboardPageTemplateComponent } from '../../components/dashboard/dashboard-page-template/dashboard-page-template.component';
 import { DashboardService } from '../../components/dashboard/dashboard.service';
 import { DashboardCardModel } from '../../components/dashboard/dashboard-card-model';
@@ -6,7 +6,6 @@ import { UsageCardComponent } from './usage-card/usage-card.component';
 import { MenuCardComponent } from './menu-card/menu-card.component';
 import { GithubCardComponent } from './github-card/github-card.component';
 import { UpdateHistoryCardComponent } from './update-history-card/update-history-card.component';
-import { PlatformService } from '../../core/services/platform.service';
 
 const STORAGE_KEY = 'dashboard_layout';
 
@@ -22,8 +21,6 @@ interface LayoutEntry {
   styleUrl: './dashboard-page.component.scss',
 })
 export class DashboardPageComponent implements OnInit {
-  private readonly platformService = inject(PlatformService);
-
   dashboardService!: DashboardService;
   defaultCards: DashboardCardModel[] = [];
 
@@ -82,7 +79,7 @@ export class DashboardPageComponent implements OnInit {
    */
   private loadLayoutFromStorage(): DashboardCardModel[] {
     try {
-      const raw = this.platformService.localStorage?.getItem(STORAGE_KEY);
+      const raw = localStorage.getItem(STORAGE_KEY);
       if (!raw) return [...this.defaultCards];
 
       const layout: LayoutEntry[] = JSON.parse(raw);

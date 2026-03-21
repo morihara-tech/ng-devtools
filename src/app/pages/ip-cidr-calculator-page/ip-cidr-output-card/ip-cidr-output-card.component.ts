@@ -9,7 +9,6 @@ import { IpCidrInputModel, IpCidrResult } from '../ip-cidr-model';
 import { IpCidrCalculatorService } from '../ip-cidr-calculator.service';
 import { RevoGrid } from '@revolist/angular-datagrid';
 import { ColumnRegular } from '@revolist/revogrid';
-import { PlatformService } from '../../../core/services/platform.service';
 
 interface GridRow {
   name: string;
@@ -35,7 +34,7 @@ export class IpCidrOutputCardComponent implements OnInit, OnDestroy {
   gridSource: GridRow[] = [];
   theme: 'compact' | 'darkCompact' = 'compact';
   
-  private mediaQueryList: MediaQueryList | null = null;
+  private mediaQueryList = window.matchMedia('(prefers-color-scheme: dark)');
   private themeListener = (e: MediaQueryListEvent) => this.updateTheme(e.matches);
 
   columns: ColumnRegular[] = [
@@ -55,16 +54,15 @@ export class IpCidrOutputCardComponent implements OnInit, OnDestroy {
 
   private snackBar = inject(MatSnackBar);
   private calculatorService = inject(IpCidrCalculatorService);
-  private platformService = inject(PlatformService);
 
   ngOnInit(): void {
-    this.mediaQueryList = this.platformService.matchMedia('(prefers-color-scheme: dark)');
-    this.updateTheme(this.mediaQueryList?.matches ?? false);
-    this.mediaQueryList?.addEventListener('change', this.themeListener);
+    const isDark = this.mediaQueryList.matches;
+    this.updateTheme(isDark);
+    this.mediaQueryList.addEventListener('change', this.themeListener);
   }
 
   ngOnDestroy(): void {
-    this.mediaQueryList?.removeEventListener('change', this.themeListener);
+    this.mediaQueryList.removeEventListener('change', this.themeListener);
   }
 
   calculateResult(input: IpCidrInputModel): void {
