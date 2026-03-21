@@ -28,6 +28,9 @@ export class UuidGenInputCardComponent implements OnInit {
   @Output() generate: EventEmitter<UuidGenInputModel> = new EventEmitter();
 
   formGroup?: FormGroup;
+  versionHintMessage: string = $localize`:@@page.uuid.card.input.version.hint:v1: 時刻とMACアドレスを組み合わせて生成。時系列順に並びやすいが生成元が推測されやすい。
+v4: ほぼ完全にランダムに生成。衝突確率が極めて低く最も広く使われている。
+v7: Unix時間と乱数を組み合わせて生成。時系列順に並べやすくかつプライバシーに配慮されている。`;
 
   private readonly fb: FormBuilder = inject(FormBuilder);
 

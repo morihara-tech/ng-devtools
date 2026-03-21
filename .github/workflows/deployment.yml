@@ -30,7 +30,9 @@ jobs:
         with:
           aws-region: ap-northeast-1
           role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/GitHubActionsRole
-      - name: Deploy to S3
-        run: |
-          aws s3 sync dist/${{ env.PROJECT_NAME }}/browser s3://${{ secrets.S3_BUCKET_NAME }} --delete
-          aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
+      - name: Deploy to S3 (ja)
+        run: aws s3 sync dist/${{ env.PROJECT_NAME }}/browser/ja s3://${{ secrets.S3_BUCKET_NAME }} --delete
+      - name: Deploy to S3 (en)
+        run: aws s3 sync dist/${{ env.PROJECT_NAME }}/browser/en s3://${{ secrets.S3_BUCKET_NAME }}/en --delete
+      - name: CloudFront Invalidation
+        run: aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"

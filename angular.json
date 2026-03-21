@@ -46,17 +46,22 @@
             "allowedCommonJsDependencies": [
               "moment",
               "moment/locale/ja",
-              "crypto"
+              "crypto",
+              "@babel/runtime/helpers/extends",
+              "nearley"
             ],
-            "browser": "src/main.ts"
+            "browser": "src/main.ts",
+            "server": "src/main.server.ts",
+            "prerender": true,
+            "ssr": false
           },
           "configurations": {
             "production": {
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "2MB",
-                  "maximumError": "15MB"
+                  "maximumWarning": "5MB",
+                  "maximumError": "20MB"
                 },
                 {
                   "type": "anyComponentStyle",

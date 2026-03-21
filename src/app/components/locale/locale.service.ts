@@ -1,6 +1,6 @@
 import { Inject, Injectable, DOCUMENT } from '@angular/core';
 import { Locale } from './locale-model';
-import { Observable, of } from 'rxjs';
+import { PlatformService } from '../../core/services/platform.service';
 
 
 @Injectable({
@@ -12,13 +12,19 @@ export class LocaleService {
     en: 'en',
   };
 
-  constructor(@Inject(DOCUMENT) private doc: Document) {}
+  constructor(
+    @Inject(DOCUMENT) private doc: Document,
+    private readonly platformService: PlatformService,
+  ) {}
 
   switchTo(target: Locale, options?: { preservePath?: boolean }) {
     const preservePath = options?.preservePath ?? true;
 
+    const win = this.platformService.window;
+    if (!win) return;
+
     const baseHref = this.getBaseHref();
-    const { origin, pathname, search, hash } = window.location;
+    const { origin, pathname, search, hash } = win.location;
 
     const relative = preservePath
       ? this.stripLeadingSlash(
@@ -38,7 +44,7 @@ export class LocaleService {
 
     if (this.isSameLocale(baseHref, sub)) return;
 
-    window.location.assign(targetUrl);
+    win.location.assign(targetUrl);
   }
 
   getCurrentLocale(): Locale {

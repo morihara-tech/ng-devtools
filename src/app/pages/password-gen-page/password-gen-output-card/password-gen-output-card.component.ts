@@ -7,6 +7,7 @@ import { PasswordGenInputModel, PasswordCharacterType } from '../password-gen-mo
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { PlatformService } from '../../../core/services/platform.service';
 
 @Component({
     selector: 'app-password-gen-output-card',
@@ -26,6 +27,7 @@ export class PasswordGenOutputCardComponent {
   passwordStrings?: string;
 
   private snackBar = inject(MatSnackBar);
+  private platformService = inject(PlatformService);
 
   generatePassword(input: PasswordGenInputModel): void {
     const passwords = this.makePasswords(input);
@@ -55,7 +57,12 @@ export class PasswordGenOutputCardComponent {
     let password = '';
     const charsetLength = charset.length;
     const randomValues = new Uint32Array(length);
-    window.crypto.getRandomValues(randomValues);
+    const win = this.platformService.window;
+    if (!win) {
+      // This method is only called via user interaction and never during SSG prerendering.
+      return '';
+    }
+    win.crypto.getRandomValues(randomValues);
     
     for (let i = 0; i < length; i++) {
       const randomIndex = randomValues[i] % charsetLength;
