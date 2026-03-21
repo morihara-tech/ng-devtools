@@ -1,9 +1,8 @@
-import { Component, ElementRef, EventEmitter, forwardRef, inject, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, forwardRef, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Compartment, EditorState, type Extension } from '@codemirror/state';
 import { EditorView } from '@codemirror/view';
 import { githubLight, githubDark } from '@uiw/codemirror-theme-github';
-import { PlatformService } from '../../core/services/platform.service';
 
 @Component({
   selector: 'app-codemirror',
@@ -22,16 +21,14 @@ export class CodemirrorComponent implements OnInit, OnChanges, OnDestroy {
   @Input() extensions: Extension[] = [];
   @Output() valueChange = new EventEmitter<string>();
 
-  private readonly platformService = inject(PlatformService);
   private view?: EditorView;
   private extensionCompartment = new Compartment();
   private themeCompartment = new Compartment();
-  private mediaQueryList: MediaQueryList | null = null;
+  private mediaQueryList = window.matchMedia('(prefers-color-scheme: dark)');
   private themeListener = (e: MediaQueryListEvent) => this.updateTheme(e.matches);
 
   ngOnInit(): void {
-    this.mediaQueryList = this.platformService.matchMedia('(prefers-color-scheme: dark)');
-    const isDark = this.mediaQueryList?.matches ?? false;
+    const isDark = this.mediaQueryList.matches;
     const state = EditorState.create({
       doc: this.value,
       extensions: [
@@ -54,7 +51,7 @@ export class CodemirrorComponent implements OnInit, OnChanges, OnDestroy {
       parent: this.hostEl.nativeElement,
     });
 
-    this.mediaQueryList?.addEventListener('change', this.themeListener);
+    this.mediaQueryList.addEventListener('change', this.themeListener);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -81,7 +78,7 @@ export class CodemirrorComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.mediaQueryList?.removeEventListener('change', this.themeListener);
+    this.mediaQueryList.removeEventListener('change', this.themeListener);
     this.view?.destroy();
     this.view = undefined;
   }
