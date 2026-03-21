@@ -121,6 +121,9 @@ export class DashboardPageTemplateComponent implements AfterViewInit, OnDestroy 
   private readonly platformService = inject(PlatformService);
 
   ngAfterViewInit(): void {
+    if (!this.platformService.isBrowser()) {
+      return;
+    }
     this.resizeObserver = new ResizeObserver((entries) => {
       for (const entry of entries) {
         const width = entry.contentRect.width;
