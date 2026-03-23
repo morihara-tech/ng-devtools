@@ -1,0 +1,52 @@
+name: Cleanup Sandbox
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  cleanup-sandbox:
+    name: Cleanup PR Sandbox
+    runs-on: ubuntu-latest
+    
+    permissions:
+      id-token: write
+      contents: read
+      pull-requests: write
+
+    steps:
+      - name: AWS Assume Role
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-region: ap-northeast-1
+          role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/GitHubActionsRole
+
+      - name: Delete S3 Directory and Invalidate
+        run: |
+          set -e
+          aws s3 rm s3://${{ secrets.S3_BUCKET_NAME }}/pr-${{ github.event.pull_request.number }} --recursive
+          aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/pr-${{ github.event.pull_request.number }}/*"
+
+      - name: Notify Success
+        if: success()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: '🧹 **Sandbox environment has been cleaned up.**'
+            });
+
+      - name: Notify Failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: '❌ **Failed to clean up the Sandbox environment.** Please check the Actions logs for details.'
+            });
