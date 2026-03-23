@@ -5,8 +5,8 @@ on:
     types: [created]
 
 env:
-  NODE_VERSION: '20'
-  PROJECT_NAME: 'my-app'
+  NODE_VERSION: 20.19.5
+  PROJECT_NAME: ng-devtools
 
 jobs:
   buildanddeploy-sandbox:
