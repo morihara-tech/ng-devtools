@@ -27,5 +27,5 @@ export const routes: Routes = [
   { path: 'text-diff', children: textDiffPageRoutes },
   { path: 'menu', children: menuPageRoutes },
   { path: 'error', children: errorPageRoutes },
-  { path: '**', redirectTo: 'error/404' }
+  { path: '**', redirectTo: '/error/404' }
 ];
