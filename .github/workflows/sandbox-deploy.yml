@@ -11,6 +11,7 @@ env:
 jobs:
   buildanddeploy-sandbox:
     name: Deploy PR to Sandbox
+    environment: develop
     if: |
       github.event.issue.pull_request &&
       startsWith(github.event.comment.body, '/deploy') &&
