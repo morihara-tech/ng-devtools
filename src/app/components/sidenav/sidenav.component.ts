@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { SidemenuComponent } from '../sidemenu/sidemenu.component';
 import { SidemenuCategoryModel, SidemenuItemModel } from '../sidemenu/sidemenu-model';
 import { MenuService } from '../../services/menu.service';
+import { PlatformService } from '../../core/services/platform.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -25,7 +26,10 @@ export class SidenavComponent implements OnChanges, OnInit, OnDestroy {
 
   private subscriptions = new Subscription();
 
-  constructor(private menuService: MenuService) {}
+  constructor(
+    private menuService: MenuService,
+    private readonly platformService: PlatformService,
+  ) {}
 
   ngOnChanges(): void {
     if (!this.sidenav) {
@@ -50,7 +54,7 @@ export class SidenavComponent implements OnChanges, OnInit, OnDestroy {
       })
     );
     this.setVhVariable();
-    window.addEventListener('resize', () => {
+    this.platformService.window?.addEventListener('resize', () => {
       this.setVhVariable();
     });
   }
@@ -69,11 +73,11 @@ export class SidenavComponent implements OnChanges, OnInit, OnDestroy {
   }
 
   get mode(): MatDrawerMode {
-    return window.innerWidth < 600 ? 'over' : 'side';
+    return (this.platformService.window?.innerWidth ?? 0) < 600 ? 'over' : 'side';
   }
 
   private setVhVariable(): void {
-    const vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
+    const vh = (this.platformService.window?.innerHeight ?? 0) * 0.01;
+    this.platformService.nativeDocument.documentElement.style.setProperty('--vh', `${vh}px`);
   }
 }
