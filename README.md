@@ -80,4 +80,3 @@ This project supports English and Japanese localization.
 
 - **ja** - Japanese (default)
 - **en** - English
-
