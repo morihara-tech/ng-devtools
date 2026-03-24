@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "postbuild": "node scripts/postbuild.mjs",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:ng-devtools": "node dist/ng-devtools/server/server.mjs"

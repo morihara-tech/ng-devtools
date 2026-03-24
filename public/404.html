@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>404 - Page Not Found | DevTools</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#005B7F" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#001D29" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&family=BIZ+UDGothic&display=swap" rel="stylesheet">
+  <style>
+    /* Colors derived from the app's M3 theme palette */
+    :root {
+      --surface: #fcf8fd;
+      --surface-container: #f0edf1;
+      --on-surface: #1b1b1f;
+      --on-surface-variant: #46464f;
+      --primary: #284aea;
+      --outline: #777680;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --surface: #39393c;
+        --surface-container: #1f1f23;
+        --on-surface: #e5e1e6;
+        --on-surface-variant: #c7c5d0;
+        --primary: #bac3ff;
+        --outline: #918f9a;
+      }
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      background: var(--surface);
+      color: var(--on-surface);
+      font-family: 'Roboto', 'BIZ UDGothic', sans-serif;
+      font-weight: 300;
+    }
+
+    .container {
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding:
+        env(safe-area-inset-top)
+        env(safe-area-inset-right)
+        env(safe-area-inset-bottom)
+        env(safe-area-inset-left);
+    }
+
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .card {
+      width: 320px;
+      background: var(--surface-container);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    }
+
+    .title {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+
+    .message {
+      font-size: 0.875rem;
+      line-height: 1.6;
+      padding: 0 8px;
+    }
+
+    .button-area {
+      display: flex;
+      margin-top: 8px;
+    }
+
+    .button {
+      display: inline-block;
+      width: calc(100% - 48px);
+      margin: 16px 24px;
+      padding: 10px 24px;
+      text-align: center;
+      border: 1px solid var(--outline);
+      border-radius: 4px;
+      color: var(--primary);
+      text-decoration: none;
+      font-family: inherit;
+      font-weight: 500;
+      font-size: 0.875rem;
+      letter-spacing: 0.05em;
+      transition: background 0.2s;
+    }
+
+    .button:hover {
+      background: rgba(40, 74, 234, 0.08);
+    }
+
+    .copyright {
+      margin-top: 40px;
+      text-align: center;
+      color: var(--on-surface-variant);
+      font-size: 0.75rem;
+    }
+  </style>
+  <script>
+    (function () {
+      var path = window.location.pathname;
+
+      // Prevent infinite redirect loop — already on an error page
+      if (path.indexOf('/error/404') !== -1) return;
+
+      var supportedLocales = ['ja', 'en'];
+      var segments = path.split('/').filter(function (s) { return s !== ''; });
+      var locale = (segments.length > 0 && supportedLocales.indexOf(segments[0]) !== -1)
+        ? segments[0]
+        : 'ja';
+
+      window.location.replace('/' + locale + '/error/404');
+    }());
+  </script>
+</head>
+<body>
+  <div class="container">
+    <div class="wrapper">
+      <div class="card">
+        <div class="title">ページが見つかりません</div>
+        <div class="message">
+          申し訳ございません。<br>
+          お探しのページは、移動または削除された可能性があります。
+        </div>
+        <div class="button-area">
+          <a href="/" class="button">ホームに戻る</a>
+        </div>
+      </div>
+      <div class="copyright">© 2026 Yutaka Morihara</div>
+    </div>
+  </div>
+</body>
+</html>
