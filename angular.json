@@ -70,7 +70,8 @@
                 }
               ],
               "outputHashing": "all",
-              "localize": true
+              "localize": true,
+              "sourceMap": false
             },
             "development": {
               "optimization": false,

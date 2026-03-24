@@ -31,6 +31,10 @@ export class CodemirrorComponent implements OnInit, OnChanges, OnDestroy {
 
   ngOnInit(): void {
     this.mediaQueryList = this.platformService.matchMedia('(prefers-color-scheme: dark)');
+    // Since the editor relies on browser APIs, we should only initialize it in the browser environment
+    if (!this.platformService.isBrowser()) {
+      return;
+    }
     const isDark = this.mediaQueryList?.matches ?? false;
     const state = EditorState.create({
       doc: this.value,
