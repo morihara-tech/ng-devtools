@@ -20,7 +20,7 @@
                 <mat-option value="v7">v7</mat-option>
               </mat-select>
             </mat-form-field>
-            <app-hint-icon message="v1: 時刻とMACアドレスを組み合わせて生成。時系列順に並びやすいが生成元が推測されやすい。\nv4: ほぼ完全にランダムに生成。衝突確率が極めて低く最も広く使われている。\nv7: Unix時間と乱数を組み合わせて生成。時系列順に並べやすくかつプライバシーに配慮されている。" class="hint"></app-hint-icon>
+            <app-hint-icon [message]="versionHintMessage" class="hint"></app-hint-icon>
           </div>
         </div>
         @if (errorMessage !== null) {

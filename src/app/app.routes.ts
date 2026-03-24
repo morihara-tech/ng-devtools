@@ -14,7 +14,7 @@ import { textDiffPageRoutes } from './pages/text-diff-page/text-diff-page.routes
 import { menuPageRoutes } from './pages/menu-page/menu-page.routes';
 
 export const routes: Routes = [
-  { path: 'dashboard', children: dashboardPageRoutes },
+  { path: '', children: dashboardPageRoutes },
   { path: 'ulid-generator', children: ulidGenPageRoutes },
   { path: 'uuid-generator', children: uuidGenPageRoutes },
   { path: 'json-formatter', children: jsonFormatterPageRoutes },
@@ -27,6 +27,5 @@ export const routes: Routes = [
   { path: 'text-diff', children: textDiffPageRoutes },
   { path: 'menu', children: menuPageRoutes },
   { path: 'error', children: errorPageRoutes },
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: '**', redirectTo: '/error/404' }
 ];

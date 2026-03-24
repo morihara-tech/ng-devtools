@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { filter, take } from 'rxjs/operators';
 import { MenuService } from './menu.service';
+import { PlatformService } from '../core/services/platform.service';
 
 const STORAGE_KEY = 'recent_menus';
 const MAX_RECENT = 50;
@@ -22,6 +23,7 @@ interface RecentEntry {
   providedIn: 'root',
 })
 export class RecentMenuService {
+  private readonly platformService = inject(PlatformService);
   private readonly historySubject = new BehaviorSubject<RecentEntry[]>(this.loadHistory());
 
   /** Emits whenever the recent-menu history changes. */
@@ -78,7 +80,7 @@ export class RecentMenuService {
 
   private loadHistory(): RecentEntry[] {
     try {
-      const raw = localStorage.getItem(STORAGE_KEY);
+      const raw = this.platformService.localStorage?.getItem(STORAGE_KEY);
       return raw ? JSON.parse(raw) : [];
     } catch {
       return [];
@@ -87,7 +89,7 @@ export class RecentMenuService {
 
   private saveHistory(history: RecentEntry[]): void {
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(history));
+      this.platformService.localStorage?.setItem(STORAGE_KEY, JSON.stringify(history));
     } catch {
       // Ignore storage errors (e.g., private browsing quota)
     }
