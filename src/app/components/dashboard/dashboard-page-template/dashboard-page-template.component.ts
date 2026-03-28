@@ -18,7 +18,7 @@ import {
   CdkDragPlaceholder,
   CdkDropList,
 } from '@angular/cdk/drag-drop';
-import { CommonModule } from '@angular/common';
+
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
@@ -71,7 +71,6 @@ interface LayoutEntry {
 @Component({
   selector: 'app-dashboard-page-template',
   imports: [
-    CommonModule,
     CdkDrag,
     CdkDragHandle,
     CdkDropList,
@@ -80,8 +79,8 @@ interface LayoutEntry {
     MatCardModule,
     MatIconModule,
     MatDividerModule,
-    HyperLinkTextComponent,
-  ],
+    HyperLinkTextComponent
+],
   templateUrl: './dashboard-page-template.component.html',
   styleUrl: './dashboard-page-template.component.scss',
 })
