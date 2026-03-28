@@ -362,10 +362,9 @@ export class DashboardPageTemplateComponent implements AfterViewInit, OnDestroy 
   }
 
   private showCards(): void {
-    const contents = this.cardContents();
     this.cardModels.forEach((model, i) => {
       this.cdr.detectChanges();
-      const cardContent = contents[i];
+      const cardContent = this.cardContents()[i];
       if (!cardContent) {
         console.warn(`Card for index ${i} not found.`);
         return;
