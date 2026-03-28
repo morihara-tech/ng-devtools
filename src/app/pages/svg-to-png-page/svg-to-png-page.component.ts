@@ -17,8 +17,8 @@ import { SvgToPngSettingsModel, DEFAULT_SVG_TO_PNG_SETTINGS } from './svg-to-png
   styleUrl: './svg-to-png-page.component.scss'
 })
 export class SvgToPngPageComponent {
-  private readonly output = viewChild<SvgToPngOutputCardComponent>('output');
-  private readonly input = viewChild<SvgToPngInputCardComponent>('input');
+  private readonly outputCard = viewChild<SvgToPngOutputCardComponent>('output');
+  private readonly inputCard = viewChild<SvgToPngInputCardComponent>('input');
 
   currentSettings: SvgToPngSettingsModel = { ...DEFAULT_SVG_TO_PNG_SETTINGS };
   currentSvgCode: string = '';
@@ -40,8 +40,8 @@ export class SvgToPngPageComponent {
   }
 
   private updatePreview(): void {
-    const output = this.output();
-    const input = this.input();
+    const output = this.outputCard();
+    const input = this.inputCard();
     if (!output || !input) {
       return;
     }

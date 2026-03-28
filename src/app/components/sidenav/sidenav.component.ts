@@ -1,4 +1,4 @@
-import { Component, effect, inject, model, OnDestroy, OnInit, viewChild } from '@angular/core';
+import { Component, effect, inject, model, OnInit, viewChild } from '@angular/core';
 import { MatDrawerMode, MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
 import { SidemenuComponent } from '../sidemenu/sidemenu.component';
 import { SidemenuCategoryModel, SidemenuItemModel } from '../sidemenu/sidemenu-model';
@@ -15,7 +15,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
   templateUrl: './sidenav.component.html',
   styleUrl: './sidenav.component.scss',
 })
-export class SidenavComponent implements OnInit, OnDestroy {
+export class SidenavComponent implements OnInit {
   private readonly sidenav = viewChild<MatSidenav>('sidenav');
 
   readonly toggle = model(false);
@@ -44,8 +44,6 @@ export class SidenavComponent implements OnInit, OnDestroy {
       this.setVhVariable();
     });
   }
-
-  ngOnDestroy(): void {}
 
   onClickMenu(): void {
     setTimeout(() => {
