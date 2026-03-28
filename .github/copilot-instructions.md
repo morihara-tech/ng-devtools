@@ -4,7 +4,24 @@ Copilot must follow these rules strictly within this repository.
 
 ## 1. General Guidelines
 - **Language**: Always write code in **TypeScript** for Angular projects unless explicitly requested.
-- **Framework**: Use Angular best practices and conventions.
+- **Framework**: Use **Angular v21** best practices and conventions.
+- **Standalone Components**: Always use standalone components. Never use `NgModule` unless absolutely necessary for a third-party library integration.
+- **Signals (State Management)**:
+  - Use `signal()`, `computed()`, and `effect()` for all reactive state.
+  - Use `input()`, `output()`, and `model()` functions instead of `@Input()` / `@Output()` decorators.
+  - Use `linkedSignal()` for state derived from an input signal that can also be locally mutated.
+  - Use `resource()` / `rxResource()` for async data fetching tied to signals.
+  - *Good*: `readonly count = signal(0);`, `readonly double = computed(() => this.count() * 2);`
+  - *Bad*: `@Input() count = 0;`, `Subject`, `BehaviorSubject` for local component state.
+- **Dependency Injection**: Always use the `inject()` function. Never inject via constructor parameters.
+  - *Good*: `private readonly router = inject(Router);`
+  - *Bad*: `constructor(private router: Router) {}`
+- **Template Control Flow**: Always use the built-in control flow syntax. Never use structural directives.
+  - *Good*: `@if`, `@else`, `@for`, `@empty`, `@switch`, `@case`, `@defer`, `@placeholder`, `@loading`, `@error`
+  - *Bad*: `*ngIf`, `*ngFor`, `*ngSwitch`, `NgIf`, `NgFor`, `NgSwitch`
+- **Template Variables**: Use `@let` for local template variable declarations.
+  - *Good*: `@let user = currentUser();`
+- **Lazy Loading**: Use `@defer` blocks for deferring heavy components or content below the fold.
 - **Styling & Theming**: 
   - Use **SCSS** for styling.
   - **Strictly follow Angular Material (M3) theming rules.**
