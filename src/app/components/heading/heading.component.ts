@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
@@ -14,6 +14,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     styleUrl: './heading.component.scss'
 })
 export class HeadingComponent {
-  @Input() headingType?: 'h1' | 'h2' | 'h3' | 'h4';
-  @Input() hintMessage?: string;
+  readonly headingType = input<'h1' | 'h2' | 'h3' | 'h4'>();
+  readonly hintMessage = input<string>();
 }

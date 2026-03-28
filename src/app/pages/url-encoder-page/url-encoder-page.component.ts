@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, viewChild } from '@angular/core';
 import { ApplicationPageTemplateComponent } from '../../components/application-page-template/application-page-template.component';
 import { HeadingComponent } from '../../components/heading/heading.component';
 import { UrlEncoderInputCardComponent } from './url-encoder-input-card/url-encoder-input-card.component';
@@ -17,19 +17,13 @@ import { UrlEncoderInputModel } from './url-encoder-model';
   styleUrl: './url-encoder-page.component.scss',
 })
 export class UrlEncoderPageComponent {
-  @ViewChild('output') output?: UrlEncoderOutputCardComponent;
+  private readonly output = viewChild<UrlEncoderOutputCardComponent>('output');
 
   onConvert(input: UrlEncoderInputModel): void {
-    if (!this.output) {
-      return;
-    }
-    this.output.convert(input);
+    this.output()?.convert(input);
   }
 
   onClear(): void {
-    if (!this.output) {
-      return;
-    }
-    this.output.clear();
+    this.output()?.clear();
   }
 }

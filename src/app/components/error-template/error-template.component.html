@@ -4,9 +4,9 @@
       <mat-card>
         <mat-card-content>
           <div class="card-content">
-            @if (title) {
+            @if (title()) {
               <div class="title">
-                {{ title }}
+                {{ title() }}
               </div>
             }
             <ng-content />

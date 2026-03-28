@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, computed, inject, input, output } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { HeaderModel, PersonButtonMenuModel } from './header-model';
 import { PersonButtonComponent } from './person-button/person-button.component';
@@ -6,7 +6,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { ActivatedRoute, NavigationEnd, Router, RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { LanguageButtonComponent } from './language-button/language-button.component';
-import { filter, map, mergeMap } from 'rxjs';
+import { filter, map, mergeMap, startWith } from 'rxjs';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
     selector: 'app-header',
@@ -22,31 +23,14 @@ import { filter, map, mergeMap } from 'rxjs';
     styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
-  @Input() model?: HeaderModel;
-  @Output() toggleMenu: EventEmitter<void> = new EventEmitter();
-  @Output() clickPersonContext: EventEmitter<PersonButtonMenuModel> = new EventEmitter();
+  readonly model = input<HeaderModel>();
+  readonly toggleMenu = output<void>();
+  readonly clickPersonContext = output<PersonButtonMenuModel>();
 
-  title?: string;
+  private readonly route = inject(Router);
+  private readonly activatedRoute = inject(ActivatedRoute);
 
-  constructor(
-    private route: Router,
-    private activatedRoute: ActivatedRoute,
-  ) {
-    this.initTitle();
-  }
-
-  onToggleMenu(): void {
-    this.toggleMenu.emit();
-  }
-
-  get getTitle(): string {
-    if (this.title) {
-      return this.title;
-    }
-    return this.model?.defaultTitle ?? '';
-  }
-
-  private initTitle(): void {
+  private readonly routeTitle = toSignal(
     this.route.events.pipe(
       filter((event) => event instanceof NavigationEnd),
       map(() => this.activatedRoute),
@@ -57,10 +41,19 @@ export class HeaderComponent {
         return route;
       }),
       filter((route) => route.outlet === 'primary'),
-      mergeMap((route) => route.data)
-    ).subscribe((event) => {
-      this.title = event['title'];
-    });
-  }
+      mergeMap((route) => route.data),
+      map((data) => data['title'] as string | undefined),
+      startWith(undefined),
+    )
+  );
 
+  readonly getTitle = computed(() => {
+    const title = this.routeTitle();
+    if (title) return title;
+    return this.model()?.defaultTitle ?? '';
+  });
+
+  onToggleMenu(): void {
+    this.toggleMenu.emit();
+  }
 }

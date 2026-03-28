@@ -1,4 +1,4 @@
-import { Component, Input, LOCALE_ID, inject, signal } from '@angular/core';
+import { Component, inject, input, LOCALE_ID, signal } from '@angular/core';
 import { MatListModule } from '@angular/material/list';
 import { UpdateHistoryModel } from './update-history-model';
 import { MAT_DATE_LOCALE, provideNativeDateAdapter } from '@angular/material/core';
@@ -16,7 +16,7 @@ import { MAT_DATE_LOCALE, provideNativeDateAdapter } from '@angular/material/cor
   styleUrl: './update-history.component.scss'
 })
 export class UpdateHistoryComponent {
-  @Input() histories: Array<UpdateHistoryModel> = [];
+  readonly histories = input<Array<UpdateHistoryModel>>([]);
 
   private readonly locale = signal(inject<string>(MAT_DATE_LOCALE));
 
@@ -27,5 +27,4 @@ export class UpdateHistoryComponent {
     }
     return date.toLocaleDateString(this.locale());
   }
-
 }

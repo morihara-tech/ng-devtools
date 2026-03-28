@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output, inject } from '@angular/core';
+import { Component, OnInit, output, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -27,8 +27,8 @@ import { UrlEncoderInputModel, UrlEncoderMethod, UrlEncoderMode } from '../url-e
   styleUrl: './url-encoder-input-card.component.scss',
 })
 export class UrlEncoderInputCardComponent implements OnInit {
-  @Output() convert: EventEmitter<UrlEncoderInputModel> = new EventEmitter();
-  @Output() clear: EventEmitter<void> = new EventEmitter();
+  readonly convert = output<UrlEncoderInputModel>();
+  readonly clear = output<void>();
 
   formGroup?: FormGroup;
 

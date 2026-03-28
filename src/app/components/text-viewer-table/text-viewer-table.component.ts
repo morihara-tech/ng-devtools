@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, computed, input } from '@angular/core';
 import { NgClass } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { TextViewerTableModel } from './text-viewer-table-model';
@@ -13,24 +13,25 @@ import { TextViewerTableModel } from './text-viewer-table-model';
     styleUrl: './text-viewer-table.component.scss'
 })
 export class TextViewerTableComponent {
-  @Input() value?: string;
+  readonly value = input<string>();
   /** When true, long lines wrap and the line-number column is top-aligned.
    *  When false, lines do not wrap and the content scrolls horizontally. */
-  @Input() wordWrap: boolean = false;
+  readonly wordWrap = input(false);
   /** Maps 1-based line numbers to CSS class names for row background highlights. */
-  @Input() rowHighlights?: Record<number, string>;
+  readonly rowHighlights = input<Record<number, string>>();
 
-  displayedColumns: string[] = ['position', 'line'];
+  readonly displayedColumns: string[] = ['position', 'line'];
 
-  get valueModels(): TextViewerTableModel[] {
-    if (!this.value) {
+  readonly valueModels = computed<TextViewerTableModel[]>(() => {
+    const val = this.value();
+    if (!val) {
       return [{ position: 1, line: '' }];
     }
-    const models = this.value.split('\n')
+    const models = val.split('\n')
       .map((line, i) => ({ position: i + 1, line: line }));
     if (models.slice(-1)[0].line === '') {
       models.pop();
     }
     return models;
-  }
+  });
 }

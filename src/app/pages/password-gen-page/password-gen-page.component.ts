@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, viewChild } from '@angular/core';
 import { PasswordGenInputCardComponent } from './password-gen-input-card/password-gen-input-card.component';
 import { PasswordGenOutputCardComponent } from './password-gen-output-card/password-gen-output-card.component';
 import { HeadingComponent } from '../../components/heading/heading.component';
@@ -17,13 +17,9 @@ import { PasswordGenInputModel } from './password-gen-model';
     styleUrl: './password-gen-page.component.scss'
 })
 export class PasswordGenPageComponent {
-  @ViewChild('output') output?: PasswordGenOutputCardComponent;
+  private readonly output = viewChild<PasswordGenOutputCardComponent>('output');
 
   onGenerate(input: PasswordGenInputModel): void {
-    if (!this.output) {
-      return;
-    }
-    this.output.generatePassword(input);
+    this.output()?.generatePassword(input);
   }
-
 }

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit, output, inject } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -27,7 +27,7 @@ import { HintIconComponent } from '../../../components/hint-icon/hint-icon.compo
     styleUrl: './password-gen-input-card.component.scss'
 })
 export class PasswordGenInputCardComponent implements OnInit {
-  @Output() generate: EventEmitter<PasswordGenInputModel> = new EventEmitter();
+  readonly generate = output<PasswordGenInputModel>();
 
   formGroup?: FormGroup;
 
@@ -38,9 +38,7 @@ export class PasswordGenInputCardComponent implements OnInit {
     { value: 'digits', label: $localize`:@@page.password.card.input.characterType.digits:数字のみ` }
   ];
 
-  constructor(
-    private fb: FormBuilder
-  ) {}
+  private readonly fb = inject(FormBuilder);
 
   ngOnInit(): void {
     this.resetForm();
@@ -106,5 +104,4 @@ export class PasswordGenInputCardComponent implements OnInit {
       excludeSimilar: this.fb.control<boolean>(true)
     });
   }
-
 }

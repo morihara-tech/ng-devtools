@@ -1,4 +1,4 @@
-@switch (headingType) {
+@switch (headingType()) {
   @case ('h2') {
     <h2 class="heading">
       <ng-container *ngTemplateOutlet="template"></ng-container>
@@ -28,9 +28,9 @@
       <span class="middle">
         <ng-content></ng-content>
       </span>
-      @if (hintMessage) {
+      @if (hintMessage()) {
         <mat-icon matSuffix mat-icon-button class="hint-icon middle"
-          [matTooltip]="hintMessage" matTooltipPosition="right" matTooltipHideDelay="2000">
+          [matTooltip]="hintMessage()!" matTooltipPosition="right" matTooltipHideDelay="2000">
           help_outline
         </mat-icon>
       }
