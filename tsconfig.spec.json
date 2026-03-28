@@ -4,7 +4,8 @@
     "outDir": "./out-tsc/spec",
     "types": [
       "node",
-      "@angular/localize"
+      "@angular/localize",
+      "vitest/globals"
     ]
   },
   "include": [

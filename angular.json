@@ -133,9 +133,7 @@
           "options": {
             "runner": "vitest",
             "tsConfig": "tsconfig.spec.json",
-            "polyfills": [
-              "@angular/localize/init"
-            ]
+            "setupFiles": ["src/test-setup.ts"]
           }
         }
       }
