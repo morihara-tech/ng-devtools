@@ -1,5 +1,5 @@
 import {
-  AfterViewInit,
+  afterNextRender,
   ChangeDetectorRef,
   Component,
   inject,
@@ -82,7 +82,7 @@ interface LayoutEntry {
   templateUrl: './dashboard-page-template.component.html',
   styleUrl: './dashboard-page-template.component.scss',
 })
-export class DashboardPageTemplateComponent implements AfterViewInit, OnDestroy {
+export class DashboardPageTemplateComponent implements OnDestroy {
   private readonly cardContainer = viewChild.required('cardContainer', { read: ViewContainerRef });
   private readonly cardWrapper = viewChild.required('cardWrapper', { read: ViewContainerRef });
   private readonly cardContents = viewChildren('cardContent', { read: ViewContainerRef });
@@ -113,22 +113,29 @@ export class DashboardPageTemplateComponent implements AfterViewInit, OnDestroy 
   private readonly cdr = inject(ChangeDetectorRef);
   private readonly platformService = inject(PlatformService);
 
-  ngAfterViewInit(): void {
-    if (!this.platformService.isBrowser()) {
-      return;
-    }
-    this.resizeObserver = new ResizeObserver((entries) => {
-      for (const entry of entries) {
-        const width = entry.contentRect.width;
-        clearTimeout(this.debounceTimeout);
-        this.debounceTimeout = setTimeout(() => {
-          this.initCardWrapper(width);
-        }, DEBOUNCE_DELAY);
-      }
+  constructor() {
+    afterNextRender(() => {
+      const nativeEl = this.cardContainer().element.nativeElement;
+      if (!nativeEl) return;
+
+      // Initialize with the current element width now that the DOM is stable
+      // (AfterNextRender fires after SSR hydration is complete, so getBoundingClientRect
+      //  returns the real layout dimensions and detectChanges() works reliably.)
+      const width = nativeEl.getBoundingClientRect().width;
+      this.initCardWrapper(width > 0 ? width : nativeEl.offsetWidth);
+
+      // Set up ResizeObserver only for subsequent layout/window-resize changes
+      this.resizeObserver = new ResizeObserver((entries) => {
+        for (const entry of entries) {
+          const w = entry.contentRect.width;
+          clearTimeout(this.debounceTimeout);
+          this.debounceTimeout = setTimeout(() => {
+            this.initCardWrapper(w);
+          }, DEBOUNCE_DELAY);
+        }
+      });
+      this.resizeObserver.observe(nativeEl);
     });
-    if (this.cardContainer()?.element?.nativeElement) {
-      this.resizeObserver.observe(this.cardContainer().element.nativeElement);
-    }
   }
 
   ngOnDestroy(): void {
@@ -362,9 +369,10 @@ export class DashboardPageTemplateComponent implements AfterViewInit, OnDestroy 
   }
 
   private showCards(): void {
+    this.cdr.detectChanges(); // render the @for block with the current cardModels
+    const contents = this.cardContents();
     this.cardModels.forEach((model, i) => {
-      this.cdr.detectChanges();
-      const cardContent = this.cardContents()[i];
+      const cardContent = contents[i];
       if (!cardContent) {
         console.warn(`Card for index ${i} not found.`);
         return;
@@ -373,5 +381,6 @@ export class DashboardPageTemplateComponent implements AfterViewInit, OnDestroy 
       cardContent.createComponent(model.component);
     });
     this.isReady = true;
+    this.cdr.markForCheck();
   }
 }
