@@ -28,7 +28,6 @@
             },
             "index": "src/index.html",
             "polyfills": [
-              "zone.js",
               "@angular/localize/init"
             ],
             "tsConfig": "tsconfig.app.json",
@@ -130,25 +129,11 @@
           }
         },
         "test": {
-          "builder": "@angular/build:karma",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing",
-              "@angular/localize/init"
-            ],
+            "runner": "vitest",
             "tsConfig": "tsconfig.spec.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
-            ],
-            "styles": [
-              "src/styles.scss"
-            ],
-            "scripts": []
+            "setupFiles": ["src/test-setup.ts"]
           }
         }
       }

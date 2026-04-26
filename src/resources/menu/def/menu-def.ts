@@ -24,7 +24,7 @@ export interface MenuCategory {
 export const MENU_DASHBOARD: MenuItem = {
   label: $localize`:@@page.dashboard.menu:ダッシュボード`,
   description: $localize`:@@page.dashboard.description:ツールの一覧と更新履歴を確認できます。`,
-  routerLink: '/dashboard',
+  routerLink: '/',
   icon: 'dashboard',
 };
 

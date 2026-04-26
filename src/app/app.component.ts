@@ -1,7 +1,7 @@
-import { Component, model, ViewChild } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
-import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { HeaderModel, PersonButtonMenuModel } from './components/header/header-model';
 import { filter, map, mergeMap } from 'rxjs';
 import { Title } from '@angular/platform-browser';
@@ -15,15 +15,15 @@ import { IconService } from './icon.service';
         SidenavComponent,
         MatSidenavModule,
         RouterOutlet,
-        SidenavComponent
     ],
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  @ViewChild('sidenav') sidenav?: MatSidenav;
-
-  text?: Text;
+  private readonly route = inject(Router);
+  private readonly activatedRoute = inject(ActivatedRoute);
+  private readonly titleService = inject(Title);
+  private readonly _ = inject(IconService);
 
   headerModel: HeaderModel = {
     defaultTitle: $localize`:@@app.title:devTools`,
@@ -34,16 +34,9 @@ export class AppComponent {
     },
   };
 
-  toggle: boolean = false;
+  readonly toggle = signal(false);
 
-  constructor(
-    // @Inject(ENVIRONMENT) env: Environment,
-    // private auth: AuthService,
-    private route: Router,
-    private activatedRoute: ActivatedRoute,
-    private titleService: Title,
-    private _: IconService
-  ) {
+  constructor() {
     this.setTitle();
   }
 
@@ -54,7 +47,7 @@ export class AppComponent {
   }
 
   onToggleMenu(): void {
-    this.toggle = !this.toggle;
+    this.toggle.update(v => !v);
   }
 
   private setTitle(): void {
@@ -77,8 +70,7 @@ export class AppComponent {
           title = event['title'] + ' | ' + title;
         }
         this.titleService.setTitle(title);
-        this.toggle = (event['menuToggle']);
+        this.toggle.set(event['menuToggle']);
       });
   }
-
 }

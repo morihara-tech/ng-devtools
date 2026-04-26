@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, computed, input } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
 
@@ -14,24 +14,12 @@ import { RouterModule } from '@angular/router';
   styleUrl: './hyper-link-text.component.scss'
 })
 export class HyperLinkTextComponent {
-  @Input() url!: string;
-  @Input() external?: boolean;
-  @Input() openInNewTab?: boolean;
+  readonly url = input.required<string>();
+  readonly external = input<boolean>();
+  readonly openInNewTab = input<boolean>();
 
-  get isExternal(): boolean {
-    return this.external ?? this.url.startsWith('http');
-  }
-
-  get isOpenInNewTab(): boolean {
-    return !!this.openInNewTab;
-  }
-
-  get target(): string {
-    return this.isOpenInNewTab ? '_blank' : '_self';
-  }
-
-  get rel(): string {
-    return this.isOpenInNewTab ? 'noopener noreferrer' : '';
-  }
-
+  readonly isExternal = computed(() => this.external() ?? this.url().startsWith('http'));
+  readonly isOpenInNewTab = computed(() => !!this.openInNewTab());
+  readonly target = computed(() => this.isOpenInNewTab() ? '_blank' : '_self');
+  readonly rel = computed(() => this.isOpenInNewTab() ? 'noopener noreferrer' : '');
 }

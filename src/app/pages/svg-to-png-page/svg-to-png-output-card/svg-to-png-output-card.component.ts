@@ -1,4 +1,4 @@
-import { Component, inject, ElementRef, ViewChild } from '@angular/core';
+import { Component, inject, ElementRef, viewChild } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { HeadingComponent } from '../../../components/heading/heading.component';
@@ -25,7 +25,7 @@ import { PlatformService } from '../../../core/services/platform.service';
   styleUrl: './svg-to-png-output-card.component.scss'
 })
 export class SvgToPngOutputCardComponent {
-  @ViewChild('canvas', { static: false }) canvasElement?: ElementRef<HTMLCanvasElement>;
+  private readonly canvasElement = viewChild<ElementRef<HTMLCanvasElement>>('canvas');
 
   svgCode: string = '';
   settings: SvgToPngSettingsModel = { ...DEFAULT_SVG_TO_PNG_SETTINGS };

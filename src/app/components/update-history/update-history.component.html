@@ -1,5 +1,5 @@
 <mat-list>
-  @for (history of histories; track $index) {
+  @for (history of histories(); track $index) {
     <mat-list-item class="list">
       <span matListItemTitle>{{ getHistoryDate(history) }}</span>
       <span matListItemLine class="description">{{ history.description }}</span>

@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, viewChild } from '@angular/core';
 import { ApplicationPageTemplateComponent } from '../../components/application-page-template/application-page-template.component';
 import { HeadingComponent } from '../../components/heading/heading.component';
 import { UnixTimestampInputCardComponent } from './unix-timestamp-input-card/unix-timestamp-input-card.component';
@@ -17,12 +17,9 @@ import { UnixTimestampInputModel } from './unix-timestamp-model';
   styleUrl: './unix-timestamp-converter-page.component.scss',
 })
 export class UnixTimestampConverterPageComponent {
-  @ViewChild('output') output?: UnixTimestampOutputCardComponent;
+  private readonly output = viewChild<UnixTimestampOutputCardComponent>('output');
 
   onConvert(input: UnixTimestampInputModel): void {
-    if (!this.output) {
-      return;
-    }
-    this.output.convertResult(input);
+    this.output()?.convertResult(input);
   }
 }

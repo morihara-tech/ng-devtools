@@ -1,4 +1,4 @@
-import { Component, ViewChild, inject } from '@angular/core';
+import { Component, viewChild, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { SqlFormatterInputModel } from '../sql-formatter-model';
@@ -31,7 +31,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
   styleUrl: './sql-formatter-input-card.component.scss'
 })
 export class SqlFormatterInputCardComponent {
-  @ViewChild(SqlCodeEditorComponent) sqlCodeEditorComponent?: SqlCodeEditorComponent;
+  private readonly sqlCodeEditorComponent = viewChild(SqlCodeEditorComponent);
 
   formGroup?: FormGroup;
   errorMessage?: string;
@@ -64,10 +64,10 @@ LIMIT 10`;
   }
 
   onSubmit(): void {
-    if (!this.formGroup || this.hasError || !this.sqlCodeEditorComponent) {
+    if (!this.formGroup || this.hasError || !this.sqlCodeEditorComponent()) {
       return;
     }
-    this.sqlCodeEditorComponent.formatSql(this.makeModel());
+    this.sqlCodeEditorComponent()!.formatSql(this.makeModel());
   }
 
   onCatchError(message: string): void {
@@ -143,5 +143,4 @@ LIMIT 10`;
       identifierCase: this.formGroup.controls['identifierCase'].value as 'upper' | 'lower' | 'preserve',
     };
   }
-
 }

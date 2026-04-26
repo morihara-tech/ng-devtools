@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { DatetimeMakerDialogComponent } from './datetime-maker-dialog.component';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 describe('DatetimeMakerDialogComponent', () => {
   let component: DatetimeMakerDialogComponent;
@@ -8,7 +8,11 @@ describe('DatetimeMakerDialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DatetimeMakerDialogComponent]
+      imports: [DatetimeMakerDialogComponent],
+      providers: [
+        { provide: MAT_DIALOG_DATA, useValue: { unixdatetime: Date.now() } },
+        { provide: MatDialogRef, useValue: { close: () => {} } },
+      ]
     })
     .compileComponents();
 

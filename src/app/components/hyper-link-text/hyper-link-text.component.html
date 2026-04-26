@@ -1,14 +1,14 @@
-@if (isExternal) {
-  <a [href]="url" [target]="target" [rel]="rel" class="link"><!--
+@if (isExternal()) {
+  <a [href]="url()" [target]="target()" [rel]="rel()" class="link"><!--
   --><ng-container *ngTemplateOutlet="template"></ng-container><!--
-  -->@if (isOpenInNewTab) {<!--
+  -->@if (isOpenInNewTab()) {<!--
     --><mat-icon class="open-in-new">open_in_new</mat-icon><!--
   -->}<!--
 --></a>
 } @else {
-  <a [routerLink]="url" [target]="target" [rel]="rel" class="link"><!--
+  <a [routerLink]="url()" [target]="target()" [rel]="rel()" class="link"><!--
     --><ng-container *ngTemplateOutlet="template"></ng-container><!--
-    -->@if (isOpenInNewTab) {<!--
+    -->@if (isOpenInNewTab()) {<!--
       --><mat-icon class="open-in-new">open_in_new</mat-icon><!--
     -->}<!--
   --></a>

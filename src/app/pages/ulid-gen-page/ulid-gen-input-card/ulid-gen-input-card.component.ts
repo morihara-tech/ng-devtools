@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit, output, inject } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -31,14 +31,12 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     styleUrl: './ulid-gen-input-card.component.scss'
 })
 export class UlidGenInputCardComponent implements OnInit {
-  @Output() generate: EventEmitter<UlidGenInputModel> = new EventEmitter();
+  readonly generate = output<UlidGenInputModel>();
 
   formGroup?: FormGroup;
 
-  constructor(
-    private fb: FormBuilder,
-    private dialog: MatDialog
-  ) {}
+  private readonly fb = inject(FormBuilder);
+  private readonly dialog = inject(MatDialog);
 
   ngOnInit(): void {
     this.resetForm();
@@ -122,5 +120,4 @@ export class UlidGenInputCardComponent implements OnInit {
       isMonoIncreaseMode: this.fb.control<boolean>(false)
     });
   }
-
 }

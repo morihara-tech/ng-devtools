@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, viewChild } from '@angular/core';
 import { ApplicationPageTemplateComponent } from '../../components/application-page-template/application-page-template.component';
 import { HeadingComponent } from '../../components/heading/heading.component';
 import { UuidGenInputCardComponent } from './uuid-gen-input-card/uuid-gen-input-card.component';
@@ -17,13 +17,9 @@ import { UuidGenInputModel } from './uuid-gen-model';
   styleUrl: './uuid-gen-page.component.scss'
 })
 export class UuidGenPageComponent {
-  @ViewChild('output') output?: UuidGenOutputCardComponent;
+  private readonly output = viewChild<UuidGenOutputCardComponent>('output');
 
   onGenerate(input: UuidGenInputModel): void {
-    if (!this.output) {
-      return;
-    }
-    this.output.generateUuid(input);
+    this.output()?.generateUuid(input);
   }
-
 }

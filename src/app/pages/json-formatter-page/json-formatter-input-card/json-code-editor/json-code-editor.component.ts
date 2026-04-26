@@ -1,4 +1,4 @@
-import { Component, ViewChild, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, model, OnInit, output, viewChild } from '@angular/core';
 import { CodemirrorComponent } from '../../../../components/codemirror/codemirror.component';
 import { Extension } from '@codemirror/state';
 import { json, jsonParseLinter } from '@codemirror/lang-json';
@@ -18,11 +18,10 @@ import { JsonFormatterInputModel } from '../../json-formatter-model';
   templateUrl: './json-code-editor.component.html',
   styleUrl: './json-code-editor.component.scss',
 })
-export class JsonCodeEditorComponent implements OnInit{
-  @ViewChild(CodemirrorComponent) codemirrorComponent!: CodemirrorComponent;
-  @Input() value: string = '';
-  @Output() valueChange: EventEmitter<string> = new EventEmitter();
-  @Output() catchError: EventEmitter<string> = new EventEmitter();
+export class JsonCodeEditorComponent implements OnInit {
+  private readonly codemirrorComponent = viewChild.required(CodemirrorComponent);
+  readonly value = model('');
+  readonly catchError = output<string>();
 
   sampleJson = {
     status: 'success',
@@ -60,20 +59,20 @@ export class JsonCodeEditorComponent implements OnInit{
   }
 
   onWrapperClick(): void {
-    this.codemirrorComponent.focus();
+    this.codemirrorComponent().focus();
   }
 
   formatJson(model: JsonFormatterInputModel): void {
     try {
-      const parsed = JSON.parse(this.value);
+      const parsed = JSON.parse(this.value());
       this.errorMessage = null;
 
       if (model.mode === 'minify') {
-        this.value = JSON.stringify(parsed);
+        this.value.set(JSON.stringify(parsed));
       } else {
         let formatted = JSON.stringify(parsed, null, model.indentSpaceSize);
         formatted = this.compactSimpleArrays(formatted);
-        this.value = formatted;
+        this.value.set(formatted);
       }
     } catch (error) {
       this.catchError.emit($localize`:@@page.json.formatter.errorMessage:無効なJSONです。`);
@@ -89,5 +88,4 @@ export class JsonCodeEditorComponent implements OnInit{
       return match;
     });
   }
-
 }

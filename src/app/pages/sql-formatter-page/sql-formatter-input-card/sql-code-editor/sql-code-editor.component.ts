@@ -1,4 +1,4 @@
-import { Component, ViewChild, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, model, OnInit, output, viewChild } from '@angular/core';
 import { CodemirrorComponent } from '../../../../components/codemirror/codemirror.component';
 import { Extension } from '@codemirror/state';
 import { sql } from '@codemirror/lang-sql';
@@ -22,10 +22,9 @@ import { A11yModule } from "@angular/cdk/a11y";
   styleUrl: './sql-code-editor.component.scss',
 })
 export class SqlCodeEditorComponent implements OnInit {
-  @ViewChild(CodemirrorComponent) codemirrorComponent!: CodemirrorComponent;
-  @Input() value: string = '';
-  @Output() valueChange: EventEmitter<string> = new EventEmitter();
-  @Output() catchError: EventEmitter<string> = new EventEmitter();
+  private readonly codemirrorComponent = viewChild.required(CodemirrorComponent);
+  readonly value = model('');
+  readonly catchError = output<string>();
 
   sampleSql = `SELECT users.id, users.name, orders.order_date, orders.total
 FROM users
@@ -57,7 +56,7 @@ LIMIT 10`;
   }
 
   onWrapperClick(): void {
-    this.codemirrorComponent.focus();
+    this.codemirrorComponent().focus();
   }
 
   formatSql(model: SqlFormatterInputModel): void {
@@ -65,20 +64,19 @@ LIMIT 10`;
       this.errorMessage = null;
 
       if (model.mode === 'minify') {
-        this.value = this.value.replace(/\s+/g, ' ').trim();
+        this.value.update(v => v.replace(/\s+/g, ' ').trim());
       } else {
-        const formatted = format(this.value, {
+        const formatted = format(this.value(), {
           language: 'sql',
           indentStyle: model.mode,
           tabWidth: model.indentSpaceSize,
           keywordCase: model.keywordCase,
           identifierCase: model.identifierCase,
         });
-        this.value = formatted;
+        this.value.set(formatted);
       }
     } catch (error) {
       this.catchError.emit($localize`:@@page.sql.formatter.errorMessage:無効なSQLです。`);
     }
   }
-
 }

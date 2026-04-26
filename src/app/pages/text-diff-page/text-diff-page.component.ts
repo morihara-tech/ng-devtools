@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, viewChild } from '@angular/core';
 import { ApplicationPageTemplateComponent } from '../../components/application-page-template/application-page-template.component';
 import { HeadingComponent } from '../../components/heading/heading.component';
 import { TextDiffInputCardComponent } from './text-diff-input-card/text-diff-input-card.component';
@@ -17,19 +17,13 @@ import { TextDiffInputModel } from './text-diff-model';
   styleUrl: './text-diff-page.component.scss',
 })
 export class TextDiffPageComponent {
-  @ViewChild('output') output?: TextDiffOutputCardComponent;
+  private readonly output = viewChild<TextDiffOutputCardComponent>('output');
 
   onCompare(input: TextDiffInputModel): void {
-    if (!this.output) {
-      return;
-    }
-    this.output.diff(input);
+    this.output()?.diff(input);
   }
 
   onClear(): void {
-    if (!this.output) {
-      return;
-    }
-    this.output.clear();
+    this.output()?.clear();
   }
 }

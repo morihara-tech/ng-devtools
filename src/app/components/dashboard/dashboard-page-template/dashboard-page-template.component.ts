@@ -1,14 +1,12 @@
 import {
-  AfterViewInit,
+  afterNextRender,
   ChangeDetectorRef,
   Component,
   inject,
-  Input,
-  NgZone,
+  input,
   OnDestroy,
-  QueryList,
-  ViewChild,
-  ViewChildren,
+  viewChild,
+  viewChildren,
   ViewContainerRef,
 } from '@angular/core';
 import {
@@ -18,7 +16,7 @@ import {
   CdkDragPlaceholder,
   CdkDropList,
 } from '@angular/cdk/drag-drop';
-import { CommonModule } from '@angular/common';
+
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
@@ -71,7 +69,6 @@ interface LayoutEntry {
 @Component({
   selector: 'app-dashboard-page-template',
   imports: [
-    CommonModule,
     CdkDrag,
     CdkDragHandle,
     CdkDropList,
@@ -80,18 +77,18 @@ interface LayoutEntry {
     MatCardModule,
     MatIconModule,
     MatDividerModule,
-    HyperLinkTextComponent,
-  ],
+    HyperLinkTextComponent
+],
   templateUrl: './dashboard-page-template.component.html',
   styleUrl: './dashboard-page-template.component.scss',
 })
-export class DashboardPageTemplateComponent implements AfterViewInit, OnDestroy {
-  @ViewChild('cardContainer', { read: ViewContainerRef }) cardContainer!: ViewContainerRef;
-  @ViewChild('cardWrapper', { read: ViewContainerRef }) cardWrapper!: ViewContainerRef;
-  @ViewChildren('cardContent', { read: ViewContainerRef }) cardContents!: QueryList<ViewContainerRef>;
+export class DashboardPageTemplateComponent implements OnDestroy {
+  private readonly cardContainer = viewChild.required('cardContainer', { read: ViewContainerRef });
+  private readonly cardWrapper = viewChild.required('cardWrapper', { read: ViewContainerRef });
+  private readonly cardContents = viewChildren('cardContent', { read: ViewContainerRef });
 
-  @Input() api!: DashboardService;
-  @Input() defaultCards: DashboardCardModel[] = [];
+  readonly api = input.required<DashboardService>();
+  readonly defaultCards = input<DashboardCardModel[]>([]);
 
   isReady: boolean = false;
   cardModels: DashboardCardModel[] = [];
@@ -113,29 +110,32 @@ export class DashboardPageTemplateComponent implements AfterViewInit, OnDestroy 
   /** Tracks the starting position when a resize drag begins. */
   private resizeStart = { clientX: 0, clientY: 0, width: 0, height: 0 };
 
-  constructor(
-    private cdr: ChangeDetectorRef,
-    private zone: NgZone,
-  ) {}
-
+  private readonly cdr = inject(ChangeDetectorRef);
   private readonly platformService = inject(PlatformService);
 
-  ngAfterViewInit(): void {
-    if (!this.platformService.isBrowser()) {
-      return;
-    }
-    this.resizeObserver = new ResizeObserver((entries) => {
-      for (const entry of entries) {
-        const width = entry.contentRect.width;
-        clearTimeout(this.debounceTimeout);
-        this.debounceTimeout = setTimeout(() => {
-          this.initCardWrapper(width);
-        }, DEBOUNCE_DELAY);
-      }
+  constructor() {
+    afterNextRender(() => {
+      const nativeEl = this.cardContainer().element.nativeElement;
+      if (!nativeEl) return;
+
+      // Initialize with the current element width now that the DOM is stable
+      // (AfterNextRender fires after SSR hydration is complete, so getBoundingClientRect
+      //  returns the real layout dimensions and detectChanges() works reliably.)
+      const width = nativeEl.getBoundingClientRect().width;
+      this.initCardWrapper(width > 0 ? width : nativeEl.offsetWidth);
+
+      // Set up ResizeObserver only for subsequent layout/window-resize changes
+      this.resizeObserver = new ResizeObserver((entries) => {
+        for (const entry of entries) {
+          const w = entry.contentRect.width;
+          clearTimeout(this.debounceTimeout);
+          this.debounceTimeout = setTimeout(() => {
+            this.initCardWrapper(w);
+          }, DEBOUNCE_DELAY);
+        }
+      });
+      this.resizeObserver.observe(nativeEl);
     });
-    if (this.cardContainer?.element?.nativeElement) {
-      this.resizeObserver.observe(this.cardContainer.element.nativeElement);
-    }
   }
 
   ngOnDestroy(): void {
@@ -148,7 +148,7 @@ export class DashboardPageTemplateComponent implements AfterViewInit, OnDestroy 
   // ── Drag-and-drop reorder ──────────────────────────────────────────────────
 
   onDrop(event: CdkDragDrop<string[]>): void {
-    this.api.move(event.previousIndex, event.currentIndex);
+    this.api().move(event.previousIndex, event.currentIndex);
     this.saveLayout();
   }
 
@@ -198,14 +198,10 @@ export class DashboardPageTemplateComponent implements AfterViewInit, OnDestroy 
       freeHeight: this.getCardHeight(model),
     };
 
-    // Run listeners outside Angular zone to avoid excessive change detection,
-    // then re-enter for state updates.
-    this.zone.runOutsideAngular(() => {
-      this.resizeMouseMove = (e: MouseEvent) => this.onResizeMove(e);
-      this.resizeMouseUp = (e: MouseEvent) => this.onResizeEnd(e);
-      this.platformService.nativeDocument.addEventListener('mousemove', this.resizeMouseMove);
-      this.platformService.nativeDocument.addEventListener('mouseup', this.resizeMouseUp);
-    });
+    this.resizeMouseMove = (e: MouseEvent) => this.onResizeMove(e);
+    this.resizeMouseUp = (e: MouseEvent) => this.onResizeEnd(e);
+    this.platformService.nativeDocument.addEventListener('mousemove', this.resizeMouseMove);
+    this.platformService.nativeDocument.addEventListener('mouseup', this.resizeMouseUp);
   }
 
   private onResizeMove(event: MouseEvent): void {
@@ -220,15 +216,14 @@ export class DashboardPageTemplateComponent implements AfterViewInit, OnDestroy 
     const snappedX = this.snapWidth(freeWidth, this.getCardWidthForSize('s'));
     const snappedY = this.snapHeight(freeHeight, this.getCardHeightForSize('s'));
 
-    this.zone.run(() => {
-      this.resizeState = {
-        ...this.resizeState!,
-        freeWidth,
-        freeHeight,
-        placeholderWidth: this.getCardWidthForSize(snappedX),
-        placeholderHeight: this.getCardHeightForSize(snappedY),
-      };
-    });
+    this.resizeState = {
+      ...this.resizeState!,
+      freeWidth,
+      freeHeight,
+      placeholderWidth: this.getCardWidthForSize(snappedX),
+      placeholderHeight: this.getCardHeightForSize(snappedY),
+    };
+    this.cdr.markForCheck();
   }
 
   private onResizeEnd(event: MouseEvent): void {
@@ -248,19 +243,17 @@ export class DashboardPageTemplateComponent implements AfterViewInit, OnDestroy 
     const newX = this.snapWidth(finalWidth, this.getCardWidthForSize('s'));
     const newY = this.snapHeight(finalHeight, this.getCardHeightForSize('s'));
 
-    this.zone.run(() => {
-      const model = this.resizingModel!;
-      if (!model.size) {
-        model.size = {};
-      }
-      model.size.x = newX;
-      model.size.y = newY;
+    const model = this.resizingModel!;
+    if (!model.size) {
+      model.size = {};
+    }
+    model.size.x = newX;
+    model.size.y = newY;
 
-      this.resizeState = null;
-      this.resizingModel = null;
-      this.saveLayout();
-      this.cdr.detectChanges();
-    });
+    this.resizeState = null;
+    this.resizingModel = null;
+    this.saveLayout();
+    this.cdr.detectChanges();
   }
 
   private removeResizeListeners(): void {
@@ -278,7 +271,7 @@ export class DashboardPageTemplateComponent implements AfterViewInit, OnDestroy 
 
   /** Saves card order and sizes to localStorage. */
   saveLayout(): void {
-    const layout: LayoutEntry[] = this.api.getAll().map((m) => ({
+    const layout: LayoutEntry[] = this.api().getAll().map((m) => ({
       id: m.id,
       size: { x: m.size?.x, y: m.size?.y },
     }));
@@ -296,7 +289,7 @@ export class DashboardPageTemplateComponent implements AfterViewInit, OnDestroy 
     } catch {
       // Ignore errors
     }
-    this.api.update([...this.defaultCards]);
+    this.api().update([...this.defaultCards()]);
   }
 
   // ── Private helpers ────────────────────────────────────────────────────────
@@ -307,7 +300,7 @@ export class DashboardPageTemplateComponent implements AfterViewInit, OnDestroy 
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
-    this.subscription = this.api.cards.subscribe((cardModels) => {
+    this.subscription = this.api().cards.subscribe((cardModels) => {
       this.cardModels = cardModels;
       this.showCards();
     });
@@ -376,9 +369,10 @@ export class DashboardPageTemplateComponent implements AfterViewInit, OnDestroy 
   }
 
   private showCards(): void {
+    this.cdr.detectChanges(); // render the @for block with the current cardModels
+    const contents = this.cardContents();
     this.cardModels.forEach((model, i) => {
-      this.cdr.detectChanges();
-      const cardContent = this.cardContents.get(i);
+      const cardContent = contents[i];
       if (!cardContent) {
         console.warn(`Card for index ${i} not found.`);
         return;
@@ -387,5 +381,6 @@ export class DashboardPageTemplateComponent implements AfterViewInit, OnDestroy 
       cardContent.createComponent(model.component);
     });
     this.isReady = true;
+    this.cdr.markForCheck();
   }
 }
