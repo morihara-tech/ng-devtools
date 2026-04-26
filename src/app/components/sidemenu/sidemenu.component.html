@@ -1,33 +1,33 @@
-@if (person) {
+@if (person()) {
   <div class="sidenav-header sidenav-width">
     <div class="person-area">
       <div class="person-icon">
         <mat-icon>account_circle</mat-icon>
       </div>
       <div class="person-name">
-        {{ person.personName }}
+        {{ person()!.personName }}
       </div>
     </div>
   </div>
 }
-@if (topItem) {
+@if (topItem(); as top) {
   <mat-nav-list>
     <a mat-list-item class="item"
-      [routerLink]="topItem.routerLink"
+      [routerLink]="top.routerLink"
       (click)="clickMenu.emit()">
-      @if (topItem.icon) {
-        <mat-icon matListItemIcon>{{ topItem.icon }}</mat-icon>
+      @if (top.icon) {
+        <mat-icon matListItemIcon>{{ top.icon }}</mat-icon>
       }
-      @if (topItem.svgIcon) {
-        <mat-icon matListItemIcon [svgIcon]="topItem.svgIcon"></mat-icon>
+      @if (top.svgIcon) {
+        <mat-icon matListItemIcon [svgIcon]="top.svgIcon"></mat-icon>
       }
-      <span matListItemTitle>{{ topItem.label }}</span>
+      <span matListItemTitle>{{ top.label }}</span>
     </a>
   </mat-nav-list>
 }
-@if (categories) {
+@if (categories(); as cats) {
   <mat-accordion multi class="accordion">
-    @for (category of categories; track $index) {
+    @for (category of cats; track $index) {
       <mat-expansion-panel class="expansion-panel">
         <mat-expansion-panel-header>
           <mat-panel-title>{{ category.label }}</mat-panel-title>
@@ -51,24 +51,26 @@
     }
   </mat-accordion>
 }
-@if (items && !categories) {
-  <!-- Fallback flat list: only rendered when `categories` is not provided (@deprecated) -->
-  <div class="sidenav-width">
-    <mat-nav-list>
-      @for (item of items; track $index) {
-        <a mat-list-item
-          class="item"
-          [routerLink]="item.routerLink"
-          (click)="clickMenu.emit()">
-          @if (item.icon) {
-            <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
-          }
-          @if (item.svgIcon) {
-            <mat-icon matListItemIcon [svgIcon]="item.svgIcon"></mat-icon>
-          }
-          <span matLine>{{ item.label }}</span>
-        </a>
-      }
-    </mat-nav-list>
-  </div>
+@if (items(); as flatItems) {
+  @if (!categories()) {
+    <!-- Fallback flat list: only rendered when `categories` is not provided (@deprecated) -->
+    <div class="sidenav-width">
+      <mat-nav-list>
+        @for (item of flatItems; track $index) {
+          <a mat-list-item
+            class="item"
+            [routerLink]="item.routerLink"
+            (click)="clickMenu.emit()">
+            @if (item.icon) {
+              <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+            }
+            @if (item.svgIcon) {
+              <mat-icon matListItemIcon [svgIcon]="item.svgIcon"></mat-icon>
+            }
+            <span matLine>{{ item.label }}</span>
+          </a>
+        }
+      </mat-nav-list>
+    </div>
+  }
 }

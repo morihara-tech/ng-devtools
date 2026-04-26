@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule, TooltipPosition } from '@angular/material/tooltip';
 import { ClickableHintIconDirective } from './clickable-hint-icon.directive';
@@ -14,9 +14,8 @@ import { ClickableHintIconDirective } from './clickable-hint-icon.directive';
     styleUrl: './hint-icon.component.scss'
 })
 export class HintIconComponent {
-  @Input() message: string = '';
-  @Input() showDelay: number = 100;
-  @Input() hideDelay: number = 1000;
-  @Input() hintPosition: TooltipPosition = 'below';
-
+  readonly message = input('');
+  readonly showDelay = input(100);
+  readonly hideDelay = input(1000);
+  readonly hintPosition = input<TooltipPosition>('below');
 }

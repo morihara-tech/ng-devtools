@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
+import { Component, output, viewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -26,11 +26,11 @@ import { EditorView, highlightActiveLine, keymap, lineNumbers } from '@codemirro
   styleUrl: './text-diff-input-card.component.scss',
 })
 export class TextDiffInputCardComponent {
-  @Output() compare: EventEmitter<TextDiffInputModel> = new EventEmitter();
-  @Output() clear: EventEmitter<void> = new EventEmitter();
+  readonly compare = output<TextDiffInputModel>();
+  readonly clear = output<void>();
 
-  @ViewChild('originalEditor') originalEditor?: CodemirrorComponent;
-  @ViewChild('modifiedEditor') modifiedEditor?: CodemirrorComponent;
+  private readonly originalEditor = viewChild<CodemirrorComponent>('originalEditor');
+  private readonly modifiedEditor = viewChild<CodemirrorComponent>('modifiedEditor');
 
   originalText: string = '';
   modifiedText: string = '';
@@ -61,10 +61,9 @@ export class TextDiffInputCardComponent {
 
   onWrapperClick(type: 'original' | 'modified'): void {
     if (type === 'original') {
-      this.originalEditor?.focus();
+      this.originalEditor()?.focus();
     } else {
-      this.modifiedEditor?.focus();
+      this.modifiedEditor()?.focus();
     }
   }
-
 }

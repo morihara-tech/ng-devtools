@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, viewChild } from '@angular/core';
 import { IpCidrInputCardComponent } from './ip-cidr-input-card/ip-cidr-input-card.component';
 import { IpCidrOutputCardComponent } from './ip-cidr-output-card/ip-cidr-output-card.component';
 import { HeadingComponent } from '../../components/heading/heading.component';
@@ -17,12 +17,9 @@ import { IpCidrInputModel } from './ip-cidr-model';
   styleUrl: './ip-cidr-calculator-page.component.scss'
 })
 export class IpCidrCalculatorPageComponent {
-  @ViewChild('output') output?: IpCidrOutputCardComponent;
+  private readonly output = viewChild<IpCidrOutputCardComponent>('output');
 
   onCalculate(input: IpCidrInputModel): void {
-    if (!this.output) {
-      return;
-    }
-    this.output.calculateResult(input);
+    this.output()?.calculateResult(input);
   }
 }

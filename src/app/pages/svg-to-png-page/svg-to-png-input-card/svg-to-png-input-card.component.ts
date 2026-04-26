@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit, Output, EventEmitter, inject } from '@angular/core';
+import { Component, OnInit, output, viewChild, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { SvgToPngSettingsModel, DEFAULT_SVG_TO_PNG_SETTINGS } from '../svg-to-png-model';
@@ -33,9 +33,9 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
   styleUrl: './svg-to-png-input-card.component.scss'
 })
 export class SvgToPngInputCardComponent implements OnInit {
-  @ViewChild(SvgCodeEditorComponent) svgCodeEditorComponent?: SvgCodeEditorComponent;
-  @Output() settingsChange: EventEmitter<SvgToPngSettingsModel> = new EventEmitter();
-  @Output() svgCodeChange: EventEmitter<string> = new EventEmitter();
+  private readonly svgCodeEditorComponent = viewChild(SvgCodeEditorComponent);
+  readonly settingsChange = output<SvgToPngSettingsModel>();
+  readonly svgCodeChange = output<string>();
 
   formGroup?: FormGroup;
   editorValue: string = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">

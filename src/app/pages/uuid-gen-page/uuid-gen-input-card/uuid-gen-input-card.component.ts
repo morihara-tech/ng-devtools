@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output, inject } from '@angular/core';
+import { Component, OnInit, output, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -25,7 +25,7 @@ import { HintIconComponent } from '../../../components/hint-icon/hint-icon.compo
   styleUrl: './uuid-gen-input-card.component.scss'
 })
 export class UuidGenInputCardComponent implements OnInit {
-  @Output() generate: EventEmitter<UuidGenInputModel> = new EventEmitter();
+  readonly generate = output<UuidGenInputModel>();
 
   formGroup?: FormGroup;
   versionHintMessage: string = $localize`:@@page.uuid.card.input.version.hint:v1: 時刻とMACアドレスを組み合わせて生成。時系列順に並びやすいが生成元が推測されやすい。
@@ -94,5 +94,4 @@ v7: Unix時間と乱数を組み合わせて生成。時系列順に並べやす
     }
     return defaultVersion;
   }
-
 }

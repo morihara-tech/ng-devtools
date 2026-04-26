@@ -1,9 +1,8 @@
 import {
   Component,
-  EventEmitter,
   LOCALE_ID,
   OnInit,
-  Output,
+  output,
   inject,
   signal,
 } from '@angular/core';
@@ -46,7 +45,7 @@ import { COMMON_TIMEZONES } from '../unix-timestamp-timezones';
   styleUrl: './unix-timestamp-input-card.component.scss',
 })
 export class UnixTimestampInputCardComponent implements OnInit {
-  @Output() convert: EventEmitter<UnixTimestampInputModel> = new EventEmitter();
+  readonly convert = output<UnixTimestampInputModel>();
 
   formGroup?: FormGroup;
   mode: ConversionMode = 'toDateTime';

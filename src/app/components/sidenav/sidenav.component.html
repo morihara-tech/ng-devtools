@@ -1,8 +1,8 @@
 <mat-sidenav-container class="container">
   <mat-sidenav #sidenav class="sidenav" [mode]="mode">
     <app-sidemenu
-      [topItem]="topItem"
-      [categories]="categories"
+      [topItem]="topItem()"
+      [categories]="categories()"
       (clickMenu)="onClickMenu()"
     ></app-sidemenu>
   </mat-sidenav>

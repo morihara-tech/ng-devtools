@@ -1,4 +1,4 @@
-import { Component, ViewChild, inject } from '@angular/core';
+import { Component, viewChild, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { JsonFormatterInputModel } from '../json-formatter-model';
@@ -33,7 +33,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
   styleUrl: './json-formatter-input-card.component.scss'
 })
 export class JsonFormatterInputCardComponent {
-  @ViewChild(JsonCodeEditorComponent) jsonCodeEditorComponent?: JsonCodeEditorComponent;
+  private readonly jsonCodeEditorComponent = viewChild(JsonCodeEditorComponent);
 
   formGroup?: FormGroup;
   errorMessage?: string;
@@ -55,10 +55,10 @@ export class JsonFormatterInputCardComponent {
   }
 
   onSubmit(): void {
-    if (!this.formGroup || this.hasError || !this.jsonCodeEditorComponent) {
+    if (!this.formGroup || this.hasError || !this.jsonCodeEditorComponent()) {
       return;
     }
-    this.jsonCodeEditorComponent.formatJson(this.makeModel());
+    this.jsonCodeEditorComponent()!.formatJson(this.makeModel());
   }
 
   onCatchError(message: string): void {
@@ -111,5 +111,4 @@ export class JsonFormatterInputCardComponent {
       mode: this.formGroup.controls['mode'].value as 'format' | 'minify',
     };
   }
-
 }

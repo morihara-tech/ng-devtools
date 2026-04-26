@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, AfterViewInit, Output } from '@angular/core';
+import { Component, OnInit, output } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -27,7 +27,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
   styleUrl: './ip-cidr-input-card.component.scss'
 })
 export class IpCidrInputCardComponent implements OnInit {
-  @Output() calculate: EventEmitter<IpCidrInputModel> = new EventEmitter();
+  readonly calculate = output<IpCidrInputModel>();
 
   formGroup?: FormGroup;
   protocol: IpProtocol = 'ipv4';
