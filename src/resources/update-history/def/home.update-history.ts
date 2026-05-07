@@ -3,6 +3,10 @@ import { UpdateHistoryModel } from "../../../app/components/update-history/updat
 export const HOME_UPDATE_HISTORIES: Array<UpdateHistoryModel> = [
   // add new update history here
   {
+    date: '2026-05-07',
+    description: $localize`:@@update.home.20260507:カラーパレットツールを実装しました。カラーコード比較・マテリアルデザイングラデーション生成機能が利用できます。`
+  },
+  {
     date: '2026-03-20',
     description: $localize`:@@update.home.20260320:SSG（静的サイト生成）を導入し、初期表示速度とSEOを改善しました。`
   },

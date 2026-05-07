@@ -1432,5 +1432,113 @@ Added the tool list page.</target>
         <target>Introduced SSG (Static Site Generation) to improve initial load speed and SEO.</target>
       </segment>
     </unit>
+    <unit id="update.home.20260507">
+      <segment state="initial">
+        <source>カラーパレットツールを実装しました。カラーコード比較・マテリアルデザイングラデーション生成機能が利用できます。</source>
+        <target>Implemented the Color Palette tool. Color code comparison and Material Design gradient generation are now available.</target>
+      </segment>
+    </unit>
+    <unit id="page.colorPalette.menu">
+      <segment state="initial">
+        <source>カラーパレット</source>
+        <target>Color Palette</target>
+      </segment>
+    </unit>
+    <unit id="page.colorPalette.description">
+      <segment state="initial">
+        <source>カラーコードの比較・グラデーション生成を行います。</source>
+        <target>Compare color codes and generate Material Design gradients.</target>
+      </segment>
+    </unit>
+    <unit id="page.colorPalette.title">
+      <segment state="initial">
+        <source>カラーパレット</source>
+        <target>Color Palette</target>
+      </segment>
+    </unit>
+    <unit id="page.colorPalette.card.input.heading">
+      <segment state="initial">
+        <source>入力</source>
+        <target>Input</target>
+      </segment>
+    </unit>
+    <unit id="page.colorPalette.card.input.modeCompare">
+      <segment state="initial">
+        <source>比較</source>
+        <target>Compare</target>
+      </segment>
+    </unit>
+    <unit id="page.colorPalette.card.input.modeShades">
+      <segment state="initial">
+        <source>濃淡</source>
+        <target>Shades</target>
+      </segment>
+    </unit>
+    <unit id="page.colorPalette.card.input.countLabel">
+      <segment state="initial">
+        <source>カラー数</source>
+        <target>Color Count</target>
+      </segment>
+    </unit>
+    <unit id="page.colorPalette.card.input.hexError">
+      <segment state="initial">
+        <source>有効なHEXカラーコードを入力してください。</source>
+        <target>Please enter a valid HEX color code.</target>
+      </segment>
+    </unit>
+    <unit id="page.colorPalette.card.input.generate">
+      <segment state="initial">
+        <source>生成</source>
+        <target>Generate</target>
+      </segment>
+    </unit>
+    <unit id="page.colorPalette.card.output.heading">
+      <segment state="initial">
+        <source>結果</source>
+        <target>Result</target>
+      </segment>
+    </unit>
+    <unit id="page.colorPalette.card.output.exportTooltip">
+      <segment state="initial">
+        <source>CSS変数をコピー</source>
+        <target>Copy as CSS variables</target>
+      </segment>
+    </unit>
+    <unit id="page.colorPalette.card.output.noData">
+      <segment state="initial">
+        <source>カラーコードを入力して「生成」ボタンをクリックしてください。</source>
+        <target>Enter color codes and click the Generate button.</target>
+      </segment>
+    </unit>
+    <unit id="page.colorPalette.card.output.copied">
+      <segment state="initial">
+        <source>{$PH} をコピーしました</source>
+        <target>Copied {$PH}</target>
+      </segment>
+    </unit>
+    <unit id="page.colorPalette.card.output.grid.columnIndex">
+      <segment state="initial">
+        <source>#</source>
+        <target>#</target>
+      </segment>
+    </unit>
+    <unit id="page.colorPalette.card.output.grid.columnHex">
+      <segment state="initial">
+        <source>カラーコード</source>
+        <target>Color Code</target>
+      </segment>
+    </unit>
+    <unit id="page.colorPalette.card.output.grid.columnPreview">
+      <segment state="initial">
+        <source>プレビュー</source>
+        <target>Preview</target>
+      </segment>
+    </unit>
+    <unit id="page.colorPalette.card.output.grid.columnStep">
+      <segment state="initial">
+        <source>ステップ</source>
+        <target>Step</target>
+      </segment>
+    </unit>
   </file>
 </xliff>

@@ -1,0 +1,34 @@
+<mat-card appearance="raised">
+  <mat-card-content>
+    <app-heading headingType="h3">
+      <span i18n="@@page.colorPalette.card.output.heading">結果</span>
+      <div class="right">
+        @if (currentMode() === 'shades' && currentColors().length > 0) {
+          <button mat-icon-button
+            matTooltip="CSS変数をコピー"
+            i18n-matTooltip="@@page.colorPalette.card.output.exportTooltip"
+            (click)="onClickExport()">
+            <mat-icon>file_download</mat-icon>
+          </button>
+        }
+      </div>
+    </app-heading>
+
+    <div class="grid-wrapper">
+      @if (gridSource.length > 0) {
+        <revo-grid
+          [source]="gridSource"
+          [columns]="columns"
+          [theme]="theme"
+          resize
+          hideAttribution
+          readonly>
+        </revo-grid>
+      } @else {
+        <div class="no-data" i18n="@@page.colorPalette.card.output.noData">
+          カラーコードを入力して「生成」ボタンをクリックしてください。
+        </div>
+      }
+    </div>
+  </mat-card-content>
+</mat-card>

@@ -118,6 +118,12 @@ export const MENU_CATEGORIES: MenuCategory[] = [
         routerLink: '/svg-to-png',
         icon: 'image',
       },
+      {
+        label: $localize`:@@page.colorPalette.menu:カラーパレット`,
+        description: $localize`:@@page.colorPalette.description:カラーコードの比較・グラデーション生成を行います。`,
+        routerLink: '/color-palette',
+        icon: 'palette',
+      },
     ],
   },
 ];
