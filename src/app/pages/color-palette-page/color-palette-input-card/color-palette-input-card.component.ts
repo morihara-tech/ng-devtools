@@ -58,6 +58,9 @@ export class ColorPaletteInputCardComponent implements OnInit {
     this.colorArray = this.fb.array(
       DEFAULT_COLORS.map(c => this.fb.nonNullable.control(c, [Validators.required, Validators.pattern(HEX_PATTERN)])),
     );
+    setTimeout(() => {
+      this.onSubmit();
+    }, 10);
   }
 
   get colorControls(): FormControl<string>[] {
