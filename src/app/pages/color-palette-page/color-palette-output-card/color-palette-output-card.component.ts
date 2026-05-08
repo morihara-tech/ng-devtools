@@ -16,6 +16,9 @@ import {
   getTextColorForBackground,
 } from '../color-palette-model';
 
+const PREVIEW_CHIP_SIZE = '24px';
+const PREVIEW_CHIP_RADIUS = '4px';
+
 @Component({
   selector: 'app-color-palette-output-card',
   imports: [
@@ -88,7 +91,7 @@ export class ColorPaletteOutputCardComponent implements OnInit, OnDestroy {
   }
 
   private buildCompareGrid(colors: string[]): void {
-    const colorCellTemplate = this.createColorCellTemplate();
+    const previewChipCellTemplate = this.createPreviewChipCellTemplate();
 
     this.columns = [
       {
@@ -102,14 +105,13 @@ export class ColorPaletteOutputCardComponent implements OnInit, OnDestroy {
         name: $localize`:@@page.colorPalette.card.output.grid.columnHex:カラーコード`,
         readonly: true,
         size: 160,
-        cellTemplate: colorCellTemplate,
       },
       {
         prop: 'preview',
         name: $localize`:@@page.colorPalette.card.output.grid.columnPreview:プレビュー`,
         readonly: true,
-        size: 200,
-        cellTemplate: colorCellTemplate,
+        size: 120,
+        cellTemplate: previewChipCellTemplate,
       },
     ];
 
@@ -148,6 +150,44 @@ export class ColorPaletteOutputCardComponent implements OnInit, OnDestroy {
       });
       return row;
     });
+  }
+
+  /**
+   * Creates a RevoGrid custom cell template that renders only a small color chip
+   * for compare-mode preview cells.
+   */
+  private createPreviewChipCellTemplate(): CellTemplate {
+    return (h, props) => {
+      const hex = String(props.model[props.prop] ?? '');
+      const isHexColor = hex.startsWith('#');
+      return h(
+        'div',
+        {
+          style: {
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            height: '100%',
+            width: '100%',
+          },
+        },
+        [
+          h(
+            'div',
+            {
+              style: {
+                width: PREVIEW_CHIP_SIZE,
+                height: PREVIEW_CHIP_SIZE,
+                borderRadius: PREVIEW_CHIP_RADIUS,
+                backgroundColor: isHexColor ? hex : 'var(--mat-sys-surface-variant)',
+                border: '1px solid var(--mat-sys-outline-variant)',
+              },
+            },
+            '',
+          ),
+        ],
+      );
+    };
   }
 
   /**
