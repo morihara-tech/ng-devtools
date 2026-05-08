@@ -12,8 +12,16 @@
   margin-top: 24px;
 }
 
-.input-form {
+.input-form-s {
   width: 144px;
+}
+
+.input-form-m {
+  width: 320px;
+}
+
+.input-form-s,
+.input-form-m {
   margin-bottom: 0;
 
   ::ng-deep .mat-mdc-form-field-bottom-align::before {
