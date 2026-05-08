@@ -13,6 +13,7 @@ import { unixTimestampConverterPageRoutes } from './pages/unix-timestamp-convert
 import { textDiffPageRoutes } from './pages/text-diff-page/text-diff-page.routes';
 import { menuPageRoutes } from './pages/menu-page/menu-page.routes';
 import { colorPalettePageRoutes } from './pages/color-palette-page/color-palette-page.routes';
+import { apiKeyGenPageRoutes } from './pages/api-key-gen-page/api-key-gen-page.routes';
 
 export const routes: Routes = [
   { path: '', children: dashboardPageRoutes },
@@ -21,6 +22,7 @@ export const routes: Routes = [
   { path: 'json-formatter', children: jsonFormatterPageRoutes },
   { path: 'sql-formatter', children: sqlFormatterPageRoutes },
   { path: 'password-generator', children: passwordGenPageRoutes },
+  { path: 'api-key-generator', children: apiKeyGenPageRoutes },
   { path: 'svg-to-png', children: svgToPngPageRoutes },
   { path: 'ip-cidr-calculator', children: ipCidrCalculatorPageRoutes },
   { path: 'url-encoder', children: urlEncoderPageRoutes },

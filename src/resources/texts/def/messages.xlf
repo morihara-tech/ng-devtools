@@ -1194,6 +1194,11 @@ UNIXタイム変換ツールを実装しました。</source>
         <source>カラーパレットツールを実装しました。カラーコード比較・マテリアルデザイングラデーション生成機能が利用できます。</source>
       </segment>
     </unit>
+    <unit id="update.home.20260508">
+      <segment>
+        <source>APIキー生成ツールを実装しました。</source>
+      </segment>
+    </unit>
     <unit id="page.colorPalette.menu">
       <segment>
         <source>カラーパレット</source>
@@ -1222,6 +1227,151 @@ UNIXタイム変換ツールを実装しました。</source>
     <unit id="page.colorPalette.card.input.modeShades">
       <segment>
         <source>濃淡</source>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.card.input.count">
+      <segment>
+        <source>個数</source>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.card.input.error.countRange">
+      <segment>
+        <source>個数は1以上100以下で入力してください。</source>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.card.input.error.countRequired">
+      <segment>
+        <source>個数を入力してください。</source>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.card.input.error.formatRequired">
+      <segment>
+        <source>フォーマットを選択してください。</source>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.card.input.error.lengthRange">
+      <segment>
+        <source>文字数は1以上256以下で入力してください。</source>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.card.input.error.lengthRequired">
+      <segment>
+        <source>文字数を入力してください。</source>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.card.input.error.prefixLength">
+      <segment>
+        <source>プレフィックスは32文字以下で入力してください。</source>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.card.input.error.prefixPattern">
+      <segment>
+        <source>プレフィックスは半角英数字、ハイフン(-)、アンダースコア(_)のみ使用できます。</source>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.card.input.format">
+      <segment>
+        <source>フォーマット</source>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.card.input.format.base62">
+      <segment>
+        <source>Base62</source>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.card.input.format.hex">
+      <segment>
+        <source>Hex</source>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.card.input.format.uuidV4">
+      <segment>
+        <source>UUID v4</source>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.card.input.generate">
+      <segment>
+        <source>生成</source>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.card.input.heading">
+      <segment>
+        <source>生成条件</source>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.card.input.length">
+      <segment>
+        <source>文字数</source>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.card.input.placeholder.count">
+      <segment>
+        <source>1〜100</source>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.card.input.placeholder.length">
+      <segment>
+        <source>1〜256</source>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.card.input.placeholder.prefix">
+      <segment>
+        <source>example_team</source>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.card.input.prefix">
+      <segment>
+        <source>プレフィックス</source>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.card.output.copyMenu">
+      <segment>
+        <source>コピー形式を選択</source>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.card.output.copyType.env">
+      <segment>
+        <source>.env</source>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.card.output.copyType.mcp">
+      <segment>
+        <source>MCP Config</source>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.card.output.copyType.plain">
+      <segment>
+        <source>Plain</source>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.card.output.download">
+      <segment>
+        <source>ダウンロード</source>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.card.output.downloaded">
+      <segment>
+        <source>ダウンロードしました。</source>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.card.output.heading">
+      <segment>
+        <source>生成結果</source>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.description">
+      <segment>
+        <source>MCPや開発環境向けのAPIキーを生成します。</source>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.menu">
+      <segment>
+        <source>APIキー生成</source>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.title">
+      <segment>
+        <source>APIキー生成ツール</source>
       </segment>
     </unit>
     <unit id="page.colorPalette.card.input.countLabel">
