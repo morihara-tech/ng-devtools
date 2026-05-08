@@ -10,6 +10,14 @@ vi.mock('@revolist/angular-datagrid', () => ({
   RevoGrid: class {},
 }));
 
+type HNode = {
+  tag: string;
+  props: {
+    style?: Record<string, string>;
+  };
+  children?: string | HNode[];
+};
+
 describe('ColorPaletteOutputCardComponent', () => {
   let component: ColorPaletteOutputCardComponent;
 
@@ -46,17 +54,23 @@ describe('ColorPaletteOutputCardComponent', () => {
     const previewColumn = component.columns.find(column => column.prop === 'preview') as ColumnRegular;
     const previewCellTemplate = previewColumn.cellTemplate!;
 
-    const h = (tag: string, props: Record<string, unknown>, children?: unknown) => ({ tag, props, children });
+    const h = (
+      tag: string,
+      props: { style?: Record<string, string> },
+      children?: string | HNode[],
+    ): HNode => ({ tag, props, children });
     const node = previewCellTemplate(h as never, {
       model: { preview: '#112233' },
       prop: 'preview',
-    } as never) as {
-      children: Array<{ props: { style: { width: string; height: string; borderRadius: string } }; children: string }>;
-    };
+    } as never) as HNode;
 
-    expect(node.children[0].props.style.width).toBe('24px');
-    expect(node.children[0].props.style.height).toBe('24px');
-    expect(node.children[0].props.style.borderRadius).toBe('4px');
-    expect(node.children[0].children).toBe('');
+    if (!Array.isArray(node.children) || node.children.length === 0) {
+      throw new Error('Expected preview template to render at least one chip node');
+    }
+    const chipNode = node.children[0];
+    expect(chipNode.props.style?.['width']).toBe('24px');
+    expect(chipNode.props.style?.['height']).toBe('24px');
+    expect(chipNode.props.style?.['borderRadius']).toBe('4px');
+    expect(chipNode.children).toBe('');
   });
 });
