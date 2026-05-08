@@ -1236,7 +1236,7 @@ UNIXタイム変換ツールを実装しました。</source>
     </unit>
     <unit id="page.colorPalette.card.input.generate">
       <segment>
-        <source>生成</source>
+        <source> 生成 </source>
       </segment>
     </unit>
     <unit id="page.colorPalette.card.output.heading">
@@ -1251,12 +1251,12 @@ UNIXタイム変換ツールを実装しました。</source>
     </unit>
     <unit id="page.colorPalette.card.output.noData">
       <segment>
-        <source>カラーコードを入力して「生成」ボタンをクリックしてください。</source>
+        <source> カラーコードを入力して「生成」ボタンをクリックしてください。 </source>
       </segment>
     </unit>
     <unit id="page.colorPalette.card.output.copied">
       <segment>
-        <source>{$PH} をコピーしました</source>
+        <source><ph id="0" equiv="hex" disp="hex"/> をコピーしました</source>
       </segment>
     </unit>
     <unit id="page.colorPalette.card.output.grid.columnIndex">

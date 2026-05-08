@@ -1488,7 +1488,7 @@ Added the tool list page.</target>
     </unit>
     <unit id="page.colorPalette.card.input.generate">
       <segment state="initial">
-        <source>生成</source>
+        <source> 生成 </source>
         <target>Generate</target>
       </segment>
     </unit>
@@ -1506,14 +1506,14 @@ Added the tool list page.</target>
     </unit>
     <unit id="page.colorPalette.card.output.noData">
       <segment state="initial">
-        <source>カラーコードを入力して「生成」ボタンをクリックしてください。</source>
+        <source> カラーコードを入力して「生成」ボタンをクリックしてください。 </source>
         <target>Enter color codes and click the Generate button.</target>
       </segment>
     </unit>
     <unit id="page.colorPalette.card.output.copied">
       <segment state="initial">
-        <source>{$PH} をコピーしました</source>
-        <target>Copied {$PH}</target>
+        <source><ph id="0" equiv="hex" disp="hex"/> をコピーしました</source>
+        <target>Copied <ph id="0" equiv="hex" disp="hex"/></target>
       </segment>
     </unit>
     <unit id="page.colorPalette.card.output.grid.columnIndex">
