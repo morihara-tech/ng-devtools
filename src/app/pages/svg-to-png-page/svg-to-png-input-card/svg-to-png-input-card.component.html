@@ -46,6 +46,7 @@
                   formControlName="backgroundColor"
                   matSuffix
                   class="color-picker-input"
+                  (click)="$event.stopPropagation()"
                   (input)="onBackgroundColorChange($any($event.target).value)">
               </mat-form-field>
               <mat-slide-toggle formControlName="transparent" i18n="@@page.svgToPng.card.input.transparent">背景を透過</mat-slide-toggle>

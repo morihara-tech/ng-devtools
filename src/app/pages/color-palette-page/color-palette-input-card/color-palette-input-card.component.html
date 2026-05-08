@@ -41,6 +41,7 @@
             matSuffix
             class="color-picker-input"
             [value]="control.value"
+            (click)="$event.stopPropagation()"
             (input)="onColorPickerChange($index, $any($event.target).value)">
           @if (control.invalid && control.dirty) {
             <mat-error i18n="@@page.colorPalette.card.input.hexError">有効なHEXカラーコードを入力してください。</mat-error>
