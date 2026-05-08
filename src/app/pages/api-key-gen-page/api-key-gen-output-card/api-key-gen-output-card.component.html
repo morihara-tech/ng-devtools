@@ -1,0 +1,37 @@
+<mat-card appearance="raised">
+  <mat-card-content>
+    <app-heading headingType="h3">
+      <span i18n="@@page.apiKey.card.output.heading">生成結果</span>
+      <div class="right">
+        <button
+          mat-icon-button
+          [matMenuTriggerFor]="copyMenu"
+          matTooltip="コピー形式を選択"
+          i18n-matTooltip="@@page.apiKey.card.output.copyMenu"
+          [disabled]="!apiKeyStrings"
+        >
+          <mat-icon>content_copy</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          matTooltip="ダウンロード"
+          i18n-matTooltip="@@page.apiKey.card.output.download"
+          (click)="onClickDownload()"
+          [disabled]="!apiKeyStrings"
+        >
+          <mat-icon>download</mat-icon>
+        </button>
+      </div>
+    </app-heading>
+
+    <mat-menu #copyMenu="matMenu">
+      <button mat-menu-item (click)="onClickCopyAsPlain()" i18n="@@page.apiKey.card.output.copyType.plain">Plain</button>
+      <button mat-menu-item (click)="onClickCopyAsMcpConfig()" i18n="@@page.apiKey.card.output.copyType.mcp">MCP Config</button>
+      <button mat-menu-item (click)="onClickCopyAsEnv()" i18n="@@page.apiKey.card.output.copyType.env">.env</button>
+    </mat-menu>
+
+    <div class="text-viewer-table-wrapper">
+      <app-text-viewer-table [value]="apiKeyStrings"></app-text-viewer-table>
+    </div>
+  </mat-card-content>
+</mat-card>

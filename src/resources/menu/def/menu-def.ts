@@ -68,6 +68,12 @@ export const MENU_CATEGORIES: MenuCategory[] = [
         routerLink: '/password-generator',
         icon: 'password',
       },
+      {
+        label: $localize`:@@page.apiKey.menu:APIキー生成`,
+        description: $localize`:@@page.apiKey.description:MCPや開発環境向けのAPIキーを生成します。`,
+        routerLink: '/api-key-generator',
+        icon: 'vpn_key',
+      },
     ],
   },
   {

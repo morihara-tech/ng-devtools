@@ -1438,6 +1438,12 @@ Added the tool list page.</target>
         <target>Implemented the Color Palette tool. Color code comparison and Material Design gradient generation are now available.</target>
       </segment>
     </unit>
+    <unit id="update.home.20260508">
+      <segment state="initial">
+        <source>APIキー生成ツールを実装しました。</source>
+        <target>Implemented the API key generator tool.</target>
+      </segment>
+    </unit>
     <unit id="page.colorPalette.menu">
       <segment state="initial">
         <source>カラーパレット</source>
@@ -1472,6 +1478,180 @@ Added the tool list page.</target>
       <segment state="initial">
         <source>濃淡</source>
         <target>Shades</target>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.card.input.count">
+      <segment state="initial">
+        <source>個数</source>
+        <target>Count</target>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.card.input.error.countRange">
+      <segment state="initial">
+        <source>個数は1以上100以下で入力してください。</source>
+        <target>Count must be between 1 and 100.</target>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.card.input.error.countRequired">
+      <segment state="initial">
+        <source>個数を入力してください。</source>
+        <target>Please enter the count.</target>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.card.input.error.formatRequired">
+      <segment state="initial">
+        <source>フォーマットを選択してください。</source>
+        <target>Please select a format.</target>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.card.input.error.lengthRange">
+      <segment state="initial">
+        <source>文字数は1以上256以下で入力してください。</source>
+        <target>Length must be between 1 and 256.</target>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.card.input.error.lengthRequired">
+      <segment state="initial">
+        <source>文字数を入力してください。</source>
+        <target>Please enter the length.</target>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.card.input.error.prefixLength">
+      <segment state="initial">
+        <source>プレフィックスは32文字以下で入力してください。</source>
+        <target>Prefix must be 32 characters or fewer.</target>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.card.input.error.prefixPattern">
+      <segment state="initial">
+        <source>プレフィックスは半角英数字、ハイフン(-)、アンダースコア(_)のみ使用できます。</source>
+        <target>Prefix can contain only alphanumeric characters, hyphens (-), and underscores (_).</target>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.card.input.format">
+      <segment state="initial">
+        <source>フォーマット</source>
+        <target>Format</target>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.card.input.format.base62">
+      <segment state="initial">
+        <source>Base62</source>
+        <target>Base62</target>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.card.input.format.hex">
+      <segment state="initial">
+        <source>Hex</source>
+        <target>Hex</target>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.card.input.format.uuidV4">
+      <segment state="initial">
+        <source>UUID v4</source>
+        <target>UUID v4</target>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.card.input.generate">
+      <segment state="initial">
+        <source>生成</source>
+        <target>Generate</target>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.card.input.heading">
+      <segment state="initial">
+        <source>生成条件</source>
+        <target>Generation Settings</target>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.card.input.length">
+      <segment state="initial">
+        <source>文字数</source>
+        <target>Length</target>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.card.input.placeholder.count">
+      <segment state="initial">
+        <source>1〜100</source>
+        <target>1-100</target>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.card.input.placeholder.length">
+      <segment state="initial">
+        <source>1〜256</source>
+        <target>1-256</target>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.card.input.placeholder.prefix">
+      <segment state="initial">
+        <source>example_team</source>
+        <target>example_team</target>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.card.input.prefix">
+      <segment state="initial">
+        <source>プレフィックス</source>
+        <target>Prefix</target>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.card.output.copyMenu">
+      <segment state="initial">
+        <source>コピー形式を選択</source>
+        <target>Select copy format</target>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.card.output.copyType.env">
+      <segment state="initial">
+        <source>.env</source>
+        <target>.env</target>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.card.output.copyType.mcp">
+      <segment state="initial">
+        <source>MCP Config</source>
+        <target>MCP Config</target>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.card.output.copyType.plain">
+      <segment state="initial">
+        <source>Plain</source>
+        <target>Plain</target>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.card.output.download">
+      <segment state="initial">
+        <source>ダウンロード</source>
+        <target>Download</target>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.card.output.downloaded">
+      <segment state="initial">
+        <source>ダウンロードしました。</source>
+        <target>Downloaded.</target>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.card.output.heading">
+      <segment state="initial">
+        <source>生成結果</source>
+        <target>Results</target>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.description">
+      <segment state="initial">
+        <source>MCPや開発環境向けのAPIキーを生成します。</source>
+        <target>Generate API keys for MCP and development environments.</target>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.menu">
+      <segment state="initial">
+        <source>APIキー生成</source>
+        <target>API Key Generator</target>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.title">
+      <segment state="initial">
+        <source>APIキー生成ツール</source>
+        <target>API Key Generator</target>
       </segment>
     </unit>
     <unit id="page.colorPalette.card.input.countLabel">

@@ -1,0 +1,58 @@
+<mat-card appearance="raised">
+  @if (formGroup) {
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+      <mat-card-content>
+        <app-heading headingType="h3" i18n="@@page.apiKey.card.input.heading">生成条件</app-heading>
+        <div class="input-form-wrapper flex wrap">
+          <mat-form-field class="input-form-m">
+            <mat-label i18n="@@page.apiKey.card.input.format">フォーマット</mat-label>
+            <mat-select formControlName="format">
+              @for (format of formats; track format.value) {
+                <mat-option [value]="format.value">{{ format.label }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="input-form-s">
+            <mat-label i18n="@@page.apiKey.card.input.length">文字数</mat-label>
+            <input
+              matInput
+              type="number"
+              placeholder="1〜256"
+              i18n-placeholder="@@page.apiKey.card.input.placeholder.length"
+              formControlName="length"
+            >
+          </mat-form-field>
+
+          <mat-form-field class="input-form-s">
+            <mat-label i18n="@@page.apiKey.card.input.count">個数</mat-label>
+            <input
+              matInput
+              type="number"
+              placeholder="1〜100"
+              i18n-placeholder="@@page.apiKey.card.input.placeholder.count"
+              formControlName="count"
+            >
+          </mat-form-field>
+
+          <mat-form-field class="input-form-m">
+            <mat-label i18n="@@page.apiKey.card.input.prefix">プレフィックス</mat-label>
+            <input
+              matInput
+              type="text"
+              placeholder="example_team"
+              i18n-placeholder="@@page.apiKey.card.input.placeholder.prefix"
+              formControlName="prefix"
+            >
+          </mat-form-field>
+        </div>
+        @if (errorMessage !== null) {
+          <mat-error>{{ errorMessage }}</mat-error>
+        }
+      </mat-card-content>
+      <mat-card-actions align="end">
+        <button mat-flat-button [disabled]="hasError" type="submit" i18n="@@page.apiKey.card.input.generate">生成</button>
+      </mat-card-actions>
+    </form>
+  }
+</mat-card>
