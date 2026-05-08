@@ -113,6 +113,7 @@ export class ApiKeyGenOutputCardComponent {
     }
 
     const base62Length = this.base62Characters.length;
+    // 248 (= 4 * 62) rejects 248-255 so each Base62 character is selected with equal probability.
     const maxRandomValue = 248;
     let value = '';
 
