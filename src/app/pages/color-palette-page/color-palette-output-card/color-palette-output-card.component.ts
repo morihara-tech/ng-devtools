@@ -88,7 +88,7 @@ export class ColorPaletteOutputCardComponent implements OnInit, OnDestroy {
   }
 
   private buildCompareGrid(colors: string[]): void {
-    const colorCellTemplate = this.createColorCellTemplate();
+    const previewCellTemplate = this.createPreviewCellTemplate();
 
     this.columns = [
       {
@@ -102,14 +102,13 @@ export class ColorPaletteOutputCardComponent implements OnInit, OnDestroy {
         name: $localize`:@@page.colorPalette.card.output.grid.columnHex:カラーコード`,
         readonly: true,
         size: 160,
-        cellTemplate: colorCellTemplate,
       },
       {
         prop: 'preview',
         name: $localize`:@@page.colorPalette.card.output.grid.columnPreview:プレビュー`,
         readonly: true,
-        size: 200,
-        cellTemplate: colorCellTemplate,
+        size: 120,
+        cellTemplate: previewCellTemplate,
       },
     ];
 
@@ -148,6 +147,31 @@ export class ColorPaletteOutputCardComponent implements OnInit, OnDestroy {
       });
       return row;
     });
+  }
+
+  /**
+   * Creates a RevoGrid custom cell template that renders a background-only color cell
+   * for compare-mode preview cells.
+   */
+  private createPreviewCellTemplate(): CellTemplate {
+    return (h, props) => {
+      const hex = String(props.model[props.prop] ?? '');
+      const isHexColor = hex.startsWith('#');
+      return h(
+        'div',
+        {
+          style: {
+            backgroundColor: isHexColor ? hex : 'var(--mat-sys-surface-variant)',
+            border: '1px solid var(--mat-sys-outline-variant)',
+            borderRadius: '4px',
+            height: '100%',
+            width: '100%',
+            boxSizing: 'border-box',
+          },
+        },
+        '',
+      );
+    };
   }
 
   /**
