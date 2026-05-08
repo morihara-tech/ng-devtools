@@ -38,7 +38,7 @@ describe('ColorPaletteOutputCardComponent', () => {
     component = TestBed.runInInjectionContext(() => new ColorPaletteOutputCardComponent());
   });
 
-  it('sets compare-mode columns to text-only hex and chip-only preview', () => {
+  it('sets compare-mode columns to text-only hex and preview background cell', () => {
     component.renderPalette({ mode: 'compare', colors: ['#112233'] });
 
     const hexColumn = component.columns.find(column => column.prop === 'hex');
@@ -48,7 +48,7 @@ describe('ColorPaletteOutputCardComponent', () => {
     expect(previewColumn?.cellTemplate).toBeDefined();
   });
 
-  it('renders preview cell template as a color chip without text', () => {
+  it('renders preview cell template as a background-only color cell', () => {
     component.renderPalette({ mode: 'compare', colors: ['#112233'] });
 
     const previewColumn = component.columns.find(column => column.prop === 'preview') as ColumnRegular;
@@ -64,13 +64,10 @@ describe('ColorPaletteOutputCardComponent', () => {
       prop: 'preview',
     } as never) as HNode;
 
-    if (!Array.isArray(node.children) || node.children.length === 0) {
-      throw new Error('Expected preview template to render at least one chip node');
-    }
-    const chipNode = node.children[0];
-    expect(chipNode.props.style?.['width']).toBe('40px');
-    expect(chipNode.props.style?.['height']).toBe('40px');
-    expect(chipNode.props.style?.['borderRadius']).toBe('4px');
-    expect(chipNode.children).toBe('');
+    expect(node.props.style?.['backgroundColor']).toBe('#112233');
+    expect(node.props.style?.['width']).toBe('100%');
+    expect(node.props.style?.['height']).toBe('100%');
+    expect(node.props.style?.['borderRadius']).toBe('4px');
+    expect(node.children).toBe('');
   });
 });

@@ -16,9 +16,6 @@ import {
   getTextColorForBackground,
 } from '../color-palette-model';
 
-const PREVIEW_CHIP_SIZE = '40px';
-const PREVIEW_CHIP_RADIUS = '4px';
-
 @Component({
   selector: 'app-color-palette-output-card',
   imports: [
@@ -91,7 +88,7 @@ export class ColorPaletteOutputCardComponent implements OnInit, OnDestroy {
   }
 
   private buildCompareGrid(colors: string[]): void {
-    const previewChipCellTemplate = this.createPreviewChipCellTemplate();
+    const previewCellTemplate = this.createPreviewCellTemplate();
 
     this.columns = [
       {
@@ -111,7 +108,7 @@ export class ColorPaletteOutputCardComponent implements OnInit, OnDestroy {
         name: $localize`:@@page.colorPalette.card.output.grid.columnPreview:プレビュー`,
         readonly: true,
         size: 120,
-        cellTemplate: previewChipCellTemplate,
+        cellTemplate: previewCellTemplate,
       },
     ];
 
@@ -153,10 +150,10 @@ export class ColorPaletteOutputCardComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * Creates a RevoGrid custom cell template that renders only a color chip
+   * Creates a RevoGrid custom cell template that renders a background-only color cell
    * for compare-mode preview cells.
    */
-  private createPreviewChipCellTemplate(): CellTemplate {
+  private createPreviewCellTemplate(): CellTemplate {
     return (h, props) => {
       const hex = String(props.model[props.prop] ?? '');
       const isHexColor = hex.startsWith('#');
@@ -164,28 +161,15 @@ export class ColorPaletteOutputCardComponent implements OnInit, OnDestroy {
         'div',
         {
           style: {
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
+            backgroundColor: isHexColor ? hex : 'var(--mat-sys-surface-variant)',
+            border: '1px solid var(--mat-sys-outline-variant)',
+            borderRadius: '4px',
             height: '100%',
             width: '100%',
+            boxSizing: 'border-box',
           },
         },
-        [
-          h(
-            'div',
-            {
-              style: {
-                width: PREVIEW_CHIP_SIZE,
-                height: PREVIEW_CHIP_SIZE,
-                borderRadius: PREVIEW_CHIP_RADIUS,
-                backgroundColor: isHexColor ? hex : 'var(--mat-sys-surface-variant)',
-                border: '1px solid var(--mat-sys-outline-variant)',
-              },
-            },
-            '',
-          ),
-        ],
+        '',
       );
     };
   }
