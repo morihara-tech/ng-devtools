@@ -16,7 +16,7 @@ import {
   getTextColorForBackground,
 } from '../color-palette-model';
 
-const PREVIEW_CHIP_SIZE = '24px';
+const PREVIEW_CHIP_SIZE = '40px';
 const PREVIEW_CHIP_RADIUS = '4px';
 
 @Component({
@@ -153,7 +153,7 @@ export class ColorPaletteOutputCardComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * Creates a RevoGrid custom cell template that renders only a small color chip
+   * Creates a RevoGrid custom cell template that renders only a color chip
    * for compare-mode preview cells.
    */
   private createPreviewChipCellTemplate(): CellTemplate {

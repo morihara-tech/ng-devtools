@@ -68,8 +68,8 @@ describe('ColorPaletteOutputCardComponent', () => {
       throw new Error('Expected preview template to render at least one chip node');
     }
     const chipNode = node.children[0];
-    expect(chipNode.props.style?.['width']).toBe('24px');
-    expect(chipNode.props.style?.['height']).toBe('24px');
+    expect(chipNode.props.style?.['width']).toBe('40px');
+    expect(chipNode.props.style?.['height']).toBe('40px');
     expect(chipNode.props.style?.['borderRadius']).toBe('4px');
     expect(chipNode.children).toBe('');
   });
