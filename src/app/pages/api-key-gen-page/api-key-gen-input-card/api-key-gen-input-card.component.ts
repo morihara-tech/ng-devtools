@@ -60,6 +60,40 @@ export class ApiKeyGenInputCardComponent implements OnInit {
     return this.formGroup.status !== 'VALID';
   }
 
+  get errorMessage(): string | null {
+    if (!this.formGroup) {
+      return null;
+    }
+
+    const formatControl = this.formGroup.controls['format'];
+    const lengthControl = this.formGroup.controls['length'];
+    const countControl = this.formGroup.controls['count'];
+    const prefixControl = this.formGroup.controls['prefix'];
+
+    if (formatControl.hasError('required')) {
+      return $localize`:@@page.apiKey.card.input.error.formatRequired:フォーマットを選択してください。`;
+    }
+    if (lengthControl.hasError('required')) {
+      return $localize`:@@page.apiKey.card.input.error.lengthRequired:文字数を入力してください。`;
+    }
+    if (lengthControl.hasError('min') || lengthControl.hasError('max')) {
+      return $localize`:@@page.apiKey.card.input.error.lengthRange:文字数は1以上256以下で入力してください。`;
+    }
+    if (countControl.hasError('required')) {
+      return $localize`:@@page.apiKey.card.input.error.countRequired:個数を入力してください。`;
+    }
+    if (countControl.hasError('min') || countControl.hasError('max')) {
+      return $localize`:@@page.apiKey.card.input.error.countRange:個数は1以上100以下で入力してください。`;
+    }
+    if (prefixControl.hasError('pattern')) {
+      return $localize`:@@page.apiKey.card.input.error.prefixPattern:プレフィックスは半角英数字、ハイフン(-)、アンダースコア(_)のみ使用できます。`;
+    }
+    if (prefixControl.hasError('maxlength')) {
+      return $localize`:@@page.apiKey.card.input.error.prefixLength:プレフィックスは32文字以下で入力してください。`;
+    }
+    return null;
+  }
+
   private resetForm(): void {
     this.formGroup = this.fb.group({
       format: this.fb.control<ApiKeyFormat>('base62', [

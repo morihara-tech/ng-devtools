@@ -4,19 +4,16 @@
       <mat-card-content>
         <app-heading headingType="h3" i18n="@@page.apiKey.card.input.heading">生成条件</app-heading>
         <div class="input-form-wrapper flex wrap">
-          <mat-form-field class="input-form-m">
+          <mat-form-field class="input-form">
             <mat-label i18n="@@page.apiKey.card.input.format">フォーマット</mat-label>
             <mat-select formControlName="format">
               @for (format of formats; track format.value) {
                 <mat-option [value]="format.value">{{ format.label }}</mat-option>
               }
             </mat-select>
-            @if (formGroup.controls['format'].invalid && (formGroup.controls['format'].dirty || formGroup.controls['format'].touched)) {
-              <mat-error i18n="@@page.apiKey.card.input.error.formatRequired">フォーマットを選択してください。</mat-error>
-            }
           </mat-form-field>
 
-          <mat-form-field class="input-form-s">
+          <mat-form-field class="input-form">
             <mat-label i18n="@@page.apiKey.card.input.length">文字数</mat-label>
             <input
               matInput
@@ -25,14 +22,9 @@
               i18n-placeholder="@@page.apiKey.card.input.placeholder.length"
               formControlName="length"
             >
-            @if (formGroup.controls['length'].hasError('required')) {
-              <mat-error i18n="@@page.apiKey.card.input.error.lengthRequired">文字数を入力してください。</mat-error>
-            } @else if (formGroup.controls['length'].hasError('min') || formGroup.controls['length'].hasError('max')) {
-              <mat-error i18n="@@page.apiKey.card.input.error.lengthRange">文字数は1以上256以下で入力してください。</mat-error>
-            }
           </mat-form-field>
 
-          <mat-form-field class="input-form-s">
+          <mat-form-field class="input-form">
             <mat-label i18n="@@page.apiKey.card.input.count">個数</mat-label>
             <input
               matInput
@@ -41,14 +33,9 @@
               i18n-placeholder="@@page.apiKey.card.input.placeholder.count"
               formControlName="count"
             >
-            @if (formGroup.controls['count'].hasError('required')) {
-              <mat-error i18n="@@page.apiKey.card.input.error.countRequired">個数を入力してください。</mat-error>
-            } @else if (formGroup.controls['count'].hasError('min') || formGroup.controls['count'].hasError('max')) {
-              <mat-error i18n="@@page.apiKey.card.input.error.countRange">個数は1以上100以下で入力してください。</mat-error>
-            }
           </mat-form-field>
 
-          <mat-form-field class="input-form-l">
+          <mat-form-field class="input-form">
             <mat-label i18n="@@page.apiKey.card.input.prefix">プレフィックス</mat-label>
             <input
               matInput
@@ -57,13 +44,11 @@
               i18n-placeholder="@@page.apiKey.card.input.placeholder.prefix"
               formControlName="prefix"
             >
-            @if (formGroup.controls['prefix'].hasError('pattern')) {
-              <mat-error i18n="@@page.apiKey.card.input.error.prefixPattern">プレフィックスは半角英数字、ハイフン(-)、アンダースコア(_)のみ使用できます。</mat-error>
-            } @else if (formGroup.controls['prefix'].hasError('maxlength')) {
-              <mat-error i18n="@@page.apiKey.card.input.error.prefixLength">プレフィックスは32文字以下で入力してください。</mat-error>
-            }
           </mat-form-field>
         </div>
+        @if (errorMessage !== null) {
+          <mat-error>{{ errorMessage }}</mat-error>
+        }
       </mat-card-content>
       <mat-card-actions align="end">
         <button mat-flat-button [disabled]="hasError" type="submit" i18n="@@page.apiKey.card.input.generate">生成</button>
