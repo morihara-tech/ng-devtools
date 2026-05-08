@@ -1,0 +1,12 @@
+<app-application-page-template>
+  <div class="margin-bottom-16">
+    <app-heading headingType="h2" i18n="@@page.colorPalette.title">カラーパレット</app-heading>
+  </div>
+  <app-color-palette-input-card
+    (generate)="onGenerate($event)"
+  ></app-color-palette-input-card>
+  <div class="spacer"></div>
+  <app-color-palette-output-card
+    #output
+  ></app-color-palette-output-card>
+</app-application-page-template>

@@ -12,6 +12,7 @@ import { urlEncoderPageRoutes } from './pages/url-encoder-page/url-encoder-page.
 import { unixTimestampConverterPageRoutes } from './pages/unix-timestamp-converter-page/unix-timestamp-converter-page.routes';
 import { textDiffPageRoutes } from './pages/text-diff-page/text-diff-page.routes';
 import { menuPageRoutes } from './pages/menu-page/menu-page.routes';
+import { colorPalettePageRoutes } from './pages/color-palette-page/color-palette-page.routes';
 
 export const routes: Routes = [
   { path: '', children: dashboardPageRoutes },
@@ -26,6 +27,7 @@ export const routes: Routes = [
   { path: 'unix-timestamp-converter', children: unixTimestampConverterPageRoutes },
   { path: 'text-diff', children: textDiffPageRoutes },
   { path: 'menu', children: menuPageRoutes },
+  { path: 'color-palette', children: colorPalettePageRoutes },
   { path: 'error', children: errorPageRoutes },
   { path: '**', redirectTo: '/error/404' }
 ];

@@ -1189,5 +1189,95 @@ UNIXタイム変換ツールを実装しました。</source>
         <source>SSG（静的サイト生成）を導入し、初期表示速度とSEOを改善しました。</source>
       </segment>
     </unit>
+    <unit id="update.home.20260507">
+      <segment>
+        <source>カラーパレットツールを実装しました。カラーコード比較・マテリアルデザイングラデーション生成機能が利用できます。</source>
+      </segment>
+    </unit>
+    <unit id="page.colorPalette.menu">
+      <segment>
+        <source>カラーパレット</source>
+      </segment>
+    </unit>
+    <unit id="page.colorPalette.description">
+      <segment>
+        <source>カラーコードの比較・グラデーション生成を行います。</source>
+      </segment>
+    </unit>
+    <unit id="page.colorPalette.title">
+      <segment>
+        <source>カラーパレット</source>
+      </segment>
+    </unit>
+    <unit id="page.colorPalette.card.input.heading">
+      <segment>
+        <source>入力</source>
+      </segment>
+    </unit>
+    <unit id="page.colorPalette.card.input.modeCompare">
+      <segment>
+        <source>比較</source>
+      </segment>
+    </unit>
+    <unit id="page.colorPalette.card.input.modeShades">
+      <segment>
+        <source>濃淡</source>
+      </segment>
+    </unit>
+    <unit id="page.colorPalette.card.input.countLabel">
+      <segment>
+        <source>カラー数</source>
+      </segment>
+    </unit>
+    <unit id="page.colorPalette.card.input.hexError">
+      <segment>
+        <source>有効なHEXカラーコードを入力してください。</source>
+      </segment>
+    </unit>
+    <unit id="page.colorPalette.card.input.generate">
+      <segment>
+        <source> 生成 </source>
+      </segment>
+    </unit>
+    <unit id="page.colorPalette.card.output.heading">
+      <segment>
+        <source>結果</source>
+      </segment>
+    </unit>
+    <unit id="page.colorPalette.card.output.exportTooltip">
+      <segment>
+        <source>CSS変数をコピー</source>
+      </segment>
+    </unit>
+    <unit id="page.colorPalette.card.output.noData">
+      <segment>
+        <source> カラーコードを入力して「生成」ボタンをクリックしてください。 </source>
+      </segment>
+    </unit>
+    <unit id="page.colorPalette.card.output.copied">
+      <segment>
+        <source><ph id="0" equiv="hex" disp="hex"/> をコピーしました</source>
+      </segment>
+    </unit>
+    <unit id="page.colorPalette.card.output.grid.columnIndex">
+      <segment>
+        <source>#</source>
+      </segment>
+    </unit>
+    <unit id="page.colorPalette.card.output.grid.columnHex">
+      <segment>
+        <source>カラーコード</source>
+      </segment>
+    </unit>
+    <unit id="page.colorPalette.card.output.grid.columnPreview">
+      <segment>
+        <source>プレビュー</source>
+      </segment>
+    </unit>
+    <unit id="page.colorPalette.card.output.grid.columnStep">
+      <segment>
+        <source>ステップ</source>
+      </segment>
+    </unit>
   </file>
 </xliff>
