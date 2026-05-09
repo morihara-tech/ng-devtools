@@ -1,6 +1,19 @@
-<div class="page-wrapper">
-  <div class="page-content-wrapper">
-    <ng-content></ng-content>
-  </div>
-  <div class="ad-wrapper"></div>
-</div>
+<mat-sidenav-container class="page-wrapper" [hasBackdrop]="hasBackdrop">
+  <mat-sidenav
+    position="end"
+    class="help-drawer"
+    [mode]="helpDrawerMode"
+    [opened]="isHelpDrawerOpen()"
+    (openedChange)="onOpenedChange($event)">
+    <div class="help-drawer-content">
+      <ng-container [ngTemplateOutlet]="helpDrawerContent() ?? initialHelpDrawerContent()"></ng-container>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div class="page-content-wrapper">
+      <ng-content></ng-content>
+    </div>
+    <div class="ad-wrapper"></div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

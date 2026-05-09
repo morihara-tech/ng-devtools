@@ -1,6 +1,19 @@
+.page-wrapper {
+  width: 100%;
+}
+
+.help-drawer {
+  width: min(360px, 100vw);
+  border-left: 1px solid var(--mat-sys-outline-variant);
+}
+
+.help-drawer-content {
+  padding: 16px;
+}
+
 @media screen and (min-width:600px) {
   /*for pc*/
-  .page-wrapper {
+  mat-sidenav-content {
     display: flex;
     flex-wrap: wrap;
   }

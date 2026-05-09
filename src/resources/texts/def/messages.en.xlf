@@ -455,6 +455,42 @@ When OFF, uses decodeURI to decode while preserving the URL structure.</target>
         <target>Invalid JSON.</target>
       </segment>
     </unit>
+    <unit id="page.json.help.description">
+      <segment state="initial">
+        <source> JSONテキストを貼り付けて「整形」ボタンを押すと、インデント付きで読みやすく整形できます。 </source>
+        <target>Paste JSON text and click the "Format" button to format it with indentation for better readability.</target>
+      </segment>
+    </unit>
+    <unit id="page.json.help.item1">
+      <segment state="initial">
+        <source>インデント幅を変更して出力フォーマットを調整できます。</source>
+        <target>You can adjust the output format by changing the indentation width.</target>
+      </segment>
+    </unit>
+    <unit id="page.json.help.item2">
+      <segment state="initial">
+        <source>1行表示を有効にすると、改行なしのJSONを生成できます。</source>
+        <target>Enable single-line output to generate JSON without line breaks.</target>
+      </segment>
+    </unit>
+    <unit id="page.json.help.item3">
+      <segment state="initial">
+        <source>「コピー」ボタンで整形後のJSONをクリップボードへコピーできます。</source>
+        <target>Use the "Copy" button to copy formatted JSON to the clipboard.</target>
+      </segment>
+    </unit>
+    <unit id="page.json.help.openAriaLabel">
+      <segment state="initial">
+        <source>JSON整形ツールのヘルプを開く</source>
+        <target>Open help for the JSON formatter tool</target>
+      </segment>
+    </unit>
+    <unit id="page.json.help.title">
+      <segment state="initial">
+        <source>JSON整形ツールの使い方</source>
+        <target>How to use the JSON formatter tool</target>
+      </segment>
+    </unit>
     <unit id="page.json.menu">
       <segment state="initial">
         <source>JSON整形</source>
@@ -1791,6 +1827,12 @@ Added the tool list page.</target>
       <segment state="initial">
         <source>プライバシーポリシーページを追加しました。</source>
         <target>Added the Privacy Policy page.</target>
+      </segment>
+    </unit>
+    <unit id="update.home.20260509.help">
+      <segment state="initial">
+        <source>コンテキストヘルプ（ドロワーUI）の基盤を実装し、JSON整形ツールに適用しました。</source>
+        <target>Implemented the context help (drawer UI) foundation and applied it to the JSON formatter tool.</target>
       </segment>
     </unit>
   </file>

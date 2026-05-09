@@ -1,6 +1,31 @@
-<app-application-page-template>
+<app-application-page-template [initialHelpDrawerContent]="jsonHelpDrawerContent">
   <div class="margin-bottom-16">
-    <app-heading headingType="h2" i18n="@@page.json.title">JSON整形ツール</app-heading>
+    <app-heading headingType="h2">
+      <span i18n="@@page.json.title">JSON整形ツール</span>
+      <button
+        type="button"
+        class="right"
+        mat-icon-button
+        i18n-aria-label="@@page.json.help.openAriaLabel"
+        aria-label="JSON整形ツールのヘルプを開く"
+        (click)="onOpenHelp(jsonHelpDrawerContent)">
+        <mat-icon>help_outline</mat-icon>
+      </button>
+    </app-heading>
   </div>
   <app-json-formatter-input-card></app-json-formatter-input-card>
+
+  <ng-template #jsonHelpDrawerContent>
+    <section class="help-section">
+      <app-heading headingType="h3" i18n="@@page.json.help.title">JSON整形ツールの使い方</app-heading>
+      <p i18n="@@page.json.help.description">
+        JSONテキストを貼り付けて「整形」ボタンを押すと、インデント付きで読みやすく整形できます。
+      </p>
+      <ul>
+        <li i18n="@@page.json.help.item1">インデント幅を変更して出力フォーマットを調整できます。</li>
+        <li i18n="@@page.json.help.item2">1行表示を有効にすると、改行なしのJSONを生成できます。</li>
+        <li i18n="@@page.json.help.item3">「コピー」ボタンで整形後のJSONをクリップボードへコピーできます。</li>
+      </ul>
+    </section>
+  </ng-template>
 </app-application-page-template>
