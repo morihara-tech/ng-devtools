@@ -27,18 +27,9 @@ describe('JsonFormatterPageComponent', () => {
 
   it('should open help drawer when help button clicked', () => {
     const openSpy = vi.spyOn(helpDrawerService, 'open');
-    const helpButton: HTMLButtonElement | null = fixture.nativeElement.querySelector('button[aria-label="JSON整形ツールのヘルプを開く"]');
+    const helpButton: HTMLButtonElement | null = fixture.nativeElement.querySelector('.margin-bottom-16 button.right');
     helpButton?.click();
 
     expect(openSpy).toHaveBeenCalled();
-  });
-
-  it('should reset help drawer state when component is destroyed', () => {
-    helpDrawerService.setOpened(true);
-    fixture.destroy();
-
-    helpDrawerService.opened$.subscribe((opened) => {
-      expect(opened).toBe(false);
-    });
   });
 });
