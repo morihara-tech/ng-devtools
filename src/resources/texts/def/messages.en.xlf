@@ -1740,12 +1740,10 @@ Added the tool list page.</target>
     </unit>
     <unit id="page.privacyPolicy.analytics.body">
       <segment state="initial">
-        <source>当サイトでは、Google が提供するアクセス解析ツール「Google アナリティクス（GA4）」を使用しています。
-        Google アナリティクスは Cookie を使用してデータを収集します。収集されるデータは匿名であり、個人を特定するものではありません。
-        収集されたデータは Google のプライバシーポリシーに基づき管理されます。</source>
+        <source> 当サイトでは、Google が提供するアクセス解析ツール「Google アナリティクス（GA4）」を使用しています。 Google アナリティクスは Cookie を使用してデータを収集します。収集されるデータは匿名であり、個人を特定するものではありません。 収集されたデータは Google のプライバシーポリシーに基づき管理されます。 </source>
         <target>This site uses Google Analytics (GA4), a web analytics service provided by Google.
         Google Analytics uses cookies to collect data. The data collected is anonymous and does not identify individuals.
-        Collected data is managed in accordance with Google's privacy policy.</target>
+        Collected data is managed in accordance with Google&apos;s privacy policy.</target>
       </segment>
     </unit>
     <unit id="page.privacyPolicy.cookiePolicy.heading">
@@ -1756,10 +1754,9 @@ Added the tool list page.</target>
     </unit>
     <unit id="page.privacyPolicy.cookiePolicy.body">
       <segment state="initial">
-        <source>当サイトでは、Google AdSense を利用した広告を掲載しています。
-        Google などの第三者配信事業者は Cookie を使用して、ユーザーの興味に基づくパーソナライズ広告を表示することがあります。</source>
+        <source> 当サイトでは、Google AdSense を利用した広告を掲載しています。 Google などの第三者配信事業者は Cookie を使用して、ユーザーの興味に基づくパーソナライズ広告を表示することがあります。 </source>
         <target>This site displays advertisements using Google AdSense.
-        Third-party vendors such as Google may use cookies to serve personalized ads based on users' interests.</target>
+        Third-party vendors such as Google may use cookies to serve personalized ads based on users&apos; interests.</target>
       </segment>
     </unit>
     <unit id="page.privacyPolicy.cookiePolicy.optout.heading">
@@ -1770,10 +1767,9 @@ Added the tool list page.</target>
     </unit>
     <unit id="page.privacyPolicy.cookiePolicy.optout.body">
       <segment state="initial">
-        <source>Google 広告設定ページにアクセスすることで、パーソナライズ広告を無効にできます。
-        また、aboutads.info から第三者配信事業者の Cookie 利用を無効にすることも可能です。</source>
+        <source> Google 広告設定ページにアクセスすることで、パーソナライズ広告を無効にできます。 また、<pc id="0" equivStart="START_TAG_APP_HYPER_LINK_TEXT" equivEnd="CLOSE_TAG_APP_HYPER_LINK_TEXT" type="other" dispStart="&lt;app-hyper-link-text url=&quot;https://www.aboutads.info/choices/&quot; [openInNewTab]=&quot;true&quot;&gt;" dispEnd="&lt;/app-hyper-link-text&gt;">aboutads.info</pc> から第三者配信事業者の Cookie 利用を無効にすることも可能です。 </source>
         <target>You can disable personalized ads by visiting the Google Ads Settings page.
-        You can also opt out of third-party vendor cookie usage via aboutads.info.</target>
+        You can also opt out of third-party vendor cookie usage via <pc id="0" equivStart="START_TAG_APP_HYPER_LINK_TEXT" equivEnd="CLOSE_TAG_APP_HYPER_LINK_TEXT" type="other" dispStart="&lt;app-hyper-link-text url=&quot;https://www.aboutads.info/choices/&quot; [openInNewTab]=&quot;true&quot;&gt;" dispEnd="&lt;/app-hyper-link-text&gt;">aboutads.info</pc>.</target>
       </segment>
     </unit>
     <unit id="page.privacyPolicy.disclaimer.heading">
@@ -1784,10 +1780,7 @@ Added the tool list page.</target>
     </unit>
     <unit id="page.privacyPolicy.disclaimer.body">
       <segment state="initial">
-        <source>当サイトで提供するツールはいずれもデータをサーバーに保存しません。
-        入力されたデータはすべてブラウザ内で処理されます。
-        当サイトの内容やポリシーは予告なく変更される場合があります。
-        最新のプライバシーポリシーは常に本ページをご確認ください。</source>
+        <source> 当サイトで提供するツールはいずれもデータをサーバーに保存しません。 入力されたデータはすべてブラウザ内で処理されます。 当サイトの内容やポリシーは予告なく変更される場合があります。 最新のプライバシーポリシーは常に本ページをご確認ください。 </source>
         <target>None of the tools provided on this site store data on a server.
         All input data is processed within your browser.
         The content and policies of this site may change without notice.
