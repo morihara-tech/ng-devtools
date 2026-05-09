@@ -1,0 +1,31 @@
+.privacy-policy {
+  max-width: 800px;
+
+  h1 {
+    margin-bottom: 24px;
+  }
+
+  section {
+    margin-bottom: 32px;
+  }
+
+  h2 {
+    margin-bottom: 12px;
+    color: var(--mat-sys-on-surface);
+  }
+
+  h3 {
+    margin-top: 16px;
+    margin-bottom: 8px;
+    color: var(--mat-sys-on-surface-variant);
+  }
+
+  p {
+    color: var(--mat-sys-on-surface-variant);
+    line-height: 1.8;
+  }
+
+  a {
+    color: var(--mat-sys-primary);
+  }
+}

@@ -1429,5 +1429,67 @@ UNIXタイム変換ツールを実装しました。</source>
         <source>ステップ</source>
       </segment>
     </unit>
+    <unit id="page.privacyPolicy.menu">
+      <segment>
+        <source>プライバシーポリシー</source>
+      </segment>
+    </unit>
+    <unit id="page.privacyPolicy.title">
+      <segment>
+        <source>プライバシーポリシー</source>
+      </segment>
+    </unit>
+    <unit id="page.privacyPolicy.analytics.heading">
+      <segment>
+        <source>アクセス解析ツールについて</source>
+      </segment>
+    </unit>
+    <unit id="page.privacyPolicy.analytics.body">
+      <segment>
+        <source>当サイトでは、Google が提供するアクセス解析ツール「Google アナリティクス（GA4）」を使用しています。
+        Google アナリティクスは Cookie を使用してデータを収集します。収集されるデータは匿名であり、個人を特定するものではありません。
+        収集されたデータは Google のプライバシーポリシーに基づき管理されます。</source>
+      </segment>
+    </unit>
+    <unit id="page.privacyPolicy.cookiePolicy.heading">
+      <segment>
+        <source>広告の配信について（Cookie ポリシー）</source>
+      </segment>
+    </unit>
+    <unit id="page.privacyPolicy.cookiePolicy.body">
+      <segment>
+        <source>当サイトでは、Google AdSense を利用した広告を掲載しています。
+        Google などの第三者配信事業者は Cookie を使用して、ユーザーの興味に基づくパーソナライズ広告を表示することがあります。</source>
+      </segment>
+    </unit>
+    <unit id="page.privacyPolicy.cookiePolicy.optout.heading">
+      <segment>
+        <source>広告のパーソナライズを無効にする方法</source>
+      </segment>
+    </unit>
+    <unit id="page.privacyPolicy.cookiePolicy.optout.body">
+      <segment>
+        <source>Google 広告設定ページにアクセスすることで、パーソナライズ広告を無効にできます。
+        また、aboutads.info から第三者配信事業者の Cookie 利用を無効にすることも可能です。</source>
+      </segment>
+    </unit>
+    <unit id="page.privacyPolicy.disclaimer.heading">
+      <segment>
+        <source>免責事項</source>
+      </segment>
+    </unit>
+    <unit id="page.privacyPolicy.disclaimer.body">
+      <segment>
+        <source>当サイトで提供するツールはいずれもデータをサーバーに保存しません。
+        入力されたデータはすべてブラウザ内で処理されます。
+        当サイトの内容やポリシーは予告なく変更される場合があります。
+        最新のプライバシーポリシーは常に本ページをご確認ください。</source>
+      </segment>
+    </unit>
+    <unit id="update.home.20260509">
+      <segment>
+        <source>プライバシーポリシーページを追加しました。</source>
+      </segment>
+    </unit>
   </file>
 </xliff>
