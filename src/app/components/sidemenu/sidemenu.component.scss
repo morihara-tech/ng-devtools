@@ -1,3 +1,9 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 .sidenav-width {
   padding: 0 16px;
 }
@@ -33,4 +39,9 @@
 
 .item {
   border-radius: 4px;
+}
+
+.bottom-nav {
+  margin-top: auto;
+  border-top: 1px solid var(--mat-sys-outline-variant);
 }

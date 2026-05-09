@@ -26,6 +26,13 @@ export class SidenavComponent implements OnInit {
   readonly topItem = toSignal(this.menuService.getDashboard());
   readonly categories = toSignal(this.menuService.getMenuTree());
 
+  /** Bottom navigation item linking to the Privacy Policy page. */
+  readonly privacyPolicyItem: SidemenuItemModel = {
+    label: $localize`:@@page.privacyPolicy.menu:プライバシーポリシー`,
+    routerLink: '/privacy-policy',
+    icon: 'policy',
+  };
+
   constructor() {
     effect(() => {
       const nav = this.sidenav();
