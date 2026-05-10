@@ -22,10 +22,6 @@
     padding-bottom: env(safe-area-inset-bottom);
   }
 
-  .content {
-    padding-left: 8px;
-    padding-right: 8px;
-  }
 }
 
 @media screen and (min-width:600px) {
@@ -35,8 +31,4 @@
     padding-bottom: env(safe-area-inset-bottom);
   }
 
-  .content {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
 }

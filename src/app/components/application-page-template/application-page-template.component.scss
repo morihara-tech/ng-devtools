@@ -7,6 +7,8 @@
   max-width: 85vw;
   border-left: 1px solid var(--mat-sys-outline-variant);
   box-shadow: -8px 0 24px color-mix(in srgb, var(--mat-sys-scrim) 24%, transparent);
+  border-radius: 0 !important;
+  margin: 0 !important;
 }
 
 .help-drawer-layout {
@@ -36,6 +38,11 @@
   overflow-y: auto;
 }
 
+.page-content-wrapper {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
 :host ::ng-deep .help-drawer-backdrop.mat-drawer-shown {
   background-color: var(--mat-sys-scrim);
   opacity: 0.32;
@@ -49,5 +56,7 @@
   }
   .page-content-wrapper {
     min-width: 75%;
+    padding-left: 16px;
+    padding-right: 16px;
   }
 }
