@@ -7,13 +7,22 @@
 }
 
 .help-section {
+  h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
   p {
     margin-top: 12px;
     margin-bottom: 12px;
+    line-height: 1.6;
   }
 
   ul {
     padding-inline-start: 24px;
     margin: 0;
+    display: grid;
+    row-gap: 8px;
   }
 }

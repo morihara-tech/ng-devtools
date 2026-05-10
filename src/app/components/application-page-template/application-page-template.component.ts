@@ -1,6 +1,8 @@
 import { NgTemplateOutlet } from '@angular/common';
 import { Component, inject, input, OnDestroy, OnInit, signal, TemplateRef } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { MatDrawerMode, MatSidenavModule } from '@angular/material/sidenav';
 import { PlatformService } from '../../core/services/platform.service';
 import { HelpDrawerService } from '../../services/help-drawer.service';
@@ -9,6 +11,8 @@ import { HelpDrawerService } from '../../services/help-drawer.service';
   selector: 'app-application-page-template',
   imports: [
     MatSidenavModule,
+    MatButtonModule,
+    MatIconModule,
     NgTemplateOutlet,
   ],
   templateUrl: './application-page-template.component.html',
@@ -44,6 +48,10 @@ export class ApplicationPageTemplateComponent implements OnInit, OnDestroy {
 
   onOpenedChange(opened: boolean): void {
     this.helpDrawerService.setOpened(opened);
+  }
+
+  onCloseHelp(): void {
+    this.helpDrawerService.close();
   }
 
   get helpDrawerMode(): MatDrawerMode {

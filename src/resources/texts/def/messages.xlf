@@ -126,6 +126,16 @@
         <source>メニュー</source>
       </segment>
     </unit>
+    <unit id="help.drawer.closeAriaLabel">
+      <segment>
+        <source>ヘルプを閉じる</source>
+      </segment>
+    </unit>
+    <unit id="help.drawer.title">
+      <segment>
+        <source>ヘルプ</source>
+      </segment>
+    </unit>
     <unit id="page.jsonFormatter.description">
       <segment>
         <source>JSONデータを見やすく整形します。</source>
