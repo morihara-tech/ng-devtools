@@ -1,14 +1,23 @@
 .container {
   width: auto;
-}
-
-.sidenav-content {
   background: var(--mat-sys-surface-bright);
+  padding-bottom: env(safe-area-inset-bottom);
+
+  &::after {
+    content: '';
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: env(safe-area-inset-bottom);
+    background: var(--mat-sys-surface-bright);
+    pointer-events: none;
+    z-index: -1;
+  }
 }
 
 .content {
-  padding-top: 8px;
-  padding-bottom: 8px;
+  min-height: 100%;
 }
 
 .sidenav {
@@ -19,24 +28,14 @@
   /*for smart phone*/
   .container {
     height: calc(var(--vh, 1vh) * 100 - var(--mat-toolbar-mobile-height));
-    padding-bottom: env(safe-area-inset-bottom);
   }
 
-  .content {
-    padding-left: 8px;
-    padding-right: 8px;
-  }
 }
 
 @media screen and (min-width:600px) {
   /*for pc*/
   .container {
     height: calc(var(--vh, 1vh) * 100 - var(--mat-toolbar-standard-height));
-    padding-bottom: env(safe-area-inset-bottom);
   }
 
-  .content {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
 }

@@ -151,6 +151,18 @@
         <target>All Tools</target>
       </segment>
     </unit>
+    <unit id="help.drawer.closeAriaLabel">
+      <segment state="initial">
+        <source>ヘルプを閉じる</source>
+        <target>Close help</target>
+      </segment>
+    </unit>
+    <unit id="help.drawer.title">
+      <segment state="initial">
+        <source>ヘルプ</source>
+        <target>Help</target>
+      </segment>
+    </unit>
     <unit id="page.jsonFormatter.description">
       <segment>
         <source>JSONデータを見やすく整形します。</source>
@@ -453,6 +465,42 @@ When OFF, uses decodeURI to decode while preserving the URL structure.</target>
       <segment state="initial">
         <source>無効なJSONです。</source>
         <target>Invalid JSON.</target>
+      </segment>
+    </unit>
+    <unit id="page.json.help.description">
+      <segment state="initial">
+        <source> JSONテキストを貼り付けて「整形」ボタンを押すと、インデント付きで読みやすく整形できます。 </source>
+        <target>Paste JSON text and click the &quot;Format&quot; button to format it with indentation for better readability.</target>
+      </segment>
+    </unit>
+    <unit id="page.json.help.item1">
+      <segment state="initial">
+        <source>インデント幅を変更して出力フォーマットを調整できます。</source>
+        <target>You can adjust the output format by changing the indentation width.</target>
+      </segment>
+    </unit>
+    <unit id="page.json.help.item2">
+      <segment state="initial">
+        <source>1行表示を有効にすると、改行なしのJSONを生成できます。</source>
+        <target>Enable single-line output to generate JSON without line breaks.</target>
+      </segment>
+    </unit>
+    <unit id="page.json.help.item3">
+      <segment state="initial">
+        <source>「コピー」ボタンで整形後のJSONをクリップボードへコピーできます。</source>
+        <target>Use the &quot;Copy&quot; button to copy formatted JSON to the clipboard.</target>
+      </segment>
+    </unit>
+    <unit id="page.json.help.openAriaLabel">
+      <segment state="initial">
+        <source>JSON整形ツールのヘルプを開く</source>
+        <target>Open help for the JSON formatter tool</target>
+      </segment>
+    </unit>
+    <unit id="page.json.help.title">
+      <segment state="initial">
+        <source>JSON整形ツールの使い方</source>
+        <target>How to use the JSON formatter tool</target>
       </segment>
     </unit>
     <unit id="page.json.menu">
