@@ -4,10 +4,6 @@ export const HOME_UPDATE_HISTORIES: Array<UpdateHistoryModel> = [
   // add new update history here
   {
     date: '2026-05-09',
-    description: $localize`:@@update.home.20260509.help:コンテキストヘルプ（ドロワーUI）の基盤を実装し、JSON整形ツールに適用しました。`
-  },
-  {
-    date: '2026-05-09',
     description: $localize`:@@update.home.20260509:プライバシーポリシーページを追加しました。`
   },
   {

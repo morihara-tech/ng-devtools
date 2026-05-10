@@ -1841,11 +1841,5 @@ Added the tool list page.</target>
         <target>Added the Privacy Policy page.</target>
       </segment>
     </unit>
-    <unit id="update.home.20260509.help">
-      <segment state="initial">
-        <source>コンテキストヘルプ（ドロワーUI）の基盤を実装し、JSON整形ツールに適用しました。</source>
-        <target>Implemented the context help (drawer UI) foundation and applied it to the JSON formatter tool.</target>
-      </segment>
-    </unit>
   </file>
 </xliff>

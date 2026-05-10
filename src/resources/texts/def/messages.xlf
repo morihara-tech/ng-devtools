@@ -1524,10 +1524,5 @@ UNIXタイム変換ツールを実装しました。</source>
         <source>プライバシーポリシーページを追加しました。</source>
       </segment>
     </unit>
-    <unit id="update.home.20260509.help">
-      <segment>
-        <source>コンテキストヘルプ（ドロワーUI）の基盤を実装し、JSON整形ツールに適用しました。</source>
-      </segment>
-    </unit>
   </file>
 </xliff>
