@@ -1,10 +1,17 @@
-<app-application-page-template>
+<app-application-page-template [initialHelpDrawerContent]="urlEncoderHelpContent">
   <div class="margin-bottom-16">
-    <app-heading headingType="h2"
-      hintMessage="URLエンコード・デコードとは、URL内で使用できない文字を%XX形式に変換（エンコード）したり、逆にデコードしたりする処理です。"
-      i18n-hintMessage="@@page.urlEncoder.hint"
-      i18n="@@page.urlEncoder.title"
-    >URLエンコード・デコードツール</app-heading>
+    <app-heading headingType="h2">
+      <span i18n="@@page.urlEncoder.title">URLエンコード・デコードツール</span>
+      <button
+        type="button"
+        class="right"
+        mat-icon-button
+        i18n-aria-label="@@page.urlEncoder.help.openAriaLabel"
+        aria-label="URLエンコード・デコードツールのヘルプを開く"
+        (click)="onOpenHelp(urlEncoderHelpContent)">
+        <mat-icon>help_outline</mat-icon>
+      </button>
+    </app-heading>
   </div>
   <app-url-encoder-input-card
     (convert)="onConvert($event)"
@@ -14,4 +21,40 @@
   <app-url-encoder-output-card
     #output
   ></app-url-encoder-output-card>
+
+  <ng-template #urlEncoderHelpContent>
+    <section class="help-section">
+      <h3 i18n="@@urlEncoderHelpOverview">概要</h3>
+      <p i18n="@@urlEncoderHelpOverviewDesc">
+        URLエンコード・デコードツールは、URLで使用できない文字を<code>%XX</code>形式に変換（エンコード）、またはその逆変換（デコード）を行うオンラインツールです。<code>encodeURI</code>と<code>encodeURIComponent</code>の2種類のJavaScriptメソッドに対応しています。
+      </p>
+    </section>
+    <section class="help-section">
+      <h3 i18n="@@urlEncoderHelpUsage">使い方</h3>
+      <ol>
+        <li i18n="@@urlEncoderHelpUsageStep1">テキストエリアに変換したい文字列を入力します。</li>
+        <li i18n="@@urlEncoderHelpUsageStep2">モードを「エンコード」または「デコード」から選択します。</li>
+        <li i18n="@@urlEncoderHelpUsageStep3">メソッドを「encodeURI」または「encodeURIComponent」から選択します。</li>
+        <li i18n="@@urlEncoderHelpUsageStep4">「変換」ボタンをクリックします。</li>
+      </ol>
+    </section>
+    <section class="help-section">
+      <h3 i18n="@@urlEncoderHelpSpec">仕様・用語解説</h3>
+      <ul>
+        <li i18n="@@urlEncoderHelpSpecEncodeUri"><strong>encodeURI</strong>: URLとして有効な文字（スキーム <code>http://</code>、パス区切り <code>/</code>、クエリ文字 <code>?</code>・<code>=</code>・<code>&amp;</code>など）はエンコードしません。URL全体をそのまま渡す場合に使用します。</li>
+        <li i18n="@@urlEncoderHelpSpecEncodeUriComponent"><strong>encodeURIComponent</strong>: <code>A-Z a-z 0-9 - _ . ! ~ * ' ( )</code>以外の文字をすべてエンコードします。クエリパラメータの値など、URLの一部を渡す場合に使用します。</li>
+        <li i18n="@@urlEncoderHelpSpecPercentEncoding"><strong>%エンコーディング（パーセントエンコーディング）</strong>: 各文字をUTF-8でエンコードし、各バイトを<code>%XX</code>形式（XXは16進数）で表現します（例: 「あ」→ <code>%E3%81%82</code>）。</li>
+        <li i18n="@@urlEncoderHelpSpecDecode"><strong>デコード</strong>: <code>decodeURI</code>・<code>decodeURIComponent</code>に対応し、エンコード済みの文字列を元のテキストに戻します。</li>
+        <li i18n="@@urlEncoderHelpSpecDifference"><strong>encodeURIとencodeURIComponentの違い</strong>: encodeURIは<code>:</code>、<code>/</code>、<code>?</code>、<code>#</code>などURLの構造文字をエンコードしませんが、encodeURIComponentはこれらもすべてエンコードします。</li>
+      </ul>
+    </section>
+    <section class="help-section">
+      <h3 i18n="@@urlEncoderHelpUseCase">ユースケース</h3>
+      <ul>
+        <li i18n="@@urlEncoderHelpUseCaseQuery">APIリクエストのクエリパラメータに日本語や特殊文字を含める場合。</li>
+        <li i18n="@@urlEncoderHelpUseCaseForm">フォームデータをURLセーフな形式に変換する場合。</li>
+        <li i18n="@@urlEncoderHelpUseCaseDebug">ブラウザのアドレスバーに表示されるエンコード済みURLの内容を解読する場合。</li>
+      </ul>
+    </section>
+  </ng-template>
 </app-application-page-template>

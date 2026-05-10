@@ -1,6 +1,17 @@
-<app-application-page-template>
+<app-application-page-template [initialHelpDrawerContent]="apiKeyGenHelpContent">
   <div class="margin-bottom-16">
-    <app-heading headingType="h2" i18n="@@page.apiKey.title">APIキー生成ツール</app-heading>
+    <app-heading headingType="h2">
+      <span i18n="@@page.apiKey.title">APIキー生成ツール</span>
+      <button
+        type="button"
+        class="right"
+        mat-icon-button
+        i18n-aria-label="@@page.apiKey.help.openAriaLabel"
+        aria-label="APIキー生成ツールのヘルプを開く"
+        (click)="onOpenHelp(apiKeyGenHelpContent)">
+        <mat-icon>help_outline</mat-icon>
+      </button>
+    </app-heading>
   </div>
   <app-api-key-gen-input-card
     (generate)="onGenerate($event)"
@@ -9,4 +20,41 @@
   <app-api-key-gen-output-card
     #output
   ></app-api-key-gen-output-card>
+
+  <ng-template #apiKeyGenHelpContent>
+    <section class="help-section">
+      <h3 i18n="@@apiKeyGenHelpOverview">概要</h3>
+      <p i18n="@@apiKeyGenHelpOverviewDesc">
+        APIキージェネレーターは、安全なAPIキーをオンラインで生成するツールです。Base62・16進数・UUID v4の3形式に対応し、任意のプレフィックスを付与したAPIキーを一括生成できます。
+      </p>
+    </section>
+    <section class="help-section">
+      <h3 i18n="@@apiKeyGenHelpUsage">使い方</h3>
+      <ol>
+        <li i18n="@@apiKeyGenHelpUsageStep1">APIキーのフォーマット（base62 / hex / uuid-v4）を選択します。</li>
+        <li i18n="@@apiKeyGenHelpUsageStep2">キーの長さを指定します（base62・hex形式の場合）。</li>
+        <li i18n="@@apiKeyGenHelpUsageStep3">プレフィックス文字列を設定します（省略可）。</li>
+        <li i18n="@@apiKeyGenHelpUsageStep4">生成件数を指定します。</li>
+        <li i18n="@@apiKeyGenHelpUsageStep5">「生成」ボタンをクリックします。</li>
+      </ol>
+    </section>
+    <section class="help-section">
+      <h3 i18n="@@apiKeyGenHelpSpec">仕様・用語解説</h3>
+      <ul>
+        <li i18n="@@apiKeyGenHelpSpecBase62"><strong>Base62フォーマット</strong>: <code>[0-9A-Za-z]</code>の62文字を使用します。URLセーフで高いエントロピーを実現しており、Stripeなど多くのサービスで採用されています。</li>
+        <li i18n="@@apiKeyGenHelpSpecHex"><strong>Hexフォーマット</strong>: <code>[0-9a-f]</code>の16文字（16進数）を使用します。暗号ライブラリとの互換性が高く、SHA-256などのハッシュ関数と組み合わせやすい形式です。</li>
+        <li i18n="@@apiKeyGenHelpSpecUuid"><strong>UUID v4フォーマット</strong>: RFC 4122に準拠したUUID v4形式（<code>xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx</code>）で生成します。既存システムとの互換性が高い標準形式です。</li>
+        <li i18n="@@apiKeyGenHelpSpecPrefix"><strong>プレフィックス</strong>: <code>sk_</code>、<code>pk_</code>、<code>api_</code>などのプレフィックスを付与することで、キーの用途や権限を識別しやすくします（例: OpenAIの<code>sk-...</code>形式）。</li>
+        <li i18n="@@apiKeyGenHelpSpecEntropy"><strong>エントロピーと安全性</strong>: Base62で32文字の場合、エントロピーは約190ビットとなり、総当たり攻撃に対して非常に高い耐性を持ちます。</li>
+      </ul>
+    </section>
+    <section class="help-section">
+      <h3 i18n="@@apiKeyGenHelpUseCase">ユースケース</h3>
+      <ul>
+        <li i18n="@@apiKeyGenHelpUseCaseAuth">REST APIの認証トークンやAPIキーの生成。</li>
+        <li i18n="@@apiKeyGenHelpUseCaseWebhook">ウェブフックシークレットの生成。</li>
+        <li i18n="@@apiKeyGenHelpUseCaseSaas">マルチテナントSaaSアプリケーションの顧客向けAPIキー発行。</li>
+      </ul>
+    </section>
+  </ng-template>
 </app-application-page-template>

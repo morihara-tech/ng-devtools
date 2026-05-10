@@ -1,6 +1,17 @@
-<app-application-page-template>
+<app-application-page-template [initialHelpDrawerContent]="ulidGenHelpContent">
   <div class="margin-bottom-16">
-    <app-heading headingType="h2" i18n="@@page.ulid.title">ULID生成ツール</app-heading>
+    <app-heading headingType="h2">
+      <span i18n="@@page.ulid.title">ULID生成ツール</span>
+      <button
+        type="button"
+        class="right"
+        mat-icon-button
+        i18n-aria-label="@@page.ulid.help.openAriaLabel"
+        aria-label="ULID生成ツールのヘルプを開く"
+        (click)="onOpenHelp(ulidGenHelpContent)">
+        <mat-icon>help_outline</mat-icon>
+      </button>
+    </app-heading>
   </div>
   <app-ulid-gen-input-card
     (generate)="onGenerate($event)"
@@ -8,5 +19,41 @@
   <div class="spacer"></div>
   <app-ulid-gen-output-card
     #output
-  ></app-ulid-gen-output-card>  
+  ></app-ulid-gen-output-card>
+
+  <ng-template #ulidGenHelpContent>
+    <section class="help-section">
+      <h3 i18n="@@ulidGenHelpOverview">概要</h3>
+      <p i18n="@@ulidGenHelpOverviewDesc">
+        ULIDジェネレーターは、Universally Unique Lexicographically Sortable Identifier（ULID）を生成するオンラインツールです。UUIDの代替として、時系列ソート可能な一意識別子を一括生成できます。
+      </p>
+    </section>
+    <section class="help-section">
+      <h3 i18n="@@ulidGenHelpUsage">使い方</h3>
+      <ol>
+        <li i18n="@@ulidGenHelpUsageStep1">生成件数を指定します。</li>
+        <li i18n="@@ulidGenHelpUsageStep2">基準タイムスタンプ（ミリ秒）を設定します（デフォルトは現在時刻）。</li>
+        <li i18n="@@ulidGenHelpUsageStep3">同一ミリ秒内でも値を単調増加させたい場合は単調増加モードを有効にします。</li>
+        <li i18n="@@ulidGenHelpUsageStep4">「生成」ボタンをクリックします。</li>
+      </ol>
+    </section>
+    <section class="help-section">
+      <h3 i18n="@@ulidGenHelpSpec">仕様・用語解説</h3>
+      <ul>
+        <li i18n="@@ulidGenHelpSpecFormat"><strong>ULID仕様</strong>: 128ビット＝48ビットのタイムスタンプ（ミリ秒精度）＋80ビットのランダム値で構成されます。Crockford's Base32でエンコードされた26文字の文字列（例: <code>01ARZ3NDEKTSV4RRFFQ69G5FAV</code>）です。</li>
+        <li i18n="@@ulidGenHelpSpecSort"><strong>辞書順ソート</strong>: ULIDの先頭10文字が時刻を表すため、辞書順ソート（文字列比較）がそのまま時系列ソートになります。DBインデックスの局所性が高まりパフォーマンスが向上します。</li>
+        <li i18n="@@ulidGenHelpSpecMono"><strong>単調増加モード</strong>: 同一ミリ秒内に複数のULIDを生成した場合、ランダム部分をインクリメントして単調増加を保証します。イベントの順序を厳密に保持したい場合に使用します。</li>
+        <li i18n="@@ulidGenHelpSpecVsUuid"><strong>UUIDとの比較</strong>: UUID v4はランダムな文字列のため辞書順ソートに時系列の意味がありませんが、ULIDは辞書順ソート＝時系列ソートになります。RDBMSのクラスタードインデックスで特に有効です。</li>
+        <li i18n="@@ulidGenHelpSpecBase32"><strong>Crockford's Base32</strong>: I, L, O, U を除外した32文字セットを使用。視覚的に紛らわしい文字を排除し、人間が読みやすい形式にしています。</li>
+      </ul>
+    </section>
+    <section class="help-section">
+      <h3 i18n="@@ulidGenHelpUseCase">ユースケース</h3>
+      <ul>
+        <li i18n="@@ulidGenHelpUseCaseLog">時系列順のログIDやイベントIDの生成。</li>
+        <li i18n="@@ulidGenHelpUseCaseDb">RDBMSのプライマリキーとしてインデックス効率を高めたい場合。</li>
+        <li i18n="@@ulidGenHelpUseCaseToken">ファイル名や一時トークンの一意識別子として活用。</li>
+      </ul>
+    </section>
+  </ng-template>
 </app-application-page-template>

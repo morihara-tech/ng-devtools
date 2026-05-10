@@ -1,6 +1,17 @@
-<app-application-page-template>
+<app-application-page-template [initialHelpDrawerContent]="unixTimestampHelpContent">
   <div class="margin-bottom-16">
-    <app-heading headingType="h2" i18n="@@page.unixTimestamp.title">UNIXタイム変換</app-heading>
+    <app-heading headingType="h2">
+      <span i18n="@@page.unixTimestamp.title">UNIXタイム変換</span>
+      <button
+        type="button"
+        class="right"
+        mat-icon-button
+        i18n-aria-label="@@page.unixTimestamp.help.openAriaLabel"
+        aria-label="UNIXタイム変換ツールのヘルプを開く"
+        (click)="onOpenHelp(unixTimestampHelpContent)">
+        <mat-icon>help_outline</mat-icon>
+      </button>
+    </app-heading>
   </div>
   <app-unix-timestamp-input-card
     (convert)="onConvert($event)">
@@ -9,4 +20,42 @@
   <app-unix-timestamp-output-card
     #output>
   </app-unix-timestamp-output-card>
+
+  <ng-template #unixTimestampHelpContent>
+    <section class="help-section">
+      <h3 i18n="@@unixTimestampHelpOverview">概要</h3>
+      <p i18n="@@unixTimestampHelpOverviewDesc">
+        UNIXタイム変換ツールは、UNIXタイムスタンプ（エポック時刻）と人間が読める日時表記を相互変換するオンラインツールです。秒・ミリ秒単位のタイムスタンプに対応し、複数の形式（ISO 8601・RFC 2822など）とタイムゾーンでの時刻表示が可能です。
+      </p>
+    </section>
+    <section class="help-section">
+      <h3 i18n="@@unixTimestampHelpUsage">使い方</h3>
+      <ol>
+        <li i18n="@@unixTimestampHelpUsageStep1">変換モードを「タイムスタンプ→日時」または「日時→タイムスタンプ」から選択します。</li>
+        <li i18n="@@unixTimestampHelpUsageStep2">タイムスタンプ→日時の場合：UNIXタイムスタンプ（秒またはミリ秒）を入力します。</li>
+        <li i18n="@@unixTimestampHelpUsageStep3">日時→タイムスタンプの場合：日付と時刻を入力します。</li>
+        <li i18n="@@unixTimestampHelpUsageStep4">IANA形式のタイムゾーン（例: <code>Asia/Tokyo</code>）を選択します。</li>
+        <li i18n="@@unixTimestampHelpUsageStep5">「変換」ボタンをクリックします。</li>
+      </ol>
+    </section>
+    <section class="help-section">
+      <h3 i18n="@@unixTimestampHelpSpec">仕様・用語解説</h3>
+      <ul>
+        <li i18n="@@unixTimestampHelpSpecUnix"><strong>UNIXタイムスタンプ</strong>: 1970年1月1日 00:00:00 UTC（Unixエポック）からの経過秒数です。32ビット整数の場合、2038年1月19日 03:14:07 UTCで上限に達する「2038年問題」が存在します。</li>
+        <li i18n="@@unixTimestampHelpSpecSeconds"><strong>タイムスタンプ（秒）</strong>: <code>Math.floor(Date.now() / 1000)</code>で取得できる10桁の数値です。</li>
+        <li i18n="@@unixTimestampHelpSpecMillis"><strong>タイムスタンプ（ミリ秒）</strong>: <code>Date.now()</code>で取得できる13桁の数値です。JavaScriptやJavaで広く使用されます。</li>
+        <li i18n="@@unixTimestampHelpSpecIso"><strong>ISO 8601</strong>: <code>2024-01-15T12:30:00+09:00</code>形式の国際標準日時表記です。タイムゾーンオフセットを明示できます。</li>
+        <li i18n="@@unixTimestampHelpSpecRfc"><strong>RFC 2822</strong>: <code>Mon, 15 Jan 2024 12:30:00 +0900</code>形式のメールDate:ヘッダで使用される表記です。</li>
+        <li i18n="@@unixTimestampHelpSpecIana"><strong>IANAタイムゾーン</strong>: <code>Asia/Tokyo</code>、<code>America/New_York</code>などの標準的なタイムゾーン識別子です。夏時間（DST）も自動考慮されます。</li>
+      </ul>
+    </section>
+    <section class="help-section">
+      <h3 i18n="@@unixTimestampHelpUseCase">ユースケース</h3>
+      <ul>
+        <li i18n="@@unixTimestampHelpUseCaseApi">APIレスポンスに含まれるUNIXタイムスタンプを人間が読める日時に変換する場合。</li>
+        <li i18n="@@unixTimestampHelpUseCaseLog">ログファイルのタイムスタンプ解析。</li>
+        <li i18n="@@unixTimestampHelpUseCaseTz">異なるタイムゾーン間での時刻変換・比較。</li>
+      </ul>
+    </section>
+  </ng-template>
 </app-application-page-template>

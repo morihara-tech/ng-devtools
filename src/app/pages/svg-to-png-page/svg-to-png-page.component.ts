@@ -1,8 +1,11 @@
-import { Component, viewChild } from '@angular/core';
+import { Component, inject, TemplateRef, viewChild } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { SvgToPngInputCardComponent } from './svg-to-png-input-card/svg-to-png-input-card.component';
 import { SvgToPngOutputCardComponent } from './svg-to-png-output-card/svg-to-png-output-card.component';
 import { HeadingComponent } from '../../components/heading/heading.component';
 import { ApplicationPageTemplateComponent } from '../../components/application-page-template/application-page-template.component';
+import { HelpDrawerService } from '../../services/help-drawer.service';
 import { SvgToPngSettingsModel, DEFAULT_SVG_TO_PNG_SETTINGS } from './svg-to-png-model';
 
 @Component({
@@ -12,6 +15,8 @@ import { SvgToPngSettingsModel, DEFAULT_SVG_TO_PNG_SETTINGS } from './svg-to-png
     HeadingComponent,
     SvgToPngInputCardComponent,
     SvgToPngOutputCardComponent,
+    MatButtonModule,
+    MatIconModule,
   ],
   templateUrl: './svg-to-png-page.component.html',
   styleUrl: './svg-to-png-page.component.scss'
@@ -19,6 +24,7 @@ import { SvgToPngSettingsModel, DEFAULT_SVG_TO_PNG_SETTINGS } from './svg-to-png
 export class SvgToPngPageComponent {
   private readonly outputCard = viewChild<SvgToPngOutputCardComponent>('output');
   private readonly inputCard = viewChild<SvgToPngInputCardComponent>('input');
+  private readonly helpDrawerService = inject(HelpDrawerService);
 
   currentSettings: SvgToPngSettingsModel = { ...DEFAULT_SVG_TO_PNG_SETTINGS };
   currentSvgCode: string = '';
@@ -37,6 +43,10 @@ export class SvgToPngPageComponent {
   onSvgCodeChange(svgCode: string): void {
     this.currentSvgCode = svgCode;
     this.updatePreview();
+  }
+
+  onOpenHelp(content: TemplateRef<unknown>): void {
+    this.helpDrawerService.open(content);
   }
 
   private updatePreview(): void {
