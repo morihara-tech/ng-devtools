@@ -58,7 +58,7 @@
     <unit id="apiKeyGenHelpSpecPrefix">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">プレフィックス</pc>: <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">sk_</pc>、<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">pk_</pc>、<pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">api_</pc>などのプレフィックスを付与することで、キーの用途や権限を識別しやすくします（例: OpenAIの<pc id="4" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">sk-...</pc>形式）。</source>
-        <target>Prefix: Adding prefixes such as sk_, pk_, or api_ makes it easy to identify the purpose and permissions of a key (e.g., OpenAI's sk-... format).</target>
+        <target>Prefix: Adding prefixes such as sk_, pk_, or api_ makes it easy to identify the purpose and permissions of a key (e.g., OpenAI&apos;s sk-... format).</target>
       </segment>
     </unit>
     <unit id="apiKeyGenHelpSpecUuid">
@@ -731,40 +731,118 @@ When OFF, uses decodeURI to decode while preserving the URL structure.</target>
         <target>Invalid JSON.</target>
       </segment>
     </unit>
-    <unit id="page.json.help.description">
+    <unit id="jsonFormatterHelpOverview">
       <segment state="initial">
-        <source> JSONテキストを貼り付けて「整形」ボタンを押すと、インデント付きで読みやすく整形できます。 </source>
-        <target>Paste JSON text and click the &quot;Format&quot; button to format it with indentation for better readability.</target>
+        <source>概要</source>
+        <target>Overview</target>
       </segment>
     </unit>
-    <unit id="page.json.help.item1">
+    <unit id="jsonFormatterHelpOverviewDesc">
       <segment state="initial">
-        <source>インデント幅を変更して出力フォーマットを調整できます。</source>
-        <target>You can adjust the output format by changing the indentation width.</target>
+        <source> JSON整形ツールは、読みにくいJSON文字列を自動的に整形・フォーマットするオンラインツールです。インデントの調整・ミニファイ（圧縮）に対応し、APIレスポンスや設定ファイルのデバッグ・確認作業を効率化します。 </source>
+        <target>The JSON formatter is an online tool that automatically formats and beautifies hard-to-read JSON strings. It supports indentation adjustment and minification (compression), streamlining debugging and inspection of API responses and configuration files.</target>
       </segment>
     </unit>
-    <unit id="page.json.help.item2">
+    <unit id="jsonFormatterHelpSpec">
       <segment state="initial">
-        <source>1行表示を有効にすると、改行なしのJSONを生成できます。</source>
-        <target>Enable single-line output to generate JSON without line breaks.</target>
+        <source>仕様・用語解説</source>
+        <target>Specifications &amp; Glossary</target>
       </segment>
     </unit>
-    <unit id="page.json.help.item3">
+    <unit id="jsonFormatterHelpSpecFormat">
+      <segment state="initial">
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">フォーマットモード（format）</pc>: インデントと改行を付与してJSONを読みやすく整形します。ネストされたオブジェクトや配列が階層構造で表示されます。</source>
+        <target>Format mode (format): Adds indentation and line breaks to make JSON easy to read. Nested objects and arrays are displayed in a hierarchical structure.</target>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpSpecIndent">
+      <segment state="initial">
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">インデントサイズ</pc>: フォーマットモード時に使用するスペース数を設定します（例: 2スペース、4スペース）。チームのコーディングスタイルに合わせて選択できます。</source>
+        <target>Indentation size: Sets the number of spaces to use in format mode (e.g., 2 spaces, 4 spaces). Select according to your team's coding style.</target>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpSpecJson">
+      <segment state="initial">
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">JSON（JavaScript Object Notation）</pc>: 軽量なデータ交換フォーマットです。人間にも機械にも読みやすく、REST APIのリクエスト・レスポンスや設定ファイルなどで広く使われています。RFC 8259 / ECMA-404で標準化されています。</source>
+        <target>JSON (JavaScript Object Notation): A lightweight data exchange format. Human-readable and machine-readable, it is widely used for REST API requests/responses and configuration files. Standardized by RFC 8259 / ECMA-404.</target>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpSpecMinify">
+      <segment state="initial">
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">ミニファイモード（minify）</pc>: 改行・スペースをすべて除去してJSONを1行に圧縮します。ネットワーク転送量を削減したい場合や、HTTPリクエストボディとして利用する場合に有効です。</source>
+        <target>Minify mode (minify): Removes all line breaks and spaces to compress JSON into a single line. Useful for reducing network transfer size or when using JSON as an HTTP request body.</target>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpSpecValidation">
+      <segment state="initial">
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">バリデーション</pc>: 入力されたJSONが不正な場合（構文エラー）はエラーメッセージが表示されます。JSONのキーは二重引用符で囲む必要があり、末尾のカンマ（trailing comma）は許可されていません。</source>
+        <target>Validation: An error message is displayed when the input JSON is invalid (syntax error). Keys must be enclosed in double quotes, and trailing commas are not allowed.</target>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpUsage">
+      <segment state="initial">
+        <source>使い方</source>
+        <target>How to Use</target>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpUsageStep1">
+      <segment state="initial">
+        <source>テキストエリアにJSONテキストを貼り付けます。</source>
+        <target>Paste the JSON text into the text area.</target>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpUsageStep2">
+      <segment state="initial">
+        <source>整形モード（フォーマット / ミニファイ）を選択します。</source>
+        <target>Select the formatting mode (Format / Minify).</target>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpUsageStep3">
+      <segment state="initial">
+        <source>インデントサイズ（スペース数）を選択します。</source>
+        <target>Select the indentation size (number of spaces).</target>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpUsageStep4">
+      <segment state="initial">
+        <source>「整形」ボタンをクリックすると結果が表示されます。</source>
+        <target>Click the &quot;Format&quot; button to see the result.</target>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpUsageStep5">
       <segment state="initial">
         <source>「コピー」ボタンで整形後のJSONをクリップボードへコピーできます。</source>
         <target>Use the &quot;Copy&quot; button to copy formatted JSON to the clipboard.</target>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpUseCase">
+      <segment state="initial">
+        <source>ユースケース</source>
+        <target>Use the &quot;Copy&quot; button to copy the formatted JSON to the clipboard.</target>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpUseCaseApi">
+      <segment state="initial">
+        <source>APIレスポンスを読みやすく整形してデバッグする場合。</source>
+        <target>Use Cases</target>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpUseCaseConfig">
+      <segment state="initial">
+        <source>設定ファイル（package.json、tsconfig.jsonなど）の確認・編集時。</source>
+        <target>Formatting and debugging API responses for readability.</target>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpUseCaseMinify">
+      <segment state="initial">
+        <source>本番環境向けにJSONを圧縮してファイルサイズを削減する場合。</source>
+        <target>Reviewing and editing configuration files such as package.json and tsconfig.json.</target>
       </segment>
     </unit>
     <unit id="page.json.help.openAriaLabel">
       <segment state="initial">
         <source>JSON整形ツールのヘルプを開く</source>
         <target>Open help for the JSON formatter tool</target>
-      </segment>
-    </unit>
-    <unit id="page.json.help.title">
-      <segment state="initial">
-        <source>JSON整形ツールの使い方</source>
-        <target>How to use the JSON formatter tool</target>
       </segment>
     </unit>
     <unit id="page.json.menu">
@@ -1578,7 +1656,7 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
     <unit id="svgViewerHelpSpecConversion">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">PNG変換の仕組み</pc>: ブラウザのCanvas APIを使用してSVGをラスタライズします。<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">drawImage()</pc>でSVGをCanvasに描画し、<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">toDataURL(&apos;image/png&apos;)</pc>でPNGデータに変換します。</source>
-        <target>PNG conversion mechanism: Uses the browser's Canvas API to rasterize SVG. Renders the SVG to a Canvas with drawImage(), then converts it to PNG data with toDataURL('image/png').</target>
+        <target>PNG conversion mechanism: Uses the browser&apos;s Canvas API to rasterize SVG. Renders the SVG to a Canvas with drawImage(), then converts it to PNG data with toDataURL(&apos;image/png&apos;).</target>
       </segment>
     </unit>
     <unit id="svgViewerHelpSpecOffset">
@@ -1704,7 +1782,7 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
     <unit id="textDiffHelpSpecLineDiff">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">行単位の差分</pc>: テキストを行単位で比較し、変更のあった行を識別します。各行の変更内容を原文と並べて表示します。</source>
-        <target>Line-by-line diff: Compares text on a line-by-line basis and identifies changed lines. Displays each line's changes alongside the original.</target>
+        <target>Line-by-line diff: Compares text on a line-by-line basis and identifies changed lines. Displays each line&apos;s changes alongside the original.</target>
       </segment>
     </unit>
     <unit id="textDiffHelpSpecSideBySide">
@@ -1788,13 +1866,13 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
     <unit id="ulidGenHelpSpecBase32">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">Crockford&apos;s Base32</pc>: I, L, O, U を除外した32文字セットを使用。視覚的に紛らわしい文字を排除し、人間が読みやすい形式にしています。</source>
-        <target>Crockford's Base32: Uses a 32-character set excluding I, L, O, and U, eliminating visually confusing characters for a more human-readable format.</target>
+        <target>Crockford&apos;s Base32: Uses a 32-character set excluding I, L, O, and U, eliminating visually confusing characters for a more human-readable format.</target>
       </segment>
     </unit>
     <unit id="ulidGenHelpSpecFormat">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">ULID仕様</pc>: 128ビット＝48ビットのタイムスタンプ（ミリ秒精度）＋80ビットのランダム値で構成されます。Crockford&apos;s Base32でエンコードされた26文字の文字列（例: <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">01ARZ3NDEKTSV4RRFFQ69G5FAV</pc>）です。</source>
-        <target>ULID specification: 128 bits = 48-bit timestamp (millisecond precision) + 80-bit random value. Encoded as a 26-character string using Crockford's Base32 (e.g., 01ARZ3NDEKTSV4RRFFQ69G5FAV).</target>
+        <target>ULID specification: 128 bits = 48-bit timestamp (millisecond precision) + 80-bit random value. Encoded as a 26-character string using Crockford&apos;s Base32 (e.g., 01ARZ3NDEKTSV4RRFFQ69G5FAV).</target>
       </segment>
     </unit>
     <unit id="ulidGenHelpSpecMono">
@@ -1812,7 +1890,7 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
     <unit id="ulidGenHelpSpecVsUuid">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">UUIDとの比較</pc>: UUID v4はランダムな文字列のため辞書順ソートに時系列の意味がありませんが、ULIDは辞書順ソート＝時系列ソートになります。RDBMSのクラスタードインデックスで特に有効です。</source>
-        <target>Comparison with UUID: UUID v4 has no chronological meaning in lexicographic order, but ULID's lexicographic order equals chronological order. Especially effective for clustered indexes in RDBMSes.</target>
+        <target>Comparison with UUID: UUID v4 has no chronological meaning in lexicographic order, but ULID&apos;s lexicographic order equals chronological order. Especially effective for clustered indexes in RDBMSes.</target>
       </segment>
     </unit>
     <unit id="ulidGenHelpUsage">
@@ -2948,7 +3026,7 @@ Added the tool list page.</target>
     <unit id="urlEncoderHelpSpecEncodeUriComponent">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">encodeURIComponent</pc>: <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">A-Z a-z 0-9 - _ . ! ~ * &apos; ( )</pc>以外の文字をすべてエンコードします。クエリパラメータの値など、URLの一部を渡す場合に使用します。</source>
-        <target>encodeURIComponent: Encodes all characters except A-Z a-z 0-9 - _ . ! ~ * ' ( ). Use when passing a part of a URL, such as a query parameter value.</target>
+        <target>encodeURIComponent: Encodes all characters except A-Z a-z 0-9 - _ . ! ~ * &apos; ( ). Use when passing a part of a URL, such as a query parameter value.</target>
       </segment>
     </unit>
     <unit id="urlEncoderHelpSpecPercentEncoding">
