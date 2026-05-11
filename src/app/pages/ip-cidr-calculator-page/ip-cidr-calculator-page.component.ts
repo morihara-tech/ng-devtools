@@ -1,8 +1,11 @@
-import { Component, viewChild } from '@angular/core';
+import { Component, inject, TemplateRef, viewChild } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { IpCidrInputCardComponent } from './ip-cidr-input-card/ip-cidr-input-card.component';
 import { IpCidrOutputCardComponent } from './ip-cidr-output-card/ip-cidr-output-card.component';
 import { HeadingComponent } from '../../components/heading/heading.component';
 import { ApplicationPageTemplateComponent } from '../../components/application-page-template/application-page-template.component';
+import { HelpDrawerService } from '../../services/help-drawer.service';
 import { IpCidrInputModel } from './ip-cidr-model';
 
 @Component({
@@ -12,14 +15,21 @@ import { IpCidrInputModel } from './ip-cidr-model';
     HeadingComponent,
     IpCidrInputCardComponent,
     IpCidrOutputCardComponent,
+    MatButtonModule,
+    MatIconModule,
   ],
   templateUrl: './ip-cidr-calculator-page.component.html',
   styleUrl: './ip-cidr-calculator-page.component.scss'
 })
 export class IpCidrCalculatorPageComponent {
   private readonly output = viewChild<IpCidrOutputCardComponent>('output');
+  private readonly helpDrawerService = inject(HelpDrawerService);
 
   onCalculate(input: IpCidrInputModel): void {
     this.output()?.calculateResult(input);
+  }
+
+  onOpenHelp(content: TemplateRef<unknown>): void {
+    this.helpDrawerService.open(content);
   }
 }

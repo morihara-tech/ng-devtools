@@ -17,14 +17,37 @@
 
   <ng-template #jsonHelpDrawerContent>
     <section class="help-section">
-      <h3 i18n="@@page.json.help.title">JSON整形ツールの使い方</h3>
-      <p i18n="@@page.json.help.description">
-        JSONテキストを貼り付けて「整形」ボタンを押すと、インデント付きで読みやすく整形できます。
+      <h3 i18n="@@jsonFormatterHelpOverview">概要</h3>
+      <p i18n="@@jsonFormatterHelpOverviewDesc">
+        JSON整形ツールは、読みにくいJSON文字列を自動的に整形・フォーマットするオンラインツールです。インデントの調整・ミニファイ（圧縮）に対応し、APIレスポンスや設定ファイルのデバッグ・確認作業を効率化します。
       </p>
+    </section>
+    <section class="help-section">
+      <h3 i18n="@@jsonFormatterHelpUsage">使い方</h3>
+      <ol>
+        <li i18n="@@jsonFormatterHelpUsageStep1">テキストエリアにJSONテキストを貼り付けます。</li>
+        <li i18n="@@jsonFormatterHelpUsageStep2">「モード」で整形方法（整形 / 圧縮）を選択します。</li>
+        <li i18n="@@jsonFormatterHelpUsageStep3">「インデント」でスペース数を選択します。</li>
+        <li i18n="@@jsonFormatterHelpUsageStep4">「変換」ボタンをクリックすると結果が表示されます。</li>
+        <li i18n="@@jsonFormatterHelpUsageStep5">クリップボードへコピーボタンで整形後のJSONをコピーできます。</li>
+      </ol>
+    </section>
+    <section class="help-section">
+      <h3 i18n="@@jsonFormatterHelpSpec">仕様・用語解説</h3>
       <ul>
-        <li i18n="@@page.json.help.item1">インデント幅を変更して出力フォーマットを調整できます。</li>
-        <li i18n="@@page.json.help.item2">1行表示を有効にすると、改行なしのJSONを生成できます。</li>
-        <li i18n="@@page.json.help.item3">「コピー」ボタンで整形後のJSONをクリップボードへコピーできます。</li>
+        <li i18n="@@jsonFormatterHelpSpecJson"><strong>JSON（JavaScript Object Notation）</strong>: 軽量なデータ交換フォーマットです。人間にも機械にも読みやすく、REST APIのリクエスト・レスポンスや設定ファイルなどで広く使われています。RFC 8259 / ECMA-404で標準化されています。</li>
+        <li i18n="@@jsonFormatterHelpSpecFormat"><strong>「整形」モード</strong>: インデントと改行を付与してJSONを読みやすく整形します。ネストされたオブジェクトや配列が階層構造で表示されます。</li>
+        <li i18n="@@jsonFormatterHelpSpecMinify"><strong>「圧縮」モード</strong>: 改行・スペースをすべて除去してJSONを1行に圧縮します。ネットワーク転送量を削減したい場合や、HTTPリクエストボディとして利用する場合に有効です。</li>
+        <li i18n="@@jsonFormatterHelpSpecIndent"><strong>「インデント」</strong>: 整形モード時に使用するスペース数を設定します（例: 2スペース、4スペース）。チームのコーディングスタイルに合わせて選択できます。</li>
+        <li i18n="@@jsonFormatterHelpSpecValidation"><strong>バリデーション</strong>: 入力されたJSONが不正な場合（構文エラー）はエラーメッセージが表示されます。JSONのキーは二重引用符で囲む必要があり、末尾のカンマ（trailing comma）は許可されていません。</li>
+      </ul>
+    </section>
+    <section class="help-section">
+      <h3 i18n="@@jsonFormatterHelpUseCase">ユースケース</h3>
+      <ul>
+        <li i18n="@@jsonFormatterHelpUseCaseApi">APIレスポンスを読みやすく整形してデバッグする場合。</li>
+        <li i18n="@@jsonFormatterHelpUseCaseConfig">設定ファイル（package.json、tsconfig.jsonなど）の確認・編集時。</li>
+        <li i18n="@@jsonFormatterHelpUseCaseMinify">本番環境向けにJSONを圧縮してファイルサイズを削減する場合。</li>
       </ul>
     </section>
   </ng-template>
