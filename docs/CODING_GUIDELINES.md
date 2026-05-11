@@ -95,5 +95,8 @@ When generating commit messages:
   - **Length & SEO**: The "Specifications/Glossary" section must be detailed enough to explain the technical background and core concepts. The total text must be at least 500 Japanese characters to serve as a technical mini-reference and fulfill SEO/AdSense requirements.
   - **Implementation**: Place the HTML content directly inside the component's template wrapped in `<ng-template #helpContent>`. Do NOT store the text in TypeScript files.
   - **i18n**: Every text-containing HTML tag inside the help template MUST include an `i18n` attribute with a logical custom ID (e.g., `<h3 i18n="@@newToolNameHelpOverview">概要</h3>`).
+  - **Writing Style for Help Text**: Describe operations based on user actions and intent, not by naming specific UI components.
+    - *Bad*: "Turn on the toggle button", "Use the slider to set...", "Click the icon button"
+    - *Good*: "Enable the feature", "Specify the value...", "Click the clear button"
   - **UI Label Consistency**: Help text that refers to UI elements (buttons, field labels, dropdown options, toggles, etc.) **MUST** use the exact same wording that appears on screen. For example, if a button is labelled 「変換」, the help text must say 「変換」ボタン, not 「整形」ボタン. If a dropdown option is labelled 「濃淡」, do not call it 「シェード」 in the help. Always verify the actual rendered text in the template before writing the help copy.
   - **Integration**: The component must integrate with `HelpDrawerService` to pass the `#helpContent` when the user clicks the help icon in the header.
