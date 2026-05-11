@@ -33,11 +33,11 @@
     <section class="help-section">
       <h3 i18n="@@svgViewerHelpUsage">使い方</h3>
       <ol>
-        <li i18n="@@svgViewerHelpUsageStep1">テキストエリアにSVGコードを貼り付けるか、サンプルを選択します。</li>
-        <li i18n="@@svgViewerHelpUsageStep2">キャンバスの幅・高さ（ピクセル）を設定します。</li>
-        <li i18n="@@svgViewerHelpUsageStep3">背景色（または透明）を選択します。</li>
-        <li i18n="@@svgViewerHelpUsageStep4">スケール（倍率）とX・Yオフセット（描画位置）を調整します。</li>
-        <li i18n="@@svgViewerHelpUsageStep5">プレビューを確認し、「PNGダウンロード」ボタンで画像を保存します。</li>
+        <li i18n="@@svgViewerHelpUsageStep1">「SVGコード」エリアにSVGコードを貼り付けるか、サンプルを選択します。</li>
+        <li i18n="@@svgViewerHelpUsageStep2">「Canvas設定」でキャンバスの「幅」・「高さ」（ピクセル）を設定します。</li>
+        <li i18n="@@svgViewerHelpUsageStep3">「背景色」を指定するか、「背景を透過」を有効にします。</li>
+        <li i18n="@@svgViewerHelpUsageStep4">「SVG設定」で「拡大率」と「X座標」・「Y座標」（描画位置のオフセット）を調整します。</li>
+        <li i18n="@@svgViewerHelpUsageStep5">プレビューを確認し、ダウンロードアイコン（PNG形式でダウンロード）で画像を保存します。</li>
       </ol>
     </section>
     <section class="help-section">
@@ -45,8 +45,8 @@
       <ul>
         <li i18n="@@svgViewerHelpSpecSvg"><strong>SVG（Scalable Vector Graphics）</strong>: XMLベースのベクター画像形式（W3C標準）です。数式で図形を表現するため解像度に依存せず、どのサイズでも鮮明に表示されます。</li>
         <li i18n="@@svgViewerHelpSpecConversion"><strong>PNG変換の仕組み</strong>: ブラウザのCanvas APIを使用してSVGをラスタライズします。<code>drawImage()</code>でSVGをCanvasに描画し、<code>toDataURL('image/png')</code>でPNGデータに変換します。</li>
-        <li i18n="@@svgViewerHelpSpecScale"><strong>スケール</strong>: SVGを拡大・縮小して描画する倍率です。100%がデフォルトで、Retinaディスプレイ向けに200%で出力することもできます。</li>
-        <li i18n="@@svgViewerHelpSpecOffset"><strong>オフセット</strong>: SVGの描画位置をX・Y方向にずらすピクセル数です。キャンバス内の配置調整に使用します。</li>
+        <li i18n="@@svgViewerHelpSpecScale"><strong>「拡大率」</strong>: SVGを拡大・縮小して描画する倍率です。100%がデフォルトで、Retinaディスプレイ向けに200%で出力することもできます。</li>
+        <li i18n="@@svgViewerHelpSpecOffset"><strong>「X座標」・「Y座標」</strong>: SVGの描画位置をX・Y方向にずらすピクセル数です。キャンバス内の配置調整に使用します。</li>
         <li i18n="@@svgViewerHelpSpecTransparent"><strong>透明背景</strong>: PNG形式はアルファチャンネル（透明度）をサポートするため、透明背景のアイコンやロゴの出力が可能です。</li>
         <li i18n="@@svgViewerHelpSpecCanvas"><strong>キャンバスサイズ</strong>: 出力PNGのピクセルサイズを決定します。デフォルトは256×256ピクセルです。</li>
       </ul>

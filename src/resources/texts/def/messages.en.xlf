@@ -39,8 +39,8 @@
     </unit>
     <unit id="apiKeyGenHelpSpecBase62">
       <segment state="initial">
-        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">Base62フォーマット</pc>: <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">[0-9A-Za-z]</pc>の62文字を使用します。URLセーフで高いエントロピーを実現しており、Stripeなど多くのサービスで採用されています。</source>
-        <target>Base62 format: Uses 62 characters [0-9A-Za-z]. URL-safe and provides high entropy. Adopted by many services such as Stripe.</target>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">「Base62」フォーマット</pc>: <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">[0-9A-Za-z]</pc>の62文字を使用します。URLセーフで高いエントロピーを実現しており、Stripeなど多くのサービスで採用されています。</source>
+        <target>Base62 Format: Uses 62 characters [0-9A-Za-z]. URL-safe and achieves high entropy; adopted by many services such as Stripe.</target>
       </segment>
     </unit>
     <unit id="apiKeyGenHelpSpecEntropy">
@@ -51,8 +51,8 @@
     </unit>
     <unit id="apiKeyGenHelpSpecHex">
       <segment state="initial">
-        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">Hexフォーマット</pc>: <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">[0-9a-f]</pc>の16文字（16進数）を使用します。暗号ライブラリとの互換性が高く、SHA-256などのハッシュ関数と組み合わせやすい形式です。</source>
-        <target>Hex format: Uses 16 hexadecimal characters [0-9a-f]. Highly compatible with cryptographic libraries and easy to combine with hash functions like SHA-256.</target>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">「Hex」フォーマット</pc>: <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">[0-9a-f]</pc>の16文字（16進数）を使用します。暗号ライブラリとの互換性が高く、SHA-256などのハッシュ関数と組み合わせやすい形式です。</source>
+        <target>Hex Format: Uses 16 hexadecimal characters [0-9a-f]. Highly compatible with cryptographic libraries and easy to combine with hash functions such as SHA-256.</target>
       </segment>
     </unit>
     <unit id="apiKeyGenHelpSpecPrefix">
@@ -63,8 +63,8 @@
     </unit>
     <unit id="apiKeyGenHelpSpecUuid">
       <segment state="initial">
-        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">UUID v4フォーマット</pc>: RFC 4122に準拠したUUID v4形式（<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx</pc>）で生成します。既存システムとの互換性が高い標準形式です。</source>
-        <target>UUID v4 format: Generated in RFC 4122-compliant UUID v4 format (xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx). Provides excellent compatibility with existing systems.</target>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">「UUID v4」フォーマット</pc>: RFC 4122に準拠したUUID v4形式（<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx</pc>）で生成します。既存システムとの互換性が高い標準形式です。</source>
+        <target>UUID v4 Format: Generates in RFC 4122-compliant UUID v4 format (xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx). Standard format with high compatibility with existing systems.</target>
       </segment>
     </unit>
     <unit id="apiKeyGenHelpUsage">
@@ -75,26 +75,26 @@
     </unit>
     <unit id="apiKeyGenHelpUsageStep1">
       <segment state="initial">
-        <source>APIキーのフォーマット（base62 / hex / uuid-v4）を選択します。</source>
-        <target>Select the API key format (base62 / hex / uuid-v4).</target>
+        <source>「フォーマット」でAPIキーの形式（Base62 / Hex / UUID v4）を選択します。</source>
+        <target>Select the format in Format: Base62 / Hex / UUID v4.</target>
       </segment>
     </unit>
     <unit id="apiKeyGenHelpUsageStep2">
       <segment state="initial">
-        <source>キーの長さを指定します（base62・hex形式の場合）。</source>
-        <target>Specify the key length (for base62 and hex formats).</target>
+        <source>「文字数」でキーの長さを指定します（Base62・Hex形式の場合）。</source>
+        <target>Specify the key length in Length (for Base62 and Hex formats).</target>
       </segment>
     </unit>
     <unit id="apiKeyGenHelpUsageStep3">
       <segment state="initial">
-        <source>プレフィックス文字列を設定します（省略可）。</source>
-        <target>Set an optional prefix string.</target>
+        <source>「プレフィックス」に付加する文字列を設定します（省略可）。</source>
+        <target>Set the prefix string in Prefix (optional).</target>
       </segment>
     </unit>
     <unit id="apiKeyGenHelpUsageStep4">
       <segment state="initial">
-        <source>生成件数を指定します。</source>
-        <target>Specify the number of keys to generate.</target>
+        <source>「個数」で生成件数を指定します。</source>
+        <target>Specify the generation count in Count.</target>
       </segment>
     </unit>
     <unit id="apiKeyGenHelpUsageStep5">
@@ -339,26 +339,26 @@
     </unit>
     <unit id="ipCidrHelpUsageStep1">
       <segment state="initial">
-        <source>プロトコル（IPv4 / IPv6）を選択します。</source>
-        <target>Select the protocol (IPv4 / IPv6).</target>
+        <source>プロトコル（IPv4 / IPv6）をトグルボタンで選択します。</source>
+        <target>Select IPv4 or IPv6 using the toggle buttons.</target>
       </segment>
     </unit>
     <unit id="ipCidrHelpUsageStep2">
       <segment state="initial">
-        <source>IPアドレスを入力します（例: <pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">192.168.1.100</pc>）。</source>
+        <source>「IPアドレス」を入力します（例: <pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">192.168.1.100</pc>）。</source>
         <target>Enter an IP address (e.g., 192.168.1.100).</target>
       </segment>
     </unit>
     <unit id="ipCidrHelpUsageStep3">
       <segment state="initial">
-        <source>CIDRプレフィックス長を入力します（例: <pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">24</pc>）。</source>
-        <target>Enter the CIDR prefix length (e.g., 24).</target>
+        <source>「CIDR」スライダーでプレフィックス長を指定します（例: <pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">24</pc>）。</source>
+        <target>Use the CIDR slider to set the prefix length (e.g., 24).</target>
       </segment>
     </unit>
     <unit id="ipCidrHelpUsageStep4">
       <segment state="initial">
-        <source>「計算」ボタンをクリックします。</source>
-        <target>Click the &quot;Calculate&quot; button.</target>
+        <source>「生成」ボタンをクリックします。</source>
+        <target>Click the Generate button.</target>
       </segment>
     </unit>
     <unit id="ipCidrHelpUseCase">
@@ -751,14 +751,14 @@ When OFF, uses decodeURI to decode while preserving the URL structure.</target>
     </unit>
     <unit id="jsonFormatterHelpSpecFormat">
       <segment state="initial">
-        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">フォーマットモード（format）</pc>: インデントと改行を付与してJSONを読みやすく整形します。ネストされたオブジェクトや配列が階層構造で表示されます。</source>
-        <target>Format mode (format): Adds indentation and line breaks to make JSON easy to read. Nested objects and arrays are displayed in a hierarchical structure.</target>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">「整形」モード</pc>: インデントと改行を付与してJSONを読みやすく整形します。ネストされたオブジェクトや配列が階層構造で表示されます。</source>
+        <target>Format mode: Adds indentation and line breaks to make JSON easy to read. Nested objects and arrays are displayed in a hierarchical structure.</target>
       </segment>
     </unit>
     <unit id="jsonFormatterHelpSpecIndent">
       <segment state="initial">
-        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">インデントサイズ</pc>: フォーマットモード時に使用するスペース数を設定します（例: 2スペース、4スペース）。チームのコーディングスタイルに合わせて選択できます。</source>
-        <target>Indentation size: Sets the number of spaces to use in format mode (e.g., 2 spaces, 4 spaces). Select according to your team's coding style.</target>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">「インデント」</pc>: 整形モード時に使用するスペース数を設定します（例: 2スペース、4スペース）。チームのコーディングスタイルに合わせて選択できます。</source>
+        <target>Indentation: Sets the number of spaces to use in format mode (e.g., 2 spaces, 4 spaces). Select according to your team's coding style.</target>
       </segment>
     </unit>
     <unit id="jsonFormatterHelpSpecJson">
@@ -769,8 +769,8 @@ When OFF, uses decodeURI to decode while preserving the URL structure.</target>
     </unit>
     <unit id="jsonFormatterHelpSpecMinify">
       <segment state="initial">
-        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">ミニファイモード（minify）</pc>: 改行・スペースをすべて除去してJSONを1行に圧縮します。ネットワーク転送量を削減したい場合や、HTTPリクエストボディとして利用する場合に有効です。</source>
-        <target>Minify mode (minify): Removes all line breaks and spaces to compress JSON into a single line. Useful for reducing network transfer size or when using JSON as an HTTP request body.</target>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">「圧縮」モード</pc>: 改行・スペースをすべて除去してJSONを1行に圧縮します。ネットワーク転送量を削減したい場合や、HTTPリクエストボディとして利用する場合に有効です。</source>
+        <target>Minify mode: Removes all line breaks and spaces to compress JSON into a single line. Useful for reducing network transfer size or when using JSON as an HTTP request body.</target>
       </segment>
     </unit>
     <unit id="jsonFormatterHelpSpecValidation">
@@ -793,26 +793,26 @@ When OFF, uses decodeURI to decode while preserving the URL structure.</target>
     </unit>
     <unit id="jsonFormatterHelpUsageStep2">
       <segment state="initial">
-        <source>整形モード（フォーマット / ミニファイ）を選択します。</source>
-        <target>Select the formatting mode (Format / Minify).</target>
+        <source>「モード」で整形方法（整形 / 圧縮）を選択します。</source>
+        <target>Select the formatting method in Mode: Format / Minify.</target>
       </segment>
     </unit>
     <unit id="jsonFormatterHelpUsageStep3">
       <segment state="initial">
-        <source>インデントサイズ（スペース数）を選択します。</source>
-        <target>Select the indentation size (number of spaces).</target>
+        <source>「インデント」でスペース数を選択します。</source>
+        <target>Select the number of spaces in Indentation.</target>
       </segment>
     </unit>
     <unit id="jsonFormatterHelpUsageStep4">
       <segment state="initial">
-        <source>「整形」ボタンをクリックすると結果が表示されます。</source>
-        <target>Click the &quot;Format&quot; button to see the result.</target>
+        <source>「変換」ボタンをクリックすると結果が表示されます。</source>
+        <target>Click the Format button to see the result.</target>
       </segment>
     </unit>
     <unit id="jsonFormatterHelpUsageStep5">
       <segment state="initial">
-        <source>「コピー」ボタンで整形後のJSONをクリップボードへコピーできます。</source>
-        <target>Use the &quot;Copy&quot; button to copy formatted JSON to the clipboard.</target>
+        <source>クリップボードへコピーボタンで整形後のJSONをコピーできます。</source>
+        <target>Use the clipboard copy button to copy the formatted JSON.</target>
       </segment>
     </unit>
     <unit id="jsonFormatterHelpUseCase">
@@ -1093,8 +1093,8 @@ When OFF, uses decodeURI to decode while preserving the URL structure.</target>
     </unit>
     <unit id="colorPaletteHelpSpecCompare">
       <segment state="initial">
-        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">compareモード</pc>: 複数のカラーを並べて比較します。各色のシェード（50〜900）を横に並べて表示し、カラー間のトーンの違いを確認できます。</source>
-        <target>Compare mode: Displays multiple colors side by side. Shows shades (50–900) for each color horizontally so you can compare tonal differences.</target>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">「比較」モード</pc>: 複数のカラーを並べて比較します。各色のシェード（50〜900）を横に並べて表示し、カラー間のトーンの違いを確認できます。</source>
+        <target>Compare mode: Displays multiple colors side by side for comparison. Shows shades (50–900) horizontally for each color, allowing you to see the tone differences between colors.</target>
       </segment>
     </unit>
     <unit id="colorPaletteHelpSpecHex">
@@ -1105,8 +1105,8 @@ When OFF, uses decodeURI to decode while preserving the URL structure.</target>
     </unit>
     <unit id="colorPaletteHelpSpecShades">
       <segment state="initial">
-        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">shadesモード</pc>: 1色のシェードパレットを詳細表示します。選択した色の全シェードを一覧で確認できます。</source>
-        <target>Shades mode: Displays the full shade palette for a single color in detail, showing all shades at a glance.</target>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">「濃淡」モード</pc>: 1色のシェードパレットを詳細表示します。選択した色の全シェードを一覧で確認できます。</source>
+        <target>Shades mode: Displays a detailed shade palette for a single color. Lets you view all shades of the selected color at a glance.</target>
       </segment>
     </unit>
     <unit id="colorPaletteHelpSpecSteps">
@@ -1129,8 +1129,8 @@ When OFF, uses decodeURI to decode while preserving the URL structure.</target>
     </unit>
     <unit id="colorPaletteHelpUsageStep1">
       <segment state="initial">
-        <source>モードを「比較（compare）」または「シェード（shades）」から選択します。</source>
-        <target>Select a mode: &quot;compare&quot; or &quot;shades&quot;.</target>
+        <source>「比較」または「濃淡」モードをトグルボタンで選択します。</source>
+        <target>Select Compare or Shades mode using the toggle buttons.</target>
       </segment>
     </unit>
     <unit id="colorPaletteHelpUsageStep2">
@@ -1397,20 +1397,20 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
     </unit>
     <unit id="passwordGenHelpSpecAlphanumeric">
       <segment state="initial">
-        <source><pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">alphanumeric</pc>: 大文字・小文字・数字のみ（記号不可なシステム向け）。</source>
-        <target>alphanumeric: Uppercase, lowercase, and digits only (for systems that disallow symbols).</target>
+        <source>「英数字」: 大文字・小文字・数字のみ（記号不可なシステム向け）。</source>
+        <target>Alphanumeric: Uppercase, lowercase, and digits only (for systems that do not allow symbols).</target>
       </segment>
     </unit>
     <unit id="passwordGenHelpSpecAlphanumericSymbols">
       <segment state="initial">
-        <source><pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">alphanumeric-symbols</pc>: 大文字・小文字・数字・記号を含む最もセキュアな文字セット。</source>
-        <target>alphanumeric-symbols: The most secure character set including uppercase, lowercase, digits, and symbols.</target>
+        <source>「英数字 + 記号」: 大文字・小文字・数字・記号を含む最もセキュアな文字セット。</source>
+        <target>Alphanumeric + Symbols: The most secure character set including uppercase, lowercase, digits, and symbols.</target>
       </segment>
     </unit>
     <unit id="passwordGenHelpSpecDigits">
       <segment state="initial">
-        <source><pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">digits</pc>: 数字のみ（PINコード・数値OTPなど）。</source>
-        <target>digits: Digits only (for PINs, numeric OTPs, etc.).</target>
+        <source>「数字のみ」: 数字のみ（PINコード・数値OTPなど）。</source>
+        <target>Digits Only: Digits only (PIN codes, numeric OTPs, etc.).</target>
       </segment>
     </unit>
     <unit id="passwordGenHelpSpecEntropy">
@@ -1421,14 +1421,14 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
     </unit>
     <unit id="passwordGenHelpSpecExcludeSimilar">
       <segment state="initial">
-        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">類似文字除外（excludeSimilar）</pc>: <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">0</pc>と<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">O</pc>、<pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">1</pc>と<pc id="4" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">l</pc>、<pc id="5" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">I</pc>と<pc id="6" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">|</pc>など、視覚的に混同しやすい文字を除外します。印刷物や口頭伝達での誤読防止に有効です。</source>
-        <target>Exclude similar characters (excludeSimilar): Excludes visually confusing characters such as 0 and O, 1 and l, I and |. Useful for printed materials or verbal communication to prevent misreading.</target>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">「類似文字を除く」</pc>: <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">0</pc>と<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">O</pc>、<pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">1</pc>と<pc id="4" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">l</pc>、<pc id="5" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">I</pc>と<pc id="6" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">|</pc>など、視覚的に混同しやすい文字を除外します。印刷物や口頭伝達での誤読防止に有効です。</source>
+        <target>Exclude Similar Characters: Excludes visually similar characters such as 0 and O, 1 and l, and I and |. Helps prevent misreading in printed materials or verbal communication.</target>
       </segment>
     </unit>
     <unit id="passwordGenHelpSpecLowercaseDigits">
       <segment state="initial">
-        <source><pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">lowercase-digits</pc>: 小文字英字と数字のみ（可読性重視・URLセーフ用途）。</source>
-        <target>lowercase-digits: Lowercase letters and digits only (readability-focused, URL-safe).</target>
+        <source>「英小文字 + 数字」: 小文字英字と数字のみ（可読性重視・URLセーフ用途）。</source>
+        <target>Lowercase + Digits: Lowercase letters and digits only (for readability-focused or URL-safe use cases).</target>
       </segment>
     </unit>
     <unit id="passwordGenHelpUsage">
@@ -1439,26 +1439,26 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
     </unit>
     <unit id="passwordGenHelpUsageStep1">
       <segment state="initial">
-        <source>文字種（英数字記号 / 英数字 / 英小文字＋数字 / 数字のみ）を選択します。</source>
-        <target>Select the character set (alphanumeric-symbols / alphanumeric / lowercase+digits / digits only).</target>
+        <source>「文字」で文字種（英数字 + 記号 / 英数字 / 英小文字 + 数字 / 数字のみ）を選択します。</source>
+        <target>Select the character type in Characters: Alphanumeric + Symbols / Alphanumeric / Lowercase + Digits / Digits Only.</target>
       </segment>
     </unit>
     <unit id="passwordGenHelpUsageStep2">
       <segment state="initial">
-        <source>パスワードの長さを指定します。</source>
-        <target>Specify the password length.</target>
+        <source>「文字数」でパスワードの長さを指定します。</source>
+        <target>Specify the password length in Length.</target>
       </segment>
     </unit>
     <unit id="passwordGenHelpUsageStep3">
       <segment state="initial">
-        <source>生成件数（一括生成数）を指定します。</source>
-        <target>Specify the number of passwords to generate.</target>
+        <source>「個数」で一括生成数を指定します。</source>
+        <target>Specify the number of passwords to generate in Count.</target>
       </segment>
     </unit>
     <unit id="passwordGenHelpUsageStep4">
       <segment state="initial">
-        <source>必要に応じて「類似文字を除外」を有効にします。</source>
-        <target>Enable &quot;Exclude similar characters&quot; if needed.</target>
+        <source>必要に応じて「類似文字を除く」を有効にします。</source>
+        <target>Enable the Exclude Similar Characters toggle if needed.</target>
       </segment>
     </unit>
     <unit id="passwordGenHelpUsageStep5">
@@ -1511,62 +1511,62 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
     </unit>
     <unit id="sqlFormatterHelpSpecIdentifier">
       <segment state="initial">
-        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">識別子ケース（identifierCase）</pc>: テーブル名やカラム名の大文字/小文字を変換します。upper / lower / preserve から選択できます。</source>
-        <target>Identifier case (identifierCase): Converts the case of table names and column names. Choose from upper / lower / preserve.</target>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">「識別子」</pc>: テーブル名やカラム名の大文字/小文字を変換します。大文字 / 小文字 / 変更しない から選択できます。</source>
+        <target>Identifiers: Converts the case of table names and column names. You can select from Uppercase / Lowercase / Preserve.</target>
       </segment>
     </unit>
     <unit id="sqlFormatterHelpSpecIndent">
       <segment state="initial">
-        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">インデントサイズ</pc>: 出力するSQLのインデントに使用するスペース数を設定します（例: 2スペース、4スペース）。</source>
-        <target>Indentation size: Sets the number of spaces used for indentation in the output SQL (e.g., 2 spaces, 4 spaces).</target>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">「インデント」</pc>: 出力するSQLのインデントに使用するスペース数を設定します（例: 2スペース、4スペース）。</source>
+        <target>Indentation: Sets the number of spaces used for indentation in the output SQL (e.g., 2 spaces, 4 spaces).</target>
       </segment>
     </unit>
     <unit id="sqlFormatterHelpSpecKeyword">
       <segment state="initial">
-        <source>キーワードケース（keywordCase）</source>
-        <target>Keyword case (keywordCase)</target>
+        <source>「予約語」: SQLキーワードの大文字/小文字変換</source>
+        <target>Keywords: SQL keyword upper/lower conversion</target>
       </segment>
     </unit>
     <unit id="sqlFormatterHelpSpecKeywordLower">
       <segment state="initial">
-        <source><pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">lower</pc>: SQLキーワードをすべて小文字に変換します。</source>
-        <target>lower: Converts all SQL keywords to lowercase.</target>
+        <source>「小文字」: SQLキーワードをすべて小文字に変換します。</source>
+        <target>Lowercase: Converts all SQL keywords to lowercase.</target>
       </segment>
     </unit>
     <unit id="sqlFormatterHelpSpecKeywordPreserve">
       <segment state="initial">
-        <source><pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">preserve</pc>: 入力のケースをそのまま保持します。</source>
-        <target>preserve: Keeps the case of the input as-is.</target>
+        <source>「変更しない」: 入力のケースをそのまま保持します。</source>
+        <target>Preserve: Preserves the original casing of the input.</target>
       </segment>
     </unit>
     <unit id="sqlFormatterHelpSpecKeywordUpper">
       <segment state="initial">
-        <source><pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">upper</pc>: SELECT、FROMなどのSQLキーワードをすべて大文字に変換します。</source>
-        <target>upper: Converts all SQL keywords such as SELECT and FROM to uppercase.</target>
+        <source>「大文字」: SELECT、FROMなどのSQLキーワードをすべて大文字に変換します。</source>
+        <target>Uppercase: Converts all SQL keywords such as SELECT and FROM to uppercase.</target>
       </segment>
     </unit>
     <unit id="sqlFormatterHelpSpecMode">
       <segment state="initial">
-        <source>整形モード（mode）</source>
-        <target>Formatting mode (mode)</target>
+        <source>「モード」: 整形方法の選択</source>
+        <target>Mode: Formatting method selection</target>
       </segment>
     </unit>
     <unit id="sqlFormatterHelpSpecModeMinify">
       <segment state="initial">
-        <source><pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">minify</pc>: 改行・余分なスペースを除去して1行に圧縮します。</source>
-        <target>minify: Removes newlines and extra spaces to compress into a single line.</target>
+        <source>「圧縮」: 改行・余分なスペースを除去して1行に圧縮します。</source>
+        <target>Minify: Removes line breaks and extra spaces, compressing to a single line.</target>
       </segment>
     </unit>
     <unit id="sqlFormatterHelpSpecModeStandard">
       <segment state="initial">
-        <source><pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">standard</pc>: 各キーワードを改行・インデントして読みやすく整形します。</source>
-        <target>standard: Formats each keyword on a new line with indentation for readability.</target>
+        <source>「標準整形」: 各キーワードを改行・インデントして読みやすく整形します。</source>
+        <target>Standard Format: Adds line breaks and indentation for readability.</target>
       </segment>
     </unit>
     <unit id="sqlFormatterHelpSpecModeTabular">
       <segment state="initial">
-        <source><pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">tabularRight</pc>: キーワードを右揃えでタブ状に整列し、SQLキーワードが縦に並びます。</source>
-        <target>tabularRight: Aligns keywords right-justified in a tabular layout so SQL keywords are vertically aligned.</target>
+        <source>「右揃え/表形式」: キーワードを右揃えでタブ状に整列し、SQLキーワードが縦に並びます。</source>
+        <target>Right-aligned/Tabular: Aligns keywords right-justified in tabular form, stacking SQL keywords vertically.</target>
       </segment>
     </unit>
     <unit id="sqlFormatterHelpUsage">
@@ -1583,26 +1583,26 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
     </unit>
     <unit id="sqlFormatterHelpUsageStep2">
       <segment state="initial">
-        <source>インデントサイズ（スペース数）を選択します。</source>
-        <target>Select the indentation size (number of spaces).</target>
+        <source>「インデント」でスペース数を選択します。</source>
+        <target>Select the number of spaces in the Indentation field.</target>
       </segment>
     </unit>
     <unit id="sqlFormatterHelpUsageStep3">
       <segment state="initial">
-        <source>整形モード（標準 / tabular右揃え / ミニファイ）を選択します。</source>
-        <target>Select the formatting mode (standard / tabularRight / minify).</target>
+        <source>「モード」で整形方法（標準整形 / 右揃え/表形式 / 圧縮）を選択します。</source>
+        <target>Select the formatting method in Mode: Standard Format / Right-aligned/Tabular / Minify.</target>
       </segment>
     </unit>
     <unit id="sqlFormatterHelpUsageStep4">
       <segment state="initial">
-        <source>キーワードケース・識別子ケース（大文字 / 小文字 / 保持）を選択します。</source>
-        <target>Select keyword case and identifier case (upper / lower / preserve).</target>
+        <source>「予約語」・「識別子」で大文字 / 小文字 / 変更しない を選択します。</source>
+        <target>Select Uppercase / Lowercase / Preserve in Keywords and Identifiers.</target>
       </segment>
     </unit>
     <unit id="sqlFormatterHelpUsageStep5">
       <segment state="initial">
-        <source>「整形」ボタンをクリックすると整形結果が表示されます。</source>
-        <target>Click the &quot;Format&quot; button to see the formatted result.</target>
+        <source>「変換」ボタンをクリックすると整形結果が表示されます。</source>
+        <target>Click the Format button to see the formatted result.</target>
       </segment>
     </unit>
     <unit id="sqlFormatterHelpUseCase">
@@ -1661,14 +1661,14 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
     </unit>
     <unit id="svgViewerHelpSpecOffset">
       <segment state="initial">
-        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">オフセット</pc>: SVGの描画位置をX・Y方向にずらすピクセル数です。キャンバス内の配置調整に使用します。</source>
-        <target>Offset: The number of pixels to shift the SVG drawing position in the X and Y directions. Used to adjust placement within the canvas.</target>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">「X座標」・「Y座標」</pc>: SVGの描画位置をX・Y方向にずらすピクセル数です。キャンバス内の配置調整に使用します。</source>
+        <target>X Offset / Y Offset: The number of pixels to shift the SVG drawing position in the X and Y directions. Used to adjust the placement within the canvas.</target>
       </segment>
     </unit>
     <unit id="svgViewerHelpSpecScale">
       <segment state="initial">
-        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">スケール</pc>: SVGを拡大・縮小して描画する倍率です。100%がデフォルトで、Retinaディスプレイ向けに200%で出力することもできます。</source>
-        <target>Scale: The magnification for rendering the SVG. Defaults to 100%. You can also output at 200% for Retina displays.</target>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">「拡大率」</pc>: SVGを拡大・縮小して描画する倍率です。100%がデフォルトで、Retinaディスプレイ向けに200%で出力することもできます。</source>
+        <target>Scale: The zoom factor for rendering SVG. The default is 100%, and you can output at 200% for Retina displays.</target>
       </segment>
     </unit>
     <unit id="svgViewerHelpSpecSvg">
@@ -1691,32 +1691,32 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
     </unit>
     <unit id="svgViewerHelpUsageStep1">
       <segment state="initial">
-        <source>テキストエリアにSVGコードを貼り付けるか、サンプルを選択します。</source>
-        <target>Paste SVG code into the text area or select a sample.</target>
+        <source>「SVGコード」エリアにSVGコードを貼り付けるか、サンプルを選択します。</source>
+        <target>Paste the SVG code into the SVG Code area or select a sample.</target>
       </segment>
     </unit>
     <unit id="svgViewerHelpUsageStep2">
       <segment state="initial">
-        <source>キャンバスの幅・高さ（ピクセル）を設定します。</source>
-        <target>Set the canvas width and height (in pixels).</target>
+        <source>「Canvas設定」でキャンバスの「幅」・「高さ」（ピクセル）を設定します。</source>
+        <target>Set the canvas Width and Height (in pixels) under Canvas Settings.</target>
       </segment>
     </unit>
     <unit id="svgViewerHelpUsageStep3">
       <segment state="initial">
-        <source>背景色（または透明）を選択します。</source>
-        <target>Choose a background color or enable transparency.</target>
+        <source>「背景色」を指定するか、「背景を透過」を有効にします。</source>
+        <target>Specify a Background Color, or enable Transparent Background.</target>
       </segment>
     </unit>
     <unit id="svgViewerHelpUsageStep4">
       <segment state="initial">
-        <source>スケール（倍率）とX・Yオフセット（描画位置）を調整します。</source>
-        <target>Adjust the scale (zoom) and X/Y offset (drawing position).</target>
+        <source>「SVG設定」で「拡大率」と「X座標」・「Y座標」（描画位置のオフセット）を調整します。</source>
+        <target>Adjust Scale and X Offset / Y Offset (drawing position offsets) under SVG Settings.</target>
       </segment>
     </unit>
     <unit id="svgViewerHelpUsageStep5">
       <segment state="initial">
-        <source>プレビューを確認し、「PNGダウンロード」ボタンで画像を保存します。</source>
-        <target>Confirm the preview and save the image with the &quot;Download PNG&quot; button.</target>
+        <source>プレビューを確認し、ダウンロードアイコン（PNG形式でダウンロード）で画像を保存します。</source>
+        <target>Preview the result and save the image using the download icon (Download as PNG).</target>
       </segment>
     </unit>
     <unit id="svgViewerHelpUseCase">
@@ -1799,14 +1799,14 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
     </unit>
     <unit id="textDiffHelpUsageStep1">
       <segment state="initial">
-        <source>左側のテキストエリアに元のテキスト（変更前）を入力します。</source>
-        <target>Enter the original text (before changes) in the left text area.</target>
+        <source>「比較元テキスト」エリアに元のテキスト（変更前）を入力します。</source>
+        <target>Enter the original text (before changes) in the Original Text area.</target>
       </segment>
     </unit>
     <unit id="textDiffHelpUsageStep2">
       <segment state="initial">
-        <source>右側のテキストエリアに変更後のテキストを入力します。</source>
-        <target>Enter the modified text (after changes) in the right text area.</target>
+        <source>「比較先テキスト」エリアに変更後のテキストを入力します。</source>
+        <target>Enter the modified text in the Modified Text area.</target>
       </segment>
     </unit>
     <unit id="textDiffHelpUsageStep3">
@@ -1817,8 +1817,8 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
     </unit>
     <unit id="textDiffHelpUsageStep4">
       <segment state="initial">
-        <source>「クリア」ボタンで入力内容をリセットできます。</source>
-        <target>Click the &quot;Clear&quot; button to reset the input.</target>
+        <source>クリアアイコンボタンで入力内容をリセットできます。</source>
+        <target>Click the clear icon button to reset the input.</target>
       </segment>
     </unit>
     <unit id="textDiffHelpUseCase">
@@ -1877,8 +1877,8 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
     </unit>
     <unit id="ulidGenHelpSpecMono">
       <segment state="initial">
-        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">単調増加モード</pc>: 同一ミリ秒内に複数のULIDを生成した場合、ランダム部分をインクリメントして単調増加を保証します。イベントの順序を厳密に保持したい場合に使用します。</source>
-        <target>Monotonically increasing mode: When generating multiple ULIDs within the same millisecond, the random portion is incremented to guarantee monotonic increase. Use this when strict ordering of events is required.</target>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">「単調増加」トグル</pc>: 同一ミリ秒内に複数のULIDを生成した場合、ランダム部分をインクリメントして単調増加を保証します。イベントの順序を厳密に保持したい場合に使用します。</source>
+        <target>Increase monotonically toggle: When generating multiple ULIDs within the same millisecond, the random portion is incremented to guarantee monotonically increasing values. Use when strict ordering of events is required.</target>
       </segment>
     </unit>
     <unit id="ulidGenHelpSpecSort">
@@ -1907,14 +1907,14 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
     </unit>
     <unit id="ulidGenHelpUsageStep2">
       <segment state="initial">
-        <source>基準タイムスタンプ（ミリ秒）を設定します（デフォルトは現在時刻）。</source>
-        <target>Set a base timestamp in milliseconds (defaults to the current time).</target>
+        <source>「基準日時(タイムスタンプ)」に基準となる時刻（ミリ秒）を設定します（デフォルトは現在時刻）。</source>
+        <target>Set the base time in Base datetime - Timestamp (default is the current time).</target>
       </segment>
     </unit>
     <unit id="ulidGenHelpUsageStep3">
       <segment state="initial">
-        <source>同一ミリ秒内でも値を単調増加させたい場合は単調増加モードを有効にします。</source>
-        <target>Enable monotonically increasing mode if values need to be monotonically increasing within the same millisecond.</target>
+        <source>同一ミリ秒内でも値を単調増加させたい場合は「単調増加」トグルを有効にします。</source>
+        <target>Enable the Increase monotonically toggle to ensure strictly increasing values within the same millisecond.</target>
       </segment>
     </unit>
     <unit id="ulidGenHelpUsageStep4">
@@ -2009,8 +2009,8 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
     </unit>
     <unit id="unixTimestampHelpUsageStep1">
       <segment state="initial">
-        <source>変換モードを「タイムスタンプ→日時」または「日時→タイムスタンプ」から選択します。</source>
-        <target>Select the conversion mode: &quot;Timestamp → DateTime&quot; or &quot;DateTime → Timestamp&quot;.</target>
+        <source>「変換モード」を「日時に変換」または「UNIXタイムスタンプに変換」から選択します。</source>
+        <target>Select To Date/Time or To UNIX Timestamp from the Conversion Mode field.</target>
       </segment>
     </unit>
     <unit id="unixTimestampHelpUsageStep2">
@@ -3043,20 +3043,20 @@ Added the tool list page.</target>
     </unit>
     <unit id="urlEncoderHelpUsageStep1">
       <segment state="initial">
-        <source>テキストエリアに変換したい文字列を入力します。</source>
-        <target>Enter the string you want to convert in the text area.</target>
+        <source>「変換する文字列」に変換したい文字列を入力します。</source>
+        <target>Enter the string you want to convert in String to convert.</target>
       </segment>
     </unit>
     <unit id="urlEncoderHelpUsageStep2">
       <segment state="initial">
-        <source>モードを「エンコード」または「デコード」から選択します。</source>
-        <target>Select the mode: &quot;Encode&quot; or &quot;Decode&quot;.</target>
+        <source>「モード」を「エンコード」または「デコード」から選択します。</source>
+        <target>Select Encode or Decode from the Mode field.</target>
       </segment>
     </unit>
     <unit id="urlEncoderHelpUsageStep3">
       <segment state="initial">
-        <source>メソッドを「encodeURI」または「encodeURIComponent」から選択します。</source>
-        <target>Select the method: &quot;encodeURI&quot; or &quot;encodeURIComponent&quot;.</target>
+        <source>「URLの記号（/ や ? など）もすべて変換する」をオンにするとencodeURIComponent相当（記号もすべてエンコード）、オフにするとencodeURI相当（URLの構造文字は保持）の動作になります。</source>
+        <target>When Convert all URL symbols (e.g. / and ?) as well is on, the behavior is equivalent to encodeURIComponent (all symbols encoded); when off, it is equivalent to encodeURI (URL structural characters preserved).</target>
       </segment>
     </unit>
     <unit id="urlEncoderHelpUsageStep4">
@@ -3151,8 +3151,8 @@ Added the tool list page.</target>
     </unit>
     <unit id="uuidGenHelpUsageStep2">
       <segment state="initial">
-        <source>生成件数を指定します（1〜100件）。</source>
-        <target>Specify the number of UUIDs to generate (1–100).</target>
+        <source>「生成数」に件数を指定します（最大1,000件）。</source>
+        <target>Specify the count in Number of UUIDs (up to 1,000).</target>
       </segment>
     </unit>
     <unit id="uuidGenHelpUsageStep3">

@@ -26,19 +26,19 @@
       <h3 i18n="@@jsonFormatterHelpUsage">使い方</h3>
       <ol>
         <li i18n="@@jsonFormatterHelpUsageStep1">テキストエリアにJSONテキストを貼り付けます。</li>
-        <li i18n="@@jsonFormatterHelpUsageStep2">整形モード（フォーマット / ミニファイ）を選択します。</li>
-        <li i18n="@@jsonFormatterHelpUsageStep3">インデントサイズ（スペース数）を選択します。</li>
-        <li i18n="@@jsonFormatterHelpUsageStep4">「整形」ボタンをクリックすると結果が表示されます。</li>
-        <li i18n="@@jsonFormatterHelpUsageStep5">「コピー」ボタンで整形後のJSONをクリップボードへコピーできます。</li>
+        <li i18n="@@jsonFormatterHelpUsageStep2">「モード」で整形方法（整形 / 圧縮）を選択します。</li>
+        <li i18n="@@jsonFormatterHelpUsageStep3">「インデント」でスペース数を選択します。</li>
+        <li i18n="@@jsonFormatterHelpUsageStep4">「変換」ボタンをクリックすると結果が表示されます。</li>
+        <li i18n="@@jsonFormatterHelpUsageStep5">クリップボードへコピーボタンで整形後のJSONをコピーできます。</li>
       </ol>
     </section>
     <section class="help-section">
       <h3 i18n="@@jsonFormatterHelpSpec">仕様・用語解説</h3>
       <ul>
         <li i18n="@@jsonFormatterHelpSpecJson"><strong>JSON（JavaScript Object Notation）</strong>: 軽量なデータ交換フォーマットです。人間にも機械にも読みやすく、REST APIのリクエスト・レスポンスや設定ファイルなどで広く使われています。RFC 8259 / ECMA-404で標準化されています。</li>
-        <li i18n="@@jsonFormatterHelpSpecFormat"><strong>フォーマットモード（format）</strong>: インデントと改行を付与してJSONを読みやすく整形します。ネストされたオブジェクトや配列が階層構造で表示されます。</li>
-        <li i18n="@@jsonFormatterHelpSpecMinify"><strong>ミニファイモード（minify）</strong>: 改行・スペースをすべて除去してJSONを1行に圧縮します。ネットワーク転送量を削減したい場合や、HTTPリクエストボディとして利用する場合に有効です。</li>
-        <li i18n="@@jsonFormatterHelpSpecIndent"><strong>インデントサイズ</strong>: フォーマットモード時に使用するスペース数を設定します（例: 2スペース、4スペース）。チームのコーディングスタイルに合わせて選択できます。</li>
+        <li i18n="@@jsonFormatterHelpSpecFormat"><strong>「整形」モード</strong>: インデントと改行を付与してJSONを読みやすく整形します。ネストされたオブジェクトや配列が階層構造で表示されます。</li>
+        <li i18n="@@jsonFormatterHelpSpecMinify"><strong>「圧縮」モード</strong>: 改行・スペースをすべて除去してJSONを1行に圧縮します。ネットワーク転送量を削減したい場合や、HTTPリクエストボディとして利用する場合に有効です。</li>
+        <li i18n="@@jsonFormatterHelpSpecIndent"><strong>「インデント」</strong>: 整形モード時に使用するスペース数を設定します（例: 2スペース、4スペース）。チームのコーディングスタイルに合わせて選択できます。</li>
         <li i18n="@@jsonFormatterHelpSpecValidation"><strong>バリデーション</strong>: 入力されたJSONが不正な場合（構文エラー）はエラーメッセージが表示されます。JSONのキーは二重引用符で囲む必要があり、末尾のカンマ（trailing comma）は許可されていません。</li>
       </ul>
     </section>
