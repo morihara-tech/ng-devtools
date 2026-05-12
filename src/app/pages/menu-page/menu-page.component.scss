@@ -2,7 +2,7 @@ $tool-card-width: 240px;
 $card-gap-width: 16px;
 
 .container {
-  width: 100%;
+  width: calc(100% - 32px);
   padding: 8px 16px;
 }
 
