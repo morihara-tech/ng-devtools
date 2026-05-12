@@ -7,6 +7,7 @@ import { HeadingComponent } from '../../components/heading/heading.component';
 import { ApplicationPageTemplateComponent } from '../../components/application-page-template/application-page-template.component';
 import { HelpDrawerService } from '../../services/help-drawer.service';
 import { UlidGenInputModel } from './ulid-gen-model';
+import { UlidGenHelpComponent } from './ulid-gen-help/ulid-gen-help.component';
 
 @Component({
     selector: 'app-ulid-gen-page',
@@ -15,6 +16,7 @@ import { UlidGenInputModel } from './ulid-gen-model';
         HeadingComponent,
         UlidGenInputCardComponent,
         UlidGenOutputCardComponent,
+        UlidGenHelpComponent,
         MatButtonModule,
         MatIconModule,
     ],

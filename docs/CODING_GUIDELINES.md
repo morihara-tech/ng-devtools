@@ -100,3 +100,33 @@ When generating commit messages:
     - *Good*: "Enable the feature", "Specify the value...", "Click the clear button"
   - **UI Label Consistency**: Help text that refers to UI elements (buttons, field labels, dropdown options, toggles, etc.) **MUST** use the exact same wording that appears on screen. For example, if a button is labelled 「変換」, the help text must say 「変換」ボタン, not 「整形」ボタン. If a dropdown option is labelled 「濃淡」, do not call it 「シェード」 in the help. Always verify the actual rendered text in the template before writing the help copy.
   - **Integration**: The component must integrate with `HelpDrawerService` to pass the `#helpContent` when the user clicks the help icon in the header.
+
+## 10. New Page / Tool Registration Requirements
+
+When adding a **new page or tool** to this repository, the following tasks are **mandatory** in addition to the standard implementation:
+
+### 10.1 Guide Page (`/guide`)
+- Create a dedicated **Help Component** (e.g., `ToolNameHelpComponent`) for the tool's help text following the rules in Section 9.
+  - Place it in a subdirectory of the tool's page folder (e.g., `src/app/pages/tool-name-page/tool-name-help/`).
+  - The help component must be a standalone component with no logic — HTML only.
+- Register the help component inside the `<ng-template>` of the tool's page component.
+- **Add** the help component to `guide-page.component.html` (`src/app/pages/guide-page/`) by inserting a new `<section>` block that includes `<app-tool-name-help>`.
+- **Import** the help component in `guide-page.component.ts`.
+
+### 10.2 Sitemap Component (`SitemapComponent`)
+- **Add** a new `<li><a routerLink="/path">ページ名</a></li>` entry in `src/app/components/sitemap/sitemap.component.html`.
+- The link must point to the canonical route path of the new page.
+- The anchor text must match the page's menu label and include an `i18n` attribute with a unique ID (e.g., `@@sitemap.link.newTool`).
+- Add the corresponding translation to `src/resources/texts/def/messages.en.xlf`.
+
+### 10.3 Route Registration
+- Register the new page route in `src/app/app.routes.ts`.
+
+### 10.4 Summary Checklist (mandatory for every new page/tool)
+- [ ] Help component created under tool page folder
+- [ ] Help component registered in the tool's page `<ng-template>`
+- [ ] Help component added to `guide-page.component.html` (new `<section>`)
+- [ ] Help component imported in `guide-page.component.ts`
+- [ ] Sitemap link added to `sitemap.component.html`
+- [ ] Route added to `app.routes.ts`
+- [ ] `yarn ng extract-i18n` run and `messages.en.xlf` updated with English translations

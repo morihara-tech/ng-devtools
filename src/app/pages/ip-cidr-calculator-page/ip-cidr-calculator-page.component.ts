@@ -7,6 +7,7 @@ import { HeadingComponent } from '../../components/heading/heading.component';
 import { ApplicationPageTemplateComponent } from '../../components/application-page-template/application-page-template.component';
 import { HelpDrawerService } from '../../services/help-drawer.service';
 import { IpCidrInputModel } from './ip-cidr-model';
+import { IpCidrHelpComponent } from './ip-cidr-help/ip-cidr-help.component';
 
 @Component({
   selector: 'app-ip-cidr-calculator-page',
@@ -15,6 +16,7 @@ import { IpCidrInputModel } from './ip-cidr-model';
     HeadingComponent,
     IpCidrInputCardComponent,
     IpCidrOutputCardComponent,
+    IpCidrHelpComponent,
     MatButtonModule,
     MatIconModule,
   ],

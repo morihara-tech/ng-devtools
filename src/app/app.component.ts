@@ -7,6 +7,7 @@ import { filter, map, mergeMap } from 'rxjs';
 import { Title } from '@angular/platform-browser';
 import { SidenavComponent } from "./components/sidenav/sidenav.component";
 import { IconService } from './icon.service';
+import { SitemapComponent } from './components/sitemap/sitemap.component';
 
 @Component({
     selector: 'app-root',
@@ -15,6 +16,7 @@ import { IconService } from './icon.service';
         SidenavComponent,
         MatSidenavModule,
         RouterOutlet,
+        SitemapComponent,
     ],
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss'

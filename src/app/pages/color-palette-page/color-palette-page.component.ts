@@ -7,6 +7,7 @@ import { HelpDrawerService } from '../../services/help-drawer.service';
 import { ColorPaletteInputCardComponent } from './color-palette-input-card/color-palette-input-card.component';
 import { ColorPaletteOutputCardComponent } from './color-palette-output-card/color-palette-output-card.component';
 import { ColorPaletteInputModel } from './color-palette-model';
+import { ColorPaletteHelpComponent } from './color-palette-help/color-palette-help.component';
 
 @Component({
   selector: 'app-color-palette-page',
@@ -15,6 +16,7 @@ import { ColorPaletteInputModel } from './color-palette-model';
     HeadingComponent,
     ColorPaletteInputCardComponent,
     ColorPaletteOutputCardComponent,
+    ColorPaletteHelpComponent,
     MatButtonModule,
     MatIconModule,
   ],

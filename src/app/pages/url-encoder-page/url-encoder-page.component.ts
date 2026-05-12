@@ -7,6 +7,7 @@ import { HelpDrawerService } from '../../services/help-drawer.service';
 import { UrlEncoderInputCardComponent } from './url-encoder-input-card/url-encoder-input-card.component';
 import { UrlEncoderOutputCardComponent } from './url-encoder-output-card/url-encoder-output-card.component';
 import { UrlEncoderInputModel } from './url-encoder-model';
+import { UrlEncoderHelpComponent } from './url-encoder-help/url-encoder-help.component';
 
 @Component({
   selector: 'app-url-encoder-page',
@@ -15,6 +16,7 @@ import { UrlEncoderInputModel } from './url-encoder-model';
     HeadingComponent,
     UrlEncoderInputCardComponent,
     UrlEncoderOutputCardComponent,
+    UrlEncoderHelpComponent,
     MatButtonModule,
     MatIconModule,
   ],

@@ -7,6 +7,7 @@ import { HeadingComponent } from '../../components/heading/heading.component';
 import { ApplicationPageTemplateComponent } from '../../components/application-page-template/application-page-template.component';
 import { HelpDrawerService } from '../../services/help-drawer.service';
 import { SvgToPngSettingsModel, DEFAULT_SVG_TO_PNG_SETTINGS } from './svg-to-png-model';
+import { SvgViewerHelpComponent } from './svg-viewer-help/svg-viewer-help.component';
 
 @Component({
   selector: 'app-svg-to-png-page',
@@ -15,6 +16,7 @@ import { SvgToPngSettingsModel, DEFAULT_SVG_TO_PNG_SETTINGS } from './svg-to-png
     HeadingComponent,
     SvgToPngInputCardComponent,
     SvgToPngOutputCardComponent,
+    SvgViewerHelpComponent,
     MatButtonModule,
     MatIconModule,
   ],

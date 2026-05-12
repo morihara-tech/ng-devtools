@@ -7,6 +7,7 @@ import { HelpDrawerService } from '../../services/help-drawer.service';
 import { UnixTimestampInputCardComponent } from './unix-timestamp-input-card/unix-timestamp-input-card.component';
 import { UnixTimestampOutputCardComponent } from './unix-timestamp-output-card/unix-timestamp-output-card.component';
 import { UnixTimestampInputModel } from './unix-timestamp-model';
+import { UnixTimestampHelpComponent } from './unix-timestamp-help/unix-timestamp-help.component';
 
 @Component({
   selector: 'app-unix-timestamp-converter-page',
@@ -15,6 +16,7 @@ import { UnixTimestampInputModel } from './unix-timestamp-model';
     HeadingComponent,
     UnixTimestampInputCardComponent,
     UnixTimestampOutputCardComponent,
+    UnixTimestampHelpComponent,
     MatButtonModule,
     MatIconModule,
   ],

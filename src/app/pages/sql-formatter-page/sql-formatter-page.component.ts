@@ -5,6 +5,7 @@ import { ApplicationPageTemplateComponent } from '../../components/application-p
 import { HeadingComponent } from '../../components/heading/heading.component';
 import { HelpDrawerService } from '../../services/help-drawer.service';
 import { SqlFormatterInputCardComponent } from './sql-formatter-input-card/sql-formatter-input-card.component';
+import { SqlFormatterHelpComponent } from './sql-formatter-help/sql-formatter-help.component';
 
 @Component({
   selector: 'app-sql-formatter-page',
@@ -12,6 +13,7 @@ import { SqlFormatterInputCardComponent } from './sql-formatter-input-card/sql-f
     ApplicationPageTemplateComponent,
     HeadingComponent,
     SqlFormatterInputCardComponent,
+    SqlFormatterHelpComponent,
     MatButtonModule,
     MatIconModule,
   ],
