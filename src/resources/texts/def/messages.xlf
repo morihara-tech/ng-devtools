@@ -421,6 +421,76 @@
         <source>ページが見つかりません</source>
       </segment>
     </unit>
+    <unit id="page.guide.description">
+      <segment>
+        <source> このページでは、devTools が提供する全ツールの概要・使い方・仕様を一覧で確認できます。 </source>
+      </segment>
+    </unit>
+    <unit id="page.guide.section.apiKeyGen">
+      <segment>
+        <source>APIキー生成ツール</source>
+      </segment>
+    </unit>
+    <unit id="page.guide.section.colorPalette">
+      <segment>
+        <source>カラーパレット</source>
+      </segment>
+    </unit>
+    <unit id="page.guide.section.ipCidr">
+      <segment>
+        <source>IP/CIDR計算機</source>
+      </segment>
+    </unit>
+    <unit id="page.guide.section.jsonFormatter">
+      <segment>
+        <source>JSON整形ツール</source>
+      </segment>
+    </unit>
+    <unit id="page.guide.section.passwordGen">
+      <segment>
+        <source>パスワード生成ツール</source>
+      </segment>
+    </unit>
+    <unit id="page.guide.section.sqlFormatter">
+      <segment>
+        <source>SQL整形ツール</source>
+      </segment>
+    </unit>
+    <unit id="page.guide.section.svgViewer">
+      <segment>
+        <source>SVGビューアー</source>
+      </segment>
+    </unit>
+    <unit id="page.guide.section.textDiff">
+      <segment>
+        <source>テキスト比較ツール</source>
+      </segment>
+    </unit>
+    <unit id="page.guide.section.ulidGen">
+      <segment>
+        <source>ULID生成ツール</source>
+      </segment>
+    </unit>
+    <unit id="page.guide.section.unixTimestamp">
+      <segment>
+        <source>UNIXタイム変換</source>
+      </segment>
+    </unit>
+    <unit id="page.guide.section.urlEncoder">
+      <segment>
+        <source>URLエンコード・デコードツール</source>
+      </segment>
+    </unit>
+    <unit id="page.guide.section.uuidGen">
+      <segment>
+        <source>UUID生成ツール</source>
+      </segment>
+    </unit>
+    <unit id="page.guide.title">
+      <segment>
+        <source>ご利用ガイド</source>
+      </segment>
+    </unit>
     <unit id="page.ipCidr.card.input.cidr">
       <segment>
         <source>CIDR</source>
@@ -1677,6 +1747,91 @@ UNIXタイム変換ツールを実装しました。</source>
     <unit id="update.home.20250820">
       <segment>
         <source>UUID生成を実装しました。</source>
+      </segment>
+    </unit>
+    <unit id="sitemap.heading">
+      <segment>
+        <source>サイトマップ</source>
+      </segment>
+    </unit>
+    <unit id="sitemap.link.apiKeyGen">
+      <segment>
+        <source>APIキー生成ツール</source>
+      </segment>
+    </unit>
+    <unit id="sitemap.link.colorPalette">
+      <segment>
+        <source>カラーパレット</source>
+      </segment>
+    </unit>
+    <unit id="sitemap.link.guide">
+      <segment>
+        <source>ご利用ガイド</source>
+      </segment>
+    </unit>
+    <unit id="sitemap.link.home">
+      <segment>
+        <source>ホーム</source>
+      </segment>
+    </unit>
+    <unit id="sitemap.link.ipCidr">
+      <segment>
+        <source>IP/CIDR計算機</source>
+      </segment>
+    </unit>
+    <unit id="sitemap.link.jsonFormatter">
+      <segment>
+        <source>JSON整形ツール</source>
+      </segment>
+    </unit>
+    <unit id="sitemap.link.menu">
+      <segment>
+        <source>メニュー</source>
+      </segment>
+    </unit>
+    <unit id="sitemap.link.passwordGen">
+      <segment>
+        <source>パスワード生成ツール</source>
+      </segment>
+    </unit>
+    <unit id="sitemap.link.privacyPolicy">
+      <segment>
+        <source>プライバシーポリシー</source>
+      </segment>
+    </unit>
+    <unit id="sitemap.link.sqlFormatter">
+      <segment>
+        <source>SQL整形ツール</source>
+      </segment>
+    </unit>
+    <unit id="sitemap.link.svgViewer">
+      <segment>
+        <source>SVGビューアー</source>
+      </segment>
+    </unit>
+    <unit id="sitemap.link.textDiff">
+      <segment>
+        <source>テキスト比較ツール</source>
+      </segment>
+    </unit>
+    <unit id="sitemap.link.ulidGen">
+      <segment>
+        <source>ULID生成ツール</source>
+      </segment>
+    </unit>
+    <unit id="sitemap.link.unixTimestamp">
+      <segment>
+        <source>UNIXタイム変換</source>
+      </segment>
+    </unit>
+    <unit id="sitemap.link.urlEncoder">
+      <segment>
+        <source>URLエンコード・デコードツール</source>
+      </segment>
+    </unit>
+    <unit id="sitemap.link.uuidGen">
+      <segment>
+        <source>UUID生成ツール</source>
       </segment>
     </unit>
     <unit id="sqlFormatterHelpOverview">

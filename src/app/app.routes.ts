@@ -15,6 +15,7 @@ import { menuPageRoutes } from './pages/menu-page/menu-page.routes';
 import { colorPalettePageRoutes } from './pages/color-palette-page/color-palette-page.routes';
 import { apiKeyGenPageRoutes } from './pages/api-key-gen-page/api-key-gen-page.routes';
 import { privacyPolicyPageRoutes } from './pages/privacy-policy-page/privacy-policy-page.routes';
+import { guidePageRoutes } from './pages/guide-page/guide-page.routes';
 
 export const routes: Routes = [
   { path: '', children: dashboardPageRoutes },
@@ -32,6 +33,7 @@ export const routes: Routes = [
   { path: 'menu', children: menuPageRoutes },
   { path: 'color-palette', children: colorPalettePageRoutes },
   { path: 'privacy-policy', children: privacyPolicyPageRoutes },
+  { path: 'guide', children: guidePageRoutes },
   { path: 'error', children: errorPageRoutes },
   { path: '**', redirectTo: '/error/404' }
 ];

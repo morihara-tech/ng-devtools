@@ -5,6 +5,7 @@ import { ApplicationPageTemplateComponent } from '../../components/application-p
 import { HeadingComponent } from '../../components/heading/heading.component';
 import { HelpDrawerService } from '../../services/help-drawer.service';
 import { JsonFormatterInputCardComponent } from './json-formatter-input-card/json-formatter-input-card.component';
+import { JsonFormatterHelpComponent } from './json-formatter-help/json-formatter-help.component';
 
 @Component({
   selector: 'app-json-formatter-page',
@@ -12,6 +13,7 @@ import { JsonFormatterInputCardComponent } from './json-formatter-input-card/jso
     ApplicationPageTemplateComponent,
     HeadingComponent,
     JsonFormatterInputCardComponent,
+    JsonFormatterHelpComponent,
     MatButtonModule,
     MatIconModule,
   ],

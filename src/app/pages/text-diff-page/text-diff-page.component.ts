@@ -7,6 +7,7 @@ import { HelpDrawerService } from '../../services/help-drawer.service';
 import { TextDiffInputCardComponent } from './text-diff-input-card/text-diff-input-card.component';
 import { TextDiffOutputCardComponent } from './text-diff-output-card/text-diff-output-card.component';
 import { TextDiffInputModel } from './text-diff-model';
+import { TextDiffHelpComponent } from './text-diff-help/text-diff-help.component';
 
 @Component({
   selector: 'app-text-diff-page',
@@ -15,6 +16,7 @@ import { TextDiffInputModel } from './text-diff-model';
     HeadingComponent,
     TextDiffInputCardComponent,
     TextDiffOutputCardComponent,
+    TextDiffHelpComponent,
     MatButtonModule,
     MatIconModule,
   ],

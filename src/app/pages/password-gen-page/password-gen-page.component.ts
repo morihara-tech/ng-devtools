@@ -7,6 +7,7 @@ import { HeadingComponent } from '../../components/heading/heading.component';
 import { ApplicationPageTemplateComponent } from '../../components/application-page-template/application-page-template.component';
 import { HelpDrawerService } from '../../services/help-drawer.service';
 import { PasswordGenInputModel } from './password-gen-model';
+import { PasswordGenHelpComponent } from './password-gen-help/password-gen-help.component';
 
 @Component({
     selector: 'app-password-gen-page',
@@ -15,6 +16,7 @@ import { PasswordGenInputModel } from './password-gen-model';
         HeadingComponent,
         PasswordGenInputCardComponent,
         PasswordGenOutputCardComponent,
+        PasswordGenHelpComponent,
         MatButtonModule,
         MatIconModule,
     ],

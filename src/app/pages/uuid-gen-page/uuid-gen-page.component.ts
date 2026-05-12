@@ -7,6 +7,7 @@ import { HelpDrawerService } from '../../services/help-drawer.service';
 import { UuidGenInputCardComponent } from './uuid-gen-input-card/uuid-gen-input-card.component';
 import { UuidGenOutputCardComponent } from './uuid-gen-output-card/uuid-gen-output-card.component';
 import { UuidGenInputModel } from './uuid-gen-model';
+import { UuidGenHelpComponent } from './uuid-gen-help/uuid-gen-help.component';
 
 @Component({
   selector: 'app-uuid-gen-page',
@@ -15,6 +16,7 @@ import { UuidGenInputModel } from './uuid-gen-model';
     HeadingComponent,
     UuidGenInputCardComponent,
     UuidGenOutputCardComponent,
+    UuidGenHelpComponent,
     MatButtonModule,
     MatIconModule,
   ],

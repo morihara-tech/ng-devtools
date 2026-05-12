@@ -1,0 +1,47 @@
+<section class="help-section">
+  <h3 i18n="@@sqlFormatterHelpOverview">概要</h3>
+  <p i18n="@@sqlFormatterHelpOverviewDesc">
+    SQLフォーマッターは、読みにくいSQLクエリを整形・可読化するオンラインツールです。JOIN、WHERE、GROUP BYなどのキーワードを適切なインデントで整列させ、コードレビューやドキュメント作成を効率化します。
+  </p>
+</section>
+<section class="help-section">
+  <h3 i18n="@@sqlFormatterHelpUsage">使い方</h3>
+  <ol>
+    <li i18n="@@sqlFormatterHelpUsageStep1">テキストエリアにSQLクエリを貼り付けます。</li>
+    <li i18n="@@sqlFormatterHelpUsageStep2">「インデント」でスペース数を選択します。</li>
+    <li i18n="@@sqlFormatterHelpUsageStep3">「モード」で整形方法（標準整形 / 右揃え/表形式 / 圧縮）を選択します。</li>
+    <li i18n="@@sqlFormatterHelpUsageStep4">「予約語」・「識別子」で大文字 / 小文字 / 変更しない を選択します。</li>
+    <li i18n="@@sqlFormatterHelpUsageStep5">「変換」ボタンをクリックすると整形結果が表示されます。</li>
+  </ol>
+</section>
+<section class="help-section">
+  <h3 i18n="@@sqlFormatterHelpSpec">仕様・用語解説</h3>
+  <ul>
+    <li>
+      <strong i18n="@@sqlFormatterHelpSpecMode">「モード」: 整形方法の選択</strong>
+      <ul>
+        <li i18n="@@sqlFormatterHelpSpecModeStandard">「標準整形」: 各キーワードを改行・インデントして読みやすく整形します。</li>
+        <li i18n="@@sqlFormatterHelpSpecModeTabular">「右揃え/表形式」: キーワードを右揃えでタブ状に整列し、SQLキーワードが縦に並びます。</li>
+        <li i18n="@@sqlFormatterHelpSpecModeMinify">「圧縮」: 改行・余分なスペースを除去して1行に圧縮します。</li>
+      </ul>
+    </li>
+    <li>
+      <strong i18n="@@sqlFormatterHelpSpecKeyword">「予約語」: SQLキーワードの大文字/小文字変換</strong>
+      <ul>
+        <li i18n="@@sqlFormatterHelpSpecKeywordUpper">「大文字」: SELECT、FROMなどのSQLキーワードをすべて大文字に変換します。</li>
+        <li i18n="@@sqlFormatterHelpSpecKeywordLower">「小文字」: SQLキーワードをすべて小文字に変換します。</li>
+        <li i18n="@@sqlFormatterHelpSpecKeywordPreserve">「変更しない」: 入力のケースをそのまま保持します。</li>
+      </ul>
+    </li>
+    <li i18n="@@sqlFormatterHelpSpecIdentifier"><strong>「識別子」</strong>: テーブル名やカラム名の大文字/小文字を変換します。大文字 / 小文字 / 変更しない から選択できます。</li>
+    <li i18n="@@sqlFormatterHelpSpecIndent"><strong>「インデント」</strong>: 出力するSQLのインデントに使用するスペース数を設定します（例: 2スペース、4スペース）。</li>
+  </ul>
+</section>
+<section class="help-section">
+  <h3 i18n="@@sqlFormatterHelpUseCase">ユースケース</h3>
+  <ul>
+    <li i18n="@@sqlFormatterHelpUseCaseReview">コードレビュー前にSQLを整理して可読性を向上させたい場合。</li>
+    <li i18n="@@sqlFormatterHelpUseCaseDebug">ORMが自動生成したクエリのデバッグ・解析時。</li>
+    <li i18n="@@sqlFormatterHelpUseCaseDoc">ドキュメント用に整形されたSQLスニペットを作成したい場合。</li>
+  </ul>
+</section>
