@@ -1,4 +1,5 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { DashboardPageTemplateComponent } from '../../components/dashboard/dashboard-page-template/dashboard-page-template.component';
 import { DashboardService } from '../../components/dashboard/dashboard.service';
 import { DashboardCardModel } from '../../components/dashboard/dashboard-card-model';
@@ -21,15 +22,48 @@ interface LayoutEntry {
   templateUrl: './dashboard-page.component.html',
   styleUrl: './dashboard-page.component.scss',
 })
-export class DashboardPageComponent implements OnInit {
+export class DashboardPageComponent implements OnInit, OnDestroy {
   private readonly platformService = inject(PlatformService);
+  private readonly document = inject(DOCUMENT);
 
   dashboardService!: DashboardService;
   defaultCards: DashboardCardModel[] = [];
+  private jsonLdScript?: HTMLScriptElement;
 
   ngOnInit(): void {
     this.defaultCards = this.buildDefaultCards();
     this.initDashboard();
+    this.addJsonLd();
+  }
+
+  ngOnDestroy(): void {
+    this.jsonLdScript?.remove();
+  }
+
+  private addJsonLd(): void {
+    const itemList = this.defaultCards
+      .filter((c) => c.destination?.url)
+      .map((c, i) => ({
+        '@type': 'ListItem',
+        'position': i + 1,
+        'name': c.title,
+        'url': c.destination!.url,
+      }));
+
+    const script = this.document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'WebApplication',
+      'name': $localize`:@@app.title:devTools`,
+      'description': $localize`:@@page.dashboard.description:ツールの一覧と更新履歴を確認できます。`,
+      'applicationCategory': 'DeveloperApplication',
+      'operatingSystem': 'Web',
+      'offers': { '@type': 'Offer', 'price': '0', 'priceCurrency': 'JPY' },
+      'hasPart': itemList,
+    });
+    this.document.head.appendChild(script);
+    this.jsonLdScript = script;
   }
 
   private buildDefaultCards(): DashboardCardModel[] {
