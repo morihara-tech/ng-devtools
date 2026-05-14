@@ -14,6 +14,8 @@ import { environment } from '../environments/environment';
 import { DOCUMENT } from '@angular/common';
 import { PlatformService } from './core/services/platform.service';
 
+type WindowWithGtag = Window & { gtag?: (...args: unknown[]) => void };
+
 @Component({
     selector: 'app-root',
     imports: [
@@ -123,7 +125,7 @@ export class AppComponent {
 
   /** Subscribes to NavigationEnd events and sends a page_view hit to GA4. */
   private trackSpaNavigations(): void {
-    const win = this.platformService.window as (Window & { gtag?: (...args: unknown[]) => void }) | null;
+    const win = this.platformService.window as WindowWithGtag | null;
     if (!win?.gtag) return;
 
     const measurementId = environment.analytics.measurementId;

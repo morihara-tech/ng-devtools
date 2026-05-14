@@ -4,6 +4,8 @@ import { environment } from '../../../environments/environment';
 /** Supported ad providers. */
 export type AdProvider = 'adsense';
 
+type WindowWithAdsByGoogle = Window & { adsbygoogle?: object[] };
+
 /**
  * Generic ad slot component.
  * Renders the appropriate ad tag for the given provider and slot, then initializes
@@ -47,7 +49,7 @@ export class AdComponent implements OnDestroy {
     if (this.provider() !== 'adsense') return;
 
     try {
-      const win = window as Window & { adsbygoogle?: object[] };
+      const win = window as WindowWithAdsByGoogle;
       (win.adsbygoogle = win.adsbygoogle ?? []).push({});
     } catch {
       this.hideHost();
