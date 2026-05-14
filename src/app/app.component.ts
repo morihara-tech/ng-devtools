@@ -53,6 +53,7 @@ export class AppComponent {
     this.setTitle();
     afterNextRender(() => {
       this.loadGa4Script();
+      this.loadAdSenseScript();
       this.trackSpaNavigations();
     });
   }
@@ -121,6 +122,16 @@ export class AppComponent {
       `gtag('config', ${JSON.stringify(measurementId)});`,
     ].join('\n');
     this.document.head.appendChild(inlineScript);
+  }
+
+  /** Appends the AdSense SDK script tag to the document head. */
+  private loadAdSenseScript(): void {
+    const clientId = environment.adsense.clientId;
+    const script = this.document.createElement('script');
+    script.async = true;
+    script.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${clientId}`;
+    script.crossOrigin = 'anonymous';
+    this.document.head.appendChild(script);
   }
 
   /** Subscribes to NavigationEnd events and sends a page_view hit to GA4. */
