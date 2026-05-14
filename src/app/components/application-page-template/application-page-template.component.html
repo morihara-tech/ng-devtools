@@ -30,5 +30,8 @@
       </div>
     </div>
     <div class="ad-wrapper"></div>
+    <div class="cdk-visually-hidden" aria-hidden="true">
+      <ng-container [ngTemplateOutlet]="helpDrawerContent() ?? initialHelpDrawerContent()"></ng-container>
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

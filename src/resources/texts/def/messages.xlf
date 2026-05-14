@@ -176,6 +176,11 @@
         <source>メニュー</source>
       </segment>
     </unit>
+    <unit id="page.menu.description">
+      <segment>
+        <source>devTools で利用可能な全ツールの一覧です。</source>
+      </segment>
+    </unit>
     <unit id="page.menu.heading">
       <segment>
         <source>メニュー</source>
@@ -2622,6 +2627,11 @@ UNIXタイム変換ツールを実装しました。</source>
     <unit id="page.privacyPolicy.disclaimer.heading">
       <segment>
         <source>免責事項</source>
+      </segment>
+    </unit>
+    <unit id="page.privacyPolicy.description">
+      <segment>
+        <source>個人情報の取り扱いおよびGoogle Analyticsの利用についての説明です。</source>
       </segment>
     </unit>
     <unit id="page.privacyPolicy.disclaimer.body">

@@ -211,6 +211,12 @@
         <target>All Tools</target>
       </segment>
     </unit>
+    <unit id="page.menu.description">
+      <segment state="initial">
+        <source>devTools で利用可能な全ツールの一覧です。</source>
+        <target>A list of all tools available in devTools.</target>
+      </segment>
+    </unit>
     <unit id="page.menu.heading">
       <segment>
         <source>メニュー</source>
@@ -3156,6 +3162,12 @@ Added the tool list page.</target>
       <segment state="initial">
         <source>免責事項</source>
         <target>Disclaimer</target>
+      </segment>
+    </unit>
+    <unit id="page.privacyPolicy.description">
+      <segment state="initial">
+        <source>個人情報の取り扱いおよびGoogle Analyticsの利用についての説明です。</source>
+        <target>Information on how personal data is handled and how Google Analytics is used.</target>
       </segment>
     </unit>
     <unit id="page.privacyPolicy.disclaimer.body">
