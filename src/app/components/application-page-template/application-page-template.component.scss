@@ -87,4 +87,11 @@
     padding-left: 16px;
     padding-right: 16px;
   }
+  .ad-wrapper {
+    flex: 1;
+    min-width: 160px;
+    max-width: 300px;
+    padding: 8px;
+    overflow: hidden;
+  }
 }

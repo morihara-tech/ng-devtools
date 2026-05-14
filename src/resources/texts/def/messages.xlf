@@ -411,6 +411,11 @@
         <source>SVGビューアーのヘルプを開く</source>
       </segment>
     </unit>
+    <unit id="page.dashboard.card.ad.title">
+      <segment>
+        <source>広告</source>
+      </segment>
+    </unit>
     <unit id="page.dashboard.card.github.description">
       <segment>
         <source> このツールはオープンソースです。<ph id="0" equiv="LINE_BREAK" type="fmt" disp="&lt;br&gt;"/> 不具合や要望などがありましたら、GitHubのIssueにてお知らせください。</source>

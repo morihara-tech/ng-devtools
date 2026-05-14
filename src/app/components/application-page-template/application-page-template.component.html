@@ -29,7 +29,9 @@
         <ng-content></ng-content>
       </div>
     </div>
-    <div class="ad-wrapper"></div>
+    <div class="ad-wrapper">
+      <app-ad provider="adsense" [slotId]="sidebarSlot"></app-ad>
+    </div>
     <div class="cdk-visually-hidden" aria-hidden="true">
       <ng-container [ngTemplateOutlet]="helpDrawerContent() ?? initialHelpDrawerContent()"></ng-container>
     </div>

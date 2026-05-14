@@ -6,6 +6,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDrawerMode, MatSidenavModule } from '@angular/material/sidenav';
 import { PlatformService } from '../../core/services/platform.service';
 import { HelpDrawerService } from '../../services/help-drawer.service';
+import { AdComponent } from '../ad/ad.component';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-application-page-template',
@@ -14,12 +16,15 @@ import { HelpDrawerService } from '../../services/help-drawer.service';
     MatButtonModule,
     MatIconModule,
     NgTemplateOutlet,
+    AdComponent,
   ],
   templateUrl: './application-page-template.component.html',
   styleUrl: './application-page-template.component.scss'
 })
 export class ApplicationPageTemplateComponent implements OnInit, OnDestroy {
   readonly initialHelpDrawerContent = input<TemplateRef<unknown> | null>(null);
+
+  protected readonly sidebarSlot = environment.adsense.sidebarSlot;
 
   private readonly platformService = inject(PlatformService);
   private readonly helpDrawerService = inject(HelpDrawerService);

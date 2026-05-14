@@ -1,4 +1,5 @@
-import { Component, inject, signal } from '@angular/core';
+import { afterNextRender, Component, DestroyRef, inject, signal } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Data, NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -9,6 +10,9 @@ import { SidenavComponent } from "./components/sidenav/sidenav.component";
 import { IconService } from './icon.service';
 import { SitemapComponent } from './components/sitemap/sitemap.component';
 import { MENU_CATEGORIES, MENU_DASHBOARD } from '../resources/menu/def/menu-def';
+import { environment } from '../environments/environment';
+import { DOCUMENT } from '@angular/common';
+import { PlatformService } from './core/services/platform.service';
 
 @Component({
     selector: 'app-root',
@@ -28,6 +32,9 @@ export class AppComponent {
   private readonly titleService = inject(Title);
   private readonly metaService = inject(Meta);
   private readonly _ = inject(IconService);
+  private readonly document = inject(DOCUMENT);
+  private readonly platformService = inject(PlatformService);
+  private readonly destroyRef = inject(DestroyRef);
 
   headerModel: HeaderModel = {
     defaultTitle: $localize`:@@app.title:devTools`,
@@ -42,6 +49,10 @@ export class AppComponent {
 
   constructor() {
     this.setTitle();
+    afterNextRender(() => {
+      this.loadGa4Script();
+      this.trackSpaNavigations();
+    });
   }
 
   onClickPersonContext(menu: PersonButtonMenuModel): void {
@@ -90,5 +101,40 @@ export class AppComponent {
     if (description) {
       this.metaService.updateTag({ name: 'description', content: description });
     }
+  }
+
+  /** Appends the GA4 gtag.js script tag to the document head. */
+  private loadGa4Script(): void {
+    const measurementId = environment.analytics.measurementId;
+    const script = this.document.createElement('script');
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
+    this.document.head.appendChild(script);
+
+    const inlineScript = this.document.createElement('script');
+    inlineScript.textContent = [
+      'window.dataLayer = window.dataLayer || [];',
+      'function gtag(){dataLayer.push(arguments);}',
+      "gtag('js', new Date());",
+      `gtag('config', ${JSON.stringify(measurementId)});`,
+    ].join('\n');
+    this.document.head.appendChild(inlineScript);
+  }
+
+  /** Subscribes to NavigationEnd events and sends a page_view hit to GA4. */
+  private trackSpaNavigations(): void {
+    const win = this.platformService.window as (Window & { gtag?: (...args: unknown[]) => void }) | null;
+    if (!win?.gtag) return;
+
+    const measurementId = environment.analytics.measurementId;
+    this.route.events
+      .pipe(
+        filter((event) => event instanceof NavigationEnd),
+        takeUntilDestroyed(this.destroyRef),
+      )
+      .subscribe((event) => {
+        const navEnd = event as NavigationEnd;
+        win.gtag?.('config', measurementId, { page_path: navEnd.urlAfterRedirects });
+      });
   }
 }

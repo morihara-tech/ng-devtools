@@ -7,6 +7,7 @@ import { UsageCardComponent } from './usage-card/usage-card.component';
 import { MenuCardComponent } from './menu-card/menu-card.component';
 import { GithubCardComponent } from './github-card/github-card.component';
 import { UpdateHistoryCardComponent } from './update-history-card/update-history-card.component';
+import { AdCardComponent } from './ad-card/ad-card.component';
 import { PlatformService } from '../../core/services/platform.service';
 
 const STORAGE_KEY = 'dashboard_layout';
@@ -100,6 +101,12 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
         title: $localize`:@@page.dashboard.card.updateHistory.title:更新履歴`,
         component: UpdateHistoryCardComponent,
         size: { x: 'm', y: 'm' },
+      },
+      {
+        id: 'ad',
+        title: $localize`:@@page.dashboard.card.ad.title:広告`,
+        component: AdCardComponent,
+        size: { x: 's', y: 's' },
       },
     ];
   }

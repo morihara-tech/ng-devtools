@@ -1,0 +1,11 @@
+@if (provider() === 'adsense') {
+  <ins
+    #adIns
+    class="adsbygoogle"
+    [attr.data-ad-client]="clientId"
+    [attr.data-ad-slot]="slotId()"
+    style="display:block"
+    data-ad-format="auto"
+    data-full-width-responsive="true"
+  ></ins>
+}
