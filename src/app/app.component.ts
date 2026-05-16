@@ -2,6 +2,7 @@ import { afterNextRender, Component, DestroyRef, inject, signal } from '@angular
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Data, NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
+import { MatBottomSheet, MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { HeaderModel, PersonButtonMenuModel } from './components/header/header-model';
 import { filter, map, mergeMap } from 'rxjs';
@@ -13,6 +14,8 @@ import { MENU_CATEGORIES, MENU_DASHBOARD } from '../resources/menu/def/menu-def'
 import { environment } from '../environments/environment';
 import { DOCUMENT } from '@angular/common';
 import { PlatformService } from './core/services/platform.service';
+import { CookieConsentService } from './services/cookie-consent.service';
+import { CookieConsentBannerComponent } from './components/cookie-consent-banner/cookie-consent-banner.component';
 
 type WindowWithGtag = Window & { gtag?: (...args: unknown[]) => void };
 
@@ -22,6 +25,7 @@ type WindowWithGtag = Window & { gtag?: (...args: unknown[]) => void };
         HeaderComponent,
         SidenavComponent,
         MatSidenavModule,
+        MatBottomSheetModule,
         RouterOutlet,
         SitemapComponent,
     ],
@@ -37,6 +41,8 @@ export class AppComponent {
   private readonly document = inject(DOCUMENT);
   private readonly platformService = inject(PlatformService);
   private readonly destroyRef = inject(DestroyRef);
+  private readonly cookieConsentService = inject(CookieConsentService);
+  private readonly bottomSheet = inject(MatBottomSheet);
 
   headerModel: HeaderModel = {
     defaultTitle: $localize`:@@app.title:devTools`,
@@ -52,8 +58,14 @@ export class AppComponent {
   constructor() {
     this.setTitle();
     afterNextRender(() => {
+      this.cookieConsentService.initializeConsentDefaults();
       this.loadGa4Script();
       this.trackSpaNavigations();
+      if (this.cookieConsentService.needsBanner()) {
+        this.bottomSheet.open(CookieConsentBannerComponent, {
+          disableClose: true,
+        });
+      }
     });
   }
 

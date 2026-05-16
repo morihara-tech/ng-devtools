@@ -1163,6 +1163,24 @@ When OFF, uses decodeURI to decode while preserving the URL structure.</target>
         <target>Undo</target>
       </segment>
     </unit>
+    <unit id="cookieConsentBannerAcceptAll">
+      <segment state="initial">
+        <source> すべて同意 </source>
+        <target>Accept All</target>
+      </segment>
+    </unit>
+    <unit id="cookieConsentBannerDenyAll">
+      <segment state="initial">
+        <source> すべて拒否 </source>
+        <target>Deny All</target>
+      </segment>
+    </unit>
+    <unit id="cookieConsentBannerMessage">
+      <segment state="initial">
+        <source> 当サイトでは、サービスの向上および最適なパーソナライズのためにCookieを使用しています。詳細は<pc id="0" equivStart="START_LINK" equivEnd="CLOSE_LINK" type="link" dispStart="&lt;a routerLink=&quot;/privacy-policy&quot; (click)=&quot;onPrivacyPolicy()&quot;&gt;" dispEnd="&lt;/a&gt;">プライバシーポリシー</pc>をご確認ください。 </source>
+        <target> We use cookies to improve our service and provide personalized experiences. For more details, please review our <pc id="0" equivStart="START_LINK" equivEnd="CLOSE_LINK" type="link" dispStart="&lt;a routerLink=&quot;/privacy-policy&quot; (click)=&quot;onPrivacyPolicy()&quot;&gt;" dispEnd="&lt;/a&gt;">Privacy Policy</pc>. </target>
+      </segment>
+    </unit>
     <unit id="colorPaletteHelpOverview">
       <segment state="initial">
         <source>概要</source>

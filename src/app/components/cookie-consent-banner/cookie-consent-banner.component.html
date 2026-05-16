@@ -1,0 +1,21 @@
+<div class="banner-content">
+  <p class="banner-message" i18n="@@cookieConsentBannerMessage">
+    当サイトでは、サービスの向上および最適なパーソナライズのためにCookieを使用しています。詳細は<a routerLink="/privacy-policy" (click)="onPrivacyPolicy()">プライバシーポリシー</a>をご確認ください。
+  </p>
+  <div class="banner-actions">
+    <button
+      mat-stroked-button
+      (click)="onDenyAll()"
+      i18n="@@cookieConsentBannerDenyAll"
+    >
+      すべて拒否
+    </button>
+    <button
+      mat-flat-button
+      (click)="onAcceptAll()"
+      i18n="@@cookieConsentBannerAcceptAll"
+    >
+      すべて同意
+    </button>
+  </div>
+</div>
