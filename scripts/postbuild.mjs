@@ -11,9 +11,12 @@
  *  2. Deletes 404.html from every locale directory (it must NOT live there).
  *  3. Copies favicon files from the first locale directory to the browser root
  *     (they remain in the locale directories as well).
+ *  4. Injects the Google AdSense <script> tag into every locale's index.html.
+ *     The client ID is read from environment.ts so it stays the single source
+ *     of truth.
  */
 
-import { copyFileSync, existsSync, unlinkSync } from 'fs';
+import { copyFileSync, existsSync, readFileSync, readdirSync, unlinkSync, writeFileSync } from 'fs';
 import { join } from 'path';
 
 const BROWSER_DIR = 'dist/ng-devtools/browser';
@@ -68,4 +71,43 @@ for (const file of FAVICON_FILES) {
 
   copyFileSync(src, join(BROWSER_DIR, file));
   console.log(`Copied ${file} → ${BROWSER_DIR}/`);
+}
+
+// 3. Inject AdSense <script> into every index.html under every locale dir.
+//    Read clientId from environment.ts to keep a single source of truth.
+
+const ENV_FILE = 'src/environments/environment.ts';
+const envSource = readFileSync(ENV_FILE, 'utf-8');
+const clientIdMatch = envSource.match(/clientId:\s*'([^']+)'/);
+if (!clientIdMatch) {
+  console.warn('AdSense clientId not found in environment.ts — skipping AdSense injection.');
+} else {
+  const clientId = clientIdMatch[1];
+  const adsenseTag = `  <!-- Google AdSense -->\n  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${clientId}" crossorigin="anonymous"></script>\n`;
+
+  for (const locale of LOCALES) {
+    const localeDir = join(BROWSER_DIR, locale);
+    if (!existsSync(localeDir)) {
+      console.warn(`Locale directory not found: ${localeDir} — skipping.`);
+      continue;
+    }
+
+    // Recursively find all index.html files under the locale directory.
+    const allFiles = readdirSync(localeDir, { recursive: true, withFileTypes: false });
+    const indexFiles = /** @type {string[]} */ (allFiles)
+      .filter((f) => f === 'index.html' || f.endsWith('/index.html') || f.endsWith('\\index.html'))
+      .map((f) => join(localeDir, f));
+
+    for (const indexPath of indexFiles) {
+      const html = readFileSync(indexPath, 'utf-8');
+      if (html.includes('adsbygoogle.js')) {
+        console.log(`AdSense already present in ${indexPath} — skipping.`);
+        continue;
+      }
+
+      const injected = html.replace('</head>', `${adsenseTag}</head>`);
+      writeFileSync(indexPath, injected, 'utf-8');
+      console.log(`Injected AdSense into ${indexPath}`);
+    }
+  }
 }

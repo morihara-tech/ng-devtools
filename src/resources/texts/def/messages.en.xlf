@@ -493,6 +493,12 @@
         <target>Open help for the SVG viewer</target>
       </segment>
     </unit>
+    <unit id="page.dashboard.card.ad.title">
+      <segment state="initial">
+        <source>広告</source>
+        <target>Ad</target>
+      </segment>
+    </unit>
     <unit id="page.dashboard.card.github.description">
       <segment state="initial">
         <source> このツールはオープンソースです。<ph id="0" equiv="LINE_BREAK" type="fmt" disp="&lt;br&gt;"/> 不具合や要望などがありましたら、GitHubのIssueにてお知らせください。</source>
