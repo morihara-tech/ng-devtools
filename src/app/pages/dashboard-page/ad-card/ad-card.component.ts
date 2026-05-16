@@ -44,7 +44,7 @@ export class AdCardComponent implements OnDestroy {
 
   private updateDimensions(el: HTMLElement): void {
     const w = el.offsetWidth;
-    const h = el.offsetHeight;
+    const h = el.offsetHeight - 16;
     if (w > 0) this.adWidth.set(w);
     if (h > 0) this.adHeight.set(h);
   }

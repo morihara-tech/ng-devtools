@@ -47,18 +47,18 @@ const SIZE_L_MULTIPLIER = 3;
 type CardSize = 's' | 'm' | 'l';
 
 interface ResizeState {
-  /** Width of the blue placeholder (snapped to s/m/l). */
-  placeholderWidth: number;
-  /** Height of the blue placeholder (snapped to s/m/l). */
-  placeholderHeight: number;
-  /** Left offset of the placeholder relative to .card-container. */
-  placeholderLeft: number;
-  /** Top offset of the placeholder relative to .card-container. */
-  placeholderTop: number;
   /** The card's current free-form width during drag (not snapped). */
   freeWidth: number;
   /** The card's current free-form height during drag (not snapped). */
   freeHeight: number;
+  /** Current snapped column size (updated on every mousemove). */
+  snappedX: CardSize;
+  /** Current snapped row size (updated on every mousemove). */
+  snappedY: CardSize;
+  /** Initial viewport left of the card (for position:fixed floating). */
+  cardViewportLeft: number;
+  /** Initial viewport top of the card (for position:fixed floating). */
+  cardViewportTop: number;
 }
 
 interface LayoutEntry {
@@ -161,8 +161,26 @@ export class DashboardPageTemplateComponent implements OnDestroy {
     return this.getCardWidthForSize(model.size?.x ?? 's');
   }
 
+  getGridSpanX(model: DashboardCardModel): number {
+    if (this.getMaxWrapperWidth() > this.wrapperWidth) return 3;
+    const size = (this.resizingModel === model && this.resizeState)
+      ? this.resizeState.snappedX
+      : (model.size?.x ?? 's');
+    return size === 's' ? 1 : size === 'm' ? 2 : 3;
+  }
+
+  getGridSpanY(model: DashboardCardModel): number {
+    const size = (this.resizingModel === model && this.resizeState)
+      ? this.resizeState.snappedY
+      : (model.size?.y ?? 's');
+    return size === 's' ? 1 : size === 'm' ? 2 : 3;
+  }
+
   getCardHeight(model: DashboardCardModel): number {
-    return this.getCardHeightForSize(model.size?.y ?? 's');
+    const size = (this.resizingModel === model && this.resizeState)
+      ? this.resizeState.snappedY
+      : (model.size?.y ?? 's');
+    return this.getCardHeightForSize(size);
   }
 
   // ── Resize via mouse events ────────────────────────────────────────────────
@@ -177,9 +195,7 @@ export class DashboardPageTemplateComponent implements OnDestroy {
 
     const handleEl = event.currentTarget as HTMLElement;
     const cardEl = handleEl.closest('mat-card') as HTMLElement | null;
-    const containerEl = handleEl.closest('.card-container') as HTMLElement | null;
     const cardRect = (cardEl ?? handleEl).getBoundingClientRect();
-    const containerRect = containerEl?.getBoundingClientRect() ?? { left: 0, top: 0 };
 
     this.resizingModel = model;
     this.resizeStart = {
@@ -190,12 +206,12 @@ export class DashboardPageTemplateComponent implements OnDestroy {
     };
 
     this.resizeState = {
-      placeholderWidth: this.getCardWidth(model),
-      placeholderHeight: this.getCardHeight(model),
-      placeholderLeft: cardRect.left - containerRect.left,
-      placeholderTop: cardRect.top - containerRect.top,
       freeWidth: this.getCardWidth(model),
       freeHeight: this.getCardHeight(model),
+      snappedX: model.size?.x ?? 's',
+      snappedY: model.size?.y ?? 's',
+      cardViewportLeft: cardRect.left,
+      cardViewportTop: cardRect.top,
     };
 
     this.resizeMouseMove = (e: MouseEvent) => this.onResizeMove(e);
@@ -220,8 +236,8 @@ export class DashboardPageTemplateComponent implements OnDestroy {
       ...this.resizeState!,
       freeWidth,
       freeHeight,
-      placeholderWidth: this.getCardWidthForSize(snappedX),
-      placeholderHeight: this.getCardHeightForSize(snappedY),
+      snappedX,
+      snappedY,
     };
     this.cdr.markForCheck();
   }
@@ -243,15 +259,16 @@ export class DashboardPageTemplateComponent implements OnDestroy {
     const newX = this.snapWidth(finalWidth, this.getCardWidthForSize('s'));
     const newY = this.snapHeight(finalHeight, this.getCardHeightForSize('s'));
 
-    const model = this.resizingModel!;
-    if (!model.size) {
-      model.size = {};
-    }
-    model.size.x = newX;
-    model.size.y = newY;
-
+    const resizingModel = this.resizingModel!;
     this.resizeState = null;
     this.resizingModel = null;
+
+    // Update immutably via the service to avoid mutating the defaultCards references,
+    // which would prevent resetLayout() from restoring original sizes.
+    const updatedCards = this.api().getAll().map((m) =>
+      m === resizingModel ? { ...m, size: { ...m.size, x: newX, y: newY } } : m,
+    );
+    this.api().update(updatedCards);
     this.saveLayout();
     this.cdr.detectChanges();
   }

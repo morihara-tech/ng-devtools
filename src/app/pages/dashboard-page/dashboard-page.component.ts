@@ -73,18 +73,7 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
         id: 'usage',
         title: $localize`:@@page.dashboard.card.usage.title:ご利用方法`,
         component: UsageCardComponent,
-        size: { x: 'm', y: 's' },
-      },
-      {
-        id: 'github',
-        title: $localize`:@@page.dashboard.card.github.title:問い合わせ`,
-        component: GithubCardComponent,
-        destination: {
-          linkText: $localize`:@@page.dashboard.card.github.linkText:GitHub Issuesに移動`,
-          url: 'https://github.com/morihara-tech/ng-devtools/issues',
-          external: true,
-          openInNewTab: true,
-        },
+        size: { x: 'l', y: 's' },
       },
       {
         id: 'menu',
@@ -100,7 +89,19 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
         id: 'updateHistory',
         title: $localize`:@@page.dashboard.card.updateHistory.title:更新履歴`,
         component: UpdateHistoryCardComponent,
-        size: { x: 'm', y: 'm' },
+        size: { x: 'm', y: 's' },
+      },
+      {
+        id: 'github',
+        title: $localize`:@@page.dashboard.card.github.title:問い合わせ`,
+        component: GithubCardComponent,
+        size: { x: 's', y: 's' },
+        destination: {
+          linkText: $localize`:@@page.dashboard.card.github.linkText:GitHub Issuesに移動`,
+          url: 'https://github.com/morihara-tech/ng-devtools/issues',
+          external: true,
+          openInNewTab: true,
+        },
       },
       {
         id: 'ad',

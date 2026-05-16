@@ -1,4 +1,4 @@
-import { afterNextRender, Component, ElementRef, inject, input, OnDestroy, viewChild } from '@angular/core';
+import { afterNextRender, Component, effect, ElementRef, inject, input, OnDestroy, signal, untracked, viewChild } from '@angular/core';
 import { environment } from '../../../environments/environment';
 
 /** Supported ad providers. */
@@ -13,8 +13,7 @@ type WindowWithAdsByGoogle = Window & { adsbygoogle?: object[] };
  *
  * **Explicit-size mode** – supply both `width` and `height` (in px) to serve a
  * fixed-dimension ad unit. The parent component should measure the available area
- * in its own `afterNextRender` callback (which Angular guarantees fires before the
- * child's callback) and pass the resulting pixel values as inputs.
+ * and pass the resulting pixel values as signal inputs.
  *
  * **Responsive mode** (default) – omit both inputs; the `<ins>` element uses
  * `data-ad-format="auto"` and `data-full-width-responsive="true"`.
@@ -55,9 +54,43 @@ export class AdComponent implements OnDestroy {
 
   private adBlockCheckTimeout?: ReturnType<typeof setTimeout>;
 
+  /**
+   * Set to `true` once the DOM has been rendered for the first time.
+   * Used to gate the initialisation effect so it never runs server-side.
+   */
+  private readonly domReady = signal(false);
+
+  /** Guards against calling `adsbygoogle.push({})` more than once per slot. */
+  private adInitialized = false;
+
   constructor() {
+    // Mark the DOM as ready after the first browser render.
     afterNextRender(() => {
-      this.applyDimensionsAndInit();
+      this.domReady.set(true);
+    });
+
+    // Initialise the ad slot reactively.
+    //
+    // In zoneless Angular, effects are flushed *after* all view bindings have been
+    // updated in the same change-detection cycle. This means that by the time this
+    // effect runs (triggered by `domReady` becoming `true`), the parent's template
+    // binding `[width]="adWidth()"` has already propagated the measured value into
+    // the `width` input signal – resolving the race that existed with the previous
+    // `afterNextRender`-only approach.
+    effect(() => {
+      const ready = this.domReady();
+      const w = this.width();
+      const h = this.height();
+
+      if (!ready || this.adInitialized) return;
+
+      const hasExplicit = w !== undefined && h !== undefined && w > 0 && h > 0;
+      const isResponsive = w === undefined && h === undefined;
+
+      if (hasExplicit || isResponsive) {
+        this.adInitialized = true;
+        untracked(() => this.applyDimensionsAndInit());
+      }
     });
   }
 
@@ -69,13 +102,7 @@ export class AdComponent implements OnDestroy {
 
   /**
    * Applies explicit dimensions to the `<ins>` DOM node (if provided) and then
-   * calls `adsbygoogle.push({})`.
-   *
-   * Angular fires `afterNextRender` callbacks in registration order – parent
-   * components are instantiated (and therefore register their callbacks) before
-   * child components. This means the parent's measurement callback runs first,
-   * updating the `width` and `height` signal inputs synchronously before this
-   * callback executes.
+   * calls `adsbygoogle.push({})`. Must be called at most once per slot.
    */
   private applyDimensionsAndInit(): void {
     if (this.provider() !== 'adsense') return;
