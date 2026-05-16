@@ -68,6 +68,7 @@ export class CookieConsentService {
 
   /** Denies all consent types, persists the choice, and hides the banner. */
   denyAll(): void {
+    this.issueConsentUpdate('denied');
     this.persistConsent('denied');
     this.needsBanner.set(false);
   }
