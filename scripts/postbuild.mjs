@@ -14,6 +14,7 @@
  *  4. Injects the Google AdSense <script> tag into every locale's index.html.
  *     The client ID is read from environment.ts so it stays the single source
  *     of truth.
+ *  5. Injects canonical and hreflang <link> tags into every locale's index.html.
  */
 
 import { copyFileSync, existsSync, readFileSync, readdirSync, unlinkSync, writeFileSync } from 'fs';
@@ -109,5 +110,49 @@ if (!clientIdMatch) {
       writeFileSync(indexPath, injected, 'utf-8');
       console.log(`Injected AdSense into ${indexPath}`);
     }
+  }
+}
+
+// 5. Inject canonical and hreflang <link> tags into every index.html under every locale dir.
+
+const BASE_URL = 'https://devtools.morihara.tech';
+
+for (const locale of LOCALES) {
+  const localeDir = join(BROWSER_DIR, locale);
+  if (!existsSync(localeDir)) continue;
+
+  const allFiles = readdirSync(localeDir, { recursive: true, withFileTypes: false });
+  const indexFiles = /** @type {string[]} */ (allFiles)
+    .filter((f) => f === 'index.html' || f.endsWith('/index.html') || f.endsWith('\\index.html'))
+    .map((f) => join(localeDir, f));
+
+  for (const indexPath of indexFiles) {
+    // Skip error pages — they should not be indexed.
+    if (indexPath.replace(/\\/g, '/').includes('/error/')) continue;
+
+    const html = readFileSync(indexPath, 'utf-8');
+    if (html.includes('rel="canonical"')) {
+      console.log(`Canonical already present in ${indexPath} — skipping.`);
+      continue;
+    }
+
+    // Derive the URL path from the file path.
+    // e.g. dist/ng-devtools/browser/ja/json-formatter/index.html → /ja/json-formatter/
+    const relativePath = indexPath.slice(BROWSER_DIR.length + 1).replace(/\\/g, '/');
+    const urlPath = '/' + relativePath.replace(/index\.html$/, '');
+
+    const altLocale = locale === 'ja' ? 'en' : 'ja';
+    const altUrlPath = urlPath.replace(`/${locale}/`, `/${altLocale}/`);
+
+    const tags = [
+      `  <link rel="canonical" href="${BASE_URL}${urlPath}">`,
+      `  <link rel="alternate" hreflang="${locale}" href="${BASE_URL}${urlPath}">`,
+      `  <link rel="alternate" hreflang="${altLocale}" href="${BASE_URL}${altUrlPath}">`,
+      `  <link rel="alternate" hreflang="x-default" href="${BASE_URL}/ja/">`,
+    ].join('\n');
+
+    const injected = html.replace('</head>', `${tags}\n</head>`);
+    writeFileSync(indexPath, injected, 'utf-8');
+    console.log(`Injected canonical/hreflang into ${indexPath}`);
   }
 }
