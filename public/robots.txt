@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /ja/error/
+Disallow: /en/error/
+
+Sitemap: https://devtools.morihara.tech/sitemap.xml
