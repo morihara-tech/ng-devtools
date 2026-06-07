@@ -1,13 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { vi } from 'vitest';
 
 import { JsonFormatterPageComponent } from './json-formatter-page.component';
-import { HelpDrawerService } from '../../services/help-drawer.service';
 
 describe('JsonFormatterPageComponent', () => {
   let component: JsonFormatterPageComponent;
   let fixture: ComponentFixture<JsonFormatterPageComponent>;
-  let helpDrawerService: HelpDrawerService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -15,7 +12,6 @@ describe('JsonFormatterPageComponent', () => {
     })
     .compileComponents();
 
-    helpDrawerService = TestBed.inject(HelpDrawerService);
     fixture = TestBed.createComponent(JsonFormatterPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -25,11 +21,12 @@ describe('JsonFormatterPageComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should open help drawer when help button clicked', () => {
-    const openSpy = vi.spyOn(helpDrawerService, 'open');
-    const helpButton: HTMLButtonElement | null = fixture.nativeElement.querySelector('.margin-bottom-16 button.right');
-    helpButton?.click();
+  it('should render the help section inline with an anchor link to it', () => {
+    const helpLink: HTMLAnchorElement | null = fixture.nativeElement.querySelector('.margin-bottom-16 a.right');
+    const helpSection: HTMLElement | null = fixture.nativeElement.querySelector('#json-formatter-help');
 
-    expect(openSpy).toHaveBeenCalled();
+    expect(helpLink?.getAttribute('href')).toBe('#json-formatter-help');
+    expect(helpSection).toBeTruthy();
+    expect(helpSection?.querySelector('app-json-formatter-help')).toBeTruthy();
   });
 });

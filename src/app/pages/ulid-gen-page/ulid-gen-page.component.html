@@ -1,16 +1,15 @@
-<app-application-page-template [initialHelpDrawerContent]="ulidGenHelpContent">
+<app-application-page-template>
   <div class="margin-bottom-16">
     <app-heading headingType="h2">
       <span i18n="@@page.ulid.title">ULID生成ツール</span>
-      <button
-        type="button"
+      <a
+        href="#ulid-generator-help"
         class="right"
         mat-icon-button
         i18n-aria-label="@@page.ulid.help.openAriaLabel"
-        aria-label="ULID生成ツールのヘルプを開く"
-        (click)="onOpenHelp(ulidGenHelpContent)">
+        aria-label="ULID生成ツールの解説へ移動">
         <mat-icon>help_outline</mat-icon>
-      </button>
+      </a>
     </app-heading>
   </div>
   <app-ulid-gen-input-card
@@ -21,7 +20,10 @@
     #output
   ></app-ulid-gen-output-card>
 
-  <ng-template #ulidGenHelpContent>
+  <section id="ulid-generator-help" class="margin-top-24">
+    <div class="margin-bottom-8">
+      <app-heading headingType="h3" i18n="@@page.ulid.help.sectionTitle">ULID生成ツールについて</app-heading>
+    </div>
     <app-ulid-gen-help></app-ulid-gen-help>
-  </ng-template>
+  </section>
 </app-application-page-template>

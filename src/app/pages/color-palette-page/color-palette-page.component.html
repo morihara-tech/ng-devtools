@@ -1,16 +1,15 @@
-<app-application-page-template [initialHelpDrawerContent]="colorPaletteHelpContent">
+<app-application-page-template>
   <div class="margin-bottom-16">
     <app-heading headingType="h2">
       <span i18n="@@page.colorPalette.title">カラーパレット</span>
-      <button
-        type="button"
+      <a
+        href="#color-palette-help"
         class="right"
         mat-icon-button
         i18n-aria-label="@@page.colorPalette.help.openAriaLabel"
-        aria-label="カラーパレットのヘルプを開く"
-        (click)="onOpenHelp(colorPaletteHelpContent)">
+        aria-label="カラーパレットの解説へ移動">
         <mat-icon>help_outline</mat-icon>
-      </button>
+      </a>
     </app-heading>
   </div>
   <app-color-palette-input-card
@@ -21,7 +20,10 @@
     #output
   ></app-color-palette-output-card>
 
-  <ng-template #colorPaletteHelpContent>
+  <section id="color-palette-help" class="margin-top-24">
+    <div class="margin-bottom-8">
+      <app-heading headingType="h3" i18n="@@page.colorPalette.help.sectionTitle">カラーパレットについて</app-heading>
+    </div>
     <app-color-palette-help></app-color-palette-help>
-  </ng-template>
+  </section>
 </app-application-page-template>

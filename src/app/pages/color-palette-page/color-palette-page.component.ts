@@ -1,9 +1,8 @@
-import { Component, inject, TemplateRef, viewChild } from '@angular/core';
+import { Component, viewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { ApplicationPageTemplateComponent } from '../../components/application-page-template/application-page-template.component';
 import { HeadingComponent } from '../../components/heading/heading.component';
-import { HelpDrawerService } from '../../services/help-drawer.service';
 import { ColorPaletteInputCardComponent } from './color-palette-input-card/color-palette-input-card.component';
 import { ColorPaletteOutputCardComponent } from './color-palette-output-card/color-palette-output-card.component';
 import { ColorPaletteInputModel } from './color-palette-model';
@@ -25,13 +24,8 @@ import { ColorPaletteHelpComponent } from './color-palette-help/color-palette-he
 })
 export class ColorPalettePageComponent {
   private readonly outputCard = viewChild<ColorPaletteOutputCardComponent>('output');
-  private readonly helpDrawerService = inject(HelpDrawerService);
 
   onGenerate(input: ColorPaletteInputModel): void {
     this.outputCard()?.renderPalette(input);
-  }
-
-  onOpenHelp(content: TemplateRef<unknown>): void {
-    this.helpDrawerService.open(content);
   }
 }

@@ -1,21 +1,23 @@
-<app-application-page-template [initialHelpDrawerContent]="sqlFormatterHelpContent">
+<app-application-page-template>
   <div class="margin-bottom-16">
     <app-heading headingType="h2">
       <span i18n="@@page.sql.title">SQL整形ツール</span>
-      <button
-        type="button"
+      <a
+        href="#sql-formatter-help"
         class="right"
         mat-icon-button
         i18n-aria-label="@@page.sql.help.openAriaLabel"
-        aria-label="SQL整形ツールのヘルプを開く"
-        (click)="onOpenHelp(sqlFormatterHelpContent)">
+        aria-label="SQL整形ツールの解説へ移動">
         <mat-icon>help_outline</mat-icon>
-      </button>
+      </a>
     </app-heading>
   </div>
   <app-sql-formatter-input-card></app-sql-formatter-input-card>
 
-  <ng-template #sqlFormatterHelpContent>
+  <section id="sql-formatter-help" class="margin-top-24">
+    <div class="margin-bottom-8">
+      <app-heading headingType="h3" i18n="@@page.sql.help.sectionTitle">SQL整形ツールについて</app-heading>
+    </div>
     <app-sql-formatter-help></app-sql-formatter-help>
-  </ng-template>
+  </section>
 </app-application-page-template>

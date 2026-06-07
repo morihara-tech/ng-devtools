@@ -265,18 +265,6 @@
         <target>All Tools</target>
       </segment>
     </unit>
-    <unit id="help.drawer.closeAriaLabel">
-      <segment state="initial">
-        <source>ヘルプを閉じる</source>
-        <target>Close help</target>
-      </segment>
-    </unit>
-    <unit id="help.drawer.title">
-      <segment state="initial">
-        <source>ヘルプ</source>
-        <target>Help</target>
-      </segment>
-    </unit>
     <unit id="ipCidrHelpOverview">
       <segment state="initial">
         <source>概要</source>
@@ -411,8 +399,14 @@
     </unit>
     <unit id="page.uuid.help.openAriaLabel">
       <segment state="initial">
-        <source>UUID生成ツールのヘルプを開く</source>
-        <target>Open help for the UUID generator</target>
+        <source>UUID生成ツールの解説へ移動</source>
+        <target>Jump to the UUID Generator guide section</target>
+      </segment>
+    </unit>
+    <unit id="page.uuid.help.sectionTitle">
+      <segment state="initial">
+        <source>UUID生成ツールについて</source>
+        <target>About the UUID Generator</target>
       </segment>
     </unit>
     <unit id="page.ulid.description">
@@ -423,8 +417,14 @@
     </unit>
     <unit id="page.ulid.help.openAriaLabel">
       <segment state="initial">
-        <source>ULID生成ツールのヘルプを開く</source>
-        <target>Open help for the ULID generator</target>
+        <source>ULID生成ツールの解説へ移動</source>
+        <target>Jump to the ULID Generator guide section</target>
+      </segment>
+    </unit>
+    <unit id="page.ulid.help.sectionTitle">
+      <segment state="initial">
+        <source>ULID生成ツールについて</source>
+        <target>About the ULID Generator</target>
       </segment>
     </unit>
     <unit id="page.password.description">
@@ -435,8 +435,14 @@
     </unit>
     <unit id="page.password.help.openAriaLabel">
       <segment state="initial">
-        <source>パスワード生成ツールのヘルプを開く</source>
-        <target>Open help for the password generator</target>
+        <source>パスワード生成ツールの解説へ移動</source>
+        <target>Jump to the Password Generator guide section</target>
+      </segment>
+    </unit>
+    <unit id="page.password.help.sectionTitle">
+      <segment state="initial">
+        <source>パスワード生成ツールについて</source>
+        <target>About the Password Generator</target>
       </segment>
     </unit>
     <unit id="page.urlEncoder.description">
@@ -453,8 +459,14 @@
     </unit>
     <unit id="page.unixTimestamp.help.openAriaLabel">
       <segment state="initial">
-        <source>UNIXタイム変換ツールのヘルプを開く</source>
-        <target>Open help for the UNIX timestamp converter</target>
+        <source>UNIXタイム変換の解説へ移動</source>
+        <target>Jump to the UNIX Timestamp Converter guide section</target>
+      </segment>
+    </unit>
+    <unit id="page.unixTimestamp.help.sectionTitle">
+      <segment state="initial">
+        <source>UNIXタイム変換ツールについて</source>
+        <target>About the UNIX Timestamp Converter</target>
       </segment>
     </unit>
     <unit id="page.ipCidr.description">
@@ -465,8 +477,14 @@
     </unit>
     <unit id="page.ipCidr.help.openAriaLabel">
       <segment state="initial">
-        <source>IP/CIDR計算機のヘルプを開く</source>
-        <target>Open help for the IP/CIDR calculator</target>
+        <source>IP/CIDR計算機の解説へ移動</source>
+        <target>Jump to the IP/CIDR Calculator guide section</target>
+      </segment>
+    </unit>
+    <unit id="page.ipCidr.help.sectionTitle">
+      <segment state="initial">
+        <source>IP/CIDR計算機について</source>
+        <target>About the IP/CIDR Calculator</target>
       </segment>
     </unit>
     <unit id="page.textDiff.description">
@@ -477,8 +495,14 @@
     </unit>
     <unit id="page.textDiff.help.openAriaLabel">
       <segment state="initial">
-        <source>テキスト比較ツールのヘルプを開く</source>
-        <target>Open help for the text diff tool</target>
+        <source>テキスト比較ツールの解説へ移動</source>
+        <target>Jump to the Text Diff Tool guide section</target>
+      </segment>
+    </unit>
+    <unit id="page.textDiff.help.sectionTitle">
+      <segment state="initial">
+        <source>テキスト比較ツールについて</source>
+        <target>About the Text Diff Tool</target>
       </segment>
     </unit>
     <unit id="page.svgToPng.description">
@@ -489,8 +513,14 @@
     </unit>
     <unit id="page.svgToPng.help.openAriaLabel">
       <segment state="initial">
-        <source>SVGビューアーのヘルプを開く</source>
-        <target>Open help for the SVG viewer</target>
+        <source>SVGビューアーの解説へ移動</source>
+        <target>Jump to the SVG Viewer guide section</target>
+      </segment>
+    </unit>
+    <unit id="page.svgToPng.help.sectionTitle">
+      <segment state="initial">
+        <source>SVGビューアーについて</source>
+        <target>About the SVG Viewer</target>
       </segment>
     </unit>
     <unit id="page.dashboard.card.ad.title">
@@ -817,8 +847,14 @@ When OFF, uses decodeURI to decode while preserving the URL structure.</target>
     </unit>
     <unit id="page.urlEncoder.help.openAriaLabel">
       <segment state="initial">
-        <source>URLエンコード・デコードツールのヘルプを開く</source>
-        <target>Open help for the URL encoder/decoder tool</target>
+        <source>URLエンコード・デコードツールの解説へ移動</source>
+        <target>Jump to the URL Encode / Decode Tool guide section</target>
+      </segment>
+    </unit>
+    <unit id="page.urlEncoder.help.sectionTitle">
+      <segment state="initial">
+        <source>URLエンコード・デコードツールについて</source>
+        <target>About the URL Encode / Decode Tool</target>
       </segment>
     </unit>
     <unit id="page.json.formatter.errorMessage">
@@ -937,8 +973,14 @@ When OFF, uses decodeURI to decode while preserving the URL structure.</target>
     </unit>
     <unit id="page.json.help.openAriaLabel">
       <segment state="initial">
-        <source>JSON整形ツールのヘルプを開く</source>
-        <target>Open help for the JSON formatter tool</target>
+        <source>JSON整形ツールの解説へ移動</source>
+        <target>Jump to the JSON Formatter Tool guide section</target>
+      </segment>
+    </unit>
+    <unit id="page.json.help.sectionTitle">
+      <segment state="initial">
+        <source>JSON整形ツールについて</source>
+        <target>About the JSON Formatter Tool</target>
       </segment>
     </unit>
     <unit id="page.json.menu">
@@ -2604,8 +2646,14 @@ Added the tool list page.</target>
     </unit>
     <unit id="page.sql.help.openAriaLabel">
       <segment state="initial">
-        <source>SQL整形ツールのヘルプを開く</source>
-        <target>Open help for the SQL formatter tool</target>
+        <source>SQL整形ツールの解説へ移動</source>
+        <target>Jump to the SQL Formatter Tool guide section</target>
+      </segment>
+    </unit>
+    <unit id="page.sql.help.sectionTitle">
+      <segment state="initial">
+        <source>SQL整形ツールについて</source>
+        <target>About the SQL Formatter Tool</target>
       </segment>
     </unit>
     <unit id="page.sqlFormatter.card.input.heading">
@@ -2856,8 +2904,14 @@ Added the tool list page.</target>
     </unit>
     <unit id="page.colorPalette.help.openAriaLabel">
       <segment state="initial">
-        <source>カラーパレットのヘルプを開く</source>
-        <target>Open help for the color palette tool</target>
+        <source>カラーパレットの解説へ移動</source>
+        <target>Jump to the Color Palette guide section</target>
+      </segment>
+    </unit>
+    <unit id="page.colorPalette.help.sectionTitle">
+      <segment state="initial">
+        <source>カラーパレットについて</source>
+        <target>About the Color Palette</target>
       </segment>
     </unit>
     <unit id="page.colorPalette.title">
@@ -3048,8 +3102,14 @@ Added the tool list page.</target>
     </unit>
     <unit id="page.apiKey.help.openAriaLabel">
       <segment state="initial">
-        <source>APIキー生成ツールのヘルプを開く</source>
-        <target>Open help for the API key generator</target>
+        <source>APIキー生成ツールの解説へ移動</source>
+        <target>Jump to the API Key Generator guide section</target>
+      </segment>
+    </unit>
+    <unit id="page.apiKey.help.sectionTitle">
+      <segment state="initial">
+        <source>APIキー生成ツールについて</source>
+        <target>About the API Key Generator</target>
       </segment>
     </unit>
     <unit id="page.apiKey.menu">

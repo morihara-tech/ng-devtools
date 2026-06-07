@@ -1,39 +1,10 @@
-<mat-sidenav-container class="page-wrapper" [hasBackdrop]="hasBackdrop" backdropClass="help-drawer-backdrop">
-  <mat-sidenav
-    position="end"
-    class="help-drawer"
-    [mode]="helpDrawerMode"
-    [opened]="isHelpDrawerOpen()"
-    (openedChange)="onOpenedChange($event)">
-    <div class="help-drawer-layout">
-      <header class="help-drawer-header">
-        <h2 class="help-drawer-title" i18n="@@help.drawer.title">ヘルプ</h2>
-        <button
-          type="button"
-          mat-icon-button
-          i18n-aria-label="@@help.drawer.closeAriaLabel"
-          aria-label="ヘルプを閉じる"
-          (click)="onCloseHelp()">
-          <mat-icon>close</mat-icon>
-        </button>
-      </header>
-      <div class="help-drawer-content">
-        <ng-container [ngTemplateOutlet]="helpDrawerContent() ?? initialHelpDrawerContent()"></ng-container>
-      </div>
+<div class="page-wrapper">
+  <div class="page-content-wrapper">
+    <div class="page-content">
+      <ng-content></ng-content>
     </div>
-  </mat-sidenav>
-
-  <mat-sidenav-content>
-    <div class="page-content-wrapper">
-      <div class="page-content">
-        <ng-content></ng-content>
-      </div>
-    </div>
-    <div class="ad-wrapper" #adWrapper>
-      <app-ad provider="adsense" [slotId]="sidebarSlot" [width]="adWidth()" [height]="adHeight()"></app-ad>
-    </div>
-    <div class="cdk-visually-hidden" aria-hidden="true">
-      <ng-container [ngTemplateOutlet]="helpDrawerContent() ?? initialHelpDrawerContent()"></ng-container>
-    </div>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+  </div>
+  <div class="ad-wrapper" #adWrapper>
+    <app-ad provider="adsense" [slotId]="sidebarSlot" [width]="adWidth()" [height]="adHeight()"></app-ad>
+  </div>
+</div>

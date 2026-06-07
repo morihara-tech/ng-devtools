@@ -1,16 +1,15 @@
-<app-application-page-template [initialHelpDrawerContent]="ipCidrHelpContent">
+<app-application-page-template>
   <div class="margin-bottom-16">
     <app-heading headingType="h2">
       <span i18n="@@page.ipCidr.title">IP/CIDR計算機</span>
-      <button
-        type="button"
+      <a
+        href="#ip-cidr-calculator-help"
         class="right"
         mat-icon-button
         i18n-aria-label="@@page.ipCidr.help.openAriaLabel"
-        aria-label="IP/CIDR計算機のヘルプを開く"
-        (click)="onOpenHelp(ipCidrHelpContent)">
+        aria-label="IP/CIDR計算機の解説へ移動">
         <mat-icon>help_outline</mat-icon>
-      </button>
+      </a>
     </app-heading>
   </div>
   <app-ip-cidr-input-card
@@ -21,7 +20,10 @@
     #output
   ></app-ip-cidr-output-card>
 
-  <ng-template #ipCidrHelpContent>
+  <section id="ip-cidr-calculator-help" class="margin-top-24">
+    <div class="margin-bottom-8">
+      <app-heading headingType="h3" i18n="@@page.ipCidr.help.sectionTitle">IP/CIDR計算機について</app-heading>
+    </div>
     <app-ip-cidr-help></app-ip-cidr-help>
-  </ng-template>
+  </section>
 </app-application-page-template>
