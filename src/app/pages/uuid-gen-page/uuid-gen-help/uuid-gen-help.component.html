@@ -1,33 +1,56 @@
-<section class="help-section">
-  <h3 i18n="@@uuidGenHelpOverview">概要</h3>
-  <p i18n="@@uuidGenHelpOverviewDesc">
-    UUIDジェネレーターは、RFC 4122（RFC 9562）に準拠したUniversally Unique Identifier（UUID）をオンラインで生成するツールです。v1・v4・v7の3バージョンに対応し、最大100件の一括生成が可能です。
-  </p>
-</section>
-<section class="help-section">
-  <h3 i18n="@@uuidGenHelpUsage">使い方</h3>
-  <ol>
-    <li i18n="@@uuidGenHelpUsageStep1">生成するUUIDのバージョン（v1 / v4 / v7）を選択します。</li>
-    <li i18n="@@uuidGenHelpUsageStep2">「生成数」に件数を指定します（最大1,000件）。</li>
-    <li i18n="@@uuidGenHelpUsageStep3">「生成」ボタンをクリックします。</li>
-    <li i18n="@@uuidGenHelpUsageStep4">生成されたUUIDリストをコピーして利用します。</li>
-  </ol>
-</section>
-<section class="help-section">
-  <h3 i18n="@@uuidGenHelpSpec">仕様・用語解説</h3>
-  <ul>
-    <li i18n="@@uuidGenHelpSpecFormat"><strong>フォーマット</strong>: UUIDは <code>xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx</code> の形式（M=バージョン番号、N=バリアントビット）で表記される128ビットの識別子です。</li>
-    <li i18n="@@uuidGenHelpSpecV1"><strong>UUID v1</strong>: 60ビットのタイムスタンプとMACアドレス（またはランダム値）を組み合わせて生成します。時系列に並びやすい一方、マシン情報が含まれる場合があります。</li>
-    <li i18n="@@uuidGenHelpSpecV4"><strong>UUID v4</strong>: 122ビットをすべてランダムな値で生成します。最も広く使われており、プライバシー安全性が高く、衝突確率は天文学的に低い（2の122乗通り）です。</li>
-    <li i18n="@@uuidGenHelpSpecV7"><strong>UUID v7</strong>: 48ビットのUnixタイムスタンプ（ミリ秒精度）＋ランダム値で構成されます。RFC 9562で定義された最新仕様で、時系列ソートが可能かつv4と同等のランダム性を持ちます。DBインデックスの効率化に有利です。</li>
-    <li i18n="@@uuidGenHelpSpecCollision"><strong>衝突確率</strong>: UUID v4の場合、10兆個生成しても衝突確率は0.00000001%以下です。実用上、重複は無視できます。</li>
-  </ul>
-</section>
-<section class="help-section">
-  <h3 i18n="@@uuidGenHelpUseCase">ユースケース</h3>
-  <ul>
-    <li i18n="@@uuidGenHelpUseCaseDb">データベースのプライマリキーやレコードIDの生成。</li>
-    <li i18n="@@uuidGenHelpUseCaseSession">分散システムでのセッションID・リクエストトレースIDの生成。</li>
-    <li i18n="@@uuidGenHelpUseCaseFile">ファイル名の一意化・マイクロサービス間の相関IDとして活用。</li>
-  </ul>
-</section>
+<div class="help mat-typography">
+  <app-help-section icon="info">
+    <span helpTitle i18n="@@uuidGenHelpOverview">概要</span>
+    <p class="help-text" i18n="@@uuidGenHelpOverviewDesc">
+      UUIDジェネレーターは、RFC 4122（RFC 9562）に準拠したUniversally Unique Identifier（UUID）をオンラインで生成するツールです。v1・v4・v7の3バージョンに対応し、最大100件の一括生成が可能です。
+    </p>
+  </app-help-section>
+
+  <mat-divider></mat-divider>
+
+  <app-help-section icon="checklist">
+    <span helpTitle i18n="@@uuidGenHelpUsage">使い方</span>
+    <ol class="help-steps">
+      <li>
+        <span class="help-step-index">1</span>
+        <span i18n="@@uuidGenHelpUsageStep1">生成するUUIDのバージョン（v1 / v4 / v7）を選択します。</span>
+      </li>
+      <li>
+        <span class="help-step-index">2</span>
+        <span i18n="@@uuidGenHelpUsageStep2">「生成数」に件数を指定します（最大1,000件）。</span>
+      </li>
+      <li>
+        <span class="help-step-index">3</span>
+        <span i18n="@@uuidGenHelpUsageStep3">「生成」ボタンをクリックします。</span>
+      </li>
+      <li>
+        <span class="help-step-index">4</span>
+        <span i18n="@@uuidGenHelpUsageStep4">生成されたUUIDリストをコピーして利用します。</span>
+      </li>
+    </ol>
+  </app-help-section>
+
+  <mat-divider></mat-divider>
+
+  <app-help-section icon="menu_book">
+    <span helpTitle i18n="@@uuidGenHelpSpec">仕様・用語解説</span>
+    <ul class="help-terms">
+      <li i18n="@@uuidGenHelpSpecFormat"><strong>フォーマット</strong>: UUIDは <code>xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx</code> の形式（M=バージョン番号、N=バリアントビット）で表記される128ビットの識別子です。</li>
+      <li i18n="@@uuidGenHelpSpecV1"><strong>UUID v1</strong>: 60ビットのタイムスタンプとMACアドレス（またはランダム値）を組み合わせて生成します。時系列に並びやすい一方、マシン情報が含まれる場合があります。</li>
+      <li i18n="@@uuidGenHelpSpecV4"><strong>UUID v4</strong>: 122ビットをすべてランダムな値で生成します。最も広く使われており、プライバシー安全性が高く、衝突確率は天文学的に低い（2の122乗通り）です。</li>
+      <li i18n="@@uuidGenHelpSpecV7"><strong>UUID v7</strong>: 48ビットのUnixタイムスタンプ（ミリ秒精度）＋ランダム値で構成されます。RFC 9562で定義された最新仕様で、時系列ソートが可能かつv4と同等のランダム性を持ちます。DBインデックスの効率化に有利です。</li>
+      <li i18n="@@uuidGenHelpSpecCollision"><strong>衝突確率</strong>: UUID v4の場合、10兆個生成しても衝突確率は0.00000001%以下です。実用上、重複は無視できます。</li>
+    </ul>
+  </app-help-section>
+
+  <mat-divider></mat-divider>
+
+  <app-help-section icon="lightbulb">
+    <span helpTitle i18n="@@uuidGenHelpUseCase">ユースケース</span>
+    <ul class="help-bullets">
+      <li i18n="@@uuidGenHelpUseCaseDb">データベースのプライマリキーやレコードIDの生成。</li>
+      <li i18n="@@uuidGenHelpUseCaseSession">分散システムでのセッションID・リクエストトレースIDの生成。</li>
+      <li i18n="@@uuidGenHelpUseCaseFile">ファイル名の一意化・マイクロサービス間の相関IDとして活用。</li>
+    </ul>
+  </app-help-section>
+</div>

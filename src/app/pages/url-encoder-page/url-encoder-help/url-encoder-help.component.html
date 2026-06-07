@@ -1,33 +1,56 @@
-<section class="help-section">
-  <h3 i18n="@@urlEncoderHelpOverview">概要</h3>
-  <p i18n="@@urlEncoderHelpOverviewDesc">
-    URLエンコード・デコードツールは、URLで使用できない文字を<code>%XX</code>形式に変換（エンコード）、またはその逆変換（デコード）を行うオンラインツールです。<code>encodeURI</code>と<code>encodeURIComponent</code>の2種類のJavaScriptメソッドに対応しています。
-  </p>
-</section>
-<section class="help-section">
-  <h3 i18n="@@urlEncoderHelpUsage">使い方</h3>
-  <ol>
-    <li i18n="@@urlEncoderHelpUsageStep1">「変換する文字列」に変換したい文字列を入力します。</li>
-    <li i18n="@@urlEncoderHelpUsageStep2">「モード」を「エンコード」または「デコード」から選択します。</li>
-    <li i18n="@@urlEncoderHelpUsageStep3">「URLの記号（/ や ? など）もすべて変換する」をオンにするとencodeURIComponent相当（記号もすべてエンコード）、オフにするとencodeURI相当（URLの構造文字は保持）の動作になります。</li>
-    <li i18n="@@urlEncoderHelpUsageStep4">「変換」ボタンをクリックします。</li>
-  </ol>
-</section>
-<section class="help-section">
-  <h3 i18n="@@urlEncoderHelpSpec">仕様・用語解説</h3>
-  <ul>
-    <li i18n="@@urlEncoderHelpSpecEncodeUri"><strong>encodeURI</strong>: URLとして有効な文字（スキーム <code>http://</code>、パス区切り <code>/</code>、クエリ文字 <code>?</code>・<code>=</code>・<code>&amp;</code>など）はエンコードしません。URL全体をそのまま渡す場合に使用します。</li>
-    <li i18n="@@urlEncoderHelpSpecEncodeUriComponent"><strong>encodeURIComponent</strong>: <code>A-Z a-z 0-9 - _ . ! ~ * ' ( )</code>以外の文字をすべてエンコードします。クエリパラメータの値など、URLの一部を渡す場合に使用します。</li>
-    <li i18n="@@urlEncoderHelpSpecPercentEncoding"><strong>%エンコーディング（パーセントエンコーディング）</strong>: 各文字をUTF-8でエンコードし、各バイトを<code>%XX</code>形式（XXは16進数）で表現します（例: 「あ」→ <code>%E3%81%82</code>）。</li>
-    <li i18n="@@urlEncoderHelpSpecDecode"><strong>デコード</strong>: <code>decodeURI</code>・<code>decodeURIComponent</code>に対応し、エンコード済みの文字列を元のテキストに戻します。</li>
-    <li i18n="@@urlEncoderHelpSpecDifference"><strong>encodeURIとencodeURIComponentの違い</strong>: encodeURIは<code>:</code>、<code>/</code>、<code>?</code>、<code>#</code>などURLの構造文字をエンコードしませんが、encodeURIComponentはこれらもすべてエンコードします。</li>
-  </ul>
-</section>
-<section class="help-section">
-  <h3 i18n="@@urlEncoderHelpUseCase">ユースケース</h3>
-  <ul>
-    <li i18n="@@urlEncoderHelpUseCaseQuery">APIリクエストのクエリパラメータに日本語や特殊文字を含める場合。</li>
-    <li i18n="@@urlEncoderHelpUseCaseForm">フォームデータをURLセーフな形式に変換する場合。</li>
-    <li i18n="@@urlEncoderHelpUseCaseDebug">ブラウザのアドレスバーに表示されるエンコード済みURLの内容を解読する場合。</li>
-  </ul>
-</section>
+<div class="help mat-typography">
+  <app-help-section icon="info">
+    <span helpTitle i18n="@@urlEncoderHelpOverview">概要</span>
+    <p class="help-text" i18n="@@urlEncoderHelpOverviewDesc">
+      URLエンコード・デコードツールは、URLで使用できない文字を<code>%XX</code>形式に変換（エンコード）、またはその逆変換（デコード）を行うオンラインツールです。<code>encodeURI</code>と<code>encodeURIComponent</code>の2種類のJavaScriptメソッドに対応しています。
+    </p>
+  </app-help-section>
+
+  <mat-divider></mat-divider>
+
+  <app-help-section icon="checklist">
+    <span helpTitle i18n="@@urlEncoderHelpUsage">使い方</span>
+    <ol class="help-steps">
+      <li>
+        <span class="help-step-index">1</span>
+        <span i18n="@@urlEncoderHelpUsageStep1">「変換する文字列」に変換したい文字列を入力します。</span>
+      </li>
+      <li>
+        <span class="help-step-index">2</span>
+        <span i18n="@@urlEncoderHelpUsageStep2">「モード」を「エンコード」または「デコード」から選択します。</span>
+      </li>
+      <li>
+        <span class="help-step-index">3</span>
+        <span i18n="@@urlEncoderHelpUsageStep3">「URLの記号（/ や ? など）もすべて変換する」をオンにするとencodeURIComponent相当（記号もすべてエンコード）、オフにするとencodeURI相当（URLの構造文字は保持）の動作になります。</span>
+      </li>
+      <li>
+        <span class="help-step-index">4</span>
+        <span i18n="@@urlEncoderHelpUsageStep4">「変換」ボタンをクリックします。</span>
+      </li>
+    </ol>
+  </app-help-section>
+
+  <mat-divider></mat-divider>
+
+  <app-help-section icon="menu_book">
+    <span helpTitle i18n="@@urlEncoderHelpSpec">仕様・用語解説</span>
+    <ul class="help-terms">
+      <li i18n="@@urlEncoderHelpSpecEncodeUri"><strong>encodeURI</strong>: URLとして有効な文字（スキーム <code>http://</code>、パス区切り <code>/</code>、クエリ文字 <code>?</code>・<code>=</code>・<code>&amp;</code>など）はエンコードしません。URL全体をそのまま渡す場合に使用します。</li>
+      <li i18n="@@urlEncoderHelpSpecEncodeUriComponent"><strong>encodeURIComponent</strong>: <code>A-Z a-z 0-9 - _ . ! ~ * ' ( )</code>以外の文字をすべてエンコードします。クエリパラメータの値など、URLの一部を渡す場合に使用します。</li>
+      <li i18n="@@urlEncoderHelpSpecPercentEncoding"><strong>%エンコーディング（パーセントエンコーディング）</strong>: 各文字をUTF-8でエンコードし、各バイトを<code>%XX</code>形式（XXは16進数）で表現します（例: 「あ」→ <code>%E3%81%82</code>）。</li>
+      <li i18n="@@urlEncoderHelpSpecDecode"><strong>デコード</strong>: <code>decodeURI</code>・<code>decodeURIComponent</code>に対応し、エンコード済みの文字列を元のテキストに戻します。</li>
+      <li i18n="@@urlEncoderHelpSpecDifference"><strong>encodeURIとencodeURIComponentの違い</strong>: encodeURIは<code>:</code>、<code>/</code>、<code>?</code>、<code>#</code>などURLの構造文字をエンコードしませんが、encodeURIComponentはこれらもすべてエンコードします。</li>
+    </ul>
+  </app-help-section>
+
+  <mat-divider></mat-divider>
+
+  <app-help-section icon="lightbulb">
+    <span helpTitle i18n="@@urlEncoderHelpUseCase">ユースケース</span>
+    <ul class="help-bullets">
+      <li i18n="@@urlEncoderHelpUseCaseQuery">APIリクエストのクエリパラメータに日本語や特殊文字を含める場合。</li>
+      <li i18n="@@urlEncoderHelpUseCaseForm">フォームデータをURLセーフな形式に変換する場合。</li>
+      <li i18n="@@urlEncoderHelpUseCaseDebug">ブラウザのアドレスバーに表示されるエンコード済みURLの内容を解読する場合。</li>
+    </ul>
+  </app-help-section>
+</div>

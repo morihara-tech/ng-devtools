@@ -1,34 +1,57 @@
-<section class="help-section">
-  <h3 i18n="@@colorPaletteHelpOverview">概要</h3>
-  <p i18n="@@colorPaletteHelpOverviewDesc">
-    カラーパレットツールは、入力したHEXカラーコードからMaterial Designライクなカラーシェードパレットを自動生成するオンラインツールです。比較モードとシェード生成モードの2種類に対応しています。
-  </p>
-</section>
-<section class="help-section">
-  <h3 i18n="@@colorPaletteHelpUsage">使い方</h3>
-  <ol>
-    <li i18n="@@colorPaletteHelpUsageStep1">「比較」または「濃淡」モードを選択します。</li>
-    <li i18n="@@colorPaletteHelpUsageStep2">HEXカラーコード（例: <code>#3490DC</code>）を1つ以上入力します。</li>
-    <li i18n="@@colorPaletteHelpUsageStep3">「生成」ボタンをクリックします。</li>
-    <li i18n="@@colorPaletteHelpUsageStep4">各シェードのカラーコードをクリックしてコピーできます。</li>
-  </ol>
-</section>
-<section class="help-section">
-  <h3 i18n="@@colorPaletteHelpSpec">仕様・用語解説</h3>
-  <ul>
-    <li i18n="@@colorPaletteHelpSpecCompare"><strong>「比較」モード</strong>: 複数のカラーを並べて比較します。各色のシェード（50〜900）を横に並べて表示し、カラー間のトーンの違いを確認できます。</li>
-    <li i18n="@@colorPaletteHelpSpecShades"><strong>「濃淡」モード</strong>: 1色のシェードパレットを詳細表示します。選択した色の全シェードを一覧で確認できます。</li>
-    <li i18n="@@colorPaletteHelpSpecSteps"><strong>シェードステップ</strong>: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900の10段階で表示します。Material Designの慣習に基づいており、数値が小さいほど明るく、大きいほど暗い色になります。</li>
-    <li i18n="@@colorPaletteHelpSpecAlgorithm"><strong>シェード生成アルゴリズム</strong>: 入力色を500ステップの基準色として、それより明るい色（50〜400）は白との線形補間（mixColors）、暗い色（600〜900）は黒との線形補間で生成します。例: 50ステップは白を90%混合、900ステップは黒を60%混合します。</li>
-    <li i18n="@@colorPaletteHelpSpecWcag"><strong>WCAGコントラスト比</strong>: 各シェードのテキスト色（黒または白）は、相対輝度（Relative Luminance）を<code>L = 0.2126R + 0.7152G + 0.0722B</code>の式で計算し、WCAGガイドラインに基づいてコントラストが高い方を自動選択します。</li>
-    <li i18n="@@colorPaletteHelpSpecHex"><strong>HEXカラーコード</strong>: 3桁形式（<code>#RGB</code>）と6桁形式（<code>#RRGGBB</code>）の両方に対応しています。<code>#</code>プレフィックスの有無も問いません。</li>
-  </ul>
-</section>
-<section class="help-section">
-  <h3 i18n="@@colorPaletteHelpUseCase">ユースケース</h3>
-  <ul>
-    <li i18n="@@colorPaletteHelpUseCaseMaterial">Material DesignやTailwind CSSのカラーシステム設計。</li>
-    <li i18n="@@colorPaletteHelpUseCaseBrand">ブランドカラーのシェードパレットを自動生成したい場合。</li>
-    <li i18n="@@colorPaletteHelpUseCaseA11y">アクセシビリティ（WCAG）対応のカラー選定と確認。</li>
-  </ul>
-</section>
+<div class="help mat-typography">
+  <app-help-section icon="info">
+    <span helpTitle i18n="@@colorPaletteHelpOverview">概要</span>
+    <p class="help-text" i18n="@@colorPaletteHelpOverviewDesc">
+      カラーパレットツールは、入力したHEXカラーコードからMaterial Designライクなカラーシェードパレットを自動生成するオンラインツールです。比較モードとシェード生成モードの2種類に対応しています。
+    </p>
+  </app-help-section>
+
+  <mat-divider></mat-divider>
+
+  <app-help-section icon="checklist">
+    <span helpTitle i18n="@@colorPaletteHelpUsage">使い方</span>
+    <ol class="help-steps">
+      <li>
+        <span class="help-step-index">1</span>
+        <span i18n="@@colorPaletteHelpUsageStep1">「比較」または「濃淡」モードを選択します。</span>
+      </li>
+      <li>
+        <span class="help-step-index">2</span>
+        <span i18n="@@colorPaletteHelpUsageStep2">HEXカラーコード（例: <code>#3490DC</code>）を1つ以上入力します。</span>
+      </li>
+      <li>
+        <span class="help-step-index">3</span>
+        <span i18n="@@colorPaletteHelpUsageStep3">「生成」ボタンをクリックします。</span>
+      </li>
+      <li>
+        <span class="help-step-index">4</span>
+        <span i18n="@@colorPaletteHelpUsageStep4">各シェードのカラーコードをクリックしてコピーできます。</span>
+      </li>
+    </ol>
+  </app-help-section>
+
+  <mat-divider></mat-divider>
+
+  <app-help-section icon="menu_book">
+    <span helpTitle i18n="@@colorPaletteHelpSpec">仕様・用語解説</span>
+    <ul class="help-terms">
+      <li i18n="@@colorPaletteHelpSpecCompare"><strong>「比較」モード</strong>: 複数のカラーを並べて比較します。各色のシェード（50〜900）を横に並べて表示し、カラー間のトーンの違いを確認できます。</li>
+      <li i18n="@@colorPaletteHelpSpecShades"><strong>「濃淡」モード</strong>: 1色のシェードパレットを詳細表示します。選択した色の全シェードを一覧で確認できます。</li>
+      <li i18n="@@colorPaletteHelpSpecSteps"><strong>シェードステップ</strong>: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900の10段階で表示します。Material Designの慣習に基づいており、数値が小さいほど明るく、大きいほど暗い色になります。</li>
+      <li i18n="@@colorPaletteHelpSpecAlgorithm"><strong>シェード生成アルゴリズム</strong>: 入力色を500ステップの基準色として、それより明るい色（50〜400）は白との線形補間（mixColors）、暗い色（600〜900）は黒との線形補間で生成します。例: 50ステップは白を90%混合、900ステップは黒を60%混合します。</li>
+      <li i18n="@@colorPaletteHelpSpecWcag"><strong>WCAGコントラスト比</strong>: 各シェードのテキスト色（黒または白）は、相対輝度（Relative Luminance）を<code>L = 0.2126R + 0.7152G + 0.0722B</code>の式で計算し、WCAGガイドラインに基づいてコントラストが高い方を自動選択します。</li>
+      <li i18n="@@colorPaletteHelpSpecHex"><strong>HEXカラーコード</strong>: 3桁形式（<code>#RGB</code>）と6桁形式（<code>#RRGGBB</code>）の両方に対応しています。<code>#</code>プレフィックスの有無も問いません。</li>
+    </ul>
+  </app-help-section>
+
+  <mat-divider></mat-divider>
+
+  <app-help-section icon="lightbulb">
+    <span helpTitle i18n="@@colorPaletteHelpUseCase">ユースケース</span>
+    <ul class="help-bullets">
+      <li i18n="@@colorPaletteHelpUseCaseMaterial">Material DesignやTailwind CSSのカラーシステム設計。</li>
+      <li i18n="@@colorPaletteHelpUseCaseBrand">ブランドカラーのシェードパレットを自動生成したい場合。</li>
+      <li i18n="@@colorPaletteHelpUseCaseA11y">アクセシビリティ（WCAG）対応のカラー選定と確認。</li>
+    </ul>
+  </app-help-section>
+</div>

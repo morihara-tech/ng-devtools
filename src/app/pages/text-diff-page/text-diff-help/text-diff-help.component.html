@@ -1,33 +1,56 @@
-<section class="help-section">
-  <h3 i18n="@@textDiffHelpOverview">概要</h3>
-  <p i18n="@@textDiffHelpOverviewDesc">
-    テキスト比較ツールは、2つのテキストの差分をサイドバイサイドで視覚化するオンラインツールです。追加・削除・変更箇所を行ごとにハイライト表示し、コードや文書の差分確認を効率化します。
-  </p>
-</section>
-<section class="help-section">
-  <h3 i18n="@@textDiffHelpUsage">使い方</h3>
-  <ol>
-    <li i18n="@@textDiffHelpUsageStep1">「比較元テキスト」エリアに元のテキスト（変更前）を入力します。</li>
-    <li i18n="@@textDiffHelpUsageStep2">「比較先テキスト」エリアに変更後のテキストを入力します。</li>
-    <li i18n="@@textDiffHelpUsageStep3">「比較」ボタンをクリックすると差分がハイライト表示されます。</li>
-    <li i18n="@@textDiffHelpUsageStep4">入力内容をリセットしたい場合はクリアボタンを使用します。</li>
-  </ol>
-</section>
-<section class="help-section">
-  <h3 i18n="@@textDiffHelpSpec">仕様・用語解説</h3>
-  <ul>
-    <li i18n="@@textDiffHelpSpecAlgorithm"><strong>差分アルゴリズム（LCS）</strong>: LCS（Longest Common Subsequence：最長共通部分列）ベースのdiffアルゴリズムを採用しています。2つのシーケンス間で最も長い共通の部分列を求め、追加・削除箇所を特定します。</li>
-    <li i18n="@@textDiffHelpSpecLineDiff"><strong>行単位の差分</strong>: テキストを行単位で比較し、変更のあった行を識別します。各行の変更内容を原文と並べて表示します。</li>
-    <li i18n="@@textDiffHelpSpecHighlight"><strong>ハイライト色の意味</strong>: 緑は変更後に追加された行、赤は削除された行を示します。変更行は元の色と対比して表示されます。</li>
-    <li i18n="@@textDiffHelpSpecSideBySide"><strong>サイドバイサイド表示</strong>: 原文と変更文を並列で表示することで、対応する行の変化が一目でわかります。ユニファイドdiff（---/+++形式）と異なり、変更前後を同時に確認できます。</li>
-    <li i18n="@@textDiffHelpSpecDiffResult"><strong>差分結果の構造</strong>: 各行に対して元のテキスト・変更後のテキスト・ハイライト情報が生成されます。変更なし・追加・削除・変更の4種類の状態が識別されます。</li>
-  </ul>
-</section>
-<section class="help-section">
-  <h3 i18n="@@textDiffHelpUseCase">ユースケース</h3>
-  <ul>
-    <li i18n="@@textDiffHelpUseCaseReview">コードレビュー前に変更内容を確認する場合。</li>
-    <li i18n="@@textDiffHelpUseCaseConfig">設定ファイルのバージョン間比較。</li>
-    <li i18n="@@textDiffHelpUseCaseDoc">文書の校正・改訂内容の確認と管理。</li>
-  </ul>
-</section>
+<div class="help mat-typography">
+  <app-help-section icon="info">
+    <span helpTitle i18n="@@textDiffHelpOverview">概要</span>
+    <p class="help-text" i18n="@@textDiffHelpOverviewDesc">
+      テキスト比較ツールは、2つのテキストの差分をサイドバイサイドで視覚化するオンラインツールです。追加・削除・変更箇所を行ごとにハイライト表示し、コードや文書の差分確認を効率化します。
+    </p>
+  </app-help-section>
+
+  <mat-divider></mat-divider>
+
+  <app-help-section icon="checklist">
+    <span helpTitle i18n="@@textDiffHelpUsage">使い方</span>
+    <ol class="help-steps">
+      <li>
+        <span class="help-step-index">1</span>
+        <span i18n="@@textDiffHelpUsageStep1">「比較元テキスト」エリアに元のテキスト（変更前）を入力します。</span>
+      </li>
+      <li>
+        <span class="help-step-index">2</span>
+        <span i18n="@@textDiffHelpUsageStep2">「比較先テキスト」エリアに変更後のテキストを入力します。</span>
+      </li>
+      <li>
+        <span class="help-step-index">3</span>
+        <span i18n="@@textDiffHelpUsageStep3">「比較」ボタンをクリックすると差分がハイライト表示されます。</span>
+      </li>
+      <li>
+        <span class="help-step-index">4</span>
+        <span i18n="@@textDiffHelpUsageStep4">入力内容をリセットしたい場合はクリアボタンを使用します。</span>
+      </li>
+    </ol>
+  </app-help-section>
+
+  <mat-divider></mat-divider>
+
+  <app-help-section icon="menu_book">
+    <span helpTitle i18n="@@textDiffHelpSpec">仕様・用語解説</span>
+    <ul class="help-terms">
+      <li i18n="@@textDiffHelpSpecAlgorithm"><strong>差分アルゴリズム（LCS）</strong>: LCS（Longest Common Subsequence：最長共通部分列）ベースのdiffアルゴリズムを採用しています。2つのシーケンス間で最も長い共通の部分列を求め、追加・削除箇所を特定します。</li>
+      <li i18n="@@textDiffHelpSpecLineDiff"><strong>行単位の差分</strong>: テキストを行単位で比較し、変更のあった行を識別します。各行の変更内容を原文と並べて表示します。</li>
+      <li i18n="@@textDiffHelpSpecHighlight"><strong>ハイライト色の意味</strong>: 緑は変更後に追加された行、赤は削除された行を示します。変更行は元の色と対比して表示されます。</li>
+      <li i18n="@@textDiffHelpSpecSideBySide"><strong>サイドバイサイド表示</strong>: 原文と変更文を並列で表示することで、対応する行の変化が一目でわかります。ユニファイドdiff（---/+++形式）と異なり、変更前後を同時に確認できます。</li>
+      <li i18n="@@textDiffHelpSpecDiffResult"><strong>差分結果の構造</strong>: 各行に対して元のテキスト・変更後のテキスト・ハイライト情報が生成されます。変更なし・追加・削除・変更の4種類の状態が識別されます。</li>
+    </ul>
+  </app-help-section>
+
+  <mat-divider></mat-divider>
+
+  <app-help-section icon="lightbulb">
+    <span helpTitle i18n="@@textDiffHelpUseCase">ユースケース</span>
+    <ul class="help-bullets">
+      <li i18n="@@textDiffHelpUseCaseReview">コードレビュー前に変更内容を確認する場合。</li>
+      <li i18n="@@textDiffHelpUseCaseConfig">設定ファイルのバージョン間比較。</li>
+      <li i18n="@@textDiffHelpUseCaseDoc">文書の校正・改訂内容の確認と管理。</li>
+    </ul>
+  </app-help-section>
+</div>
