@@ -7,6 +7,10 @@
     display: flex;
     flex-direction: column;
     gap: 24px;
+    // Breathing room from the page-level "〜について" heading directly above,
+    // so it doesn't collide with this block's first section heading.
+    // (padding, not margin, to avoid collapsing with the heading wrapper's margin-bottom)
+    padding-top: 8px;
   }
 
   .help-text {
@@ -24,7 +28,7 @@
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
   }
 
   .help-steps li {
