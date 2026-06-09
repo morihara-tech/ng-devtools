@@ -1,11 +1,10 @@
-import { Component, inject, TemplateRef, viewChild } from '@angular/core';
+import { Component, viewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { ApplicationPageTemplateComponent } from '../../components/application-page-template/application-page-template.component';
 import { HeadingComponent } from '../../components/heading/heading.component';
 import { ApiKeyGenInputCardComponent } from './api-key-gen-input-card/api-key-gen-input-card.component';
 import { ApiKeyGenOutputCardComponent } from './api-key-gen-output-card/api-key-gen-output-card.component';
-import { HelpDrawerService } from '../../services/help-drawer.service';
 import { ApiKeyGenInputModel } from './api-key-gen-model';
 import { ApiKeyGenHelpComponent } from './api-key-gen-help/api-key-gen-help.component';
 
@@ -25,13 +24,8 @@ import { ApiKeyGenHelpComponent } from './api-key-gen-help/api-key-gen-help.comp
 })
 export class ApiKeyGenPageComponent {
   private readonly output = viewChild<ApiKeyGenOutputCardComponent>('output');
-  private readonly helpDrawerService = inject(HelpDrawerService);
 
   onGenerate(input: ApiKeyGenInputModel): void {
     this.output()?.generateApiKeys(input);
-  }
-
-  onOpenHelp(content: TemplateRef<unknown>): void {
-    this.helpDrawerService.open(content);
   }
 }

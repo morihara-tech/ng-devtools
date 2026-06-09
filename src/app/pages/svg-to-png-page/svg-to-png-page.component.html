@@ -1,16 +1,15 @@
-<app-application-page-template [initialHelpDrawerContent]="svgViewerHelpContent">
+<app-application-page-template>
   <div class="margin-bottom-16">
     <app-heading headingType="h2">
       <span i18n="@@page.svgToPng.title">SVGビューアー</span>
-      <button
-        type="button"
+      <a
+        href="#svg-viewer-help"
         class="right"
         mat-icon-button
         i18n-aria-label="@@page.svgToPng.help.openAriaLabel"
-        aria-label="SVGビューアーのヘルプを開く"
-        (click)="onOpenHelp(svgViewerHelpContent)">
+        aria-label="SVGビューアーの解説へ移動">
         <mat-icon>help_outline</mat-icon>
-      </button>
+      </a>
     </app-heading>
   </div>
   <app-svg-to-png-input-card
@@ -23,7 +22,10 @@
     #output
   ></app-svg-to-png-output-card>
 
-  <ng-template #svgViewerHelpContent>
+  <section id="svg-viewer-help" class="margin-top-24">
+    <div class="margin-bottom-8">
+      <app-heading headingType="h3" i18n="@@page.svgToPng.help.sectionTitle">SVGビューアーについて</app-heading>
+    </div>
     <app-svg-viewer-help></app-svg-viewer-help>
-  </ng-template>
+  </section>
 </app-application-page-template>

@@ -1,16 +1,15 @@
-<app-application-page-template [initialHelpDrawerContent]="apiKeyGenHelpContent">
+<app-application-page-template>
   <div class="margin-bottom-16">
     <app-heading headingType="h2">
       <span i18n="@@page.apiKey.title">APIキー生成ツール</span>
-      <button
-        type="button"
+      <a
+        href="#api-key-generator-help"
         class="right"
         mat-icon-button
         i18n-aria-label="@@page.apiKey.help.openAriaLabel"
-        aria-label="APIキー生成ツールのヘルプを開く"
-        (click)="onOpenHelp(apiKeyGenHelpContent)">
+        aria-label="APIキー生成ツールの解説へ移動">
         <mat-icon>help_outline</mat-icon>
-      </button>
+      </a>
     </app-heading>
   </div>
   <app-api-key-gen-input-card
@@ -21,7 +20,10 @@
     #output
   ></app-api-key-gen-output-card>
 
-  <ng-template #apiKeyGenHelpContent>
+  <section id="api-key-generator-help" class="margin-top-24">
+    <div class="margin-bottom-8">
+      <app-heading headingType="h3" i18n="@@page.apiKey.help.sectionTitle">APIキー生成ツールについて</app-heading>
+    </div>
     <app-api-key-gen-help></app-api-key-gen-help>
-  </ng-template>
+  </section>
 </app-application-page-template>

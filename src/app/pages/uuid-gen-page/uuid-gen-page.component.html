@@ -1,16 +1,15 @@
-<app-application-page-template [initialHelpDrawerContent]="uuidGenHelpContent">
+<app-application-page-template>
   <div class="margin-bottom-16">
     <app-heading headingType="h2">
       <span i18n="@@page.uuid.title">UUID生成ツール</span>
-      <button
-        type="button"
+      <a
+        href="#uuid-generator-help"
         class="right"
         mat-icon-button
         i18n-aria-label="@@page.uuid.help.openAriaLabel"
-        aria-label="UUID生成ツールのヘルプを開く"
-        (click)="onOpenHelp(uuidGenHelpContent)">
+        aria-label="UUID生成ツールの解説へ移動">
         <mat-icon>help_outline</mat-icon>
-      </button>
+      </a>
     </app-heading>
   </div>
   <app-uuid-gen-input-card
@@ -21,7 +20,10 @@
     #output
   ></app-uuid-gen-output-card>
 
-  <ng-template #uuidGenHelpContent>
+  <section id="uuid-generator-help" class="margin-top-24">
+    <div class="margin-bottom-8">
+      <app-heading headingType="h3" i18n="@@page.uuid.help.sectionTitle">UUID生成ツールについて</app-heading>
+    </div>
     <app-uuid-gen-help></app-uuid-gen-help>
-  </ng-template>
+  </section>
 </app-application-page-template>

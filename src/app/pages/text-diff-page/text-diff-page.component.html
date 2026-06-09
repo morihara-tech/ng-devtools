@@ -1,16 +1,15 @@
-<app-application-page-template [initialHelpDrawerContent]="textDiffHelpContent">
+<app-application-page-template>
   <div class="margin-bottom-16">
     <app-heading headingType="h2">
       <span i18n="@@page.textDiff.title">テキスト比較ツール</span>
-      <button
-        type="button"
+      <a
+        href="#text-diff-help"
         class="right"
         mat-icon-button
         i18n-aria-label="@@page.textDiff.help.openAriaLabel"
-        aria-label="テキスト比較ツールのヘルプを開く"
-        (click)="onOpenHelp(textDiffHelpContent)">
+        aria-label="テキスト比較ツールの解説へ移動">
         <mat-icon>help_outline</mat-icon>
-      </button>
+      </a>
     </app-heading>
   </div>
   <app-text-diff-input-card
@@ -22,7 +21,10 @@
     #output
   ></app-text-diff-output-card>
 
-  <ng-template #textDiffHelpContent>
+  <section id="text-diff-help" class="margin-top-24">
+    <div class="margin-bottom-8">
+      <app-heading headingType="h3" i18n="@@page.textDiff.help.sectionTitle">テキスト比較ツールについて</app-heading>
+    </div>
     <app-text-diff-help></app-text-diff-help>
-  </ng-template>
+  </section>
 </app-application-page-template>

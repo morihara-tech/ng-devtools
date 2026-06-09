@@ -1,0 +1,118 @@
+// Shared layout/typography for `app-help-section`-based help content blocks.
+// Usage in a help component's stylesheet:
+//   @use '../../../styles/help-content' as help-content;
+//   @include help-content.styles;
+@mixin styles {
+  .help {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    // Breathing room from the page-level "〜について" heading directly above,
+    // so it doesn't collide with this block's first section heading.
+    // (padding, not margin, to avoid collapsing with the heading wrapper's margin-bottom)
+    padding-top: 8px;
+  }
+
+  .help-text {
+    margin: 0;
+    font-size: var(--mat-sys-body-medium-size);
+    color: var(--mat-sys-on-surface-variant);
+    line-height: 1.8;
+  }
+
+  .help-steps,
+  .help-terms,
+  .help-bullets {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .help-steps li {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    font-size: var(--mat-sys-body-medium-size);
+    color: var(--mat-sys-on-surface-variant);
+    line-height: 1.7;
+  }
+
+  .help-step-index {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    font-size: var(--mat-sys-label-small-size);
+    color: var(--mat-sys-primary);
+    border: 1px solid var(--mat-sys-outline-variant);
+  }
+
+  .help-terms li,
+  .help-bullets li {
+    position: relative;
+    padding-left: 18px;
+    font-size: var(--mat-sys-body-medium-size);
+    color: var(--mat-sys-on-surface-variant);
+    line-height: 1.8;
+  }
+
+  .help-terms li::before,
+  .help-bullets li::before {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 0.7em;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--mat-sys-outline);
+  }
+
+  .help-terms li strong {
+    color: var(--mat-sys-on-surface);
+    font-weight: 500;
+  }
+
+  .help-terms li ul {
+    list-style: none;
+    margin: 8px 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .help-terms li ul li {
+    position: relative;
+    padding-left: 16px;
+  }
+
+  .help-terms li ul li::before {
+    content: '';
+    position: absolute;
+    left: 2px;
+    top: 0.7em;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--mat-sys-outline-variant);
+  }
+
+  .help-terms li code {
+    font-size: 0.9em;
+    padding: 1px 5px;
+    border-radius: 4px;
+    color: var(--mat-sys-on-surface);
+    background: var(--mat-sys-surface-container);
+  }
+
+  ::ng-deep mat-divider {
+    border-top-color: var(--mat-sys-outline-variant);
+  }
+}

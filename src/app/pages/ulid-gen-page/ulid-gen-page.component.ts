@@ -1,11 +1,10 @@
-import { Component, inject, TemplateRef, viewChild } from '@angular/core';
+import { Component, viewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { UlidGenInputCardComponent } from './ulid-gen-input-card/ulid-gen-input-card.component';
 import { UlidGenOutputCardComponent } from './ulid-gen-output-card/ulid-gen-output-card.component';
 import { HeadingComponent } from '../../components/heading/heading.component';
 import { ApplicationPageTemplateComponent } from '../../components/application-page-template/application-page-template.component';
-import { HelpDrawerService } from '../../services/help-drawer.service';
 import { UlidGenInputModel } from './ulid-gen-model';
 import { UlidGenHelpComponent } from './ulid-gen-help/ulid-gen-help.component';
 
@@ -25,13 +24,8 @@ import { UlidGenHelpComponent } from './ulid-gen-help/ulid-gen-help.component';
 })
 export class UlidGenPageComponent {
   private readonly output = viewChild<UlidGenOutputCardComponent>('output');
-  private readonly helpDrawerService = inject(HelpDrawerService);
 
   onGenerate(input: UlidGenInputModel): void {
     this.output()?.generateUlid(input);
-  }
-
-  onOpenHelp(content: TemplateRef<unknown>): void {
-    this.helpDrawerService.open(content);
   }
 }

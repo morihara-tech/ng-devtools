@@ -1,16 +1,15 @@
-<app-application-page-template [initialHelpDrawerContent]="urlEncoderHelpContent">
+<app-application-page-template>
   <div class="margin-bottom-16">
     <app-heading headingType="h2">
       <span i18n="@@page.urlEncoder.title">URLエンコード・デコードツール</span>
-      <button
-        type="button"
+      <a
+        href="#url-encoder-help"
         class="right"
         mat-icon-button
         i18n-aria-label="@@page.urlEncoder.help.openAriaLabel"
-        aria-label="URLエンコード・デコードツールのヘルプを開く"
-        (click)="onOpenHelp(urlEncoderHelpContent)">
+        aria-label="URLエンコード・デコードツールの解説へ移動">
         <mat-icon>help_outline</mat-icon>
-      </button>
+      </a>
     </app-heading>
   </div>
   <app-url-encoder-input-card
@@ -22,7 +21,10 @@
     #output
   ></app-url-encoder-output-card>
 
-  <ng-template #urlEncoderHelpContent>
+  <section id="url-encoder-help" class="margin-top-24">
+    <div class="margin-bottom-8">
+      <app-heading headingType="h3" i18n="@@page.urlEncoder.help.sectionTitle">URLエンコード・デコードツールについて</app-heading>
+    </div>
     <app-url-encoder-help></app-url-encoder-help>
-  </ng-template>
+  </section>
 </app-application-page-template>

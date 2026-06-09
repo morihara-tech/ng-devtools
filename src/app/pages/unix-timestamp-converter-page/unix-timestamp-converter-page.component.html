@@ -1,16 +1,15 @@
-<app-application-page-template [initialHelpDrawerContent]="unixTimestampHelpContent">
+<app-application-page-template>
   <div class="margin-bottom-16">
     <app-heading headingType="h2">
       <span i18n="@@page.unixTimestamp.title">UNIXタイム変換</span>
-      <button
-        type="button"
+      <a
+        href="#unix-timestamp-converter-help"
         class="right"
         mat-icon-button
         i18n-aria-label="@@page.unixTimestamp.help.openAriaLabel"
-        aria-label="UNIXタイム変換ツールのヘルプを開く"
-        (click)="onOpenHelp(unixTimestampHelpContent)">
+        aria-label="UNIXタイム変換の解説へ移動">
         <mat-icon>help_outline</mat-icon>
-      </button>
+      </a>
     </app-heading>
   </div>
   <app-unix-timestamp-input-card
@@ -21,7 +20,10 @@
     #output>
   </app-unix-timestamp-output-card>
 
-  <ng-template #unixTimestampHelpContent>
+  <section id="unix-timestamp-converter-help" class="margin-top-24">
+    <div class="margin-bottom-8">
+      <app-heading headingType="h3" i18n="@@page.unixTimestamp.help.sectionTitle">UNIXタイム変換ツールについて</app-heading>
+    </div>
     <app-unix-timestamp-help></app-unix-timestamp-help>
-  </ng-template>
+  </section>
 </app-application-page-template>

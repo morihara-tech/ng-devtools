@@ -1,35 +1,58 @@
-<section class="help-section">
-  <h3 i18n="@@ipCidrHelpOverview">概要</h3>
-  <p i18n="@@ipCidrHelpOverviewDesc">
-    IP/CIDR計算機は、IPアドレスとCIDR表記からネットワーク情報を計算するオンラインツールです。IPv4およびIPv6に対応し、サブネットマスク・ネットワークアドレス・使用可能ホスト数・2進数表現などを算出します。
-  </p>
-</section>
-<section class="help-section">
-  <h3 i18n="@@ipCidrHelpUsage">使い方</h3>
-  <ol>
-    <li i18n="@@ipCidrHelpUsageStep1">プロトコル（IPv4 / IPv6）を選択します。</li>
-    <li i18n="@@ipCidrHelpUsageStep2">「IPアドレス」を入力します（例: <code>192.168.1.100</code>）。</li>
-    <li i18n="@@ipCidrHelpUsageStep3">「CIDR」でプレフィックス長を指定します（例: <code>24</code>）。</li>
-    <li i18n="@@ipCidrHelpUsageStep4">「生成」ボタンをクリックします。</li>
-  </ol>
-</section>
-<section class="help-section">
-  <h3 i18n="@@ipCidrHelpSpec">仕様・用語解説</h3>
-  <ul>
-    <li i18n="@@ipCidrHelpSpecCidr"><strong>CIDR（Classless Inter-Domain Routing）</strong>: IPアドレスとサブネットプレフィックス長をスラッシュ区切りで表記する方式（例: <code>192.168.1.0/24</code>）です。クラスフルアドレッシング（A/B/Cクラス）を廃止し、柔軟なIPレンジ割り当てを実現します。</li>
-    <li i18n="@@ipCidrHelpSpecSubnetMask"><strong>サブネットマスク</strong>: ネットワーク部とホスト部を区別するビットマスクです。<code>/24</code>は<code>255.255.255.0</code>に相当します。</li>
-    <li i18n="@@ipCidrHelpSpecNetwork"><strong>ネットワークアドレス</strong>: サブネット内の最初のアドレス（ホスト部が全0）です。ルーティングの宛先として使用されます。</li>
-    <li i18n="@@ipCidrHelpSpecBroadcast"><strong>ブロードキャストアドレス</strong>: サブネット内の最後のアドレス（ホスト部が全1）です。IPv6には存在しません。</li>
-    <li i18n="@@ipCidrHelpSpecHosts"><strong>使用可能ホスト数</strong>: <code>2^(ホスト部のビット数) - 2</code>で計算します（ネットワークアドレスとブロードキャストを除く）。</li>
-    <li i18n="@@ipCidrHelpSpecIpv4v6"><strong>IPv4とIPv6の違い</strong>: IPv4は32ビット（4オクテット、ドット区切り十進表記）、IPv6は128ビット（8グループの16進数、コロン区切り）で表現されます。</li>
-    <li i18n="@@ipCidrHelpSpecBinary"><strong>2進数表現</strong>: IPアドレスをビット列で表示します。ネットワーク部とホスト部の境界を視覚的に確認できます。</li>
-  </ul>
-</section>
-<section class="help-section">
-  <h3 i18n="@@ipCidrHelpUseCase">ユースケース</h3>
-  <ul>
-    <li i18n="@@ipCidrHelpUseCaseVpc">VPCやオンプレミスネットワークのサブネット設計。</li>
-    <li i18n="@@ipCidrHelpUseCaseFirewall">ファイアウォールルールのIPレンジ確認と検証。</li>
-    <li i18n="@@ipCidrHelpUseCaseCloud">AWS・GCP・Azureのネットワーク設計でのCIDRブロック計算。</li>
-  </ul>
-</section>
+<div class="help mat-typography">
+  <app-help-section icon="info">
+    <span helpTitle i18n="@@ipCidrHelpOverview">概要</span>
+    <p class="help-text" i18n="@@ipCidrHelpOverviewDesc">
+      IP/CIDR計算機は、IPアドレスとCIDR表記からネットワーク情報を計算するオンラインツールです。IPv4およびIPv6に対応し、サブネットマスク・ネットワークアドレス・使用可能ホスト数・2進数表現などを算出します。
+    </p>
+  </app-help-section>
+
+  <mat-divider></mat-divider>
+
+  <app-help-section icon="checklist">
+    <span helpTitle i18n="@@ipCidrHelpUsage">使い方</span>
+    <ol class="help-steps">
+      <li>
+        <span class="help-step-index">1</span>
+        <span i18n="@@ipCidrHelpUsageStep1">プロトコル（IPv4 / IPv6）を選択します。</span>
+      </li>
+      <li>
+        <span class="help-step-index">2</span>
+        <span i18n="@@ipCidrHelpUsageStep2">「IPアドレス」を入力します（例: <code>192.168.1.100</code>）。</span>
+      </li>
+      <li>
+        <span class="help-step-index">3</span>
+        <span i18n="@@ipCidrHelpUsageStep3">「CIDR」でプレフィックス長を指定します（例: <code>24</code>）。</span>
+      </li>
+      <li>
+        <span class="help-step-index">4</span>
+        <span i18n="@@ipCidrHelpUsageStep4">「生成」ボタンをクリックします。</span>
+      </li>
+    </ol>
+  </app-help-section>
+
+  <mat-divider></mat-divider>
+
+  <app-help-section icon="menu_book">
+    <span helpTitle i18n="@@ipCidrHelpSpec">仕様・用語解説</span>
+    <ul class="help-terms">
+      <li i18n="@@ipCidrHelpSpecCidr"><strong>CIDR（Classless Inter-Domain Routing）</strong>: IPアドレスとサブネットプレフィックス長をスラッシュ区切りで表記する方式（例: <code>192.168.1.0/24</code>）です。クラスフルアドレッシング（A/B/Cクラス）を廃止し、柔軟なIPレンジ割り当てを実現します。</li>
+      <li i18n="@@ipCidrHelpSpecSubnetMask"><strong>サブネットマスク</strong>: ネットワーク部とホスト部を区別するビットマスクです。<code>/24</code>は<code>255.255.255.0</code>に相当します。</li>
+      <li i18n="@@ipCidrHelpSpecNetwork"><strong>ネットワークアドレス</strong>: サブネット内の最初のアドレス（ホスト部が全0）です。ルーティングの宛先として使用されます。</li>
+      <li i18n="@@ipCidrHelpSpecBroadcast"><strong>ブロードキャストアドレス</strong>: サブネット内の最後のアドレス（ホスト部が全1）です。IPv6には存在しません。</li>
+      <li i18n="@@ipCidrHelpSpecHosts"><strong>使用可能ホスト数</strong>: <code>2^(ホスト部のビット数) - 2</code>で計算します（ネットワークアドレスとブロードキャストを除く）。</li>
+      <li i18n="@@ipCidrHelpSpecIpv4v6"><strong>IPv4とIPv6の違い</strong>: IPv4は32ビット（4オクテット、ドット区切り十進表記）、IPv6は128ビット（8グループの16進数、コロン区切り）で表現されます。</li>
+      <li i18n="@@ipCidrHelpSpecBinary"><strong>2進数表現</strong>: IPアドレスをビット列で表示します。ネットワーク部とホスト部の境界を視覚的に確認できます。</li>
+    </ul>
+  </app-help-section>
+
+  <mat-divider></mat-divider>
+
+  <app-help-section icon="lightbulb">
+    <span helpTitle i18n="@@ipCidrHelpUseCase">ユースケース</span>
+    <ul class="help-bullets">
+      <li i18n="@@ipCidrHelpUseCaseVpc">VPCやオンプレミスネットワークのサブネット設計。</li>
+      <li i18n="@@ipCidrHelpUseCaseFirewall">ファイアウォールルールのIPレンジ確認と検証。</li>
+      <li i18n="@@ipCidrHelpUseCaseCloud">AWS・GCP・Azureのネットワーク設計でのCIDRブロック計算。</li>
+    </ul>
+  </app-help-section>
+</div>

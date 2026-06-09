@@ -1,21 +1,23 @@
-<app-application-page-template [initialHelpDrawerContent]="jsonHelpDrawerContent">
+<app-application-page-template>
   <div class="margin-bottom-16">
     <app-heading headingType="h2">
       <span i18n="@@page.json.title">JSON整形ツール</span>
-      <button
-        type="button"
+      <a
+        href="#json-formatter-help"
         class="right"
         mat-icon-button
         i18n-aria-label="@@page.json.help.openAriaLabel"
-        aria-label="JSON整形ツールのヘルプを開く"
-        (click)="onOpenHelp(jsonHelpDrawerContent)">
+        aria-label="JSON整形ツールの解説へ移動">
         <mat-icon>help_outline</mat-icon>
-      </button>
+      </a>
     </app-heading>
   </div>
   <app-json-formatter-input-card></app-json-formatter-input-card>
 
-  <ng-template #jsonHelpDrawerContent>
+  <section id="json-formatter-help" class="margin-top-24">
+    <div class="margin-bottom-8">
+      <app-heading headingType="h3" i18n="@@page.json.help.sectionTitle">JSON整形ツールについて</app-heading>
+    </div>
     <app-json-formatter-help></app-json-formatter-help>
-  </ng-template>
+  </section>
 </app-application-page-template>
