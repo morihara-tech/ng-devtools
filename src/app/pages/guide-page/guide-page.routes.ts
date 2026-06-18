@@ -7,7 +7,7 @@ export const guidePageRoutes: Routes = [
     component: GuidePageComponent,
     data: {
       title: $localize`:@@page.guide.title:ご利用ガイド`,
-      description: $localize`:@@page.guide.description:このページでは、devTools が提供する全ツールの概要・使い方・仕様を一覧で確認できます。`,
+      description: $localize`:@@page.guide.description:devTools が提供する各ツールについて、どんな場面で使えるかを簡単に紹介します。詳しい使い方や仕様は各ツールのページをご覧ください。`,
     },
   },
 ];

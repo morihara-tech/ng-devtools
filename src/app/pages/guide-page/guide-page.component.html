@@ -3,91 +3,101 @@
     <app-heading headingType="h2" i18n="@@page.guide.title">ご利用ガイド</app-heading>
   </div>
 
-  <p i18n="@@page.guide.description">
-    このページでは、devTools が提供する全ツールの概要・使い方・仕様を一覧で確認できます。
-  </p>
+  <p i18n="@@page.guide.description">devTools が提供する各ツールについて、どんな場面で使えるかを簡単に紹介します。詳しい使い方や仕様は各ツールのページをご覧ください。</p>
 
-  <section>
-    <div class="margin-bottom-8">
-      <app-heading headingType="h3" i18n="@@page.guide.section.sqlFormatter">SQL整形ツール</app-heading>
-    </div>
-    <app-sql-formatter-help></app-sql-formatter-help>
+  <section class="guide-item">
+    <app-heading headingType="h3" i18n="@@page.guide.section.sqlFormatter">SQL整形ツール</app-heading>
+    <p i18n="@@page.guide.intro.sqlFormatter">
+      本番DBから取得したワンライナーのSQLや、ORMが生成した読みにくいクエリを、インデント付きで整形します。レビュー前の整形や、ログに残ったクエリの確認作業に活用できます。
+    </p>
+    <app-hyper-link-text url="/sql-formatter" i18n="@@page.guide.link.sqlFormatter">SQL整形ツールを使ってみる</app-hyper-link-text>
   </section>
 
-  <section>
-    <div class="margin-bottom-8">
-      <app-heading headingType="h3" i18n="@@page.guide.section.jsonFormatter">JSON整形ツール</app-heading>
-    </div>
-    <app-json-formatter-help></app-json-formatter-help>
+  <section class="guide-item">
+    <app-heading headingType="h3" i18n="@@page.guide.section.jsonFormatter">JSON整形ツール</app-heading>
+    <p i18n="@@page.guide.intro.jsonFormatter">
+      APIレスポンスや設定ファイルなど、改行のないJSON文字列を見やすい階層構造に整形します。レスポンス内容の確認やデバッグ時の目視チェックに役立ちます。
+    </p>
+    <app-hyper-link-text url="/json-formatter" i18n="@@page.guide.link.jsonFormatter">JSON整形ツールを使ってみる</app-hyper-link-text>
   </section>
 
-  <section>
-    <div class="margin-bottom-8">
-      <app-heading headingType="h3" i18n="@@page.guide.section.apiKeyGen">APIキー生成ツール</app-heading>
-    </div>
-    <app-api-key-gen-help></app-api-key-gen-help>
+  <section class="guide-item">
+    <app-heading headingType="h3" i18n="@@page.guide.section.apiKeyGen">APIキー生成ツール</app-heading>
+    <p i18n="@@page.guide.intro.apiKeyGen">
+      開発環境用のダミーAPIキーや、MCPサーバーの設定に使う識別子を手軽に生成します。本番発行前の動作確認やサンプルコード作成に利用できます。
+    </p>
+    <app-hyper-link-text url="/api-key-generator" i18n="@@page.guide.link.apiKeyGen">APIキー生成ツールを使ってみる</app-hyper-link-text>
   </section>
 
-  <section>
-    <div class="margin-bottom-8">
-      <app-heading headingType="h3" i18n="@@page.guide.section.passwordGen">パスワード生成ツール</app-heading>
-    </div>
-    <app-password-gen-help></app-password-gen-help>
+  <section class="guide-item">
+    <app-heading headingType="h3" i18n="@@page.guide.section.passwordGen">パスワード生成ツール</app-heading>
+    <p i18n="@@page.guide.intro.passwordGen">
+      文字種や桁数を指定して、推測されにくいランダムパスワードを生成します。新規サービスの初期パスワードやテストアカウント作成時に活用できます。
+    </p>
+    <app-hyper-link-text url="/password-generator" i18n="@@page.guide.link.passwordGen">パスワード生成ツールを使ってみる</app-hyper-link-text>
   </section>
 
-  <section>
-    <div class="margin-bottom-8">
-      <app-heading headingType="h3" i18n="@@page.guide.section.colorPalette">カラーパレット</app-heading>
-    </div>
-    <app-color-palette-help></app-color-palette-help>
+  <section class="guide-item">
+    <app-heading headingType="h3" i18n="@@page.guide.section.colorPalette">カラーパレット</app-heading>
+    <p i18n="@@page.guide.intro.colorPalette">
+      ベースカラーから配色パターンやグラデーションを作成し、コードへの貼り付け用にカラーコードへ変換します。UIデザインの配色検討や既存サイトの配色確認に使えます。
+    </p>
+    <app-hyper-link-text url="/color-palette" i18n="@@page.guide.link.colorPalette">カラーパレットを使ってみる</app-hyper-link-text>
   </section>
 
-  <section>
-    <div class="margin-bottom-8">
-      <app-heading headingType="h3" i18n="@@page.guide.section.uuidGen">UUID生成ツール</app-heading>
-    </div>
-    <app-uuid-gen-help></app-uuid-gen-help>
+  <section class="guide-item">
+    <app-heading headingType="h3" i18n="@@page.guide.section.uuidGen">UUID生成ツール</app-heading>
+    <p i18n="@@page.guide.intro.uuidGen">
+      v1/v4/v7形式のUUIDをまとめて生成します。DBの主キー設計やAPIのリクエストIDのサンプルデータ作成に便利です。
+    </p>
+    <app-hyper-link-text url="/uuid-generator" i18n="@@page.guide.link.uuidGen">UUID生成ツールを使ってみる</app-hyper-link-text>
   </section>
 
-  <section>
-    <div class="margin-bottom-8">
-      <app-heading headingType="h3" i18n="@@page.guide.section.ulidGen">ULID生成ツール</app-heading>
-    </div>
-    <app-ulid-gen-help></app-ulid-gen-help>
+  <section class="guide-item">
+    <app-heading headingType="h3" i18n="@@page.guide.section.ulidGen">ULID生成ツール</app-heading>
+    <p i18n="@@page.guide.intro.ulidGen">
+      時系列でソート可能なULIDを生成します。ログIDやイベントIDのように、発生順序を保持したい識別子が必要な場面で活用できます。
+    </p>
+    <app-hyper-link-text url="/ulid-generator" i18n="@@page.guide.link.ulidGen">ULID生成ツールを使ってみる</app-hyper-link-text>
   </section>
 
-  <section>
-    <div class="margin-bottom-8">
-      <app-heading headingType="h3" i18n="@@page.guide.section.unixTimestamp">UNIXタイム変換</app-heading>
-    </div>
-    <app-unix-timestamp-help></app-unix-timestamp-help>
+  <section class="guide-item">
+    <app-heading headingType="h3" i18n="@@page.guide.section.unixTimestamp">UNIXタイム変換</app-heading>
+    <p i18n="@@page.guide.intro.unixTimestamp">
+      UNIXタイムスタンプと日時表記を相互に変換します。APIレスポンスに含まれる時刻の確認や、ログの発生時刻を人が読める形式に直す際に役立ちます。
+    </p>
+    <app-hyper-link-text url="/unix-timestamp-converter" i18n="@@page.guide.link.unixTimestamp">UNIXタイム変換ツールを使ってみる</app-hyper-link-text>
   </section>
 
-  <section>
-    <div class="margin-bottom-8">
-      <app-heading headingType="h3" i18n="@@page.guide.section.urlEncoder">URLエンコード・デコードツール</app-heading>
-    </div>
-    <app-url-encoder-help></app-url-encoder-help>
+  <section class="guide-item">
+    <app-heading headingType="h3" i18n="@@page.guide.section.urlEncoder">URLエンコード・デコードツール</app-heading>
+    <p i18n="@@page.guide.intro.urlEncoder">
+      URLに含まれる日本語や記号をパーセントエンコードし、逆にエンコード済み文字列を元の文字列へ戻します。クエリパラメータの確認やリンク作成時のトラブルシューティングに使えます。
+    </p>
+    <app-hyper-link-text url="/url-encoder" i18n="@@page.guide.link.urlEncoder">URLエンコード・デコードツールを使ってみる</app-hyper-link-text>
   </section>
 
-  <section>
-    <div class="margin-bottom-8">
-      <app-heading headingType="h3" i18n="@@page.guide.section.textDiff">テキスト比較ツール</app-heading>
-    </div>
-    <app-text-diff-help></app-text-diff-help>
+  <section class="guide-item">
+    <app-heading headingType="h3" i18n="@@page.guide.section.textDiff">テキスト比較ツール</app-heading>
+    <p i18n="@@page.guide.intro.textDiff">
+      2つのテキストを並べて、追加・削除された行を色分け表示します。設定ファイルの変更箇所の確認や、文章の修正前後の差分チェックに活用できます。
+    </p>
+    <app-hyper-link-text url="/text-diff" i18n="@@page.guide.link.textDiff">テキスト比較ツールを使ってみる</app-hyper-link-text>
   </section>
 
-  <section>
-    <div class="margin-bottom-8">
-      <app-heading headingType="h3" i18n="@@page.guide.section.svgViewer">SVGビューアー</app-heading>
-    </div>
-    <app-svg-viewer-help></app-svg-viewer-help>
+  <section class="guide-item">
+    <app-heading headingType="h3" i18n="@@page.guide.section.svgViewer">SVGビューアー</app-heading>
+    <p i18n="@@page.guide.intro.svgViewer">
+      SVGファイルをブラウザ上でプレビューし、PNGなどの画像形式へ変換します。アイコン素材の確認や、SVGをラスター画像として書き出したい場面で役立ちます。
+    </p>
+    <app-hyper-link-text url="/svg-to-png" i18n="@@page.guide.link.svgViewer">SVGビューアーを使ってみる</app-hyper-link-text>
   </section>
 
-  <section>
-    <div class="margin-bottom-8">
-      <app-heading headingType="h3" i18n="@@page.guide.section.ipCidr">IP/CIDR計算機</app-heading>
-    </div>
-    <app-ip-cidr-help></app-ip-cidr-help>
+  <section class="guide-item">
+    <app-heading headingType="h3" i18n="@@page.guide.section.ipCidr">IP/CIDR計算機</app-heading>
+    <p i18n="@@page.guide.intro.ipCidr">
+      IPアドレスとCIDR表記からネットワークアドレスやホスト数などの情報を計算します。サブネット設計やネットワーク構成の確認作業に活用できます。
+    </p>
+    <app-hyper-link-text url="/ip-cidr-calculator" i18n="@@page.guide.link.ipCidr">IP/CIDR計算機を使ってみる</app-hyper-link-text>
   </section>
 </app-application-page-template>
