@@ -1,7 +1,7 @@
 <mat-nav-list class="list">
   <mat-list>
     @for (article of articles; track article.routerLink) {
-      <mat-list-item class="item" lines="2">
+      <mat-list-item class="item">
         <span matListItemTitle>
           <app-hyper-link-text [url]="article.routerLink">{{ article.title }}</app-hyper-link-text>
         </span>
