@@ -1,0 +1,21 @@
+<app-application-page-template>
+  <div class="margin-bottom-16">
+    <app-heading headingType="h2" i18n="@@page.articles.heading">記事一覧</app-heading>
+  </div>
+
+  <p class="margin-bottom-16" i18n="@@page.articles.intro">
+    ツールの使い方とは別に、UUIDの種類の違いやUNIX時間の仕組みなど、トピックそのものを掘り下げて解説する記事です。
+  </p>
+
+  <div class="article-list">
+    @for (article of articles; track article.routerLink) {
+      <mat-card class="article-card" [routerLink]="article.routerLink">
+        <mat-card-content class="card-content">
+          <div class="card-label">{{ article.title }}</div>
+          <div class="card-description">{{ article.summary }}</div>
+          <time class="card-date" [attr.datetime]="article.publishedDate">{{ article.publishedDate }}</time>
+        </mat-card-content>
+      </mat-card>
+    }
+  </div>
+</app-application-page-template>
