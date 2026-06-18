@@ -458,7 +458,127 @@
     </unit>
     <unit id="page.guide.description">
       <segment>
-        <source> このページでは、devTools が提供する全ツールの概要・使い方・仕様を一覧で確認できます。 </source>
+        <source>devTools が提供する各ツールについて、どんな場面で使えるかを簡単に紹介します。詳しい使い方や仕様は各ツールのページをご覧ください。</source>
+      </segment>
+    </unit>
+    <unit id="page.guide.intro.apiKeyGen">
+      <segment>
+        <source> 開発環境用のダミーAPIキーや、MCPサーバーの設定に使う識別子を手軽に生成します。本番発行前の動作確認やサンプルコード作成に利用できます。 </source>
+      </segment>
+    </unit>
+    <unit id="page.guide.intro.colorPalette">
+      <segment>
+        <source> ベースカラーから配色パターンやグラデーションを作成し、コードへの貼り付け用にカラーコードへ変換します。UIデザインの配色検討や既存サイトの配色確認に使えます。 </source>
+      </segment>
+    </unit>
+    <unit id="page.guide.intro.ipCidr">
+      <segment>
+        <source> IPアドレスとCIDR表記からネットワークアドレスやホスト数などの情報を計算します。サブネット設計やネットワーク構成の確認作業に活用できます。 </source>
+      </segment>
+    </unit>
+    <unit id="page.guide.intro.jsonFormatter">
+      <segment>
+        <source> APIレスポンスや設定ファイルなど、改行のないJSON文字列を見やすい階層構造に整形します。レスポンス内容の確認やデバッグ時の目視チェックに役立ちます。 </source>
+      </segment>
+    </unit>
+    <unit id="page.guide.intro.passwordGen">
+      <segment>
+        <source> 文字種や桁数を指定して、推測されにくいランダムパスワードを生成します。新規サービスの初期パスワードやテストアカウント作成時に活用できます。 </source>
+      </segment>
+    </unit>
+    <unit id="page.guide.intro.sqlFormatter">
+      <segment>
+        <source> 本番DBから取得したワンライナーのSQLや、ORMが生成した読みにくいクエリを、インデント付きで整形します。レビュー前の整形や、ログに残ったクエリの確認作業に活用できます。 </source>
+      </segment>
+    </unit>
+    <unit id="page.guide.intro.svgViewer">
+      <segment>
+        <source> SVGファイルをブラウザ上でプレビューし、PNGなどの画像形式へ変換します。アイコン素材の確認や、SVGをラスター画像として書き出したい場面で役立ちます。 </source>
+      </segment>
+    </unit>
+    <unit id="page.guide.intro.textDiff">
+      <segment>
+        <source> 2つのテキストを並べて、追加・削除された行を色分け表示します。設定ファイルの変更箇所の確認や、文章の修正前後の差分チェックに活用できます。 </source>
+      </segment>
+    </unit>
+    <unit id="page.guide.intro.ulidGen">
+      <segment>
+        <source> 時系列でソート可能なULIDを生成します。ログIDやイベントIDのように、発生順序を保持したい識別子が必要な場面で活用できます。 </source>
+      </segment>
+    </unit>
+    <unit id="page.guide.intro.unixTimestamp">
+      <segment>
+        <source> UNIXタイムスタンプと日時表記を相互に変換します。APIレスポンスに含まれる時刻の確認や、ログの発生時刻を人が読める形式に直す際に役立ちます。 </source>
+      </segment>
+    </unit>
+    <unit id="page.guide.intro.urlEncoder">
+      <segment>
+        <source> URLに含まれる日本語や記号をパーセントエンコードし、逆にエンコード済み文字列を元の文字列へ戻します。クエリパラメータの確認やリンク作成時のトラブルシューティングに使えます。 </source>
+      </segment>
+    </unit>
+    <unit id="page.guide.intro.uuidGen">
+      <segment>
+        <source> v1/v4/v7形式のUUIDをまとめて生成します。DBの主キー設計やAPIのリクエストIDのサンプルデータ作成に便利です。 </source>
+      </segment>
+    </unit>
+    <unit id="page.guide.link.apiKeyGen">
+      <segment>
+        <source>APIキー生成ツールを使ってみる</source>
+      </segment>
+    </unit>
+    <unit id="page.guide.link.colorPalette">
+      <segment>
+        <source>カラーパレットを使ってみる</source>
+      </segment>
+    </unit>
+    <unit id="page.guide.link.ipCidr">
+      <segment>
+        <source>IP/CIDR計算機を使ってみる</source>
+      </segment>
+    </unit>
+    <unit id="page.guide.link.jsonFormatter">
+      <segment>
+        <source>JSON整形ツールを使ってみる</source>
+      </segment>
+    </unit>
+    <unit id="page.guide.link.passwordGen">
+      <segment>
+        <source>パスワード生成ツールを使ってみる</source>
+      </segment>
+    </unit>
+    <unit id="page.guide.link.sqlFormatter">
+      <segment>
+        <source>SQL整形ツールを使ってみる</source>
+      </segment>
+    </unit>
+    <unit id="page.guide.link.svgViewer">
+      <segment>
+        <source>SVGビューアーを使ってみる</source>
+      </segment>
+    </unit>
+    <unit id="page.guide.link.textDiff">
+      <segment>
+        <source>テキスト比較ツールを使ってみる</source>
+      </segment>
+    </unit>
+    <unit id="page.guide.link.ulidGen">
+      <segment>
+        <source>ULID生成ツールを使ってみる</source>
+      </segment>
+    </unit>
+    <unit id="page.guide.link.unixTimestamp">
+      <segment>
+        <source>UNIXタイム変換ツールを使ってみる</source>
+      </segment>
+    </unit>
+    <unit id="page.guide.link.urlEncoder">
+      <segment>
+        <source>URLエンコード・デコードツールを使ってみる</source>
+      </segment>
+    </unit>
+    <unit id="page.guide.link.uuidGen">
+      <segment>
+        <source>UUID生成ツールを使ってみる</source>
       </segment>
     </unit>
     <unit id="page.guide.section.apiKeyGen">
