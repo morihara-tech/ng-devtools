@@ -5,6 +5,7 @@ import { DashboardService } from '../../components/dashboard/dashboard.service';
 import { DashboardCardModel } from '../../components/dashboard/dashboard-card-model';
 import { UsageCardComponent } from './usage-card/usage-card.component';
 import { MenuCardComponent } from './menu-card/menu-card.component';
+import { ArticlesCardComponent } from './articles-card/articles-card.component';
 import { GithubCardComponent } from './github-card/github-card.component';
 import { UpdateHistoryCardComponent } from './update-history-card/update-history-card.component';
 import { AdCardComponent } from './ad-card/ad-card.component';
@@ -83,6 +84,16 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
         destination: {
           linkText: $localize`:@@page.dashboard.card.menu.linkText:すべてのメニューを見る`,
           url: '/menu',
+        },
+      },
+      {
+        id: 'articles',
+        title: $localize`:@@page.dashboard.card.articles.title:お役立ち記事`,
+        component: ArticlesCardComponent,
+        size: { x: 's', y: 'm' },
+        destination: {
+          linkText: $localize`:@@page.dashboard.card.articles.linkText:すべての記事を見る`,
+          url: '/articles',
         },
       },
       {

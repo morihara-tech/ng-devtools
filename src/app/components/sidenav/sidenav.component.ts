@@ -26,12 +26,22 @@ export class SidenavComponent implements OnInit {
   readonly topItem = toSignal(this.menuService.getDashboard());
   readonly categories = toSignal(this.menuService.getMenuTree());
 
+  /** Bottom navigation item linking to the Articles section. */
+  readonly articlesItem: SidemenuItemModel = {
+    label: $localize`:@@page.articles.menu:記事`,
+    routerLink: '/articles',
+    icon: 'article',
+  };
+
   /** Bottom navigation item linking to the Privacy Policy page. */
   readonly privacyPolicyItem: SidemenuItemModel = {
     label: $localize`:@@page.privacyPolicy.menu:プライバシーポリシー`,
     routerLink: '/privacy-policy',
     icon: 'policy',
   };
+
+  /** Items rendered at the bottom of the sidenav, outside the accordion. */
+  readonly bottomItems: SidemenuItemModel[] = [this.articlesItem, this.privacyPolicyItem];
 
   constructor() {
     effect(() => {

@@ -596,6 +596,16 @@
         <source>広告</source>
       </segment>
     </unit>
+    <unit id="page.dashboard.card.articles.linkText">
+      <segment>
+        <source>すべての記事を見る</source>
+      </segment>
+    </unit>
+    <unit id="page.dashboard.card.articles.title">
+      <segment>
+        <source>お役立ち記事</source>
+      </segment>
+    </unit>
     <unit id="page.dashboard.card.github.description">
       <segment>
         <source> このツールはオープンソースです。<ph id="0" equiv="LINE_BREAK" type="fmt" disp="&lt;br&gt;"/> 不具合や要望などがありましたら、GitHubのIssueにてお知らせください。</source>
@@ -2919,6 +2929,11 @@ UNIXタイム変換ツールを実装しました。</source>
         <source> ツールの使い方とは別に、UUIDの種類の違いやUNIX時間の仕組みなど、トピックそのものを掘り下げて解説する記事です。 </source>
       </segment>
     </unit>
+    <unit id="page.articles.menu">
+      <segment>
+        <source>記事</source>
+      </segment>
+    </unit>
     <unit id="page.articles.title">
       <segment>
         <source>記事一覧</source>
@@ -3037,6 +3052,11 @@ UNIXタイム変換ツールを実装しました。</source>
     <unit id="update.home.20260509">
       <segment>
         <source>プライバシーポリシーページを追加しました。</source>
+      </segment>
+    </unit>
+    <unit id="update.home.20260618">
+      <segment>
+        <source>記事ページ（/articles）を追加しました。</source>
       </segment>
     </unit>
     <unit id="urlEncoderHelpOverview">

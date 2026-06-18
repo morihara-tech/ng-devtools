@@ -28,7 +28,7 @@ export class SidemenuComponent {
    */
   readonly items = input<SidemenuItemModel[]>();
   readonly person = input<SidemenuPersonModel>();
-  /** Single item rendered at the bottom of the sidenav (e.g. Privacy Policy) */
-  readonly bottomItem = input<SidemenuItemModel>();
+  /** Items rendered at the bottom of the sidenav (e.g. Articles, Privacy Policy) */
+  readonly bottomItems = input<SidemenuItemModel[]>();
   readonly clickMenu = output<void>();
 }

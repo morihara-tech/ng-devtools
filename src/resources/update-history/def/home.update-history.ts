@@ -3,6 +3,10 @@ import { UpdateHistoryModel } from "../../../app/components/update-history/updat
 export const HOME_UPDATE_HISTORIES: Array<UpdateHistoryModel> = [
   // add new update history here
   {
+    date: '2026-06-18',
+    description: $localize`:@@update.home.20260618:記事ページ（/articles）を追加しました。`
+  },
+  {
     date: '2026-05-09',
     description: $localize`:@@update.home.20260509:プライバシーポリシーページを追加しました。`
   },
