@@ -1,0 +1,20 @@
+<app-application-page-template>
+  <article>
+    @if (article(); as currentArticle) {
+      <div class="margin-bottom-8">
+        <app-heading headingType="h2">{{ currentArticle.title }}</app-heading>
+      </div>
+      <p class="published-date margin-bottom-16">
+        <span i18n="@@article.common.publishedLabel">公開日:</span> {{ currentArticle.publishedDate }}
+      </p>
+
+      <section class="margin-bottom-24 article-body" [innerHTML]="html()"></section>
+
+      <app-article-related-tools [routerLinks]="currentArticle.relatedTools"></app-article-related-tools>
+    }
+
+    <div class="margin-top-16">
+      <app-hyper-link-text url="/articles" i18n="@@article.common.backToList">記事一覧に戻る</app-hyper-link-text>
+    </div>
+  </article>
+</app-application-page-template>

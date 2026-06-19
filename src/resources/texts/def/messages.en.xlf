@@ -139,6 +139,12 @@
         <target>Back to article list</target>
       </segment>
     </unit>
+    <unit id="article.common.publishedLabel">
+      <segment state="initial">
+        <source>公開日:</source>
+        <target>Published:</target>
+      </segment>
+    </unit>
     <unit id="article.leapSecondsUnixTime.conversion.body">
       <segment state="initial">
         <source> 通常の日時⇔UNIX時間の相互変換（カレンダー上の年月日時分秒とタイムスタンプの変換）では、うるう秒を意識する必要はほとんどありません。 多くのライブラリやOSはうるう秒を無視したPOSIX定義に従っているため、変換結果は一般的な用途では問題なく一致します。 注意が必要なのは「2つの時刻の差から正確な経過時間（実時間）を求める」場合で、対象期間にうるう秒が含まれていると、UNIX時間の単純な差分は実際の経過時間と最大で挿入されたうるう秒の回数分だけズレることを覚えておくと安心です。 </source>
@@ -223,84 +229,6 @@
         <target> Earth&apos;s rotation speed is slightly irregular, so a small gap gradually builds up between time based on the precise accumulation of atomic-clock seconds (TAI, the basis of UTC) and time based on Earth&apos;s actual rotation. A &quot;leap second&quot; is a single second inserted (or, rarely, removed) by decision of international bodies to keep this gap within 0.9 seconds. Since its introduction in 1972, 27 leap seconds had been inserted as of 2025, each one added at the very end of June 30 or December 31 by temporarily creating the otherwise nonexistent time &quot;23:59:60.&quot; </target>
       </segment>
     </unit>
-    <unit id="article.uuidV4VsV7.choice.privacyNote">
-      <segment state="initial">
-        <source> v7は生成時刻が先頭48bitにそのまま埋め込まれるため、IDから「いつ作られたか」がおおよそ分かってしまいます。 作成時刻を秘匿したい用途（取得した順序を他者に知られたくない場合など）にはv7は不向きで、v4を使うべきです。 </source>
-        <target> Because v7 embeds the creation timestamp directly in its first 48 bits, the ID reveals roughly when it was created. v7 is unsuitable for use cases where the creation time must stay hidden — for example, when you don&apos;t want others to infer the order in which records were obtained — and v4 should be used instead. </target>
-      </segment>
-    </unit>
-    <unit id="article.uuidV4VsV7.choice.v4Case">
-      <segment state="initial">
-        <source> 値からいかなる順序・時刻情報も推測されてはならない場合（セッショントークン、パスワードリセット用のワンタイムURLなど）はv4を選びます。 </source>
-        <target> Choose v4 when no ordering or timing information must ever be inferable from the value itself — for example, session tokens or one-time password-reset URLs. </target>
-      </segment>
-    </unit>
-    <unit id="article.uuidV4VsV7.choice.v7Case">
-      <segment state="initial">
-        <source> DBの主キーやログのID、イベントIDのように、生成順に近い並びが性能や運用上のメリットになる場合はv7を選びます。 </source>
-        <target> Choose v7 when having values that are nearly sorted by creation order brings a performance or operational benefit — for example, database primary keys, log IDs, or event IDs. </target>
-      </segment>
-    </unit>
-    <unit id="article.uuidV4VsV7.dbIndex.body">
-      <segment state="initial">
-        <source> B-Treeインデックスを使うRDB（MySQLのInnoDB、PostgreSQLなど）で主キーにv4を使うと、挿入される値が完全にランダムなため、新しい行がインデックスのあちこちにランダムな位置で挿入されます。 これによりページ分割が頻発し、キャッシュヒット率が下がり、挿入性能が劣化しやすくなります。 一方v7は時刻に応じて値が単調増加するため、挿入が常にインデックスの末尾付近に追記される形になり、連番の主キー（AUTO_INCREMENTなど）に近い挿入性能を維持できます。 「分散環境でも一意なIDが必要だが、DB性能も落としたくない」というケースでv7が選ばれる理由はここにあります。 </source>
-        <target> In RDBMSes that use B-tree indexes (such as MySQL&apos;s InnoDB or PostgreSQL), using v4 as the primary key means inserted values are completely random, so new rows get inserted at random positions throughout the index. This causes frequent page splits, lowers cache hit rates, and tends to degrade insert performance. v7, on the other hand, increases monotonically with time, so inserts are always appended near the end of the index, preserving insert performance close to that of a sequential primary key (such as AUTO_INCREMENT). This is why v7 is chosen in cases where a unique ID is needed across a distributed environment, but database performance still matters. </target>
-      </segment>
-    </unit>
-    <unit id="article.uuidV4VsV7.lead">
-      <segment state="initial">
-        <source> UUID（Universally Unique Identifier）は128bitの一意な識別子ですが、「v4」「v7」のようにバージョンが分かれていることを知らずに、なんとなくどちらかを使っている人は多いはずです。 この記事では、もっとも普及しているv4と、近年DBの主キーとして採用が増えているv7について、内部構造の違いと、どちらを選ぶべきかの判断基準を整理します。 </source>
-        <target> A UUID (Universally Unique Identifier) is a 128-bit unique identifier, but many people use one version or another without realizing that versions such as &quot;v4&quot; and &quot;v7&quot; even exist. This article organizes the structural differences between the most widely used v4 and the increasingly popular v7 (often chosen for database primary keys), along with criteria for deciding which one to use. </target>
-      </segment>
-    </unit>
-    <unit id="article.uuidV4VsV7.publishedLabel">
-      <segment state="initial">
-        <source>公開日: 2026-06-18</source>
-        <target>Published: 2026-06-18</target>
-      </segment>
-    </unit>
-    <unit id="article.uuidV4VsV7.related.body">
-      <segment state="initial">
-        <source> 時系列でソート可能なIDという観点では、UUID v7と似た特徴を持つ識別子としてULIDがあります。 ULIDは128bitをBase32相当の26文字で表現し、先頭にミリ秒タイムスタンプを持つ点はv7と同じ設計思想です。 UUID形式（8-4-4-4-12のハイフン区切り）との互換性を重視するならv7、文字列の短さや既存のULID実装との連携を重視するならULIDという選び方になります。 </source>
-        <target> From the perspective of a chronologically sortable ID, ULID is another identifier with characteristics similar to UUID v7. ULID represents its 128 bits as 26 Base32-like characters and, like v7, places a millisecond timestamp at the front — the same design philosophy. If compatibility with the UUID format (the 8-4-4-4-12 hyphenated layout) matters most, choose v7; if a shorter string or interoperability with existing ULID implementations matters more, choose ULID. </target>
-      </segment>
-    </unit>
-    <unit id="article.uuidV4VsV7.section.choice">
-      <segment state="initial">
-        <source>使い分けの判断基準</source>
-        <target>Criteria for Choosing Between Them</target>
-      </segment>
-    </unit>
-    <unit id="article.uuidV4VsV7.section.dbIndex">
-      <segment state="initial">
-        <source>DBの主キーに使う場合の影響</source>
-        <target>The Impact of Using Each as a Database Primary Key</target>
-      </segment>
-    </unit>
-    <unit id="article.uuidV4VsV7.section.related">
-      <segment state="initial">
-        <source>関連トピック: ULIDとの違い</source>
-        <target>Related Topic: How ULID Differs</target>
-      </segment>
-    </unit>
-    <unit id="article.uuidV4VsV7.section.structure">
-      <segment state="initial">
-        <source>構造の違い: ランダム性 vs 時系列性</source>
-        <target>Structural Differences: Randomness vs. Chronological Ordering</target>
-      </segment>
-    </unit>
-    <unit id="article.uuidV4VsV7.structure.v4">
-      <segment state="initial">
-        <source> UUID v4は128bitのうち、バージョンとバリアントを示す6bitを除いた122bitすべてを乱数で埋めます。 生成順序と値の大小に何の関係もないため、2つのv4を並べても「どちらが先に作られたか」を読み取ることはできません。 この完全なランダム性が、推測されにくい識別子（公開URLのトークンなど）を作るうえでの強みになります。 </source>
-        <target> UUID v4 fills all 122 bits of its 128 bits with random data, except for the 6 bits that indicate the version and variant. Since there is no relationship between generation order and the magnitude of the value, you cannot tell which of two v4 UUIDs was created first just by comparing them. This complete randomness is a strength when creating identifiers that must not be guessable, such as tokens embedded in public URLs. </target>
-      </segment>
-    </unit>
-    <unit id="article.uuidV4VsV7.structure.v7">
-      <segment state="initial">
-        <source> UUID v7は先頭48bitに「ミリ秒単位のUNIXタイムスタンプ」を格納し、残りをランダムビットで埋めます。 先頭にタイムスタンプを持つことで、生成されたUUIDをバイト列のまま昇順に並べると、ほぼ生成順序どおりになります。 v4のランダム性を保ちながら、v1（MACアドレス＋時刻ベース）が抱えていた「IDから生成元マシンの情報が漏れる」という問題も回避しています。 </source>
-        <target> UUID v7 stores a millisecond-resolution UNIX timestamp in its first 48 bits and fills the rest with random bits. Because the timestamp comes first, sorting generated UUIDs in ascending order as raw byte sequences produces an order that is nearly identical to the generation order. It preserves the randomness benefits of v4 while also avoiding the problem v1 (MAC address plus time based) had, where information about the generating machine could leak from the ID. </target>
-      </segment>
-    </unit>
     <unit id="article.uuidV4VsV7.summary">
       <segment state="initial">
         <source>ランダム生成のv4と時系列ソート可能なv7、それぞれの内部構造と適した用途を解説します。</source>
@@ -311,12 +239,6 @@
       <segment state="initial">
         <source>UUID v4とv7の違いと使い分け</source>
         <target>UUID v4 vs. v7: Differences and When to Use Each</target>
-      </segment>
-    </unit>
-    <unit id="article.uuidV4VsV7.tryIt">
-      <segment state="initial">
-        <source> 実際の生成結果を見ながら違いを確認したい場合は、以下のツールでv1・v4・v7のUUIDをまとめて生成できます。 </source>
-        <target> If you&apos;d like to see the difference in actual generated output, the tool below can generate v1, v4, and v7 UUIDs together. </target>
       </segment>
     </unit>
     <unit id="common.language.ja">
