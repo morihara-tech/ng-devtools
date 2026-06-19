@@ -1,0 +1,15 @@
+.list {
+  padding: 0;
+}
+
+.item {
+  height: auto;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.summary {
+  display: block;
+  color: var(--mat-sys-on-surface-variant);
+  white-space: normal;
+}

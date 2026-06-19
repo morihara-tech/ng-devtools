@@ -1,0 +1,82 @@
+<app-application-page-template>
+  <article>
+    <div class="margin-bottom-8">
+      <app-heading headingType="h2" i18n="@@article.uuidV4VsV7.title">UUID v4とv7の違いと使い分け</app-heading>
+    </div>
+    <p class="published-date margin-bottom-16" i18n="@@article.uuidV4VsV7.publishedLabel">公開日: 2026-06-18</p>
+
+    <section class="margin-bottom-24">
+      <p i18n="@@article.uuidV4VsV7.lead">
+        UUID（Universally Unique Identifier）は128bitの一意な識別子ですが、「v4」「v7」のようにバージョンが分かれていることを知らずに、なんとなくどちらかを使っている人は多いはずです。
+        この記事では、もっとも普及しているv4と、近年DBの主キーとして採用が増えているv7について、内部構造の違いと、どちらを選ぶべきかの判断基準を整理します。
+      </p>
+    </section>
+
+    <section class="margin-bottom-24">
+      <div class="margin-bottom-8">
+        <app-heading headingType="h3" i18n="@@article.uuidV4VsV7.section.structure">構造の違い: ランダム性 vs 時系列性</app-heading>
+      </div>
+      <p i18n="@@article.uuidV4VsV7.structure.v4">
+        UUID v4は128bitのうち、バージョンとバリアントを示す6bitを除いた122bitすべてを乱数で埋めます。
+        生成順序と値の大小に何の関係もないため、2つのv4を並べても「どちらが先に作られたか」を読み取ることはできません。
+        この完全なランダム性が、推測されにくい識別子（公開URLのトークンなど）を作るうえでの強みになります。
+      </p>
+      <p i18n="@@article.uuidV4VsV7.structure.v7">
+        UUID v7は先頭48bitに「ミリ秒単位のUNIXタイムスタンプ」を格納し、残りをランダムビットで埋めます。
+        先頭にタイムスタンプを持つことで、生成されたUUIDをバイト列のまま昇順に並べると、ほぼ生成順序どおりになります。
+        v4のランダム性を保ちながら、v1（MACアドレス＋時刻ベース）が抱えていた「IDから生成元マシンの情報が漏れる」という問題も回避しています。
+      </p>
+    </section>
+
+    <section class="margin-bottom-24">
+      <div class="margin-bottom-8">
+        <app-heading headingType="h3" i18n="@@article.uuidV4VsV7.section.dbIndex">DBの主キーに使う場合の影響</app-heading>
+      </div>
+      <p i18n="@@article.uuidV4VsV7.dbIndex.body">
+        B-Treeインデックスを使うRDB（MySQLのInnoDB、PostgreSQLなど）で主キーにv4を使うと、挿入される値が完全にランダムなため、新しい行がインデックスのあちこちにランダムな位置で挿入されます。
+        これによりページ分割が頻発し、キャッシュヒット率が下がり、挿入性能が劣化しやすくなります。
+        一方v7は時刻に応じて値が単調増加するため、挿入が常にインデックスの末尾付近に追記される形になり、連番の主キー（AUTO_INCREMENTなど）に近い挿入性能を維持できます。
+        「分散環境でも一意なIDが必要だが、DB性能も落としたくない」というケースでv7が選ばれる理由はここにあります。
+      </p>
+    </section>
+
+    <section class="margin-bottom-24">
+      <div class="margin-bottom-8">
+        <app-heading headingType="h3" i18n="@@article.uuidV4VsV7.section.choice">使い分けの判断基準</app-heading>
+      </div>
+      <ul class="choice-list">
+        <li i18n="@@article.uuidV4VsV7.choice.v4Case">
+          値からいかなる順序・時刻情報も推測されてはならない場合（セッショントークン、パスワードリセット用のワンタイムURLなど）はv4を選びます。
+        </li>
+        <li i18n="@@article.uuidV4VsV7.choice.v7Case">
+          DBの主キーやログのID、イベントIDのように、生成順に近い並びが性能や運用上のメリットになる場合はv7を選びます。
+        </li>
+        <li i18n="@@article.uuidV4VsV7.choice.privacyNote">
+          v7は生成時刻が先頭48bitにそのまま埋め込まれるため、IDから「いつ作られたか」がおおよそ分かってしまいます。
+          作成時刻を秘匿したい用途（取得した順序を他者に知られたくない場合など）にはv7は不向きで、v4を使うべきです。
+        </li>
+      </ul>
+    </section>
+
+    <section class="margin-bottom-24">
+      <div class="margin-bottom-8">
+        <app-heading headingType="h3" i18n="@@article.uuidV4VsV7.section.related">関連トピック: ULIDとの違い</app-heading>
+      </div>
+      <p i18n="@@article.uuidV4VsV7.related.body">
+        時系列でソート可能なIDという観点では、UUID v7と似た特徴を持つ識別子としてULIDがあります。
+        ULIDは128bitをBase32相当の26文字で表現し、先頭にミリ秒タイムスタンプを持つ点はv7と同じ設計思想です。
+        UUID形式（8-4-4-4-12のハイフン区切り）との互換性を重視するならv7、文字列の短さや既存のULID実装との連携を重視するならULIDという選び方になります。
+      </p>
+    </section>
+
+    <p class="margin-bottom-16" i18n="@@article.uuidV4VsV7.tryIt">
+      実際の生成結果を見ながら違いを確認したい場合は、以下のツールでv1・v4・v7のUUIDをまとめて生成できます。
+    </p>
+
+    <app-article-related-tools [routerLinks]="relatedTools"></app-article-related-tools>
+
+    <div class="margin-top-16">
+      <app-hyper-link-text url="/articles" i18n="@@article.common.backToList">記事一覧に戻る</app-hyper-link-text>
+    </div>
+  </article>
+</app-application-page-template>

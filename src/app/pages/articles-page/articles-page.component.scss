@@ -1,0 +1,41 @@
+.margin-bottom-16 {
+  margin-bottom: 16px;
+}
+
+.article-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.article-card {
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: var(--mat-sys-surface-variant);
+  }
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px;
+}
+
+.card-label {
+  font-weight: 600;
+  font-size: var(--mat-sys-body-large-size);
+  color: var(--mat-sys-on-surface);
+}
+
+.card-description {
+  font-size: var(--mat-sys-body-medium-size);
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.card-date {
+  font-size: var(--mat-sys-body-small-size);
+  color: var(--mat-sys-on-surface-variant);
+}

@@ -1,0 +1,20 @@
+@if (relatedTools().length > 0) {
+  <div class="related-tools">
+    <div class="related-tools-heading" i18n="@@component.articleRelatedTools.heading">関連ツール</div>
+    <ul class="related-tools-list">
+      @for (tool of relatedTools(); track tool.routerLink) {
+        <li>
+          <a class="related-tools-link" [routerLink]="tool.routerLink">
+            @if (tool.svgIcon) {
+              <mat-icon [svgIcon]="tool.svgIcon"></mat-icon>
+            }
+            @if (tool.icon) {
+              <mat-icon>{{ tool.icon }}</mat-icon>
+            }
+            <span>{{ tool.label }}</span>
+          </a>
+        </li>
+      }
+    </ul>
+  </div>
+}

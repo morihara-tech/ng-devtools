@@ -74,18 +74,20 @@
     </div>
   }
 }
-@if (bottomItem(); as bottom) {
+@if (bottomItems(); as bottoms) {
   <mat-nav-list class="bottom-nav">
-    <a mat-list-item class="item"
-      [routerLink]="bottom.routerLink"
-      (click)="clickMenu.emit()">
-      @if (bottom.icon) {
-        <mat-icon matListItemIcon>{{ bottom.icon }}</mat-icon>
-      }
-      @if (bottom.svgIcon) {
-        <mat-icon matListItemIcon [svgIcon]="bottom.svgIcon"></mat-icon>
-      }
-      <span matListItemTitle>{{ bottom.label }}</span>
-    </a>
+    @for (bottom of bottoms; track $index) {
+      <a mat-list-item class="item"
+        [routerLink]="bottom.routerLink"
+        (click)="clickMenu.emit()">
+        @if (bottom.icon) {
+          <mat-icon matListItemIcon>{{ bottom.icon }}</mat-icon>
+        }
+        @if (bottom.svgIcon) {
+          <mat-icon matListItemIcon [svgIcon]="bottom.svgIcon"></mat-icon>
+        }
+        <span matListItemTitle>{{ bottom.label }}</span>
+      </a>
+    }
   </mat-nav-list>
 }
