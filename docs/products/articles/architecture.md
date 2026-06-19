@@ -4,7 +4,7 @@
 
 - **対象機能**: `/articles` 記事セクション（既存実装: `src/app/pages/articles-page/`、一覧データ: `src/resources/articles/def/articles-def.ts`）
 - **設計の目的**: 記事本文を S3 上の Markdown ファイルで管理し、GitHub Actions のビルド時に取得して Angular SSG の静的 HTML へ埋め込むコンテンツ運用基盤を設計する。記事数を増やしてもコンポーネントを手書きせずに済むスケーラブルな運用を実現する。
-- **前提（ユーザー決定済み・厳守事項）**:
+- **前提（確定済み・厳守事項）**:
   - 記事本文は S3 に Markdown として保存する（別 Git リポジトリ方式は不採用）
   - 取得タイミングは「ビルド時取得」。GitHub Actions のビルドジョブ内で S3 から取得し、`ng build` 前後の処理で静的 HTML へ埋め込む。クライアントサイド fetch は行わない
   - 記事更新の反映には再ビルドが必須という制約は許容する
@@ -29,9 +29,9 @@
 
 ### 代替案と却下理由
 
-- **クライアントサイド fetch**: ユーザー決定により不採用。SSG の SEO メリット（prerender 済み HTML）も失われるため技術的にも不適。
+- **クライアントサイド fetch**: プロジェクト方針として不採用。SSG の SEO メリット（prerender 済み HTML）も失われるため技術的にも不適。
 - **postbuild で HTML へ本文を文字列注入**: prerender 後の HTML に本文を差し込む案。ルートが prerender されないため詳細ページの `index.html` 自体が存在せず成立しない。また Angular のハイドレーション対象 DOM と不整合になりエラーの温床。却下。
-- **別 Git リポジトリ（サブモジュール / submodule）方式**: ユーザー決定により不採用。
+- **別 Git リポジトリ（サブモジュール / submodule）方式**: プロジェクト方針として不採用。
 - **メタデータを完全に Markdown frontmatter へ移行**: 後述（設計判断5）のとおり段階移行とし、MVP では既存 `articles-def.ts` を Single Source of Truth として維持する。
 
 ## 技術スタック
@@ -66,7 +66,7 @@ ArticleDetailComponent（新規・汎用）
 - **既存の `articles-detail-*` コンポーネント群**: 本基盤への移行対象。MVP で 1 本を Markdown 化して PoC とし、Phase 2 で全廃する（移行手順参照）。
 - **`ArticlesPageComponent`（一覧）**: 変更不要。`articles-def.ts` の `ARTICLES` を読むという現状の責務を維持する。
 
-> 本文を `[innerHTML]` で束縛するか、prebuild が `.html` テンプレート断片を各記事フォルダに吐き出して Angular がそれをテンプレートとしてコンパイルする方式かは、実装エージェントの裁量とする。ただし **prerender 前にルートと本文が確定していること** が満たされれば、どちらでも SSG 要件を満たす。本設計では追加バンドルを避けやすい `[innerHTML]` 束縛＋ビルド生成 JSON（記事HTML文字列を含む）を推奨する。
+> 本文を `[innerHTML]` で束縛するか、prebuild が `.html` テンプレート断片を各記事フォルダに吐き出して Angular がそれをテンプレートとしてコンパイルする方式かは、実装時の裁量とする。ただし **prerender 前にルートと本文が確定していること** が満たされれば、どちらでも SSG 要件を満たす。本設計では追加バンドルを避けやすい `[innerHTML]` 束縛＋ビルド生成 JSON（記事HTML文字列を含む）を推奨する。
 
 ## データフロー
 
@@ -162,7 +162,7 @@ src/resources/articles/def/
 
 > `prebuild:articles` を `build` の先頭に直列で挟む。ローカル開発（`yarn start`）では S3 取得をスキップできるよう、`content/articles/` が空または存在しない場合は prebuild が「既存の手書き記事をそのまま使う / 生成をスキップ」できるフォールバックを必須とする（移行期の二重運用のため）。
 
-## 設計判断（COO 提示の論点への回答）
+## 設計判断（主要論点への回答）
 
 ### 1. S3 アクセスの認証方式 → **GitHub Actions OIDC を採用**
 
@@ -175,7 +175,7 @@ src/resources/articles/def/
 | 漏洩リスク | 低 | 高（鍵漏洩で恒久アクセス） |
 | 導入コスト | ロールの S3 read ポリシー追加のみ | Secret 登録＋運用 |
 
-**結論**: OIDC。`GitHubActionsRole` の IAM ポリシーに記事コンテンツバケットへの `s3:GetObject` / `s3:ListBucket` を追加する（バケットは配信用と分離する。COO 承認済み確定事項2、判断6参照）。
+**結論**: OIDC。`GitHubActionsRole` の IAM ポリシーに記事コンテンツバケットへの `s3:GetObject` / `s3:ListBucket` を追加する（バケットは配信用と分離する。確定事項2、判断6参照）。
 
 ### 2. 再ビルド・再デプロイのトリガー → **MVP は手動、Phase 2 で S3イベント→Lambda→repository_dispatch**
 
@@ -185,7 +185,7 @@ src/resources/articles/def/
 | S3イベント → Lambda → `repository_dispatch` | 編集→自動反映、運用が滑らか | Lambda・イベント設定の構築コスト、GH トークン管理 | **Phase 2 採用** |
 | 定期ポーリング（cron で `aws s3 ls` 差分検知 → trigger） | Lambda 不要 | 反映に遅延・無駄ビルド・差分検知ロジックが必要 | 非推奨 |
 
-**結論**: MVP は `deployment.yml` に `workflow_dispatch` を追加し、記事更新時は手動 or master への push で再ビルドする（「再ビルド必須」はユーザー許容済み）。Phase 2 で S3 PUT イベント → Lambda → GitHub `repository_dispatch`（type: `articles-updated`）で自動化する。Lambda は最小権限の GitHub App トークン or fine-grained PAT で `dispatches` API を叩く。
+**結論**: MVP は `deployment.yml` に `workflow_dispatch` を追加し、記事更新時は手動 or master への push で再ビルドする（「再ビルド必須」は許容済み）。Phase 2 で S3 PUT イベント → Lambda → GitHub `repository_dispatch`（type: `articles-updated`）で自動化する。Lambda は最小権限の GitHub App トークン or fine-grained PAT で `dispatches` API を叩く。
 
 ### 3. Markdown → 静的HTML 変換方式 → **prebuild ステップ（postbuild には統合しない）**
 
@@ -234,7 +234,7 @@ src/resources/articles/def/
 | S3 取得失敗でビルドが壊れ全サイトデプロイが止まる | 高 | prebuild に「取得 0 件 / ネットワーク失敗」のフェイルファスト＋明確なエラーログ。`sandbox-deploy` で事前検証してから master へ |
 | prerender がルート未登録で記事が 404 | 高 | prebuild が生成した slug をルートに必ず反映。def と md の不整合をビルド失敗扱い |
 | `[innerHTML]` 経由の XSS | 中 | ビルド時 `sanitize-html` でホワイトリスト処理。記事は内製のみ（外部投稿は受けない） |
-| i18n 未翻訳記事（en.md 欠落） | 中 | en.md 必須をビルド時チェックし、欠落時はビルド失敗（COO 承認済み確定事項1） |
+| i18n 未翻訳記事（en.md 欠落） | 中 | en.md 必須をビルド時チェックし、欠落時はビルド失敗（確定事項1） |
 | ローカル `yarn start` で S3 取得できない | 中 | `content/` 不在時は生成スキップ＆手書き記事フォールバック（移行期の二重運用を許容） |
 | Assume Role の順序変更で既存デプロイに副作用 | 低 | read/write 同一ロールのため等価。sandbox で先行検証 |
 
@@ -242,7 +242,7 @@ src/resources/articles/def/
 
 - **既存方針（変更なし）**: UI 文字列・記事一覧メタデータ（title/summary）は `$localize` ＋ XLF（`messages.en.xlf`）で文字列単位翻訳を継続。
 - **記事本文（新規方針）**: 本文は段落数百〜千文字規模の長文であり、XLF の文字列単位翻訳には不向き（翻訳単位が巨大化し XLF が破綻、`extract-i18n` の差分検査 CI とも相性が悪い）。したがって **本文は「ロケール別ファイル（ja.md / en.md）」で持つ**。prebuild が locale ごとに別 JSON（`articles-content.ja.json` / `articles-content.en.json`）を生成し、`ng build --configuration=ja|en` の各ロケールビルドが対応する JSON を読む。
-- **未翻訳記事の扱い**: en.md が無い場合は **ビルド失敗**とする（COO 承認済み確定事項1。en.md 必須）。ja フォールバックや en での個別非公開は採用しない。CI の `check-i18n`（`messages.en.xlf` の `<target/>` 検査）は XLF 対象のみで、本文 md には適用されないため、md の存在検証は prebuild が独自に行う。
+- **未翻訳記事の扱い**: en.md が無い場合は **ビルド失敗**とする（確定事項1。en.md 必須）。ja フォールバックや en での個別非公開は採用しない。CI の `check-i18n`（`messages.en.xlf` の `<target/>` 検査）は XLF 対象のみで、本文 md には適用されないため、md の存在検証は prebuild が独自に行う。
 
 ## 実装フェーズ
 
@@ -253,7 +253,7 @@ src/resources/articles/def/
 
 ## 技術的リスク・制約
 
-- 記事更新の反映に再ビルドが必須（ユーザー許容済み）。MVP では手動トリガー前提のため反映に編集者の操作が必要。
+- 記事更新の反映に再ビルドが必須（許容済み）。MVP では手動トリガー前提のため反映に編集者の操作が必要。
 - prerender はルート構成依存のため、ルート生成（prebuild）が壊れると記事が静的化されない。prebuild の堅牢性が全体の生命線。
 - 本文 md は XLF 翻訳検査 CI の対象外。en.md の品質・存在保証は別途ビルド時チェックで担保する。
 - ビルド時間は記事数に比例して微増（md パース＋prerender ページ増）。現状規模では無視可能。
@@ -265,9 +265,9 @@ src/resources/articles/def/
 - 記事本文内での Angular コンポーネント埋め込み（インタラクティブ要素）。MVP は静的 HTML 断片のみ。
 - 配信用 CDN / CloudFront 設定の変更（既存をそのまま使用）。
 
-## 確定事項（COO 承認済み）
+## 確定事項
 
-以下の 3 点は COO の承認により方針が確定している。本設計書はこれらを前提に記述している。
+以下の 3 点はプロジェクト方針として確定している。本設計書はこれらを前提に記述している。
 
 1. **未翻訳記事（en.md 欠落）時の挙動**: **ビルド失敗とする（en.md 必須）**。ja フォールバックや en での個別非公開は採用しない。prebuild は `bodySource: 'markdown'` の各記事について `ja.md` / `en.md` の双方が揃っていることをビルド時に検証し、欠落があればフェイルファストする。
 2. **記事コンテンツ用 S3 バケット**: **配信用バケットと分離する**。記事 Markdown 専用バケット（`<articles-content-bucket>`）を配信用バケットとは別に用意し、`GitHubActionsRole` には当該バケットへの `s3:GetObject` / `s3:ListBucket` のみを付与する。同一バケットの別 prefix 方式は採用しない。
