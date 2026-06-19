@@ -2,8 +2,17 @@ import { inject, LOCALE_ID } from '@angular/core';
 import { ResolveFn, Routes } from '@angular/router';
 import { ArticlesPageComponent } from './articles-page.component';
 import { ArticleDetailComponent } from './article-detail/article-detail.component';
-import { getArticlesList } from './articles-list';
-import articlesListJa from '../../../generated/articles/articles-list.ja.json';
+import { ArticleListItem, getArticlesList } from './articles-list';
+import articlesListJaJson from '../../../generated/articles/articles-list.ja.json';
+
+/**
+ * When `content/` is absent (e.g. local dev before the first prebuild run,
+ * or CI's `check-i18n` job which never syncs `content/`), the generated
+ * JSON is the literal placeholder `[]`. TypeScript narrows a JSON-imported
+ * empty array literal to `never[]`, which would make `article.slug` below a
+ * type error. The explicit annotation keeps the fallback path type-safe.
+ */
+const articlesListJa: ArticleListItem[] = articlesListJaJson;
 
 /**
  * The build-time generated article list is split per locale (it is sourced
