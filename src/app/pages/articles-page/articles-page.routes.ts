@@ -1,7 +1,30 @@
 import { Routes } from '@angular/router';
 import { ArticlesPageComponent } from './articles-page.component';
-import { ArticlesDetailUuidV4VsV7Component } from './articles-detail-uuid-v4-vs-v7/articles-detail-uuid-v4-vs-v7.component';
+import { ArticleDetailComponent } from './article-detail/article-detail.component';
 import { ArticlesDetailLeapSecondsUnixTimeComponent } from './articles-detail-leap-seconds-unix-time/articles-detail-leap-seconds-unix-time.component';
+import { ARTICLES } from '../../../resources/articles/def/articles-def';
+
+/**
+ * Routes for articles whose body is generated at build time from Markdown
+ * (`ArticleItem.bodySource === 'markdown'`). All such articles share the
+ * generic `ArticleDetailComponent`; only the route `path`/`slug`/`data`
+ * differ per article. See scripts/prebuild-articles.mjs and
+ * docs/products/articles/architecture.md.
+ */
+const markdownArticleRoutes: Routes = ARTICLES.filter((article) => article.bodySource === 'markdown').map(
+  (article) => {
+    const slug = article.routerLink.replace('/articles/', '');
+    return {
+      path: slug,
+      component: ArticleDetailComponent,
+      data: {
+        slug,
+        title: article.title,
+        description: article.summary,
+      },
+    };
+  },
+);
 
 export const articlesPageRoutes: Routes = [
   {
@@ -12,14 +35,8 @@ export const articlesPageRoutes: Routes = [
       description: $localize`:@@page.articles.description:devTools が提供するツールに関連するトピックを掘り下げて解説する記事の一覧です。`,
     },
   },
-  {
-    path: 'uuid-v4-vs-v7',
-    component: ArticlesDetailUuidV4VsV7Component,
-    data: {
-      title: $localize`:@@article.uuidV4VsV7.title:UUID v4とv7の違いと使い分け`,
-      description: $localize`:@@article.uuidV4VsV7.summary:ランダム生成のv4と時系列ソート可能なv7、それぞれの内部構造と適した用途を解説します。`,
-    },
-  },
+  ...markdownArticleRoutes,
+  // Hand-written article components (ArticleItem.bodySource left unspecified).
   {
     path: 'leap-seconds-unix-time',
     component: ArticlesDetailLeapSecondsUnixTimeComponent,

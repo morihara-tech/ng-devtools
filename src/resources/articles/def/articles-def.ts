@@ -10,6 +10,16 @@ export interface ArticleItem {
   publishedDate: string;
   /** Router links of tools related to this article, used for "related tools" links */
   relatedTools: string[];
+  /**
+   * Source of the article body.
+   * - Unspecified (default): body is a hand-written component under
+   *   `src/app/pages/articles-page/articles-detail-<slug>/`.
+   * - `'markdown'`: body is generated at build time from
+   *   `content/articles/<slug>/{ja,en}.md` via `scripts/prebuild-articles.mjs`
+   *   and rendered by the generic `ArticleDetailComponent` from
+   *   `src/generated/articles/articles-content.{ja,en}.json`.
+   */
+  bodySource?: 'markdown';
 }
 
 /**
@@ -27,6 +37,7 @@ export const ARTICLES: ArticleItem[] = [
     routerLink: '/articles/uuid-v4-vs-v7',
     publishedDate: '2026-06-18',
     relatedTools: ['/uuid-generator', '/ulid-generator'],
+    bodySource: 'markdown',
   },
   {
     title: $localize`:@@article.leapSecondsUnixTime.title:UNIX時間がうるう秒をどう扱うか`,

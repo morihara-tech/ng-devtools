@@ -6,6 +6,16 @@
 /out-tsc
 /bazel-out
 
+# Articles content: synced from S3 at build time (prebuild:articles) and never committed.
+/content
+# Build-time generated article HTML/metadata (prebuild:articles output).
+# The .json files themselves are committed as empty placeholders so that
+# `yarn start` / type-checking works without having run prebuild:articles
+# first; `scripts/prebuild-articles.mjs` overwrites them with real content.
+/src/generated/*
+!/src/generated/articles
+!/src/generated/articles/*.json
+
 # Node
 /node_modules
 npm-debug.log
