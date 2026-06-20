@@ -6,7 +6,7 @@ import { HyperLinkTextComponent } from '../../../components/hyper-link-text/hype
 import { ArticleListItem, getArticlesList } from '../../articles-page/articles-list';
 
 /** Number of recent articles shown in the dashboard card. */
-const RECENT_ARTICLES_COUNT = 2;
+const RECENT_ARTICLES_COUNT = 6;
 
 @Component({
   selector: 'app-articles-card',
