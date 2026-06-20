@@ -128,6 +128,15 @@ if (!clientIdMatch) {
 
 const BASE_URL = 'https://devtools.morihara.tech';
 
+/**
+ * Removes a single trailing slash from a path, except for the root path "/"
+ * which is left untouched (BASE_URL + "/" is the canonical home URL).
+ */
+function stripTrailingSlash(urlPath) {
+  if (urlPath === '/') return urlPath;
+  return urlPath.endsWith('/') ? urlPath.slice(0, -1) : urlPath;
+}
+
 for (const locale of LOCALES) {
   const localeDir = join(BROWSER_DIR, locale);
   if (!existsSync(localeDir)) continue;
@@ -148,18 +157,21 @@ for (const locale of LOCALES) {
     }
 
     // Derive the URL path from the file path.
-    // e.g. dist/ng-devtools/browser/ja/json-formatter/index.html → /ja/json-formatter/
+    // e.g. dist/ng-devtools/browser/ja/json-formatter/index.html → /ja/json-formatter
+    // Trailing slashes are intentionally omitted to match the in-app routerLink
+    // format (e.g. routerLink="/json-formatter"), so that canonical/sitemap URLs
+    // line up with the URLs Googlebot discovers by following internal links.
     const relativePath = indexPath.slice(BROWSER_DIR.length + 1).replace(/\\/g, '/');
-    const urlPath = '/' + relativePath.replace(/index\.html$/, '');
+    const urlPath = stripTrailingSlash('/' + relativePath.replace(/index\.html$/, ''));
 
     const altLocale = locale === 'ja' ? 'en' : 'ja';
-    const altUrlPath = urlPath.replace(`/${locale}/`, `/${altLocale}/`);
+    const altUrlPath = urlPath.replace(`/${locale}`, `/${altLocale}`);
 
     const tags = [
       `  <link rel="canonical" href="${BASE_URL}${urlPath}">`,
       `  <link rel="alternate" hreflang="${locale}" href="${BASE_URL}${urlPath}">`,
       `  <link rel="alternate" hreflang="${altLocale}" href="${BASE_URL}${altUrlPath}">`,
-      `  <link rel="alternate" hreflang="x-default" href="${BASE_URL}/ja/">`,
+      `  <link rel="alternate" hreflang="x-default" href="${BASE_URL}/ja">`,
     ].join('\n');
 
     const injected = html.replace('</head>', `${tags}\n</head>`);
@@ -236,7 +248,7 @@ for (const locale of LOCALES) {
     if (indexPath.replace(/\\/g, '/').includes('/error/')) continue;
 
     const relativePath = indexPath.slice(BROWSER_DIR.length + 1).replace(/\\/g, '/');
-    const urlPath = '/' + relativePath.replace(/index\.html$/, '');
+    const urlPath = stripTrailingSlash('/' + relativePath.replace(/index\.html$/, ''));
     sitemapUrls.push(`${BASE_URL}${urlPath}`);
   }
 }
