@@ -1,0 +1,38 @@
+// スペーシングトークン (8px グリッド / 微細調整は 4px)
+// 参照: docs/core/uiux/1-tokens/spacing-and-sizing.md
+@mixin init() {
+  --arc-space-xxx-small: 4px;
+  --arc-space-xx-small: 8px;
+  --arc-space-small: 16px;
+  --arc-space-medium: 24px;
+  --arc-space-large: 32px;
+}
+
+// 重複していた margin/padding ユーティリティクラスを一元管理する
+// Usage in a component template: class="margin-top-24" など
+// (グローバルクラスのため src/styles.scss のトップレベルスコープから include すること)
+@mixin utility-classes {
+  .margin-top-8 {
+    margin-top: var(--arc-space-xx-small);
+  }
+
+  .margin-top-16 {
+    margin-top: var(--arc-space-small);
+  }
+
+  .margin-top-24 {
+    margin-top: var(--arc-space-medium);
+  }
+
+  .margin-bottom-8 {
+    margin-bottom: var(--arc-space-xx-small);
+  }
+
+  .margin-bottom-16 {
+    margin-bottom: var(--arc-space-small);
+  }
+
+  .margin-bottom-24 {
+    margin-bottom: var(--arc-space-medium);
+  }
+}

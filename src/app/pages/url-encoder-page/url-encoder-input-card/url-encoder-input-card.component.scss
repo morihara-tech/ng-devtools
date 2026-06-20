@@ -10,7 +10,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 16px 32px;
+  gap: var(--arc-space-xx-small) var(--arc-space-large);
   margin-top: 8px;
 }
 
