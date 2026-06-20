@@ -59,7 +59,7 @@ jobs:
       - name: Sync articles content from S3
         run: |
           if [ -n "${{ vars.ARTICLES_BUCKET }}" ]; then
-            aws s3 sync "s3://${{ vars.ARTICLES_BUCKET }}/articles/" ./content/articles/
+            aws s3 sync "s3://${{ vars.ARTICLES_BUCKET }}/ng-devtools/" ./content/articles/
           else
             echo "ARTICLES_BUCKET not set; skipping S3 sync and using local content/ as-is."
           fi
