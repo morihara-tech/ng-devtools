@@ -15,6 +15,14 @@ export interface ArticleListItem {
   summary: string;
   publishedDate: string;
   relatedTools: string[];
+  /**
+   * Optional thumbnail image URL. Not currently produced by
+   * scripts/prebuild-articles.mjs (no frontmatter field for it yet), so every
+   * article falls back to a placeholder thumbnail today. Kept optional so a
+   * future frontmatter field (e.g. `thumbnailUrl`) can populate it without an
+   * interface change.
+   */
+  thumbnailUrl?: string;
 }
 
 /**

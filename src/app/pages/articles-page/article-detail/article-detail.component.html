@@ -1,16 +1,20 @@
 <app-application-page-template>
   <article>
     @if (article(); as currentArticle) {
-      <div class="margin-bottom-8">
-        <app-heading headingType="h2">{{ currentArticle.title }}</app-heading>
-      </div>
-      <p class="published-date margin-bottom-16">
-        <span i18n="@@article.common.publishedLabel">公開日:</span> {{ currentArticle.publishedDate }}
-      </p>
+      <mat-card class="article-card">
+        <mat-card-content>
+          <div class="margin-bottom-8">
+            <app-heading headingType="h2">{{ currentArticle.title }}</app-heading>
+          </div>
+          <p class="published-date margin-bottom-16">
+            <span i18n="@@article.common.publishedLabel">公開日:</span> {{ currentArticle.publishedDate }}
+          </p>
 
-      <section class="margin-bottom-24 article-body" [innerHTML]="html()"></section>
+          <section class="margin-bottom-24 article-body" [innerHTML]="html()"></section>
 
-      <app-article-related-tools [routerLinks]="currentArticle.relatedTools"></app-article-related-tools>
+          <app-article-related-tools [routerLinks]="currentArticle.relatedTools"></app-article-related-tools>
+        </mat-card-content>
+      </mat-card>
     }
 
     <div class="margin-top-16">

@@ -2,18 +2,67 @@
   margin-bottom: 16px;
 }
 
-.article-list {
-  display: flex;
-  flex-direction: column;
+// Responsive card grid following docs/core/uiux/3-layouts/article-list-view.md
+// 6.2: Compact=1col, Medium=2col, Expanded=3col, Large(1440px+)=4col.
+// The guideline's --arc-space-* tokens don't exist in this project, so gap
+// sizes are approximated with raw px values that mirror the same scale
+// (16 / 24 / 32) while colors/typography stay on --mat-sys-* tokens per
+// CLAUDE.md.
+.article-grid {
+  display: grid;
   gap: 16px;
+  grid-template-columns: 1fr;
+  margin-bottom: 16px;
+
+  @media (min-width: 600px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  @media (min-width: 840px) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+
+  @media (min-width: 1440px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 .article-card {
   cursor: pointer;
+  overflow: hidden;
   transition: background-color 0.2s;
 
   &:hover {
     background-color: var(--mat-sys-surface-variant);
+  }
+
+  &__thumbnail {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__thumbnail-fallback {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--mat-sys-primary-container);
+    color: var(--mat-sys-on-primary-container);
+
+    mat-icon {
+      font-size: 40px;
+      width: 40px;
+      height: 40px;
+    }
   }
 }
 
@@ -33,9 +82,20 @@
 .card-description {
   font-size: var(--mat-sys-body-medium-size);
   color: var(--mat-sys-on-surface-variant);
+
+  // Clamp excerpt to 2 lines so card heights stay aligned across the grid
+  // (article-list-view.md 6.2 / anti-pattern list 4.).
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .card-date {
   font-size: var(--mat-sys-body-small-size);
   color: var(--mat-sys-on-surface-variant);
+}
+
+.article-paginator {
+  background: transparent;
 }

@@ -1,6 +1,8 @@
-import { Component, inject, LOCALE_ID } from '@angular/core';
+import { Component, computed, inject, LOCALE_ID, signal } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { ApplicationPageTemplateComponent } from '../../components/application-page-template/application-page-template.component';
 import { HeadingComponent } from '../../components/heading/heading.component';
 import { ArticleListItem, getArticlesList } from './articles-list';
@@ -19,6 +21,8 @@ import { ArticleListItem, getArticlesList } from './articles-list';
   imports: [
     RouterModule,
     MatCardModule,
+    MatIconModule,
+    MatPaginatorModule,
     ApplicationPageTemplateComponent,
     HeadingComponent,
   ],
@@ -28,5 +32,19 @@ import { ArticleListItem, getArticlesList } from './articles-list';
 export class ArticlesPageComponent {
   private readonly locale = inject(LOCALE_ID);
 
-  readonly articles: ArticleListItem[] = getArticlesList(this.locale);
+  readonly allArticles: ArticleListItem[] = getArticlesList(this.locale);
+
+  readonly pageSizeOptions = [12, 24, 48];
+  readonly pageIndex = signal(0);
+  readonly pageSize = signal(this.pageSizeOptions[0]);
+
+  readonly articles = computed<ArticleListItem[]>(() => {
+    const start = this.pageIndex() * this.pageSize();
+    return this.allArticles.slice(start, start + this.pageSize());
+  });
+
+  onPageChange(event: PageEvent): void {
+    this.pageIndex.set(event.pageIndex);
+    this.pageSize.set(event.pageSize);
+  }
 }
