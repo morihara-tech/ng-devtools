@@ -1,0 +1,108 @@
+.margin-bottom-8 {
+  margin-bottom: 8px;
+}
+
+.margin-bottom-16 {
+  margin-bottom: 16px;
+}
+
+.margin-bottom-24 {
+  margin-bottom: 24px;
+}
+
+.margin-top-16 {
+  margin-top: 16px;
+}
+
+.published-date {
+  font-size: var(--mat-sys-body-small-size);
+  color: var(--mat-sys-on-surface-variant);
+}
+
+// `.article-body` is populated via [innerHTML] (build-time generated, sanitized
+// HTML). Angular's emulated view encapsulation does not scope styles onto
+// nodes inserted this way, so ::ng-deep is required here.
+//
+// Markdown section headings (`##`/`###`) compile to plain <h2>/<h3> tags with
+// no way to inject the `app-heading` component (mat-icon + ngTemplateOutlet)
+// into sanitized HTML. To keep visual hierarchy consistent with hand-written
+// articles (which use <app-heading headingType="h3"> for section headings),
+// h2/h3/h4 inside the article body are restyled here to match app-heading's
+// h3 look (dashed underline + leading arrow icon via Material Icons ligature
+// text, which is already loaded globally in index.html).
+.article-body {
+  // app-heading's h3 variant relies on the browser's UA stylesheet default
+  // for h3 (font-size: 1.17em, font-weight: bold) rather than an explicit
+  // Material typography token. Match those exact values here so Markdown
+  // section headings render visually identical to hand-written articles.
+  ::ng-deep h1,
+  ::ng-deep h2,
+  ::ng-deep h3,
+  ::ng-deep h4 {
+    margin: 24px 0 8px;
+    font-size: 1.17em;
+    font-weight: bold;
+    border-bottom-width: 2px;
+    border-bottom-style: dashed;
+    border-bottom-color: var(--brand-color-normal);
+    box-sizing: border-box;
+    padding: 0 0 2px 0;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    &::before {
+      font-family: 'Material Icons';
+      content: 'keyboard_arrow_right';
+      vertical-align: middle;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    ::ng-deep h1,
+    ::ng-deep h2,
+    ::ng-deep h3,
+    ::ng-deep h4 {
+      border-bottom-color: var(--brand-color-light);
+    }
+  }
+
+  ::ng-deep p {
+    margin: 0 0 16px;
+  }
+
+  ::ng-deep ul,
+  ::ng-deep ol {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-left: 24px;
+    margin: 0 0 16px;
+  }
+
+  ::ng-deep blockquote {
+    margin: 0 0 16px;
+    padding-left: 16px;
+    border-left: 3px solid var(--mat-sys-outline-variant);
+    color: var(--mat-sys-on-surface-variant);
+  }
+
+  ::ng-deep code {
+    font-family: monospace;
+    background-color: var(--mat-sys-surface-variant);
+    padding: 2px 4px;
+    border-radius: 4px;
+  }
+
+  ::ng-deep pre {
+    overflow-x: auto;
+    padding: 12px;
+    background-color: var(--mat-sys-surface-variant);
+    border-radius: 4px;
+    margin: 0 0 16px;
+  }
+
+  ::ng-deep a {
+    color: var(--mat-sys-primary);
+  }
+}
