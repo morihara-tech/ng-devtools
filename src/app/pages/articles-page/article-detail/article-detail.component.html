@@ -18,7 +18,10 @@
     }
 
     <div class="margin-top-16">
-      <app-hyper-link-text url="/articles" i18n="@@article.common.backToList">記事一覧に戻る</app-hyper-link-text>
+      <a mat-stroked-button routerLink="/articles">
+        <mat-icon>arrow_back</mat-icon>
+        <span i18n="@@article.common.backToList">記事一覧に戻る</span>
+      </a>
     </div>
   </article>
 </app-application-page-template>

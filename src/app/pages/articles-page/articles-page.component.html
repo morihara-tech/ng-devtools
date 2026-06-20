@@ -10,15 +10,6 @@
   <div class="article-grid">
     @for (article of articles(); track article.routerLink) {
       <mat-card class="article-card" [routerLink]="article.routerLink">
-        <div class="article-card__thumbnail">
-          @if (article.thumbnailUrl) {
-            <img [src]="article.thumbnailUrl" [alt]="article.title" />
-          } @else {
-            <div class="article-card__thumbnail-fallback" [attr.aria-label]="article.title">
-              <mat-icon>article</mat-icon>
-            </div>
-          }
-        </div>
         <mat-card-content class="card-content">
           <div class="card-label">{{ article.title }}</div>
           <div class="card-description">{{ article.summary }}</div>

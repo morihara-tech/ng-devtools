@@ -1,9 +1,10 @@
 import { Component, computed, inject, LOCALE_ID } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
 import { ApplicationPageTemplateComponent } from '../../../components/application-page-template/application-page-template.component';
 import { HeadingComponent } from '../../../components/heading/heading.component';
-import { HyperLinkTextComponent } from '../../../components/hyper-link-text/hyper-link-text.component';
 import { ArticleRelatedToolsComponent } from '../../../components/article-related-tools/article-related-tools.component';
 import contentJa from '../../../../generated/articles/articles-content.ja.json';
 import contentEn from '../../../../generated/articles/articles-content.en.json';
@@ -31,10 +32,12 @@ const CONTENT_BY_LOCALE: Record<string, ArticlesContent> = {
 @Component({
   selector: 'app-article-detail',
   imports: [
+    RouterModule,
+    MatButtonModule,
     MatCardModule,
+    MatIconModule,
     ApplicationPageTemplateComponent,
     HeadingComponent,
-    HyperLinkTextComponent,
     ArticleRelatedToolsComponent,
   ],
   templateUrl: './article-detail.component.html',
