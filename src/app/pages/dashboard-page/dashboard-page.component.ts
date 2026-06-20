@@ -90,7 +90,7 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
         id: 'articles',
         title: $localize`:@@page.dashboard.card.articles.title:お役立ち記事`,
         component: ArticlesCardComponent,
-        size: { x: 's', y: 'm' },
+        size: { x: 's', y: 'l' },
         destination: {
           linkText: $localize`:@@page.dashboard.card.articles.linkText:すべての記事を見る`,
           url: '/articles',
