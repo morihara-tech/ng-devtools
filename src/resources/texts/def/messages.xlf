@@ -2789,6 +2789,11 @@ UNIXタイム変換ツールを実装しました。</source>
         <source>記事</source>
       </segment>
     </unit>
+    <unit id="page.articles.paginator.ariaLabel">
+      <segment>
+        <source>ページを選択</source>
+      </segment>
+    </unit>
     <unit id="page.articles.title">
       <segment>
         <source>記事一覧</source>

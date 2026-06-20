@@ -1,3 +1,11 @@
+// Content max-width per docs/core/uiux/3-layouts/wiki-manual-view.md
+// (.arc-wiki-content, --arc-wiki-content-max-width: 800px) inherited by
+// article-detail-view.md 2.4 / 5. This project has no --arc-* token defined,
+// so it's declared locally and combines the 60ch and 800px caps as required.
+:host {
+  --article-content-max-width: min(60ch, 800px);
+}
+
 .margin-bottom-8 {
   margin-bottom: 8px;
 }
@@ -19,56 +27,64 @@
   color: var(--mat-sys-on-surface-variant);
 }
 
+// Wraps the whole detail page in a Material card per
+// docs/core/uiux/3-layouts/article-detail-view.md.
+.article-card {
+  max-width: var(--article-content-max-width);
+  margin-inline: auto;
+}
+
 // `.article-body` is populated via [innerHTML] (build-time generated, sanitized
 // HTML). Angular's emulated view encapsulation does not scope styles onto
 // nodes inserted this way, so ::ng-deep is required here.
 //
-// Markdown section headings (`##`/`###`) compile to plain <h2>/<h3> tags with
-// no way to inject the `app-heading` component (mat-icon + ngTemplateOutlet)
-// into sanitized HTML. To keep visual hierarchy consistent with hand-written
-// articles (which use <app-heading headingType="h3"> for section headings),
-// h2/h3/h4 inside the article body are restyled here to match app-heading's
-// h3 look (dashed underline + leading arrow icon via Material Icons ligature
-// text, which is already loaded globally in index.html).
+// Heading hierarchy follows docs/core/uiux/3-layouts/article-detail-view.md
+// 2.2 / wiki-manual-view.md 2.2: the article title (rendered above via
+// <app-heading headingType="h2">) is the H1-equivalent for this page, so
+// Markdown section headings start at H2. h2 = section (18px/700, light
+// divider), h3 = subsection (14px/500). The old uniform dashed-underline +
+// arrow-icon decoration (shared with app-heading) is removed here since the
+// guideline defines no such treatment for body headings.
 .article-body {
-  // app-heading's h3 variant relies on the browser's UA stylesheet default
-  // for h3 (font-size: 1.17em, font-weight: bold) rather than an explicit
-  // Material typography token. Match those exact values here so Markdown
-  // section headings render visually identical to hand-written articles.
-  ::ng-deep h1,
-  ::ng-deep h2,
-  ::ng-deep h3,
-  ::ng-deep h4 {
-    margin: 24px 0 8px;
-    font-size: 1.17em;
-    font-weight: bold;
-    border-bottom-width: 2px;
-    border-bottom-style: dashed;
-    border-bottom-color: var(--brand-color-normal);
-    box-sizing: border-box;
-    padding: 0 0 2px 0;
-    display: flex;
-    align-items: center;
-    gap: 4px;
+  // Markdown body copy is capped at the guideline's wiki/article content
+  // max-width (60ch / 800px, whichever is reached first) so long lines stay
+  // readable (article-detail-view.md 2.4 / wiki-manual-view.md 3.2).
+  max-width: var(--article-content-max-width);
 
-    &::before {
-      font-family: 'Material Icons';
-      content: 'keyboard_arrow_right';
-      vertical-align: middle;
-    }
+  ::ng-deep h1 {
+    margin: 32px 0 16px;
+    font-size: var(--mat-sys-headline-small-size);
+    font-weight: 700;
+    line-height: 1.2;
   }
 
-  @media (prefers-color-scheme: dark) {
-    ::ng-deep h1,
-    ::ng-deep h2,
-    ::ng-deep h3,
-    ::ng-deep h4 {
-      border-bottom-color: var(--brand-color-light);
-    }
+  ::ng-deep h2 {
+    margin: 32px 0 16px;
+    font-size: var(--mat-sys-title-large-size);
+    font-weight: 700;
+    line-height: 1.2;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--mat-sys-outline-variant);
+  }
+
+  ::ng-deep h3 {
+    margin: 24px 0 8px;
+    font-size: var(--mat-sys-title-medium-size);
+    font-weight: 500;
+    line-height: 1.2;
+  }
+
+  ::ng-deep h4 {
+    margin: 16px 0 8px;
+    font-size: var(--mat-sys-body-large-size);
+    font-weight: 500;
+    line-height: 1.2;
   }
 
   ::ng-deep p {
     margin: 0 0 16px;
+    max-width: 60ch;
+    line-height: 1.6;
   }
 
   ::ng-deep ul,

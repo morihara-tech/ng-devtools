@@ -7,8 +7,8 @@
     ツールの使い方とは別に、UUIDの種類の違いやUNIX時間の仕組みなど、トピックそのものを掘り下げて解説する記事です。
   </p>
 
-  <div class="article-list">
-    @for (article of articles; track article.routerLink) {
+  <div class="article-grid">
+    @for (article of articles(); track article.routerLink) {
       <mat-card class="article-card" [routerLink]="article.routerLink">
         <mat-card-content class="card-content">
           <div class="card-label">{{ article.title }}</div>
@@ -18,4 +18,15 @@
       </mat-card>
     }
   </div>
+
+  <mat-paginator
+    class="article-paginator"
+    [length]="allArticles.length"
+    [pageIndex]="pageIndex()"
+    [pageSize]="pageSize()"
+    [pageSizeOptions]="pageSizeOptions"
+    (page)="onPageChange($event)"
+    i18n-aria-label="@@page.articles.paginator.ariaLabel"
+    aria-label="ページを選択">
+  </mat-paginator>
 </app-application-page-template>

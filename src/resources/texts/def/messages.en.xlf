@@ -3352,6 +3352,12 @@ Added the tool list page.</target>
         <target>Articles</target>
       </segment>
     </unit>
+    <unit id="page.articles.paginator.ariaLabel">
+      <segment state="initial">
+        <source>ページを選択</source>
+        <target>Select page</target>
+      </segment>
+    </unit>
     <unit id="page.articles.title">
       <segment state="initial">
         <source>記事一覧</source>
