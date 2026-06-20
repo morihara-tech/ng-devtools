@@ -1,0 +1,29 @@
+<app-application-page-template>
+  <div class="margin-bottom-16">
+    <app-heading headingType="h2" i18n="@@page.operatorInfo.title">運営者情報・お問い合わせ</app-heading>
+  </div>
+
+  <section>
+    <div class="margin-bottom-8">
+      <app-heading id="operator" headingType="h3" i18n="@@page.operatorInfo.operator.heading">運営者</app-heading>
+    </div>
+    <p i18n="@@page.operatorInfo.operator.body">
+      当サイトは個人（ハンドルネーム：morihara-tech）が運営しています。
+    </p>
+  </section>
+
+  <div class="spacer"></div>
+
+  <section>
+    <div class="margin-bottom-8">
+      <app-heading id="contact" headingType="h3" i18n="@@page.operatorInfo.contact.heading">お問い合わせ</app-heading>
+    </div>
+    <p i18n="@@page.operatorInfo.contact.body">
+      当サイトに関するお問い合わせ・ご意見・不具合のご報告は、GitHub Issues にてお受けしております。
+      下記リンクよりご投稿ください。
+    </p>
+    <p>
+      <app-hyper-link-text url="https://github.com/morihara-tech/ng-devtools/issues" [openInNewTab]="true" i18n="@@page.operatorInfo.contact.link">GitHub Issues で問い合わせる</app-hyper-link-text>
+    </p>
+  </section>
+</app-application-page-template>
