@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
 import { ApplicationPageTemplateComponent } from '../../components/application-page-template/application-page-template.component';
 import { HeadingComponent } from '../../components/heading/heading.component';
 import { HyperLinkTextComponent } from '../../components/hyper-link-text/hyper-link-text.component';
@@ -6,7 +8,13 @@ import { HyperLinkTextComponent } from '../../components/hyper-link-text/hyper-l
 /** Displays operator information and contact details for the application. */
 @Component({
   selector: 'app-operator-info-page',
-  imports: [ApplicationPageTemplateComponent, HeadingComponent, HyperLinkTextComponent],
+  imports: [
+    ApplicationPageTemplateComponent,
+    HeadingComponent,
+    HyperLinkTextComponent,
+    MatCardModule,
+    MatDividerModule,
+  ],
   templateUrl: './operator-info-page.component.html',
   styleUrl: './operator-info-page.component.scss',
 })

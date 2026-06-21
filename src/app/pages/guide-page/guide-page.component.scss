@@ -1,11 +1,121 @@
+// Wiki / Manual view (ガイドページ)
+// 参照: docs/core/uiux/3-layouts/wiki-manual-view.md
+.guide-layout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--arc-space-small); // 16px
+
+  &__toc-toggle {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--arc-space-xxx-small); // 4px
+    padding: var(--arc-space-xx-small) var(--arc-space-small); // 8px 16px
+    border: 1px solid var(--mat-sys-outline-variant);
+    border-radius: var(--arc-shape-medium); // 4px
+    background: transparent;
+    color: var(--mat-sys-on-surface);
+    font-size: var(--mat-sys-label-large-size);
+    cursor: pointer;
+  }
+
+  &__body {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--arc-space-medium); // 24px
+  }
+}
+
+// Standalone ToC nav, reused for both the desktop sticky sidebar and the
+// mobile drawer's content (rendered via the #tocNav template).
+.guide-toc {
+  width: 240px;
+  flex: none;
+  background-color: var(--mat-sys-surface-container);
+  border-right: 1px solid var(--mat-sys-outline-variant);
+  // Sticks to the viewport as the page scrolls (the page itself has no
+  // fixed-height scroll ancestor, so a plain `position: sticky` works here).
+  position: sticky;
+  top: var(--arc-space-small); // 16px
+  max-height: calc(100vh - var(--arc-space-large));
+  overflow-y: auto;
+
+  &__heading {
+    font-size: var(--mat-sys-title-large-size);
+    font-weight: 700;
+    padding: var(--arc-space-small); // 16px
+    margin: 0;
+    position: sticky;
+    top: 0;
+    background-color: inherit;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0 var(--arc-space-xx-small); // 8px
+    margin: 0;
+  }
+
+  &__link {
+    display: block;
+    padding: var(--arc-space-xxx-small) var(--arc-space-xx-small); // 4px 8px
+    border-radius: var(--arc-shape-medium); // 4px
+    color: var(--mat-sys-on-surface);
+    text-decoration: none;
+    font-size: var(--mat-sys-body-large-size);
+    line-height: 1.6;
+
+    &:hover {
+      background-color: var(--mat-sys-surface-container-high);
+    }
+  }
+
+  &__item--active > &__link {
+    background-color: var(--mat-sys-primary-container);
+    color: var(--mat-sys-on-primary-container);
+    font-weight: 500;
+  }
+}
+
+// Mobile (Compact) drawer: an overlay-only sidenav, separate from the
+// desktop sticky `.guide-toc` instance above.
+.guide-toc-drawer-container {
+  // mat-sidenav-container normally reserves layout space and paints its own
+  // surface background; here it only hosts an overlay drawer, so it must stay
+  // visually transparent and out of the page's normal flow.
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1000;
+  background: transparent !important;
+}
+
+.guide-toc-drawer {
+  pointer-events: auto;
+
+  .guide-toc {
+    position: static;
+    max-height: 100%;
+    border-right: none;
+  }
+}
+
+.guide-content {
+  flex: 1;
+  min-width: 0;
+  max-width: var(--arc-wiki-content-max-width); // 800px
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--arc-space-medium); // 24px
+}
+
 .guide-item {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-top: 24px;
+  gap: var(--arc-space-xx-small); // 8px
 }
 
 .guide-articles-link {
-  margin-top: 16px;
-  margin-bottom: 0;
+  margin: 0;
 }

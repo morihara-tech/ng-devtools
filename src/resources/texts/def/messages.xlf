@@ -681,6 +681,26 @@
         <source>ご利用ガイド</source>
       </segment>
     </unit>
+    <unit id="page.guide.toc.heading">
+      <segment>
+        <source>目次</source>
+      </segment>
+    </unit>
+    <unit id="page.guide.toc.navLabel">
+      <segment>
+        <source>目次</source>
+      </segment>
+    </unit>
+    <unit id="page.guide.toc.toggleLabel">
+      <segment>
+        <source>目次を表示</source>
+      </segment>
+    </unit>
+    <unit id="page.guide.toc.toggleText">
+      <segment>
+        <source>目次を表示</source>
+      </segment>
+    </unit>
     <unit id="page.ipCidr.card.input.cidr">
       <segment>
         <source>CIDR</source>
@@ -2942,6 +2962,16 @@ UNIXタイム変換ツールを実装しました。</source>
     <unit id="page.privacyPolicy.title">
       <segment>
         <source>プライバシーポリシー</source>
+      </segment>
+    </unit>
+    <unit id="page.privacyPolicy.updatedAtLabel">
+      <segment>
+        <source>最終更新日:</source>
+      </segment>
+    </unit>
+    <unit id="page.privacyPolicy.updatedAtValue">
+      <segment>
+        <source>2026/05/09</source>
       </segment>
     </unit>
     <unit id="page.privacyPolicy.analytics.heading">

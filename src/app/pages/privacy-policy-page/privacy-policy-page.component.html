@@ -1,50 +1,52 @@
 <app-application-page-template>
-  <div class="margin-bottom-16">
-    <app-heading headingType="h2" i18n="@@page.privacyPolicy.title">プライバシーポリシー</app-heading>
+  <div class="text-only-page">
+    <header class="text-only-page__header">
+      <app-heading headingType="h2" i18n="@@page.privacyPolicy.title">プライバシーポリシー</app-heading>
+      <p class="text-only-page__updated-at">
+        <span i18n="@@page.privacyPolicy.updatedAtLabel">最終更新日:</span>
+        <time datetime="2026-05-09" i18n="@@page.privacyPolicy.updatedAtValue">2026/05/09</time>
+      </p>
+    </header>
+
+    <mat-card class="text-only-page__card" appearance="outlined">
+      <mat-card-content class="text-only-page__content">
+        <section>
+          <app-heading id="analytics" headingType="h3" i18n="@@page.privacyPolicy.analytics.heading">アクセス解析ツールについて</app-heading>
+          <p i18n="@@page.privacyPolicy.analytics.body">
+            当サイトでは、Google が提供するアクセス解析ツール「Google アナリティクス（GA4）」を使用しています。
+            Google アナリティクスは Cookie を使用してデータを収集します。収集されるデータは匿名であり、個人を特定するものではありません。
+            収集されたデータは Google のプライバシーポリシーに基づき管理されます。
+          </p>
+        </section>
+
+        <mat-divider></mat-divider>
+
+        <section>
+          <app-heading id="cookie-policy" headingType="h3" i18n="@@page.privacyPolicy.cookiePolicy.heading">広告の配信について（Cookie ポリシー）</app-heading>
+          <p i18n="@@page.privacyPolicy.cookiePolicy.body">
+            当サイトでは、Google AdSense を利用した広告を掲載しています。
+            Google などの第三者配信事業者は Cookie を使用して、ユーザーの興味に基づくパーソナライズ広告を表示することがあります。
+          </p>
+          <app-heading id="optout" headingType="h4" i18n="@@page.privacyPolicy.cookiePolicy.optout.heading">広告のパーソナライズを無効にする方法</app-heading>
+          <p i18n="@@page.privacyPolicy.cookiePolicy.optout.body">
+            Google 広告設定ページにアクセスすることで、パーソナライズ広告を無効にできます。
+            また、<app-hyper-link-text url="https://www.aboutads.info/choices/" [openInNewTab]="true">aboutads.info</app-hyper-link-text>
+            から第三者配信事業者の Cookie 利用を無効にすることも可能です。
+          </p>
+        </section>
+
+        <mat-divider></mat-divider>
+
+        <section>
+          <app-heading id="disclaimer" headingType="h3" i18n="@@page.privacyPolicy.disclaimer.heading">免責事項</app-heading>
+          <p i18n="@@page.privacyPolicy.disclaimer.body">
+            当サイトで提供するツールはいずれもデータをサーバーに保存しません。
+            入力されたデータはすべてブラウザ内で処理されます。
+            当サイトの内容やポリシーは予告なく変更される場合があります。
+            最新のプライバシーポリシーは常に本ページをご確認ください。
+          </p>
+        </section>
+      </mat-card-content>
+    </mat-card>
   </div>
-
-  <section>
-    <div class="margin-bottom-8">
-      <app-heading id="analytics" headingType="h3" i18n="@@page.privacyPolicy.analytics.heading">アクセス解析ツールについて</app-heading>
-    </div>
-    <p i18n="@@page.privacyPolicy.analytics.body">
-      当サイトでは、Google が提供するアクセス解析ツール「Google アナリティクス（GA4）」を使用しています。
-      Google アナリティクスは Cookie を使用してデータを収集します。収集されるデータは匿名であり、個人を特定するものではありません。
-      収集されたデータは Google のプライバシーポリシーに基づき管理されます。
-    </p>
-  </section>
-
-  <div class="spacer"></div>
-
-  <section>
-    <div class="margin-bottom-8">
-      <app-heading id="cookie-policy" headingType="h3" i18n="@@page.privacyPolicy.cookiePolicy.heading">広告の配信について（Cookie ポリシー）</app-heading>
-    </div>
-    <p i18n="@@page.privacyPolicy.cookiePolicy.body">
-      当サイトでは、Google AdSense を利用した広告を掲載しています。
-      Google などの第三者配信事業者は Cookie を使用して、ユーザーの興味に基づくパーソナライズ広告を表示することがあります。
-    </p>
-    <div class="margin-bottom-8">
-      <app-heading id="optout" headingType="h4" i18n="@@page.privacyPolicy.cookiePolicy.optout.heading">広告のパーソナライズを無効にする方法</app-heading>
-    </div>
-    <p i18n="@@page.privacyPolicy.cookiePolicy.optout.body">
-      Google 広告設定ページにアクセスすることで、パーソナライズ広告を無効にできます。
-      また、<app-hyper-link-text url="https://www.aboutads.info/choices/" [openInNewTab]="true">aboutads.info</app-hyper-link-text>
-      から第三者配信事業者の Cookie 利用を無効にすることも可能です。
-    </p>
-  </section>
-
-  <div class="spacer"></div>
-
-  <section>
-    <div class="margin-bottom-8">
-      <app-heading id="disclaimer" headingType="h3" i18n="@@page.privacyPolicy.disclaimer.heading">免責事項</app-heading>
-    </div>
-    <p i18n="@@page.privacyPolicy.disclaimer.body">
-      当サイトで提供するツールはいずれもデータをサーバーに保存しません。
-      入力されたデータはすべてブラウザ内で処理されます。
-      当サイトの内容やポリシーは予告なく変更される場合があります。
-      最新のプライバシーポリシーは常に本ページをご確認ください。
-    </p>
-  </section>
 </app-application-page-template>
