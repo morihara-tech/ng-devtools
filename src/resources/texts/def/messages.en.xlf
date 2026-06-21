@@ -28,7 +28,7 @@
     <unit id="apiKeyGenHelpOverviewDesc">
       <segment state="initial">
         <source> APIキージェネレーターは、安全なAPIキーをオンラインで生成するツールです。Base62・16進数・UUID v4の3形式に対応し、任意のプレフィックスを付与したAPIキーを一括生成できます。 </source>
-        <target>The API key generator is an online tool for generating secure API keys. It supports three formats — Base62, hexadecimal, and UUID v4 — and can generate API keys with optional prefixes in bulk.</target>
+        <target>Hardcoding a placeholder like &quot;test123&quot; as a stand-in API key works fine until it leaks into a commit, a log line, or a shared Slack thread — and unlike a real credential, it gives reviewers no signal about what a properly formed key should even look like. This tool generates cryptographically random, properly shaped key candidates on demand in Base62, hex, or UUID v4, with an optional prefix, so local development and onboarding docs can use realistic-looking keys without ever touching production secrets.</target>
       </segment>
     </unit>
     <unit id="apiKeyGenHelpSpec">
@@ -40,31 +40,31 @@
     <unit id="apiKeyGenHelpSpecBase62">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">「Base62」フォーマット</pc>: <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">[0-9A-Za-z]</pc>の62文字を使用します。URLセーフで高いエントロピーを実現しており、Stripeなど多くのサービスで採用されています。</source>
-        <target>Base62 Format: Uses 62 characters [0-9A-Za-z]. URL-safe and achieves high entropy; adopted by many services such as Stripe.</target>
+        <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">Base62</pc>: Built from the alphanumeric set <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">[0-9A-Za-z]</pc>, this is the format you&apos;ll recognize from Stripe-style keys — URL-safe with no characters that need escaping, and dense enough to pack a lot of entropy into a short string.</target>
       </segment>
     </unit>
     <unit id="apiKeyGenHelpSpecEntropy">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">エントロピーと安全性</pc>: Base62で32文字の場合、エントロピーは約190ビットとなり、総当たり攻撃に対して非常に高い耐性を持ちます。</source>
-        <target>Entropy &amp; Security: A 32-character Base62 key has approximately 190 bits of entropy, providing extremely high resistance against brute-force attacks.</target>
+        <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">Entropy</pc>: A 32-character Base62 string carries roughly 190 bits of entropy — log2(62) per character — which is far beyond what any brute-force attack can realistically search, even at scale.</target>
       </segment>
     </unit>
     <unit id="apiKeyGenHelpSpecHex">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">「Hex」フォーマット</pc>: <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">[0-9a-f]</pc>の16文字（16進数）を使用します。暗号ライブラリとの互換性が高く、SHA-256などのハッシュ関数と組み合わせやすい形式です。</source>
-        <target>Hex Format: Uses 16 hexadecimal characters [0-9a-f]. Highly compatible with cryptographic libraries and easy to combine with hash functions such as SHA-256.</target>
+        <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">Hex</pc>: Restricted to <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">[0-9a-f]</pc>, this is the same alphabet most crypto libraries emit by default — a SHA-256 digest, an HMAC signature, a randomBytes().toString(&apos;hex&apos;) call — so hex keys drop straight into code that already expects that shape.</target>
       </segment>
     </unit>
     <unit id="apiKeyGenHelpSpecPrefix">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">プレフィックス</pc>: <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">sk_</pc>、<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">pk_</pc>、<pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">api_</pc>などのプレフィックスを付与することで、キーの用途や権限を識別しやすくします（例: OpenAIの<pc id="4" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">sk-...</pc>形式）。</source>
-        <target>Prefix: Adding prefixes such as sk_, pk_, or api_ makes it easy to identify the purpose and permissions of a key (e.g., OpenAI&apos;s sk-... format).</target>
+        <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">Prefix</pc>: A short tag like <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">sk_</pc>, <pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">pk_</pc>, or <pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">api_</pc> lets you tell secret keys apart from publishable ones at a glance — the same convention OpenAI uses with its <pc id="4" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">sk-...</pc> keys — so a key pasted into a support ticket or a code review is self-documenting.</target>
       </segment>
     </unit>
     <unit id="apiKeyGenHelpSpecUuid">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">「UUID v4」フォーマット</pc>: RFC 4122に準拠したUUID v4形式（<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx</pc>）で生成します。既存システムとの互換性が高い標準形式です。</source>
-        <target>UUID v4 Format: Generates in RFC 4122-compliant UUID v4 format (xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx). Standard format with high compatibility with existing systems.</target>
+        <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">UUID v4</pc>: Standard RFC 4122 UUID v4 (<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx</pc>) — pick this when the system you&apos;re testing against expects a UUID column or type rather than an arbitrary string, since it slots straight into existing primary-key and request-ID fields.</target>
       </segment>
     </unit>
     <unit id="apiKeyGenHelpUsage">
@@ -76,31 +76,31 @@
     <unit id="apiKeyGenHelpUsageStep1">
       <segment state="initial">
         <source>「フォーマット」でAPIキーの形式（Base62 / Hex / UUID v4）を選択します。</source>
-        <target>Select the format in Format: Base62 / Hex / UUID v4.</target>
+        <target>Pick a key shape from the Format dropdown — Base62, Hex, or UUID v4.</target>
       </segment>
     </unit>
     <unit id="apiKeyGenHelpUsageStep2">
       <segment state="initial">
         <source>「文字数」でキーの長さを指定します（Base62・Hex形式の場合）。</source>
-        <target>Specify the key length in Length (for Base62 and Hex formats).</target>
+        <target>For Base62 or Hex, set how many characters long the key should be in the Length field.</target>
       </segment>
     </unit>
     <unit id="apiKeyGenHelpUsageStep3">
       <segment state="initial">
         <source>「プレフィックス」に付加する文字列を設定します（省略可）。</source>
-        <target>Set the prefix string in Prefix (optional).</target>
+        <target>Optionally type a tag like sk_ or api_ into the Prefix field — leave it blank if you don&apos;t need one.</target>
       </segment>
     </unit>
     <unit id="apiKeyGenHelpUsageStep4">
       <segment state="initial">
         <source>「個数」で生成件数を指定します。</source>
-        <target>Specify the generation count in Count.</target>
+        <target>Set how many keys you want in the Count field — useful for seeding a batch of test accounts in one pass.</target>
       </segment>
     </unit>
     <unit id="apiKeyGenHelpUsageStep5">
       <segment state="initial">
         <source>「生成」ボタンをクリックします。</source>
-        <target>Click the &quot;Generate&quot; button.</target>
+        <target>Click Generate, then use the copy menu to grab the results as plain text, an .env block, or an MCP config snippet.</target>
       </segment>
     </unit>
     <unit id="apiKeyGenHelpUseCase">
@@ -112,19 +112,25 @@
     <unit id="apiKeyGenHelpUseCaseAuth">
       <segment state="initial">
         <source>REST APIの認証トークンやAPIキーの生成。</source>
-        <target>Generating authentication tokens and API keys for REST APIs.</target>
+        <target>Generating placeholder authentication tokens and API keys while building or testing a REST API.</target>
       </segment>
     </unit>
     <unit id="apiKeyGenHelpUseCaseSaas">
       <segment state="initial">
         <source>マルチテナントSaaSアプリケーションの顧客向けAPIキー発行。</source>
-        <target>Issuing customer API keys for multi-tenant SaaS applications.</target>
+        <target>Mocking up customer-facing API keys for a multi-tenant SaaS product before the real issuance flow is built.</target>
       </segment>
     </unit>
     <unit id="apiKeyGenHelpUseCaseWebhook">
       <segment state="initial">
         <source>ウェブフックシークレットの生成。</source>
-        <target>Generating webhook secrets.</target>
+        <target>Generating webhook signing secrets for local testing.</target>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpUseCaseMcp">
+      <segment state="initial">
+        <source>MCPサーバー設定ファイルに記載するダミーのAPIキーやトークンの作成。</source>
+        <target>An MCP server&apos;s config file (mcp.json or similar) almost always wants an API key or bearer token in its env block — generate one here and copy it straight out as a ready-to-paste MCP Config snippet via the output card&apos;s copy menu, instead of hand-typing a fake value that might not match the expected length or charset.</target>
       </segment>
     </unit>
     <unit id="app.title">
@@ -286,7 +292,7 @@
     <unit id="ipCidrHelpOverviewDesc">
       <segment state="initial">
         <source> IP/CIDR計算機は、IPアドレスとCIDR表記からネットワーク情報を計算するオンラインツールです。IPv4およびIPv6に対応し、サブネットマスク・ネットワークアドレス・使用可能ホスト数・2進数表現などを算出します。 </source>
-        <target>The IP/CIDR calculator is an online tool that calculates network information from an IP address and CIDR notation. It supports both IPv4 and IPv6, and computes subnet mask, network address, usable host count, binary representation, and more.</target>
+        <target>Working out a subnet mask or the usable host range from a /24 or /20 by hand is tedious and easy to get wrong, especially once you&apos;re juggling multiple VLANs or VPC subnets at once. This calculator takes any IPv4 or IPv6 address with a CIDR prefix and instantly returns the netmask, network and broadcast addresses, usable host range and count, and the binary breakdown — so you can double-check a subnet design or decode someone else&apos;s without reaching for a notepad.</target>
       </segment>
     </unit>
     <unit id="ipCidrHelpSpec">
@@ -298,43 +304,43 @@
     <unit id="ipCidrHelpSpecBinary">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">2進数表現</pc>: IPアドレスをビット列で表示します。ネットワーク部とホスト部の境界を視覚的に確認できます。</source>
-        <target>Binary representation: Displays the IP address as a bit string so you can visually confirm the boundary between the network and host portions.</target>
+        <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">Binary representation</pc>: The address spelled out as a string of bits, so the boundary between the network portion and the host portion is something you can see, not just calculate.</target>
       </segment>
     </unit>
     <unit id="ipCidrHelpSpecBroadcast">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">ブロードキャストアドレス</pc>: サブネット内の最後のアドレス（ホスト部が全1）です。IPv6には存在しません。</source>
-        <target>Broadcast address: The last address in the subnet (all host bits set to 1). Does not exist in IPv6.</target>
+        <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">Broadcast address</pc>: The last address in the subnet, with every host bit set to 1. IPv6 has no concept of broadcast — it relies on multicast instead, so this field only applies to IPv4.</target>
       </segment>
     </unit>
     <unit id="ipCidrHelpSpecCidr">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">CIDR（Classless Inter-Domain Routing）</pc>: IPアドレスとサブネットプレフィックス長をスラッシュ区切りで表記する方式（例: <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">192.168.1.0/24</pc>）です。クラスフルアドレッシング（A/B/Cクラス）を廃止し、柔軟なIPレンジ割り当てを実現します。</source>
-        <target>CIDR (Classless Inter-Domain Routing): A notation that combines an IP address with a subnet prefix length using a slash (e.g., 192.168.1.0/24). It replaces classful addressing (Class A/B/C) and enables flexible IP range allocation.</target>
+        <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">CIDR (Classless Inter-Domain Routing)</pc>: The slash notation pairing an IP address with its prefix length, e.g. <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">192.168.1.0/24</pc>. It replaced the old classful A/B/C addressing scheme, which wasted huge blocks of address space, and lets you carve out a subnet of nearly any size instead of being locked into fixed class boundaries.</target>
       </segment>
     </unit>
     <unit id="ipCidrHelpSpecHosts">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">使用可能ホスト数</pc>: <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">2^(ホスト部のビット数) - 2</pc>で計算します（ネットワークアドレスとブロードキャストを除く）。</source>
-        <target>Usable host count: Calculated as 2^(host bits) - 2 (excluding network address and broadcast).</target>
+        <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">Usable host count</pc>: For IPv4 this is <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">2^(host bits) - 2</pc>, reserving one address for the network identifier and one for broadcast. IPv6 subnets don&apos;t reserve a broadcast address, so the usable count there is simply 2^(host bits).</target>
       </segment>
     </unit>
     <unit id="ipCidrHelpSpecIpv4v6">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">IPv4とIPv6の違い</pc>: IPv4は32ビット（4オクテット、ドット区切り十進表記）、IPv6は128ビット（8グループの16進数、コロン区切り）で表現されます。</source>
-        <target>IPv4 vs IPv6: IPv4 uses 32 bits (4 octets, dot-decimal notation); IPv6 uses 128 bits (8 groups of hex digits, colon-separated).</target>
+        <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">IPv4 vs IPv6</pc>: IPv4 addresses are 32 bits, written as four dot-separated decimal octets (192.168.1.1). IPv6 addresses are 128 bits, written as eight colon-separated groups of hex digits (2001:db8::1), and the vastly larger address space removes most of the scarcity pressure that drives aggressive subnetting under IPv4.</target>
       </segment>
     </unit>
     <unit id="ipCidrHelpSpecNetwork">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">ネットワークアドレス</pc>: サブネット内の最初のアドレス（ホスト部が全0）です。ルーティングの宛先として使用されます。</source>
-        <target>Network address: The first address in the subnet (all host bits set to 0). Used as the routing destination.</target>
+        <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">Network address</pc>: The first address in the subnet, with every host bit set to 0. Routers and configuration files use this to refer to the subnet as a whole, for example in a routing table entry.</target>
       </segment>
     </unit>
     <unit id="ipCidrHelpSpecSubnetMask">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">サブネットマスク</pc>: ネットワーク部とホスト部を区別するビットマスクです。<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">/24</pc>は<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">255.255.255.0</pc>に相当します。</source>
-        <target>Subnet mask: A bitmask that separates the network portion from the host portion. /24 corresponds to 255.255.255.0.</target>
+        <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">Subnet mask</pc>: The bitmask marking where the network portion ends and the host portion begins. A <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">/24</pc> prefix and a <pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">255.255.255.0</pc> mask describe the exact same boundary — CIDR notation and dotted-decimal masks are just two ways of writing the same value.</target>
       </segment>
     </unit>
     <unit id="ipCidrHelpUsage">
@@ -346,25 +352,25 @@
     <unit id="ipCidrHelpUsageStep1">
       <segment state="initial">
         <source>プロトコル（IPv4 / IPv6）を選択します。</source>
-        <target>Select the protocol (IPv4 / IPv6).</target>
+        <target>Pick the protocol, IPv4 or IPv6.</target>
       </segment>
     </unit>
     <unit id="ipCidrHelpUsageStep2">
       <segment state="initial">
         <source>「IPアドレス」を入力します（例: <pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">192.168.1.100</pc>）。</source>
-        <target>Enter an IP address (e.g., 192.168.1.100).</target>
+        <target>Type an address into IP Address — you can include a /prefix here too (e.g., 192.168.1.100/24) and it&apos;ll populate the CIDR field for you.</target>
       </segment>
     </unit>
     <unit id="ipCidrHelpUsageStep3">
       <segment state="initial">
         <source>「CIDR」でプレフィックス長を指定します（例: <pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">24</pc>）。</source>
-        <target>Specify the prefix length in CIDR (e.g., 24).</target>
+        <target>Otherwise, drag the CIDR slider to set the prefix length (e.g., 24) and watch the host range update live.</target>
       </segment>
     </unit>
     <unit id="ipCidrHelpUsageStep4">
       <segment state="initial">
         <source>「生成」ボタンをクリックします。</source>
-        <target>Click the Generate button.</target>
+        <target>Click Generate.</target>
       </segment>
     </unit>
     <unit id="ipCidrHelpUseCase">
@@ -376,19 +382,19 @@
     <unit id="ipCidrHelpUseCaseCloud">
       <segment state="initial">
         <source>AWS・GCP・Azureのネットワーク設計でのCIDRブロック計算。</source>
-        <target>Calculating CIDR blocks for network design on AWS, GCP, or Azure.</target>
+        <target>Sizing CIDR blocks when laying out a VPC on AWS, GCP, or Azure.</target>
       </segment>
     </unit>
     <unit id="ipCidrHelpUseCaseFirewall">
       <segment state="initial">
         <source>ファイアウォールルールのIPレンジ確認と検証。</source>
-        <target>Verifying and validating IP ranges for firewall rules.</target>
+        <target>Double-checking that a firewall or security-group rule&apos;s IP range covers (or doesn&apos;t accidentally cover) the addresses you expect.</target>
       </segment>
     </unit>
     <unit id="ipCidrHelpUseCaseVpc">
       <segment state="initial">
         <source>VPCやオンプレミスネットワークのサブネット設計。</source>
-        <target>Designing subnets for VPCs or on-premises networks.</target>
+        <target>Planning subnets for a VPC or an on-premises network before you commit to an address plan.</target>
       </segment>
     </unit>
     <unit id="page.jsonFormatter.description">
@@ -592,7 +598,7 @@
     <unit id="page.guide.intro.apiKeyGen">
       <segment state="initial">
         <source> 開発環境用のダミーAPIキーや、MCPサーバーの設定に使う識別子を手軽に生成します。本番発行前の動作確認やサンプルコード作成に利用できます。 </source>
-        <target>Quickly generate dummy API keys for development or identifiers for MCP server configuration. Useful for testing before production issuance or writing sample code.</target>
+        <target>Need a stand-in credential for a local .env file or an MCP server config without touching your real secrets? Spin up Base62, hex, or UUID v4 keys here, prefix and all.</target>
       </segment>
     </unit>
     <unit id="page.guide.intro.colorPalette">
@@ -604,7 +610,7 @@
     <unit id="page.guide.intro.ipCidr">
       <segment state="initial">
         <source> IPアドレスとCIDR表記からネットワークアドレスやホスト数などの情報を計算します。サブネット設計やネットワーク構成の確認作業に活用できます。 </source>
-        <target>Calculate network address, host count, and other information from an IP address and CIDR notation. Useful for subnet design and checking network configurations.</target>
+        <target>Punch in an address and prefix length and get the netmask, network range, and host count back immediately — handy for sanity-checking a subnet plan before you commit to it.</target>
       </segment>
     </unit>
     <unit id="page.guide.intro.jsonFormatter">
@@ -616,7 +622,7 @@
     <unit id="page.guide.intro.passwordGen">
       <segment state="initial">
         <source> 文字種や桁数を指定して、推測されにくいランダムパスワードを生成します。新規サービスの初期パスワードやテストアカウント作成時に活用できます。 </source>
-        <target>Generate hard-to-guess random passwords by specifying character types and length. Useful for initial passwords on new services or creating test accounts.</target>
+        <target>Spin up a batch of cryptographically random passwords with the character set and length you choose, ready for new accounts or test fixtures.</target>
       </segment>
     </unit>
     <unit id="page.guide.intro.sqlFormatter">
@@ -628,13 +634,13 @@
     <unit id="page.guide.intro.svgViewer">
       <segment state="initial">
         <source> SVGファイルをブラウザ上でプレビューし、PNGなどの画像形式へ変換します。アイコン素材の確認や、SVGをラスター画像として書き出したい場面で役立ちます。 </source>
-        <target>Preview SVG files in the browser and convert them to formats like PNG. Useful for checking icon assets or exporting an SVG as a raster image.</target>
+        <target>Need a quick PNG from an SVG icon without firing up design software? This tool renders SVG markup live in the browser and exports it as a PNG at the size you need.</target>
       </segment>
     </unit>
     <unit id="page.guide.intro.textDiff">
       <segment state="initial">
         <source> 2つのテキストを並べて、追加・削除された行を色分け表示します。設定ファイルの変更箇所の確認や、文章の修正前後の差分チェックに活用できます。 </source>
-        <target>Compare two texts side by side, highlighting added and removed lines. Useful for reviewing config file changes or checking differences before and after editing text.</target>
+        <target>Spot exactly what changed between two versions of a file or paragraph, with additions and deletions color-coded line by line. Handy for reviewing config edits or tracking down a typo fix.</target>
       </segment>
     </unit>
     <unit id="page.guide.intro.ulidGen">
@@ -1472,7 +1478,7 @@ When OFF, uses decodeURI to decode while preserving the URL structure.</target>
     <unit id="colorPaletteHelpOverviewDesc">
       <segment state="initial">
         <source> カラーパレットツールは、入力したHEXカラーコードからMaterial Designライクなカラーシェードパレットを自動生成するオンラインツールです。比較モードとシェード生成モードの2種類に対応しています。 </source>
-        <target>The color palette tool automatically generates Material Design-like color shade palettes from input HEX color codes. It supports two modes: a comparison mode and a shade generation mode.</target>
+        <target>Picking a single brand color is easy; turning it into a consistent 10-step shade scale for buttons, hover states, and backgrounds by hand is tedious and easy to get wrong. This tool takes one or more HEX colors and instantly expands each into a Material Design-style shade ramp (50–900), so you get a usable, accessible palette in seconds instead of eyeballing tints and shades in a design app. Switch to Compare mode to line up several base colors side by side, or use Shades mode to inspect the full ramp for a single color.</target>
       </segment>
     </unit>
     <unit id="colorPaletteHelpSpec">
@@ -1484,37 +1490,37 @@ When OFF, uses decodeURI to decode while preserving the URL structure.</target>
     <unit id="colorPaletteHelpSpecAlgorithm">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">シェード生成アルゴリズム</pc>: 入力色を500ステップの基準色として、それより明るい色（50〜400）は白との線形補間（mixColors）、暗い色（600〜900）は黒との線形補間で生成します。例: 50ステップは白を90%混合、900ステップは黒を60%混合します。</source>
-        <target>Shade generation algorithm: The input color is treated as the 500 step. Lighter colors (50–400) are generated by linear interpolation with white; darker colors (600–900) by linear interpolation with black. For example, step 50 mixes 90% white, and step 900 mixes 60% black.</target>
+        <target>Shade generation algorithm: Your input color becomes the 500 step, the anchor of the ramp. Everything lighter (50–400) is a linear blend toward white; everything darker (600–900) is a linear blend toward black — step 50 is 90% white, step 900 is 60% black. This mirrors how Material Design tonal palettes are built, so the result drops straight into a design system without further tweaking.</target>
       </segment>
     </unit>
     <unit id="colorPaletteHelpSpecCompare">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">「比較」モード</pc>: 複数のカラーを並べて比較します。各色のシェード（50〜900）を横に並べて表示し、カラー間のトーンの違いを確認できます。</source>
-        <target>Compare mode: Displays multiple colors side by side for comparison. Shows shades (50–900) horizontally for each color, allowing you to see the tone differences between colors.</target>
+        <target>Compare mode: Lines up multiple base colors as parallel rows, each expanded into its own 50–900 ramp. Useful for checking whether two brand colors stay visually distinct once they&apos;re both lightened or darkened, not just at full saturation.</target>
       </segment>
     </unit>
     <unit id="colorPaletteHelpSpecHex">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">HEXカラーコード</pc>: 3桁形式（<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">#RGB</pc>）と6桁形式（<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">#RRGGBB</pc>）の両方に対応しています。<pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">#</pc>プレフィックスの有無も問いません。</source>
-        <target>HEX color codes: Both 3-digit (#RGB) and 6-digit (#RRGGBB) formats are supported, with or without the # prefix.</target>
+        <target>HEX color codes: Accepts both shorthand (#RGB) and full (#RRGGBB) notation, and the leading # is optional either way — paste a value straight from a CSS file or a design tool without reformatting it first.</target>
       </segment>
     </unit>
     <unit id="colorPaletteHelpSpecShades">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">「濃淡」モード</pc>: 1色のシェードパレットを詳細表示します。選択した色の全シェードを一覧で確認できます。</source>
-        <target>Shades mode: Displays a detailed shade palette for a single color. Lets you view all shades of the selected color at a glance.</target>
+        <target>Shades mode: Expands one color into its complete 50–900 ramp in a single detailed view — the mode to reach for once you&apos;ve settled on a base color and need every step for a design token file or theme config.</target>
       </segment>
     </unit>
     <unit id="colorPaletteHelpSpecSteps">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">シェードステップ</pc>: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900の10段階で表示します。Material Designの慣習に基づいており、数値が小さいほど明るく、大きいほど暗い色になります。</source>
-        <target>Shade steps: 10 levels — 50, 100, 200, 300, 400, 500, 600, 700, 800, 900 — based on Material Design conventions. Lower numbers are lighter; higher numbers are darker.</target>
+        <target>Shade steps: The 50–900 numbering (50, 100, 200, 300, 400, 500, 600, 700, 800, 900) follows the Material Design tonal scale convention — lower numbers are lighter, higher numbers are darker, and 500 is treated as the &quot;true&quot; color.</target>
       </segment>
     </unit>
     <unit id="colorPaletteHelpSpecWcag">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">WCAGコントラスト比</pc>: 各シェードのテキスト色（黒または白）は、相対輝度（Relative Luminance）を<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">L = 0.2126R + 0.7152G + 0.0722B</pc>の式で計算し、WCAGガイドラインに基づいてコントラストが高い方を自動選択します。</source>
-        <target>WCAG contrast ratio: The text color (black or white) for each shade is automatically selected based on the relative luminance formula L = 0.2126R + 0.7152G + 0.0722B, following WCAG accessibility guidelines.</target>
+        <target>WCAG contrast ratio: Choosing black or white text on a colored background by eye is unreliable, especially in the mid-range shades. This tool computes relative luminance for each shade (L = 0.2126R + 0.7152G + 0.0722B) and automatically picks whichever text color clears the higher contrast ratio under WCAG 2.x guidelines, so every generated shade stays legible without a separate accessibility check.</target>
       </segment>
     </unit>
     <unit id="colorPaletteHelpUsage">
@@ -1526,13 +1532,13 @@ When OFF, uses decodeURI to decode while preserving the URL structure.</target>
     <unit id="colorPaletteHelpUsageStep1">
       <segment state="initial">
         <source>「比較」または「濃淡」モードを選択します。</source>
-        <target>Select Compare or Shades mode.</target>
+        <target>Choose the Compare or Shades mode.</target>
       </segment>
     </unit>
     <unit id="colorPaletteHelpUsageStep2">
       <segment state="initial">
         <source>HEXカラーコード（例: <pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">#3490DC</pc>）を1つ以上入力します。</source>
-        <target>Enter one or more HEX color codes (e.g., #3490DC).</target>
+        <target>Enter one or more HEX colors (e.g., #3490DC) — use the Color Count slider to add fields when comparing several colors at once.</target>
       </segment>
     </unit>
     <unit id="colorPaletteHelpUsageStep3">
@@ -1544,7 +1550,7 @@ When OFF, uses decodeURI to decode while preserving the URL structure.</target>
     <unit id="colorPaletteHelpUsageStep4">
       <segment state="initial">
         <source>各シェードのカラーコードをクリックしてコピーできます。</source>
-        <target>Click on a color code to copy it.</target>
+        <target>Click any swatch in the Result card to copy its code — or use the &quot;Copy as CSS variables&quot; option to grab the entire ramp as ready-to-paste custom properties.</target>
       </segment>
     </unit>
     <unit id="colorPaletteHelpUseCase">
@@ -1556,19 +1562,25 @@ When OFF, uses decodeURI to decode while preserving the URL structure.</target>
     <unit id="colorPaletteHelpUseCaseA11y">
       <segment state="initial">
         <source>アクセシビリティ（WCAG）対応のカラー選定と確認。</source>
-        <target>Selecting and verifying colors for accessibility (WCAG) compliance.</target>
+        <target>Auditing a palette for WCAG-compliant text contrast before shipping it in a design system.</target>
       </segment>
     </unit>
     <unit id="colorPaletteHelpUseCaseBrand">
       <segment state="initial">
         <source>ブランドカラーのシェードパレットを自動生成したい場合。</source>
-        <target>Automatically generating shade palettes from brand colors.</target>
+        <target>Turning a single brand color into a full shade ramp without manually tinting and shading it in a design tool.</target>
       </segment>
     </unit>
     <unit id="colorPaletteHelpUseCaseMaterial">
       <segment state="initial">
         <source>Material DesignやTailwind CSSのカラーシステム設計。</source>
-        <target>Designing color systems for Material Design or Tailwind CSS.</target>
+        <target>Bootstrapping a Material Design tonal palette, or a Tailwind-style color scale, from a single seed color.</target>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpUseCaseTailwind">
+      <segment state="initial">
+        <source>Tailwind CSSの命名規則（50〜950の11段階）と本ツールの10段階シェード（50〜900）は段階数が異なる点に注意。950ステップが必要な場合は、900の結果を基準に手動で1段階暗くする。</source>
+        <target>Heads up if you&apos;re mapping output onto Tailwind CSS: Tailwind v3+ uses an 11-step scale (50–950), one step deeper than this tool&apos;s 10-step Material-style ramp (50–900). If your config needs a 950 swatch, treat the generated 900 as a starting point and darken it manually rather than assuming a direct one-to-one match.</target>
       </segment>
     </unit>
     <unit id="common.cancel">
@@ -1794,37 +1806,37 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
     <unit id="passwordGenHelpSpecAlphanumeric">
       <segment state="initial">
         <source>「英数字」: 大文字・小文字・数字のみ（記号不可なシステム向け）。</source>
-        <target>Alphanumeric: Uppercase, lowercase, and digits only (for systems that do not allow symbols).</target>
+        <target>Alphanumeric: Uppercase, lowercase, and digits, with no symbols. The fallback for legacy systems or form fields that reject punctuation.</target>
       </segment>
     </unit>
     <unit id="passwordGenHelpSpecAlphanumericSymbols">
       <segment state="initial">
         <source>「英数字 + 記号」: 大文字・小文字・数字・記号を含む最もセキュアな文字セット。</source>
-        <target>Alphanumeric + Symbols: The most secure character set including uppercase, lowercase, digits, and symbols.</target>
+        <target>Alphanumeric + Symbols: Uppercase, lowercase, digits, and symbols together — the largest character pool here, so it packs the most entropy per character. Use it whenever the target system has no restriction on special characters.</target>
       </segment>
     </unit>
     <unit id="passwordGenHelpSpecDigits">
       <segment state="initial">
         <source>「数字のみ」: 数字のみ（PINコード・数値OTPなど）。</source>
-        <target>Digits Only: Digits only (PIN codes, numeric OTPs, etc.).</target>
+        <target>Digits Only: Numbers only — the right choice for PINs and numeric one-time codes, not for anything you&apos;d call a password.</target>
       </segment>
     </unit>
     <unit id="passwordGenHelpSpecEntropy">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">パスワード強度（エントロピー）</pc>: 強度はエントロピー（ビット数）で評価されます。文字種が多く、長さが長いほど解読に要する計算量が指数的に増加します。一般的に80ビット以上が推奨されます。</source>
-        <target>Password strength (entropy): Strength is evaluated in bits of entropy. The more character types and the longer the length, the exponentially higher the computational cost to crack. 80 bits or more is generally recommended.</target>
+        <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">Entropy</pc>: Password strength is measured in bits of entropy, and NIST SP 800-63B&apos;s guidance favors length over forced complexity rules — a long passphrase typically beats a short string crammed with mandatory symbols. As a rule of thumb, aim for at least 80 bits; each additional character type and each extra character added to the length grows the search space exponentially.</target>
       </segment>
     </unit>
     <unit id="passwordGenHelpSpecExcludeSimilar">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">「類似文字を除く」</pc>: <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">0</pc>と<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">O</pc>、<pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">1</pc>と<pc id="4" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">l</pc>、<pc id="5" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">I</pc>と<pc id="6" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">|</pc>など、視覚的に混同しやすい文字を除外します。印刷物や口頭伝達での誤読防止に有効です。</source>
-        <target>Exclude Similar Characters: Excludes visually similar characters such as 0 and O, 1 and l, and I and |. Helps prevent misreading in printed materials or verbal communication.</target>
+        <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">Exclude Similar Characters</pc>: Strips look-alike characters — <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">0</pc> vs <pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">O</pc>, <pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">1</pc> vs <pc id="4" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">l</pc>, <pc id="5" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">I</pc> vs <pc id="6" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">|</pc> — that get misread on a printed handout or mistyped when someone reads a password out loud over the phone.</target>
       </segment>
     </unit>
     <unit id="passwordGenHelpSpecLowercaseDigits">
       <segment state="initial">
         <source>「英小文字 + 数字」: 小文字英字と数字のみ（可読性重視・URLセーフ用途）。</source>
-        <target>Lowercase + Digits: Lowercase letters and digits only (for readability-focused or URL-safe use cases).</target>
+        <target>Lowercase + Digits: Lowercase letters and digits only, which keeps the result easy to read aloud or copy from a printed page, and safe to drop into a URL path without escaping.</target>
       </segment>
     </unit>
     <unit id="passwordGenHelpUsage">
@@ -1842,19 +1854,19 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
     <unit id="passwordGenHelpUsageStep2">
       <segment state="initial">
         <source>「文字数」でパスワードの長さを指定します。</source>
-        <target>Specify the password length in Length.</target>
+        <target>Set the password length in Length.</target>
       </segment>
     </unit>
     <unit id="passwordGenHelpUsageStep3">
       <segment state="initial">
         <source>「個数」で一括生成数を指定します。</source>
-        <target>Specify the number of passwords to generate in Count.</target>
+        <target>Set how many passwords to generate at once in Count.</target>
       </segment>
     </unit>
     <unit id="passwordGenHelpUsageStep4">
       <segment state="initial">
         <source>必要に応じて「類似文字を除く」を有効にします。</source>
-        <target>Enable the Exclude Similar Characters toggle if needed.</target>
+        <target>Turn on Exclude Similar Characters if the password will be typed by hand or read aloud.</target>
       </segment>
     </unit>
     <unit id="passwordGenHelpUsageStep5">
@@ -1872,19 +1884,19 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
     <unit id="passwordGenHelpUseCaseBulk">
       <segment state="initial">
         <source>新規ユーザーの初期パスワードを一括生成したい場合。</source>
-        <target>Generating initial passwords for new users in bulk.</target>
+        <target>Bulk-generating initial passwords when onboarding a batch of new user accounts.</target>
       </segment>
     </unit>
     <unit id="passwordGenHelpUseCaseSecret">
       <segment state="initial">
         <source>APIシークレットや暗号化キーの生成。</source>
-        <target>Generating API secrets and encryption keys.</target>
+        <target>Generating throwaway API secrets or symmetric keys for local development and testing.</target>
       </segment>
     </unit>
     <unit id="passwordGenHelpUseCaseTest">
       <segment state="initial">
         <source>テスト用ダミーパスワードの作成。</source>
-        <target>Creating dummy passwords for testing.</target>
+        <target>Creating disposable dummy passwords for QA and staging accounts.</target>
       </segment>
     </unit>
     <unit id="sitemap.heading">
@@ -2166,7 +2178,7 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
     <unit id="svgViewerHelpOverviewDesc">
       <segment state="initial">
         <source> SVGビューアーは、SVGコードのリアルタイムプレビューとPNG画像への変換をオンラインで行えるツールです。キャンバスサイズ・背景色・スケール・オフセットを設定しながらプレビューし、PNG形式でダウンロードできます。 </source>
-        <target>The SVG viewer is an online tool for real-time previewing of SVG code and converting it to PNG images. You can adjust canvas size, background color, scale, and offset while previewing, then download as PNG.</target>
+        <target>Designers hand off icons as SVG, but most CMSs, email clients, and social platforms still expect a raster file — and many design tools don&apos;t give you pixel-level control over export size or padding. This SVG-to-PNG converter solves that: paste your SVG markup, preview it live, then fine-tune canvas size, background color, scale, and position before exporting a PNG that fits exactly where you need it.</target>
       </segment>
     </unit>
     <unit id="svgViewerHelpSpec">
@@ -2178,31 +2190,31 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
     <unit id="svgViewerHelpSpecCanvas">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">キャンバスサイズ</pc>: 出力PNGのピクセルサイズを決定します。デフォルトは256×256ピクセルです。</source>
-        <target>Canvas size: Determines the pixel dimensions of the output PNG. Default is 256×256 pixels.</target>
+        <target>Canvas size: The pixel dimensions of the exported PNG, 256×256 by default. Set this to match your final target size (e.g. 512×512 for a high-DPI app icon) instead of upscaling a small bitmap afterward.</target>
       </segment>
     </unit>
     <unit id="svgViewerHelpSpecConversion">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">PNG変換の仕組み</pc>: ブラウザのCanvas APIを使用してSVGをラスタライズします。<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">drawImage()</pc>でSVGをCanvasに描画し、<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">toDataURL(&apos;image/png&apos;)</pc>でPNGデータに変換します。</source>
-        <target>PNG conversion mechanism: Uses the browser&apos;s Canvas API to rasterize SVG. Renders the SVG to a Canvas with drawImage(), then converts it to PNG data with toDataURL(&apos;image/png&apos;).</target>
+        <target>How the conversion works: SVG is vector data, so it has to be rasterized before it can become a PNG. This tool draws your SVG onto an HTML5 Canvas via drawImage(), then reads the pixels back out with toDataURL(&apos;image/png&apos;) — the same rasterization step browsers perform internally when they paint an &lt;img&gt; tag.</target>
       </segment>
     </unit>
     <unit id="svgViewerHelpSpecOffset">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">「X座標」・「Y座標」</pc>: SVGの描画位置をX・Y方向にずらすピクセル数です。キャンバス内の配置調整に使用します。</source>
-        <target>X Offset / Y Offset: The number of pixels to shift the SVG drawing position in the X and Y directions. Used to adjust the placement within the canvas.</target>
+        <target>X Offset / Y Offset: Shifts the SVG&apos;s drawing position within the canvas, in pixels. Useful when your artwork isn&apos;t centered in its own viewBox and you need to nudge it into place before export.</target>
       </segment>
     </unit>
     <unit id="svgViewerHelpSpecScale">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">「拡大率」</pc>: SVGを拡大・縮小して描画する倍率です。100%がデフォルトで、Retinaディスプレイ向けに200%で出力することもできます。</source>
-        <target>Scale: The zoom factor for rendering SVG. The default is 100%, and you can output at 200% for Retina displays.</target>
+        <target>Scale: The rendering zoom factor, 100% by default. Because SVG is resolution-independent, bumping this to 200% (or higher) is the easiest way to produce a crisp @2x asset for Retina/HiDPI screens without re-exporting from your design tool.</target>
       </segment>
     </unit>
     <unit id="svgViewerHelpSpecSvg">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">SVG（Scalable Vector Graphics）</pc>: XMLベースのベクター画像形式（W3C標準）です。数式で図形を表現するため解像度に依存せず、どのサイズでも鮮明に表示されます。</source>
-        <target>SVG (Scalable Vector Graphics): An XML-based vector image format (W3C standard). Because shapes are defined mathematically, images remain sharp at any size, independent of resolution.</target>
+        <target>SVG (Scalable Vector Graphics): An XML-based vector format defined by the W3C SVG specification. Shapes are described mathematically via a viewBox and path data rather than a fixed pixel grid, so the same file stays crisp whether it&apos;s rendered at 16px or 1600px — unlike a raster format such as PNG, which is locked to the resolution it was exported at.</target>
       </segment>
     </unit>
     <unit id="svgViewerHelpSpecTransparent">
@@ -2280,7 +2292,7 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
     <unit id="textDiffHelpOverviewDesc">
       <segment state="initial">
         <source> テキスト比較ツールは、2つのテキストの差分をサイドバイサイドで視覚化するオンラインツールです。追加・削除・変更箇所を行ごとにハイライト表示し、コードや文書の差分確認を効率化します。 </source>
-        <target>The text diff tool is an online tool that visualizes differences between two texts side by side. It highlights additions, deletions, and changes line by line, making it easy to review differences in code and documents.</target>
+        <target>Spotting what actually changed between two versions of a config file, a paragraph, or a pasted log is slow and error-prone when you&apos;re just scanning by eye. This tool runs a line-by-line diff on whatever you paste and renders the result as a color-coded, side-by-side comparison — added, removed, and modified lines are immediately visible, without needing a local git checkout or a diff viewer plugin.</target>
       </segment>
     </unit>
     <unit id="textDiffHelpSpec">
@@ -2292,31 +2304,31 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
     <unit id="textDiffHelpSpecAlgorithm">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">差分アルゴリズム（LCS）</pc>: LCS（Longest Common Subsequence：最長共通部分列）ベースのdiffアルゴリズムを採用しています。2つのシーケンス間で最も長い共通の部分列を求め、追加・削除箇所を特定します。</source>
-        <target>Diff algorithm (LCS): Uses an LCS (Longest Common Subsequence)-based diff algorithm. It finds the longest common subsequence between two sequences to identify additions and deletions.</target>
+        <target>Diff algorithm (LCS): Built on the Longest Common Subsequence (LCS) algorithm — the same family of algorithm behind tools like the classic Unix diff and Git&apos;s default diff engine. It identifies the longest sequence of lines common to both texts, then reports everything else as an addition or deletion relative to that shared backbone.</target>
       </segment>
     </unit>
     <unit id="textDiffHelpSpecDiffResult">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">差分結果の構造</pc>: 各行に対して元のテキスト・変更後のテキスト・ハイライト情報が生成されます。変更なし・追加・削除・変更の4種類の状態が識別されます。</source>
-        <target>Diff result structure: For each line, the original text, modified text, and highlight information are generated. Four states are identified: unchanged, added, deleted, and modified.</target>
+        <target>Diff result structure: Each line is classified into one of four states — unchanged, added, deleted, or modified — and the Diff Result card pairs the original and modified text for that line so you can see exactly what changed without cross-referencing two separate documents.</target>
       </segment>
     </unit>
     <unit id="textDiffHelpSpecHighlight">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">ハイライト色の意味</pc>: 緑は変更後に追加された行、赤は削除された行を示します。変更行は元の色と対比して表示されます。</source>
-        <target>Highlight color meanings: Green indicates lines added in the modified text; red indicates lines deleted from the original.</target>
+        <target>Highlight legend: Added (green) marks lines present only in the modified text, Removed (red) marks lines present only in the original, and Modified marks lines that exist in both but changed — the same red/green convention used by Git and most code review tools, so the result should feel familiar.</target>
       </segment>
     </unit>
     <unit id="textDiffHelpSpecLineDiff">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">行単位の差分</pc>: テキストを行単位で比較し、変更のあった行を識別します。各行の変更内容を原文と並べて表示します。</source>
-        <target>Line-by-line diff: Compares text on a line-by-line basis and identifies changed lines. Displays each line&apos;s changes alongside the original.</target>
+        <target>Line-level diff: Comparison happens at the line level, not the word or character level — a single edited word still marks the whole line as modified. This keeps results easy to scan for config files and prose, though it won&apos;t pinpoint the exact word that changed within a long line.</target>
       </segment>
     </unit>
     <unit id="textDiffHelpSpecSideBySide">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">サイドバイサイド表示</pc>: 原文と変更文を並列で表示することで、対応する行の変化が一目でわかります。ユニファイドdiff（---/+++形式）と異なり、変更前後を同時に確認できます。</source>
-        <target>Side-by-side display: Displays original and modified text in parallel so changes in corresponding lines are immediately visible. Unlike unified diff (---/+++ format), you can see both before and after simultaneously.</target>
+        <target>Side-by-side layout: Original and Modified are shown in two parallel panels rather than the interleaved +/- lines you&apos;d get from a unified diff (the ---/+++ format used by `diff -u` or `git diff`). It takes more horizontal space, but it&apos;s easier to read when you want to compare the &quot;before&quot; and &quot;after&quot; of a line at a glance instead of reconstructing it from additions and deletions.</target>
       </segment>
     </unit>
     <unit id="textDiffHelpUsage">
@@ -2328,25 +2340,25 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
     <unit id="textDiffHelpUsageStep1">
       <segment state="initial">
         <source>「比較元テキスト」エリアに元のテキスト（変更前）を入力します。</source>
-        <target>Enter the original text (before changes) in the Original Text area.</target>
+        <target>Paste the original (before) text into the Original Text field.</target>
       </segment>
     </unit>
     <unit id="textDiffHelpUsageStep2">
       <segment state="initial">
         <source>「比較先テキスト」エリアに変更後のテキストを入力します。</source>
-        <target>Enter the modified text in the Modified Text area.</target>
+        <target>Paste the updated (after) text into the Modified Text field.</target>
       </segment>
     </unit>
     <unit id="textDiffHelpUsageStep3">
       <segment state="initial">
         <source>「比較」ボタンをクリックすると差分がハイライト表示されます。</source>
-        <target>Click the &quot;Compare&quot; button to highlight the differences.</target>
+        <target>Click Compare to render the Diff Result, with the Original and Modified panels highlighted according to the Added/Modified/Removed legend.</target>
       </segment>
     </unit>
     <unit id="textDiffHelpUsageStep4">
       <segment state="initial">
         <source>入力内容をリセットしたい場合はクリアボタンを使用します。</source>
-        <target>To reset the input, use the clear button.</target>
+        <target>Use the clear button to wipe both fields and start over.</target>
       </segment>
     </unit>
     <unit id="textDiffHelpUseCase">
@@ -2358,19 +2370,25 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
     <unit id="textDiffHelpUseCaseConfig">
       <segment state="initial">
         <source>設定ファイルのバージョン間比較。</source>
-        <target>Comparing configuration file versions.</target>
+        <target>Diffing two versions of a YAML, JSON, or .env config file before deploying a change.</target>
       </segment>
     </unit>
     <unit id="textDiffHelpUseCaseDoc">
       <segment state="initial">
         <source>文書の校正・改訂内容の確認と管理。</source>
-        <target>Proofreading documents and tracking revisions.</target>
+        <target>Proofreading a document and tracking exactly which sentences changed between drafts.</target>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpUseCaseGitVsLineDiff">
+      <segment state="initial">
+        <source>Gitの差分はファイル単位の行ベースdiffで、GitHubのPR画面では単語単位の差分も色分け表示されるが、本ツールは行単位の比較に特化している点に注意。1行が大幅に書き換わった場合、行全体が変更扱いとなり、行内のどの単語が変わったかまでは強調されない。</source>
+        <target>Worth knowing if you&apos;re used to GitHub: a PR&apos;s &quot;Files changed&quot; tab adds word-level highlighting inside a changed line, on top of the line-level diff. This tool only does line-level comparison, so a single-word edit in an otherwise long line will mark the entire line as Modified rather than underlining just the changed word. For quick line-by-line sanity checks that&apos;s usually enough; for fine-grained word diffs on prose, pair this tool with your editor&apos;s inline diff view.</target>
       </segment>
     </unit>
     <unit id="textDiffHelpUseCaseReview">
       <segment state="initial">
         <source>コードレビュー前に変更内容を確認する場合。</source>
-        <target>Reviewing changes before a code review.</target>
+        <target>Sanity-checking a snippet&apos;s changes before opening a pull request, when you don&apos;t have the file in a local git checkout.</target>
       </segment>
     </unit>
     <unit id="ulidGenHelpOverview">
@@ -2382,7 +2400,7 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
     <unit id="ulidGenHelpOverviewDesc">
       <segment state="initial">
         <source> ULIDジェネレーターは、Universally Unique Lexicographically Sortable Identifier（ULID）を生成するオンラインツールです。UUIDの代替として、時系列ソート可能な一意識別子を一括生成できます。 </source>
-        <target>The ULID generator is an online tool for generating Universally Unique Lexicographically Sortable Identifiers (ULIDs). As an alternative to UUID, it generates unique identifiers that are sortable by time in bulk.</target>
+        <target>A random UUID makes a fine unique key, but it tells you nothing about when a row was created and it wrecks B-tree index locality at scale — every insert lands in a random page. ULID (Universally Unique Lexicographically Sortable Identifier, per the ulid/spec) solves both problems by combining a millisecond timestamp with random bits, so IDs sort chronologically as plain strings. This tool generates ULIDs in bulk, with control over the base timestamp and strict monotonic ordering, as a drop-in alternative wherever you&apos;d reach for a UUID.</target>
       </segment>
     </unit>
     <unit id="ulidGenHelpSpec">
@@ -2394,31 +2412,31 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
     <unit id="ulidGenHelpSpecBase32">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">Crockford&apos;s Base32</pc>: I, L, O, U を除外した32文字セットを使用。視覚的に紛らわしい文字を排除し、人間が読みやすい形式にしています。</source>
-        <target>Crockford&apos;s Base32: Uses a 32-character set excluding I, L, O, and U, eliminating visually confusing characters for a more human-readable format.</target>
+        <target>Crockford&apos;s Base32: The encoding alphabet deliberately drops I, L, O, and U — letters that are easily mistaken for 1, 1, 0, and V when read aloud or copied by hand. That makes ULIDs safer to transcribe in support tickets or log excerpts than a standard Base32 or hex string of the same length.</target>
       </segment>
     </unit>
     <unit id="ulidGenHelpSpecFormat">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">ULID仕様</pc>: 128ビット＝48ビットのタイムスタンプ（ミリ秒精度）＋80ビットのランダム値で構成されます。Crockford&apos;s Base32でエンコードされた26文字の文字列（例: <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">01ARZ3NDEKTSV4RRFFQ69G5FAV</pc>）です。</source>
-        <target>ULID specification: 128 bits = 48-bit timestamp (millisecond precision) + 80-bit random value. Encoded as a 26-character string using Crockford&apos;s Base32 (e.g., 01ARZ3NDEKTSV4RRFFQ69G5FAV).</target>
+        <target>ULID layout: 128 bits total, split into a 48-bit millisecond timestamp and 80 bits of randomness, encoded as a fixed 26-character Crockford&apos;s Base32 string (e.g., 01ARZ3NDEKTSV4RRFFQ69G5FAV). Same bit width as a UUID, but the first 10 characters are time, not noise.</target>
       </segment>
     </unit>
     <unit id="ulidGenHelpSpecMono">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">「単調増加」機能</pc>: 同一ミリ秒内に複数のULIDを生成した場合、ランダム部分をインクリメントして単調増加を保証します。イベントの順序を厳密に保持したい場合に使用します。</source>
-        <target>Increase monotonically feature: When generating multiple ULIDs within the same millisecond, the random portion is incremented to guarantee monotonically increasing values. Use when strict ordering of events is required.</target>
+        <target>Increase monotonically: Two ULIDs generated in the same millisecond would otherwise have unrelated random suffixes, so their relative order is arbitrary. With this switch on, the random part increments by one instead of re-rolling, so a batch generated in a tight loop still comes out in the exact order it was created — important for event logs where insertion order matters even at sub-millisecond resolution.</target>
       </segment>
     </unit>
     <unit id="ulidGenHelpSpecSort">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">辞書順ソート</pc>: ULIDの先頭10文字が時刻を表すため、辞書順ソート（文字列比較）がそのまま時系列ソートになります。DBインデックスの局所性が高まりパフォーマンスが向上します。</source>
-        <target>Lexicographic sorting: The first 10 characters of a ULID represent the time, so lexicographic (string comparison) sorting is equivalent to chronological sorting. This improves index locality in databases.</target>
+        <target>Lexicographic = chronological: Because the timestamp occupies the first 10 characters, a plain string sort (`ORDER BY id` in SQL, or `Array.sort()` in JS) puts ULIDs in creation order automatically — no separate `created_at` column needed just for ordering. As a side effect, sequential inserts land near each other in a B-tree index instead of scattering across random pages, which is the main reason ULID and similar schemes outperform UUID v4 as primary keys at scale.</target>
       </segment>
     </unit>
     <unit id="ulidGenHelpSpecVsUuid">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">UUIDとの比較</pc>: UUID v4はランダムな文字列のため辞書順ソートに時系列の意味がありませんが、ULIDは辞書順ソート＝時系列ソートになります。RDBMSのクラスタードインデックスで特に有効です。</source>
-        <target>Comparison with UUID: UUID v4 has no chronological meaning in lexicographic order, but ULID&apos;s lexicographic order equals chronological order. Especially effective for clustered indexes in RDBMSes.</target>
+        <target>ULID vs. UUID v4: A UUID v4 is 122 bits of pure randomness (per RFC 4122) — sorting a column of them tells you nothing about insertion order, and clustered/B-tree indexes suffer from the resulting random write pattern. ULID keeps the same 128-bit footprint but front-loads a timestamp, so it behaves like a UUID for uniqueness while sorting like a sequential ID. If you control the schema, ULID (or UUID v7, below) is usually the better default for primary keys.</target>
       </segment>
     </unit>
     <unit id="ulidGenHelpUsage">
@@ -2430,25 +2448,25 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
     <unit id="ulidGenHelpUsageStep1">
       <segment state="initial">
         <source>生成件数を指定します。</source>
-        <target>Specify the number of ULIDs to generate.</target>
+        <target>Set Number of ULIDs to the batch size you need.</target>
       </segment>
     </unit>
     <unit id="ulidGenHelpUsageStep2">
       <segment state="initial">
         <source>「基準日時(タイムスタンプ)」に基準となる時刻（ミリ秒）を設定します（デフォルトは現在時刻）。</source>
-        <target>Set the base time in Base datetime - Timestamp (default is the current time).</target>
+        <target>Set the Base datetime - Timestamp field to the millisecond timestamp you want encoded (defaults to now). Use the &quot;Select datetime&quot; tooltip to open a picker, or &quot;Reload&quot; to snap it back to the current time.</target>
       </segment>
     </unit>
     <unit id="ulidGenHelpUsageStep3">
       <segment state="initial">
         <source>同一ミリ秒内でも値を単調増加させたい場合は「単調増加」を有効にします。</source>
-        <target>Enable Increase monotonically if you want values to increase within the same millisecond.</target>
+        <target>Toggle Increase monotonically on if you need a guaranteed, strictly increasing order across the batch, even for entries that share the same millisecond.</target>
       </segment>
     </unit>
     <unit id="ulidGenHelpUsageStep4">
       <segment state="initial">
         <source>「生成」ボタンをクリックします。</source>
-        <target>Click the &quot;Generate&quot; button.</target>
+        <target>Click Generate and copy the values out of the Results card.</target>
       </segment>
     </unit>
     <unit id="ulidGenHelpUseCase">
@@ -2460,19 +2478,25 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
     <unit id="ulidGenHelpUseCaseDb">
       <segment state="initial">
         <source>RDBMSのプライマリキーとしてインデックス効率を高めたい場合。</source>
-        <target>Using as primary keys in RDBMSes to improve index efficiency.</target>
+        <target>Replacing an auto-increment or UUID v4 primary key with something that&apos;s both globally unique and index-friendly.</target>
       </segment>
     </unit>
     <unit id="ulidGenHelpUseCaseLog">
       <segment state="initial">
         <source>時系列順のログIDやイベントIDの生成。</source>
-        <target>Generating chronologically ordered log IDs and event IDs.</target>
+        <target>Generating log or event IDs where the ID itself encodes &quot;what happened first,&quot; even before you look at a timestamp column.</target>
       </segment>
     </unit>
     <unit id="ulidGenHelpUseCaseToken">
       <segment state="initial">
         <source>ファイル名や一時トークンの一意識別子として活用。</source>
-        <target>Using as unique identifiers for filenames and temporary tokens.</target>
+        <target>Naming uploaded files or short-lived tokens with an identifier that sorts naturally in a file listing or S3 bucket.</target>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpUseCaseVsUuidV7">
+      <segment state="initial">
+        <source>UUID v7との比較検討。どちらも時系列ソート可能だが、ULIDはCrockford&apos;s Base32で26文字、UUID v7はハイフン区切りの36文字という違いがある。</source>
+        <target>Weighing ULID against UUID v7 (RFC 9562): both are time-ordered and sort correctly as strings, so the choice often comes down to format. ULID is a 26-character Base32 string with no separators and a community spec rather than an IETF standard; UUID v7 is the canonical 36-character hyphenated UUID format, so it slots into existing `uuid` database columns and client libraries without any schema changes. If you&apos;re already storing UUIDs everywhere, UUID v7 is usually the lower-friction upgrade; if you want shorter, URL-friendly IDs, ULID wins.</target>
       </segment>
     </unit>
     <unit id="unixTimestampHelpOverview">
@@ -2484,7 +2508,7 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
     <unit id="unixTimestampHelpOverviewDesc">
       <segment state="initial">
         <source> UNIXタイム変換ツールは、UNIXタイムスタンプ（エポック時刻）と人間が読める日時表記を相互変換するオンラインツールです。秒・ミリ秒単位のタイムスタンプに対応し、複数の形式（ISO 8601・RFC 2822など）とタイムゾーンでの時刻表示が可能です。 </source>
-        <target>The UNIX timestamp converter is an online tool for converting between UNIX timestamps (epoch time) and human-readable date/time representations. It supports second and millisecond timestamps and can display times in multiple formats (ISO 8601, RFC 2822, etc.) and timezones.</target>
+        <target>An API response or a log line full of raw epoch seconds (or milliseconds) is unreadable at a glance, and doing the conversion by hand — including the timezone math — is a common source of off-by-some-hours mistakes. This tool converts UNIX timestamps to and from human-readable date/time in both directions, handling both second and millisecond precision, multiple output formats (ISO 8601, RFC 2822), and any IANA timezone including daylight saving time transitions.</target>
       </segment>
     </unit>
     <unit id="unixTimestampHelpSpec">
@@ -2496,37 +2520,37 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
     <unit id="unixTimestampHelpSpecIana">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">IANAタイムゾーン</pc>: <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">Asia/Tokyo</pc>、<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">America/New_York</pc>などの標準的なタイムゾーン識別子です。夏時間（DST）も自動考慮されます。</source>
-        <target>IANA timezone: Standard timezone identifiers such as Asia/Tokyo and America/New_York. Daylight saving time (DST) is automatically accounted for.</target>
+        <target>IANA timezone database: The Timezone field uses identifiers from the IANA Time Zone Database (tz database) — region/city names like Asia/Tokyo or America/New_York rather than fixed UTC offsets. That&apos;s deliberate: a fixed offset like UTC-5 silently breaks across a daylight saving time transition, while a named zone like America/New_York adjusts automatically.</target>
       </segment>
     </unit>
     <unit id="unixTimestampHelpSpecIso">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">ISO 8601</pc>: <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">2024-01-15T12:30:00+09:00</pc>形式の国際標準日時表記です。タイムゾーンオフセットを明示できます。</source>
-        <target>ISO 8601: An international standard date/time notation in the format 2024-01-15T12:30:00+09:00, which explicitly includes the timezone offset.</target>
+        <target>ISO 8601: The standard format you&apos;ll see in JSON APIs and most modern logging, e.g. 2024-01-15T12:30:00+09:00. The explicit offset removes the ambiguity that comes from logging a bare local time without saying which timezone it&apos;s in.</target>
       </segment>
     </unit>
     <unit id="unixTimestampHelpSpecMillis">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">タイムスタンプ（ミリ秒）</pc>: <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">Date.now()</pc>で取得できる13桁の数値です。JavaScriptやJavaで広く使用されます。</source>
-        <target>Timestamp (milliseconds): A 13-digit number obtained with Date.now(). Widely used in JavaScript and Java.</target>
+        <target>Millisecond timestamp: A 13-digit number — what you get from JavaScript&apos;s Date.now() or Java&apos;s System.currentTimeMillis(). If a value you&apos;re inspecting has 13 digits instead of 10, it&apos;s almost certainly milliseconds, not seconds; feeding it into a seconds-based parser unmodified is a common bug.</target>
       </segment>
     </unit>
     <unit id="unixTimestampHelpSpecRfc">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">RFC 2822</pc>: <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">Mon, 15 Jan 2024 12:30:00 +0900</pc>形式のメールDate:ヘッダで使用される表記です。</source>
-        <target>RFC 2822: A date notation used in email Date: headers in the format Mon, 15 Jan 2024 12:30:00 +0900.</target>
+        <target>RFC 2822: The format used in email Date: headers and some legacy HTTP contexts, e.g. Mon, 15 Jan 2024 12:30:00 +0900. Less common in new APIs than ISO 8601, but still worth recognizing when you&apos;re parsing email metadata or older system logs.</target>
       </segment>
     </unit>
     <unit id="unixTimestampHelpSpecSeconds">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">タイムスタンプ（秒）</pc>: <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">Math.floor(Date.now() / 1000)</pc>で取得できる10桁の数値です。</source>
-        <target>Timestamp (seconds): A 10-digit number obtained with Math.floor(Date.now() / 1000).</target>
+        <target>Second timestamp: A 10-digit number — the classic UNIX timestamp, equivalent to Math.floor(Date.now() / 1000) in JavaScript. This is the format most UNIX/Linux tools and many backend frameworks (PHP&apos;s time(), Python&apos;s time.time()) use by default.</target>
       </segment>
     </unit>
     <unit id="unixTimestampHelpSpecUnix">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">UNIXタイムスタンプ</pc>: 1970年1月1日 00:00:00 UTC（Unixエポック）からの経過秒数です。32ビット整数の場合、2038年1月19日 03:14:07 UTCで上限に達する「2038年問題」が存在します。</source>
-        <target>UNIX timestamp: The number of seconds elapsed since January 1, 1970 00:00:00 UTC (the Unix epoch). With a 32-bit integer, the &quot;Year 2038 Problem&quot; occurs when the value overflows on January 19, 2038 at 03:14:07 UTC.</target>
+        <target>UNIX timestamp (epoch time): A signed count of seconds since the UNIX epoch, January 1, 1970 00:00:00 UTC. Systems that still store this count in a 32-bit signed integer run out of room on January 19, 2038 at 03:14:07 UTC — the well-known &quot;Year 2038 problem,&quot; the practical successor to Y2K for anything still running 32-bit time_t.</target>
       </segment>
     </unit>
     <unit id="unixTimestampHelpUsage">
@@ -2538,31 +2562,31 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
     <unit id="unixTimestampHelpUsageStep1">
       <segment state="initial">
         <source>「変換モード」を「日時に変換」または「UNIXタイムスタンプに変換」から選択します。</source>
-        <target>Select To Date/Time or To UNIX Timestamp from the Conversion Mode field.</target>
+        <target>Pick To Date/Time or To UNIX Timestamp from the Conversion Mode selector, depending on which direction you&apos;re converting.</target>
       </segment>
     </unit>
     <unit id="unixTimestampHelpUsageStep2">
       <segment state="initial">
         <source>タイムスタンプ→日時の場合：UNIXタイムスタンプ（秒またはミリ秒）を入力します。</source>
-        <target>For Timestamp → DateTime: Enter a UNIX timestamp (in seconds or milliseconds).</target>
+        <target>Converting a timestamp to a date: Paste the value into the UNIX Timestamp field — seconds or milliseconds are both accepted.</target>
       </segment>
     </unit>
     <unit id="unixTimestampHelpUsageStep3">
       <segment state="initial">
         <source>日時→タイムスタンプの場合：日付と時刻を入力します。</source>
-        <target>For DateTime → Timestamp: Enter a date and time.</target>
+        <target>Converting a date to a timestamp: Fill in Date, Hours, Minutes, and Seconds for the moment you want encoded.</target>
       </segment>
     </unit>
     <unit id="unixTimestampHelpUsageStep4">
       <segment state="initial">
         <source>IANA形式のタイムゾーン（例: <pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">Asia/Tokyo</pc>）を選択します。</source>
-        <target>Select a timezone in IANA format (e.g., Asia/Tokyo).</target>
+        <target>Set Timezone to an IANA identifier (e.g., Asia/Tokyo) so the conversion lands in the right local time, DST included.</target>
       </segment>
     </unit>
     <unit id="unixTimestampHelpUsageStep5">
       <segment state="initial">
         <source>「変換」ボタンをクリックします。</source>
-        <target>Click the &quot;Convert&quot; button.</target>
+        <target>Click Convert and read the result from the Conversion Result card.</target>
       </segment>
     </unit>
     <unit id="unixTimestampHelpUseCase">
@@ -2574,19 +2598,25 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
     <unit id="unixTimestampHelpUseCaseApi">
       <segment state="initial">
         <source>APIレスポンスに含まれるUNIXタイムスタンプを人間が読める日時に変換する場合。</source>
-        <target>Converting UNIX timestamps in API responses to human-readable date/time.</target>
+        <target>Translating raw epoch values in a JSON API response into a date you can actually read while debugging.</target>
       </segment>
     </unit>
     <unit id="unixTimestampHelpUseCaseLog">
       <segment state="initial">
         <source>ログファイルのタイムスタンプ解析。</source>
-        <target>Analyzing timestamps in log files.</target>
+        <target>Decoding epoch timestamps in server or application log files when correlating events across services.</target>
       </segment>
     </unit>
     <unit id="unixTimestampHelpUseCaseTz">
       <segment state="initial">
         <source>異なるタイムゾーン間での時刻変換・比較。</source>
-        <target>Converting and comparing times across different timezones.</target>
+        <target>Comparing event times reported in different timezones, e.g. confirming what a UTC server timestamp corresponds to in a user&apos;s local time.</target>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpUseCaseY2038">
+      <segment state="initial">
+        <source>古いシステムやライブラリが32ビット整数でタイムスタンプを扱っている場合に、2038年問題（2038年1月19日 03:14:07 UTCでのオーバーフロー）の影響を受ける日時かどうかを確認する。</source>
+        <target>Checking whether a future date falls past the Year 2038 problem boundary (January 19, 2038, 03:14:07 UTC), where a system still using a signed 32-bit integer for time_t wraps around to a negative number. This is a real, recurring issue in older embedded systems, some database column types, and legacy code that hasn&apos;t migrated to 64-bit timestamps — convert a target date here to confirm it&apos;s outside (or inside) the danger zone before scheduling something far in the future.</target>
       </segment>
     </unit>
     <unit id="update.home.20250816">
