@@ -95,6 +95,7 @@ When generating commit messages:
   - **Length & SEO**: The "Specifications/Glossary" section must be detailed enough to explain the technical background and core concepts. The total text must be at least 500 Japanese characters to serve as a technical mini-reference and fulfill SEO/AdSense requirements.
   - **Implementation (SSOT pattern)**: Create a dedicated standalone `ToolNameHelpComponent` under the tool page folder (e.g., `src/app/pages/tool-name-page/tool-name-help/`). Place all help HTML in that component's template. The tool page's `<ng-template #helpContent>` must call `<app-tool-name-help>` — do NOT duplicate the help HTML inline. Do NOT store the text in TypeScript files.
   - **i18n**: Every text-containing HTML tag inside the help component template MUST include an `i18n` attribute with a logical custom ID (e.g., `<h3 i18n="@@newToolNameHelpOverview">概要</h3>`).
+  - **English Content Independence**: The English `<target>` in `messages.en.xlf` MUST NOT be a literal (word-for-word) translation of the Japanese `<source>`. Localize it as independent content aimed at English-language search intent — different sentence order, added/omitted detail, and at least one English-audience-specific tip or use case per tool are expected. Do not change the 4-section structure or its headings. See `docs/products/en-content-quality/policy.md` for the full policy and detailed requirements.
   - **Writing Style for Help Text**: Describe operations based on user actions and intent, not by naming specific UI components.
     - *Bad*: "Turn on the toggle button", "Use the slider to set...", "Click the icon button"
     - *Good*: "Enable the feature", "Specify the value...", "Click the clear button"
@@ -128,4 +129,4 @@ When adding a **new page or tool** to this repository, the following tasks are *
 - [ ] Help component imported in `guide-page.component.ts`
 - [ ] Sitemap link added to `sitemap.component.html`
 - [ ] Route added to `app.routes.ts`
-- [ ] `yarn ng extract-i18n` run and `messages.en.xlf` updated with English translations
+- [ ] `yarn ng extract-i18n` run and `messages.en.xlf` updated with English translations written as independent content, not literal translations (see `docs/products/en-content-quality/policy.md`)
