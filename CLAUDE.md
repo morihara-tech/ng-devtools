@@ -51,6 +51,7 @@ When adding new postbuild logic, extend `scripts/postbuild.mjs`.
 - English translations live in `src/resources/texts/def/messages.en.xlf`
 - Use `$localize` with explicit custom IDs: `` $localize`:@@page.example.title:例のタイトル` ``
 - After adding strings: run `yarn ng extract-i18n`, then add `<target>` tags in the `.xlf` file
+- **English `<target>` must not be a literal translation of the Japanese `<source>`.** Write en content as independent, English-search-intent-oriented copy (different sentence order, examples, or added/omitted detail is expected) rather than a sentence-by-sentence rendering. See `docs/products/en-content-quality/policy.md` for the full policy and detailed requirements.
 
 ### Key directories
 
@@ -79,7 +80,7 @@ When adding new postbuild logic, extend `scripts/postbuild.mjs`.
 5. Add a `<li>` entry in `src/app/components/sitemap/sitemap.component.html`
 6. Register the route in `src/app/app.routes.ts`
 7. Add menu item to `src/resources/menu/def/menu-def.ts`
-8. Run `yarn ng extract-i18n` and add English translations to `messages.en.xlf`
+8. Run `yarn ng extract-i18n` and add English translations to `messages.en.xlf` — write them as independent en content, not literal translations of the ja source (see `docs/products/en-content-quality/policy.md`)
 
 ### Commit message format
 
