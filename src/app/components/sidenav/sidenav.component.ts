@@ -1,4 +1,4 @@
-import { Component, effect, inject, model, OnInit, viewChild } from '@angular/core';
+import { Component, computed, effect, inject, model, OnInit, signal, viewChild } from '@angular/core';
 import { MatDrawerMode, MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
 import { SidemenuComponent } from '../sidemenu/sidemenu.component';
 import { SidemenuCategoryModel, SidemenuItemModel } from '../sidemenu/sidemenu-model';
@@ -50,6 +50,12 @@ export class SidenavComponent implements OnInit {
   /** Items rendered at the bottom of the sidenav, outside the accordion. */
   readonly bottomItems: SidemenuItemModel[] = [this.articlesItem, this.privacyPolicyItem, this.operatorInfoItem];
 
+  /** Current viewport width, kept in sync with the `resize` event. Initialized lazily to avoid NG0100. */
+  private readonly innerWidth = signal(this.platformService.window?.innerWidth ?? 0);
+
+  /** Drawer mode derived from the viewport width signal so changes flow through Angular's reactivity. */
+  readonly mode = computed<MatDrawerMode>(() => (this.innerWidth() < 600 ? 'over' : 'side'));
+
   constructor() {
     effect(() => {
       const nav = this.sidenav();
@@ -66,6 +72,7 @@ export class SidenavComponent implements OnInit {
     this.setVhVariable();
     this.platformService.window?.addEventListener('resize', () => {
       this.setVhVariable();
+      this.innerWidth.set(this.platformService.window?.innerWidth ?? 0);
     });
   }
 
@@ -76,10 +83,6 @@ export class SidenavComponent implements OnInit {
         this.sidenav()?.close();
       }
     }, 100);
-  }
-
-  get mode(): MatDrawerMode {
-    return (this.platformService.window?.innerWidth ?? 0) < 600 ? 'over' : 'side';
   }
 
   private setVhVariable(): void {
