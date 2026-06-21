@@ -214,7 +214,7 @@
     <unit id="page.dashboard.description">
       <segment>
         <source>ツールの一覧と更新履歴を確認できます。</source>
-        <target>View tool overview and update history.</target>
+        <target>Browse the full toolkit and see what shipped recently.</target>
       </segment>
     </unit>
     <unit id="page.menu.title">
@@ -226,13 +226,13 @@
     <unit id="page.menu.description">
       <segment state="initial">
         <source>devTools で利用可能な全ツールの一覧です。</source>
-        <target>A list of all tools available in devTools.</target>
+        <target>Every formatter, generator, and converter in devTools, organized by category so you can jump straight to the one you need.</target>
       </segment>
     </unit>
     <unit id="page.menu.heading">
       <segment>
         <source>メニュー</source>
-        <target>All Tools</target>
+        <target>Browse All Tools</target>
       </segment>
     </unit>
     <unit id="menu.category.formatter">
@@ -394,19 +394,19 @@
     <unit id="page.jsonFormatter.description">
       <segment>
         <source>JSONデータを見やすく整形します。</source>
-        <target>Format and beautify JSON data.</target>
+        <target>Turn minified or single-line JSON into a readable, indented tree.</target>
       </segment>
     </unit>
     <unit id="page.sql.description">
       <segment>
         <source>SQLクエリを読みやすく整形します。</source>
-        <target>Format SQL queries for readability.</target>
+        <target>Clean up cramped or ORM-generated SQL into a properly indented query.</target>
       </segment>
     </unit>
     <unit id="page.uuid.description">
       <segment>
         <source>UUID (v1/v4/v7) を一括生成します。</source>
-        <target>Bulk generate UUIDs (v1/v4/v7).</target>
+        <target>Generate RFC 9562-compliant UUIDs in bulk — v1, v4, or time-ordered v7.</target>
       </segment>
     </unit>
     <unit id="page.uuid.help.openAriaLabel">
@@ -460,7 +460,7 @@
     <unit id="page.urlEncoder.description">
       <segment>
         <source>URLのエンコード・デコードを行います。</source>
-        <target>Encode and decode URLs.</target>
+        <target>Percent-encode or decode query strings, paths, and special characters.</target>
       </segment>
     </unit>
     <unit id="page.unixTimestamp.description">
@@ -556,13 +556,13 @@
     <unit id="page.dashboard.card.github.description">
       <segment state="initial">
         <source> このツールはオープンソースです。<ph id="0" equiv="LINE_BREAK" type="fmt" disp="&lt;br&gt;"/> 不具合や要望などがありましたら、GitHubのIssueにてお知らせください。</source>
-        <target> This tool is open source. <ph id="0" equiv="LINE_BREAK" type="fmt" disp="&lt;br&gt;"/> If you have any bugs or requests, please let me know on GitHub Issues. </target>
+        <target> The full source is on GitHub, so you can see exactly how each tool works under the hood. <ph id="0" equiv="LINE_BREAK" type="fmt" disp="&lt;br&gt;"/> Found a bug or have a feature request? Open an issue and it&apos;ll get looked at. </target>
       </segment>
     </unit>
     <unit id="page.dashboard.card.usage.description">
       <segment state="initial">
         <source> 開発者のためのシンプルなユーティリティ集です。 <pc id="0" equivStart="START_PARAGRAPH" equivEnd="CLOSE_PARAGRAPH" type="other" dispStart="&lt;p&gt;" dispEnd="&lt;/p&gt;"> 各ツールを選択してご利用ください。<ph id="1" equiv="LINE_BREAK" type="fmt" disp="&lt;br&gt;"/> データは一切保存されないので、安心してご利用ください。 </pc></source>
-        <target> A simple utility collection for developers. <pc id="0" equivStart="START_PARAGRAPH" equivEnd="CLOSE_PARAGRAPH" type="other" dispStart="&lt;p&gt;" dispEnd="&lt;/p&gt;"> Please select each tool to use. <ph id="1" equiv="LINE_BREAK" type="fmt" disp="&lt;br&gt;"/> No data is saved, so you can use it with confidence. </pc> </target>
+        <target> Switching between five different sites for SQL formatting, JSON validation, and UUID generation gets old fast — this is a single page with the everyday tools developers reach for most. <pc id="0" equivStart="START_PARAGRAPH" equivEnd="CLOSE_PARAGRAPH" type="other" dispStart="&lt;p&gt;" dispEnd="&lt;/p&gt;"> Pick a tool from the menu to get started.<ph id="1" equiv="LINE_BREAK" type="fmt" disp="&lt;br&gt;"/> Everything runs in your browser — nothing you paste in is ever stored or sent anywhere. </pc> </target>
       </segment>
     </unit>
     <unit id="page.error.404.title">
@@ -586,7 +586,7 @@
     <unit id="page.guide.description">
       <segment state="initial">
         <source>devTools が提供する各ツールについて、どんな場面で使えるかを簡単に紹介します。詳しい使い方や仕様は各ツールのページをご覧ください。</source>
-        <target>A quick introduction to when each tool offered by devTools is useful. For detailed usage and specifications, see each tool&apos;s own page.</target>
+        <target>Not sure which tool fits your situation? This page maps real day-to-day scenarios — debugging an API response, reviewing a query, designing a subnet — to the right devTools utility. Full usage instructions live on each tool&apos;s own page.</target>
       </segment>
     </unit>
     <unit id="page.guide.intro.apiKeyGen">
@@ -610,7 +610,7 @@
     <unit id="page.guide.intro.jsonFormatter">
       <segment state="initial">
         <source> APIレスポンスや設定ファイルなど、改行のないJSON文字列を見やすい階層構造に整形します。レスポンス内容の確認やデバッグ時の目視チェックに役立ちます。 </source>
-        <target>Format JSON strings without line breaks, such as API responses or config files, into a readable hierarchical structure. Useful for inspecting response content or visual checks while debugging.</target>
+        <target>Paste a wall of minified JSON from a network tab or log file and get an indented, color-coded tree back in one click — no more squinting at a single line.</target>
       </segment>
     </unit>
     <unit id="page.guide.intro.passwordGen">
@@ -622,7 +622,7 @@
     <unit id="page.guide.intro.sqlFormatter">
       <segment state="initial">
         <source> 本番DBから取得したワンライナーのSQLや、ORMが生成した読みにくいクエリを、インデント付きで整形します。レビュー前の整形や、ログに残ったクエリの確認作業に活用できます。 </source>
-        <target>Format one-line SQL pulled from a production DB or hard-to-read queries generated by an ORM, with proper indentation. Useful before code review or when checking queries left in logs.</target>
+        <target>Squashed, unindented SQL gets restructured into a clean, scannable statement here — open the tool page for the full set of casing and layout options.</target>
       </segment>
     </unit>
     <unit id="page.guide.intro.svgViewer">
@@ -652,13 +652,13 @@
     <unit id="page.guide.intro.urlEncoder">
       <segment state="initial">
         <source> URLに含まれる日本語や記号をパーセントエンコードし、逆にエンコード済み文字列を元の文字列へ戻します。クエリパラメータの確認やリンク作成時のトラブルシューティングに使えます。 </source>
-        <target>Percent-encode Japanese text or symbols found in a URL, or decode an already-encoded string back to its original form. Useful for inspecting query parameters or troubleshooting link issues.</target>
+        <target>When a shared link turns into a string of %-codes, paste it here to see what it actually says — or go the other way and safely pack special characters into a query string yourself.</target>
       </segment>
     </unit>
     <unit id="page.guide.intro.uuidGen">
       <segment state="initial">
         <source> v1/v4/v7形式のUUIDをまとめて生成します。DBの主キー設計やAPIのリクエストIDのサンプルデータ作成に便利です。 </source>
-        <target>Generate batches of UUIDs in v1/v4/v7 format. Handy for designing DB primary keys or creating sample data for API request IDs.</target>
+        <target>Bulk-generate IDs across three UUID versions in one go — see the tool page for which version fits your schema best.</target>
       </segment>
     </unit>
     <unit id="page.guide.link.apiKeyGen">
@@ -1052,7 +1052,7 @@ When OFF, uses decodeURI to decode while preserving the URL structure.</target>
     <unit id="jsonFormatterHelpOverviewDesc">
       <segment state="initial">
         <source> JSON整形ツールは、読みにくいJSON文字列を自動的に整形・フォーマットするオンラインツールです。インデントの調整・ミニファイ（圧縮）に対応し、APIレスポンスや設定ファイルのデバッグ・確認作業を効率化します。 </source>
-        <target>The JSON formatter is an online tool that automatically formats and beautifies hard-to-read JSON strings. It supports indentation adjustment and minification (compression), streamlining debugging and inspection of API responses and configuration files.</target>
+        <target>A network response logged as one unbroken line of JSON is nearly impossible to scan by eye, and copy-pasting it into a code editor just to read it is a detour you shouldn&apos;t need. This tool turns that single line into an indented, readable tree instantly, and just as easily collapses a formatted JSON document back down to a compact one-liner for sending over the wire.</target>
       </segment>
     </unit>
     <unit id="jsonFormatterHelpSpec">
@@ -1076,7 +1076,7 @@ When OFF, uses decodeURI to decode while preserving the URL structure.</target>
     <unit id="jsonFormatterHelpSpecJson">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">JSON（JavaScript Object Notation）</pc>: 軽量なデータ交換フォーマットです。人間にも機械にも読みやすく、REST APIのリクエスト・レスポンスや設定ファイルなどで広く使われています。RFC 8259 / ECMA-404で標準化されています。</source>
-        <target>JSON (JavaScript Object Notation): A lightweight data exchange format. Human-readable and machine-readable, it is widely used for REST API requests/responses and configuration files. Standardized by RFC 8259 / ECMA-404.</target>
+        <target>JSON (JavaScript Object Notation): The de facto data interchange format on the web, defined by the RFC 8259 / ECMA-404 standards. It is the default body format for REST APIs and is also used for config files like package.json and tsconfig.json.</target>
       </segment>
     </unit>
     <unit id="jsonFormatterHelpSpecMinify">
@@ -1088,7 +1088,7 @@ When OFF, uses decodeURI to decode while preserving the URL structure.</target>
     <unit id="jsonFormatterHelpSpecValidation">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">バリデーション</pc>: 入力されたJSONが不正な場合（構文エラー）はエラーメッセージが表示されます。JSONのキーは二重引用符で囲む必要があり、末尾のカンマ（trailing comma）は許可されていません。</source>
-        <target>Validation: An error message is displayed when the input JSON is invalid (syntax error). Keys must be enclosed in double quotes, and trailing commas are not allowed.</target>
+        <target>Validation: Invalid input surfaces an error message instead of silently failing. Two of the most common gotchas: unlike JavaScript object literals, JSON keys must use double quotes (not single quotes), and a trailing comma after the last item or property is a syntax error, not a style choice.</target>
       </segment>
     </unit>
     <unit id="jsonFormatterHelpUsage">
@@ -1100,55 +1100,61 @@ When OFF, uses decodeURI to decode while preserving the URL structure.</target>
     <unit id="jsonFormatterHelpUsageStep1">
       <segment state="initial">
         <source>テキストエリアにJSONテキストを貼り付けます。</source>
-        <target>Paste the JSON text into the text area.</target>
+        <target>Drop your raw JSON — minified, multi-line, whatever shape it&apos;s in — into the text area.</target>
       </segment>
     </unit>
     <unit id="jsonFormatterHelpUsageStep2">
       <segment state="initial">
         <source>「モード」で整形方法（整形 / 圧縮）を選択します。</source>
-        <target>Select the formatting method in Mode: Format / Minify.</target>
+        <target>Choose Format under Mode to pretty-print it, or Minify to collapse it to a single line.</target>
       </segment>
     </unit>
     <unit id="jsonFormatterHelpUsageStep3">
       <segment state="initial">
         <source>「インデント」でスペース数を選択します。</source>
-        <target>Select the number of spaces in Indentation.</target>
+        <target>If you&apos;re formatting, set the Indentation to 2 or 4 spaces to match your project&apos;s style.</target>
       </segment>
     </unit>
     <unit id="jsonFormatterHelpUsageStep4">
       <segment state="initial">
         <source>「変換」ボタンをクリックすると結果が表示されます。</source>
-        <target>Click the Format button to see the result.</target>
+        <target>Click Format to run the conversion and see the result on the right.</target>
       </segment>
     </unit>
     <unit id="jsonFormatterHelpUsageStep5">
       <segment state="initial">
         <source>クリップボードへコピーボタンで整形後のJSONをコピーできます。</source>
-        <target>Use the clipboard copy button to copy the formatted JSON.</target>
+        <target>Use the copy button to grab the output straight to your clipboard.</target>
       </segment>
     </unit>
     <unit id="jsonFormatterHelpUseCase">
       <segment state="initial">
         <source>ユースケース</source>
-        <target>Use the &quot;Copy&quot; button to copy the formatted JSON to the clipboard.</target>
+        <target>Use Cases</target>
       </segment>
     </unit>
     <unit id="jsonFormatterHelpUseCaseApi">
       <segment state="initial">
         <source>APIレスポンスを読みやすく整形してデバッグする場合。</source>
-        <target>Use Cases</target>
+        <target>Formatting and debugging API responses for readability.</target>
       </segment>
     </unit>
     <unit id="jsonFormatterHelpUseCaseConfig">
       <segment state="initial">
         <source>設定ファイル（package.json、tsconfig.jsonなど）の確認・編集時。</source>
-        <target>Formatting and debugging API responses for readability.</target>
+        <target>Reviewing and editing configuration files such as package.json and tsconfig.json.</target>
       </segment>
     </unit>
     <unit id="jsonFormatterHelpUseCaseMinify">
       <segment state="initial">
         <source>本番環境向けにJSONを圧縮してファイルサイズを削減する場合。</source>
-        <target>Reviewing and editing configuration files such as package.json and tsconfig.json.</target>
+        <target>Minifying JSON before sending it over the wire to shave off payload size.</target>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpUseCaseTrailingComma">
+      <segment state="initial">
+        <source>末尾のカンマや引用符ミスによるJSON構文エラーの原因箇所を特定する場合。</source>
+        <target>Tracking down an &quot;Unexpected token&quot; parse error caused by a trailing comma or a single-quoted key copied from JavaScript — paste the snippet here to spot exactly where it breaks.</target>
       </segment>
     </unit>
     <unit id="page.json.help.openAriaLabel">
@@ -2016,7 +2022,7 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
     <unit id="sqlFormatterHelpOverviewDesc">
       <segment state="initial">
         <source> SQLフォーマッターは、読みにくいSQLクエリを整形・可読化するオンラインツールです。JOIN、WHERE、GROUP BYなどのキーワードを適切なインデントで整列させ、コードレビューやドキュメント作成を効率化します。 </source>
-        <target>The SQL formatter is an online tool that formats and beautifies hard-to-read SQL queries. It aligns keywords such as JOIN, WHERE, and GROUP BY with proper indentation, streamlining code reviews and documentation.</target>
+        <target>ORM-generated queries and anything pulled from a slow-query log tend to come out as a dense single line, which makes catching a missing JOIN condition or a redundant subquery much harder than it should be. This formatter re-indents JOIN, WHERE, GROUP BY, and similar clauses onto their own lines so the query&apos;s structure is visible at a glance, which speeds up both code review and writing documentation.</target>
       </segment>
     </unit>
     <unit id="sqlFormatterHelpSpec">
@@ -2028,7 +2034,7 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
     <unit id="sqlFormatterHelpSpecIdentifier">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">「識別子」</pc>: テーブル名やカラム名の大文字/小文字を変換します。大文字 / 小文字 / 変更しない から選択できます。</source>
-        <target>Identifiers: Converts the case of table names and column names. You can select from Uppercase / Lowercase / Preserve.</target>
+        <target>Identifiers: Controls casing for table and column names independently from keywords — set it to Uppercase, Lowercase, or Preserve to match your schema&apos;s naming convention.</target>
       </segment>
     </unit>
     <unit id="sqlFormatterHelpSpecIndent">
@@ -2076,13 +2082,13 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
     <unit id="sqlFormatterHelpSpecModeStandard">
       <segment state="initial">
         <source>「標準整形」: 各キーワードを改行・インデントして読みやすく整形します。</source>
-        <target>Standard Format: Adds line breaks and indentation for readability.</target>
+        <target>Standard Format: The familiar style most style guides recommend — each clause on its own line, indented under the keyword it belongs to.</target>
       </segment>
     </unit>
     <unit id="sqlFormatterHelpSpecModeTabular">
       <segment state="initial">
         <source>「右揃え/表形式」: キーワードを右揃えでタブ状に整列し、SQLキーワードが縦に並びます。</source>
-        <target>Right-aligned/Tabular: Aligns keywords right-justified in tabular form, stacking SQL keywords vertically.</target>
+        <target>Right-aligned/Tabular: Right-justifies keywords so SELECT, FROM, WHERE, and friends line up in a vertical column — a layout some teams (and some legacy style guides) prefer over Standard Format.</target>
       </segment>
     </unit>
     <unit id="sqlFormatterHelpUsage">
@@ -2094,31 +2100,31 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
     <unit id="sqlFormatterHelpUsageStep1">
       <segment state="initial">
         <source>テキストエリアにSQLクエリを貼り付けます。</source>
-        <target>Paste your SQL query into the text area.</target>
+        <target>Paste the query — copy it straight from your ORM&apos;s debug log if that&apos;s easier.</target>
       </segment>
     </unit>
     <unit id="sqlFormatterHelpUsageStep2">
       <segment state="initial">
         <source>「インデント」でスペース数を選択します。</source>
-        <target>Select the number of spaces in the Indentation field.</target>
+        <target>Pick 2 or 4 spaces under Indentation to match your team&apos;s style guide.</target>
       </segment>
     </unit>
     <unit id="sqlFormatterHelpUsageStep3">
       <segment state="initial">
         <source>「モード」で整形方法（標準整形 / 右揃え/表形式 / 圧縮）を選択します。</source>
-        <target>Select the formatting method in Mode: Standard Format / Right-aligned/Tabular / Minify.</target>
+        <target>Under Mode, choose Standard Format for normal readability, Right-aligned/Tabular if you want keywords lined up in a column, or Minify to flatten everything to one line.</target>
       </segment>
     </unit>
     <unit id="sqlFormatterHelpUsageStep4">
       <segment state="initial">
         <source>「予約語」・「識別子」で大文字 / 小文字 / 変更しない を選択します。</source>
-        <target>Select Uppercase / Lowercase / Preserve in Keywords and Identifiers.</target>
+        <target>Set Keywords and Identifiers independently to Uppercase, Lowercase, or Preserve, depending on your house style for SQL casing.</target>
       </segment>
     </unit>
     <unit id="sqlFormatterHelpUsageStep5">
       <segment state="initial">
         <source>「変換」ボタンをクリックすると整形結果が表示されます。</source>
-        <target>Click the Format button to see the formatted result.</target>
+        <target>Hit Format and the cleaned-up query appears on the right, ready to copy into a review comment or doc.</target>
       </segment>
     </unit>
     <unit id="sqlFormatterHelpUseCase">
@@ -2130,19 +2136,25 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
     <unit id="sqlFormatterHelpUseCaseDebug">
       <segment state="initial">
         <source>ORMが自動生成したクエリのデバッグ・解析時。</source>
-        <target>Debugging and analyzing queries auto-generated by ORMs.</target>
+        <target>Untangling a query an ORM (Sequelize, Prisma, ActiveRecord, etc.) generated, especially once it includes several joined tables.</target>
       </segment>
     </unit>
     <unit id="sqlFormatterHelpUseCaseDoc">
       <segment state="initial">
         <source>ドキュメント用に整形されたSQLスニペットを作成したい場合。</source>
-        <target>Creating formatted SQL snippets for documentation.</target>
+        <target>Producing a clean SQL snippet to drop into a runbook, wiki page, or onboarding doc.</target>
       </segment>
     </unit>
     <unit id="sqlFormatterHelpUseCaseReview">
       <segment state="initial">
         <source>コードレビュー前にSQLを整理して可読性を向上させたい場合。</source>
-        <target>Organizing SQL before code reviews to improve readability.</target>
+        <target>Cleaning up a query before opening a pull request, so reviewers spend their time on logic instead of deciphering formatting.</target>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpUseCaseOrmComments">
+      <segment state="initial">
+        <source>ORMが生成したSQLに混在するバインドパラメータやコメントが多く読みにくい場合の整理。</source>
+        <target>Sorting out SQL where an ORM has interleaved bind-parameter placeholders or auto-generated comments with the actual clauses — a common source of &quot;why won&apos;t this query format right&quot; confusion that a plain text editor can&apos;t fix.</target>
       </segment>
     </unit>
     <unit id="svgViewerHelpOverview">
@@ -3578,7 +3590,7 @@ Added the tool list page.</target>
     <unit id="urlEncoderHelpOverviewDesc">
       <segment state="initial">
         <source> URLエンコード・デコードツールは、URLで使用できない文字を<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%XX</pc>形式に変換（エンコード）、またはその逆変換（デコード）を行うオンラインツールです。<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">encodeURI</pc>と<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">encodeURIComponent</pc>の2種類のJavaScriptメソッドに対応しています。 </source>
-        <target>The URL encode/decode tool is an online tool for converting characters that cannot be used in URLs to %XX format (encoding), or performing the reverse conversion (decoding). It supports two JavaScript methods: encodeURI and encodeURIComponent.</target>
+        <target>A URL full of <pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%XX</pc> sequences is unreadable at a glance, and remembering whether <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">encodeURI</pc> or <pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">encodeURIComponent</pc> is the right call for a given string trips up most developers at some point. This tool runs both directions — encode a raw string into percent-encoded form, or decode an encoded one back to plain text — using the exact same JavaScript methods you&apos;d call in code, so the result matches what your app will actually produce.</target>
       </segment>
     </unit>
     <unit id="urlEncoderHelpSpec">
@@ -3614,7 +3626,7 @@ Added the tool list page.</target>
     <unit id="urlEncoderHelpSpecPercentEncoding">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">%エンコーディング（パーセントエンコーディング）</pc>: 各文字をUTF-8でエンコードし、各バイトを<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%XX</pc>形式（XXは16進数）で表現します（例: 「あ」→ <pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%E3%81%82</pc>）。</source>
-        <target>Percent encoding: Each character is encoded in UTF-8, and each byte is represented as %XX (where XX is a hexadecimal number), for example: &quot;あ&quot; → %E3%81%82.</target>
+        <target>Percent encoding (RFC 3986): The mechanism behind the %XX notation. Each character is first encoded as UTF-8 bytes, then each byte is written as %XX in hex — a multi-byte character like &quot;あ&quot; expands to multiple %XX groups, e.g. %E3%81%82.</target>
       </segment>
     </unit>
     <unit id="urlEncoderHelpUsage">
@@ -3626,25 +3638,25 @@ Added the tool list page.</target>
     <unit id="urlEncoderHelpUsageStep1">
       <segment state="initial">
         <source>「変換する文字列」に変換したい文字列を入力します。</source>
-        <target>Enter the string you want to convert in String to convert.</target>
+        <target>Type or paste the text into String to convert — this works whether it&apos;s already encoded or still plain text.</target>
       </segment>
     </unit>
     <unit id="urlEncoderHelpUsageStep2">
       <segment state="initial">
         <source>「モード」を「エンコード」または「デコード」から選択します。</source>
-        <target>Select Encode or Decode from the Mode field.</target>
+        <target>Set Mode to Encode or Decode depending on which direction you need.</target>
       </segment>
     </unit>
     <unit id="urlEncoderHelpUsageStep3">
       <segment state="initial">
         <source>「URLの記号（/ や ? など）もすべて変換する」をオンにするとencodeURIComponent相当（記号もすべてエンコード）、オフにするとencodeURI相当（URLの構造文字は保持）の動作になります。</source>
-        <target>When Convert all URL symbols (e.g. / and ?) as well is on, the behavior is equivalent to encodeURIComponent (all symbols encoded); when off, it is equivalent to encodeURI (URL structural characters preserved).</target>
+        <target>Turning on Convert all URL symbols (e.g. / and ?) as well switches to encodeURIComponent behavior, encoding every reserved character. Leave it off to use encodeURI behavior, which leaves URL structure characters like / and ? untouched.</target>
       </segment>
     </unit>
     <unit id="urlEncoderHelpUsageStep4">
       <segment state="initial">
         <source>「変換」ボタンをクリックします。</source>
-        <target>Click the &quot;Convert&quot; button.</target>
+        <target>Click Convert to see the result, or Clear to start over.</target>
       </segment>
     </unit>
     <unit id="urlEncoderHelpUseCase">
@@ -3656,19 +3668,25 @@ Added the tool list page.</target>
     <unit id="urlEncoderHelpUseCaseDebug">
       <segment state="initial">
         <source>ブラウザのアドレスバーに表示されるエンコード済みURLの内容を解読する場合。</source>
-        <target>Decoding the content of encoded URLs displayed in the browser address bar.</target>
+        <target>Making sense of a long percent-encoded URL from a browser address bar, server log, or bug report.</target>
       </segment>
     </unit>
     <unit id="urlEncoderHelpUseCaseForm">
       <segment state="initial">
         <source>フォームデータをURLセーフな形式に変換する場合。</source>
-        <target>Converting form data to a URL-safe format.</target>
+        <target>Converting form field values into a URL-safe format before building a query string by hand.</target>
       </segment>
     </unit>
     <unit id="urlEncoderHelpUseCaseQuery">
       <segment state="initial">
         <source>APIリクエストのクエリパラメータに日本語や特殊文字を含める場合。</source>
-        <target>Including Japanese or special characters in API request query parameters.</target>
+        <target>Encoding non-ASCII text or special characters before putting them into an API request&apos;s query parameters.</target>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpUseCasePlusVsPercent20">
+      <segment state="initial">
+        <source>クエリパラメータ内のスペースが「+」と「%20」のどちらで表現されるべきか迷う場合の確認。</source>
+        <target>Settling the classic &quot;+ vs %20&quot; confusion: form submissions (application/x-www-form-urlencoded) traditionally encode a space as +, while encodeURIComponent and a URL&apos;s path always use %20 — mixing the two conventions is a common source of subtly broken query strings.</target>
       </segment>
     </unit>
     <unit id="uuidGenHelpOverview">
@@ -3680,7 +3698,7 @@ Added the tool list page.</target>
     <unit id="uuidGenHelpOverviewDesc">
       <segment state="initial">
         <source> UUIDジェネレーターは、RFC 4122（RFC 9562）に準拠したUniversally Unique Identifier（UUID）をオンラインで生成するツールです。v1・v4・v7の3バージョンに対応し、最大100件の一括生成が可能です。 </source>
-        <target>The UUID generator is an online tool for generating Universally Unique Identifiers (UUIDs) compliant with RFC 4122 (RFC 9562). It supports three versions — v1, v4, and v7 — and can generate up to 100 UUIDs at once.</target>
+        <target>Writing one-off test fixtures or seeding a database with sample primary keys shouldn&apos;t require spinning up a script just to call a UUID library. This generator produces RFC 9562-compliant UUIDs directly in the browser — choose from the classic random v4, the timestamp-based v1, or the newer time-ordered v7 — and can output up to 1,000 at once for bulk seeding.</target>
       </segment>
     </unit>
     <unit id="uuidGenHelpSpec">
@@ -3692,31 +3710,31 @@ Added the tool list page.</target>
     <unit id="uuidGenHelpSpecCollision">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">衝突確率</pc>: UUID v4の場合、10兆個生成しても衝突確率は0.00000001%以下です。実用上、重複は無視できます。</source>
-        <target>Collision probability: For UUID v4, even after generating 10 trillion UUIDs, the collision probability is below 0.00000001%. Duplicates are negligible in practice.</target>
+        <target>Collision probability: Even after generating 10 trillion v4 UUIDs, the chance of any two matching stays below 0.00000001% — low enough that you don&apos;t need a uniqueness check before inserting one into a database.</target>
       </segment>
     </unit>
     <unit id="uuidGenHelpSpecFormat">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">フォーマット</pc>: UUIDは <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx</pc> の形式（M=バージョン番号、N=バリアントビット）で表記される128ビットの識別子です。</source>
-        <target>Format: A UUID is a 128-bit identifier in the format xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx (M = version number, N = variant bits).</target>
+        <target>Format: Every UUID is a 128-bit value written as xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx. The M digit identifies the version (1, 4, or 7 here), and the leading bits of N identify the variant — this is how a parser can tell at a glance which generation rules were used.</target>
       </segment>
     </unit>
     <unit id="uuidGenHelpSpecV1">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">UUID v1</pc>: 60ビットのタイムスタンプとMACアドレス（またはランダム値）を組み合わせて生成します。時系列に並びやすい一方、マシン情報が含まれる場合があります。</source>
-        <target>UUID v1: Generated from a 60-bit timestamp combined with a MAC address or random value. Easy to sort chronologically, but may contain machine information.</target>
+        <target>UUID v1 (time-based): Combines a 60-bit timestamp with a MAC address or random node identifier. Sorts roughly chronologically, but because it can leak the generating machine&apos;s MAC address, it&apos;s rarely chosen for new systems today.</target>
       </segment>
     </unit>
     <unit id="uuidGenHelpSpecV4">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">UUID v4</pc>: 122ビットをすべてランダムな値で生成します。最も広く使われており、プライバシー安全性が高く、衝突確率は天文学的に低い（2の122乗通り）です。</source>
-        <target>UUID v4: Generated with 122 fully random bits. Most widely used, highly privacy-safe, with an astronomically low collision probability (2 to the power of 122 combinations).</target>
+        <target>UUID v4 (random): 122 bits of randomness with no embedded metadata, making it the safest default when you don&apos;t want an identifier to reveal anything about when or where it was created. Still the most common choice across language standard libraries, with a collision probability low enough to ignore in practice (1 in 2^122).</target>
       </segment>
     </unit>
     <unit id="uuidGenHelpSpecV7">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">UUID v7</pc>: 48ビットのUnixタイムスタンプ（ミリ秒精度）＋ランダム値で構成されます。RFC 9562で定義された最新仕様で、時系列ソートが可能かつv4と同等のランダム性を持ちます。DBインデックスの効率化に有利です。</source>
-        <target>UUID v7: Composed of a 48-bit Unix timestamp (millisecond precision) plus random bits. The latest specification defined in RFC 9562, it supports chronological sorting while offering the same randomness as v4. Advantageous for improving DB index efficiency.</target>
+        <target>UUID v7 (time-ordered): A millisecond-precision Unix timestamp in the high bits followed by random bits, standardized in RFC 9562. In the &quot;UUID v4 vs v7&quot; debate, v7 wins for primary keys: because values generated close together sort close together, B-tree indexes stay compact instead of fragmenting the way they do with purely random v4 keys.</target>
       </segment>
     </unit>
     <unit id="uuidGenHelpUsage">
@@ -3728,25 +3746,25 @@ Added the tool list page.</target>
     <unit id="uuidGenHelpUsageStep1">
       <segment state="initial">
         <source>生成するUUIDのバージョン（v1 / v4 / v7）を選択します。</source>
-        <target>Select the UUID version (v1 / v4 / v7).</target>
+        <target>Pick a Version — v1, v4, or v7 — under Conditions. Not sure which one fits? See the version comparison below.</target>
       </segment>
     </unit>
     <unit id="uuidGenHelpUsageStep2">
       <segment state="initial">
         <source>「生成数」に件数を指定します（最大1,000件）。</source>
-        <target>Specify the count in Number of UUIDs (up to 1,000).</target>
+        <target>Set Number of UUIDs to however many you need, up to 1,000 per batch.</target>
       </segment>
     </unit>
     <unit id="uuidGenHelpUsageStep3">
       <segment state="initial">
         <source>「生成」ボタンをクリックします。</source>
-        <target>Click the &quot;Generate&quot; button.</target>
+        <target>Click Generate and the full list appears under Results.</target>
       </segment>
     </unit>
     <unit id="uuidGenHelpUsageStep4">
       <segment state="initial">
         <source>生成されたUUIDリストをコピーして利用します。</source>
-        <target>Copy and use the generated UUID list.</target>
+        <target>Copy the list straight from Results — one UUID per line, ready to paste into a seed script or test fixture.</target>
       </segment>
     </unit>
     <unit id="uuidGenHelpUseCase">
@@ -3758,19 +3776,25 @@ Added the tool list page.</target>
     <unit id="uuidGenHelpUseCaseDb">
       <segment state="initial">
         <source>データベースのプライマリキーやレコードIDの生成。</source>
-        <target>Generating primary keys and record IDs for databases.</target>
+        <target>Seeding sample primary keys or record IDs for a development or staging database.</target>
       </segment>
     </unit>
     <unit id="uuidGenHelpUseCaseFile">
       <segment state="initial">
         <source>ファイル名の一意化・マイクロサービス間の相関IDとして活用。</source>
-        <target>Uniquifying filenames and using as correlation IDs between microservices.</target>
+        <target>Generating unique filenames for uploads, or correlation IDs that tie a request together across microservices.</target>
       </segment>
     </unit>
     <unit id="uuidGenHelpUseCaseSession">
       <segment state="initial">
         <source>分散システムでのセッションID・リクエストトレースIDの生成。</source>
-        <target>Generating session IDs and request trace IDs for distributed systems.</target>
+        <target>Creating session IDs or request trace IDs for distributed systems.</target>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpUseCaseVsAutoIncrement">
+      <segment state="initial">
+        <source>主キーに連番（auto-increment）ではなくUUIDを採用するか検討する場合の比較材料として。</source>
+        <target>Weighing UUIDs against auto-increment integers or ULIDs for a primary key: UUIDs let you generate IDs client-side and avoid leaking row counts, at the cost of index size and (for v4) random insert order — a trade-off worth testing here before committing to a schema.</target>
       </segment>
     </unit>
   </file>
