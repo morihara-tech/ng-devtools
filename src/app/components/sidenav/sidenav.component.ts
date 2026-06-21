@@ -40,8 +40,15 @@ export class SidenavComponent implements OnInit {
     icon: 'policy',
   };
 
+  /** Bottom navigation item linking to the Operator Info page. */
+  readonly operatorInfoItem: SidemenuItemModel = {
+    label: $localize`:@@page.operatorInfo.menu:運営者情報・お問い合わせ`,
+    routerLink: '/operator-info',
+    icon: 'info',
+  };
+
   /** Items rendered at the bottom of the sidenav, outside the accordion. */
-  readonly bottomItems: SidemenuItemModel[] = [this.articlesItem, this.privacyPolicyItem];
+  readonly bottomItems: SidemenuItemModel[] = [this.articlesItem, this.privacyPolicyItem, this.operatorInfoItem];
 
   constructor() {
     effect(() => {
