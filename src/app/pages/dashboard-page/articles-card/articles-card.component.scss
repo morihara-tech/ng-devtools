@@ -6,6 +6,21 @@
   height: auto;
   padding-top: 8px;
   padding-bottom: 8px;
+
+  // The MDC two-line list-item assumes a single-line title + single-line
+  // subtitle, so it applies `white-space: nowrap` + `text-overflow: ellipsis`
+  // and a negative bottom margin to the title to compensate for the
+  // subtitle's reserved line height. Our title can wrap to two lines, which
+  // breaks that assumption: the negative margin then pulls the title's
+  // second line up into the summary's first line, making the leading
+  // character of each look clipped/overlapped. Override both rules so the
+  // title wraps normally and the summary is pushed down to start after it.
+  ::ng-deep .mdc-list-item__primary-text {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+    margin-bottom: 0;
+  }
 }
 
 .summary {

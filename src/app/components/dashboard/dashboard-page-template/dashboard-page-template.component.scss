@@ -50,6 +50,23 @@
 .card-content {
   flex: 1 1 auto;
   overflow: auto;
+
+  // Pure-CSS scroll shadow (https://lea.verou.me/blog/2012/04/background-attachment-local/):
+  // a background image that scrolls with the content covers the shadow
+  // except right at the edge of the scrollable area, so the bottom shadow
+  // (and matching top shadow) is only visible when there is more content to
+  // reveal by scrolling. This avoids the summary's final line looking like
+  // it was cut off mid-character at the `.card-content` scroll boundary —
+  // the fade now makes it visually obvious that more content can be
+  // scrolled into view.
+  background:
+    linear-gradient(var(--mat-sys-surface-container-low) 30%, transparent) local,
+    linear-gradient(transparent, var(--mat-sys-surface-container-low) 70%) local,
+    radial-gradient(farthest-side at 50% 0, rgba(0, 0, 0, 0.18), transparent) scroll,
+    radial-gradient(farthest-side at 50% 100%, rgba(0, 0, 0, 0.18), transparent) scroll;
+  background-repeat: no-repeat;
+  background-size: 100% 24px, 100% 24px, 100% 8px, 100% 8px;
+  background-position: top, bottom, top, bottom;
 }
 
 .divider {
