@@ -3126,7 +3126,7 @@ UNIXタイム変換ツールを実装しました。</source>
     </unit>
     <unit id="uuidGenHelpOverviewDesc">
       <segment>
-        <source> UUIDジェネレーターは、RFC 4122（RFC 9562）に準拠したUniversally Unique Identifier（UUID）をオンラインで生成するツールです。v1・v4・v7の3バージョンに対応し、最大100件の一括生成が可能です。 </source>
+        <source> UUIDジェネレーターは、RFC 4122（RFC 9562）に準拠したUniversally Unique Identifier（UUID）をオンラインで生成するツールです。v1・v4・v7の3バージョンに対応し、最大1,000件の一括生成が可能です。 </source>
       </segment>
     </unit>
     <unit id="uuidGenHelpSpec">

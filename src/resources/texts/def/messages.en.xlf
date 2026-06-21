@@ -3763,7 +3763,7 @@ Added the tool list page.</target>
     </unit>
     <unit id="uuidGenHelpOverviewDesc">
       <segment state="initial">
-        <source> UUIDジェネレーターは、RFC 4122（RFC 9562）に準拠したUniversally Unique Identifier（UUID）をオンラインで生成するツールです。v1・v4・v7の3バージョンに対応し、最大100件の一括生成が可能です。 </source>
+        <source> UUIDジェネレーターは、RFC 4122（RFC 9562）に準拠したUniversally Unique Identifier（UUID）をオンラインで生成するツールです。v1・v4・v7の3バージョンに対応し、最大1,000件の一括生成が可能です。 </source>
         <target>Writing one-off test fixtures or seeding a database with sample primary keys shouldn&apos;t require spinning up a script just to call a UUID library. This generator produces RFC 9562-compliant UUIDs directly in the browser — choose from the classic random v4, the timestamp-based v1, or the newer time-ordered v7 — and can output up to 1,000 at once for bulk seeding.</target>
       </segment>
     </unit>
