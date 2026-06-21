@@ -1,6 +1,6 @@
 .flex {
   display: flex;
-  gap: 8px 32px;
+  gap: var(--arc-space-xx-small) var(--arc-space-large);
   align-items: center;
 }
 
@@ -9,7 +9,7 @@
 }
 
 .input-form-wrapper {
-  margin-top: 24px;
+  margin-top: var(--arc-space-medium);
 }
 
 .input-form {

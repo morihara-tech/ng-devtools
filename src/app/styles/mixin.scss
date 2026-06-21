@@ -1,8 +1,10 @@
 @use './brand-color' as brand-color;
 @use './header-style' as header;
+@use './spacing' as spacing;
 
 @mixin init() {
   @include brand-color.init();
   @include header.init();
+  @include spacing.init();
 }
 

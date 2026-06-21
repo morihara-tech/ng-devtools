@@ -6,6 +6,7 @@
 @use './app/styles/m3-theme' as m3-theme;
 @use './app/styles/typography' as typography;
 @use './app/styles/mixin' as mixin;
+@use './app/styles/spacing' as spacing;
 
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
@@ -46,6 +47,11 @@
 // Comment out the line below if you want to use the deprecated `color` inputs.
 // @include mat.color-variants-backwards-compatibility($ng-devtools-theme);
 /* You can add global styles to this file, and also import other style files */
+
+// Shared margin/padding utility classes (--arc-space-* backed), usable from
+// any component template via class="margin-top-24" etc. Component-scoped
+// .scss files cannot define global classes, so this must live here.
+@include spacing.utility-classes;
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "BIZ UDGothic", sans-serif; }

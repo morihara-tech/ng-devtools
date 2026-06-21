@@ -1,19 +1,19 @@
 .svg-area {
-  margin-top: 16px;
+  margin-top: var(--arc-space-small);
   width: 100%;
 }
 
 .settings-wrapper {
-  margin-top: 24px;
+  margin-top: var(--arc-space-medium);
 }
 
 .settings-group {
-  margin-bottom: 24px;
+  margin-bottom: var(--arc-space-medium);
 }
 
 .flex {
   display: flex;
-  gap: 8px 32px;
+  gap: var(--arc-space-xx-small) var(--arc-space-large);
   align-items: center;
 }
 
@@ -22,7 +22,7 @@
 }
 
 .input-form-wrapper {
-  margin-top: 16px;
+  margin-top: var(--arc-space-small);
 }
 
 .input-form {
@@ -41,12 +41,12 @@
 
 .background-color-field {
   ::ng-deep .mdc-text-field {
-    padding-right: 16px !important;
+    padding-right: var(--arc-space-small) !important;
   }
 }
 
 .scale-wrapper {
-  margin-top: 8px;
+  margin-top: var(--arc-space-xx-small);
   width: 320px;
 
   .scale-label {
@@ -58,7 +58,7 @@
   .scale-control {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: var(--arc-space-small);
 
     mat-slider {
       flex: 1;

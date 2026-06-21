@@ -1,8 +1,8 @@
 .editors-section {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
-  margin-top: 16px;
+  gap: var(--arc-space-small);
+  margin-top: var(--arc-space-small);
 }
 
 .editor-wrapper {
@@ -10,7 +10,7 @@
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--arc-space-xx-small);
 }
 
 .editor-label {
