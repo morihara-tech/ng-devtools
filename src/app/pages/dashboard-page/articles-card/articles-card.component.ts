@@ -31,7 +31,8 @@ const RECENT_ARTICLES_COUNT = 6;
 export class ArticlesCardComponent {
   private readonly locale = inject(LOCALE_ID);
 
-  readonly articles: ArticleListItem[] = [...getArticlesList(this.locale)]
-    .sort((a, b) => b.publishedDate.localeCompare(a.publishedDate))
-    .slice(0, RECENT_ARTICLES_COUNT);
+  readonly articles: ArticleListItem[] = getArticlesList(this.locale).slice(
+    0,
+    RECENT_ARTICLES_COUNT,
+  );
 }
