@@ -811,6 +811,30 @@
         <target>User Guide</target>
       </segment>
     </unit>
+    <unit id="page.guide.toc.heading">
+      <segment state="translated">
+        <source>目次</source>
+        <target>Contents</target>
+      </segment>
+    </unit>
+    <unit id="page.guide.toc.navLabel">
+      <segment state="translated">
+        <source>目次</source>
+        <target>Table of contents</target>
+      </segment>
+    </unit>
+    <unit id="page.guide.toc.toggleLabel">
+      <segment state="translated">
+        <source>目次を表示</source>
+        <target>Show table of contents</target>
+      </segment>
+    </unit>
+    <unit id="page.guide.toc.toggleText">
+      <segment state="translated">
+        <source>目次を表示</source>
+        <target>Contents</target>
+      </segment>
+    </unit>
     <unit id="page.ipCidr.card.input.cidr">
       <segment state="initial">
         <source>CIDR</source>
@@ -3506,6 +3530,18 @@ Added the tool list page.</target>
       <segment state="initial">
         <source>プライバシーポリシー</source>
         <target>Privacy Policy</target>
+      </segment>
+    </unit>
+    <unit id="page.privacyPolicy.updatedAtLabel">
+      <segment state="translated">
+        <source>最終更新日:</source>
+        <target>Last updated:</target>
+      </segment>
+    </unit>
+    <unit id="page.privacyPolicy.updatedAtValue">
+      <segment state="translated">
+        <source>2026/05/09</source>
+        <target>May 9, 2026</target>
       </segment>
     </unit>
     <unit id="page.privacyPolicy.analytics.heading">

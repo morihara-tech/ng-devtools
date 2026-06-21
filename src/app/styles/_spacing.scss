@@ -6,6 +6,20 @@
   --arc-space-small: 16px;
   --arc-space-medium: 24px;
   --arc-space-large: 32px;
+
+  // 規約・ポリシー等のテキストのみページ本文（カード）最大幅
+  // 参照: docs/core/uiux/3-layouts/text-only-page-view.md 5.1
+  --arc-text-only-content-max-width: 720px;
+
+  // Wiki・マニュアル画面（ガイドページ）本文最大幅
+  // 参照: docs/core/uiux/3-layouts/wiki-manual-view.md 5.
+  --arc-wiki-content-max-width: 800px;
+
+  // 角丸トークン (Shape / Border Radius)
+  // 参照: docs/core/uiux/1-tokens/spacing-and-sizing.md 5.1
+  --arc-shape-small: 4px;
+  --arc-shape-medium: 4px;
+  --arc-shape-large: 8px;
 }
 
 // 重複していた margin/padding ユーティリティクラスを一元管理する

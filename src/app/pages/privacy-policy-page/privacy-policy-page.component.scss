@@ -1,3 +1,4 @@
-.spacer {
-  padding: 4px;
-}
+// Text-only page view (規約・ポリシー画面)
+// 参照: docs/core/uiux/3-layouts/text-only-page-view.md
+@use '../../styles/text-only-page' as text-only-page;
+@include text-only-page.styles;

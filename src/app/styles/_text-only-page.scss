@@ -1,0 +1,43 @@
+// Shared layout for "text-only" static pages (privacy policy, operator info, etc.)
+// 参照: docs/core/uiux/3-layouts/text-only-page-view.md
+// Usage in a page's stylesheet:
+//   @use '../../styles/text-only-page' as text-only-page;
+//   @include text-only-page.styles;
+@mixin styles {
+  .text-only-page {
+    display: flex;
+    flex-direction: column;
+    gap: var(--arc-space-medium); // 24px
+    max-width: var(--arc-text-only-content-max-width); // 720px
+    margin-inline: auto;
+
+    &__header {
+      display: flex;
+      flex-direction: column;
+      gap: var(--arc-space-xxx-small); // 4px
+    }
+
+    &__updated-at {
+      margin: 0;
+      font-size: var(--mat-sys-label-small-size);
+      color: var(--mat-sys-on-surface-variant);
+    }
+
+    &__card {
+      border-radius: var(--arc-shape-large); // 8px
+      background-color: var(--mat-sys-surface-container-low);
+    }
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      gap: var(--arc-space-medium); // 24px
+
+      section {
+        display: flex;
+        flex-direction: column;
+        gap: var(--arc-space-xx-small); // 8px
+      }
+    }
+  }
+}
