@@ -5,7 +5,7 @@
 
 .flex {
   display: flex;
-  gap: 8px 32px;
+  gap: var(--arc-space-xx-small) var(--arc-space-large);
   align-items: center;
 }
 
@@ -14,7 +14,7 @@
 }
 
 .input-form-wrapper {
-  margin-top: 16px;
+  margin-top: var(--arc-space-small);
 }
 
 .input-form-m {
@@ -35,7 +35,7 @@
 }
 
 .cidr-slider-wrapper {
-  margin-top: 8px;
+  margin-top: var(--arc-space-xx-small);
 }
 
 .cidr-label {
@@ -47,7 +47,7 @@
 .slider-container {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: var(--arc-space-small);
 }
 
 .slider-container mat-slider {
@@ -62,7 +62,7 @@
 }
 
 .protocol-toggle {
-  margin: 8px 0;
+  margin: var(--arc-space-xx-small) 0;
 
   ::ng-deep .mat-button-toggle-button {
     height: 24px;
@@ -71,7 +71,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 4px;
+    gap: var(--arc-space-xxx-small);
   }
 
   ::ng-deep .mat-button-toggle-label-content {

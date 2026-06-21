@@ -1,6 +1,6 @@
 .count-slider-wrapper {
-  margin-top: 16px;
-  margin-bottom: 8px;
+  margin-top: var(--arc-space-small);
+  margin-bottom: var(--arc-space-xx-small);
 }
 
 .count-label {
@@ -12,7 +12,7 @@
 .slider-container {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: var(--arc-space-small);
 
   mat-slider {
     flex: 1;
@@ -27,12 +27,12 @@
 }
 
 .color-inputs {
-  margin-top: 16px;
+  margin-top: var(--arc-space-small);
 }
 
 .flex {
   display: flex;
-  gap: 8px 32px;
+  gap: var(--arc-space-xx-small) var(--arc-space-large);
   align-items: flex-start;
 }
 
@@ -48,7 +48,7 @@
   }
 
   ::ng-deep .mdc-text-field {
-    padding-right: 16px !important;
+    padding-right: var(--arc-space-small) !important;
   }
 }
 
@@ -75,7 +75,7 @@
 }
 
 .mode-toggle {
-  margin: 8px 0;
+  margin: var(--arc-space-xx-small) 0;
 
   ::ng-deep .mat-button-toggle-button {
     height: 24px;
@@ -84,13 +84,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 4px;
+    gap: var(--arc-space-xxx-small);
   }
 
   ::ng-deep .mat-button-toggle-label-content {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: var(--arc-space-xxx-small);
 
     mat-icon {
       font-size: 18px;
