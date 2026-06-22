@@ -21,6 +21,21 @@
     text-overflow: clip;
     margin-bottom: 0;
   }
+
+  // `.mdc-list-item` (this element itself) and its inner
+  // `.mdc-list-item__content` wrapper both set `overflow: hidden`, which MDC
+  // relies on for single-line truncation. With wrapped (multi-line) text
+  // inside an `overflow: hidden` ancestor, Chromium clips a hairline sliver
+  // off the inline-start edge of the first glyph on each wrapped line,
+  // making the leading character of every title and summary line look cut
+  // off (e.g. "encodeURI" rendering as "ıcodeURI"). Since this item's
+  // content always wraps now, the clipping is no longer needed: set both to
+  // `visible` so glyphs are no longer clipped.
+  overflow: visible;
+
+  ::ng-deep .mdc-list-item__content {
+    overflow: visible;
+  }
 }
 
 .summary {
