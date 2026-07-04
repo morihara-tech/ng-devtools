@@ -14,6 +14,13 @@ export interface ArticleListItem {
   title: string;
   summary: string;
   publishedDate: string;
+  /**
+   * Set in frontmatter when the article is revised after publication;
+   * `null`/absent otherwise. Used by scripts/postbuild.mjs to compute the
+   * sitemap.xml <lastmod> for article pages (falls back to `publishedDate`
+   * when not set) — see docs/products/sitemap-lastmod/architecture.md.
+   */
+  updatedDate?: string | null;
   relatedTools: string[];
 }
 
