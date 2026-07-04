@@ -39,8 +39,29 @@ jobs:
             exit 1
           fi
 
+  verify-url-consistency:
+    if: "! github.event.pull_request.draft"
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'yarn'
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
+      - name: Build
+        run: yarn build
+      - name: Verify URL consistency (canonical/hreflang/internal links/sitemap)
+        run: node scripts/verify-url-consistency.mjs
+      - name: Run URL-consistency contract tests
+        run: node --test tests/url-consistency/
+
   auto-approve:
-    needs: check-i18n
+    needs: [check-i18n, verify-url-consistency]
     if: "! github.event.pull_request.draft"
     runs-on: ubuntu-latest
     permissions:
