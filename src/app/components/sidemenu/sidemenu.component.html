@@ -13,7 +13,7 @@
 @if (topItem(); as top) {
   <mat-nav-list>
     <a mat-list-item class="item"
-      [routerLink]="top.routerLink"
+      appHomeLink
       (click)="clickMenu.emit()">
       @if (top.icon) {
         <mat-icon matListItemIcon>{{ top.icon }}</mat-icon>

@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { LanguageButtonComponent } from './language-button/language-button.component';
 import { filter, map, mergeMap, startWith } from 'rxjs';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { HomeLinkDirective } from '../locale/home-link.directive';
 
 @Component({
     selector: 'app-header',
@@ -15,6 +16,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
         PersonButtonComponent,
         LanguageButtonComponent,
         RouterModule,
+        HomeLinkDirective,
         MatButtonModule,
         MatIconModule,
         MatToolbarModule

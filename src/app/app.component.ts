@@ -46,7 +46,7 @@ export class AppComponent {
 
   headerModel: HeaderModel = {
     defaultTitle: $localize`:@@app.title:devTools`,
-    logo: { logoUrl: 'logo.svg', routerLink: '/' },
+    logo: { logoUrl: 'logo.svg' },
     appsButton: {
       routerLink: '/menu',
       label: $localize`:@@header.appsButton.label:メニュー`,

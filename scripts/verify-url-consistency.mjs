@@ -29,36 +29,6 @@ import { willRedirect } from './url-policy.mjs';
 const BROWSER_DIR = 'dist/ng-devtools/browser';
 const LOCALES = ['ja', 'en'];
 
-/**
- * Pre-existing, already-tracked internal-link findings that this script
- * would otherwise fail the build on. These are real: they were discovered
- * while building Layer A for the first time (see
- * https://github.com/morihara-tech/ng-devtools/issues/204) and are caused
- * by an Angular Router quirk — RouterLink to the root path ("/") serializes
- * to the app's literal `<base href>` (e.g. "/ja/", trailing slash and all)
- * rather than the trailing-slash-free canonical form ("/ja"). Fixing that
- * requires an application-code (routing/template) change, which is outside
- * this CI/CD task's scope.
- *
- * This allowlist intentionally applies ONLY to the internal-<a href> check
- * (not to canonical/hreflang/sitemap, which are authored by postbuild.mjs
- * and have no legitimate reason to ever appear here) so that:
- *   - this one pre-existing, already-filed gap doesn't block unrelated PRs
- *     the moment this CI job is turned on, while
- *   - any NEW internal link pointing at a redirect-bound URL still fails
- *     the build loudly.
- *
- * Remove an entry (and this comment can shrink accordingly) once the
- * linked issue is fixed.
- */
-const KNOWN_LEGACY_REDIRECT_INTERNAL_LINKS = new Set(['/ja/', '/en/']);
-
-/** Returns the path component of a URL (or path) — everything after the origin. */
-function toPath(urlOrPath) {
-  const originMatch = urlOrPath.match(/^[a-z]+:\/\/[^/]+(\/.*)?$/i);
-  return originMatch ? (originMatch[1] ?? '/') : urlOrPath;
-}
-
 /** Reads BASE_URL the same way scripts/postbuild.mjs does, from environment.ts. */
 function resolveBaseUrl() {
   const ENV_FILE = 'src/environments/environment.ts';
@@ -139,17 +109,9 @@ function main() {
       }
 
       for (const url of extractInternalLinks(html, baseUrl)) {
-        if (!willRedirect(url)) continue;
-
-        if (KNOWN_LEGACY_REDIRECT_INTERNAL_LINKS.has(toPath(url))) {
-          console.warn(
-            `[known-issue #204] ${indexPath}: internal link "${url}" would be 301-redirected by CloudFront ` +
-              '(pre-existing, tracked — see https://github.com/morihara-tech/ng-devtools/issues/204).',
-          );
-          continue;
+        if (willRedirect(url)) {
+          errors.push(`${indexPath}: internal link "${url}" would be 301-redirected by CloudFront.`);
         }
-
-        errors.push(`${indexPath}: internal link "${url}" would be 301-redirected by CloudFront.`);
       }
     }
   }
