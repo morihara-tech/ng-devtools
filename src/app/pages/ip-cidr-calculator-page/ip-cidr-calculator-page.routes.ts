@@ -5,6 +5,6 @@ export const ipCidrCalculatorPageRoutes: Routes = [
   {
     path: '',
     component: IpCidrCalculatorPageComponent,
-    data: { title: $localize`:@@page.ipCidr.menu:IP/CIDR計算機` }
+    data: { title: $localize`:@@page.ipCidrCalculator.title:IP/CIDR計算ツール（サブネットマスク・ネットワークアドレス算出）` }
   }
 ];

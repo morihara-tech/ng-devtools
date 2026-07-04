@@ -10,6 +10,7 @@ import { GithubCardComponent } from './github-card/github-card.component';
 import { UpdateHistoryCardComponent } from './update-history-card/update-history-card.component';
 import { AdCardComponent } from './ad-card/ad-card.component';
 import { PlatformService } from '../../core/services/platform.service';
+import { MENU_DASHBOARD } from '../../../resources/menu/def/menu-def';
 
 const STORAGE_KEY = 'dashboard_layout';
 
@@ -58,7 +59,7 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
       '@context': 'https://schema.org',
       '@type': 'WebApplication',
       'name': $localize`:@@app.title:devTools`,
-      'description': $localize`:@@page.dashboard.description:ツールの一覧と更新履歴を確認できます。`,
+      'description': MENU_DASHBOARD.description,
       'applicationCategory': 'DeveloperApplication',
       'operatingSystem': 'Web',
       'offers': { '@type': 'Offer', 'price': '0', 'priceCurrency': 'JPY' },
