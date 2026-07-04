@@ -127,7 +127,7 @@ sitemap.xml <url><loc>.../articles/<slug></loc><lastmod>...</lastmod></url>
 
 ## スコープ外
 
-- `postbuild.mjs`・`prebuild-articles.mjs`の実際のコード実装（本設計書は方式決定のみ。実装はフロントエンドエージェントが行う）
+- `postbuild.mjs`・`prebuild-articles.mjs`の実際のコード実装（本設計書は方式決定のみ。実装は別途行う）
 - インシデントレポートが指摘するP1（canonical/hreflangの301矛盾）・P3（Search Console再送信等の運用作業）・P4（title/description個別最適化）への対応
 - `messages.en.xlf`のtrans-unit単位精密追跡（フェーズ2として言及のみ）
 - `pr.yml`・`sandbox-deploy.yml`の`fetch-depth`変更（本番デプロイの正確性を優先し、プレビュービルドは対象外と判断。将来必要になれば追加検討）
