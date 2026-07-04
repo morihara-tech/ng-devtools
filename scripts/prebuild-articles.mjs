@@ -20,11 +20,16 @@
  *     { "<slug>": { "html": "<sanitized HTML>" }, ... }
  *
  * Phase 2 also aggregates each slug's frontmatter (`title`, `summary`,
- * `publishedDate`, `relatedTools`) into a per-locale list file, replacing
- * the old hand-maintained `articles-def.ts` as the source of truth for
- * article metadata:
+ * `publishedDate`, `updatedDate`, `relatedTools`) into a per-locale list file,
+ * replacing the old hand-maintained `articles-def.ts` as the source of truth
+ * for article metadata:
  *   src/generated/articles/articles-list.{ja,en}.json
- *     [{ slug, routerLink, title, summary, publishedDate, relatedTools }, ...]
+ *     [{ slug, routerLink, title, summary, publishedDate, updatedDate, relatedTools }, ...]
+ *
+ * `updatedDate` is optional (frontmatter authors set it when they revise an
+ * already-published article) and is emitted as `null` when absent. It is
+ * consumed by `postbuild.mjs` to compute sitemap.xml `<lastmod>` values for
+ * article pages (see docs/products/sitemap-lastmod/architecture.md).
  *
  * `publishedDate` and `relatedTools` are locale-independent, but the list is
  * still split per locale (matching the `articles-content.{ja,en}.json`
@@ -100,7 +105,7 @@ if (slugDirs.length === 0) {
 /** @type {Record<string, Record<string, { html: string }>>} */
 const contentByLocale = { ja: {}, en: {} };
 
-/** @type {Record<string, Array<{slug: string, routerLink: string, title: string, summary: string, publishedDate: string, relatedTools: string[]}>>} */
+/** @type {Record<string, Array<{slug: string, routerLink: string, title: string, summary: string, publishedDate: string, updatedDate: string | null, relatedTools: string[]}>>} */
 const listByLocale = { ja: [], en: [] };
 
 function requireFrontmatterField(data, field, slug, locale) {
@@ -145,6 +150,16 @@ for (const slug of slugDirs) {
     const summary = requireFrontmatterField(data, 'summary', slug, locale);
     const publishedDate = requireFrontmatterField(data, 'publishedDate', slug, locale);
     const relatedTools = requireFrontmatterField(data, 'relatedTools', slug, locale);
+    // `updatedDate` is optional: authors set it in frontmatter when they revise
+    // an already-published article. Absent when the article has never been
+    // revised since publication.
+    const rawUpdatedDate = data.updatedDate;
+    const updatedDate =
+      rawUpdatedDate === undefined || rawUpdatedDate === null || rawUpdatedDate === ''
+        ? null
+        : rawUpdatedDate instanceof Date
+          ? rawUpdatedDate.toISOString().slice(0, 10)
+          : String(rawUpdatedDate);
 
     const html = marked.parse(content, { async: false });
     const sanitized = sanitizeHtml(html, SANITIZE_OPTIONS);
@@ -157,6 +172,7 @@ for (const slug of slugDirs) {
       title: String(title),
       summary: String(summary),
       publishedDate: publishedDate instanceof Date ? publishedDate.toISOString().slice(0, 10) : String(publishedDate),
+      updatedDate,
       relatedTools,
     });
   }

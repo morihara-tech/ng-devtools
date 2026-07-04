@@ -16,10 +16,14 @@
  *     of truth.
  *  5. Injects canonical and hreflang <link> tags into every locale's index.html.
  *  6. Injects OGP <meta property="og:..."> tags into every locale's index.html.
- *  7. Generates sitemap.xml at the browser root listing all indexable URLs.
+ *  7. Generates sitemap.xml at the browser root listing all indexable URLs,
+ *     with a per-URL <lastmod> resolved from the actual last-modified date of
+ *     each page's source (git log for static pages, article frontmatter for
+ *     article pages). See docs/products/sitemap-lastmod/architecture.md.
  */
 
-import { copyFileSync, existsSync, readFileSync, readdirSync, unlinkSync, writeFileSync } from 'fs';
+import { copyFileSync, existsSync, readFileSync, readdirSync, statSync, unlinkSync, writeFileSync } from 'fs';
+import { execFileSync } from 'node:child_process';
 import { join } from 'path';
 
 const BROWSER_DIR = 'dist/ng-devtools/browser';
@@ -231,9 +235,174 @@ for (const locale of LOCALES) {
 }
 
 // 7. Generate sitemap.xml at the browser root listing all indexable URLs.
+//
+// Each URL's <lastmod> is resolved from the actual last-modified date of the
+// page's source, not a single build-wide timestamp — see
+// docs/products/sitemap-lastmod/architecture.md for the rationale.
+//
+// - Static pages (tool pages, top page, /menu, /guide, etc.): the most recent
+//   `git log` commit date across the page's source files (PAGE_SOURCE_MAP).
+// - Article detail pages (/articles/<slug>): `updatedDate ?? publishedDate`
+//   from the generated articles-list.{locale}.json.
+// - Article list page (/articles): the max of the above across all articles.
+// - Fallback (unregistered URL, git failure, no history, etc.): the build
+//   date (today), scoped to that single URL only. The build must not fail.
 
-const lastmod = new Date().toISOString().slice(0, 10);
-const sitemapUrls = [];
+const BUILD_DATE_FALLBACK = new Date().toISOString().slice(0, 10);
+
+/**
+ * Maps a locale-agnostic urlPath (e.g. "/json-formatter", "/", "/menu") to
+ * the source paths whose most recent commit determines that page's lastmod.
+ * Deliberately explicit (no auto-derivation from the urlPath) because
+ * urlPath ↔ directory-name conventions have exceptions (e.g. the
+ * `password-generator` route maps to the `password-gen-page` directory).
+ * Shared shell UI (header/footer) and messages.en.xlf are intentionally
+ * excluded — see the architecture doc's "除外事項".
+ *
+ * NOTE: keep this in sync with src/app/app.routes.ts / src/app/pages/. A
+ * missing entry does not break the build — it just falls back to the build
+ * date for that one URL (see resolveLastmod below).
+ */
+const MENU_DEF_PATH = 'src/resources/menu/def/menu-def.ts';
+
+const PAGE_SOURCE_MAP = {
+  '/': ['src/app/pages/dashboard-page', MENU_DEF_PATH],
+  '/menu': ['src/app/pages/menu-page', MENU_DEF_PATH],
+  '/guide': ['src/app/pages/guide-page'],
+  '/ulid-generator': ['src/app/pages/ulid-gen-page'],
+  '/uuid-generator': ['src/app/pages/uuid-gen-page'],
+  '/json-formatter': ['src/app/pages/json-formatter-page'],
+  '/sql-formatter': ['src/app/pages/sql-formatter-page'],
+  '/password-generator': ['src/app/pages/password-gen-page'],
+  '/api-key-generator': ['src/app/pages/api-key-gen-page'],
+  '/svg-to-png': ['src/app/pages/svg-to-png-page'],
+  '/ip-cidr-calculator': ['src/app/pages/ip-cidr-calculator-page'],
+  '/url-encoder': ['src/app/pages/url-encoder-page'],
+  '/unix-timestamp-converter': ['src/app/pages/unix-timestamp-converter-page'],
+  '/text-diff': ['src/app/pages/text-diff-page'],
+  '/color-palette': ['src/app/pages/color-palette-page'],
+  '/privacy-policy': ['src/app/pages/privacy-policy-page'],
+  '/operator-info': ['src/app/pages/operator-info-page'],
+};
+
+const ARTICLES_LIST_DIR = 'src/generated/articles';
+const articlesListCache = {};
+
+/** Reads (and caches) src/generated/articles/articles-list.{locale}.json. */
+function getArticlesList(locale) {
+  if (articlesListCache[locale]) return articlesListCache[locale];
+
+  const listPath = join(ARTICLES_LIST_DIR, `articles-list.${locale}.json`);
+  if (!existsSync(listPath)) {
+    articlesListCache[locale] = [];
+    return articlesListCache[locale];
+  }
+
+  try {
+    const list = JSON.parse(readFileSync(listPath, 'utf-8'));
+    articlesListCache[locale] = Array.isArray(list) ? list : [];
+  } catch {
+    articlesListCache[locale] = [];
+  }
+  return articlesListCache[locale];
+}
+
+/**
+ * Builds the pathspec list for `git log`, excluding *.spec.ts files from any
+ * directory entries (files passed as-is, e.g. menu-def.ts).
+ */
+function buildGitPathspecs(paths) {
+  const specs = [];
+  for (const path of paths) {
+    let isDirectory = false;
+    try {
+      isDirectory = statSync(path).isDirectory();
+    } catch {
+      // Path doesn't exist on disk (shouldn't normally happen) — still pass
+      // it through to git log, which will simply find no matches for it.
+    }
+    specs.push(path);
+    if (isDirectory) {
+      specs.push(`:(exclude)${path}/**/*.spec.ts`);
+    }
+  }
+  return specs;
+}
+
+/**
+ * Returns the YYYY-MM-DD date of the most recent commit touching any of the
+ * given source paths, or null if git fails or reports no history.
+ */
+function gitLastCommitDate(paths) {
+  try {
+    const specs = buildGitPathspecs(paths);
+    const output = execFileSync('git', ['log', '-1', '--format=%ai', '--', ...specs], {
+      encoding: 'utf-8',
+    }).trim();
+    if (!output) return null;
+    return output.slice(0, 10); // "%ai" → "YYYY-MM-DD HH:MM:SS +ZZZZ"
+  } catch {
+    return null;
+  }
+}
+
+/** Returns `updatedDate ?? publishedDate` for the article with the given slug, or null. */
+function articleLastmod(locale, slug) {
+  const entry = getArticlesList(locale).find((a) => a.slug === slug);
+  if (!entry) return null;
+  return entry.updatedDate ?? entry.publishedDate ?? null;
+}
+
+/** Returns the max `updatedDate ?? publishedDate` across all articles, or null. */
+function articlesListLastmod(locale) {
+  const dates = getArticlesList(locale)
+    .map((a) => a.updatedDate ?? a.publishedDate)
+    .filter((d) => typeof d === 'string' && d.length > 0);
+  if (dates.length === 0) return null;
+  return dates.reduce((max, d) => (d > max ? d : max));
+}
+
+/**
+ * Resolves the sitemap <lastmod> for a locale-agnostic urlPath (no locale
+ * prefix, e.g. "/json-formatter", "/articles/foo"). Never throws — falls
+ * back to the build date (scoped to this one URL) and logs why.
+ */
+function resolveLastmod(urlPath, locale) {
+  const warnFallback = (reason) => {
+    console.warn(`[sitemap] ${urlPath} (${locale}): ${reason} — falling back to build date.`);
+    return BUILD_DATE_FALLBACK;
+  };
+
+  if (urlPath === '/articles') {
+    const date = articlesListLastmod(locale);
+    return date ?? warnFallback('no article entries with a valid date');
+  }
+
+  const articleMatch = urlPath.match(/^\/articles\/(.+)$/);
+  if (articleMatch) {
+    const slug = articleMatch[1];
+    const date = articleLastmod(locale, slug);
+    return date ?? warnFallback(`no articles-list entry (or date) for slug "${slug}"`);
+  }
+
+  const sourcePaths = PAGE_SOURCE_MAP[urlPath];
+  if (!sourcePaths) {
+    return warnFallback('not registered in PAGE_SOURCE_MAP');
+  }
+
+  const date = gitLastCommitDate(sourcePaths);
+  return date ?? warnFallback('git log returned no history for its source paths');
+}
+
+/** Strips the "/ja" or "/en" locale prefix from a urlPath, e.g. "/ja/menu" → "/menu", "/ja" → "/". */
+function stripLocalePrefix(urlPath, locale) {
+  const prefix = `/${locale}`;
+  if (urlPath === prefix) return '/';
+  if (urlPath.startsWith(`${prefix}/`)) return urlPath.slice(prefix.length);
+  return urlPath;
+}
+
+const sitemapEntries = [];
 
 for (const locale of LOCALES) {
   const localeDir = join(BROWSER_DIR, locale);
@@ -249,14 +418,17 @@ for (const locale of LOCALES) {
 
     const relativePath = indexPath.slice(BROWSER_DIR.length + 1).replace(/\\/g, '/');
     const urlPath = stripTrailingSlash('/' + relativePath.replace(/index\.html$/, ''));
-    sitemapUrls.push(`${BASE_URL}${urlPath}`);
+    const barePath = stripLocalePrefix(urlPath, locale);
+
+    const lastmod = resolveLastmod(barePath, locale);
+    sitemapEntries.push({ loc: `${BASE_URL}${urlPath}`, lastmod });
   }
 }
 
-const urlEntries = sitemapUrls
-  .map((loc) => `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${lastmod}</lastmod>\n  </url>`)
+const urlEntries = sitemapEntries
+  .map(({ loc, lastmod }) => `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${lastmod}</lastmod>\n  </url>`)
   .join('\n');
 
 const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urlEntries}\n</urlset>\n`;
 writeFileSync(join(BROWSER_DIR, 'sitemap.xml'), sitemapXml, 'utf-8');
-console.log(`Generated sitemap.xml with ${sitemapUrls.length} URLs → ${BROWSER_DIR}/sitemap.xml`);
+console.log(`Generated sitemap.xml with ${sitemapEntries.length} URLs → ${BROWSER_DIR}/sitemap.xml`);
