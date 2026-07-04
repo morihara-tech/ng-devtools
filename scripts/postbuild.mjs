@@ -125,8 +125,18 @@ if (!clientIdMatch) {
 }
 
 // 5. Inject canonical and hreflang <link> tags into every index.html under every locale dir.
+//    BASE_URL is read from environment.ts so it stays the single source of truth shared
+//    with src/app/core/services/structured-data.service.ts (Angular side). It can be
+//    overridden per-environment (e.g. staging/preview) via the BASE_URL env var, which
+//    takes precedence when set — useful for future GitHub Actions injection without
+//    touching environment.ts.
 
-const BASE_URL = 'https://devtools.morihara.tech';
+const baseUrlMatch = envSource.match(/baseUrl:\s*'([^']+)'/);
+if (!baseUrlMatch) {
+  console.error('site.baseUrl not found in environment.ts — cannot generate canonical/hreflang/sitemap URLs.');
+  process.exit(1);
+}
+const BASE_URL = process.env.BASE_URL || baseUrlMatch[1];
 
 /**
  * Removes a single trailing slash from a path, except for the root path "/"
