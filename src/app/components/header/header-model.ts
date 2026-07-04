@@ -7,7 +7,6 @@ export interface HeaderModel {
 
 export interface HeaderLogoModel {
   logoUrl: string;
-  routerLink: string;
 }
 
 export interface HeaderAppsButtonModel {
