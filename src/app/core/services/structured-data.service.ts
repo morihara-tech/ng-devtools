@@ -1,8 +1,13 @@
 import { DOCUMENT } from '@angular/common';
 import { Injectable, LOCALE_ID, inject } from '@angular/core';
+import { environment } from '../../../environments/environment';
 
-/** Canonical origin used for all indexable URLs (kept in sync with scripts/postbuild.mjs). */
-const BASE_URL = 'https://devtools.morihara.tech';
+/**
+ * Canonical origin used for all indexable URLs. Sourced from `environment.site.baseUrl`,
+ * which is also read directly by `scripts/postbuild.mjs` (BASE_URL) — the single source
+ * of truth for canonical/hreflang/sitemap/structured-data URLs.
+ */
+const BASE_URL = environment.site.baseUrl;
 
 /** Input required to build a `SoftwareApplication` JSON-LD entry for a tool page. */
 export interface SoftwareApplicationData {
