@@ -1,0 +1,18 @@
+<nav [attr.aria-label]="navLabel" class="breadcrumb">
+  <ol>
+    @for (seg of segments(); track $index; let last = $last) {
+      <li>
+        @if (seg.isCurrent) {
+          <h1 class="breadcrumb-current">{{ seg.name }}</h1>
+        } @else if (seg.isHome) {
+          <a appHomeLink>{{ seg.name }}</a>
+        } @else if (seg.routerLink) {
+          <a [routerLink]="seg.routerLink">{{ seg.name }}</a>
+        } @else {
+          <span>{{ seg.name }}</span>
+        }
+        @if (!last) { <span class="separator" aria-hidden="true">&rsaquo;</span> }
+      </li>
+    }
+  </ol>
+</nav>

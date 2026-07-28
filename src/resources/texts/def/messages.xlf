@@ -456,6 +456,11 @@
         <source>SVGビューアーについて</source>
       </segment>
     </unit>
+    <unit id="page.dashboard.breadcrumb">
+      <segment>
+        <source>無料で使える開発者ツール集</source>
+      </segment>
+    </unit>
     <unit id="page.dashboard.card.ad.title">
       <segment>
         <source>広告</source>
@@ -1466,6 +1471,21 @@ OFFの場合はdecodeURIを使用し、URL構造を維持したままデコー�
     <unit id="cookieConsentBannerMessage">
       <segment>
         <source> 当サイトでは、サービスの向上および最適なパーソナライズのためにCookieを使用しています。詳細は<pc id="0" equivStart="START_LINK" equivEnd="CLOSE_LINK" type="link" dispStart="&lt;a routerLink=&quot;/privacy-policy&quot; (click)=&quot;onPrivacyPolicy()&quot;&gt;" dispEnd="&lt;/a&gt;">プライバシーポリシー</pc>をご確認ください。 </source>
+      </segment>
+    </unit>
+    <unit id="breadcrumb.articles">
+      <segment>
+        <source>記事一覧</source>
+      </segment>
+    </unit>
+    <unit id="breadcrumb.home">
+      <segment>
+        <source>ホーム</source>
+      </segment>
+    </unit>
+    <unit id="breadcrumb.nav.label">
+      <segment>
+        <source>パンくずリスト</source>
       </segment>
     </unit>
     <unit id="colorPaletteHelpOverview">
