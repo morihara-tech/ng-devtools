@@ -4,6 +4,9 @@
     <p class="help-text" i18n="@@uuidGenHelpOverviewDesc">
       UUIDジェネレーターは、RFC 4122（RFC 9562）に準拠したUniversally Unique Identifier（UUID）をオンラインで生成するツールです。v1・v4・v7の3バージョンに対応し、最大1,000件の一括生成が可能です。
     </p>
+    <p class="help-text" i18n="@@uuidGenHelpOverviewDesc2">
+      分散システムやマイクロサービスでは、複数のサーバーやクライアントが同時に新しいIDを発行する場面が頻繁にあります。連番の採番テーブルを共有すると単一障害点やロック競合が発生しやすいのに対し、UUIDは各ノードが他と調整せずに一意な値を生成できるため、スケールしやすい設計を実現できます。本ツールはコードを書く前に各バージョンの見た目や桁数を素早く確認したい場合にも便利です。
+    </p>
   </app-help-section>
 
   <mat-divider></mat-divider>
@@ -28,6 +31,9 @@
         <span i18n="@@uuidGenHelpUsageStep4">生成されたUUIDリストをコピーして利用します。</span>
       </li>
     </ol>
+    <p class="help-text" i18n="@@uuidGenHelpUsageTip">
+      補足: どのバージョンを選べばよいか迷った場合は、新規システムであればv7（時系列ソート可能）、既存システムとの互換性を優先するならv4（最も広く普及）を選ぶとよいでしょう。
+    </p>
   </app-help-section>
 
   <mat-divider></mat-divider>
@@ -40,6 +46,8 @@
       <li i18n="@@uuidGenHelpSpecV4"><strong>UUID v4</strong>: 122ビットをすべてランダムな値で生成します。最も広く使われており、プライバシー安全性が高く、衝突確率は天文学的に低い（2の122乗通り）です。</li>
       <li i18n="@@uuidGenHelpSpecV7"><strong>UUID v7</strong>: 48ビットのUnixタイムスタンプ（ミリ秒精度）＋ランダム値で構成されます。RFC 9562で定義された最新仕様で、時系列ソートが可能かつv4と同等のランダム性を持ちます。DBインデックスの効率化に有利です。</li>
       <li i18n="@@uuidGenHelpSpecCollision"><strong>衝突確率</strong>: UUID v4の場合、10兆個生成しても衝突確率は0.00000001%以下です。実用上、重複は無視できます。</li>
+      <li i18n="@@uuidGenHelpSpecVersionChoice"><strong>バージョンの選び方</strong>: v1はMACアドレス由来の情報漏洩リスクがあるため近年は非推奨とされることが多く、代わりにランダムベースのv4か、時系列ソート性を持つv7が選ばれる傾向にあります。RFC 9562（2024年発行）はv1・v4に加えてv6・v7・v8を新たに標準化し、UUIDの設計指針を整理しました。</li>
+      <li i18n="@@uuidGenHelpSpecVariant"><strong>バリアントビット</strong>: UUIDの17文字目（N部分）は「8」「9」「a」「b」のいずれかになり、RFC 4122に準拠した形式であることを示します。異なる値の場合、Microsoft独自形式など別の生成規則に基づくUUIDである可能性があります。</li>
     </ul>
   </app-help-section>
 
@@ -52,6 +60,40 @@
       <li i18n="@@uuidGenHelpUseCaseSession">分散システムでのセッションID・リクエストトレースIDの生成。</li>
       <li i18n="@@uuidGenHelpUseCaseFile">ファイル名の一意化・マイクロサービス間の相関IDとして活用。</li>
       <li i18n="@@uuidGenHelpUseCaseVsAutoIncrement">主キーに連番（auto-increment）ではなくUUIDを採用するか検討する場合の比較材料として。</li>
+      <li i18n="@@uuidGenHelpUseCaseSeedData">開発環境のテストデータ投入時に、100件・1000件といった単位でユニークなユーザーIDや注文IDをまとめて生成し、シードスクリプトに組み込む場合。</li>
+      <li i18n="@@uuidGenHelpUseCaseIdempotencyKey">決済APIなど冪等性（idempotency）が求められるリクエストに付与するIdempotency-Keyヘッダーの値として、リトライ時にも一意性が保たれるUUIDを発行する場合。</li>
     </ul>
+  </app-help-section>
+
+  <mat-divider></mat-divider>
+
+  <app-help-section icon="quiz">
+    <span helpTitle i18n="@@uuidGenHelpFaqTitle">よくある質問</span>
+    <dl class="help-faq">
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@uuidGenHelpFaqQ1">v1・v4・v7のどれを選べばよいか迷います。おすすめはどれですか</dt>
+        <dd class="help-faq-answer" i18n="@@uuidGenHelpFaqA1">新規に設計するシステムでDBのプライマリキーとして使う場合は、時系列ソートが可能でインデックス効率も良いv7がおすすめです。既存システムとの互換性やライブラリの対応状況を優先する場合は、最も普及しているv4を選ぶとよいでしょう。v1はMACアドレス由来の情報が含まれる可能性があるため、新規用途では避けるのが無難です。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@uuidGenHelpFaqQ2">生成したUUIDが重複することはありますか</dt>
+        <dd class="help-faq-answer" i18n="@@uuidGenHelpFaqA2">理論上はゼロではありませんが、v4の場合122ビットのランダム値から生成されるため、実用上は無視できるレベルです。例えば1秒間に10億個生成し続けても、重複が発生する確率は天文学的に低い水準にとどまります。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@uuidGenHelpFaqQ3">生成したUUIDはこのツールのサーバーに保存されますか</dt>
+        <dd class="help-faq-answer" i18n="@@uuidGenHelpFaqA3">いいえ。UUIDの生成はブラウザ内のJavaScriptで完結しており、生成結果がサーバーに送信・保存されることはありません。ページを再読み込みすると生成履歴は失われます。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@uuidGenHelpFaqQ4">UUIDとauto-increment（連番）の主キー、どちらを使うべきですか</dt>
+        <dd class="help-faq-answer" i18n="@@uuidGenHelpFaqA4">分散環境で複数ノードが同時にレコードを作成する場合や、IDから件数・作成順序を推測されたくない場合はUUIDが適しています。一方、単一のデータベースで完結し、インデックスサイズやJOIN性能を最優先したい場合はauto-incrementの整数IDの方が有利なことがあります。v7を使えばUUIDのメリットを保ちながら整数IDに近いインデックス効率も得られます。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@uuidGenHelpFaqQ5">最大1,000件までしか生成できないのはなぜですか</dt>
+        <dd class="help-faq-answer" i18n="@@uuidGenHelpFaqA5">ブラウザ上での表示・コピーのしやすさを考慮した上限です。それ以上の件数が必要な場合は、Node.jsのcryptoモジュールやuuidパッケージなど、スクリプトから直接生成する方法をご検討ください。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@uuidGenHelpFaqQ6">UUIDの文字列からハイフンを除去したり、大文字に変換したりできますか</dt>
+        <dd class="help-faq-answer" i18n="@@uuidGenHelpFaqA6">現在のバージョンではハイフン付き・小文字の標準形式（RFC 4122準拠）で出力されます。ハイフン除去や大文字化が必要な場合は、コピー後にテキストエディタや置換ツールで加工してください。</dd>
+      </div>
+    </dl>
   </app-help-section>
 </div>

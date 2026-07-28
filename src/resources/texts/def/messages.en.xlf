@@ -1091,6 +1091,84 @@ When OFF, uses decodeURI to decode while preserving the URL structure.</target>
         <target>Invalid JSON.</target>
       </segment>
     </unit>
+    <unit id="jsonFormatterHelpFaqA1">
+      <segment state="initial">
+        <source>いいえ。整形・圧縮処理はすべてブラウザ内のJavaScriptで完結しており、入力したデータが外部サーバーへ送信されることはありません。APIキーや個人情報を含むレスポンスでも安心して貼り付けて確認できます。</source>
+        <target>No. All formatting and minifying happens client-side in your browser, so nothing you paste — including responses with API keys or personal data — ever leaves your machine.</target>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpFaqA2">
+      <segment state="initial">
+        <source>標準のJSONパーサーを使用しているため、コメント（//や/* */）や末尾カンマを含む文字列はエラーになります。整形する前にコメントを削除するか、JSONCではなく厳密なJSON形式に変換してから貼り付けてください。</source>
+        <target>Not directly — the parser follows strict JSON (RFC 8259), so comments and trailing commas from JSONC-style files (like tsconfig.json) will throw a syntax error. Strip the comments first, or convert the file to plain JSON before pasting.</target>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpFaqA3">
+      <segment state="initial">
+        <source>主な原因は、キーや文字列値をシングルクォートで囲んでいる、末尾に余分なカンマがある、値がundefinedになっている、のいずれかです。エラーメッセージに表示される位置の周辺を確認してください。</source>
+        <target>Usually one of three culprits: single-quoted keys or strings (JSON requires double quotes), a trailing comma after the last item, or a bare `undefined` value. Check the character position the error message points to.</target>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpFaqA4">
+      <segment state="initial">
+        <source>JavaScriptの数値はIEEE 754倍精度浮動小数点で扱われるため、2の53乗を超える整数（例: 一部のSnowflake IDやDB上のbigint値）は精度が失われる場合があります。厳密な値を確認したい場合は、該当のフィールドを文字列型として扱っているAPI仕様かどうかを確認してください。</source>
+        <target>Because JSON numbers are parsed as IEEE 754 double-precision floats, integers larger than 2^53 — a common issue with Snowflake IDs or bigint database columns — can lose precision. Check whether the API is meant to represent that field as a string instead.</target>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpFaqA5">
+      <segment state="initial">
+        <source>現在のバージョンではJSON全体に対して一括で整形・圧縮を適用する仕様です。特定の階層だけを個別に整形したい場合は、該当部分を抜き出して別途貼り付けてご利用ください。</source>
+        <target>Not currently — formatting and minifying always apply to the whole document. To work on a single nested object or array in isolation, extract that fragment and paste it in on its own.</target>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpFaqA6">
+      <segment state="initial">
+        <source>はい。UTF-8で表現された日本語や絵文字を含む文字列も、エスケープされた\uXXXX形式・生の文字のどちらでも正しく整形されます。出力時に元の表記（エスケープの有無）を変えたい場合は、圧縮モードの出力をご確認ください。</source>
+        <target>Yes. Multi-byte strings — Japanese text, emoji, anything in UTF-8 — format correctly whether they&apos;re written as raw characters or escaped \uXXXX sequences. Switch to Minify to check how the output represents them.</target>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpFaqQ1">
+      <segment state="initial">
+        <source>貼り付けたJSONデータはサーバーに送信されますか</source>
+        <target>Is my pasted JSON data sent to a server?</target>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpFaqQ2">
+      <segment state="initial">
+        <source>コメント付きのJSON（JSONC）は整形できますか</source>
+        <target>Can this format JSONC (JSON with comments)?</target>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpFaqQ3">
+      <segment state="initial">
+        <source>「Unexpected token」エラーが出るのはなぜですか</source>
+        <target>Why do I get an &quot;Unexpected token&quot; error?</target>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpFaqQ4">
+      <segment state="initial">
+        <source>数値の桁が大きいと結果が変わることがあるのはなぜですか</source>
+        <target>Why does a very large number sometimes come out changed?</target>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpFaqQ5">
+      <segment state="initial">
+        <source>配列やオブジェクトの中身だけを圧縮せずに整形したい場合はどうすればよいですか</source>
+        <target>Can I format just part of a nested array or object?</target>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpFaqQ6">
+      <segment state="initial">
+        <source>日本語（マルチバイト文字）を含むJSONは正しく整形されますか</source>
+        <target>Does this handle non-ASCII text like Japanese correctly?</target>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpFaqTitle">
+      <segment state="initial">
+        <source>よくある質問</source>
+        <target>FAQ</target>
+      </segment>
+    </unit>
     <unit id="jsonFormatterHelpOverview">
       <segment state="initial">
         <source>概要</source>
@@ -1101,6 +1179,12 @@ When OFF, uses decodeURI to decode while preserving the URL structure.</target>
       <segment state="initial">
         <source> JSON整形ツールは、読みにくいJSON文字列を自動的に整形・フォーマットするオンラインツールです。インデントの調整・ミニファイ（圧縮）に対応し、APIレスポンスや設定ファイルのデバッグ・確認作業を効率化します。 </source>
         <target>A network response logged as one unbroken line of JSON is nearly impossible to scan by eye, and copy-pasting it into a code editor just to read it is a detour you shouldn&apos;t need. This tool turns that single line into an indented, readable tree instantly, and just as easily collapses a formatted JSON document back down to a compact one-liner for sending over the wire.</target>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpOverviewDesc2">
+      <segment state="initial">
+        <source> APIレスポンスやログは1行に圧縮された状態で出力されることが多く、目視でネストの深さやキーの対応関係を追うのは困難です。かといって毎回エディタやIDEに貼り付けて整形するのは手間がかかります。本ツールはブラウザだけで完結するため、外部にデータを送信することなくその場で構造を可視化できます。 </source>
+        <target>Switching to a full IDE just to eyeball one payload is overkill when you only need the shape of the data for a minute. Because everything runs client-side, you get that instant readability without ever routing the response through a third-party server first.</target>
       </segment>
     </unit>
     <unit id="jsonFormatterHelpSpec">
@@ -1127,10 +1211,22 @@ When OFF, uses decodeURI to decode while preserving the URL structure.</target>
         <target>JSON (JavaScript Object Notation): The de facto data interchange format on the web, defined by the RFC 8259 / ECMA-404 standards. It is the default body format for REST APIs and is also used for config files like package.json and tsconfig.json.</target>
       </segment>
     </unit>
+    <unit id="jsonFormatterHelpSpecJsonc">
+      <segment state="initial">
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">JSON5 / JSONC との違い</pc>: tsconfig.jsonなどではコメントや末尾カンマを許容する「JSONC」という拡張記法が使われることがありますが、これは仕様上のJSONそのものではありません。本ツールは厳密なJSON（RFC 8259）としてパースするため、コメント付きの設定ファイルをそのまま貼り付けるとエラーになる場合があります。</source>
+        <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">JSONC and JSON5 aren&apos;t plain JSON</pc>: Files like tsconfig.json use a relaxed superset called JSONC that permits comments and trailing commas, but that syntax isn&apos;t valid per the JSON spec itself. Since this tool parses strict RFC 8259 JSON, pasting a JSONC file with comments intact will raise an error.</target>
+      </segment>
+    </unit>
     <unit id="jsonFormatterHelpSpecMinify">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">「圧縮」モード</pc>: 改行・スペースをすべて除去してJSONを1行に圧縮します。ネットワーク転送量を削減したい場合や、HTTPリクエストボディとして利用する場合に有効です。</source>
         <target>Minify mode: Removes all line breaks and spaces to compress JSON into a single line. Useful for reducing network transfer size or when using JSON as an HTTP request body.</target>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpSpecRfc8259">
+      <segment state="initial">
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">RFC 8259について</pc>: JSONの構文を定めるインターネット標準です。値として使える型はオブジェクト・配列・文字列・数値・真偽値・nullの6種類のみで、日付型や関数、コメントは含まれません。JavaScriptのオブジェクトリテラルと似ていますが、キー名を必ず二重引用符で囲む点や、undefinedを表現できない点が異なります。</source>
+        <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">About RFC 8259</pc>: This is the internet standard that defines JSON&apos;s grammar. Only six value types exist — object, array, string, number, boolean, and null — with no native date type, functions, or comments. It resembles a JavaScript object literal, but keys must always be double-quoted and there is no way to represent `undefined`.</target>
       </segment>
     </unit>
     <unit id="jsonFormatterHelpSpecValidation">
@@ -1175,6 +1271,12 @@ When OFF, uses decodeURI to decode while preserving the URL structure.</target>
         <target>Use the copy button to grab the output straight to your clipboard.</target>
       </segment>
     </unit>
+    <unit id="jsonFormatterHelpUsageTip">
+      <segment state="initial">
+        <source> 補足: 変換に失敗する場合は、末尾カンマ・シングルクォート・コメントの混入など、JSONとして不正な記述がないか確認してください。エラーメッセージにはおおよその位置（行・文字位置）が表示されます。 </source>
+        <target>Tip: if the conversion fails, look for the usual suspects — a stray trailing comma, single-quoted strings, or an accidental comment. The error message points to roughly where the parser gave up.</target>
+      </segment>
+    </unit>
     <unit id="jsonFormatterHelpUseCase">
       <segment state="initial">
         <source>ユースケース</source>
@@ -1193,10 +1295,22 @@ When OFF, uses decodeURI to decode while preserving the URL structure.</target>
         <target>Reviewing and editing configuration files such as package.json and tsconfig.json.</target>
       </segment>
     </unit>
+    <unit id="jsonFormatterHelpUseCaseLog">
+      <segment state="initial">
+        <source>サーバーログに出力された構造化ログ（JSON Lines形式）を1件ずつ貼り付けて整形し、エラー発生時のフィールド値を確認する場合。</source>
+        <target>Pasting one line at a time from a JSON Lines (NDJSON) server log to inspect the field values on the entry where an error occurred.</target>
+      </segment>
+    </unit>
     <unit id="jsonFormatterHelpUseCaseMinify">
       <segment state="initial">
         <source>本番環境向けにJSONを圧縮してファイルサイズを削減する場合。</source>
         <target>Minifying JSON before sending it over the wire to shave off payload size.</target>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpUseCaseNested">
+      <segment state="initial">
+        <source><pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">&quot;user&quot;:&quot;id&quot;:1,&quot;roles&quot;:[&quot;admin&quot;,&quot;editor&quot;]</pc> のように1行にまとまったネスト構造のレスポンスを整形し、user.roles配列の中身をひと目で確認したい場合。 </source>
+        <target>Formatting a one-line nested response like <pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">&quot;user&quot;:&quot;id&quot;:1,&quot;roles&quot;:[&quot;admin&quot;,&quot;editor&quot;]</pc> to immediately see what&apos;s inside the nested `roles` array.</target>
       </segment>
     </unit>
     <unit id="jsonFormatterHelpUseCaseTrailingComma">
@@ -2085,6 +2199,84 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
         <target>UUID Generator</target>
       </segment>
     </unit>
+    <unit id="sqlFormatterHelpFaqA1">
+      <segment state="initial">
+        <source>主要な方言に共通する標準SQL構文の整形に対応しています。方言固有の拡張構文（PL/pgSQLのプロシージャ、T-SQLのBEGIN...END、MySQLのバッククォート識別子など）は整形結果が意図と異なる場合があるため、整形後は必ず内容を確認してください。</source>
+        <target>It handles the standard SQL syntax shared across MySQL, PostgreSQL, and SQL Server. Dialect-specific extensions — PL/pgSQL procedures, T-SQL&apos;s BEGIN...END blocks, MySQL backtick identifiers — can format unexpectedly, so double-check the output before using it.</target>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpFaqA2">
+      <segment state="initial">
+        <source>いいえ。整形処理はブラウザ内で完結しており、入力したSQLが外部に送信されることはありません。本番データベースのスキーマ情報を含むクエリでも安心してご利用いただけます。</source>
+        <target>No. Formatting happens entirely client-side, so a query is never sent anywhere else — even one that reveals your production schema.</target>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpFaqA3">
+      <segment state="initial">
+        <source>単純なDML/DDL文の整形を主眼としているため、ストアドプロシージャやトリガーに含まれる制御構文（IF、LOOP、CURSORなど）は正しく整形されない場合があります。SELECT文などクエリ本体部分のみを抜き出してご利用ください。</source>
+        <target>Not reliably — the formatter targets plain DML/DDL statements, so procedural control flow inside stored procedures or triggers (IF, LOOP, CURSOR) may not come out right. Extract just the query body, like the SELECT statement, instead.</target>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpFaqA4">
+      <segment state="initial">
+        <source>はい。セミコロンで区切られた複数のSQL文を一度に貼り付けると、それぞれが個別に整形されます。マイグレーションファイルのように複数のCREATE TABLE文が並んでいる場合にも利用できます。</source>
+        <target>Yes. Paste several semicolon-separated statements at once and each one is formatted on its own — handy for a migration file with a string of CREATE TABLE statements.</target>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpFaqA5">
+      <segment state="initial">
+        <source>SELECT・FROM・WHEREなどのキーワードを右揃えで縦に整列させるため、キーワードの位置が視覚的に揃い、条件句が多い長いクエリでも構造を把握しやすくなります。ドキュメントやプレゼン資料にSQLを掲載する際にもよく使われます。</source>
+        <target>It right-aligns SELECT, FROM, WHERE, and similar keywords into a vertical column, which makes the overall structure of a long, clause-heavy query easier to scan at a glance. It&apos;s also a common choice when dropping SQL into documentation or a slide deck.</target>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpFaqA6">
+      <segment state="initial">
+        <source>「予約語」オプションが「大文字」または「小文字」に設定されている場合、SELECTやFROMなどのSQLキーワードが自動的に変換されます。入力時のケースをそのまま維持したい場合は「変更しない」を選択してください。</source>
+        <target>That happens automatically whenever Keywords is set to Uppercase or Lowercase — SELECT, FROM, and the rest get converted accordingly. Set it to Preserve if you want the casing you typed to stay untouched.</target>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpFaqQ1">
+      <segment state="initial">
+        <source>MySQL・PostgreSQL・SQL Serverのどの方言に対応していますか</source>
+        <target>Which SQL dialects does this support: MySQL, PostgreSQL, SQL Server?</target>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpFaqQ2">
+      <segment state="initial">
+        <source>貼り付けたSQLに含まれるテーブル名やデータはサーバーに送信されますか</source>
+        <target>Is the table and column data in my pasted SQL sent to a server?</target>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpFaqQ3">
+      <segment state="initial">
+        <source>ストアドプロシージャやトリガーの定義も整形できますか</source>
+        <target>Can it format stored procedure or trigger definitions?</target>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpFaqQ4">
+      <segment state="initial">
+        <source>複数のSQL文をまとめて整形できますか</source>
+        <target>Can I format multiple SQL statements at once?</target>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpFaqQ5">
+      <segment state="initial">
+        <source>「右揃え/表形式」モードはどのような場面で使うと便利ですか</source>
+        <target>When is Right-aligned/Tabular mode useful?</target>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpFaqQ6">
+      <segment state="initial">
+        <source>整形結果の予約語が想定と異なる大文字/小文字になるのはなぜですか</source>
+        <target>Why did the output change the casing of my keywords?</target>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpFaqTitle">
+      <segment state="initial">
+        <source>よくある質問</source>
+        <target>FAQ</target>
+      </segment>
+    </unit>
     <unit id="sqlFormatterHelpOverview">
       <segment state="initial">
         <source>概要</source>
@@ -2097,10 +2289,28 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
         <target>ORM-generated queries and anything pulled from a slow-query log tend to come out as a dense single line, which makes catching a missing JOIN condition or a redundant subquery much harder than it should be. This formatter re-indents JOIN, WHERE, GROUP BY, and similar clauses onto their own lines so the query&apos;s structure is visible at a glance, which speeds up both code review and writing documentation.</target>
       </segment>
     </unit>
+    <unit id="sqlFormatterHelpOverviewDesc2">
+      <segment state="initial">
+        <source> ORMやBIツールが自動生成するSQLは1行に連結されていることが多く、JOIN条件やサブクエリの入れ子構造を目で追うのが困難です。手作業でインデントを揃え直すのは時間がかかるうえ、SELECT句のカラム数が多いクエリでは特に骨が折れます。本ツールはそうした整形作業を数秒で終わらせ、レビューやチューニングに集中できるようにします。 </source>
+        <target>Manually re-indenting a query by hand gets old fast, especially once a SELECT list stretches past a dozen columns or a subquery is buried three levels deep. Offloading that grunt work here means you spend your attention on reviewing the logic or tuning the query, not counting spaces.</target>
+      </segment>
+    </unit>
     <unit id="sqlFormatterHelpSpec">
       <segment state="initial">
         <source>仕様・用語解説</source>
         <target>Specifications &amp; Glossary</target>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpSpecComment">
+      <segment state="initial">
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">コメントの扱い</pc>: 行コメント（--）およびブロックコメント（/* */）は、位置情報を保持したまま整形後のクエリに引き継がれます。ORMが自動生成したクエリに付与されるバインドパラメータのコメントなどもそのまま残ります。</source>
+        <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">Comments</pc>: Line comments (--) and block comments (/* */) carry over into the formatted output in place, including the bind-parameter comments an ORM often attaches to generated queries.</target>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpSpecDialect">
+      <segment state="initial">
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">対応SQL方言について</pc>: 本ツールはMySQL・PostgreSQL・SQLiteなど主要な方言に共通する標準的なSQL構文（SELECT / INSERT / UPDATE / DELETE / CREATE TABLE等）の整形に対応しています。ただし、PL/pgSQLのストアドプロシージャや、T-SQL固有のBEGIN...END構文など、方言に強く依存する拡張構文は整形結果が崩れる場合があります。</source>
+        <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">Supported SQL dialects</pc>: This tool formats the standard SQL constructs shared across MySQL, PostgreSQL, and SQLite — SELECT, INSERT, UPDATE, DELETE, CREATE TABLE, and the like. Dialect-specific extensions such as PL/pgSQL stored procedures or T-SQL&apos;s BEGIN...END blocks fall outside that common ground and may not format cleanly.</target>
       </segment>
     </unit>
     <unit id="sqlFormatterHelpSpecIdentifier">
@@ -2199,6 +2409,12 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
         <target>Hit Format and the cleaned-up query appears on the right, ready to copy into a review comment or doc.</target>
       </segment>
     </unit>
+    <unit id="sqlFormatterHelpUsageTip">
+      <segment state="initial">
+        <source> 補足: 複数のSQL文をセミコロン区切りで一括貼り付けても整形できます。マイグレーションファイルなど、複数のCREATE TABLE文をまとめて確認したい場合に活用してください。 </source>
+        <target>Tip: you can paste several semicolon-separated statements at once — useful for reviewing a whole migration file&apos;s worth of CREATE TABLE statements in one pass.</target>
+      </segment>
+    </unit>
     <unit id="sqlFormatterHelpUseCase">
       <segment state="initial">
         <source>ユースケース</source>
@@ -2221,6 +2437,18 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
       <segment state="initial">
         <source>コードレビュー前にSQLを整理して可読性を向上させたい場合。</source>
         <target>Cleaning up a query before opening a pull request, so reviewers spend their time on logic instead of deciphering formatting.</target>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpUseCaseSlowQueryLog">
+      <segment state="initial">
+        <source>スロークエリログに出力された整形前のSQLを貼り付けて可読化し、実行計画（EXPLAIN）を確認する前の下調べとして使う場合。</source>
+        <target>Making a raw entry from the slow query log readable as a first pass, before diving into the query plan with EXPLAIN.</target>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpUseCaseJoinAudit">
+      <segment state="initial">
+        <source>複数テーブルを結合した「SELECT * FROM orders o JOIN users u ON o.user_id = u.id JOIN items i ON o.item_id = i.id WHERE...」のような1行クエリを整形し、JOIN条件の対応関係を確認しながらパフォーマンスチューニングを行う場合。</source>
+        <target>Formatting a dense multi-table join, e.g. `SELECT * FROM orders o JOIN users u ON o.user_id = u.id JOIN items i ON o.item_id = i.id WHERE...`, to check each JOIN condition lines up correctly while tuning performance.</target>
       </segment>
     </unit>
     <unit id="sqlFormatterHelpUseCaseOrmComments">
@@ -3827,6 +4055,84 @@ Added the tool list page.</target>
         <target>Settling the classic &quot;+ vs %20&quot; confusion: form submissions (application/x-www-form-urlencoded) traditionally encode a space as +, while encodeURIComponent and a URL&apos;s path always use %20 — mixing the two conventions is a common source of subtly broken query strings.</target>
       </segment>
     </unit>
+    <unit id="uuidGenHelpFaqA1">
+      <segment state="initial">
+        <source>新規に設計するシステムでDBのプライマリキーとして使う場合は、時系列ソートが可能でインデックス効率も良いv7がおすすめです。既存システムとの互換性やライブラリの対応状況を優先する場合は、最も普及しているv4を選ぶとよいでしょう。v1はMACアドレス由来の情報が含まれる可能性があるため、新規用途では避けるのが無難です。</source>
+        <target>For a database primary key in a new system, v7 is the strongest default — it sorts chronologically and keeps index fragmentation low. If library support or compatibility with an existing system matters more, v4 is the safest bet since it&apos;s the most widely implemented. Avoid v1 for new work; it can embed the generating machine&apos;s MAC address.</target>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpFaqA2">
+      <segment state="initial">
+        <source>理論上はゼロではありませんが、v4の場合122ビットのランダム値から生成されるため、実用上は無視できるレベルです。例えば1秒間に10億個生成し続けても、重複が発生する確率は天文学的に低い水準にとどまります。</source>
+        <target>Not in practice. v4 draws from 122 bits of randomness, so even generating a billion per second continuously, the odds of ever seeing a duplicate stay astronomically low.</target>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpFaqA3">
+      <segment state="initial">
+        <source>いいえ。UUIDの生成はブラウザ内のJavaScriptで完結しており、生成結果がサーバーに送信・保存されることはありません。ページを再読み込みすると生成履歴は失われます。</source>
+        <target>No. Generation happens entirely in client-side JavaScript, so the results are never sent to or stored on a server. Reload the page and the batch you generated is gone.</target>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpFaqA4">
+      <segment state="initial">
+        <source>分散環境で複数ノードが同時にレコードを作成する場合や、IDから件数・作成順序を推測されたくない場合はUUIDが適しています。一方、単一のデータベースで完結し、インデックスサイズやJOIN性能を最優先したい場合はauto-incrementの整数IDの方が有利なことがあります。v7を使えばUUIDのメリットを保ちながら整数IDに近いインデックス効率も得られます。</source>
+        <target>UUIDs make sense when multiple nodes create records independently, or when you don&apos;t want an ID to leak row counts or creation order. If you&apos;re on a single database and index size or JOIN performance is the priority, an auto-increment integer can still win. Using v7 gets you most of the UUID benefits with index locality closer to what an integer key gives you.</target>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpFaqA5">
+      <segment state="initial">
+        <source>ブラウザ上での表示・コピーのしやすさを考慮した上限です。それ以上の件数が必要な場合は、Node.jsのcryptoモジュールやuuidパッケージなど、スクリプトから直接生成する方法をご検討ください。</source>
+        <target>It&apos;s a practical limit for keeping the results readable and easy to copy in the browser. For anything larger, generate them directly in a script using Node&apos;s crypto module or the uuid package instead.</target>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpFaqA6">
+      <segment state="initial">
+        <source>現在のバージョンではハイフン付き・小文字の標準形式（RFC 4122準拠）で出力されます。ハイフン除去や大文字化が必要な場合は、コピー後にテキストエディタや置換ツールで加工してください。</source>
+        <target>The current output is always the standard lowercase, hyphenated form defined by RFC 4122. If you need hyphens stripped or the letters uppercased, run a find-and-replace on the copied text afterward.</target>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpFaqQ1">
+      <segment state="initial">
+        <source>v1・v4・v7のどれを選べばよいか迷います。おすすめはどれですか</source>
+        <target>Which UUID version should I use: v1, v4, or v7?</target>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpFaqQ2">
+      <segment state="initial">
+        <source>生成したUUIDが重複することはありますか</source>
+        <target>Can two generated UUIDs ever collide?</target>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpFaqQ3">
+      <segment state="initial">
+        <source>生成したUUIDはこのツールのサーバーに保存されますか</source>
+        <target>Are the UUIDs I generate stored on this tool&apos;s server?</target>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpFaqQ4">
+      <segment state="initial">
+        <source>UUIDとauto-increment（連番）の主キー、どちらを使うべきですか</source>
+        <target>Should I use a UUID or an auto-increment integer as my primary key?</target>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpFaqQ5">
+      <segment state="initial">
+        <source>最大1,000件までしか生成できないのはなぜですか</source>
+        <target>Why is the batch size capped at 1,000?</target>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpFaqQ6">
+      <segment state="initial">
+        <source>UUIDの文字列からハイフンを除去したり、大文字に変換したりできますか</source>
+        <target>Can I get the output without hyphens, or in uppercase?</target>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpFaqTitle">
+      <segment state="initial">
+        <source>よくある質問</source>
+        <target>FAQ</target>
+      </segment>
+    </unit>
     <unit id="uuidGenHelpOverview">
       <segment state="initial">
         <source>概要</source>
@@ -3837,6 +4143,12 @@ Added the tool list page.</target>
       <segment state="initial">
         <source> UUIDジェネレーターは、RFC 4122（RFC 9562）に準拠したUniversally Unique Identifier（UUID）をオンラインで生成するツールです。v1・v4・v7の3バージョンに対応し、最大1,000件の一括生成が可能です。 </source>
         <target>Writing one-off test fixtures or seeding a database with sample primary keys shouldn&apos;t require spinning up a script just to call a UUID library. This generator produces RFC 9562-compliant UUIDs directly in the browser — choose from the classic random v4, the timestamp-based v1, or the newer time-ordered v7 — and can output up to 1,000 at once for bulk seeding.</target>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpOverviewDesc2">
+      <segment state="initial">
+        <source> 分散システムやマイクロサービスでは、複数のサーバーやクライアントが同時に新しいIDを発行する場面が頻繁にあります。連番の採番テーブルを共有すると単一障害点やロック競合が発生しやすいのに対し、UUIDは各ノードが他と調整せずに一意な値を生成できるため、スケールしやすい設計を実現できます。本ツールはコードを書く前に各バージョンの見た目や桁数を素早く確認したい場合にも便利です。 </source>
+        <target>A shared auto-increment counter turns into a single point of contention the moment multiple servers or services need to mint IDs at once, forcing coordination that a purely random or timestamp-based scheme doesn&apos;t need. UUIDs sidestep that by letting every node generate a unique value independently, which is part of why they&apos;re a default choice in distributed architectures — and this page doubles as a quick way to eyeball what each version looks like before wiring one into your code.</target>
       </segment>
     </unit>
     <unit id="uuidGenHelpSpec">
@@ -3875,6 +4187,18 @@ Added the tool list page.</target>
         <target>UUID v7 (time-ordered): A millisecond-precision Unix timestamp in the high bits followed by random bits, standardized in RFC 9562. In the &quot;UUID v4 vs v7&quot; debate, v7 wins for primary keys: because values generated close together sort close together, B-tree indexes stay compact instead of fragmenting the way they do with purely random v4 keys.</target>
       </segment>
     </unit>
+    <unit id="uuidGenHelpSpecVariant">
+      <segment state="initial">
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">バリアントビット</pc>: UUIDの17文字目（N部分）は「8」「9」「a」「b」のいずれかになり、RFC 4122に準拠した形式であることを示します。異なる値の場合、Microsoft独自形式など別の生成規則に基づくUUIDである可能性があります。</source>
+        <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">Variant bits</pc>: The 17th character (the N position) is always 8, 9, a, or b in an RFC 4122-conformant UUID. A different value there usually signals a UUID built to a different, non-standard scheme, such as Microsoft&apos;s legacy GUID variant.</target>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpSpecVersionChoice">
+      <segment state="initial">
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">バージョンの選び方</pc>: v1はMACアドレス由来の情報漏洩リスクがあるため近年は非推奨とされることが多く、代わりにランダムベースのv4か、時系列ソート性を持つv7が選ばれる傾向にあります。RFC 9562（2024年発行）はv1・v4に加えてv6・v7・v8を新たに標準化し、UUIDの設計指針を整理しました。</source>
+        <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">Choosing a version</pc>: v1 has fallen out of favor because it can leak the generating machine&apos;s MAC address, pushing most new projects toward either random v4 or time-ordered v7. RFC 9562 (published 2024) formalized that shift, standardizing v6, v7, and v8 alongside the original v1 and v4 and giving implementers clearer guidance on which to reach for.</target>
+      </segment>
+    </unit>
     <unit id="uuidGenHelpUsage">
       <segment state="initial">
         <source>使い方</source>
@@ -3905,6 +4229,12 @@ Added the tool list page.</target>
         <target>Copy the list straight from Results — one UUID per line, ready to paste into a seed script or test fixture.</target>
       </segment>
     </unit>
+    <unit id="uuidGenHelpUsageTip">
+      <segment state="initial">
+        <source> 補足: どのバージョンを選べばよいか迷った場合は、新規システムであればv7（時系列ソート可能）、既存システムとの互換性を優先するならv4（最も広く普及）を選ぶとよいでしょう。 </source>
+        <target>Tip: if you&apos;re unsure which version to pick, go with v7 for a brand-new system (it sorts chronologically), or v4 if compatibility with existing tooling matters more — it&apos;s the most widely supported.</target>
+      </segment>
+    </unit>
     <unit id="uuidGenHelpUseCase">
       <segment state="initial">
         <source>ユースケース</source>
@@ -3921,6 +4251,18 @@ Added the tool list page.</target>
       <segment state="initial">
         <source>ファイル名の一意化・マイクロサービス間の相関IDとして活用。</source>
         <target>Generating unique filenames for uploads, or correlation IDs that tie a request together across microservices.</target>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpUseCaseIdempotencyKey">
+      <segment state="initial">
+        <source>決済APIなど冪等性（idempotency）が求められるリクエストに付与するIdempotency-Keyヘッダーの値として、リトライ時にも一意性が保たれるUUIDを発行する場合。</source>
+        <target>Minting a UUID for an Idempotency-Key header on requests that need idempotency guarantees, such as payment API calls, so the same key can be safely retried without double-processing.</target>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpUseCaseSeedData">
+      <segment state="initial">
+        <source>開発環境のテストデータ投入時に、100件・1000件といった単位でユニークなユーザーIDや注文IDをまとめて生成し、シードスクリプトに組み込む場合。</source>
+        <target>Bulk-generating a few hundred or a thousand unique user IDs or order IDs at once for a database seed script when setting up test data in a development environment.</target>
       </segment>
     </unit>
     <unit id="uuidGenHelpUseCaseSession">

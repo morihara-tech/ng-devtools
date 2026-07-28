@@ -908,6 +908,71 @@ OFFの場合はdecodeURIを使用し、URL構造を維持したままデコー�
         <source>無効なJSONです。</source>
       </segment>
     </unit>
+    <unit id="jsonFormatterHelpFaqA1">
+      <segment>
+        <source>いいえ。整形・圧縮処理はすべてブラウザ内のJavaScriptで完結しており、入力したデータが外部サーバーへ送信されることはありません。APIキーや個人情報を含むレスポンスでも安心して貼り付けて確認できます。</source>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpFaqA2">
+      <segment>
+        <source>標準のJSONパーサーを使用しているため、コメント（//や/* */）や末尾カンマを含む文字列はエラーになります。整形する前にコメントを削除するか、JSONCではなく厳密なJSON形式に変換してから貼り付けてください。</source>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpFaqA3">
+      <segment>
+        <source>主な原因は、キーや文字列値をシングルクォートで囲んでいる、末尾に余分なカンマがある、値がundefinedになっている、のいずれかです。エラーメッセージに表示される位置の周辺を確認してください。</source>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpFaqA4">
+      <segment>
+        <source>JavaScriptの数値はIEEE 754倍精度浮動小数点で扱われるため、2の53乗を超える整数（例: 一部のSnowflake IDやDB上のbigint値）は精度が失われる場合があります。厳密な値を確認したい場合は、該当のフィールドを文字列型として扱っているAPI仕様かどうかを確認してください。</source>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpFaqA5">
+      <segment>
+        <source>現在のバージョンではJSON全体に対して一括で整形・圧縮を適用する仕様です。特定の階層だけを個別に整形したい場合は、該当部分を抜き出して別途貼り付けてご利用ください。</source>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpFaqA6">
+      <segment>
+        <source>はい。UTF-8で表現された日本語や絵文字を含む文字列も、エスケープされた\uXXXX形式・生の文字のどちらでも正しく整形されます。出力時に元の表記（エスケープの有無）を変えたい場合は、圧縮モードの出力をご確認ください。</source>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpFaqQ1">
+      <segment>
+        <source>貼り付けたJSONデータはサーバーに送信されますか</source>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpFaqQ2">
+      <segment>
+        <source>コメント付きのJSON（JSONC）は整形できますか</source>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpFaqQ3">
+      <segment>
+        <source>「Unexpected token」エラーが出るのはなぜですか</source>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpFaqQ4">
+      <segment>
+        <source>数値の桁が大きいと結果が変わることがあるのはなぜですか</source>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpFaqQ5">
+      <segment>
+        <source>配列やオブジェクトの中身だけを圧縮せずに整形したい場合はどうすればよいですか</source>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpFaqQ6">
+      <segment>
+        <source>日本語（マルチバイト文字）を含むJSONは正しく整形されますか</source>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpFaqTitle">
+      <segment>
+        <source>よくある質問</source>
+      </segment>
+    </unit>
     <unit id="jsonFormatterHelpOverview">
       <segment>
         <source>概要</source>
@@ -916,6 +981,11 @@ OFFの場合はdecodeURIを使用し、URL構造を維持したままデコー�
     <unit id="jsonFormatterHelpOverviewDesc">
       <segment>
         <source> JSON整形ツールは、読みにくいJSON文字列を自動的に整形・フォーマットするオンラインツールです。インデントの調整・ミニファイ（圧縮）に対応し、APIレスポンスや設定ファイルのデバッグ・確認作業を効率化します。 </source>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpOverviewDesc2">
+      <segment>
+        <source> APIレスポンスやログは1行に圧縮された状態で出力されることが多く、目視でネストの深さやキーの対応関係を追うのは困難です。かといって毎回エディタやIDEに貼り付けて整形するのは手間がかかります。本ツールはブラウザだけで完結するため、外部にデータを送信することなくその場で構造を可視化できます。 </source>
       </segment>
     </unit>
     <unit id="jsonFormatterHelpSpec">
@@ -938,9 +1008,19 @@ OFFの場合はdecodeURIを使用し、URL構造を維持したままデコー�
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">JSON（JavaScript Object Notation）</pc>: 軽量なデータ交換フォーマットです。人間にも機械にも読みやすく、REST APIのリクエスト・レスポンスや設定ファイルなどで広く使われています。RFC 8259 / ECMA-404で標準化されています。</source>
       </segment>
     </unit>
+    <unit id="jsonFormatterHelpSpecJsonc">
+      <segment>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">JSON5 / JSONC との違い</pc>: tsconfig.jsonなどではコメントや末尾カンマを許容する「JSONC」という拡張記法が使われることがありますが、これは仕様上のJSONそのものではありません。本ツールは厳密なJSON（RFC 8259）としてパースするため、コメント付きの設定ファイルをそのまま貼り付けるとエラーになる場合があります。</source>
+      </segment>
+    </unit>
     <unit id="jsonFormatterHelpSpecMinify">
       <segment>
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">「圧縮」モード</pc>: 改行・スペースをすべて除去してJSONを1行に圧縮します。ネットワーク転送量を削減したい場合や、HTTPリクエストボディとして利用する場合に有効です。</source>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpSpecRfc8259">
+      <segment>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">RFC 8259について</pc>: JSONの構文を定めるインターネット標準です。値として使える型はオブジェクト・配列・文字列・数値・真偽値・nullの6種類のみで、日付型や関数、コメントは含まれません。JavaScriptのオブジェクトリテラルと似ていますが、キー名を必ず二重引用符で囲む点や、undefinedを表現できない点が異なります。</source>
       </segment>
     </unit>
     <unit id="jsonFormatterHelpSpecValidation">
@@ -978,6 +1058,11 @@ OFFの場合はdecodeURIを使用し、URL構造を維持したままデコー�
         <source>クリップボードへコピーボタンで整形後のJSONをコピーできます。</source>
       </segment>
     </unit>
+    <unit id="jsonFormatterHelpUsageTip">
+      <segment>
+        <source> 補足: 変換に失敗する場合は、末尾カンマ・シングルクォート・コメントの混入など、JSONとして不正な記述がないか確認してください。エラーメッセージにはおおよその位置（行・文字位置）が表示されます。 </source>
+      </segment>
+    </unit>
     <unit id="jsonFormatterHelpUseCase">
       <segment>
         <source>ユースケース</source>
@@ -993,9 +1078,19 @@ OFFの場合はdecodeURIを使用し、URL構造を維持したままデコー�
         <source>設定ファイル（package.json、tsconfig.jsonなど）の確認・編集時。</source>
       </segment>
     </unit>
+    <unit id="jsonFormatterHelpUseCaseLog">
+      <segment>
+        <source>サーバーログに出力された構造化ログ（JSON Lines形式）を1件ずつ貼り付けて整形し、エラー発生時のフィールド値を確認する場合。</source>
+      </segment>
+    </unit>
     <unit id="jsonFormatterHelpUseCaseMinify">
       <segment>
         <source>本番環境向けにJSONを圧縮してファイルサイズを削減する場合。</source>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpUseCaseNested">
+      <segment>
+        <source><pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">&quot;user&quot;:&quot;id&quot;:1,&quot;roles&quot;:[&quot;admin&quot;,&quot;editor&quot;]</pc> のように1行にまとまったネスト構造のレスポンスを整形し、user.roles配列の中身をひと目で確認したい場合。 </source>
       </segment>
     </unit>
     <unit id="jsonFormatterHelpUseCaseTrailingComma">
@@ -2199,6 +2294,71 @@ UNIXタイム変換ツールを実装しました。</source>
         <source>UUID生成ツール</source>
       </segment>
     </unit>
+    <unit id="sqlFormatterHelpFaqA1">
+      <segment>
+        <source>主要な方言に共通する標準SQL構文の整形に対応しています。方言固有の拡張構文（PL/pgSQLのプロシージャ、T-SQLのBEGIN...END、MySQLのバッククォート識別子など）は整形結果が意図と異なる場合があるため、整形後は必ず内容を確認してください。</source>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpFaqA2">
+      <segment>
+        <source>いいえ。整形処理はブラウザ内で完結しており、入力したSQLが外部に送信されることはありません。本番データベースのスキーマ情報を含むクエリでも安心してご利用いただけます。</source>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpFaqA3">
+      <segment>
+        <source>単純なDML/DDL文の整形を主眼としているため、ストアドプロシージャやトリガーに含まれる制御構文（IF、LOOP、CURSORなど）は正しく整形されない場合があります。SELECT文などクエリ本体部分のみを抜き出してご利用ください。</source>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpFaqA4">
+      <segment>
+        <source>はい。セミコロンで区切られた複数のSQL文を一度に貼り付けると、それぞれが個別に整形されます。マイグレーションファイルのように複数のCREATE TABLE文が並んでいる場合にも利用できます。</source>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpFaqA5">
+      <segment>
+        <source>SELECT・FROM・WHEREなどのキーワードを右揃えで縦に整列させるため、キーワードの位置が視覚的に揃い、条件句が多い長いクエリでも構造を把握しやすくなります。ドキュメントやプレゼン資料にSQLを掲載する際にもよく使われます。</source>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpFaqA6">
+      <segment>
+        <source>「予約語」オプションが「大文字」または「小文字」に設定されている場合、SELECTやFROMなどのSQLキーワードが自動的に変換されます。入力時のケースをそのまま維持したい場合は「変更しない」を選択してください。</source>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpFaqQ1">
+      <segment>
+        <source>MySQL・PostgreSQL・SQL Serverのどの方言に対応していますか</source>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpFaqQ2">
+      <segment>
+        <source>貼り付けたSQLに含まれるテーブル名やデータはサーバーに送信されますか</source>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpFaqQ3">
+      <segment>
+        <source>ストアドプロシージャやトリガーの定義も整形できますか</source>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpFaqQ4">
+      <segment>
+        <source>複数のSQL文をまとめて整形できますか</source>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpFaqQ5">
+      <segment>
+        <source>「右揃え/表形式」モードはどのような場面で使うと便利ですか</source>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpFaqQ6">
+      <segment>
+        <source>整形結果の予約語が想定と異なる大文字/小文字になるのはなぜですか</source>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpFaqTitle">
+      <segment>
+        <source>よくある質問</source>
+      </segment>
+    </unit>
     <unit id="sqlFormatterHelpOverview">
       <segment>
         <source>概要</source>
@@ -2209,9 +2369,24 @@ UNIXタイム変換ツールを実装しました。</source>
         <source> SQLフォーマッターは、読みにくいSQLクエリを整形・可読化するオンラインツールです。JOIN、WHERE、GROUP BYなどのキーワードを適切なインデントで整列させ、コードレビューやドキュメント作成を効率化します。 </source>
       </segment>
     </unit>
+    <unit id="sqlFormatterHelpOverviewDesc2">
+      <segment>
+        <source> ORMやBIツールが自動生成するSQLは1行に連結されていることが多く、JOIN条件やサブクエリの入れ子構造を目で追うのが困難です。手作業でインデントを揃え直すのは時間がかかるうえ、SELECT句のカラム数が多いクエリでは特に骨が折れます。本ツールはそうした整形作業を数秒で終わらせ、レビューやチューニングに集中できるようにします。 </source>
+      </segment>
+    </unit>
     <unit id="sqlFormatterHelpSpec">
       <segment>
         <source>仕様・用語解説</source>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpSpecComment">
+      <segment>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">コメントの扱い</pc>: 行コメント（--）およびブロックコメント（/* */）は、位置情報を保持したまま整形後のクエリに引き継がれます。ORMが自動生成したクエリに付与されるバインドパラメータのコメントなどもそのまま残ります。</source>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpSpecDialect">
+      <segment>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">対応SQL方言について</pc>: 本ツールはMySQL・PostgreSQL・SQLiteなど主要な方言に共通する標準的なSQL構文（SELECT / INSERT / UPDATE / DELETE / CREATE TABLE等）の整形に対応しています。ただし、PL/pgSQLのストアドプロシージャや、T-SQL固有のBEGIN...END構文など、方言に強く依存する拡張構文は整形結果が崩れる場合があります。</source>
       </segment>
     </unit>
     <unit id="sqlFormatterHelpSpecIdentifier">
@@ -2294,6 +2469,11 @@ UNIXタイム変換ツールを実装しました。</source>
         <source>「変換」ボタンをクリックすると整形結果が表示されます。</source>
       </segment>
     </unit>
+    <unit id="sqlFormatterHelpUsageTip">
+      <segment>
+        <source> 補足: 複数のSQL文をセミコロン区切りで一括貼り付けても整形できます。マイグレーションファイルなど、複数のCREATE TABLE文をまとめて確認したい場合に活用してください。 </source>
+      </segment>
+    </unit>
     <unit id="sqlFormatterHelpUseCase">
       <segment>
         <source>ユースケース</source>
@@ -2309,6 +2489,11 @@ UNIXタイム変換ツールを実装しました。</source>
         <source>ドキュメント用に整形されたSQLスニペットを作成したい場合。</source>
       </segment>
     </unit>
+    <unit id="sqlFormatterHelpUseCaseJoinAudit">
+      <segment>
+        <source>複数テーブルを結合した「SELECT * FROM orders o JOIN users u ON o.user_id = u.id JOIN items i ON o.item_id = i.id WHERE...」のような1行クエリを整形し、JOIN条件の対応関係を確認しながらパフォーマンスチューニングを行う場合。</source>
+      </segment>
+    </unit>
     <unit id="sqlFormatterHelpUseCaseOrmComments">
       <segment>
         <source>ORMが生成したSQLに混在するバインドパラメータやコメントが多く読みにくい場合の整理。</source>
@@ -2317,6 +2502,11 @@ UNIXタイム変換ツールを実装しました。</source>
     <unit id="sqlFormatterHelpUseCaseReview">
       <segment>
         <source>コードレビュー前にSQLを整理して可読性を向上させたい場合。</source>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpUseCaseSlowQueryLog">
+      <segment>
+        <source>スロークエリログに出力された整形前のSQLを貼り付けて可読化し、実行計画（EXPLAIN）を確認する前の下調べとして使う場合。</source>
       </segment>
     </unit>
     <unit id="svgViewerHelpOverview">
@@ -3179,6 +3369,71 @@ UNIXタイム変換ツールを実装しました。</source>
         <source>APIリクエストのクエリパラメータに日本語や特殊文字を含める場合。</source>
       </segment>
     </unit>
+    <unit id="uuidGenHelpFaqA1">
+      <segment>
+        <source>新規に設計するシステムでDBのプライマリキーとして使う場合は、時系列ソートが可能でインデックス効率も良いv7がおすすめです。既存システムとの互換性やライブラリの対応状況を優先する場合は、最も普及しているv4を選ぶとよいでしょう。v1はMACアドレス由来の情報が含まれる可能性があるため、新規用途では避けるのが無難です。</source>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpFaqA2">
+      <segment>
+        <source>理論上はゼロではありませんが、v4の場合122ビットのランダム値から生成されるため、実用上は無視できるレベルです。例えば1秒間に10億個生成し続けても、重複が発生する確率は天文学的に低い水準にとどまります。</source>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpFaqA3">
+      <segment>
+        <source>いいえ。UUIDの生成はブラウザ内のJavaScriptで完結しており、生成結果がサーバーに送信・保存されることはありません。ページを再読み込みすると生成履歴は失われます。</source>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpFaqA4">
+      <segment>
+        <source>分散環境で複数ノードが同時にレコードを作成する場合や、IDから件数・作成順序を推測されたくない場合はUUIDが適しています。一方、単一のデータベースで完結し、インデックスサイズやJOIN性能を最優先したい場合はauto-incrementの整数IDの方が有利なことがあります。v7を使えばUUIDのメリットを保ちながら整数IDに近いインデックス効率も得られます。</source>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpFaqA5">
+      <segment>
+        <source>ブラウザ上での表示・コピーのしやすさを考慮した上限です。それ以上の件数が必要な場合は、Node.jsのcryptoモジュールやuuidパッケージなど、スクリプトから直接生成する方法をご検討ください。</source>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpFaqA6">
+      <segment>
+        <source>現在のバージョンではハイフン付き・小文字の標準形式（RFC 4122準拠）で出力されます。ハイフン除去や大文字化が必要な場合は、コピー後にテキストエディタや置換ツールで加工してください。</source>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpFaqQ1">
+      <segment>
+        <source>v1・v4・v7のどれを選べばよいか迷います。おすすめはどれですか</source>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpFaqQ2">
+      <segment>
+        <source>生成したUUIDが重複することはありますか</source>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpFaqQ3">
+      <segment>
+        <source>生成したUUIDはこのツールのサーバーに保存されますか</source>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpFaqQ4">
+      <segment>
+        <source>UUIDとauto-increment（連番）の主キー、どちらを使うべきですか</source>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpFaqQ5">
+      <segment>
+        <source>最大1,000件までしか生成できないのはなぜですか</source>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpFaqQ6">
+      <segment>
+        <source>UUIDの文字列からハイフンを除去したり、大文字に変換したりできますか</source>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpFaqTitle">
+      <segment>
+        <source>よくある質問</source>
+      </segment>
+    </unit>
     <unit id="uuidGenHelpOverview">
       <segment>
         <source>概要</source>
@@ -3187,6 +3442,11 @@ UNIXタイム変換ツールを実装しました。</source>
     <unit id="uuidGenHelpOverviewDesc">
       <segment>
         <source> UUIDジェネレーターは、RFC 4122（RFC 9562）に準拠したUniversally Unique Identifier（UUID）をオンラインで生成するツールです。v1・v4・v7の3バージョンに対応し、最大1,000件の一括生成が可能です。 </source>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpOverviewDesc2">
+      <segment>
+        <source> 分散システムやマイクロサービスでは、複数のサーバーやクライアントが同時に新しいIDを発行する場面が頻繁にあります。連番の採番テーブルを共有すると単一障害点やロック競合が発生しやすいのに対し、UUIDは各ノードが他と調整せずに一意な値を生成できるため、スケールしやすい設計を実現できます。本ツールはコードを書く前に各バージョンの見た目や桁数を素早く確認したい場合にも便利です。 </source>
       </segment>
     </unit>
     <unit id="uuidGenHelpSpec">
@@ -3219,6 +3479,16 @@ UNIXタイム変換ツールを実装しました。</source>
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">UUID v7</pc>: 48ビットのUnixタイムスタンプ（ミリ秒精度）＋ランダム値で構成されます。RFC 9562で定義された最新仕様で、時系列ソートが可能かつv4と同等のランダム性を持ちます。DBインデックスの効率化に有利です。</source>
       </segment>
     </unit>
+    <unit id="uuidGenHelpSpecVariant">
+      <segment>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">バリアントビット</pc>: UUIDの17文字目（N部分）は「8」「9」「a」「b」のいずれかになり、RFC 4122に準拠した形式であることを示します。異なる値の場合、Microsoft独自形式など別の生成規則に基づくUUIDである可能性があります。</source>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpSpecVersionChoice">
+      <segment>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">バージョンの選び方</pc>: v1はMACアドレス由来の情報漏洩リスクがあるため近年は非推奨とされることが多く、代わりにランダムベースのv4か、時系列ソート性を持つv7が選ばれる傾向にあります。RFC 9562（2024年発行）はv1・v4に加えてv6・v7・v8を新たに標準化し、UUIDの設計指針を整理しました。</source>
+      </segment>
+    </unit>
     <unit id="uuidGenHelpUsage">
       <segment>
         <source>使い方</source>
@@ -3244,6 +3514,11 @@ UNIXタイム変換ツールを実装しました。</source>
         <source>生成されたUUIDリストをコピーして利用します。</source>
       </segment>
     </unit>
+    <unit id="uuidGenHelpUsageTip">
+      <segment>
+        <source> 補足: どのバージョンを選べばよいか迷った場合は、新規システムであればv7（時系列ソート可能）、既存システムとの互換性を優先するならv4（最も広く普及）を選ぶとよいでしょう。 </source>
+      </segment>
+    </unit>
     <unit id="uuidGenHelpUseCase">
       <segment>
         <source>ユースケース</source>
@@ -3257,6 +3532,16 @@ UNIXタイム変換ツールを実装しました。</source>
     <unit id="uuidGenHelpUseCaseFile">
       <segment>
         <source>ファイル名の一意化・マイクロサービス間の相関IDとして活用。</source>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpUseCaseIdempotencyKey">
+      <segment>
+        <source>決済APIなど冪等性（idempotency）が求められるリクエストに付与するIdempotency-Keyヘッダーの値として、リトライ時にも一意性が保たれるUUIDを発行する場合。</source>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpUseCaseSeedData">
+      <segment>
+        <source>開発環境のテストデータ投入時に、100件・1000件といった単位でユニークなユーザーIDや注文IDをまとめて生成し、シードスクリプトに組み込む場合。</source>
       </segment>
     </unit>
     <unit id="uuidGenHelpUseCaseSession">
