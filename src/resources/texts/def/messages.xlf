@@ -1738,6 +1738,71 @@ OFFの場合はdecodeURIを使用し、URL構造を維持したままデコー�
         <source> 当サイトでは、サービスの向上および最適なパーソナライズのためにCookieを使用しています。詳細は<pc id="0" equivStart="START_LINK" equivEnd="CLOSE_LINK" type="link" dispStart="&lt;a routerLink=&quot;/privacy-policy&quot; (click)=&quot;onPrivacyPolicy()&quot;&gt;" dispEnd="&lt;/a&gt;">プライバシーポリシー</pc>をご確認ください。 </source>
       </segment>
     </unit>
+    <unit id="colorPaletteHelpFaqA1">
+      <segment>
+        <source>入力欄はHEXカラーコード（<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">#RRGGBB</pc>または<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">#RGB</pc>）のみに対応しています。RGBやHSLで色を指定したい場合は、他のツールで一度HEX形式に変換してから入力してください。</source>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpFaqA2">
+      <segment>
+        <source>各シェードの背景色に対して、黒文字と白文字それぞれの相対輝度からコントラストが高い方を自動的に選択して表示しています。ただし表示される文字色は目安であり、WCAG AA（4.5:1）やAAA（7:1）などの具体的な達成基準を満たすかどうかは、別途コントラストチェッカーで数値を確認することをおすすめします。</source>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpFaqA3">
+      <segment>
+        <source>はい。500ステップは入力したHEXカラーコードをそのまま基準色として使用します。50〜400は白との線形補間、600〜900は黒との線形補間によって、500を中心に明暗のグラデーションが生成されます。</source>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpFaqA4">
+      <segment>
+        <source>現在のバージョンではパレットの保存機能は提供していません。各シェードのカラーコードをクリックしてクリップボードにコピーし、デザインツールやコードに直接貼り付けてご利用ください。</source>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpFaqA5">
+      <segment>
+        <source>複数のブランドカラー候補を横並びで見比べたい場合は「比較」モード、1つの色について全シェードを詳しく確認したい場合は「濃淡」モードが適しています。用途に応じて切り替えてご利用ください。</source>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpFaqA6">
+      <segment>
+        <source>いいえ。シェードの生成やコントラスト計算はすべてブラウザ内のJavaScriptで完結しており、入力したカラーコードが外部サーバーへ送信されることはありません。</source>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpFaqQ1">
+      <segment>
+        <source>RGBやHSL形式のカラーコードは入力できますか</source>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpFaqQ2">
+      <segment>
+        <source>生成されたシェードはWCAGのどの基準に基づいていますか</source>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpFaqQ3">
+      <segment>
+        <source>500ステップの色は入力した色そのものになりますか</source>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpFaqQ4">
+      <segment>
+        <source>生成したパレットは保存できますか</source>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpFaqQ5">
+      <segment>
+        <source>「比較」モードと「濃淡」モードはどう使い分ければよいですか</source>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpFaqQ6">
+      <segment>
+        <source>入力したカラーコードは外部に送信されますか</source>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpFaqTitle">
+      <segment>
+        <source>よくある質問</source>
+      </segment>
+    </unit>
     <unit id="colorPaletteHelpOverview">
       <segment>
         <source>概要</source>
@@ -1746,6 +1811,11 @@ OFFの場合はdecodeURIを使用し、URL構造を維持したままデコー�
     <unit id="colorPaletteHelpOverviewDesc">
       <segment>
         <source> カラーパレットツールは、入力したHEXカラーコードからMaterial Designライクなカラーシェードパレットを自動生成するオンラインツールです。比較モードとシェード生成モードの2種類に対応しています。 </source>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpOverviewDesc2">
+      <segment>
+        <source> デザインシステムやコンポーネントライブラリを構築する際、1つのブランドカラーから背景色・ホバー色・無効化状態の色といった複数階調を手作業で決めるのは手間がかかります。本ツールは基準色を入力するだけで一貫性のあるシェード段階を自動生成し、WCAGを踏まえたテキストカラーの候補も同時に確認できます。 </source>
       </segment>
     </unit>
     <unit id="colorPaletteHelpSpec">
@@ -1766,6 +1836,11 @@ OFFの場合はdecodeURIを使用し、URL構造を維持したままデコー�
     <unit id="colorPaletteHelpSpecHex">
       <segment>
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">HEXカラーコード</pc>: 3桁形式（<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">#RGB</pc>）と6桁形式（<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">#RRGGBB</pc>）の両方に対応しています。<pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">#</pc>プレフィックスの有無も問いません。</source>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpSpecRgbHsl">
+      <segment>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">RGB・HSLとの相互変換</pc>: 内部的にはHEXをRGB（赤・緑・青の各成分0〜255）に変換して線形補間を行い、輝度計算やコントラスト判定にも利用します。HSL（色相・彩度・明度）形式での直接入力には対応していません。</source>
       </segment>
     </unit>
     <unit id="colorPaletteHelpSpecShades">
@@ -1808,6 +1883,11 @@ OFFの場合はdecodeURIを使用し、URL構造を維持したままデコー�
         <source>各シェードのカラーコードをクリックしてコピーできます。</source>
       </segment>
     </unit>
+    <unit id="colorPaletteHelpUsageTip">
+      <segment>
+        <source> 補足: 入力したカラーコードやシェード生成結果はブラウザ内のみで保持され、ページを再読み込みすると内容はリセットされます。使用中の配色を残しておきたい場合は、コピーしたコードを別途メモしてください。 </source>
+      </segment>
+    </unit>
     <unit id="colorPaletteHelpUseCase">
       <segment>
         <source>ユースケース</source>
@@ -1821,6 +1901,11 @@ OFFの場合はdecodeURIを使用し、URL構造を維持したままデコー�
     <unit id="colorPaletteHelpUseCaseBrand">
       <segment>
         <source>ブランドカラーのシェードパレットを自動生成したい場合。</source>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpUseCaseCompareBrand">
+      <segment>
+        <source>複数の候補ブランドカラーを並べて比較し、コーポレートカラーとして採用する色を検討する場合。</source>
       </segment>
     </unit>
     <unit id="colorPaletteHelpUseCaseMaterial">
@@ -2954,6 +3039,71 @@ UNIXタイム変換ツールを実装しました。</source>
         <source>透過PNGアイコンをアプリやWebサイトのアセットとして書き出す場合。</source>
       </segment>
     </unit>
+    <unit id="textDiffHelpFaqA1">
+      <segment>
+        <source>いいえ。本ツールは行単位での比較に特化しており、1行の中のどの文字や単語が変わったかまでは強調表示されません。1行が大きく書き換わった場合は、行全体が変更行として扱われます。</source>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpFaqA2">
+      <segment>
+        <source>はい。改行コードの違いは行の区切りとして解釈に影響するため、内容が同じでもLFとCRLFが混在していると差分として検出される場合があります。比較前にエディタなどで改行コードを統一することをおすすめします。</source>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpFaqA3">
+      <segment>
+        <source>はい、区別されます。<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">Hello</pc>と<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">hello</pc>のように大文字・小文字のみが異なる行も、変更行として検出されます。大文字・小文字を無視して比較するオプションは現在提供していません。</source>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpFaqA4">
+      <segment>
+        <source>数千行程度までは実用的な速度で比較できますが、テキストが極端に大きい場合はブラウザ内での計算処理に時間がかかったり、表示が重くなったりすることがあります。大きなファイルを比較する場合は、必要な範囲だけを抜き出してから比較することをおすすめします。</source>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpFaqA5">
+      <segment>
+        <source>いいえ。差分の計算はすべてブラウザ内のJavaScriptで完結しており、入力したテキストが外部サーバーへ送信されることはありません。機密情報を含む文書でも安心して比較できます。</source>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpFaqA6">
+      <segment>
+        <source>はい。行末や行頭の余分なスペース、タブとスペースの違いなども含めて、1文字でも異なれば変更行として検出されます。インデント幅の変更だけで差分が大量に出る場合は、この点が原因であることが多いです。</source>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpFaqQ1">
+      <segment>
+        <source>文字単位や単語単位での差分表示はできますか</source>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpFaqQ2">
+      <segment>
+        <source>改行コード（LF/CRLF）が違うだけでも差分として検出されますか</source>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpFaqQ3">
+      <segment>
+        <source>大文字と小文字は区別されますか</source>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpFaqQ4">
+      <segment>
+        <source>非常に大きなテキストを比較しても問題ありませんか</source>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpFaqQ5">
+      <segment>
+        <source>入力したテキストはサーバーに送信されますか</source>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpFaqQ6">
+      <segment>
+        <source>空白（スペース）だけの違いも差分として表示されますか</source>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpFaqTitle">
+      <segment>
+        <source>よくある質問</source>
+      </segment>
+    </unit>
     <unit id="textDiffHelpOverview">
       <segment>
         <source>概要</source>
@@ -2964,6 +3114,11 @@ UNIXタイム変換ツールを実装しました。</source>
         <source> テキスト比較ツールは、2つのテキストの差分をサイドバイサイドで視覚化するオンラインツールです。追加・削除・変更箇所を行ごとにハイライト表示し、コードや文書の差分確認を効率化します。 </source>
       </segment>
     </unit>
+    <unit id="textDiffHelpOverviewDesc2">
+      <segment>
+        <source> 設定ファイルの変更前後を見比べたい、文書の改訂箇所を確認したいといった場面で、目視での比較は見落としが発生しがちです。本ツールはブラウザ内で差分計算が完結するため、外部にテキストを送信することなく、その場で変更箇所だけを素早く特定できます。 </source>
+      </segment>
+    </unit>
     <unit id="textDiffHelpSpec">
       <segment>
         <source>仕様・用語解説</source>
@@ -2972,6 +3127,11 @@ UNIXタイム変換ツールを実装しました。</source>
     <unit id="textDiffHelpSpecAlgorithm">
       <segment>
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">差分アルゴリズム（LCS）</pc>: LCS（Longest Common Subsequence：最長共通部分列）ベースのdiffアルゴリズムを採用しています。2つのシーケンス間で最も長い共通の部分列を求め、追加・削除箇所を特定します。</source>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpSpecCaseSensitive">
+      <segment>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">大文字・小文字の区別</pc>: 比較は大文字・小文字を区別して行われます。<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">Text</pc>と<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">text</pc>は異なる行として扱われ、差分として検出されます。</source>
       </segment>
     </unit>
     <unit id="textDiffHelpSpecDiffResult">
@@ -2986,7 +3146,12 @@ UNIXタイム変換ツールを実装しました。</source>
     </unit>
     <unit id="textDiffHelpSpecLineDiff">
       <segment>
-        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">行単位の差分</pc>: テキストを行単位で比較し、変更のあった行を識別します。各行の変更内容を原文と並べて表示します。</source>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">行単位の差分</pc>: テキストを行単位で比較し、変更のあった行を識別します。各行の変更内容を原文と並べて表示します。単語単位や文字単位での差分強調には対応していません。</source>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpSpecLineEnding">
+      <segment>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">改行コードの扱い</pc>: 入力テキストの改行コード（LF・CRLF）の違いも行の境界として扱われるため、改行コードのみが異なるテキスト同士を比較すると、内容が同じでも差分として検出される場合があります。</source>
       </segment>
     </unit>
     <unit id="textDiffHelpSpecSideBySide">
@@ -3019,6 +3184,11 @@ UNIXタイム変換ツールを実装しました。</source>
         <source>入力内容をリセットしたい場合はクリアボタンを使用します。</source>
       </segment>
     </unit>
+    <unit id="textDiffHelpUsageTip">
+      <segment>
+        <source> 補足: 差分は行単位で計算されるため、1行が長すぎる場合や改行位置がずれている場合は差分が見づらくなることがあります。比較しやすくするには、あらかじめ整形ツールなどで改行位置をそろえておくことをおすすめします。 </source>
+      </segment>
+    </unit>
     <unit id="textDiffHelpUseCase">
       <segment>
         <source>ユースケース</source>
@@ -3042,6 +3212,11 @@ UNIXタイム変換ツールを実装しました。</source>
     <unit id="textDiffHelpUseCaseReview">
       <segment>
         <source>コードレビュー前に変更内容を確認する場合。</source>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpUseCaseTranslation">
+      <segment>
+        <source>翻訳作業で、原文と訳文の対応関係を崩さずに旧版・新版のテキストを見比べる場合。</source>
       </segment>
     </unit>
     <unit id="ulidGenHelpFaqA1">
@@ -3229,6 +3404,71 @@ UNIXタイム変換ツールを実装しました。</source>
         <source>UUID v7との比較検討。どちらも時系列ソート可能だが、ULIDはCrockford&apos;s Base32で26文字、UUID v7はハイフン区切りの36文字という違いがある。</source>
       </segment>
     </unit>
+    <unit id="unixTimestampHelpFaqA1">
+      <segment>
+        <source>桁数で自動判定しています。おおむね10桁（2001年9月〜2286年頃の範囲）は秒単位、13桁（1970年〜2001年より後の範囲）はミリ秒単位として扱われます。想定と異なる桁数を入力すると、極端に過去または未来の日時に変換されるため、桁数を確認してください。</source>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpFaqA2">
+      <segment>
+        <source>UNIXタイムスタンプ自体はUTC基準の絶対値であり、タイムゾーンを変えても値そのものは変わりません。変わるのは表示される「年月日時分秒」の見た目のみで、IANAタイムゾーンごとの標準時・夏時間（DST）を考慮したローカル時刻に変換して表示します。</source>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpFaqA3">
+      <segment>
+        <source>UNIXタイムスタンプを符号付き32ビット整数で保持している古いシステムでは、2038年1月19日 03:14:07 UTCに数値が最大値を超えてオーバーフローし、日時が正しく扱えなくなる問題です。JavaScriptの数値やモダンな64ビットシステムでは影響を受けませんが、組み込み機器や古いC言語プログラムでは注意が必要です。</source>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpFaqA4">
+      <segment>
+        <source>はい。1970年1月1日より前の日時は負のタイムスタンプとして扱われ、本ツールでも変換可能です。ただし一部の外部システムやライブラリは負の値をサポートしていない場合があるため、連携先の仕様も併せて確認してください。</source>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpFaqA5">
+      <segment>
+        <source>いいえ。UNIXタイムスタンプの定義上、閏秒は無視され、1日は常に86400秒として扱われます。これはPOSIX標準の一般的な実装に準拠しており、本ツールも同様の仕様です。</source>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpFaqA6">
+      <segment>
+        <source>「日時に変換」モードで日時欄を空欄のまま実行するか、現在時刻を初期値として利用することで、その時点のUNIXタイムスタンプを秒・ミリ秒の両形式で確認できます。</source>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpFaqQ1">
+      <segment>
+        <source>入力したタイムスタンプが秒単位かミリ秒単位かはどう判断されますか</source>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpFaqQ2">
+      <segment>
+        <source>タイムゾーンを変更すると何が変わりますか</source>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpFaqQ3">
+      <segment>
+        <source>2038年問題とは何ですか</source>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpFaqQ4">
+      <segment>
+        <source>1970年より前の日付や負の値は扱えますか</source>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpFaqQ5">
+      <segment>
+        <source>閏秒（うるう秒）は考慮されますか</source>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpFaqQ6">
+      <segment>
+        <source>現在時刻をすぐに取得することはできますか</source>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpFaqTitle">
+      <segment>
+        <source>よくある質問</source>
+      </segment>
+    </unit>
     <unit id="unixTimestampHelpOverview">
       <segment>
         <source>概要</source>
@@ -3237,6 +3477,11 @@ UNIXタイム変換ツールを実装しました。</source>
     <unit id="unixTimestampHelpOverviewDesc">
       <segment>
         <source> UNIXタイム変換ツールは、UNIXタイムスタンプ（エポック時刻）と人間が読める日時表記を相互変換するオンラインツールです。秒・ミリ秒単位のタイムスタンプに対応し、複数の形式（ISO 8601・RFC 2822など）とタイムゾーンでの時刻表示が可能です。 </source>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpOverviewDesc2">
+      <segment>
+        <source> APIレスポンスやログファイルにはUNIXタイムスタンプがそのまま出力されることが多く、電卓や別のスクリプトを用意しなくても、貼り付けるだけで即座に日時へ変換できます。逆に特定の日時をタイムスタンプに変換して、DBのクエリ条件やテストデータの作成に使うこともできます。 </source>
       </segment>
     </unit>
     <unit id="unixTimestampHelpSpec">
@@ -3257,6 +3502,11 @@ UNIXタイム変換ツールを実装しました。</source>
     <unit id="unixTimestampHelpSpecMillis">
       <segment>
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">タイムスタンプ（ミリ秒）</pc>: <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">Date.now()</pc>で取得できる13桁の数値です。JavaScriptやJavaで広く使用されます。</source>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpSpecNegative">
+      <segment>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">負のタイムスタンプ</pc>: 1970年1月1日より前の日時は負の数値で表現されます。多くの言語・ライブラリは負の値もサポートしていますが、一部の古いシステムでは対応していない場合があるため注意が必要です。</source>
       </segment>
     </unit>
     <unit id="unixTimestampHelpSpecRfc">
@@ -3304,6 +3554,11 @@ UNIXタイム変換ツールを実装しました。</source>
         <source>「変換」ボタンをクリックします。</source>
       </segment>
     </unit>
+    <unit id="unixTimestampHelpUsageTip">
+      <segment>
+        <source> 補足: 入力したタイムスタンプの桁数が10桁の場合は秒単位、13桁の場合はミリ秒単位として自動的に解釈されます。桁数が想定と異なる場合は変換結果が極端に過去や未来の日付になるため、入力値の桁数を見直してください。 </source>
+      </segment>
+    </unit>
     <unit id="unixTimestampHelpUseCase">
       <segment>
         <source>ユースケース</source>
@@ -3312,6 +3567,11 @@ UNIXタイム変換ツールを実装しました。</source>
     <unit id="unixTimestampHelpUseCaseApi">
       <segment>
         <source>APIレスポンスに含まれるUNIXタイムスタンプを人間が読める日時に変換する場合。</source>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpUseCaseDb">
+      <segment>
+        <source>DBに保存されたUNIXタイムスタンプ列の値をクエリ結果から目視で確認したい場合。</source>
       </segment>
     </unit>
     <unit id="unixTimestampHelpUseCaseLog">

@@ -4,6 +4,9 @@
     <p class="help-text" i18n="@@colorPaletteHelpOverviewDesc">
       カラーパレットツールは、入力したHEXカラーコードからMaterial Designライクなカラーシェードパレットを自動生成するオンラインツールです。比較モードとシェード生成モードの2種類に対応しています。
     </p>
+    <p class="help-text" i18n="@@colorPaletteHelpOverviewDesc2">
+      デザインシステムやコンポーネントライブラリを構築する際、1つのブランドカラーから背景色・ホバー色・無効化状態の色といった複数階調を手作業で決めるのは手間がかかります。本ツールは基準色を入力するだけで一貫性のあるシェード段階を自動生成し、WCAGを踏まえたテキストカラーの候補も同時に確認できます。
+    </p>
   </app-help-section>
 
   <mat-divider></mat-divider>
@@ -28,6 +31,9 @@
         <span i18n="@@colorPaletteHelpUsageStep4">各シェードのカラーコードをクリックしてコピーできます。</span>
       </li>
     </ol>
+    <p class="help-text" i18n="@@colorPaletteHelpUsageTip">
+      補足: 入力したカラーコードやシェード生成結果はブラウザ内のみで保持され、ページを再読み込みすると内容はリセットされます。使用中の配色を残しておきたい場合は、コピーしたコードを別途メモしてください。
+    </p>
   </app-help-section>
 
   <mat-divider></mat-divider>
@@ -41,6 +47,7 @@
       <li i18n="@@colorPaletteHelpSpecAlgorithm"><strong>シェード生成アルゴリズム</strong>: 入力色を500ステップの基準色として、それより明るい色（50〜400）は白との線形補間（mixColors）、暗い色（600〜900）は黒との線形補間で生成します。例: 50ステップは白を90%混合、900ステップは黒を60%混合します。</li>
       <li i18n="@@colorPaletteHelpSpecWcag"><strong>WCAGコントラスト比</strong>: 各シェードのテキスト色（黒または白）は、相対輝度（Relative Luminance）を<code>L = 0.2126R + 0.7152G + 0.0722B</code>の式で計算し、WCAGガイドラインに基づいてコントラストが高い方を自動選択します。</li>
       <li i18n="@@colorPaletteHelpSpecHex"><strong>HEXカラーコード</strong>: 3桁形式（<code>#RGB</code>）と6桁形式（<code>#RRGGBB</code>）の両方に対応しています。<code>#</code>プレフィックスの有無も問いません。</li>
+      <li i18n="@@colorPaletteHelpSpecRgbHsl"><strong>RGB・HSLとの相互変換</strong>: 内部的にはHEXをRGB（赤・緑・青の各成分0〜255）に変換して線形補間を行い、輝度計算やコントラスト判定にも利用します。HSL（色相・彩度・明度）形式での直接入力には対応していません。</li>
     </ul>
   </app-help-section>
 
@@ -53,6 +60,39 @@
       <li i18n="@@colorPaletteHelpUseCaseBrand">ブランドカラーのシェードパレットを自動生成したい場合。</li>
       <li i18n="@@colorPaletteHelpUseCaseA11y">アクセシビリティ（WCAG）対応のカラー選定と確認。</li>
       <li i18n="@@colorPaletteHelpUseCaseTailwind">Tailwind CSSの命名規則（50〜950の11段階）と本ツールの10段階シェード（50〜900）は段階数が異なる点に注意。950ステップが必要な場合は、900の結果を基準に手動で1段階暗くする。</li>
+      <li i18n="@@colorPaletteHelpUseCaseCompareBrand">複数の候補ブランドカラーを並べて比較し、コーポレートカラーとして採用する色を検討する場合。</li>
     </ul>
+  </app-help-section>
+
+  <mat-divider></mat-divider>
+
+  <app-help-section icon="quiz">
+    <span helpTitle i18n="@@colorPaletteHelpFaqTitle">よくある質問</span>
+    <dl class="help-faq">
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@colorPaletteHelpFaqQ1">RGBやHSL形式のカラーコードは入力できますか</dt>
+        <dd class="help-faq-answer" i18n="@@colorPaletteHelpFaqA1">入力欄はHEXカラーコード（<code>#RRGGBB</code>または<code>#RGB</code>）のみに対応しています。RGBやHSLで色を指定したい場合は、他のツールで一度HEX形式に変換してから入力してください。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@colorPaletteHelpFaqQ2">生成されたシェードはWCAGのどの基準に基づいていますか</dt>
+        <dd class="help-faq-answer" i18n="@@colorPaletteHelpFaqA2">各シェードの背景色に対して、黒文字と白文字それぞれの相対輝度からコントラストが高い方を自動的に選択して表示しています。ただし表示される文字色は目安であり、WCAG AA（4.5:1）やAAA（7:1）などの具体的な達成基準を満たすかどうかは、別途コントラストチェッカーで数値を確認することをおすすめします。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@colorPaletteHelpFaqQ3">500ステップの色は入力した色そのものになりますか</dt>
+        <dd class="help-faq-answer" i18n="@@colorPaletteHelpFaqA3">はい。500ステップは入力したHEXカラーコードをそのまま基準色として使用します。50〜400は白との線形補間、600〜900は黒との線形補間によって、500を中心に明暗のグラデーションが生成されます。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@colorPaletteHelpFaqQ4">生成したパレットは保存できますか</dt>
+        <dd class="help-faq-answer" i18n="@@colorPaletteHelpFaqA4">現在のバージョンではパレットの保存機能は提供していません。各シェードのカラーコードをクリックしてクリップボードにコピーし、デザインツールやコードに直接貼り付けてご利用ください。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@colorPaletteHelpFaqQ5">「比較」モードと「濃淡」モードはどう使い分ければよいですか</dt>
+        <dd class="help-faq-answer" i18n="@@colorPaletteHelpFaqA5">複数のブランドカラー候補を横並びで見比べたい場合は「比較」モード、1つの色について全シェードを詳しく確認したい場合は「濃淡」モードが適しています。用途に応じて切り替えてご利用ください。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@colorPaletteHelpFaqQ6">入力したカラーコードは外部に送信されますか</dt>
+        <dd class="help-faq-answer" i18n="@@colorPaletteHelpFaqA6">いいえ。シェードの生成やコントラスト計算はすべてブラウザ内のJavaScriptで完結しており、入力したカラーコードが外部サーバーへ送信されることはありません。</dd>
+      </div>
+    </dl>
   </app-help-section>
 </div>

@@ -4,6 +4,9 @@
     <p class="help-text" i18n="@@textDiffHelpOverviewDesc">
       テキスト比較ツールは、2つのテキストの差分をサイドバイサイドで視覚化するオンラインツールです。追加・削除・変更箇所を行ごとにハイライト表示し、コードや文書の差分確認を効率化します。
     </p>
+    <p class="help-text" i18n="@@textDiffHelpOverviewDesc2">
+      設定ファイルの変更前後を見比べたい、文書の改訂箇所を確認したいといった場面で、目視での比較は見落としが発生しがちです。本ツールはブラウザ内で差分計算が完結するため、外部にテキストを送信することなく、その場で変更箇所だけを素早く特定できます。
+    </p>
   </app-help-section>
 
   <mat-divider></mat-divider>
@@ -28,6 +31,9 @@
         <span i18n="@@textDiffHelpUsageStep4">入力内容をリセットしたい場合はクリアボタンを使用します。</span>
       </li>
     </ol>
+    <p class="help-text" i18n="@@textDiffHelpUsageTip">
+      補足: 差分は行単位で計算されるため、1行が長すぎる場合や改行位置がずれている場合は差分が見づらくなることがあります。比較しやすくするには、あらかじめ整形ツールなどで改行位置をそろえておくことをおすすめします。
+    </p>
   </app-help-section>
 
   <mat-divider></mat-divider>
@@ -36,10 +42,12 @@
     <span helpTitle i18n="@@textDiffHelpSpec">仕様・用語解説</span>
     <ul class="help-terms">
       <li i18n="@@textDiffHelpSpecAlgorithm"><strong>差分アルゴリズム（LCS）</strong>: LCS（Longest Common Subsequence：最長共通部分列）ベースのdiffアルゴリズムを採用しています。2つのシーケンス間で最も長い共通の部分列を求め、追加・削除箇所を特定します。</li>
-      <li i18n="@@textDiffHelpSpecLineDiff"><strong>行単位の差分</strong>: テキストを行単位で比較し、変更のあった行を識別します。各行の変更内容を原文と並べて表示します。</li>
+      <li i18n="@@textDiffHelpSpecLineDiff"><strong>行単位の差分</strong>: テキストを行単位で比較し、変更のあった行を識別します。各行の変更内容を原文と並べて表示します。単語単位や文字単位での差分強調には対応していません。</li>
       <li i18n="@@textDiffHelpSpecHighlight"><strong>ハイライト色の意味</strong>: 緑は変更後に追加された行、赤は削除された行を示します。変更行は元の色と対比して表示されます。</li>
       <li i18n="@@textDiffHelpSpecSideBySide"><strong>サイドバイサイド表示</strong>: 原文と変更文を並列で表示することで、対応する行の変化が一目でわかります。ユニファイドdiff（---/+++形式）と異なり、変更前後を同時に確認できます。</li>
       <li i18n="@@textDiffHelpSpecDiffResult"><strong>差分結果の構造</strong>: 各行に対して元のテキスト・変更後のテキスト・ハイライト情報が生成されます。変更なし・追加・削除・変更の4種類の状態が識別されます。</li>
+      <li i18n="@@textDiffHelpSpecCaseSensitive"><strong>大文字・小文字の区別</strong>: 比較は大文字・小文字を区別して行われます。<code>Text</code>と<code>text</code>は異なる行として扱われ、差分として検出されます。</li>
+      <li i18n="@@textDiffHelpSpecLineEnding"><strong>改行コードの扱い</strong>: 入力テキストの改行コード（LF・CRLF）の違いも行の境界として扱われるため、改行コードのみが異なるテキスト同士を比較すると、内容が同じでも差分として検出される場合があります。</li>
     </ul>
   </app-help-section>
 
@@ -52,6 +60,39 @@
       <li i18n="@@textDiffHelpUseCaseConfig">設定ファイルのバージョン間比較。</li>
       <li i18n="@@textDiffHelpUseCaseDoc">文書の校正・改訂内容の確認と管理。</li>
       <li i18n="@@textDiffHelpUseCaseGitVsLineDiff">Gitの差分はファイル単位の行ベースdiffで、GitHubのPR画面では単語単位の差分も色分け表示されるが、本ツールは行単位の比較に特化している点に注意。1行が大幅に書き換わった場合、行全体が変更扱いとなり、行内のどの単語が変わったかまでは強調されない。</li>
+      <li i18n="@@textDiffHelpUseCaseTranslation">翻訳作業で、原文と訳文の対応関係を崩さずに旧版・新版のテキストを見比べる場合。</li>
     </ul>
+  </app-help-section>
+
+  <mat-divider></mat-divider>
+
+  <app-help-section icon="quiz">
+    <span helpTitle i18n="@@textDiffHelpFaqTitle">よくある質問</span>
+    <dl class="help-faq">
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@textDiffHelpFaqQ1">文字単位や単語単位での差分表示はできますか</dt>
+        <dd class="help-faq-answer" i18n="@@textDiffHelpFaqA1">いいえ。本ツールは行単位での比較に特化しており、1行の中のどの文字や単語が変わったかまでは強調表示されません。1行が大きく書き換わった場合は、行全体が変更行として扱われます。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@textDiffHelpFaqQ2">改行コード（LF/CRLF）が違うだけでも差分として検出されますか</dt>
+        <dd class="help-faq-answer" i18n="@@textDiffHelpFaqA2">はい。改行コードの違いは行の区切りとして解釈に影響するため、内容が同じでもLFとCRLFが混在していると差分として検出される場合があります。比較前にエディタなどで改行コードを統一することをおすすめします。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@textDiffHelpFaqQ3">大文字と小文字は区別されますか</dt>
+        <dd class="help-faq-answer" i18n="@@textDiffHelpFaqA3">はい、区別されます。<code>Hello</code>と<code>hello</code>のように大文字・小文字のみが異なる行も、変更行として検出されます。大文字・小文字を無視して比較するオプションは現在提供していません。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@textDiffHelpFaqQ4">非常に大きなテキストを比較しても問題ありませんか</dt>
+        <dd class="help-faq-answer" i18n="@@textDiffHelpFaqA4">数千行程度までは実用的な速度で比較できますが、テキストが極端に大きい場合はブラウザ内での計算処理に時間がかかったり、表示が重くなったりすることがあります。大きなファイルを比較する場合は、必要な範囲だけを抜き出してから比較することをおすすめします。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@textDiffHelpFaqQ5">入力したテキストはサーバーに送信されますか</dt>
+        <dd class="help-faq-answer" i18n="@@textDiffHelpFaqA5">いいえ。差分の計算はすべてブラウザ内のJavaScriptで完結しており、入力したテキストが外部サーバーへ送信されることはありません。機密情報を含む文書でも安心して比較できます。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@textDiffHelpFaqQ6">空白（スペース）だけの違いも差分として表示されますか</dt>
+        <dd class="help-faq-answer" i18n="@@textDiffHelpFaqA6">はい。行末や行頭の余分なスペース、タブとスペースの違いなども含めて、1文字でも異なれば変更行として検出されます。インデント幅の変更だけで差分が大量に出る場合は、この点が原因であることが多いです。</dd>
+      </div>
+    </dl>
   </app-help-section>
 </div>

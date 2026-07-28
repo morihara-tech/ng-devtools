@@ -424,25 +424,25 @@
     <unit id="ipCidrHelpFaqA4">
       <segment state="initial">
         <source>入力したIPアドレスがRFC 1918で定義されたプライベートアドレス範囲（<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">10.0.0.0/8</pc>など）に含まれるかどうかは、ネットワークアドレスの計算結果と照らし合わせて確認できます。社内LANやVPC設計時にアドレス範囲が重複していないか確認する際に役立ちます。</source>
-        <target>Compare the calculated network address against the RFC 1918 private ranges (<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">10.0.0.0/8</pc> and the others) to see whether the address you entered falls inside one. That's a quick way to catch overlapping ranges before wiring up a VPC or an office LAN.</target>
+        <target>Compare the calculated network address against the RFC 1918 private ranges (<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">10.0.0.0/8</pc> and the others) to see whether the address you entered falls inside one. That&apos;s a quick way to catch overlapping ranges before wiring up a VPC or an office LAN.</target>
       </segment>
     </unit>
     <unit id="ipCidrHelpFaqA5">
       <segment state="initial">
         <source>IPv4では「2のホスト部ビット数乗 - 2」で計算します。2を引くのは、ホスト部が全0のネットワークアドレスと全1のブロードキャストアドレスをホストに割り当てられないためです。例えば<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">/24</pc>の場合はホスト部が8ビットなので、2の8乗から2を引いた254台が使用可能です。</source>
-        <target>For IPv4 it's 2 raised to the number of host bits, minus 2. The minus 2 removes the all-zeros network address and the all-ones broadcast address, neither of which can be assigned to a host. A <pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">/24</pc> has 8 host bits, so 2^8 - 2 gives you 254 usable addresses.</target>
+        <target>For IPv4 it&apos;s 2 raised to the number of host bits, minus 2. The minus 2 removes the all-zeros network address and the all-ones broadcast address, neither of which can be assigned to a host. A <pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">/24</pc> has 8 host bits, so 2^8 - 2 gives you 254 usable addresses.</target>
       </segment>
     </unit>
     <unit id="ipCidrHelpFaqA6">
       <segment state="initial">
         <source>いいえ。すべての計算処理はブラウザ内のJavaScriptで完結しており、入力したIPアドレスやCIDR情報がサーバーに送信されることはありません。社内ネットワークのアドレス体系を扱う場合でも安心して利用できます。</source>
-        <target>No. Every calculation runs in JavaScript inside your browser, and the IP address or CIDR block you type never leaves your machine. That makes it safe to use even when you're working with internal network layouts you'd rather not send anywhere.</target>
+        <target>No. Every calculation runs in JavaScript inside your browser, and the IP address or CIDR block you type never leaves your machine. That makes it safe to use even when you&apos;re working with internal network layouts you&apos;d rather not send anywhere.</target>
       </segment>
     </unit>
     <unit id="ipCidrHelpFaqQ1">
       <segment state="initial">
         <source>CIDR表記の「/24」はどういう意味ですか</source>
-        <target>What does the "/24" in a CIDR block actually mean?</target>
+        <target>What does the &quot;/24&quot; in a CIDR block actually mean?</target>
       </segment>
     </unit>
     <unit id="ipCidrHelpFaqQ2">
@@ -1841,6 +1841,84 @@ When OFF, uses decodeURI to decode while preserving the URL structure.</target>
         <target> We use cookies to improve our service and provide personalized experiences. For more details, please review our <pc id="0" equivStart="START_LINK" equivEnd="CLOSE_LINK" type="link" dispStart="&lt;a routerLink=&quot;/privacy-policy&quot; (click)=&quot;onPrivacyPolicy()&quot;&gt;" dispEnd="&lt;/a&gt;">Privacy Policy</pc>. </target>
       </segment>
     </unit>
+    <unit id="colorPaletteHelpFaqA1">
+      <segment state="initial">
+        <source>入力欄はHEXカラーコード（<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">#RRGGBB</pc>または<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">#RGB</pc>）のみに対応しています。RGBやHSLで色を指定したい場合は、他のツールで一度HEX形式に変換してから入力してください。</source>
+        <target>The input field only accepts HEX color codes (#RRGGBB or #RGB). If you have a color in RGB or HSL, convert it to HEX with another tool first.</target>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpFaqA2">
+      <segment state="initial">
+        <source>各シェードの背景色に対して、黒文字と白文字それぞれの相対輝度からコントラストが高い方を自動的に選択して表示しています。ただし表示される文字色は目安であり、WCAG AA（4.5:1）やAAA（7:1）などの具体的な達成基準を満たすかどうかは、別途コントラストチェッカーで数値を確認することをおすすめします。</source>
+        <target>For each shade, the relative luminance of both black and white text is calculated and whichever gives higher contrast against that background is shown. This is only a starting point — always verify against the specific WCAG AA (4.5:1) or AAA (7:1) threshold you need with a dedicated contrast checker.</target>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpFaqA3">
+      <segment state="initial">
+        <source>はい。500ステップは入力したHEXカラーコードをそのまま基準色として使用します。50〜400は白との線形補間、600〜900は黒との線形補間によって、500を中心に明暗のグラデーションが生成されます。</source>
+        <target>Yes. The 500 step is always the HEX color you entered, used as-is as the base tone. Shades 50-400 are interpolated toward white and 600-900 toward black, producing a gradient centered on 500.</target>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpFaqA4">
+      <segment state="initial">
+        <source>現在のバージョンではパレットの保存機能は提供していません。各シェードのカラーコードをクリックしてクリップボードにコピーし、デザインツールやコードに直接貼り付けてご利用ください。</source>
+        <target>There's no save feature in the current version. Click any shade's code to copy it to the clipboard and paste it directly into your design tool or code.</target>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpFaqA5">
+      <segment state="initial">
+        <source>複数のブランドカラー候補を横並びで見比べたい場合は「比較」モード、1つの色について全シェードを詳しく確認したい場合は「濃淡」モードが適しています。用途に応じて切り替えてご利用ください。</source>
+        <target>Use Compare mode to line up several candidate brand colors side by side, and Shades mode when you want to inspect the full ramp of a single color in detail. Switch between them depending on what you're evaluating.</target>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpFaqA6">
+      <segment state="initial">
+        <source>いいえ。シェードの生成やコントラスト計算はすべてブラウザ内のJavaScriptで完結しており、入力したカラーコードが外部サーバーへ送信されることはありません。</source>
+        <target>No. Shade generation and contrast calculations all run client-side in JavaScript, so the color codes you enter are never transmitted to an external server.</target>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpFaqQ1">
+      <segment state="initial">
+        <source>RGBやHSL形式のカラーコードは入力できますか</source>
+        <target>Can I enter a color as RGB or HSL instead of HEX?</target>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpFaqQ2">
+      <segment state="initial">
+        <source>生成されたシェードはWCAGのどの基準に基づいていますか</source>
+        <target>Which WCAG guideline is the generated text color based on?</target>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpFaqQ3">
+      <segment state="initial">
+        <source>500ステップの色は入力した色そのものになりますか</source>
+        <target>Does the 500 shade match the color I entered exactly?</target>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpFaqQ4">
+      <segment state="initial">
+        <source>生成したパレットは保存できますか</source>
+        <target>Can I save a palette I've generated?</target>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpFaqQ5">
+      <segment state="initial">
+        <source>「比較」モードと「濃淡」モードはどう使い分ければよいですか</source>
+        <target>When should I use Compare mode versus Shades mode?</target>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpFaqQ6">
+      <segment state="initial">
+        <source>入力したカラーコードは外部に送信されますか</source>
+        <target>Is the color code I enter sent anywhere?</target>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpFaqTitle">
+      <segment state="initial">
+        <source>よくある質問</source>
+        <target>FAQ</target>
+      </segment>
+    </unit>
     <unit id="colorPaletteHelpOverview">
       <segment state="initial">
         <source>概要</source>
@@ -1851,6 +1929,12 @@ When OFF, uses decodeURI to decode while preserving the URL structure.</target>
       <segment state="initial">
         <source> カラーパレットツールは、入力したHEXカラーコードからMaterial Designライクなカラーシェードパレットを自動生成するオンラインツールです。比較モードとシェード生成モードの2種類に対応しています。 </source>
         <target>Picking a single brand color is easy; turning it into a consistent 10-step shade scale for buttons, hover states, and backgrounds by hand is tedious and easy to get wrong. This tool takes one or more HEX colors and instantly expands each into a Material Design-style shade ramp (50–900), so you get a usable, accessible palette in seconds instead of eyeballing tints and shades in a design app. Switch to Compare mode to line up several base colors side by side, or use Shades mode to inspect the full ramp for a single color.</target>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpOverviewDesc2">
+      <segment state="initial">
+        <source> デザインシステムやコンポーネントライブラリを構築する際、1つのブランドカラーから背景色・ホバー色・無効化状態の色といった複数階調を手作業で決めるのは手間がかかります。本ツールは基準色を入力するだけで一貫性のあるシェード段階を自動生成し、WCAGを踏まえたテキストカラーの候補も同時に確認できます。 </source>
+        <target>Hand-picking every hover, disabled, and background tint from a single brand color is tedious and easy to get inconsistent. Feed in one seed color and this tool derives a full tonal ramp instantly, along with a WCAG-aware suggestion for readable text on each shade.</target>
       </segment>
     </unit>
     <unit id="colorPaletteHelpSpec">
@@ -1875,6 +1959,12 @@ When OFF, uses decodeURI to decode while preserving the URL structure.</target>
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">HEXカラーコード</pc>: 3桁形式（<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">#RGB</pc>）と6桁形式（<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">#RRGGBB</pc>）の両方に対応しています。<pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">#</pc>プレフィックスの有無も問いません。</source>
         <target>HEX color codes: Accepts both shorthand (#RGB) and full (#RRGGBB) notation, and the leading # is optional either way — paste a value straight from a CSS file or a design tool without reformatting it first.</target>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpSpecRgbHsl">
+      <segment state="initial">
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">RGB・HSLとの相互変換</pc>: 内部的にはHEXをRGB（赤・緑・青の各成分0〜255）に変換して線形補間を行い、輝度計算やコントラスト判定にも利用します。HSL（色相・彩度・明度）形式での直接入力には対応していません。</source>
+        <target>RGB and HSL conversion: internally, HEX is converted to RGB (red/green/blue channels, 0-255) for the linear interpolation, luminance, and contrast calculations. Entering colors directly in HSL notation is not supported.</target>
       </segment>
     </unit>
     <unit id="colorPaletteHelpSpecShades">
@@ -1925,6 +2015,12 @@ When OFF, uses decodeURI to decode while preserving the URL structure.</target>
         <target>Click any swatch in the Result card to copy its code — or use the &quot;Copy as CSS variables&quot; option to grab the entire ramp as ready-to-paste custom properties.</target>
       </segment>
     </unit>
+    <unit id="colorPaletteHelpUsageTip">
+      <segment state="initial">
+        <source> 補足: 入力したカラーコードやシェード生成結果はブラウザ内のみで保持され、ページを再読み込みすると内容はリセットされます。使用中の配色を残しておきたい場合は、コピーしたコードを別途メモしてください。 </source>
+        <target>Note: entered colors and generated shades live only in the browser tab and reset on reload. Copy down any codes you want to keep before refreshing the page.</target>
+      </segment>
+    </unit>
     <unit id="colorPaletteHelpUseCase">
       <segment state="initial">
         <source>ユースケース</source>
@@ -1941,6 +2037,12 @@ When OFF, uses decodeURI to decode while preserving the URL structure.</target>
       <segment state="initial">
         <source>ブランドカラーのシェードパレットを自動生成したい場合。</source>
         <target>Turning a single brand color into a full shade ramp without manually tinting and shading it in a design tool.</target>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpUseCaseCompareBrand">
+      <segment state="initial">
+        <source>複数の候補ブランドカラーを並べて比較し、コーポレートカラーとして採用する色を検討する場合。</source>
+        <target>Lining up several candidate brand colors side by side to decide which one to adopt as a corporate color.</target>
       </segment>
     </unit>
     <unit id="colorPaletteHelpUseCaseMaterial">
@@ -2802,7 +2904,7 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
     <unit id="svgViewerHelpFaqA4">
       <segment state="initial">
         <source>処理はブラウザ内のCanvas APIで行われるため、極端に複雑なパスや非常に大きなキャンバスサイズを指定すると、ブラウザやデバイスの性能によって描画に時間がかかったり失敗したりすることがあります。必要な範囲でキャンバスサイズを調整してください。</source>
-        <target>Since rendering happens through your browser's Canvas API, an extremely complex path or a very large canvas size can be slow or fail outright, depending on your browser and device. Scale the canvas size down to what you actually need if you run into trouble.</target>
+        <target>Since rendering happens through your browser&apos;s Canvas API, an extremely complex path or a very large canvas size can be slow or fail outright, depending on your browser and device. Scale the canvas size down to what you actually need if you run into trouble.</target>
       </segment>
     </unit>
     <unit id="svgViewerHelpFaqA5">
@@ -2991,6 +3093,84 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
         <target>Exporting transparent-background PNG icons as app or website assets.</target>
       </segment>
     </unit>
+    <unit id="textDiffHelpFaqA1">
+      <segment state="initial">
+        <source>いいえ。本ツールは行単位での比較に特化しており、1行の中のどの文字や単語が変わったかまでは強調表示されません。1行が大きく書き換わった場合は、行全体が変更行として扱われます。</source>
+        <target>No. This tool is built specifically for line-by-line comparison, so it won't highlight which word or character changed within a line. If a line is heavily rewritten, the whole line is simply marked as changed.</target>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpFaqA2">
+      <segment state="initial">
+        <source>はい。改行コードの違いは行の区切りとして解釈に影響するため、内容が同じでもLFとCRLFが混在していると差分として検出される場合があります。比較前にエディタなどで改行コードを統一することをおすすめします。</source>
+        <target>Yes. Line-ending style affects how line boundaries are interpreted, so a file using CRLF and one using LF can show up as different even when the content is otherwise identical. Normalize line endings in your editor before comparing if this is an issue.</target>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpFaqA3">
+      <segment state="initial">
+        <source>はい、区別されます。<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">Hello</pc>と<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">hello</pc>のように大文字・小文字のみが異なる行も、変更行として検出されます。大文字・小文字を無視して比較するオプションは現在提供していません。</source>
+        <target>Yes. Lines that differ only in capitalization, such as Hello versus hello, are still flagged as changed. There's currently no option to ignore case.</target>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpFaqA4">
+      <segment state="initial">
+        <source>数千行程度までは実用的な速度で比較できますが、テキストが極端に大きい場合はブラウザ内での計算処理に時間がかかったり、表示が重くなったりすることがあります。大きなファイルを比較する場合は、必要な範囲だけを抜き出してから比較することをおすすめします。</source>
+        <target>Texts up to a few thousand lines compare at a practical speed, but extremely large inputs can slow down the in-browser computation and make the display sluggish. For very large files, extract just the section you need before comparing.</target>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpFaqA5">
+      <segment state="initial">
+        <source>いいえ。差分の計算はすべてブラウザ内のJavaScriptで完結しており、入力したテキストが外部サーバーへ送信されることはありません。機密情報を含む文書でも安心して比較できます。</source>
+        <target>No. The diff is computed entirely in client-side JavaScript, so nothing you type is ever transmitted to an external server — it's safe to compare even sensitive documents.</target>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpFaqA6">
+      <segment state="initial">
+        <source>はい。行末や行頭の余分なスペース、タブとスペースの違いなども含めて、1文字でも異なれば変更行として検出されます。インデント幅の変更だけで差分が大量に出る場合は、この点が原因であることが多いです。</source>
+        <target>Yes. Trailing or leading spaces, and differences between tabs and spaces, count as a change even if that's the only difference on the line. A sudden flood of diffs after an indentation change is usually caused by this.</target>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpFaqQ1">
+      <segment state="initial">
+        <source>文字単位や単語単位での差分表示はできますか</source>
+        <target>Can this show differences at the character or word level?</target>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpFaqQ2">
+      <segment state="initial">
+        <source>改行コード（LF/CRLF）が違うだけでも差分として検出されますか</source>
+        <target>Are files flagged as different just because of line-ending style (LF vs. CRLF)?</target>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpFaqQ3">
+      <segment state="initial">
+        <source>大文字と小文字は区別されますか</source>
+        <target>Is the comparison case-sensitive?</target>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpFaqQ4">
+      <segment state="initial">
+        <source>非常に大きなテキストを比較しても問題ありませんか</source>
+        <target>Is there a limit to how large a text I can compare?</target>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpFaqQ5">
+      <segment state="initial">
+        <source>入力したテキストはサーバーに送信されますか</source>
+        <target>Is the text I enter sent to a server?</target>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpFaqQ6">
+      <segment state="initial">
+        <source>空白（スペース）だけの違いも差分として表示されますか</source>
+        <target>Do whitespace-only differences show up in the diff?</target>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpFaqTitle">
+      <segment state="initial">
+        <source>よくある質問</source>
+        <target>FAQ</target>
+      </segment>
+    </unit>
     <unit id="textDiffHelpOverview">
       <segment state="initial">
         <source>概要</source>
@@ -3003,6 +3183,12 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
         <target>Spotting what actually changed between two versions of a config file, a paragraph, or a pasted log is slow and error-prone when you&apos;re just scanning by eye. This tool runs a line-by-line diff on whatever you paste and renders the result as a color-coded, side-by-side comparison — added, removed, and modified lines are immediately visible, without needing a local git checkout or a diff viewer plugin.</target>
       </segment>
     </unit>
+    <unit id="textDiffHelpOverviewDesc2">
+      <segment state="initial">
+        <source> 設定ファイルの変更前後を見比べたい、文書の改訂箇所を確認したいといった場面で、目視での比較は見落としが発生しがちです。本ツールはブラウザ内で差分計算が完結するため、外部にテキストを送信することなく、その場で変更箇所だけを素早く特定できます。 </source>
+        <target>Spotting what actually changed between two versions of a config file or document by eye is error-prone — it's easy to miss a single flipped character. Because the comparison runs entirely in the browser, you can pinpoint exactly what changed without ever sending either version to a server.</target>
+      </segment>
+    </unit>
     <unit id="textDiffHelpSpec">
       <segment state="initial">
         <source>仕様・用語解説</source>
@@ -3013,6 +3199,12 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">差分アルゴリズム（LCS）</pc>: LCS（Longest Common Subsequence：最長共通部分列）ベースのdiffアルゴリズムを採用しています。2つのシーケンス間で最も長い共通の部分列を求め、追加・削除箇所を特定します。</source>
         <target>Diff algorithm (LCS): Built on the Longest Common Subsequence (LCS) algorithm — the same family of algorithm behind tools like the classic Unix diff and Git&apos;s default diff engine. It identifies the longest sequence of lines common to both texts, then reports everything else as an addition or deletion relative to that shared backbone.</target>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpSpecCaseSensitive">
+      <segment state="initial">
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">大文字・小文字の区別</pc>: 比較は大文字・小文字を区別して行われます。<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">Text</pc>と<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">text</pc>は異なる行として扱われ、差分として検出されます。</source>
+        <target>Case sensitivity: comparisons are case-sensitive. Text and text are treated as different lines and will show up as a diff even though the only difference is capitalization.</target>
       </segment>
     </unit>
     <unit id="textDiffHelpSpecDiffResult">
@@ -3029,8 +3221,14 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
     </unit>
     <unit id="textDiffHelpSpecLineDiff">
       <segment state="initial">
-        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">行単位の差分</pc>: テキストを行単位で比較し、変更のあった行を識別します。各行の変更内容を原文と並べて表示します。</source>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">行単位の差分</pc>: テキストを行単位で比較し、変更のあった行を識別します。各行の変更内容を原文と並べて表示します。単語単位や文字単位での差分強調には対応していません。</source>
         <target>Line-level diff: Comparison happens at the line level, not the word or character level — a single edited word still marks the whole line as modified. This keeps results easy to scan for config files and prose, though it won&apos;t pinpoint the exact word that changed within a long line.</target>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpSpecLineEnding">
+      <segment state="initial">
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">改行コードの扱い</pc>: 入力テキストの改行コード（LF・CRLF）の違いも行の境界として扱われるため、改行コードのみが異なるテキスト同士を比較すると、内容が同じでも差分として検出される場合があります。</source>
+        <target>Line ending handling: differences in line-ending style (LF vs. CRLF) are also treated as part of the line boundary, so two texts that are otherwise identical can still show up as a diff if their line endings don't match.</target>
       </segment>
     </unit>
     <unit id="textDiffHelpSpecSideBySide">
@@ -3069,6 +3267,12 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
         <target>Use the clear button to wipe both fields and start over.</target>
       </segment>
     </unit>
+    <unit id="textDiffHelpUsageTip">
+      <segment state="initial">
+        <source> 補足: 差分は行単位で計算されるため、1行が長すぎる場合や改行位置がずれている場合は差分が見づらくなることがあります。比較しやすくするには、あらかじめ整形ツールなどで改行位置をそろえておくことをおすすめします。 </source>
+        <target>Note: the diff is computed line by line, so very long lines or mismatched line breaks can make the result harder to read. Running both texts through a formatter first to normalize line breaks tends to make the comparison much clearer.</target>
+      </segment>
+    </unit>
     <unit id="textDiffHelpUseCase">
       <segment state="initial">
         <source>ユースケース</source>
@@ -3097,6 +3301,12 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
       <segment state="initial">
         <source>コードレビュー前に変更内容を確認する場合。</source>
         <target>Sanity-checking a snippet&apos;s changes before opening a pull request, when you don&apos;t have the file in a local git checkout.</target>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpUseCaseTranslation">
+      <segment state="initial">
+        <source>翻訳作業で、原文と訳文の対応関係を崩さずに旧版・新版のテキストを見比べる場合。</source>
+        <target>Comparing an old and new draft of a translation without losing the line-by-line correspondence between source and translated text.</target>
       </segment>
     </unit>
     <unit id="ulidGenHelpFaqA1">
@@ -3321,6 +3531,84 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
         <target>Weighing ULID against UUID v7 (RFC 9562): both are time-ordered and sort correctly as strings, so the choice often comes down to format. ULID is a 26-character Base32 string with no separators and a community spec rather than an IETF standard; UUID v7 is the canonical 36-character hyphenated UUID format, so it slots into existing `uuid` database columns and client libraries without any schema changes. If you&apos;re already storing UUIDs everywhere, UUID v7 is usually the lower-friction upgrade; if you want shorter, URL-friendly IDs, ULID wins.</target>
       </segment>
     </unit>
+    <unit id="unixTimestampHelpFaqA1">
+      <segment state="initial">
+        <source>桁数で自動判定しています。おおむね10桁（2001年9月〜2286年頃の範囲）は秒単位、13桁（1970年〜2001年より後の範囲）はミリ秒単位として扱われます。想定と異なる桁数を入力すると、極端に過去または未来の日時に変換されるため、桁数を確認してください。</source>
+        <target>It's inferred from the number of digits. Roughly 10 digits (covering dates from 2001 to around 2286) is treated as seconds, and 13 digits (covering 1970 through well past 2001) as milliseconds. An unexpected digit count will produce a wildly wrong date, so check the digit count if the result looks off.</target>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpFaqA2">
+      <segment state="initial">
+        <source>UNIXタイムスタンプ自体はUTC基準の絶対値であり、タイムゾーンを変えても値そのものは変わりません。変わるのは表示される「年月日時分秒」の見た目のみで、IANAタイムゾーンごとの標準時・夏時間（DST）を考慮したローカル時刻に変換して表示します。</source>
+        <target>The underlying Unix timestamp is always a UTC-based absolute value and doesn't change when you switch time zones. Only the displayed year/month/day/hour/minute/second changes, converted to local time for the selected IANA zone with daylight saving time (DST) applied automatically.</target>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpFaqA3">
+      <segment state="initial">
+        <source>UNIXタイムスタンプを符号付き32ビット整数で保持している古いシステムでは、2038年1月19日 03:14:07 UTCに数値が最大値を超えてオーバーフローし、日時が正しく扱えなくなる問題です。JavaScriptの数値やモダンな64ビットシステムでは影響を受けませんが、組み込み機器や古いC言語プログラムでは注意が必要です。</source>
+        <target>Older systems that store Unix time as a signed 32-bit integer will overflow at 03:14:07 UTC on January 19, 2038, causing dates to be handled incorrectly after that point. Modern 64-bit systems and JavaScript's number type are unaffected, but embedded devices and legacy C programs can still be at risk.</target>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpFaqA4">
+      <segment state="initial">
+        <source>はい。1970年1月1日より前の日時は負のタイムスタンプとして扱われ、本ツールでも変換可能です。ただし一部の外部システムやライブラリは負の値をサポートしていない場合があるため、連携先の仕様も併せて確認してください。</source>
+        <target>Yes. Dates before January 1, 1970 are represented as negative timestamps, and this tool converts them correctly. Some external systems or libraries don't support negative values though, so check the spec of whatever you're integrating with.</target>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpFaqA5">
+      <segment state="initial">
+        <source>いいえ。UNIXタイムスタンプの定義上、閏秒は無視され、1日は常に86400秒として扱われます。これはPOSIX標準の一般的な実装に準拠しており、本ツールも同様の仕様です。</source>
+        <target>No. By definition, Unix time ignores leap seconds and treats every day as exactly 86400 seconds. This matches the common POSIX-standard implementation, and this tool follows the same convention.</target>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpFaqA6">
+      <segment state="initial">
+        <source>「日時に変換」モードで日時欄を空欄のまま実行するか、現在時刻を初期値として利用することで、その時点のUNIXタイムスタンプを秒・ミリ秒の両形式で確認できます。</source>
+        <target>Leave the date field at its default in "Convert to date" mode, or use the current time as the starting value, to see the current moment expressed as both a seconds and a milliseconds Unix timestamp.</target>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpFaqQ1">
+      <segment state="initial">
+        <source>入力したタイムスタンプが秒単位かミリ秒単位かはどう判断されますか</source>
+        <target>How does the tool know if my timestamp is in seconds or milliseconds?</target>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpFaqQ2">
+      <segment state="initial">
+        <source>タイムゾーンを変更すると何が変わりますか</source>
+        <target>What changes when I switch the time zone?</target>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpFaqQ3">
+      <segment state="initial">
+        <source>2038年問題とは何ですか</source>
+        <target>What is the Year 2038 problem?</target>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpFaqQ4">
+      <segment state="initial">
+        <source>1970年より前の日付や負の値は扱えますか</source>
+        <target>Can this handle dates before 1970 or negative values?</target>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpFaqQ5">
+      <segment state="initial">
+        <source>閏秒（うるう秒）は考慮されますか</source>
+        <target>Are leap seconds taken into account?</target>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpFaqQ6">
+      <segment state="initial">
+        <source>現在時刻をすぐに取得することはできますか</source>
+        <target>Can I quickly get the current timestamp?</target>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpFaqTitle">
+      <segment state="initial">
+        <source>よくある質問</source>
+        <target>FAQ</target>
+      </segment>
+    </unit>
     <unit id="unixTimestampHelpOverview">
       <segment state="initial">
         <source>概要</source>
@@ -3331,6 +3619,12 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
       <segment state="initial">
         <source> UNIXタイム変換ツールは、UNIXタイムスタンプ（エポック時刻）と人間が読める日時表記を相互変換するオンラインツールです。秒・ミリ秒単位のタイムスタンプに対応し、複数の形式（ISO 8601・RFC 2822など）とタイムゾーンでの時刻表示が可能です。 </source>
         <target>An API response or a log line full of raw epoch seconds (or milliseconds) is unreadable at a glance, and doing the conversion by hand — including the timezone math — is a common source of off-by-some-hours mistakes. This tool converts UNIX timestamps to and from human-readable date/time in both directions, handling both second and millisecond precision, multiple output formats (ISO 8601, RFC 2822), and any IANA timezone including daylight saving time transitions.</target>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpOverviewDesc2">
+      <segment state="initial">
+        <source> APIレスポンスやログファイルにはUNIXタイムスタンプがそのまま出力されることが多く、電卓や別のスクリプトを用意しなくても、貼り付けるだけで即座に日時へ変換できます。逆に特定の日時をタイムスタンプに変換して、DBのクエリ条件やテストデータの作成に使うこともできます。 </source>
+        <target>API responses and log files usually emit raw Unix timestamps as-is, so instead of reaching for a calculator or writing a one-off script, you can just paste the value in and get a readable date instantly. It also works the other way — enter a specific date and time to get the corresponding timestamp for a database query or test fixture.</target>
       </segment>
     </unit>
     <unit id="unixTimestampHelpSpec">
@@ -3355,6 +3649,12 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">タイムスタンプ（ミリ秒）</pc>: <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">Date.now()</pc>で取得できる13桁の数値です。JavaScriptやJavaで広く使用されます。</source>
         <target>Millisecond timestamp: A 13-digit number — what you get from JavaScript&apos;s Date.now() or Java&apos;s System.currentTimeMillis(). If a value you&apos;re inspecting has 13 digits instead of 10, it&apos;s almost certainly milliseconds, not seconds; feeding it into a seconds-based parser unmodified is a common bug.</target>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpSpecNegative">
+      <segment state="initial">
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">負のタイムスタンプ</pc>: 1970年1月1日より前の日時は負の数値で表現されます。多くの言語・ライブラリは負の値もサポートしていますが、一部の古いシステムでは対応していない場合があるため注意が必要です。</source>
+        <target>Negative timestamps: dates before January 1, 1970 are represented as negative numbers. Most languages and libraries support negative values, but some older systems don't, so check the target system's behavior if you're passing the value along.</target>
       </segment>
     </unit>
     <unit id="unixTimestampHelpSpecRfc">
@@ -3411,6 +3711,12 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
         <target>Click Convert and read the result from the Conversion Result card.</target>
       </segment>
     </unit>
+    <unit id="unixTimestampHelpUsageTip">
+      <segment state="initial">
+        <source> 補足: 入力したタイムスタンプの桁数が10桁の場合は秒単位、13桁の場合はミリ秒単位として自動的に解釈されます。桁数が想定と異なる場合は変換結果が極端に過去や未来の日付になるため、入力値の桁数を見直してください。 </source>
+        <target>Note: a 10-digit input is automatically interpreted as seconds and a 13-digit input as milliseconds. If the digit count doesn't match what you expect, the result will land on a wildly wrong date — double-check the number of digits first.</target>
+      </segment>
+    </unit>
     <unit id="unixTimestampHelpUseCase">
       <segment state="initial">
         <source>ユースケース</source>
@@ -3421,6 +3727,12 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
       <segment state="initial">
         <source>APIレスポンスに含まれるUNIXタイムスタンプを人間が読める日時に変換する場合。</source>
         <target>Translating raw epoch values in a JSON API response into a date you can actually read while debugging.</target>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpUseCaseDb">
+      <segment state="initial">
+        <source>DBに保存されたUNIXタイムスタンプ列の値をクエリ結果から目視で確認したい場合。</source>
+        <target>Eyeballing the value of a Unix timestamp column returned from a database query without writing a conversion function.</target>
       </segment>
     </unit>
     <unit id="unixTimestampHelpUseCaseLog">
@@ -4484,13 +4796,13 @@ Added the tool list page.</target>
     <unit id="urlEncoderHelpFaqA1">
       <segment state="initial">
         <source>クエリパラメータの値やパスの一部分など、URLの断片をエンコードする場合はencodeURIComponentを使用してください。すでに完成した1つのURL全体をエンコードする場合は、<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">/</pc>や<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">?</pc>などの構造文字を保持できるencodeURIが適しています。</source>
-        <target>Use encodeURIComponent when you're encoding a fragment of a URL — a query parameter value, a single path segment. Use encodeURI when you already have a complete, well-formed URL and want to encode it as a whole while keeping structural characters like <pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">/</pc> and <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">?</pc> intact.</target>
+        <target>Use encodeURIComponent when you&apos;re encoding a fragment of a URL — a query parameter value, a single path segment. Use encodeURI when you already have a complete, well-formed URL and want to encode it as a whole while keeping structural characters like <pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">/</pc> and <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">?</pc> intact.</target>
       </segment>
     </unit>
     <unit id="urlEncoderHelpFaqA2">
       <segment state="initial">
         <source>日本語などのマルチバイト文字はまずUTF-8のバイト列に変換され、各バイトが<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%XX</pc>形式で表現されます。例えば「あ」は3バイトのUTF-8表現になるため、<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%E3%81%82</pc>という3つのパーセントエンコード列に変換されます。</source>
-        <target>Japanese and other multi-byte characters are first converted to their UTF-8 byte sequence, and each byte is then written as <pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%XX</pc>. The character "あ" is 3 bytes in UTF-8, so it expands into the three-part sequence <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%E3%81%82</pc>.</target>
+        <target>Japanese and other multi-byte characters are first converted to their UTF-8 byte sequence, and each byte is then written as <pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%XX</pc>. The character &quot;あ&quot; is 3 bytes in UTF-8, so it expands into the three-part sequence <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%E3%81%82</pc>.</target>
       </segment>
     </unit>
     <unit id="urlEncoderHelpFaqA3">
@@ -4508,13 +4820,13 @@ Added the tool list page.</target>
     <unit id="urlEncoderHelpFaqA5">
       <segment state="initial">
         <source>本ツールはJavaScript標準のencodeURI・encodeURIComponentに準拠しており、スペースは常に<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%20</pc>に変換されます。「+」によるスペース表現は<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">application/x-www-form-urlencoded</pc>形式のフォーム送信で使われる別の慣習であり、本ツールでは扱いません。</source>
-        <target>This tool follows JavaScript's built-in encodeURI/encodeURIComponent behavior, which always represents a space as <pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%20</pc>. The "+" convention for spaces belongs to <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">application/x-www-form-urlencoded</pc> form submissions, a separate encoding scheme that this tool doesn't produce.</target>
+        <target>This tool follows JavaScript&apos;s built-in encodeURI/encodeURIComponent behavior, which always represents a space as <pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%20</pc>. The &quot;+&quot; convention for spaces belongs to <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">application/x-www-form-urlencoded</pc> form submissions, a separate encoding scheme that this tool doesn&apos;t produce.</target>
       </segment>
     </unit>
     <unit id="urlEncoderHelpFaqA6">
       <segment state="initial">
         <source>「%」の後ろに2桁の16進数が続かない不正な形式（例: 文字列末尾が「%2」で終わっている場合）や、UTF-8として不正なバイト列になっている場合はデコードエラーになります。エンコード前の文字列を再度確認してください。</source>
-        <target>Decoding fails when a "%" isn't followed by exactly two hex digits (for example, a string that ends abruptly with "%2"), or when the decoded bytes don't form valid UTF-8. Double-check the string before it was encoded and try again.</target>
+        <target>Decoding fails when a &quot;%&quot; isn&apos;t followed by exactly two hex digits (for example, a string that ends abruptly with &quot;%2&quot;), or when the decoded bytes don&apos;t form valid UTF-8. Double-check the string before it was encoded and try again.</target>
       </segment>
     </unit>
     <unit id="urlEncoderHelpFaqQ1">
@@ -4544,7 +4856,7 @@ Added the tool list page.</target>
     <unit id="urlEncoderHelpFaqQ5">
       <segment state="initial">
         <source>スペースは「+」と「%20」のどちらに変換されますか</source>
-        <target>Does this tool encode spaces as "+" or as "%20"?</target>
+        <target>Does this tool encode spaces as &quot;+&quot; or as &quot;%20&quot;?</target>
       </segment>
     </unit>
     <unit id="urlEncoderHelpFaqQ6">
@@ -4592,7 +4904,7 @@ Added the tool list page.</target>
     <unit id="urlEncoderHelpSpecDoubleEncoding">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">二重エンコーディング</pc>: すでにエンコード済みの文字列をさらにエンコードすると、<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%</pc>自体が<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%25</pc>に変換されてしまい、正しくデコードできなくなります。エンコード対象がすでに<pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%XX</pc>形式を含んでいないか確認してから変換してください。</source>
-        <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">Double encoding</pc>: Encoding a string that's already encoded turns the <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%</pc> character itself into <pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%25</pc>, breaking a clean round trip back to the original text. Check whether the input already contains <pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%XX</pc> sequences before converting.</target>
+        <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">Double encoding</pc>: Encoding a string that&apos;s already encoded turns the <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%</pc> character itself into <pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%25</pc>, breaking a clean round trip back to the original text. Check whether the input already contains <pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%XX</pc> sequences before converting.</target>
       </segment>
     </unit>
     <unit id="urlEncoderHelpSpecEncodeUri">
@@ -4664,7 +4976,7 @@ Added the tool list page.</target>
     <unit id="urlEncoderHelpUseCaseJapaneseDomain">
       <segment state="initial">
         <source>日本語ドメインやパスを含むURLを共有可能な形式に変換する場合。</source>
-        <target>Converting a URL with a Japanese domain or path into a form that's safe to share or paste elsewhere.</target>
+        <target>Converting a URL with a Japanese domain or path into a form that&apos;s safe to share or paste elsewhere.</target>
       </segment>
     </unit>
     <unit id="urlEncoderHelpUseCaseQuery">
