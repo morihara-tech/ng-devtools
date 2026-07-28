@@ -19,6 +19,84 @@
         <target>© 2026 Yutaka Morihara</target>
       </segment>
     </unit>
+    <unit id="apiKeyGenHelpFaqA1">
+      <segment state="initial">
+        <source>いいえ。本ツールが生成するのは形式が似たランダムな文字列であり、決済サービスやクラウドプロバイダーなど実際のサービス側で認証情報として登録・検証されるものではありません。本番用のキーは必ず各サービスの管理画面から正式に発行してください。用途はモック・テスト・開発時のダミーデータに限定されます。</source>
+        <target>No. This generates a randomly shaped string, not a credential registered with any payment processor, cloud provider, or third-party API. Production keys must always come from the issuing service&apos;s own dashboard. Treat anything generated here as mock data for local development and testing only.</target>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpFaqA2">
+      <segment state="initial">
+        <source>暗号学的に安全な乱数を使っており、十分な長さであれば統計的に衝突する確率は極めて低くなります。ただし数学的な絶対保証ではないため、システムに組み込む際はデータベース側でUNIQUE制約を設定し、万一の重複発行を防ぐ設計にすることを推奨します。</source>
+        <target>Not with a mathematical guarantee — but the underlying randomness is cryptographically secure, so collisions become statistically negligible once the key is reasonably long. If you wire generated keys into a real system, still add a UNIQUE constraint at the database layer as a backstop against the rare duplicate.</target>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpFaqA3">
+      <segment state="initial">
+        <source>URLやヘッダーに短く収めたい場合はBase62、既存の暗号処理やハッシュ関数と親和性を持たせたい場合はHex、他システムとの相互運用性を重視する場合はUUID v4が適しています。文字数を自由に調整したい場合はBase62かHexを選んでください。</source>
+        <target>Base62 packs the most entropy per character, so it&apos;s the best fit for short keys in URLs or headers. Hex matches the alphabet crypto libraries already emit, so it&apos;s convenient alongside hash functions. UUID v4 is the choice when the system you&apos;re integrating with expects a standard UUID column or field. Only Base62 and Hex let you adjust the length.</target>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpFaqA4">
+      <segment state="initial">
+        <source>決まった正解はありませんが、<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">sk_live_</pc>や<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">sk_test_</pc>のように用途（本番/テスト）や権限レベルを識別できる文字列を付けると、ログや設定ファイルを見たときにキーの種類を判別しやすくなります。実運用では環境ごとに異なるプレフィックスを使う設計が一般的です。</source>
+        <target>There&apos;s no fixed rule, but a tag like <pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">sk_live_</pc> or <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">sk_test_</pc> that encodes environment or permission level makes a key self-identifying the moment someone spots it in a log or config file. Real-world setups typically use a different prefix per environment.</target>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpFaqA5">
+      <segment state="initial">
+        <source>いいえ。生成処理はすべてブラウザ内のJavaScriptで完結しており、生成されたキーが外部サーバーへ送信されることはありません。ページを離れると生成結果は残らないため、必要な場合はその場でコピーして保管してください。</source>
+        <target>No. Generation runs entirely in your browser&apos;s JavaScript, so the keys never leave your machine. Results aren&apos;t persisted anywhere — leaving the page clears them — so copy anything you need before navigating away.</target>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpFaqA6">
+      <segment state="initial">
+        <source>本ツールで生成した値をテスト用途以外の実運用キーとして採用する場合は、パスワードと同様にサーバー側ではハッシュ化（例: SHA-256）した値のみを保存し、平文のキーをDBに残さない設計にすることを推奨します。本ツール自体はハッシュ化機能を提供していません。</source>
+        <target>If you adopt a value from here as a real production key rather than test data, treat it like a password: store only a server-side hash (e.g. SHA-256) and never keep the plaintext key in your database. This tool doesn&apos;t hash values itself — that&apos;s left to your backend.</target>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpFaqQ1">
+      <segment state="initial">
+        <source>生成したキーを本番サービスのAPIキーとしてそのまま使えますか</source>
+        <target>Can I use a generated key as a real production API key?</target>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpFaqQ2">
+      <segment state="initial">
+        <source>生成したキーの一意性（重複しないこと）は保証されますか</source>
+        <target>Is uniqueness guaranteed — could two generated keys collide?</target>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpFaqQ3">
+      <segment state="initial">
+        <source>Base62・Hex・UUID v4はどう使い分ければよいですか</source>
+        <target>How do I choose between Base62, Hex, and UUID v4?</target>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpFaqQ4">
+      <segment state="initial">
+        <source>プレフィックスにはどんな文字列を付けるべきですか</source>
+        <target>What kind of string should I use as a prefix?</target>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpFaqQ5">
+      <segment state="initial">
+        <source>生成したAPIキーはサーバーに保存・送信されますか</source>
+        <target>Are generated API keys stored or sent to a server?</target>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpFaqQ6">
+      <segment state="initial">
+        <source>実際のAPIキーのようにハッシュ化して保存する必要はありますか</source>
+        <target>Should I hash it before storing it, like a real API key?</target>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpFaqTitle">
+      <segment state="initial">
+        <source>よくある質問</source>
+        <target>FAQ</target>
+      </segment>
+    </unit>
     <unit id="apiKeyGenHelpOverview">
       <segment state="initial">
         <source>概要</source>
@@ -29,6 +107,12 @@
       <segment state="initial">
         <source> APIキージェネレーターは、安全なAPIキーをオンラインで生成するツールです。Base62・16進数・UUID v4の3形式に対応し、任意のプレフィックスを付与したAPIキーを一括生成できます。 </source>
         <target>Hardcoding a placeholder like &quot;test123&quot; as a stand-in API key works fine until it leaks into a commit, a log line, or a shared Slack thread — and unlike a real credential, it gives reviewers no signal about what a properly formed key should even look like. This tool generates cryptographically random, properly shaped key candidates on demand in Base62, hex, or UUID v4, with an optional prefix, so local development and onboarding docs can use realistic-looking keys without ever touching production secrets.</target>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpOverviewDesc2">
+      <segment state="initial">
+        <source> 開発中のAPIサーバーやモックサーバーの動作確認、認証ヘッダーの疎通テストなどでは、実際の課金サービスからキーを発行する前に「それらしい形式」のダミーキーが必要になる場面が多くあります。本ツールはブラウザ内で暗号学的に安全な乱数を用いてキーを生成するため、外部サービスに問い合わせることなくその場で必要な件数を用意できます。 </source>
+        <target> Wiring up an auth header against an in-progress API server or a mock backend rarely needs an actual key from a billing provider — it just needs something the right shape. Because generation runs client-side with cryptographically secure randomness, you can produce as many realistic-looking keys as you need without ever calling out to a third-party service.</target>
       </segment>
     </unit>
     <unit id="apiKeyGenHelpSpec">
@@ -59,6 +143,18 @@
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">プレフィックス</pc>: <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">sk_</pc>、<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">pk_</pc>、<pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">api_</pc>などのプレフィックスを付与することで、キーの用途や権限を識別しやすくします（例: OpenAIの<pc id="4" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">sk-...</pc>形式）。</source>
         <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">Prefix</pc>: A short tag like <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">sk_</pc>, <pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">pk_</pc>, or <pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">api_</pc> lets you tell secret keys apart from publishable ones at a glance — the same convention OpenAI uses with its <pc id="4" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">sk-...</pc> keys — so a key pasted into a support ticket or a code review is self-documenting.</target>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpSpecRandomSource">
+      <segment state="initial">
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">乱数生成の仕組み</pc>: いずれのフォーマットもブラウザの暗号学的に安全な乱数生成器（Web Crypto APIのCrypto.getRandomValues）から得たバイト列をもとに文字を選択しており、予測可能性のある擬似乱数は使用していません。</source>
+        <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">Randomness source</pc>: Every format draws its characters from bytes produced by the Web Crypto API&apos;s Crypto.getRandomValues, not a predictable pseudo-random generator like Math.random().</target>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpSpecUniqueness">
+      <segment state="initial">
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">一意性の考え方</pc>: 本ツールは統計的に衝突がほぼ起こらない十分なランダム性を提供しますが、データベース側で一意制約を課すことは保証しません。本番導入時は発行時にDB側でも重複チェック（UNIQUE制約）を行うことを推奨します。</source>
+        <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">Uniqueness</pc>: The randomness here makes collisions statistically negligible, but it doesn&apos;t enforce uniqueness the way a database constraint does. If you adopt generated keys in a real system, add a UNIQUE constraint at issuance time as well.</target>
       </segment>
     </unit>
     <unit id="apiKeyGenHelpSpecUuid">
@@ -103,6 +199,12 @@
         <target>Click Generate, then use the copy menu to grab the results as plain text, an .env block, or an MCP config snippet.</target>
       </segment>
     </unit>
+    <unit id="apiKeyGenHelpUsageTip">
+      <segment state="initial">
+        <source> 補足: 「UUID v4」フォーマットを選択した場合、文字数の指定は無視され、常に固定のハイフン区切り36文字形式で生成されます。既存システムがUUID形式のキーを前提にしている場合はこちらを選択してください。 </source>
+        <target> Note: switching to UUID v4 ignores the Length field entirely — output is always the fixed 36-character hyphenated form. Pick this option whenever the system on the other end expects a UUID-typed key.</target>
+      </segment>
+    </unit>
     <unit id="apiKeyGenHelpUseCase">
       <segment state="initial">
         <source>ユースケース</source>
@@ -113,6 +215,12 @@
       <segment state="initial">
         <source>REST APIの認証トークンやAPIキーの生成。</source>
         <target>Generating placeholder authentication tokens and API keys while building or testing a REST API.</target>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpUseCaseE2e">
+      <segment state="initial">
+        <source>E2Eテストのテストデータとして、複数のダミーAPIキーを一括で発行したい場合。</source>
+        <target>Batch-generating a set of dummy API keys as fixture data for end-to-end tests.</target>
       </segment>
     </unit>
     <unit id="apiKeyGenHelpUseCaseSaas">
@@ -131,6 +239,12 @@
       <segment state="initial">
         <source>MCPサーバー設定ファイルに記載するダミーのAPIキーやトークンの作成。</source>
         <target>An MCP server&apos;s config file (mcp.json or similar) almost always wants an API key or bearer token in its env block — generate one here and copy it straight out as a ready-to-paste MCP Config snippet via the output card&apos;s copy menu, instead of hand-typing a fake value that might not match the expected length or charset.</target>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpUseCaseMock">
+      <segment state="initial">
+        <source>モックサーバーやローカル開発環境で、認証ヘッダーの疎通確認用に使う仮のAPIキーを用意したい場合。</source>
+        <target>Preparing a placeholder key to sanity-check an Authorization header against a mock server or local dev environment.</target>
       </segment>
     </unit>
     <unit id="app.title">
@@ -1959,6 +2073,84 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
         <target>UUID Generator — Bulk v1, v4 &amp; v7 (RFC 9562) Online</target>
       </segment>
     </unit>
+    <unit id="passwordGenHelpFaqA1">
+      <segment state="initial">
+        <source>いいえ。生成処理はすべてブラウザ内で完結しており、サーバーへの送信やCookie・ローカルストレージへの保存は行いません。表示された結果はページを離れると失われるため、必要な場合はその場でコピーして安全な場所に保管してください。</source>
+        <target>No. Everything happens client-side — nothing is sent to a server, and results aren&apos;t written to cookies or local storage. Leaving the page clears whatever was generated, so copy anything you need into a safe place before you navigate away.</target>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpFaqA2">
+      <segment state="initial">
+        <source>エントロピーは「文字種の数の対数×文字数」で概算でき、値が大きいほど総当たり攻撃に必要な試行回数が増えます。例えば英数字+記号（約94種）で16文字なら100ビットを超え、現実的な時間では解読が困難な強度になります。重要なアカウントほど文字種を増やし長くすることを推奨します。</source>
+        <target>Roughly, entropy is log2(character pool size) multiplied by length — bigger numbers mean exponentially more brute-force attempts required. A 16-character password from the ~94-character alphanumeric-plus-symbols pool clears 100 bits, well beyond what&apos;s crackable in any practical timeframe. For your most sensitive accounts, favor both a larger character set and more length.</target>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpFaqA3">
+      <segment state="initial">
+        <source>対象システムが特定の記号を禁止している場合や、口頭・手入力での伝達が発生する場合は「英数字」や「英小文字 + 数字」を選ぶ方が安全にトラブルを避けられます。また数字のみのPINコード入力を想定した機器では「数字のみ」を選択してください。</source>
+        <target>Yes — if the target system rejects certain symbols, or the password will be read aloud or typed in by hand, Alphanumeric or Lowercase + Digits avoids those headaches entirely. For devices that only accept a numeric PIN, use Digits Only.</target>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpFaqA4">
+      <segment state="initial">
+        <source>使用可能な文字種が減るためエントロピーはわずかに低下しますが、実用上の影響はごくわずかです。それよりも印刷物や電話口での伝達時に0とO、1とlを読み間違えるリスクの方が実運用では大きいため、人が手入力する場面では有効にすることを推奨します。</source>
+        <target>It shrinks the character pool slightly, so entropy dips a little, but the effect is negligible in practice. The bigger real-world risk is someone misreading a 0 for an O or a 1 for an l off a printout or over the phone — turn this on whenever a human will be typing the password in.</target>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpFaqA5">
+      <segment state="initial">
+        <source>文字種を増やしても短い文字数では総当たり攻撃に対するエントロピーが不足しがちです。可能であれば12文字以上、重要なアカウントでは16文字以上を推奨します。8文字などの短い長さは、システム側の文字数上限がある場合の最終手段として扱ってください。</source>
+        <target>Even a rich character set can&apos;t make up for too little length — entropy runs short fast at 8 characters. Aim for at least 12 where you have the choice, and 16 or more for anything sensitive. Treat 8-character passwords as a fallback for systems that cap the field, not a default.</target>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpFaqA6">
+      <segment state="initial">
+        <source>各文字は独立してランダムに選ばれるため、確率的には稀に大文字や記号に偏った結果が出ることもあります。特定の文字種を必ず含めたい場合は、生成結果を確認し要件を満たさないものは再生成して選び直してください。</source>
+        <target>Each character is chosen independently, so on rare occasions a result can lean heavily toward one character type, like mostly uppercase or mostly symbols. If a policy requires at least one of each type, glance at the output and regenerate any password that doesn&apos;t meet it.</target>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpFaqQ1">
+      <segment state="initial">
+        <source>生成したパスワードはどこかに保存されますか</source>
+        <target>Is the generated password stored anywhere?</target>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpFaqQ2">
+      <segment state="initial">
+        <source>パスワードの強度（エントロピー）はどう考えればよいですか</source>
+        <target>How should I think about password strength and entropy?</target>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpFaqQ3">
+      <segment state="initial">
+        <source>記号を含めない方がよい場面はありますか</source>
+        <target>When should I avoid including symbols?</target>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpFaqQ4">
+      <segment state="initial">
+        <source>「類似文字を除く」を有効にするとセキュリティは下がりますか</source>
+        <target>Does enabling Exclude Similar Characters weaken security?</target>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpFaqQ5">
+      <segment state="initial">
+        <source>短い文字数（8文字など）でも安全に使えますか</source>
+        <target>Is a short length like 8 characters still safe to use?</target>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpFaqQ6">
+      <segment state="initial">
+        <source>生成されたパスワードが偏った文字構成（同じ文字種ばかり）になることはありますか</source>
+        <target>Can a generated password end up skewed toward one character type?</target>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpFaqTitle">
+      <segment state="initial">
+        <source>よくある質問</source>
+        <target>FAQ</target>
+      </segment>
+    </unit>
     <unit id="passwordGenHelpOverview">
       <segment state="initial">
         <source>概要</source>
@@ -1969,6 +2161,12 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
       <segment state="initial">
         <source> パスワードジェネレーターは、セキュアなランダムパスワードをオンラインで一括生成するツールです。文字種・長さ・生成件数をカスタマイズでき、エンジニアのシステム構築からエンドユーザーの初期パスワード設定まで幅広く活用できます。 </source>
         <target>The password generator is an online tool for generating secure random passwords in bulk. You can customize the character set, length, and count, making it useful for everything from system setup by engineers to setting initial passwords for end users.</target>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpOverviewDesc2">
+      <segment state="initial">
+        <source> 人間が考えたパスワードは覚えやすさを優先するあまり、辞書に載っている単語や誕生日など推測されやすいパターンになりがちです。本ツールは暗号学的に安全な乱数生成を使ってランダムな文字列を作るため、総当たり攻撃や辞書攻撃に対する耐性を確保しながら、必要な件数を一度にまとめて発行できます。 </source>
+        <target> Passwords people make up tend to prioritize memorability over unpredictability, which is exactly what makes them guessable — dictionary words, birthdays, keyboard patterns. This tool draws from a cryptographically secure random source instead, so every password resists both brute-force and dictionary attacks, and you can issue a whole batch of them in one pass.</target>
       </segment>
     </unit>
     <unit id="passwordGenHelpSpec">
@@ -2013,6 +2211,18 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
         <target>Lowercase + Digits: Lowercase letters and digits only, which keeps the result easy to read aloud or copy from a printed page, and safe to drop into a URL path without escaping.</target>
       </segment>
     </unit>
+    <unit id="passwordGenHelpSpecNoStorage">
+      <segment state="initial">
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">データの取り扱い</pc>: 生成したパスワードはブラウザ内のメモリ上にのみ保持され、サーバーへの送信や保存は行いません。ページを再読み込みすると生成結果は失われます。</source>
+        <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">Data handling</pc>: Generated passwords live only in the browser&apos;s memory for the current tab — nothing is sent to or stored on a server. Reloading the page discards whatever was generated.</target>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpSpecRandomSource">
+      <segment state="initial">
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">乱数生成の仕組み</pc>: 各文字はブラウザが提供する暗号学的に安全な乱数生成器（Web Crypto APIのCrypto.getRandomValues）を用いて選択されます。Math.random()のような予測可能性のある擬似乱数は使用していません。</source>
+        <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">Randomness source</pc>: Each character comes from the browser&apos;s cryptographically secure random number generator (the Web Crypto API&apos;s Crypto.getRandomValues), not a predictable pseudo-random source like Math.random().</target>
+      </segment>
+    </unit>
     <unit id="passwordGenHelpUsage">
       <segment state="initial">
         <source>使い方</source>
@@ -2049,6 +2259,12 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
         <target>Click the &quot;Generate&quot; button.</target>
       </segment>
     </unit>
+    <unit id="passwordGenHelpUsageTip">
+      <segment state="initial">
+        <source> 補足: 対象システムが記号を許可していない、または特定の記号のみ禁止しているといった制約がある場合は、「英数字」や「英小文字 + 数字」を選択するか、生成後に該当する記号を含む結果だけを除外して利用してください。 </source>
+        <target> Note: if the target system disallows symbols entirely, or bans specific ones, switch to Alphanumeric or Lowercase + Digits — or generate a batch and manually discard the results containing the disallowed symbols.</target>
+      </segment>
+    </unit>
     <unit id="passwordGenHelpUseCase">
       <segment state="initial">
         <source>ユースケース</source>
@@ -2061,6 +2277,12 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
         <target>Bulk-generating initial passwords when onboarding a batch of new user accounts.</target>
       </segment>
     </unit>
+    <unit id="passwordGenHelpUseCasePolicyCheck">
+      <segment state="initial">
+        <source>社内パスワードポリシー（最小文字数・文字種の組み合わせ）に適合するパスワードを、複数パターン見比べながら決めたい場合。</source>
+        <target>Comparing several generated options side by side to settle on one that satisfies a corporate password policy (minimum length, required character types).</target>
+      </segment>
+    </unit>
     <unit id="passwordGenHelpUseCaseSecret">
       <segment state="initial">
         <source>APIシークレットや暗号化キーの生成。</source>
@@ -2071,6 +2293,12 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
       <segment state="initial">
         <source>テスト用ダミーパスワードの作成。</source>
         <target>Creating disposable dummy passwords for QA and staging accounts.</target>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpUseCaseWifi">
+      <segment state="initial">
+        <source>Wi-Fiルーターや共有端末など、記号入力が難しい機器向けに英数字のみのパスワードを発行したい場合。</source>
+        <target>Issuing an alphanumeric-only password for hardware that&apos;s awkward to type symbols into, like a Wi-Fi router admin panel or a shared kiosk device.</target>
       </segment>
     </unit>
     <unit id="sitemap.heading">
@@ -2679,6 +2907,84 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
         <target>Sanity-checking a snippet&apos;s changes before opening a pull request, when you don&apos;t have the file in a local git checkout.</target>
       </segment>
     </unit>
+    <unit id="ulidGenHelpFaqA1">
+      <segment state="initial">
+        <source>最大の違いはソート可能性です。UUID v4は完全にランダムなため生成順と文字列の並び順が一致しませんが、ULIDは先頭48ビットがミリ秒タイムスタンプなので、文字列としてソートするとほぼ生成順に並びます。長さもUUID（ハイフン込み36文字）に対しULIDは26文字と短くなります。</source>
+        <target>The biggest difference is sortability. UUID v4 is pure randomness, so string order and creation order have nothing to do with each other; ULID front-loads a 48-bit millisecond timestamp, so sorting the strings puts them back in roughly the order they were created. ULID is also shorter — 26 characters versus 36 for a hyphenated UUID.</target>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpFaqA2">
+      <segment state="initial">
+        <source>ULIDの先頭10文字はUNIXエポックからのミリ秒数をCrockford&apos;s Base32でエンコードした値です。Base32は桁の重みが大きい文字ほど先頭に来るよう設計されているため、生成時刻が新しいほど先頭文字列が大きくなり、通常の文字列比較（辞書順ソート）がそのまま時系列順と一致します。</source>
+        <target>The first 10 characters are the milliseconds-since-epoch timestamp, Crockford&apos;s Base32-encoded so that the most significant digit sits leftmost — exactly how positional number systems already work. A later timestamp always produces a lexicographically larger prefix, so an ordinary string comparison sorts ULIDs chronologically with no special logic required.</target>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpFaqA3">
+      <segment state="initial">
+        <source>はい。先頭10文字をCrockford&apos;s Base32としてデコードすれば、生成時に使われたミリ秒単位のUNIXタイムスタンプを復元できます。ランダム部分にあたる残り16文字からは時刻情報は得られません。</source>
+        <target>Yes. Decode the first 10 characters as Crockford&apos;s Base32 and you get back the exact millisecond Unix timestamp used at generation time. The remaining 16 characters are pure randomness and carry no time information.</target>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpFaqA4">
+      <segment state="initial">
+        <source>理論上は完全にゼロではありませんが、80ビットのランダム部分があるため実用上無視できるほど低い確率です。同一ミリ秒内で連続生成する場合に厳密な重複回避と順序保証を求めるなら、「単調増加」オプションを有効にしてください。</source>
+        <target>Not theoretically zero, but with 80 bits of randomness backing each ULID, collisions are negligible in practice. If you need a hard guarantee against duplicates and a strict order when generating several in the same millisecond, turn on Increase monotonically.</target>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpFaqA5">
+      <segment state="initial">
+        <source>同一ミリ秒内で複数生成した際に、2件目以降はランダム部分を1ずつインクリメントします。これにより同一タイムスタンプ内でも生成順どおりに文字列がソートされるようになり、イベントログのような順序が重要な用途に適しています。</source>
+        <target>When several ULIDs share a millisecond, every one after the first increments the random portion by one instead of re-rolling it. That keeps the batch sorted in generation order even within a single timestamp, which matters for event logs where sequence has to be exact.</target>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpFaqA6">
+      <segment state="initial">
+        <source>ULIDは128ビットの値なのでUUID型のカラムにバイナリ表現として格納すること自体は可能ですが、文字列表現の見た目やハイフンの有無が異なるため、既存のUUID文字列との単純な置き換えにはアプリケーション側の変換ロジックが必要です。移行前に既存コードがUUID形式の文字列（ハイフン区切り36文字）を前提にしていないか確認してください。</source>
+        <target>Since a ULID is still a 128-bit value, it can be stored as raw bytes in a UUID-typed column, but the string representation looks different — no hyphens, a different alphabet — so swapping in ULIDs for existing UUID strings needs a conversion layer in your application code. Before migrating, check whether existing code assumes the 36-character hyphenated UUID string format anywhere.</target>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpFaqQ1">
+      <segment state="initial">
+        <source>ULIDとUUIDの違いは何ですか</source>
+        <target>What&apos;s the difference between ULID and UUID?</target>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpFaqQ2">
+      <segment state="initial">
+        <source>なぜULIDは辞書順ソートで時系列順に並ぶのですか</source>
+        <target>Why does sorting ULIDs lexicographically put them in chronological order?</target>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpFaqQ3">
+      <segment state="initial">
+        <source>ULIDの文字列からタイムスタンプ（生成時刻）を逆算できますか</source>
+        <target>Can I recover the creation timestamp from a ULID string?</target>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpFaqQ4">
+      <segment state="initial">
+        <source>生成したULIDが重複することはありますか</source>
+        <target>Can two generated ULIDs collide?</target>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpFaqQ5">
+      <segment state="initial">
+        <source>「単調増加」を有効にするとどう変わりますか</source>
+        <target>What changes when I enable Increase monotonically?</target>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpFaqQ6">
+      <segment state="initial">
+        <source>既存システムのUUID列をULIDに移行できますか</source>
+        <target>Can I migrate an existing UUID column to ULID?</target>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpFaqTitle">
+      <segment state="initial">
+        <source>よくある質問</source>
+        <target>FAQ</target>
+      </segment>
+    </unit>
     <unit id="ulidGenHelpOverview">
       <segment state="initial">
         <source>概要</source>
@@ -2691,6 +2997,12 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
         <target>A random UUID makes a fine unique key, but it tells you nothing about when a row was created and it wrecks B-tree index locality at scale — every insert lands in a random page. ULID (Universally Unique Lexicographically Sortable Identifier, per the ulid/spec) solves both problems by combining a millisecond timestamp with random bits, so IDs sort chronologically as plain strings. This tool generates ULIDs in bulk, with control over the base timestamp and strict monotonic ordering, as a drop-in alternative wherever you&apos;d reach for a UUID.</target>
       </segment>
     </unit>
+    <unit id="ulidGenHelpOverviewDesc2">
+      <segment state="initial">
+        <source> UUID v4はランダム性が高く優れた識別子ですが、生成順とソート順が一致しないためDBの主キーに使うとインデックスが断片化しやすいという弱点があります。ULIDは先頭にミリ秒精度のタイムスタンプを埋め込むことでこの弱点を解消しつつ、UUIDと同等の衝突耐性を維持した識別子です。本ツールはブラウザ内で完結して生成するため、外部にデータを送信せずにその場でまとめて取得できます。 </source>
+        <target> UUID v4 is a solid identifier on its own merits, but its randomness works against it as a primary key — insertion order and sort order have no relationship, so B-tree indexes fragment as rows accumulate. Embedding a millisecond-precision timestamp up front is what fixes that, while keeping collision resistance on par with a UUID. Generation happens entirely in the browser, so you can pull a whole batch at once without any data leaving your machine.</target>
+      </segment>
+    </unit>
     <unit id="ulidGenHelpSpec">
       <segment state="initial">
         <source>仕様・用語解説</source>
@@ -2701,6 +3013,12 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">Crockford&apos;s Base32</pc>: I, L, O, U を除外した32文字セットを使用。視覚的に紛らわしい文字を排除し、人間が読みやすい形式にしています。</source>
         <target>Crockford&apos;s Base32: The encoding alphabet deliberately drops I, L, O, and U — letters that are easily mistaken for 1, 1, 0, and V when read aloud or copied by hand. That makes ULIDs safer to transcribe in support tickets or log excerpts than a standard Base32 or hex string of the same length.</target>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpSpecCollision">
+      <segment state="initial">
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">衝突確率</pc>: 同一ミリ秒内でも80ビットのランダム部分により、実用上十分な低確率でしか衝突しません。単調増加を有効にすればさらに同一プロセス内での重複を排除できます。</source>
+        <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">Collision probability</pc>: Even within the same millisecond, 80 bits of randomness keeps collisions vanishingly rare for practical purposes. Turn on Increase monotonically to eliminate duplicates within a single generation run entirely.</target>
       </segment>
     </unit>
     <unit id="ulidGenHelpSpecFormat">
@@ -2719,6 +3037,12 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">辞書順ソート</pc>: ULIDの先頭10文字が時刻を表すため、辞書順ソート（文字列比較）がそのまま時系列ソートになります。DBインデックスの局所性が高まりパフォーマンスが向上します。</source>
         <target>Lexicographic = chronological: Because the timestamp occupies the first 10 characters, a plain string sort (`ORDER BY id` in SQL, or `Array.sort()` in JS) puts ULIDs in creation order automatically — no separate `created_at` column needed just for ordering. As a side effect, sequential inserts land near each other in a B-tree index instead of scattering across random pages, which is the main reason ULID and similar schemes outperform UUID v4 as primary keys at scale.</target>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpSpecTimestampExtract">
+      <segment state="initial">
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">タイムスタンプ部分の復元</pc>: ULIDの先頭10文字（Base32でエンコードされた48ビット）をデコードすると、生成時刻（UNIXエポックからのミリ秒）を逆算できます。ログの発生時刻を推定する際にも利用できます。</source>
+        <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">Recovering the timestamp</pc>: Decoding the first 10 characters (48 bits of Base32) hands back the exact millisecond Unix timestamp used at generation — handy for reconstructing when a log entry actually occurred.</target>
       </segment>
     </unit>
     <unit id="ulidGenHelpSpecVsUuid">
@@ -2757,6 +3081,12 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
         <target>Click Generate and copy the values out of the Results card.</target>
       </segment>
     </unit>
+    <unit id="ulidGenHelpUsageTip">
+      <segment state="initial">
+        <source> 補足: 過去や未来の特定時刻を起点にしたULIDをまとめて発行したい場合は、「基準日時(タイムスタンプ)」に任意の日時を指定してから生成してください。テストデータの投入順序を制御したい場合などに便利です。 </source>
+        <target> Note: to issue a batch of ULIDs anchored to a specific past or future moment, set Base datetime - Timestamp to that date before generating. This is handy when you need to control the insertion order of seeded test data.</target>
+      </segment>
+    </unit>
     <unit id="ulidGenHelpUseCase">
       <segment state="initial">
         <source>ユースケース</source>
@@ -2769,10 +3099,22 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
         <target>Replacing an auto-increment or UUID v4 primary key with something that&apos;s both globally unique and index-friendly.</target>
       </segment>
     </unit>
+    <unit id="ulidGenHelpUseCaseDistributedSystem">
+      <segment state="initial">
+        <source>分散システムにおいて、複数ノードで採番してもソート順とおおよその発生順が保たれる識別子が必要な場合。</source>
+        <target>Distributed systems where multiple nodes issue IDs independently, but you still need sort order to roughly track when each ID was created.</target>
+      </segment>
+    </unit>
     <unit id="ulidGenHelpUseCaseLog">
       <segment state="initial">
         <source>時系列順のログIDやイベントIDの生成。</source>
         <target>Generating log or event IDs where the ID itself encodes &quot;what happened first,&quot; even before you look at a timestamp column.</target>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpUseCaseTestFixture">
+      <segment state="initial">
+        <source>テストフィクスチャで、生成時刻をずらした複数のULIDをまとめて用意し、時系列順の表示ロジックを検証したい場合。</source>
+        <target>Building test fixtures with several ULIDs spread across different timestamps, to verify a UI or query that relies on chronological ordering.</target>
       </segment>
     </unit>
     <unit id="ulidGenHelpUseCaseToken">

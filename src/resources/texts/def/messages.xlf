@@ -16,6 +16,71 @@
         <source>© 2026 Yutaka Morihara</source>
       </segment>
     </unit>
+    <unit id="apiKeyGenHelpFaqA1">
+      <segment>
+        <source>いいえ。本ツールが生成するのは形式が似たランダムな文字列であり、決済サービスやクラウドプロバイダーなど実際のサービス側で認証情報として登録・検証されるものではありません。本番用のキーは必ず各サービスの管理画面から正式に発行してください。用途はモック・テスト・開発時のダミーデータに限定されます。</source>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpFaqA2">
+      <segment>
+        <source>暗号学的に安全な乱数を使っており、十分な長さであれば統計的に衝突する確率は極めて低くなります。ただし数学的な絶対保証ではないため、システムに組み込む際はデータベース側でUNIQUE制約を設定し、万一の重複発行を防ぐ設計にすることを推奨します。</source>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpFaqA3">
+      <segment>
+        <source>URLやヘッダーに短く収めたい場合はBase62、既存の暗号処理やハッシュ関数と親和性を持たせたい場合はHex、他システムとの相互運用性を重視する場合はUUID v4が適しています。文字数を自由に調整したい場合はBase62かHexを選んでください。</source>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpFaqA4">
+      <segment>
+        <source>決まった正解はありませんが、<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">sk_live_</pc>や<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">sk_test_</pc>のように用途（本番/テスト）や権限レベルを識別できる文字列を付けると、ログや設定ファイルを見たときにキーの種類を判別しやすくなります。実運用では環境ごとに異なるプレフィックスを使う設計が一般的です。</source>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpFaqA5">
+      <segment>
+        <source>いいえ。生成処理はすべてブラウザ内のJavaScriptで完結しており、生成されたキーが外部サーバーへ送信されることはありません。ページを離れると生成結果は残らないため、必要な場合はその場でコピーして保管してください。</source>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpFaqA6">
+      <segment>
+        <source>本ツールで生成した値をテスト用途以外の実運用キーとして採用する場合は、パスワードと同様にサーバー側ではハッシュ化（例: SHA-256）した値のみを保存し、平文のキーをDBに残さない設計にすることを推奨します。本ツール自体はハッシュ化機能を提供していません。</source>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpFaqQ1">
+      <segment>
+        <source>生成したキーを本番サービスのAPIキーとしてそのまま使えますか</source>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpFaqQ2">
+      <segment>
+        <source>生成したキーの一意性（重複しないこと）は保証されますか</source>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpFaqQ3">
+      <segment>
+        <source>Base62・Hex・UUID v4はどう使い分ければよいですか</source>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpFaqQ4">
+      <segment>
+        <source>プレフィックスにはどんな文字列を付けるべきですか</source>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpFaqQ5">
+      <segment>
+        <source>生成したAPIキーはサーバーに保存・送信されますか</source>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpFaqQ6">
+      <segment>
+        <source>実際のAPIキーのようにハッシュ化して保存する必要はありますか</source>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpFaqTitle">
+      <segment>
+        <source>よくある質問</source>
+      </segment>
+    </unit>
     <unit id="apiKeyGenHelpOverview">
       <segment>
         <source>概要</source>
@@ -24,6 +89,11 @@
     <unit id="apiKeyGenHelpOverviewDesc">
       <segment>
         <source> APIキージェネレーターは、安全なAPIキーをオンラインで生成するツールです。Base62・16進数・UUID v4の3形式に対応し、任意のプレフィックスを付与したAPIキーを一括生成できます。 </source>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpOverviewDesc2">
+      <segment>
+        <source> 開発中のAPIサーバーやモックサーバーの動作確認、認証ヘッダーの疎通テストなどでは、実際の課金サービスからキーを発行する前に「それらしい形式」のダミーキーが必要になる場面が多くあります。本ツールはブラウザ内で暗号学的に安全な乱数を用いてキーを生成するため、外部サービスに問い合わせることなくその場で必要な件数を用意できます。 </source>
       </segment>
     </unit>
     <unit id="apiKeyGenHelpSpec">
@@ -49,6 +119,16 @@
     <unit id="apiKeyGenHelpSpecPrefix">
       <segment>
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">プレフィックス</pc>: <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">sk_</pc>、<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">pk_</pc>、<pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">api_</pc>などのプレフィックスを付与することで、キーの用途や権限を識別しやすくします（例: OpenAIの<pc id="4" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">sk-...</pc>形式）。</source>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpSpecRandomSource">
+      <segment>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">乱数生成の仕組み</pc>: いずれのフォーマットもブラウザの暗号学的に安全な乱数生成器（Web Crypto APIのCrypto.getRandomValues）から得たバイト列をもとに文字を選択しており、予測可能性のある擬似乱数は使用していません。</source>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpSpecUniqueness">
+      <segment>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">一意性の考え方</pc>: 本ツールは統計的に衝突がほぼ起こらない十分なランダム性を提供しますが、データベース側で一意制約を課すことは保証しません。本番導入時は発行時にDB側でも重複チェック（UNIQUE制約）を行うことを推奨します。</source>
       </segment>
     </unit>
     <unit id="apiKeyGenHelpSpecUuid">
@@ -86,6 +166,11 @@
         <source>「生成」ボタンをクリックします。</source>
       </segment>
     </unit>
+    <unit id="apiKeyGenHelpUsageTip">
+      <segment>
+        <source> 補足: 「UUID v4」フォーマットを選択した場合、文字数の指定は無視され、常に固定のハイフン区切り36文字形式で生成されます。既存システムがUUID形式のキーを前提にしている場合はこちらを選択してください。 </source>
+      </segment>
+    </unit>
     <unit id="apiKeyGenHelpUseCase">
       <segment>
         <source>ユースケース</source>
@@ -94,6 +179,11 @@
     <unit id="apiKeyGenHelpUseCaseAuth">
       <segment>
         <source>REST APIの認証トークンやAPIキーの生成。</source>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpUseCaseE2e">
+      <segment>
+        <source>E2Eテストのテストデータとして、複数のダミーAPIキーを一括で発行したい場合。</source>
       </segment>
     </unit>
     <unit id="apiKeyGenHelpUseCaseSaas">
@@ -109,6 +199,11 @@
     <unit id="apiKeyGenHelpUseCaseMcp">
       <segment>
         <source>MCPサーバー設定ファイルに記載するダミーのAPIキーやトークンの作成。</source>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpUseCaseMock">
+      <segment>
+        <source>モックサーバーやローカル開発環境で、認証ヘッダーの疎通確認用に使う仮のAPIキーを用意したい場合。</source>
       </segment>
     </unit>
     <unit id="app.title">
@@ -1835,6 +1930,71 @@ v7: Unix時間と乱数を組み合わせて生成。時系列順に並べやす
         <source>UUID生成ツール（v1/v4/v7対応・一括生成）</source>
       </segment>
     </unit>
+    <unit id="passwordGenHelpFaqA1">
+      <segment>
+        <source>いいえ。生成処理はすべてブラウザ内で完結しており、サーバーへの送信やCookie・ローカルストレージへの保存は行いません。表示された結果はページを離れると失われるため、必要な場合はその場でコピーして安全な場所に保管してください。</source>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpFaqA2">
+      <segment>
+        <source>エントロピーは「文字種の数の対数×文字数」で概算でき、値が大きいほど総当たり攻撃に必要な試行回数が増えます。例えば英数字+記号（約94種）で16文字なら100ビットを超え、現実的な時間では解読が困難な強度になります。重要なアカウントほど文字種を増やし長くすることを推奨します。</source>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpFaqA3">
+      <segment>
+        <source>対象システムが特定の記号を禁止している場合や、口頭・手入力での伝達が発生する場合は「英数字」や「英小文字 + 数字」を選ぶ方が安全にトラブルを避けられます。また数字のみのPINコード入力を想定した機器では「数字のみ」を選択してください。</source>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpFaqA4">
+      <segment>
+        <source>使用可能な文字種が減るためエントロピーはわずかに低下しますが、実用上の影響はごくわずかです。それよりも印刷物や電話口での伝達時に0とO、1とlを読み間違えるリスクの方が実運用では大きいため、人が手入力する場面では有効にすることを推奨します。</source>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpFaqA5">
+      <segment>
+        <source>文字種を増やしても短い文字数では総当たり攻撃に対するエントロピーが不足しがちです。可能であれば12文字以上、重要なアカウントでは16文字以上を推奨します。8文字などの短い長さは、システム側の文字数上限がある場合の最終手段として扱ってください。</source>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpFaqA6">
+      <segment>
+        <source>各文字は独立してランダムに選ばれるため、確率的には稀に大文字や記号に偏った結果が出ることもあります。特定の文字種を必ず含めたい場合は、生成結果を確認し要件を満たさないものは再生成して選び直してください。</source>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpFaqQ1">
+      <segment>
+        <source>生成したパスワードはどこかに保存されますか</source>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpFaqQ2">
+      <segment>
+        <source>パスワードの強度（エントロピー）はどう考えればよいですか</source>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpFaqQ3">
+      <segment>
+        <source>記号を含めない方がよい場面はありますか</source>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpFaqQ4">
+      <segment>
+        <source>「類似文字を除く」を有効にするとセキュリティは下がりますか</source>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpFaqQ5">
+      <segment>
+        <source>短い文字数（8文字など）でも安全に使えますか</source>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpFaqQ6">
+      <segment>
+        <source>生成されたパスワードが偏った文字構成（同じ文字種ばかり）になることはありますか</source>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpFaqTitle">
+      <segment>
+        <source>よくある質問</source>
+      </segment>
+    </unit>
     <unit id="passwordGenHelpOverview">
       <segment>
         <source>概要</source>
@@ -1843,6 +2003,11 @@ v7: Unix時間と乱数を組み合わせて生成。時系列順に並べやす
     <unit id="passwordGenHelpOverviewDesc">
       <segment>
         <source> パスワードジェネレーターは、セキュアなランダムパスワードをオンラインで一括生成するツールです。文字種・長さ・生成件数をカスタマイズでき、エンジニアのシステム構築からエンドユーザーの初期パスワード設定まで幅広く活用できます。 </source>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpOverviewDesc2">
+      <segment>
+        <source> 人間が考えたパスワードは覚えやすさを優先するあまり、辞書に載っている単語や誕生日など推測されやすいパターンになりがちです。本ツールは暗号学的に安全な乱数生成を使ってランダムな文字列を作るため、総当たり攻撃や辞書攻撃に対する耐性を確保しながら、必要な件数を一度にまとめて発行できます。 </source>
       </segment>
     </unit>
     <unit id="passwordGenHelpSpec">
@@ -1880,6 +2045,16 @@ v7: Unix時間と乱数を組み合わせて生成。時系列順に並べやす
         <source>「英小文字 + 数字」: 小文字英字と数字のみ（可読性重視・URLセーフ用途）。</source>
       </segment>
     </unit>
+    <unit id="passwordGenHelpSpecNoStorage">
+      <segment>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">データの取り扱い</pc>: 生成したパスワードはブラウザ内のメモリ上にのみ保持され、サーバーへの送信や保存は行いません。ページを再読み込みすると生成結果は失われます。</source>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpSpecRandomSource">
+      <segment>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">乱数生成の仕組み</pc>: 各文字はブラウザが提供する暗号学的に安全な乱数生成器（Web Crypto APIのCrypto.getRandomValues）を用いて選択されます。Math.random()のような予測可能性のある擬似乱数は使用していません。</source>
+      </segment>
+    </unit>
     <unit id="passwordGenHelpUsage">
       <segment>
         <source>使い方</source>
@@ -1910,6 +2085,11 @@ v7: Unix時間と乱数を組み合わせて生成。時系列順に並べやす
         <source>「生成」ボタンをクリックします。</source>
       </segment>
     </unit>
+    <unit id="passwordGenHelpUsageTip">
+      <segment>
+        <source> 補足: 対象システムが記号を許可していない、または特定の記号のみ禁止しているといった制約がある場合は、「英数字」や「英小文字 + 数字」を選択するか、生成後に該当する記号を含む結果だけを除外して利用してください。 </source>
+      </segment>
+    </unit>
     <unit id="passwordGenHelpUseCase">
       <segment>
         <source>ユースケース</source>
@@ -1920,6 +2100,11 @@ v7: Unix時間と乱数を組み合わせて生成。時系列順に並べやす
         <source>新規ユーザーの初期パスワードを一括生成したい場合。</source>
       </segment>
     </unit>
+    <unit id="passwordGenHelpUseCasePolicyCheck">
+      <segment>
+        <source>社内パスワードポリシー（最小文字数・文字種の組み合わせ）に適合するパスワードを、複数パターン見比べながら決めたい場合。</source>
+      </segment>
+    </unit>
     <unit id="passwordGenHelpUseCaseSecret">
       <segment>
         <source>APIシークレットや暗号化キーの生成。</source>
@@ -1928,6 +2113,11 @@ v7: Unix時間と乱数を組み合わせて生成。時系列順に並べやす
     <unit id="passwordGenHelpUseCaseTest">
       <segment>
         <source>テスト用ダミーパスワードの作成。</source>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpUseCaseWifi">
+      <segment>
+        <source>Wi-Fiルーターや共有端末など、記号入力が難しい機器向けに英数字のみのパスワードを発行したい場合。</source>
       </segment>
     </unit>
     <unit id="update.home.20250823">
@@ -2694,6 +2884,71 @@ UNIXタイム変換ツールを実装しました。</source>
         <source>コードレビュー前に変更内容を確認する場合。</source>
       </segment>
     </unit>
+    <unit id="ulidGenHelpFaqA1">
+      <segment>
+        <source>最大の違いはソート可能性です。UUID v4は完全にランダムなため生成順と文字列の並び順が一致しませんが、ULIDは先頭48ビットがミリ秒タイムスタンプなので、文字列としてソートするとほぼ生成順に並びます。長さもUUID（ハイフン込み36文字）に対しULIDは26文字と短くなります。</source>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpFaqA2">
+      <segment>
+        <source>ULIDの先頭10文字はUNIXエポックからのミリ秒数をCrockford&apos;s Base32でエンコードした値です。Base32は桁の重みが大きい文字ほど先頭に来るよう設計されているため、生成時刻が新しいほど先頭文字列が大きくなり、通常の文字列比較（辞書順ソート）がそのまま時系列順と一致します。</source>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpFaqA3">
+      <segment>
+        <source>はい。先頭10文字をCrockford&apos;s Base32としてデコードすれば、生成時に使われたミリ秒単位のUNIXタイムスタンプを復元できます。ランダム部分にあたる残り16文字からは時刻情報は得られません。</source>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpFaqA4">
+      <segment>
+        <source>理論上は完全にゼロではありませんが、80ビットのランダム部分があるため実用上無視できるほど低い確率です。同一ミリ秒内で連続生成する場合に厳密な重複回避と順序保証を求めるなら、「単調増加」オプションを有効にしてください。</source>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpFaqA5">
+      <segment>
+        <source>同一ミリ秒内で複数生成した際に、2件目以降はランダム部分を1ずつインクリメントします。これにより同一タイムスタンプ内でも生成順どおりに文字列がソートされるようになり、イベントログのような順序が重要な用途に適しています。</source>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpFaqA6">
+      <segment>
+        <source>ULIDは128ビットの値なのでUUID型のカラムにバイナリ表現として格納すること自体は可能ですが、文字列表現の見た目やハイフンの有無が異なるため、既存のUUID文字列との単純な置き換えにはアプリケーション側の変換ロジックが必要です。移行前に既存コードがUUID形式の文字列（ハイフン区切り36文字）を前提にしていないか確認してください。</source>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpFaqQ1">
+      <segment>
+        <source>ULIDとUUIDの違いは何ですか</source>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpFaqQ2">
+      <segment>
+        <source>なぜULIDは辞書順ソートで時系列順に並ぶのですか</source>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpFaqQ3">
+      <segment>
+        <source>ULIDの文字列からタイムスタンプ（生成時刻）を逆算できますか</source>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpFaqQ4">
+      <segment>
+        <source>生成したULIDが重複することはありますか</source>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpFaqQ5">
+      <segment>
+        <source>「単調増加」を有効にするとどう変わりますか</source>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpFaqQ6">
+      <segment>
+        <source>既存システムのUUID列をULIDに移行できますか</source>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpFaqTitle">
+      <segment>
+        <source>よくある質問</source>
+      </segment>
+    </unit>
     <unit id="ulidGenHelpOverview">
       <segment>
         <source>概要</source>
@@ -2704,6 +2959,11 @@ UNIXタイム変換ツールを実装しました。</source>
         <source> ULIDジェネレーターは、Universally Unique Lexicographically Sortable Identifier（ULID）を生成するオンラインツールです。UUIDの代替として、時系列ソート可能な一意識別子を一括生成できます。 </source>
       </segment>
     </unit>
+    <unit id="ulidGenHelpOverviewDesc2">
+      <segment>
+        <source> UUID v4はランダム性が高く優れた識別子ですが、生成順とソート順が一致しないためDBの主キーに使うとインデックスが断片化しやすいという弱点があります。ULIDは先頭にミリ秒精度のタイムスタンプを埋め込むことでこの弱点を解消しつつ、UUIDと同等の衝突耐性を維持した識別子です。本ツールはブラウザ内で完結して生成するため、外部にデータを送信せずにその場でまとめて取得できます。 </source>
+      </segment>
+    </unit>
     <unit id="ulidGenHelpSpec">
       <segment>
         <source>仕様・用語解説</source>
@@ -2712,6 +2972,11 @@ UNIXタイム変換ツールを実装しました。</source>
     <unit id="ulidGenHelpSpecBase32">
       <segment>
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">Crockford&apos;s Base32</pc>: I, L, O, U を除外した32文字セットを使用。視覚的に紛らわしい文字を排除し、人間が読みやすい形式にしています。</source>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpSpecCollision">
+      <segment>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">衝突確率</pc>: 同一ミリ秒内でも80ビットのランダム部分により、実用上十分な低確率でしか衝突しません。単調増加を有効にすればさらに同一プロセス内での重複を排除できます。</source>
       </segment>
     </unit>
     <unit id="ulidGenHelpSpecFormat">
@@ -2727,6 +2992,11 @@ UNIXタイム変換ツールを実装しました。</source>
     <unit id="ulidGenHelpSpecSort">
       <segment>
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">辞書順ソート</pc>: ULIDの先頭10文字が時刻を表すため、辞書順ソート（文字列比較）がそのまま時系列ソートになります。DBインデックスの局所性が高まりパフォーマンスが向上します。</source>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpSpecTimestampExtract">
+      <segment>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">タイムスタンプ部分の復元</pc>: ULIDの先頭10文字（Base32でエンコードされた48ビット）をデコードすると、生成時刻（UNIXエポックからのミリ秒）を逆算できます。ログの発生時刻を推定する際にも利用できます。</source>
       </segment>
     </unit>
     <unit id="ulidGenHelpSpecVsUuid">
@@ -2759,6 +3029,11 @@ UNIXタイム変換ツールを実装しました。</source>
         <source>「生成」ボタンをクリックします。</source>
       </segment>
     </unit>
+    <unit id="ulidGenHelpUsageTip">
+      <segment>
+        <source> 補足: 過去や未来の特定時刻を起点にしたULIDをまとめて発行したい場合は、「基準日時(タイムスタンプ)」に任意の日時を指定してから生成してください。テストデータの投入順序を制御したい場合などに便利です。 </source>
+      </segment>
+    </unit>
     <unit id="ulidGenHelpUseCase">
       <segment>
         <source>ユースケース</source>
@@ -2769,9 +3044,19 @@ UNIXタイム変換ツールを実装しました。</source>
         <source>RDBMSのプライマリキーとしてインデックス効率を高めたい場合。</source>
       </segment>
     </unit>
+    <unit id="ulidGenHelpUseCaseDistributedSystem">
+      <segment>
+        <source>分散システムにおいて、複数ノードで採番してもソート順とおおよその発生順が保たれる識別子が必要な場合。</source>
+      </segment>
+    </unit>
     <unit id="ulidGenHelpUseCaseLog">
       <segment>
         <source>時系列順のログIDやイベントIDの生成。</source>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpUseCaseTestFixture">
+      <segment>
+        <source>テストフィクスチャで、生成時刻をずらした複数のULIDをまとめて用意し、時系列順の表示ロジックを検証したい場合。</source>
       </segment>
     </unit>
     <unit id="ulidGenHelpUseCaseToken">
