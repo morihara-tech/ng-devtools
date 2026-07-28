@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, inject, viewChild } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, inject, viewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { ApplicationPageTemplateComponent } from '../../components/application-page-template/application-page-template.component';
@@ -23,7 +23,7 @@ import { StructuredDataService } from '../../core/services/structured-data.servi
   templateUrl: './unix-timestamp-converter-page.component.html',
   styleUrl: './unix-timestamp-converter-page.component.scss',
 })
-export class UnixTimestampConverterPageComponent implements OnInit, OnDestroy {
+export class UnixTimestampConverterPageComponent implements OnInit, AfterViewInit, OnDestroy {
   private readonly output = viewChild<UnixTimestampOutputCardComponent>('output');
   private readonly structuredDataService = inject(StructuredDataService);
 
@@ -37,6 +37,10 @@ export class UnixTimestampConverterPageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.structuredDataService.remove();
+  }
+
+  ngAfterViewInit(): void {
+    this.structuredDataService.addFaqPageFromDom();
   }
 
   onConvert(input: UnixTimestampInputModel): void {

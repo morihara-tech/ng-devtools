@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { ApplicationPageTemplateComponent } from '../../components/application-page-template/application-page-template.component';
@@ -20,7 +20,7 @@ import { StructuredDataService } from '../../core/services/structured-data.servi
   templateUrl: './sql-formatter-page.component.html',
   styleUrl: './sql-formatter-page.component.scss'
 })
-export class SqlFormatterPageComponent implements OnInit, OnDestroy {
+export class SqlFormatterPageComponent implements OnInit, AfterViewInit, OnDestroy {
   private readonly structuredDataService = inject(StructuredDataService);
 
   ngOnInit(): void {
@@ -33,5 +33,9 @@ export class SqlFormatterPageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.structuredDataService.remove();
+  }
+
+  ngAfterViewInit(): void {
+    this.structuredDataService.addFaqPageFromDom();
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, inject, viewChild } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, inject, viewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { UlidGenInputCardComponent } from './ulid-gen-input-card/ulid-gen-input-card.component';
@@ -23,7 +23,7 @@ import { StructuredDataService } from '../../core/services/structured-data.servi
     templateUrl: './ulid-gen-page.component.html',
     styleUrl: './ulid-gen-page.component.scss'
 })
-export class UlidGenPageComponent implements OnInit, OnDestroy {
+export class UlidGenPageComponent implements OnInit, AfterViewInit, OnDestroy {
   private readonly output = viewChild<UlidGenOutputCardComponent>('output');
   private readonly structuredDataService = inject(StructuredDataService);
 
@@ -37,6 +37,10 @@ export class UlidGenPageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.structuredDataService.remove();
+  }
+
+  ngAfterViewInit(): void {
+    this.structuredDataService.addFaqPageFromDom();
   }
 
   onGenerate(input: UlidGenInputModel): void {

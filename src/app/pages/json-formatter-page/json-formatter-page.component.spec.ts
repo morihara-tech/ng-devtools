@@ -29,4 +29,16 @@ describe('JsonFormatterPageComponent', () => {
     expect(helpSection).toBeTruthy();
     expect(helpSection?.querySelector('app-json-formatter-help')).toBeTruthy();
   });
+
+  it('should inject a FAQPage JSON-LD script matching the rendered FAQ items', () => {
+    const faqItemCount = fixture.nativeElement.querySelectorAll('.help-faq-item').length;
+    expect(faqItemCount).toBe(6);
+
+    const jsonLdScripts = Array.from(document.head.querySelectorAll('script[type="application/ld+json"]'))
+      .map((el) => JSON.parse(el.textContent ?? '{}'));
+    const faqJson = jsonLdScripts.find((json) => json['@type'] === 'FAQPage');
+
+    expect(faqJson).toBeTruthy();
+    expect(faqJson.mainEntity.length).toBe(faqItemCount);
+  });
 });

@@ -20,10 +20,10 @@ export interface SoftwareApplicationData {
 }
 
 /**
- * Injects/removes a `<script type="application/ld+json">` structured data tag
+ * Injects/removes `<script type="application/ld+json">` structured data tags
  * into `<head>`. Intended to be called from a page component's
- * `ngOnInit`/`ngOnDestroy` to avoid duplicating this boilerplate across every
- * tool page.
+ * `ngOnInit`/`ngAfterViewInit`/`ngOnDestroy` to avoid duplicating this
+ * boilerplate across every tool page.
  */
 @Injectable({
   providedIn: 'root',
@@ -32,7 +32,12 @@ export class StructuredDataService {
   private readonly document = inject(DOCUMENT);
   private readonly locale = inject(LOCALE_ID);
 
-  private script?: HTMLScriptElement;
+  /**
+   * Tracks every script tag injected by this service so `remove()` can clean
+   * up all of them. A single tool page can carry both a `SoftwareApplication`
+   * and a `FAQPage` entry at the same time.
+   */
+  private readonly scripts: HTMLScriptElement[] = [];
 
   /**
    * Adds a `SoftwareApplication` JSON-LD script tag for a tool page.
@@ -55,12 +60,63 @@ export class StructuredDataService {
       'offers': { '@type': 'Offer', 'price': '0', 'priceCurrency': 'JPY' },
     });
     this.document.head.appendChild(script);
-    this.script = script;
+    this.scripts.push(script);
   }
 
-  /** Removes the previously added script tag, if any. */
+  /**
+   * Adds a `FAQPage` JSON-LD script tag by extracting question/answer pairs
+   * directly from the rendered DOM (`.help-faq-item` > `.help-faq-question` /
+   * `.help-faq-answer`), instead of hardcoding the FAQ text again here.
+   *
+   * Extracting from the DOM avoids maintaining the same Q&A content in two
+   * places (the help component template and this service) and guarantees the
+   * structured data always matches what is actually visible on the page —
+   * including both the ja and en locales, since by the time this runs the
+   * i18n text is already resolved into the DOM.
+   *
+   * Must be called from `ngAfterViewInit`, not `ngOnInit`: the FAQ markup
+   * lives inside a child help component, which has not rendered its view yet
+   * during the parent's `ngOnInit`. During SSG, Angular waits for the app to
+   * become stable (including any `<head>` mutations performed here) before
+   * serializing HTML, so this DOM-read-then-inject approach works safely on
+   * both the server and the browser.
+   */
+  addFaqPageFromDom(): void {
+    const items = this.document.querySelectorAll('.help-faq-item');
+
+    const mainEntity = Array.from(items)
+      .map((item) => {
+        const question = item.querySelector('.help-faq-question')?.textContent?.trim() ?? '';
+        const answer = item.querySelector('.help-faq-answer')?.textContent?.trim() ?? '';
+        return { question, answer };
+      })
+      .filter(({ question, answer }) => question.length > 0 && answer.length > 0)
+      .map(({ question, answer }) => ({
+        '@type': 'Question',
+        'name': question,
+        'acceptedAnswer': { '@type': 'Answer', 'text': answer },
+      }));
+
+    if (mainEntity.length === 0) {
+      return;
+    }
+
+    const script = this.document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      'mainEntity': mainEntity,
+    });
+    this.document.head.appendChild(script);
+    this.scripts.push(script);
+  }
+
+  /** Removes all previously added script tags, if any. */
   remove(): void {
-    this.script?.remove();
-    this.script = undefined;
+    for (const script of this.scripts) {
+      script.remove();
+    }
+    this.scripts.length = 0;
   }
 }
