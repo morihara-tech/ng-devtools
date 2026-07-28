@@ -2,7 +2,7 @@
   <app-help-section icon="info">
     <span helpTitle i18n="@@urlEncoderHelpOverview">概要</span>
     <p class="help-text" i18n="@@urlEncoderHelpOverviewDesc">
-      URLエンコード・デコードツールは、URLで使用できない文字を<code>%XX</code>形式に変換（エンコード）、またはその逆変換（デコード）を行うオンラインツールです。<code>encodeURI</code>と<code>encodeURIComponent</code>の2種類のJavaScriptメソッドに対応しています。
+      URLエンコード・デコードツールは、URLで使用できない文字を<code>%XX</code>形式に変換（エンコード）、またはその逆変換（デコード）を行うオンラインツールです。<code>encodeURI</code>と<code>encodeURIComponent</code>の2種類のJavaScriptメソッドに対応しています。日本語を含むURLの生成や、APIリクエストのクエリパラメータ作成、既存URLの内容確認など幅広い場面で利用できます。
     </p>
   </app-help-section>
 
@@ -40,6 +40,7 @@
       <li i18n="@@urlEncoderHelpSpecPercentEncoding"><strong>%エンコーディング（パーセントエンコーディング）</strong>: 各文字をUTF-8でエンコードし、各バイトを<code>%XX</code>形式（XXは16進数）で表現します（例: 「あ」→ <code>%E3%81%82</code>）。</li>
       <li i18n="@@urlEncoderHelpSpecDecode"><strong>デコード</strong>: <code>decodeURI</code>・<code>decodeURIComponent</code>に対応し、エンコード済みの文字列を元のテキストに戻します。</li>
       <li i18n="@@urlEncoderHelpSpecDifference"><strong>encodeURIとencodeURIComponentの違い</strong>: encodeURIは<code>:</code>、<code>/</code>、<code>?</code>、<code>#</code>などURLの構造文字をエンコードしませんが、encodeURIComponentはこれらもすべてエンコードします。</li>
+      <li i18n="@@urlEncoderHelpSpecDoubleEncoding"><strong>二重エンコーディング</strong>: すでにエンコード済みの文字列をさらにエンコードすると、<code>%</code>自体が<code>%25</code>に変換されてしまい、正しくデコードできなくなります。エンコード対象がすでに<code>%XX</code>形式を含んでいないか確認してから変換してください。</li>
     </ul>
   </app-help-section>
 
@@ -52,6 +53,39 @@
       <li i18n="@@urlEncoderHelpUseCaseForm">フォームデータをURLセーフな形式に変換する場合。</li>
       <li i18n="@@urlEncoderHelpUseCaseDebug">ブラウザのアドレスバーに表示されるエンコード済みURLの内容を解読する場合。</li>
       <li i18n="@@urlEncoderHelpUseCasePlusVsPercent20">クエリパラメータ内のスペースが「+」と「%20」のどちらで表現されるべきか迷う場合の確認。</li>
+      <li i18n="@@urlEncoderHelpUseCaseJapaneseDomain">日本語ドメインやパスを含むURLを共有可能な形式に変換する場合。</li>
     </ul>
+  </app-help-section>
+
+  <mat-divider></mat-divider>
+
+  <app-help-section icon="quiz">
+    <span helpTitle i18n="@@urlEncoderHelpFaqTitle">よくある質問</span>
+    <dl class="help-faq">
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@urlEncoderHelpFaqQ1">encodeURIComponentとencodeURIはどちらを使えばよいですか</dt>
+        <dd class="help-faq-answer" i18n="@@urlEncoderHelpFaqA1">クエリパラメータの値やパスの一部分など、URLの断片をエンコードする場合はencodeURIComponentを使用してください。すでに完成した1つのURL全体をエンコードする場合は、<code>/</code>や<code>?</code>などの構造文字を保持できるencodeURIが適しています。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@urlEncoderHelpFaqQ2">日本語を含むURLはどのようにエンコードされますか</dt>
+        <dd class="help-faq-answer" i18n="@@urlEncoderHelpFaqA2">日本語などのマルチバイト文字はまずUTF-8のバイト列に変換され、各バイトが<code>%XX</code>形式で表現されます。例えば「あ」は3バイトのUTF-8表現になるため、<code>%E3%81%82</code>という3つのパーセントエンコード列に変換されます。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@urlEncoderHelpFaqQ3">二重エンコードしてしまうとどうなりますか</dt>
+        <dd class="help-faq-answer" i18n="@@urlEncoderHelpFaqA3">すでにエンコード済みの文字列を再度エンコードすると、<code>%</code>記号自体が<code>%25</code>に変換され、デコードしても元の文字列に戻らなくなります。変換前に対象の文字列がすでにエンコード済みでないか確認することをおすすめします。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@urlEncoderHelpFaqQ4">クエリパラメータのどの文字がエンコード対象になりますか</dt>
+        <dd class="help-faq-answer" i18n="@@urlEncoderHelpFaqA4">半角スペース・日本語などのマルチバイト文字に加え、<code>&amp;</code>・<code>=</code>・<code>?</code>・<code>#</code>など、URLの構造やクエリの区切りとして意味を持つ記号もエンコード対象です。「URLの記号もすべて変換する」を有効にすると、これらの記号を含めてすべてエンコードされます。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@urlEncoderHelpFaqQ5">スペースは「+」と「%20」のどちらに変換されますか</dt>
+        <dd class="help-faq-answer" i18n="@@urlEncoderHelpFaqA5">本ツールはJavaScript標準のencodeURI・encodeURIComponentに準拠しており、スペースは常に<code>%20</code>に変換されます。「+」によるスペース表現は<code>application/x-www-form-urlencoded</code>形式のフォーム送信で使われる別の慣習であり、本ツールでは扱いません。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@urlEncoderHelpFaqQ6">デコードに失敗するのはどのような場合ですか</dt>
+        <dd class="help-faq-answer" i18n="@@urlEncoderHelpFaqA6">「%」の後ろに2桁の16進数が続かない不正な形式（例: 文字列末尾が「%2」で終わっている場合）や、UTF-8として不正なバイト列になっている場合はデコードエラーになります。エンコード前の文字列を再度確認してください。</dd>
+      </div>
+    </dl>
   </app-help-section>
 </div>

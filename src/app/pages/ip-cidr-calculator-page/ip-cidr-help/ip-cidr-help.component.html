@@ -2,7 +2,7 @@
   <app-help-section icon="info">
     <span helpTitle i18n="@@ipCidrHelpOverview">概要</span>
     <p class="help-text" i18n="@@ipCidrHelpOverviewDesc">
-      IP/CIDR計算機は、IPアドレスとCIDR表記からネットワーク情報を計算するオンラインツールです。IPv4およびIPv6に対応し、サブネットマスク・ネットワークアドレス・使用可能ホスト数・2進数表現などを算出します。
+      IP/CIDR計算機は、IPアドレスとCIDR表記からネットワーク情報を計算するオンラインツールです。IPv4およびIPv6に対応し、サブネットマスク・ネットワークアドレス・使用可能ホスト数・2進数表現などを算出します。VPCのサブネット設計やファイアウォールルールの確認など、ネットワーク構築時のCIDR計算を手計算なしで素早く行えます。
     </p>
   </app-help-section>
 
@@ -42,6 +42,8 @@
       <li i18n="@@ipCidrHelpSpecHosts"><strong>使用可能ホスト数</strong>: <code>2^(ホスト部のビット数) - 2</code>で計算します（ネットワークアドレスとブロードキャストを除く）。</li>
       <li i18n="@@ipCidrHelpSpecIpv4v6"><strong>IPv4とIPv6の違い</strong>: IPv4は32ビット（4オクテット、ドット区切り十進表記）、IPv6は128ビット（8グループの16進数、コロン区切り）で表現されます。</li>
       <li i18n="@@ipCidrHelpSpecBinary"><strong>2進数表現</strong>: IPアドレスをビット列で表示します。ネットワーク部とホスト部の境界を視覚的に確認できます。</li>
+      <li i18n="@@ipCidrHelpSpecPrivate"><strong>プライベートIPアドレス範囲</strong>: IPv4では<code>10.0.0.0/8</code>、<code>172.16.0.0/12</code>、<code>192.168.0.0/16</code>がプライベートアドレスとして予約されています（RFC 1918）。社内ネットワークやVPC内部のアドレス設計ではこの範囲から割り当てるのが一般的です。</li>
+      <li i18n="@@ipCidrHelpSpecIpv6Prefix"><strong>IPv6のプレフィックス長</strong>: IPv6アドレスは128ビットで構成され、一般的に上位64ビットをネットワーク部（サブネットプレフィックス）、下位64ビットをインターフェースID（ホスト部）として扱う設計が広く採用されています。</li>
     </ul>
   </app-help-section>
 
@@ -53,6 +55,39 @@
       <li i18n="@@ipCidrHelpUseCaseVpc">VPCやオンプレミスネットワークのサブネット設計。</li>
       <li i18n="@@ipCidrHelpUseCaseFirewall">ファイアウォールルールのIPレンジ確認と検証。</li>
       <li i18n="@@ipCidrHelpUseCaseCloud">AWS・GCP・Azureのネットワーク設計でのCIDRブロック計算。</li>
+      <li i18n="@@ipCidrHelpUseCaseSubnetSplit">既存ネットワークを複数のサブネットに分割する際のアドレス範囲の見積もり。</li>
     </ul>
+  </app-help-section>
+
+  <mat-divider></mat-divider>
+
+  <app-help-section icon="quiz">
+    <span helpTitle i18n="@@ipCidrHelpFaqTitle">よくある質問</span>
+    <dl class="help-faq">
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@ipCidrHelpFaqQ1">CIDR表記の「/24」はどういう意味ですか</dt>
+        <dd class="help-faq-answer" i18n="@@ipCidrHelpFaqA1">「/24」はプレフィックス長を表し、IPアドレスの先頭24ビットがネットワーク部であることを意味します。IPv4では残りの8ビットがホスト部となり、そのサブネット内で使用できるホスト数が決まります。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@ipCidrHelpFaqQ2">CIDR表記とサブネットマスクはどう対応していますか</dt>
+        <dd class="help-faq-answer" i18n="@@ipCidrHelpFaqA2">CIDRのプレフィックス長は、先頭から対応するビット数を1で埋めたサブネットマスクと等価です。例えば<code>/24</code>は<code>255.255.255.0</code>、<code>/16</code>は<code>255.255.0.0</code>に対応します。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@ipCidrHelpFaqQ3">このツールはIPv6にも対応していますか</dt>
+        <dd class="help-faq-answer" i18n="@@ipCidrHelpFaqA3">はい。プロトコル選択でIPv6を選ぶと、128ビットアドレスに対応したネットワークアドレス・プレフィックス長の計算結果が表示されます。ただしIPv6にはブロードキャストアドレスの概念が存在しない点がIPv4と異なります。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@ipCidrHelpFaqQ4">プライベートIPアドレスとの関係を教えてください</dt>
+        <dd class="help-faq-answer" i18n="@@ipCidrHelpFaqA4">入力したIPアドレスがRFC 1918で定義されたプライベートアドレス範囲（<code>10.0.0.0/8</code>など）に含まれるかどうかは、ネットワークアドレスの計算結果と照らし合わせて確認できます。社内LANやVPC設計時にアドレス範囲が重複していないか確認する際に役立ちます。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@ipCidrHelpFaqQ5">使用可能ホスト数はどのように計算されますか</dt>
+        <dd class="help-faq-answer" i18n="@@ipCidrHelpFaqA5">IPv4では「2のホスト部ビット数乗 - 2」で計算します。2を引くのは、ホスト部が全0のネットワークアドレスと全1のブロードキャストアドレスをホストに割り当てられないためです。例えば<code>/24</code>の場合はホスト部が8ビットなので、2の8乗から2を引いた254台が使用可能です。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@ipCidrHelpFaqQ6">入力したIPアドレスは外部に送信されますか</dt>
+        <dd class="help-faq-answer" i18n="@@ipCidrHelpFaqA6">いいえ。すべての計算処理はブラウザ内のJavaScriptで完結しており、入力したIPアドレスやCIDR情報がサーバーに送信されることはありません。社内ネットワークのアドレス体系を扱う場合でも安心して利用できます。</dd>
+      </div>
+    </dl>
   </app-help-section>
 </div>

@@ -403,6 +403,84 @@
         <target>All Tools</target>
       </segment>
     </unit>
+    <unit id="ipCidrHelpFaqA1">
+      <segment state="initial">
+        <source>「/24」はプレフィックス長を表し、IPアドレスの先頭24ビットがネットワーク部であることを意味します。IPv4では残りの8ビットがホスト部となり、そのサブネット内で使用できるホスト数が決まります。</source>
+        <target>The number after the slash is the prefix length — how many leading bits of the address are fixed as the network portion. A /24 fixes the first 24 bits, leaving 8 bits (in IPv4) free to identify hosts within that block, which is what determines how many addresses the subnet can hold.</target>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpFaqA2">
+      <segment state="initial">
+        <source>CIDRのプレフィックス長は、先頭から対応するビット数を1で埋めたサブネットマスクと等価です。例えば<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">/24</pc>は<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">255.255.255.0</pc>、<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">/16</pc>は<pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">255.255.0.0</pc>に対応します。</source>
+        <target>A CIDR prefix length and a dotted-decimal subnet mask describe the same thing two different ways: the prefix length is just the count of leading 1-bits in the mask. <pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">/24</pc> converts to <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">255.255.255.0</pc>, and <pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">/16</pc> converts to <pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">255.255.0.0</pc>.</target>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpFaqA3">
+      <segment state="initial">
+        <source>はい。プロトコル選択でIPv6を選ぶと、128ビットアドレスに対応したネットワークアドレス・プレフィックス長の計算結果が表示されます。ただしIPv6にはブロードキャストアドレスの概念が存在しない点がIPv4と異なります。</source>
+        <target>Yes — switch the protocol selector to IPv6 and the calculator works with 128-bit addresses instead of 32-bit ones, returning the matching network address and prefix breakdown. One difference from IPv4 worth knowing: IPv6 has no broadcast address, since that role is handled by multicast instead.</target>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpFaqA4">
+      <segment state="initial">
+        <source>入力したIPアドレスがRFC 1918で定義されたプライベートアドレス範囲（<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">10.0.0.0/8</pc>など）に含まれるかどうかは、ネットワークアドレスの計算結果と照らし合わせて確認できます。社内LANやVPC設計時にアドレス範囲が重複していないか確認する際に役立ちます。</source>
+        <target>Compare the calculated network address against the RFC 1918 private ranges (<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">10.0.0.0/8</pc> and the others) to see whether the address you entered falls inside one. That's a quick way to catch overlapping ranges before wiring up a VPC or an office LAN.</target>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpFaqA5">
+      <segment state="initial">
+        <source>IPv4では「2のホスト部ビット数乗 - 2」で計算します。2を引くのは、ホスト部が全0のネットワークアドレスと全1のブロードキャストアドレスをホストに割り当てられないためです。例えば<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">/24</pc>の場合はホスト部が8ビットなので、2の8乗から2を引いた254台が使用可能です。</source>
+        <target>For IPv4 it's 2 raised to the number of host bits, minus 2. The minus 2 removes the all-zeros network address and the all-ones broadcast address, neither of which can be assigned to a host. A <pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">/24</pc> has 8 host bits, so 2^8 - 2 gives you 254 usable addresses.</target>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpFaqA6">
+      <segment state="initial">
+        <source>いいえ。すべての計算処理はブラウザ内のJavaScriptで完結しており、入力したIPアドレスやCIDR情報がサーバーに送信されることはありません。社内ネットワークのアドレス体系を扱う場合でも安心して利用できます。</source>
+        <target>No. Every calculation runs in JavaScript inside your browser, and the IP address or CIDR block you type never leaves your machine. That makes it safe to use even when you're working with internal network layouts you'd rather not send anywhere.</target>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpFaqQ1">
+      <segment state="initial">
+        <source>CIDR表記の「/24」はどういう意味ですか</source>
+        <target>What does the "/24" in a CIDR block actually mean?</target>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpFaqQ2">
+      <segment state="initial">
+        <source>CIDR表記とサブネットマスクはどう対応していますか</source>
+        <target>How does a CIDR prefix map to a subnet mask?</target>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpFaqQ3">
+      <segment state="initial">
+        <source>このツールはIPv6にも対応していますか</source>
+        <target>Does this tool support IPv6 addresses too?</target>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpFaqQ4">
+      <segment state="initial">
+        <source>プライベートIPアドレスとの関係を教えてください</source>
+        <target>How does this relate to private IP address ranges?</target>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpFaqQ5">
+      <segment state="initial">
+        <source>使用可能ホスト数はどのように計算されますか</source>
+        <target>How is the number of usable hosts calculated?</target>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpFaqQ6">
+      <segment state="initial">
+        <source>入力したIPアドレスは外部に送信されますか</source>
+        <target>Is the IP address I enter sent anywhere externally?</target>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpFaqTitle">
+      <segment state="initial">
+        <source>よくある質問</source>
+        <target>FAQ</target>
+      </segment>
+    </unit>
     <unit id="ipCidrHelpOverview">
       <segment state="initial">
         <source>概要</source>
@@ -411,8 +489,8 @@
     </unit>
     <unit id="ipCidrHelpOverviewDesc">
       <segment state="initial">
-        <source> IP/CIDR計算機は、IPアドレスとCIDR表記からネットワーク情報を計算するオンラインツールです。IPv4およびIPv6に対応し、サブネットマスク・ネットワークアドレス・使用可能ホスト数・2進数表現などを算出します。 </source>
-        <target>Working out a subnet mask or the usable host range from a /24 or /20 by hand is tedious and easy to get wrong, especially once you&apos;re juggling multiple VLANs or VPC subnets at once. This calculator takes any IPv4 or IPv6 address with a CIDR prefix and instantly returns the netmask, network and broadcast addresses, usable host range and count, and the binary breakdown — so you can double-check a subnet design or decode someone else&apos;s without reaching for a notepad.</target>
+        <source> IP/CIDR計算機は、IPアドレスとCIDR表記からネットワーク情報を計算するオンラインツールです。IPv4およびIPv6に対応し、サブネットマスク・ネットワークアドレス・使用可能ホスト数・2進数表現などを算出します。VPCのサブネット設計やファイアウォールルールの確認など、ネットワーク構築時のCIDR計算を手計算なしで素早く行えます。 </source>
+        <target>Working out a subnet mask or the usable host range from a /24 or /20 by hand is tedious and easy to get wrong, especially once you&apos;re juggling multiple VLANs or VPC subnets at once. This calculator takes any IPv4 or IPv6 address with a CIDR prefix and instantly returns the netmask, network and broadcast addresses, usable host range and count, and the binary breakdown — so you can double-check a subnet design, plan an AWS or GCP VPC layout, or decode someone else&apos;s CIDR block without reaching for a notepad.</target>
       </segment>
     </unit>
     <unit id="ipCidrHelpSpec">
@@ -451,10 +529,22 @@
         <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">IPv4 vs IPv6</pc>: IPv4 addresses are 32 bits, written as four dot-separated decimal octets (192.168.1.1). IPv6 addresses are 128 bits, written as eight colon-separated groups of hex digits (2001:db8::1), and the vastly larger address space removes most of the scarcity pressure that drives aggressive subnetting under IPv4.</target>
       </segment>
     </unit>
+    <unit id="ipCidrHelpSpecIpv6Prefix">
+      <segment state="initial">
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">IPv6のプレフィックス長</pc>: IPv6アドレスは128ビットで構成され、一般的に上位64ビットをネットワーク部（サブネットプレフィックス）、下位64ビットをインターフェースID（ホスト部）として扱う設計が広く採用されています。</source>
+        <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">IPv6 prefix length</pc>: An IPv6 address is 128 bits wide, and the common convention splits it in half — the upper 64 bits as the subnet prefix, the lower 64 bits as the interface identifier (the host portion).</target>
+      </segment>
+    </unit>
     <unit id="ipCidrHelpSpecNetwork">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">ネットワークアドレス</pc>: サブネット内の最初のアドレス（ホスト部が全0）です。ルーティングの宛先として使用されます。</source>
         <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">Network address</pc>: The first address in the subnet, with every host bit set to 0. Routers and configuration files use this to refer to the subnet as a whole, for example in a routing table entry.</target>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpSpecPrivate">
+      <segment state="initial">
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">プライベートIPアドレス範囲</pc>: IPv4では<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">10.0.0.0/8</pc>、<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">172.16.0.0/12</pc>、<pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">192.168.0.0/16</pc>がプライベートアドレスとして予約されています（RFC 1918）。社内ネットワークやVPC内部のアドレス設計ではこの範囲から割り当てるのが一般的です。</source>
+        <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">Private IPv4 ranges</pc>: RFC 1918 reserves <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">10.0.0.0/8</pc>, <pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">172.16.0.0/12</pc>, and <pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">192.168.0.0/16</pc> for use inside private networks. Office LANs and internal VPC subnets are typically carved out of these blocks rather than a publicly routable range.</target>
       </segment>
     </unit>
     <unit id="ipCidrHelpSpecSubnetMask">
@@ -509,6 +599,12 @@
       <segment state="initial">
         <source>ファイアウォールルールのIPレンジ確認と検証。</source>
         <target>Double-checking that a firewall or security-group rule&apos;s IP range covers (or doesn&apos;t accidentally cover) the addresses you expect.</target>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpUseCaseSubnetSplit">
+      <segment state="initial">
+        <source>既存ネットワークを複数のサブネットに分割する際のアドレス範囲の見積もり。</source>
+        <target>Estimating how a range splits into smaller subnets when breaking up an existing network.</target>
       </segment>
     </unit>
     <unit id="ipCidrHelpUseCaseVpc">
@@ -2685,6 +2781,84 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
         <target>Sorting out SQL where an ORM has interleaved bind-parameter placeholders or auto-generated comments with the actual clauses — a common source of &quot;why won&apos;t this query format right&quot; confusion that a plain text editor can&apos;t fix.</target>
       </segment>
     </unit>
+    <unit id="svgViewerHelpFaqA1">
+      <segment state="initial">
+        <source>ブラウザのCanvas APIの制約上、外部URLへの画像参照やCSSで指定した外部Webフォントは読み込まれない場合があります。確実に反映させるには、画像はBase64形式でSVG内に埋め込み、文字はアウトライン化するか標準的なシステムフォントを使用してください。</source>
+        <target>Not reliably. Browser security restrictions around the Canvas API can block images loaded from an external URL and web fonts loaded via CSS. To guarantee they show up, embed images as base64 data URIs directly in the SVG, and either convert text to outlines or stick to a standard system font.</target>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpFaqA2">
+      <segment state="initial">
+        <source>「幅」「高さ」で指定したキャンバスサイズに「拡大率」を掛け合わせた値が実際の出力ピクセル数になります。Retinaディスプレイ向けに高解像度で書き出したい場合は、拡大率を200%に設定してください。</source>
+        <target>Multiply the width and height you set under Canvas Settings by the Scale percentage — that product is the actual pixel dimensions of the exported PNG. For a crisp Retina-ready asset, set Scale to 200% instead of exporting at 100% and upscaling later.</target>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpFaqA3">
+      <segment state="initial">
+        <source>はい。「背景を透過」を有効にすると、背景色を塗らない状態でPNGに書き出されます。PNG形式はアルファチャンネルに対応しているため、アイコンやロゴを透明背景で出力する用途に適しています。</source>
+        <target>Yes — turn on Transparent Background and the canvas is left unpainted before export. PNG supports an alpha channel, which makes it the right format for icons or logos that need to sit on top of any background color.</target>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpFaqA4">
+      <segment state="initial">
+        <source>処理はブラウザ内のCanvas APIで行われるため、極端に複雑なパスや非常に大きなキャンバスサイズを指定すると、ブラウザやデバイスの性能によって描画に時間がかかったり失敗したりすることがあります。必要な範囲でキャンバスサイズを調整してください。</source>
+        <target>Since rendering happens through your browser's Canvas API, an extremely complex path or a very large canvas size can be slow or fail outright, depending on your browser and device. Scale the canvas size down to what you actually need if you run into trouble.</target>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpFaqA5">
+      <segment state="initial">
+        <source>PNGは静止画形式のため、SMILやCSSアニメーションによる動きは反映されず、変換時点（プレビュー表示時）の静止した状態がそのまま書き出されます。動きのある画像として保存したい場合は、GIFや動画形式への変換を別途検討してください。</source>
+        <target>No. PNG is a still-image format, so SMIL or CSS animation is ignored and the export simply captures whatever frame was showing in the preview at the moment you clicked export. If you need to keep the motion, look at converting to GIF or a video format instead.</target>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpFaqA6">
+      <segment state="initial">
+        <source>いいえ。入力したSVGコードやプレビュー・変換処理はすべてブラウザ内で完結し、サーバーへ送信・保存されることはありません。タブを閉じたり再読み込みしたりすると入力内容は破棄されます。</source>
+        <target>No. The SVG markup you paste, the preview, and the PNG conversion all run entirely in your browser — nothing is sent to or stored on a server. Closing the tab or reloading the page discards whatever you had entered.</target>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpFaqQ1">
+      <segment state="initial">
+        <source>SVG内の外部画像参照やWebフォントは変換結果に反映されますか</source>
+        <target>Will external image references or web fonts inside my SVG show up in the exported PNG?</target>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpFaqQ2">
+      <segment state="initial">
+        <source>出力されるPNGの解像度はどう決まりますか</source>
+        <target>What determines the resolution of the exported PNG?</target>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpFaqQ3">
+      <segment state="initial">
+        <source>背景を透過したPNGとして出力できますか</source>
+        <target>Can I export a PNG with a transparent background?</target>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpFaqQ4">
+      <segment state="initial">
+        <source>サイズの大きいSVGファイルでも変換できますか</source>
+        <target>Are there limits on how large or complex an SVG can be?</target>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpFaqQ5">
+      <segment state="initial">
+        <source>SVGのアニメーションはPNGに反映されますか</source>
+        <target>Does SVG animation carry over into the exported PNG?</target>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpFaqQ6">
+      <segment state="initial">
+        <source>貼り付けたSVGコードは保存されますか</source>
+        <target>Is the SVG markup I paste in saved anywhere?</target>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpFaqTitle">
+      <segment state="initial">
+        <source>よくある質問</source>
+        <target>FAQ</target>
+      </segment>
+    </unit>
     <unit id="svgViewerHelpOverview">
       <segment state="initial">
         <source>概要</source>
@@ -2693,8 +2867,8 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
     </unit>
     <unit id="svgViewerHelpOverviewDesc">
       <segment state="initial">
-        <source> SVGビューアーは、SVGコードのリアルタイムプレビューとPNG画像への変換をオンラインで行えるツールです。キャンバスサイズ・背景色・スケール・オフセットを設定しながらプレビューし、PNG形式でダウンロードできます。 </source>
-        <target>Designers hand off icons as SVG, but most CMSs, email clients, and social platforms still expect a raster file — and many design tools don&apos;t give you pixel-level control over export size or padding. This SVG-to-PNG converter solves that: paste your SVG markup, preview it live, then fine-tune canvas size, background color, scale, and position before exporting a PNG that fits exactly where you need it.</target>
+        <source> SVGビューアーは、SVGコードのリアルタイムプレビューとPNG画像への変換をオンラインで行えるツールです。キャンバスサイズ・背景色・スケール・オフセットを設定しながらプレビューし、PNG形式でダウンロードできます。すべての変換処理はブラウザ内で完結するため、SVGファイルの内容が外部サーバーに送信されることはありません。アイコン素材の書き出しやOGP画像の作成など、デザインデータをラスター画像に変換したい場面で利用できます。 </source>
+        <target>Designers hand off icons as SVG, but most CMSs, email clients, and social platforms still expect a raster file — and many design tools don&apos;t give you pixel-level control over export size or padding. This SVG-to-PNG converter solves that: paste your SVG markup, preview it live, then fine-tune canvas size, background color, scale, and position before exporting a PNG that fits exactly where you need it. Everything runs client-side in your browser, so nothing you paste is ever uploaded anywhere.</target>
       </segment>
     </unit>
     <unit id="svgViewerHelpSpec">
@@ -2715,10 +2889,22 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
         <target>How the conversion works: SVG is vector data, so it has to be rasterized before it can become a PNG. This tool draws your SVG onto an HTML5 Canvas via drawImage(), then reads the pixels back out with toDataURL(&apos;image/png&apos;) — the same rasterization step browsers perform internally when they paint an &lt;img&gt; tag.</target>
       </segment>
     </unit>
+    <unit id="svgViewerHelpSpecExternalRef">
+      <segment state="initial">
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">外部参照・外部フォント</pc>: SVG内で外部画像を<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">&lt;image&gt;</pc>タグの<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">href</pc>で参照している場合や、Webフォントを外部CSSで指定している場合、ブラウザのセキュリティ制約により読み込めないことがあります。画像はBase64のData URIとして埋め込み、フォントは<pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">&lt;text&gt;</pc>要素にインラインの<pc id="4" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">style</pc>属性で指定することを推奨します。</source>
+        <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">External references &amp; fonts</pc>: An <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">&lt;image&gt;</pc> tag pointing at an external <pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">href</pc>, or a web font declared through external CSS, may fail to load because of browser security restrictions. Embed images as base64 data URIs instead, and set fonts through an inline <pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">style</pc> attribute on the <pc id="4" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">&lt;text&gt;</pc> element to be safe.</target>
+      </segment>
+    </unit>
     <unit id="svgViewerHelpSpecOffset">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">「X座標」・「Y座標」</pc>: SVGの描画位置をX・Y方向にずらすピクセル数です。キャンバス内の配置調整に使用します。</source>
         <target>X Offset / Y Offset: Shifts the SVG&apos;s drawing position within the canvas, in pixels. Useful when your artwork isn&apos;t centered in its own viewBox and you need to nudge it into place before export.</target>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpSpecResolution">
+      <segment state="initial">
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">出力解像度の考え方</pc>: PNGの実ピクセルサイズは「キャンバスサイズ × 拡大率」で決まります。SVGはベクター形式のため、拡大率を上げても輪郭のぼやけは発生しませんが、キャンバスサイズ自体を大きくしないと最終的な出力ピクセル数は増えません。</source>
+        <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">Output resolution</pc>: The actual pixel size of the PNG is canvas size multiplied by scale. Because SVG is vector data, raising the scale never blurs the edges — but the final pixel count only grows if you also raise the canvas size itself.</target>
       </segment>
     </unit>
     <unit id="svgViewerHelpSpecScale">
@@ -2797,6 +2983,12 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
       <segment state="initial">
         <source>OGP画像・faviconなどの素材を作成・確認する場合。</source>
         <target>Creating and verifying assets such as OGP images and favicons.</target>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpUseCaseTransparentExport">
+      <segment state="initial">
+        <source>透過PNGアイコンをアプリやWebサイトのアセットとして書き出す場合。</source>
+        <target>Exporting transparent-background PNG icons as app or website assets.</target>
       </segment>
     </unit>
     <unit id="textDiffHelpOverview">
@@ -4289,6 +4481,84 @@ Added the tool list page.</target>
         <target>Added the Articles page (/articles).</target>
       </segment>
     </unit>
+    <unit id="urlEncoderHelpFaqA1">
+      <segment state="initial">
+        <source>クエリパラメータの値やパスの一部分など、URLの断片をエンコードする場合はencodeURIComponentを使用してください。すでに完成した1つのURL全体をエンコードする場合は、<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">/</pc>や<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">?</pc>などの構造文字を保持できるencodeURIが適しています。</source>
+        <target>Use encodeURIComponent when you're encoding a fragment of a URL — a query parameter value, a single path segment. Use encodeURI when you already have a complete, well-formed URL and want to encode it as a whole while keeping structural characters like <pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">/</pc> and <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">?</pc> intact.</target>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpFaqA2">
+      <segment state="initial">
+        <source>日本語などのマルチバイト文字はまずUTF-8のバイト列に変換され、各バイトが<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%XX</pc>形式で表現されます。例えば「あ」は3バイトのUTF-8表現になるため、<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%E3%81%82</pc>という3つのパーセントエンコード列に変換されます。</source>
+        <target>Japanese and other multi-byte characters are first converted to their UTF-8 byte sequence, and each byte is then written as <pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%XX</pc>. The character "あ" is 3 bytes in UTF-8, so it expands into the three-part sequence <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%E3%81%82</pc>.</target>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpFaqA3">
+      <segment state="initial">
+        <source>すでにエンコード済みの文字列を再度エンコードすると、<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%</pc>記号自体が<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%25</pc>に変換され、デコードしても元の文字列に戻らなくなります。変換前に対象の文字列がすでにエンコード済みでないか確認することをおすすめします。</source>
+        <target>Encoding an already-encoded string a second time turns the literal <pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%</pc> character into <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%25</pc>, and decoding it once no longer gets you back to the original string. Check whether your input is already encoded before running it through the tool again.</target>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpFaqA4">
+      <segment state="initial">
+        <source>半角スペース・日本語などのマルチバイト文字に加え、<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">&amp;</pc>・<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">=</pc>・<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">?</pc>・<pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">#</pc>など、URLの構造やクエリの区切りとして意味を持つ記号もエンコード対象です。「URLの記号もすべて変換する」を有効にすると、これらの記号を含めてすべてエンコードされます。</source>
+        <target>Spaces and multi-byte characters like Japanese are obvious candidates, but reserved characters that carry structural meaning — <pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">&amp;</pc>, <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">=</pc>, <pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">?</pc>, and <pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">#</pc> — need encoding too if a value might contain them. Enabling Convert all URL symbols as well encodes all of these along with everything else.</target>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpFaqA5">
+      <segment state="initial">
+        <source>本ツールはJavaScript標準のencodeURI・encodeURIComponentに準拠しており、スペースは常に<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%20</pc>に変換されます。「+」によるスペース表現は<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">application/x-www-form-urlencoded</pc>形式のフォーム送信で使われる別の慣習であり、本ツールでは扱いません。</source>
+        <target>This tool follows JavaScript's built-in encodeURI/encodeURIComponent behavior, which always represents a space as <pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%20</pc>. The "+" convention for spaces belongs to <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">application/x-www-form-urlencoded</pc> form submissions, a separate encoding scheme that this tool doesn't produce.</target>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpFaqA6">
+      <segment state="initial">
+        <source>「%」の後ろに2桁の16進数が続かない不正な形式（例: 文字列末尾が「%2」で終わっている場合）や、UTF-8として不正なバイト列になっている場合はデコードエラーになります。エンコード前の文字列を再度確認してください。</source>
+        <target>Decoding fails when a "%" isn't followed by exactly two hex digits (for example, a string that ends abruptly with "%2"), or when the decoded bytes don't form valid UTF-8. Double-check the string before it was encoded and try again.</target>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpFaqQ1">
+      <segment state="initial">
+        <source>encodeURIComponentとencodeURIはどちらを使えばよいですか</source>
+        <target>Should I use encodeURIComponent or encodeURI?</target>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpFaqQ2">
+      <segment state="initial">
+        <source>日本語を含むURLはどのようにエンコードされますか</source>
+        <target>How does encoding handle URLs containing Japanese text?</target>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpFaqQ3">
+      <segment state="initial">
+        <source>二重エンコードしてしまうとどうなりますか</source>
+        <target>What happens if I accidentally encode a string twice?</target>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpFaqQ4">
+      <segment state="initial">
+        <source>クエリパラメータのどの文字がエンコード対象になりますか</source>
+        <target>Which characters in a query parameter actually need encoding?</target>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpFaqQ5">
+      <segment state="initial">
+        <source>スペースは「+」と「%20」のどちらに変換されますか</source>
+        <target>Does this tool encode spaces as "+" or as "%20"?</target>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpFaqQ6">
+      <segment state="initial">
+        <source>デコードに失敗するのはどのような場合ですか</source>
+        <target>In what situations does decoding fail?</target>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpFaqTitle">
+      <segment state="initial">
+        <source>よくある質問</source>
+        <target>FAQ</target>
+      </segment>
+    </unit>
     <unit id="urlEncoderHelpOverview">
       <segment state="initial">
         <source>概要</source>
@@ -4297,7 +4567,7 @@ Added the tool list page.</target>
     </unit>
     <unit id="urlEncoderHelpOverviewDesc">
       <segment state="initial">
-        <source> URLエンコード・デコードツールは、URLで使用できない文字を<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%XX</pc>形式に変換（エンコード）、またはその逆変換（デコード）を行うオンラインツールです。<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">encodeURI</pc>と<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">encodeURIComponent</pc>の2種類のJavaScriptメソッドに対応しています。 </source>
+        <source> URLエンコード・デコードツールは、URLで使用できない文字を<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%XX</pc>形式に変換（エンコード）、またはその逆変換（デコード）を行うオンラインツールです。<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">encodeURI</pc>と<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">encodeURIComponent</pc>の2種類のJavaScriptメソッドに対応しています。日本語を含むURLの生成や、APIリクエストのクエリパラメータ作成、既存URLの内容確認など幅広い場面で利用できます。 </source>
         <target>A URL full of <pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%XX</pc> sequences is unreadable at a glance, and remembering whether <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">encodeURI</pc> or <pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">encodeURIComponent</pc> is the right call for a given string trips up most developers at some point. This tool runs both directions — encode a raw string into percent-encoded form, or decode an encoded one back to plain text — using the exact same JavaScript methods you&apos;d call in code, so the result matches what your app will actually produce.</target>
       </segment>
     </unit>
@@ -4317,6 +4587,12 @@ Added the tool list page.</target>
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">encodeURIとencodeURIComponentの違い</pc>: encodeURIは<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">:</pc>、<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">/</pc>、<pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">?</pc>、<pc id="4" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">#</pc>などURLの構造文字をエンコードしませんが、encodeURIComponentはこれらもすべてエンコードします。</source>
         <target>Difference between encodeURI and encodeURIComponent: encodeURI does not encode URL structural characters such as :, /, ?, and #, while encodeURIComponent encodes all of them.</target>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpSpecDoubleEncoding">
+      <segment state="initial">
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">二重エンコーディング</pc>: すでにエンコード済みの文字列をさらにエンコードすると、<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%</pc>自体が<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%25</pc>に変換されてしまい、正しくデコードできなくなります。エンコード対象がすでに<pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%XX</pc>形式を含んでいないか確認してから変換してください。</source>
+        <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">Double encoding</pc>: Encoding a string that's already encoded turns the <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%</pc> character itself into <pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%25</pc>, breaking a clean round trip back to the original text. Check whether the input already contains <pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%XX</pc> sequences before converting.</target>
       </segment>
     </unit>
     <unit id="urlEncoderHelpSpecEncodeUri">
@@ -4383,6 +4659,12 @@ Added the tool list page.</target>
       <segment state="initial">
         <source>フォームデータをURLセーフな形式に変換する場合。</source>
         <target>Converting form field values into a URL-safe format before building a query string by hand.</target>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpUseCaseJapaneseDomain">
+      <segment state="initial">
+        <source>日本語ドメインやパスを含むURLを共有可能な形式に変換する場合。</source>
+        <target>Converting a URL with a Japanese domain or path into a form that's safe to share or paste elsewhere.</target>
       </segment>
     </unit>
     <unit id="urlEncoderHelpUseCaseQuery">

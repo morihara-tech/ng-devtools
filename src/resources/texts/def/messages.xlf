@@ -336,6 +336,71 @@
         <source>メニュー</source>
       </segment>
     </unit>
+    <unit id="ipCidrHelpFaqA1">
+      <segment>
+        <source>「/24」はプレフィックス長を表し、IPアドレスの先頭24ビットがネットワーク部であることを意味します。IPv4では残りの8ビットがホスト部となり、そのサブネット内で使用できるホスト数が決まります。</source>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpFaqA2">
+      <segment>
+        <source>CIDRのプレフィックス長は、先頭から対応するビット数を1で埋めたサブネットマスクと等価です。例えば<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">/24</pc>は<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">255.255.255.0</pc>、<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">/16</pc>は<pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">255.255.0.0</pc>に対応します。</source>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpFaqA3">
+      <segment>
+        <source>はい。プロトコル選択でIPv6を選ぶと、128ビットアドレスに対応したネットワークアドレス・プレフィックス長の計算結果が表示されます。ただしIPv6にはブロードキャストアドレスの概念が存在しない点がIPv4と異なります。</source>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpFaqA4">
+      <segment>
+        <source>入力したIPアドレスがRFC 1918で定義されたプライベートアドレス範囲（<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">10.0.0.0/8</pc>など）に含まれるかどうかは、ネットワークアドレスの計算結果と照らし合わせて確認できます。社内LANやVPC設計時にアドレス範囲が重複していないか確認する際に役立ちます。</source>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpFaqA5">
+      <segment>
+        <source>IPv4では「2のホスト部ビット数乗 - 2」で計算します。2を引くのは、ホスト部が全0のネットワークアドレスと全1のブロードキャストアドレスをホストに割り当てられないためです。例えば<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">/24</pc>の場合はホスト部が8ビットなので、2の8乗から2を引いた254台が使用可能です。</source>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpFaqA6">
+      <segment>
+        <source>いいえ。すべての計算処理はブラウザ内のJavaScriptで完結しており、入力したIPアドレスやCIDR情報がサーバーに送信されることはありません。社内ネットワークのアドレス体系を扱う場合でも安心して利用できます。</source>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpFaqQ1">
+      <segment>
+        <source>CIDR表記の「/24」はどういう意味ですか</source>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpFaqQ2">
+      <segment>
+        <source>CIDR表記とサブネットマスクはどう対応していますか</source>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpFaqQ3">
+      <segment>
+        <source>このツールはIPv6にも対応していますか</source>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpFaqQ4">
+      <segment>
+        <source>プライベートIPアドレスとの関係を教えてください</source>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpFaqQ5">
+      <segment>
+        <source>使用可能ホスト数はどのように計算されますか</source>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpFaqQ6">
+      <segment>
+        <source>入力したIPアドレスは外部に送信されますか</source>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpFaqTitle">
+      <segment>
+        <source>よくある質問</source>
+      </segment>
+    </unit>
     <unit id="ipCidrHelpOverview">
       <segment>
         <source>概要</source>
@@ -343,7 +408,7 @@
     </unit>
     <unit id="ipCidrHelpOverviewDesc">
       <segment>
-        <source> IP/CIDR計算機は、IPアドレスとCIDR表記からネットワーク情報を計算するオンラインツールです。IPv4およびIPv6に対応し、サブネットマスク・ネットワークアドレス・使用可能ホスト数・2進数表現などを算出します。 </source>
+        <source> IP/CIDR計算機は、IPアドレスとCIDR表記からネットワーク情報を計算するオンラインツールです。IPv4およびIPv6に対応し、サブネットマスク・ネットワークアドレス・使用可能ホスト数・2進数表現などを算出します。VPCのサブネット設計やファイアウォールルールの確認など、ネットワーク構築時のCIDR計算を手計算なしで素早く行えます。 </source>
       </segment>
     </unit>
     <unit id="ipCidrHelpSpec">
@@ -376,9 +441,19 @@
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">IPv4とIPv6の違い</pc>: IPv4は32ビット（4オクテット、ドット区切り十進表記）、IPv6は128ビット（8グループの16進数、コロン区切り）で表現されます。</source>
       </segment>
     </unit>
+    <unit id="ipCidrHelpSpecIpv6Prefix">
+      <segment>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">IPv6のプレフィックス長</pc>: IPv6アドレスは128ビットで構成され、一般的に上位64ビットをネットワーク部（サブネットプレフィックス）、下位64ビットをインターフェースID（ホスト部）として扱う設計が広く採用されています。</source>
+      </segment>
+    </unit>
     <unit id="ipCidrHelpSpecNetwork">
       <segment>
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">ネットワークアドレス</pc>: サブネット内の最初のアドレス（ホスト部が全0）です。ルーティングの宛先として使用されます。</source>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpSpecPrivate">
+      <segment>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">プライベートIPアドレス範囲</pc>: IPv4では<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">10.0.0.0/8</pc>、<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">172.16.0.0/12</pc>、<pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">192.168.0.0/16</pc>がプライベートアドレスとして予約されています（RFC 1918）。社内ネットワークやVPC内部のアドレス設計ではこの範囲から割り当てるのが一般的です。</source>
       </segment>
     </unit>
     <unit id="ipCidrHelpSpecSubnetMask">
@@ -424,6 +499,11 @@
     <unit id="ipCidrHelpUseCaseFirewall">
       <segment>
         <source>ファイアウォールルールのIPレンジ確認と検証。</source>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpUseCaseSubnetSplit">
+      <segment>
+        <source>既存ネットワークを複数のサブネットに分割する際のアドレス範囲の見積もり。</source>
       </segment>
     </unit>
     <unit id="ipCidrHelpUseCaseVpc">
@@ -2699,6 +2779,71 @@ UNIXタイム変換ツールを実装しました。</source>
         <source>スロークエリログに出力された整形前のSQLを貼り付けて可読化し、実行計画（EXPLAIN）を確認する前の下調べとして使う場合。</source>
       </segment>
     </unit>
+    <unit id="svgViewerHelpFaqA1">
+      <segment>
+        <source>ブラウザのCanvas APIの制約上、外部URLへの画像参照やCSSで指定した外部Webフォントは読み込まれない場合があります。確実に反映させるには、画像はBase64形式でSVG内に埋め込み、文字はアウトライン化するか標準的なシステムフォントを使用してください。</source>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpFaqA2">
+      <segment>
+        <source>「幅」「高さ」で指定したキャンバスサイズに「拡大率」を掛け合わせた値が実際の出力ピクセル数になります。Retinaディスプレイ向けに高解像度で書き出したい場合は、拡大率を200%に設定してください。</source>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpFaqA3">
+      <segment>
+        <source>はい。「背景を透過」を有効にすると、背景色を塗らない状態でPNGに書き出されます。PNG形式はアルファチャンネルに対応しているため、アイコンやロゴを透明背景で出力する用途に適しています。</source>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpFaqA4">
+      <segment>
+        <source>処理はブラウザ内のCanvas APIで行われるため、極端に複雑なパスや非常に大きなキャンバスサイズを指定すると、ブラウザやデバイスの性能によって描画に時間がかかったり失敗したりすることがあります。必要な範囲でキャンバスサイズを調整してください。</source>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpFaqA5">
+      <segment>
+        <source>PNGは静止画形式のため、SMILやCSSアニメーションによる動きは反映されず、変換時点（プレビュー表示時）の静止した状態がそのまま書き出されます。動きのある画像として保存したい場合は、GIFや動画形式への変換を別途検討してください。</source>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpFaqA6">
+      <segment>
+        <source>いいえ。入力したSVGコードやプレビュー・変換処理はすべてブラウザ内で完結し、サーバーへ送信・保存されることはありません。タブを閉じたり再読み込みしたりすると入力内容は破棄されます。</source>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpFaqQ1">
+      <segment>
+        <source>SVG内の外部画像参照やWebフォントは変換結果に反映されますか</source>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpFaqQ2">
+      <segment>
+        <source>出力されるPNGの解像度はどう決まりますか</source>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpFaqQ3">
+      <segment>
+        <source>背景を透過したPNGとして出力できますか</source>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpFaqQ4">
+      <segment>
+        <source>サイズの大きいSVGファイルでも変換できますか</source>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpFaqQ5">
+      <segment>
+        <source>SVGのアニメーションはPNGに反映されますか</source>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpFaqQ6">
+      <segment>
+        <source>貼り付けたSVGコードは保存されますか</source>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpFaqTitle">
+      <segment>
+        <source>よくある質問</source>
+      </segment>
+    </unit>
     <unit id="svgViewerHelpOverview">
       <segment>
         <source>概要</source>
@@ -2706,7 +2851,7 @@ UNIXタイム変換ツールを実装しました。</source>
     </unit>
     <unit id="svgViewerHelpOverviewDesc">
       <segment>
-        <source> SVGビューアーは、SVGコードのリアルタイムプレビューとPNG画像への変換をオンラインで行えるツールです。キャンバスサイズ・背景色・スケール・オフセットを設定しながらプレビューし、PNG形式でダウンロードできます。 </source>
+        <source> SVGビューアーは、SVGコードのリアルタイムプレビューとPNG画像への変換をオンラインで行えるツールです。キャンバスサイズ・背景色・スケール・オフセットを設定しながらプレビューし、PNG形式でダウンロードできます。すべての変換処理はブラウザ内で完結するため、SVGファイルの内容が外部サーバーに送信されることはありません。アイコン素材の書き出しやOGP画像の作成など、デザインデータをラスター画像に変換したい場面で利用できます。 </source>
       </segment>
     </unit>
     <unit id="svgViewerHelpSpec">
@@ -2724,9 +2869,19 @@ UNIXタイム変換ツールを実装しました。</source>
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">PNG変換の仕組み</pc>: ブラウザのCanvas APIを使用してSVGをラスタライズします。<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">drawImage()</pc>でSVGをCanvasに描画し、<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">toDataURL(&apos;image/png&apos;)</pc>でPNGデータに変換します。</source>
       </segment>
     </unit>
+    <unit id="svgViewerHelpSpecExternalRef">
+      <segment>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">外部参照・外部フォント</pc>: SVG内で外部画像を<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">&lt;image&gt;</pc>タグの<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">href</pc>で参照している場合や、Webフォントを外部CSSで指定している場合、ブラウザのセキュリティ制約により読み込めないことがあります。画像はBase64のData URIとして埋め込み、フォントは<pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">&lt;text&gt;</pc>要素にインラインの<pc id="4" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">style</pc>属性で指定することを推奨します。</source>
+      </segment>
+    </unit>
     <unit id="svgViewerHelpSpecOffset">
       <segment>
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">「X座標」・「Y座標」</pc>: SVGの描画位置をX・Y方向にずらすピクセル数です。キャンバス内の配置調整に使用します。</source>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpSpecResolution">
+      <segment>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">出力解像度の考え方</pc>: PNGの実ピクセルサイズは「キャンバスサイズ × 拡大率」で決まります。SVGはベクター形式のため、拡大率を上げても輪郭のぼやけは発生しませんが、キャンバスサイズ自体を大きくしないと最終的な出力ピクセル数は増えません。</source>
       </segment>
     </unit>
     <unit id="svgViewerHelpSpecScale">
@@ -2792,6 +2947,11 @@ UNIXタイム変換ツールを実装しました。</source>
     <unit id="svgViewerHelpUseCaseOgp">
       <segment>
         <source>OGP画像・faviconなどの素材を作成・確認する場合。</source>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpUseCaseTransparentExport">
+      <segment>
+        <source>透過PNGアイコンをアプリやWebサイトのアセットとして書き出す場合。</source>
       </segment>
     </unit>
     <unit id="textDiffHelpOverview">
@@ -3564,6 +3724,71 @@ UNIXタイム変換ツールを実装しました。</source>
         <source>記事ページ（/articles）を追加しました。</source>
       </segment>
     </unit>
+    <unit id="urlEncoderHelpFaqA1">
+      <segment>
+        <source>クエリパラメータの値やパスの一部分など、URLの断片をエンコードする場合はencodeURIComponentを使用してください。すでに完成した1つのURL全体をエンコードする場合は、<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">/</pc>や<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">?</pc>などの構造文字を保持できるencodeURIが適しています。</source>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpFaqA2">
+      <segment>
+        <source>日本語などのマルチバイト文字はまずUTF-8のバイト列に変換され、各バイトが<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%XX</pc>形式で表現されます。例えば「あ」は3バイトのUTF-8表現になるため、<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%E3%81%82</pc>という3つのパーセントエンコード列に変換されます。</source>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpFaqA3">
+      <segment>
+        <source>すでにエンコード済みの文字列を再度エンコードすると、<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%</pc>記号自体が<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%25</pc>に変換され、デコードしても元の文字列に戻らなくなります。変換前に対象の文字列がすでにエンコード済みでないか確認することをおすすめします。</source>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpFaqA4">
+      <segment>
+        <source>半角スペース・日本語などのマルチバイト文字に加え、<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">&amp;</pc>・<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">=</pc>・<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">?</pc>・<pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">#</pc>など、URLの構造やクエリの区切りとして意味を持つ記号もエンコード対象です。「URLの記号もすべて変換する」を有効にすると、これらの記号を含めてすべてエンコードされます。</source>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpFaqA5">
+      <segment>
+        <source>本ツールはJavaScript標準のencodeURI・encodeURIComponentに準拠しており、スペースは常に<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%20</pc>に変換されます。「+」によるスペース表現は<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">application/x-www-form-urlencoded</pc>形式のフォーム送信で使われる別の慣習であり、本ツールでは扱いません。</source>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpFaqA6">
+      <segment>
+        <source>「%」の後ろに2桁の16進数が続かない不正な形式（例: 文字列末尾が「%2」で終わっている場合）や、UTF-8として不正なバイト列になっている場合はデコードエラーになります。エンコード前の文字列を再度確認してください。</source>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpFaqQ1">
+      <segment>
+        <source>encodeURIComponentとencodeURIはどちらを使えばよいですか</source>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpFaqQ2">
+      <segment>
+        <source>日本語を含むURLはどのようにエンコードされますか</source>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpFaqQ3">
+      <segment>
+        <source>二重エンコードしてしまうとどうなりますか</source>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpFaqQ4">
+      <segment>
+        <source>クエリパラメータのどの文字がエンコード対象になりますか</source>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpFaqQ5">
+      <segment>
+        <source>スペースは「+」と「%20」のどちらに変換されますか</source>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpFaqQ6">
+      <segment>
+        <source>デコードに失敗するのはどのような場合ですか</source>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpFaqTitle">
+      <segment>
+        <source>よくある質問</source>
+      </segment>
+    </unit>
     <unit id="urlEncoderHelpOverview">
       <segment>
         <source>概要</source>
@@ -3571,7 +3796,7 @@ UNIXタイム変換ツールを実装しました。</source>
     </unit>
     <unit id="urlEncoderHelpOverviewDesc">
       <segment>
-        <source> URLエンコード・デコードツールは、URLで使用できない文字を<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%XX</pc>形式に変換（エンコード）、またはその逆変換（デコード）を行うオンラインツールです。<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">encodeURI</pc>と<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">encodeURIComponent</pc>の2種類のJavaScriptメソッドに対応しています。 </source>
+        <source> URLエンコード・デコードツールは、URLで使用できない文字を<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%XX</pc>形式に変換（エンコード）、またはその逆変換（デコード）を行うオンラインツールです。<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">encodeURI</pc>と<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">encodeURIComponent</pc>の2種類のJavaScriptメソッドに対応しています。日本語を含むURLの生成や、APIリクエストのクエリパラメータ作成、既存URLの内容確認など幅広い場面で利用できます。 </source>
       </segment>
     </unit>
     <unit id="urlEncoderHelpSpec">
@@ -3587,6 +3812,11 @@ UNIXタイム変換ツールを実装しました。</source>
     <unit id="urlEncoderHelpSpecDifference">
       <segment>
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">encodeURIとencodeURIComponentの違い</pc>: encodeURIは<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">:</pc>、<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">/</pc>、<pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">?</pc>、<pc id="4" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">#</pc>などURLの構造文字をエンコードしませんが、encodeURIComponentはこれらもすべてエンコードします。</source>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpSpecDoubleEncoding">
+      <segment>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">二重エンコーディング</pc>: すでにエンコード済みの文字列をさらにエンコードすると、<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%</pc>自体が<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%25</pc>に変換されてしまい、正しくデコードできなくなります。エンコード対象がすでに<pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%XX</pc>形式を含んでいないか確認してから変換してください。</source>
       </segment>
     </unit>
     <unit id="urlEncoderHelpSpecEncodeUri">
@@ -3642,6 +3872,11 @@ UNIXタイム変換ツールを実装しました。</source>
     <unit id="urlEncoderHelpUseCaseForm">
       <segment>
         <source>フォームデータをURLセーフな形式に変換する場合。</source>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpUseCaseJapaneseDomain">
+      <segment>
+        <source>日本語ドメインやパスを含むURLを共有可能な形式に変換する場合。</source>
       </segment>
     </unit>
     <unit id="urlEncoderHelpUseCasePlusVsPercent20">
