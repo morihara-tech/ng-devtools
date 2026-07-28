@@ -8,6 +8,7 @@ export const operatorInfoPageRoutes: Routes = [
     data: {
       title: $localize`:@@page.operatorInfo.title:運営者情報・お問い合わせ`,
       description: $localize`:@@page.operatorInfo.description:当サイトの運営者情報およびお問い合わせ方法についての説明です。`,
+      breadcrumb: { label: $localize`:@@page.operatorInfo.title:運営者情報・お問い合わせ` },
     },
   },
 ];
