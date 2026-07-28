@@ -8,6 +8,7 @@ export const guidePageRoutes: Routes = [
     data: {
       title: $localize`:@@page.guide.title:ご利用ガイド`,
       description: $localize`:@@page.guide.description:devTools が提供する各ツールについて、どんな場面で使えるかを簡単に紹介します。詳しい使い方や仕様は各ツールのページをご覧ください。`,
+      breadcrumb: { label: $localize`:@@page.guide.title:ご利用ガイド` },
     },
   },
 ];

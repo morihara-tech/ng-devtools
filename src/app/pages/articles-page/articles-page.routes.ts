@@ -52,7 +52,12 @@ const articleRoutes: Routes = articlesListJa.map((article) => ({
     title: resolveArticleTitle(article.slug),
     description: resolveArticleDescription(article.slug),
   },
-  data: { slug: article.slug },
+  data: {
+    slug: article.slug,
+    // No `label` here: BreadcrumbService falls back to the resolved
+    // `title` above for the current-page node.
+    breadcrumb: { parents: [{ label: $localize`:@@breadcrumb.articles:記事一覧`, routerLink: '/articles' }] },
+  },
 }));
 
 export const articlesPageRoutes: Routes = [
@@ -62,6 +67,7 @@ export const articlesPageRoutes: Routes = [
     data: {
       title: $localize`:@@page.articles.title:記事一覧`,
       description: $localize`:@@page.articles.description:devTools が提供するツールに関連するトピックを掘り下げて解説する記事の一覧です。`,
+      breadcrumb: { label: $localize`:@@page.articles.title:記事一覧` },
     },
   },
   ...articleRoutes,

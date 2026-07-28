@@ -1,0 +1,55 @@
+// Quiet, auxiliary trail — same register as app-header/app-sitemap, never
+// competing with the tool content below it. Sits full-width above the page
+// content, so its horizontal padding mirrors
+// ApplicationPageTemplateComponent's `.page-content-wrapper` gutters (8px on
+// mobile, 16px on desktop) even though many pages (dashboard/menu) don't use
+// that template.
+.breadcrumb {
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--mat-sys-outline-variant);
+}
+
+ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+li {
+  display: flex;
+  align-items: baseline;
+}
+
+a,
+span,
+.breadcrumb-current {
+  font-size: var(--mat-sys-label-small-size);
+  line-height: var(--mat-sys-label-small-line-height);
+  font-weight: var(--mat-sys-label-small-weight);
+  color: var(--mat-sys-on-surface-variant);
+}
+
+a {
+  text-decoration: none;
+
+  &:hover,
+  &:focus-visible {
+    text-decoration: underline;
+  }
+}
+
+.breadcrumb-current {
+  // Reset the browser's default large/bold <h1> styling: visually this is
+  // just the trail's last node, sized like its siblings.
+  margin: 0;
+  font-weight: 700;
+  color: var(--mat-sys-on-surface);
+}
+
+.separator {
+  margin: 0 4px;
+  color: var(--mat-sys-outline);
+}

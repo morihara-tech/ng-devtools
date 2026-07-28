@@ -8,6 +8,7 @@ export const menuPageRoutes: Routes = [
     data: {
       title: $localize`:@@page.menu.title:メニュー`,
       description: $localize`:@@page.menu.description:devTools で利用可能な全ツールの一覧です。`,
+      breadcrumb: { label: $localize`:@@page.menu.title:メニュー` },
     },
   },
 ];

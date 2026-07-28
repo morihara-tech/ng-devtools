@@ -33,6 +33,7 @@ export class StructuredDataService {
   private readonly locale = inject(LOCALE_ID);
 
   private script?: HTMLScriptElement;
+  private breadcrumbScript?: HTMLScriptElement;
 
   /**
    * Adds a `SoftwareApplication` JSON-LD script tag for a tool page.
@@ -62,5 +63,42 @@ export class StructuredDataService {
   remove(): void {
     this.script?.remove();
     this.script = undefined;
+  }
+
+  /**
+   * Injects/replaces a `BreadcrumbList` JSON-LD script tag for the current
+   * breadcrumb trail. Kept in a dedicated field so it never clobbers the
+   * per-tool-page `SoftwareApplication` script managed by `addSoftwareApplication`/`remove`.
+   *
+   * Nodes without a `routerLink` (breadcrumb category labels, which have no
+   * URL of their own) are omitted from `itemListElement` — every emitted
+   * `ListItem` must have a valid `item` URL. The single-node dashboard trail
+   * (Home only) is skipped entirely, since a one-item BreadcrumbList carries
+   * no information.
+   */
+  setBreadcrumbList(items: { name: string; routerLink?: string }[]): void {
+    this.breadcrumbScript?.remove();
+    this.breadcrumbScript = undefined;
+    if (items.length < 2) return;
+
+    const script = this.document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: items
+        .filter((it) => it.routerLink)
+        .map((it, i) => ({
+          '@type': 'ListItem',
+          position: i + 1,
+          name: it.name,
+          // Home's routerLink is "/" — appended naively that would double up
+          // into a trailing slash ("/ja/"), the exact issue fixed for the
+          // home link elsewhere (see HomeLinkDirective / issue #204).
+          item: `${BASE_URL}/${this.locale}${it.routerLink === '/' ? '' : it.routerLink}`,
+        })),
+    });
+    this.document.head.appendChild(script);
+    this.breadcrumbScript = script;
   }
 }
