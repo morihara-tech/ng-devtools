@@ -19,6 +19,84 @@
         <target>© 2026 Yutaka Morihara</target>
       </segment>
     </unit>
+    <unit id="apiKeyGenHelpFaqA1">
+      <segment state="initial">
+        <source>いいえ。本ツールが生成するのは形式が似たランダムな文字列であり、決済サービスやクラウドプロバイダーなど実際のサービス側で認証情報として登録・検証されるものではありません。本番用のキーは必ず各サービスの管理画面から正式に発行してください。用途はモック・テスト・開発時のダミーデータに限定されます。</source>
+        <target>No. This generates a randomly shaped string, not a credential registered with any payment processor, cloud provider, or third-party API. Production keys must always come from the issuing service&apos;s own dashboard. Treat anything generated here as mock data for local development and testing only.</target>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpFaqA2">
+      <segment state="initial">
+        <source>暗号学的に安全な乱数を使っており、十分な長さであれば統計的に衝突する確率は極めて低くなります。ただし数学的な絶対保証ではないため、システムに組み込む際はデータベース側でUNIQUE制約を設定し、万一の重複発行を防ぐ設計にすることを推奨します。</source>
+        <target>Not with a mathematical guarantee — but the underlying randomness is cryptographically secure, so collisions become statistically negligible once the key is reasonably long. If you wire generated keys into a real system, still add a UNIQUE constraint at the database layer as a backstop against the rare duplicate.</target>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpFaqA3">
+      <segment state="initial">
+        <source>URLやヘッダーに短く収めたい場合はBase62、既存の暗号処理やハッシュ関数と親和性を持たせたい場合はHex、他システムとの相互運用性を重視する場合はUUID v4が適しています。文字数を自由に調整したい場合はBase62かHexを選んでください。</source>
+        <target>Base62 packs the most entropy per character, so it&apos;s the best fit for short keys in URLs or headers. Hex matches the alphabet crypto libraries already emit, so it&apos;s convenient alongside hash functions. UUID v4 is the choice when the system you&apos;re integrating with expects a standard UUID column or field. Only Base62 and Hex let you adjust the length.</target>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpFaqA4">
+      <segment state="initial">
+        <source>決まった正解はありませんが、<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">sk_live_</pc>や<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">sk_test_</pc>のように用途（本番/テスト）や権限レベルを識別できる文字列を付けると、ログや設定ファイルを見たときにキーの種類を判別しやすくなります。実運用では環境ごとに異なるプレフィックスを使う設計が一般的です。</source>
+        <target>There&apos;s no fixed rule, but a tag like <pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">sk_live_</pc> or <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">sk_test_</pc> that encodes environment or permission level makes a key self-identifying the moment someone spots it in a log or config file. Real-world setups typically use a different prefix per environment.</target>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpFaqA5">
+      <segment state="initial">
+        <source>いいえ。生成処理はすべてブラウザ内のJavaScriptで完結しており、生成されたキーが外部サーバーへ送信されることはありません。ページを離れると生成結果は残らないため、必要な場合はその場でコピーして保管してください。</source>
+        <target>No. Generation runs entirely in your browser&apos;s JavaScript, so the keys never leave your machine. Results aren&apos;t persisted anywhere — leaving the page clears them — so copy anything you need before navigating away.</target>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpFaqA6">
+      <segment state="initial">
+        <source>本ツールで生成した値をテスト用途以外の実運用キーとして採用する場合は、パスワードと同様にサーバー側ではハッシュ化（例: SHA-256）した値のみを保存し、平文のキーをDBに残さない設計にすることを推奨します。本ツール自体はハッシュ化機能を提供していません。</source>
+        <target>If you adopt a value from here as a real production key rather than test data, treat it like a password: store only a server-side hash (e.g. SHA-256) and never keep the plaintext key in your database. This tool doesn&apos;t hash values itself — that&apos;s left to your backend.</target>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpFaqQ1">
+      <segment state="initial">
+        <source>生成したキーを本番サービスのAPIキーとしてそのまま使えますか</source>
+        <target>Can I use a generated key as a real production API key?</target>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpFaqQ2">
+      <segment state="initial">
+        <source>生成したキーの一意性（重複しないこと）は保証されますか</source>
+        <target>Is uniqueness guaranteed — could two generated keys collide?</target>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpFaqQ3">
+      <segment state="initial">
+        <source>Base62・Hex・UUID v4はどう使い分ければよいですか</source>
+        <target>How do I choose between Base62, Hex, and UUID v4?</target>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpFaqQ4">
+      <segment state="initial">
+        <source>プレフィックスにはどんな文字列を付けるべきですか</source>
+        <target>What kind of string should I use as a prefix?</target>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpFaqQ5">
+      <segment state="initial">
+        <source>生成したAPIキーはサーバーに保存・送信されますか</source>
+        <target>Are generated API keys stored or sent to a server?</target>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpFaqQ6">
+      <segment state="initial">
+        <source>実際のAPIキーのようにハッシュ化して保存する必要はありますか</source>
+        <target>Should I hash it before storing it, like a real API key?</target>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpFaqTitle">
+      <segment state="initial">
+        <source>よくある質問</source>
+        <target>FAQ</target>
+      </segment>
+    </unit>
     <unit id="apiKeyGenHelpOverview">
       <segment state="initial">
         <source>概要</source>
@@ -29,6 +107,12 @@
       <segment state="initial">
         <source> APIキージェネレーターは、安全なAPIキーをオンラインで生成するツールです。Base62・16進数・UUID v4の3形式に対応し、任意のプレフィックスを付与したAPIキーを一括生成できます。 </source>
         <target>Hardcoding a placeholder like &quot;test123&quot; as a stand-in API key works fine until it leaks into a commit, a log line, or a shared Slack thread — and unlike a real credential, it gives reviewers no signal about what a properly formed key should even look like. This tool generates cryptographically random, properly shaped key candidates on demand in Base62, hex, or UUID v4, with an optional prefix, so local development and onboarding docs can use realistic-looking keys without ever touching production secrets.</target>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpOverviewDesc2">
+      <segment state="initial">
+        <source> 開発中のAPIサーバーやモックサーバーの動作確認、認証ヘッダーの疎通テストなどでは、実際の課金サービスからキーを発行する前に「それらしい形式」のダミーキーが必要になる場面が多くあります。本ツールはブラウザ内で暗号学的に安全な乱数を用いてキーを生成するため、外部サービスに問い合わせることなくその場で必要な件数を用意できます。 </source>
+        <target> Wiring up an auth header against an in-progress API server or a mock backend rarely needs an actual key from a billing provider — it just needs something the right shape. Because generation runs client-side with cryptographically secure randomness, you can produce as many realistic-looking keys as you need without ever calling out to a third-party service.</target>
       </segment>
     </unit>
     <unit id="apiKeyGenHelpSpec">
@@ -59,6 +143,18 @@
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">プレフィックス</pc>: <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">sk_</pc>、<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">pk_</pc>、<pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">api_</pc>などのプレフィックスを付与することで、キーの用途や権限を識別しやすくします（例: OpenAIの<pc id="4" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">sk-...</pc>形式）。</source>
         <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">Prefix</pc>: A short tag like <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">sk_</pc>, <pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">pk_</pc>, or <pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">api_</pc> lets you tell secret keys apart from publishable ones at a glance — the same convention OpenAI uses with its <pc id="4" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">sk-...</pc> keys — so a key pasted into a support ticket or a code review is self-documenting.</target>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpSpecRandomSource">
+      <segment state="initial">
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">乱数生成の仕組み</pc>: いずれのフォーマットもブラウザの暗号学的に安全な乱数生成器（Web Crypto APIのCrypto.getRandomValues）から得たバイト列をもとに文字を選択しており、予測可能性のある擬似乱数は使用していません。</source>
+        <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">Randomness source</pc>: Every format draws its characters from bytes produced by the Web Crypto API&apos;s Crypto.getRandomValues, not a predictable pseudo-random generator like Math.random().</target>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpSpecUniqueness">
+      <segment state="initial">
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">一意性の考え方</pc>: 本ツールは統計的に衝突がほぼ起こらない十分なランダム性を提供しますが、データベース側で一意制約を課すことは保証しません。本番導入時は発行時にDB側でも重複チェック（UNIQUE制約）を行うことを推奨します。</source>
+        <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">Uniqueness</pc>: The randomness here makes collisions statistically negligible, but it doesn&apos;t enforce uniqueness the way a database constraint does. If you adopt generated keys in a real system, add a UNIQUE constraint at issuance time as well.</target>
       </segment>
     </unit>
     <unit id="apiKeyGenHelpSpecUuid">
@@ -103,6 +199,12 @@
         <target>Click Generate, then use the copy menu to grab the results as plain text, an .env block, or an MCP config snippet.</target>
       </segment>
     </unit>
+    <unit id="apiKeyGenHelpUsageTip">
+      <segment state="initial">
+        <source> 補足: 「UUID v4」フォーマットを選択した場合、文字数の指定は無視され、常に固定のハイフン区切り36文字形式で生成されます。既存システムがUUID形式のキーを前提にしている場合はこちらを選択してください。 </source>
+        <target> Note: switching to UUID v4 ignores the Length field entirely — output is always the fixed 36-character hyphenated form. Pick this option whenever the system on the other end expects a UUID-typed key.</target>
+      </segment>
+    </unit>
     <unit id="apiKeyGenHelpUseCase">
       <segment state="initial">
         <source>ユースケース</source>
@@ -113,6 +215,12 @@
       <segment state="initial">
         <source>REST APIの認証トークンやAPIキーの生成。</source>
         <target>Generating placeholder authentication tokens and API keys while building or testing a REST API.</target>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpUseCaseE2e">
+      <segment state="initial">
+        <source>E2Eテストのテストデータとして、複数のダミーAPIキーを一括で発行したい場合。</source>
+        <target>Batch-generating a set of dummy API keys as fixture data for end-to-end tests.</target>
       </segment>
     </unit>
     <unit id="apiKeyGenHelpUseCaseSaas">
@@ -131,6 +239,12 @@
       <segment state="initial">
         <source>MCPサーバー設定ファイルに記載するダミーのAPIキーやトークンの作成。</source>
         <target>An MCP server&apos;s config file (mcp.json or similar) almost always wants an API key or bearer token in its env block — generate one here and copy it straight out as a ready-to-paste MCP Config snippet via the output card&apos;s copy menu, instead of hand-typing a fake value that might not match the expected length or charset.</target>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpUseCaseMock">
+      <segment state="initial">
+        <source>モックサーバーやローカル開発環境で、認証ヘッダーの疎通確認用に使う仮のAPIキーを用意したい場合。</source>
+        <target>Preparing a placeholder key to sanity-check an Authorization header against a mock server or local dev environment.</target>
       </segment>
     </unit>
     <unit id="app.title">
@@ -289,6 +403,84 @@
         <target>All Tools</target>
       </segment>
     </unit>
+    <unit id="ipCidrHelpFaqA1">
+      <segment state="initial">
+        <source>「/24」はプレフィックス長を表し、IPアドレスの先頭24ビットがネットワーク部であることを意味します。IPv4では残りの8ビットがホスト部となり、そのサブネット内で使用できるホスト数が決まります。</source>
+        <target>The number after the slash is the prefix length — how many leading bits of the address are fixed as the network portion. A /24 fixes the first 24 bits, leaving 8 bits (in IPv4) free to identify hosts within that block, which is what determines how many addresses the subnet can hold.</target>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpFaqA2">
+      <segment state="initial">
+        <source>CIDRのプレフィックス長は、先頭から対応するビット数を1で埋めたサブネットマスクと等価です。例えば<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">/24</pc>は<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">255.255.255.0</pc>、<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">/16</pc>は<pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">255.255.0.0</pc>に対応します。</source>
+        <target>A CIDR prefix length and a dotted-decimal subnet mask describe the same thing two different ways: the prefix length is just the count of leading 1-bits in the mask. <pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">/24</pc> converts to <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">255.255.255.0</pc>, and <pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">/16</pc> converts to <pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">255.255.0.0</pc>.</target>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpFaqA3">
+      <segment state="initial">
+        <source>はい。プロトコル選択でIPv6を選ぶと、128ビットアドレスに対応したネットワークアドレス・プレフィックス長の計算結果が表示されます。ただしIPv6にはブロードキャストアドレスの概念が存在しない点がIPv4と異なります。</source>
+        <target>Yes — switch the protocol selector to IPv6 and the calculator works with 128-bit addresses instead of 32-bit ones, returning the matching network address and prefix breakdown. One difference from IPv4 worth knowing: IPv6 has no broadcast address, since that role is handled by multicast instead.</target>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpFaqA4">
+      <segment state="initial">
+        <source>入力したIPアドレスがRFC 1918で定義されたプライベートアドレス範囲（<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">10.0.0.0/8</pc>など）に含まれるかどうかは、ネットワークアドレスの計算結果と照らし合わせて確認できます。社内LANやVPC設計時にアドレス範囲が重複していないか確認する際に役立ちます。</source>
+        <target>Compare the calculated network address against the RFC 1918 private ranges (<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">10.0.0.0/8</pc> and the others) to see whether the address you entered falls inside one. That&apos;s a quick way to catch overlapping ranges before wiring up a VPC or an office LAN.</target>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpFaqA5">
+      <segment state="initial">
+        <source>IPv4では「2のホスト部ビット数乗 - 2」で計算します。2を引くのは、ホスト部が全0のネットワークアドレスと全1のブロードキャストアドレスをホストに割り当てられないためです。例えば<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">/24</pc>の場合はホスト部が8ビットなので、2の8乗から2を引いた254台が使用可能です。</source>
+        <target>For IPv4 it&apos;s 2 raised to the number of host bits, minus 2. The minus 2 removes the all-zeros network address and the all-ones broadcast address, neither of which can be assigned to a host. A <pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">/24</pc> has 8 host bits, so 2^8 - 2 gives you 254 usable addresses.</target>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpFaqA6">
+      <segment state="initial">
+        <source>いいえ。すべての計算処理はブラウザ内のJavaScriptで完結しており、入力したIPアドレスやCIDR情報がサーバーに送信されることはありません。社内ネットワークのアドレス体系を扱う場合でも安心して利用できます。</source>
+        <target>No. Every calculation runs in JavaScript inside your browser, and the IP address or CIDR block you type never leaves your machine. That makes it safe to use even when you&apos;re working with internal network layouts you&apos;d rather not send anywhere.</target>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpFaqQ1">
+      <segment state="initial">
+        <source>CIDR表記の「/24」はどういう意味ですか</source>
+        <target>What does the &quot;/24&quot; in a CIDR block actually mean?</target>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpFaqQ2">
+      <segment state="initial">
+        <source>CIDR表記とサブネットマスクはどう対応していますか</source>
+        <target>How does a CIDR prefix map to a subnet mask?</target>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpFaqQ3">
+      <segment state="initial">
+        <source>このツールはIPv6にも対応していますか</source>
+        <target>Does this tool support IPv6 addresses too?</target>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpFaqQ4">
+      <segment state="initial">
+        <source>プライベートIPアドレスとの関係を教えてください</source>
+        <target>How does this relate to private IP address ranges?</target>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpFaqQ5">
+      <segment state="initial">
+        <source>使用可能ホスト数はどのように計算されますか</source>
+        <target>How is the number of usable hosts calculated?</target>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpFaqQ6">
+      <segment state="initial">
+        <source>入力したIPアドレスは外部に送信されますか</source>
+        <target>Is the IP address I enter sent anywhere externally?</target>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpFaqTitle">
+      <segment state="initial">
+        <source>よくある質問</source>
+        <target>FAQ</target>
+      </segment>
+    </unit>
     <unit id="ipCidrHelpOverview">
       <segment state="initial">
         <source>概要</source>
@@ -297,8 +489,8 @@
     </unit>
     <unit id="ipCidrHelpOverviewDesc">
       <segment state="initial">
-        <source> IP/CIDR計算機は、IPアドレスとCIDR表記からネットワーク情報を計算するオンラインツールです。IPv4およびIPv6に対応し、サブネットマスク・ネットワークアドレス・使用可能ホスト数・2進数表現などを算出します。 </source>
-        <target>Working out a subnet mask or the usable host range from a /24 or /20 by hand is tedious and easy to get wrong, especially once you&apos;re juggling multiple VLANs or VPC subnets at once. This calculator takes any IPv4 or IPv6 address with a CIDR prefix and instantly returns the netmask, network and broadcast addresses, usable host range and count, and the binary breakdown — so you can double-check a subnet design or decode someone else&apos;s without reaching for a notepad.</target>
+        <source> IP/CIDR計算機は、IPアドレスとCIDR表記からネットワーク情報を計算するオンラインツールです。IPv4およびIPv6に対応し、サブネットマスク・ネットワークアドレス・使用可能ホスト数・2進数表現などを算出します。VPCのサブネット設計やファイアウォールルールの確認など、ネットワーク構築時のCIDR計算を手計算なしで素早く行えます。 </source>
+        <target>Working out a subnet mask or the usable host range from a /24 or /20 by hand is tedious and easy to get wrong, especially once you&apos;re juggling multiple VLANs or VPC subnets at once. This calculator takes any IPv4 or IPv6 address with a CIDR prefix and instantly returns the netmask, network and broadcast addresses, usable host range and count, and the binary breakdown — so you can double-check a subnet design, plan an AWS or GCP VPC layout, or decode someone else&apos;s CIDR block without reaching for a notepad.</target>
       </segment>
     </unit>
     <unit id="ipCidrHelpSpec">
@@ -337,10 +529,22 @@
         <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">IPv4 vs IPv6</pc>: IPv4 addresses are 32 bits, written as four dot-separated decimal octets (192.168.1.1). IPv6 addresses are 128 bits, written as eight colon-separated groups of hex digits (2001:db8::1), and the vastly larger address space removes most of the scarcity pressure that drives aggressive subnetting under IPv4.</target>
       </segment>
     </unit>
+    <unit id="ipCidrHelpSpecIpv6Prefix">
+      <segment state="initial">
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">IPv6のプレフィックス長</pc>: IPv6アドレスは128ビットで構成され、一般的に上位64ビットをネットワーク部（サブネットプレフィックス）、下位64ビットをインターフェースID（ホスト部）として扱う設計が広く採用されています。</source>
+        <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">IPv6 prefix length</pc>: An IPv6 address is 128 bits wide, and the common convention splits it in half — the upper 64 bits as the subnet prefix, the lower 64 bits as the interface identifier (the host portion).</target>
+      </segment>
+    </unit>
     <unit id="ipCidrHelpSpecNetwork">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">ネットワークアドレス</pc>: サブネット内の最初のアドレス（ホスト部が全0）です。ルーティングの宛先として使用されます。</source>
         <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">Network address</pc>: The first address in the subnet, with every host bit set to 0. Routers and configuration files use this to refer to the subnet as a whole, for example in a routing table entry.</target>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpSpecPrivate">
+      <segment state="initial">
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">プライベートIPアドレス範囲</pc>: IPv4では<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">10.0.0.0/8</pc>、<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">172.16.0.0/12</pc>、<pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">192.168.0.0/16</pc>がプライベートアドレスとして予約されています（RFC 1918）。社内ネットワークやVPC内部のアドレス設計ではこの範囲から割り当てるのが一般的です。</source>
+        <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">Private IPv4 ranges</pc>: RFC 1918 reserves <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">10.0.0.0/8</pc>, <pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">172.16.0.0/12</pc>, and <pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">192.168.0.0/16</pc> for use inside private networks. Office LANs and internal VPC subnets are typically carved out of these blocks rather than a publicly routable range.</target>
       </segment>
     </unit>
     <unit id="ipCidrHelpSpecSubnetMask">
@@ -395,6 +599,12 @@
       <segment state="initial">
         <source>ファイアウォールルールのIPレンジ確認と検証。</source>
         <target>Double-checking that a firewall or security-group rule&apos;s IP range covers (or doesn&apos;t accidentally cover) the addresses you expect.</target>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpUseCaseSubnetSplit">
+      <segment state="initial">
+        <source>既存ネットワークを複数のサブネットに分割する際のアドレス範囲の見積もり。</source>
+        <target>Estimating how a range splits into smaller subnets when breaking up an existing network.</target>
       </segment>
     </unit>
     <unit id="ipCidrHelpUseCaseVpc">
@@ -1097,6 +1307,84 @@ When OFF, uses decodeURI to decode while preserving the URL structure.</target>
         <target>Invalid JSON.</target>
       </segment>
     </unit>
+    <unit id="jsonFormatterHelpFaqA1">
+      <segment state="initial">
+        <source>いいえ。整形・圧縮処理はすべてブラウザ内のJavaScriptで完結しており、入力したデータが外部サーバーへ送信されることはありません。APIキーや個人情報を含むレスポンスでも安心して貼り付けて確認できます。</source>
+        <target>No. All formatting and minifying happens client-side in your browser, so nothing you paste — including responses with API keys or personal data — ever leaves your machine.</target>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpFaqA2">
+      <segment state="initial">
+        <source>標準のJSONパーサーを使用しているため、コメント（//や/* */）や末尾カンマを含む文字列はエラーになります。整形する前にコメントを削除するか、JSONCではなく厳密なJSON形式に変換してから貼り付けてください。</source>
+        <target>Not directly — the parser follows strict JSON (RFC 8259), so comments and trailing commas from JSONC-style files (like tsconfig.json) will throw a syntax error. Strip the comments first, or convert the file to plain JSON before pasting.</target>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpFaqA3">
+      <segment state="initial">
+        <source>主な原因は、キーや文字列値をシングルクォートで囲んでいる、末尾に余分なカンマがある、値がundefinedになっている、のいずれかです。エラーメッセージに表示される位置の周辺を確認してください。</source>
+        <target>Usually one of three culprits: single-quoted keys or strings (JSON requires double quotes), a trailing comma after the last item, or a bare `undefined` value. Check the character position the error message points to.</target>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpFaqA4">
+      <segment state="initial">
+        <source>JavaScriptの数値はIEEE 754倍精度浮動小数点で扱われるため、2の53乗を超える整数（例: 一部のSnowflake IDやDB上のbigint値）は精度が失われる場合があります。厳密な値を確認したい場合は、該当のフィールドを文字列型として扱っているAPI仕様かどうかを確認してください。</source>
+        <target>Because JSON numbers are parsed as IEEE 754 double-precision floats, integers larger than 2^53 — a common issue with Snowflake IDs or bigint database columns — can lose precision. Check whether the API is meant to represent that field as a string instead.</target>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpFaqA5">
+      <segment state="initial">
+        <source>現在のバージョンではJSON全体に対して一括で整形・圧縮を適用する仕様です。特定の階層だけを個別に整形したい場合は、該当部分を抜き出して別途貼り付けてご利用ください。</source>
+        <target>Not currently — formatting and minifying always apply to the whole document. To work on a single nested object or array in isolation, extract that fragment and paste it in on its own.</target>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpFaqA6">
+      <segment state="initial">
+        <source>はい。UTF-8で表現された日本語や絵文字を含む文字列も、エスケープされた\uXXXX形式・生の文字のどちらでも正しく整形されます。出力時に元の表記（エスケープの有無）を変えたい場合は、圧縮モードの出力をご確認ください。</source>
+        <target>Yes. Multi-byte strings — Japanese text, emoji, anything in UTF-8 — format correctly whether they&apos;re written as raw characters or escaped \uXXXX sequences. Switch to Minify to check how the output represents them.</target>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpFaqQ1">
+      <segment state="initial">
+        <source>貼り付けたJSONデータはサーバーに送信されますか</source>
+        <target>Is my pasted JSON data sent to a server?</target>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpFaqQ2">
+      <segment state="initial">
+        <source>コメント付きのJSON（JSONC）は整形できますか</source>
+        <target>Can this format JSONC (JSON with comments)?</target>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpFaqQ3">
+      <segment state="initial">
+        <source>「Unexpected token」エラーが出るのはなぜですか</source>
+        <target>Why do I get an &quot;Unexpected token&quot; error?</target>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpFaqQ4">
+      <segment state="initial">
+        <source>数値の桁が大きいと結果が変わることがあるのはなぜですか</source>
+        <target>Why does a very large number sometimes come out changed?</target>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpFaqQ5">
+      <segment state="initial">
+        <source>配列やオブジェクトの中身だけを圧縮せずに整形したい場合はどうすればよいですか</source>
+        <target>Can I format just part of a nested array or object?</target>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpFaqQ6">
+      <segment state="initial">
+        <source>日本語（マルチバイト文字）を含むJSONは正しく整形されますか</source>
+        <target>Does this handle non-ASCII text like Japanese correctly?</target>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpFaqTitle">
+      <segment state="initial">
+        <source>よくある質問</source>
+        <target>FAQ</target>
+      </segment>
+    </unit>
     <unit id="jsonFormatterHelpOverview">
       <segment state="initial">
         <source>概要</source>
@@ -1107,6 +1395,12 @@ When OFF, uses decodeURI to decode while preserving the URL structure.</target>
       <segment state="initial">
         <source> JSON整形ツールは、読みにくいJSON文字列を自動的に整形・フォーマットするオンラインツールです。インデントの調整・ミニファイ（圧縮）に対応し、APIレスポンスや設定ファイルのデバッグ・確認作業を効率化します。 </source>
         <target>A network response logged as one unbroken line of JSON is nearly impossible to scan by eye, and copy-pasting it into a code editor just to read it is a detour you shouldn&apos;t need. This tool turns that single line into an indented, readable tree instantly, and just as easily collapses a formatted JSON document back down to a compact one-liner for sending over the wire.</target>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpOverviewDesc2">
+      <segment state="initial">
+        <source> APIレスポンスやログは1行に圧縮された状態で出力されることが多く、目視でネストの深さやキーの対応関係を追うのは困難です。かといって毎回エディタやIDEに貼り付けて整形するのは手間がかかります。本ツールはブラウザだけで完結するため、外部にデータを送信することなくその場で構造を可視化できます。 </source>
+        <target>Switching to a full IDE just to eyeball one payload is overkill when you only need the shape of the data for a minute. Because everything runs client-side, you get that instant readability without ever routing the response through a third-party server first.</target>
       </segment>
     </unit>
     <unit id="jsonFormatterHelpSpec">
@@ -1133,10 +1427,22 @@ When OFF, uses decodeURI to decode while preserving the URL structure.</target>
         <target>JSON (JavaScript Object Notation): The de facto data interchange format on the web, defined by the RFC 8259 / ECMA-404 standards. It is the default body format for REST APIs and is also used for config files like package.json and tsconfig.json.</target>
       </segment>
     </unit>
+    <unit id="jsonFormatterHelpSpecJsonc">
+      <segment state="initial">
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">JSON5 / JSONC との違い</pc>: tsconfig.jsonなどではコメントや末尾カンマを許容する「JSONC」という拡張記法が使われることがありますが、これは仕様上のJSONそのものではありません。本ツールは厳密なJSON（RFC 8259）としてパースするため、コメント付きの設定ファイルをそのまま貼り付けるとエラーになる場合があります。</source>
+        <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">JSONC and JSON5 aren&apos;t plain JSON</pc>: Files like tsconfig.json use a relaxed superset called JSONC that permits comments and trailing commas, but that syntax isn&apos;t valid per the JSON spec itself. Since this tool parses strict RFC 8259 JSON, pasting a JSONC file with comments intact will raise an error.</target>
+      </segment>
+    </unit>
     <unit id="jsonFormatterHelpSpecMinify">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">「圧縮」モード</pc>: 改行・スペースをすべて除去してJSONを1行に圧縮します。ネットワーク転送量を削減したい場合や、HTTPリクエストボディとして利用する場合に有効です。</source>
         <target>Minify mode: Removes all line breaks and spaces to compress JSON into a single line. Useful for reducing network transfer size or when using JSON as an HTTP request body.</target>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpSpecRfc8259">
+      <segment state="initial">
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">RFC 8259について</pc>: JSONの構文を定めるインターネット標準です。値として使える型はオブジェクト・配列・文字列・数値・真偽値・nullの6種類のみで、日付型や関数、コメントは含まれません。JavaScriptのオブジェクトリテラルと似ていますが、キー名を必ず二重引用符で囲む点や、undefinedを表現できない点が異なります。</source>
+        <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">About RFC 8259</pc>: This is the internet standard that defines JSON&apos;s grammar. Only six value types exist — object, array, string, number, boolean, and null — with no native date type, functions, or comments. It resembles a JavaScript object literal, but keys must always be double-quoted and there is no way to represent `undefined`.</target>
       </segment>
     </unit>
     <unit id="jsonFormatterHelpSpecValidation">
@@ -1181,6 +1487,12 @@ When OFF, uses decodeURI to decode while preserving the URL structure.</target>
         <target>Use the copy button to grab the output straight to your clipboard.</target>
       </segment>
     </unit>
+    <unit id="jsonFormatterHelpUsageTip">
+      <segment state="initial">
+        <source> 補足: 変換に失敗する場合は、末尾カンマ・シングルクォート・コメントの混入など、JSONとして不正な記述がないか確認してください。エラーメッセージにはおおよその位置（行・文字位置）が表示されます。 </source>
+        <target>Tip: if the conversion fails, look for the usual suspects — a stray trailing comma, single-quoted strings, or an accidental comment. The error message points to roughly where the parser gave up.</target>
+      </segment>
+    </unit>
     <unit id="jsonFormatterHelpUseCase">
       <segment state="initial">
         <source>ユースケース</source>
@@ -1199,10 +1511,22 @@ When OFF, uses decodeURI to decode while preserving the URL structure.</target>
         <target>Reviewing and editing configuration files such as package.json and tsconfig.json.</target>
       </segment>
     </unit>
+    <unit id="jsonFormatterHelpUseCaseLog">
+      <segment state="initial">
+        <source>サーバーログに出力された構造化ログ（JSON Lines形式）を1件ずつ貼り付けて整形し、エラー発生時のフィールド値を確認する場合。</source>
+        <target>Pasting one line at a time from a JSON Lines (NDJSON) server log to inspect the field values on the entry where an error occurred.</target>
+      </segment>
+    </unit>
     <unit id="jsonFormatterHelpUseCaseMinify">
       <segment state="initial">
         <source>本番環境向けにJSONを圧縮してファイルサイズを削減する場合。</source>
         <target>Minifying JSON before sending it over the wire to shave off payload size.</target>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpUseCaseNested">
+      <segment state="initial">
+        <source><pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">&quot;user&quot;:&quot;id&quot;:1,&quot;roles&quot;:[&quot;admin&quot;,&quot;editor&quot;]</pc> のように1行にまとまったネスト構造のレスポンスを整形し、user.roles配列の中身をひと目で確認したい場合。 </source>
+        <target>Formatting a one-line nested response like <pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">&quot;user&quot;:&quot;id&quot;:1,&quot;roles&quot;:[&quot;admin&quot;,&quot;editor&quot;]</pc> to immediately see what&apos;s inside the nested `roles` array.</target>
       </segment>
     </unit>
     <unit id="jsonFormatterHelpUseCaseTrailingComma">
@@ -1541,6 +1865,84 @@ When OFF, uses decodeURI to decode while preserving the URL structure.</target>
         <target>Breadcrumb</target>
       </segment>
     </unit>
+    <unit id="colorPaletteHelpFaqA1">
+      <segment state="initial">
+        <source>入力欄はHEXカラーコード（<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">#RRGGBB</pc>または<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">#RGB</pc>）のみに対応しています。RGBやHSLで色を指定したい場合は、他のツールで一度HEX形式に変換してから入力してください。</source>
+        <target>The input field only accepts HEX color codes (#RRGGBB or #RGB). If you have a color in RGB or HSL, convert it to HEX with another tool first.</target>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpFaqA2">
+      <segment state="initial">
+        <source>各シェードの背景色に対して、黒文字と白文字それぞれの相対輝度からコントラストが高い方を自動的に選択して表示しています。ただし表示される文字色は目安であり、WCAG AA（4.5:1）やAAA（7:1）などの具体的な達成基準を満たすかどうかは、別途コントラストチェッカーで数値を確認することをおすすめします。</source>
+        <target>For each shade, the relative luminance of both black and white text is calculated and whichever gives higher contrast against that background is shown. This is only a starting point — always verify against the specific WCAG AA (4.5:1) or AAA (7:1) threshold you need with a dedicated contrast checker.</target>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpFaqA3">
+      <segment state="initial">
+        <source>はい。500ステップは入力したHEXカラーコードをそのまま基準色として使用します。50〜400は白との線形補間、600〜900は黒との線形補間によって、500を中心に明暗のグラデーションが生成されます。</source>
+        <target>Yes. The 500 step is always the HEX color you entered, used as-is as the base tone. Shades 50-400 are interpolated toward white and 600-900 toward black, producing a gradient centered on 500.</target>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpFaqA4">
+      <segment state="initial">
+        <source>現在のバージョンではパレットの保存機能は提供していません。各シェードのカラーコードをクリックしてクリップボードにコピーし、デザインツールやコードに直接貼り付けてご利用ください。</source>
+        <target>There's no save feature in the current version. Click any shade's code to copy it to the clipboard and paste it directly into your design tool or code.</target>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpFaqA5">
+      <segment state="initial">
+        <source>複数のブランドカラー候補を横並びで見比べたい場合は「比較」モード、1つの色について全シェードを詳しく確認したい場合は「濃淡」モードが適しています。用途に応じて切り替えてご利用ください。</source>
+        <target>Use Compare mode to line up several candidate brand colors side by side, and Shades mode when you want to inspect the full ramp of a single color in detail. Switch between them depending on what you're evaluating.</target>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpFaqA6">
+      <segment state="initial">
+        <source>いいえ。シェードの生成やコントラスト計算はすべてブラウザ内のJavaScriptで完結しており、入力したカラーコードが外部サーバーへ送信されることはありません。</source>
+        <target>No. Shade generation and contrast calculations all run client-side in JavaScript, so the color codes you enter are never transmitted to an external server.</target>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpFaqQ1">
+      <segment state="initial">
+        <source>RGBやHSL形式のカラーコードは入力できますか</source>
+        <target>Can I enter a color as RGB or HSL instead of HEX?</target>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpFaqQ2">
+      <segment state="initial">
+        <source>生成されたシェードはWCAGのどの基準に基づいていますか</source>
+        <target>Which WCAG guideline is the generated text color based on?</target>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpFaqQ3">
+      <segment state="initial">
+        <source>500ステップの色は入力した色そのものになりますか</source>
+        <target>Does the 500 shade match the color I entered exactly?</target>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpFaqQ4">
+      <segment state="initial">
+        <source>生成したパレットは保存できますか</source>
+        <target>Can I save a palette I've generated?</target>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpFaqQ5">
+      <segment state="initial">
+        <source>「比較」モードと「濃淡」モードはどう使い分ければよいですか</source>
+        <target>When should I use Compare mode versus Shades mode?</target>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpFaqQ6">
+      <segment state="initial">
+        <source>入力したカラーコードは外部に送信されますか</source>
+        <target>Is the color code I enter sent anywhere?</target>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpFaqTitle">
+      <segment state="initial">
+        <source>よくある質問</source>
+        <target>FAQ</target>
+      </segment>
+    </unit>
     <unit id="colorPaletteHelpOverview">
       <segment state="initial">
         <source>概要</source>
@@ -1551,6 +1953,12 @@ When OFF, uses decodeURI to decode while preserving the URL structure.</target>
       <segment state="initial">
         <source> カラーパレットツールは、入力したHEXカラーコードからMaterial Designライクなカラーシェードパレットを自動生成するオンラインツールです。比較モードとシェード生成モードの2種類に対応しています。 </source>
         <target>Picking a single brand color is easy; turning it into a consistent 10-step shade scale for buttons, hover states, and backgrounds by hand is tedious and easy to get wrong. This tool takes one or more HEX colors and instantly expands each into a Material Design-style shade ramp (50–900), so you get a usable, accessible palette in seconds instead of eyeballing tints and shades in a design app. Switch to Compare mode to line up several base colors side by side, or use Shades mode to inspect the full ramp for a single color.</target>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpOverviewDesc2">
+      <segment state="initial">
+        <source> デザインシステムやコンポーネントライブラリを構築する際、1つのブランドカラーから背景色・ホバー色・無効化状態の色といった複数階調を手作業で決めるのは手間がかかります。本ツールは基準色を入力するだけで一貫性のあるシェード段階を自動生成し、WCAGを踏まえたテキストカラーの候補も同時に確認できます。 </source>
+        <target>Hand-picking every hover, disabled, and background tint from a single brand color is tedious and easy to get inconsistent. Feed in one seed color and this tool derives a full tonal ramp instantly, along with a WCAG-aware suggestion for readable text on each shade.</target>
       </segment>
     </unit>
     <unit id="colorPaletteHelpSpec">
@@ -1575,6 +1983,12 @@ When OFF, uses decodeURI to decode while preserving the URL structure.</target>
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">HEXカラーコード</pc>: 3桁形式（<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">#RGB</pc>）と6桁形式（<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">#RRGGBB</pc>）の両方に対応しています。<pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">#</pc>プレフィックスの有無も問いません。</source>
         <target>HEX color codes: Accepts both shorthand (#RGB) and full (#RRGGBB) notation, and the leading # is optional either way — paste a value straight from a CSS file or a design tool without reformatting it first.</target>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpSpecRgbHsl">
+      <segment state="initial">
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">RGB・HSLとの相互変換</pc>: 内部的にはHEXをRGB（赤・緑・青の各成分0〜255）に変換して線形補間を行い、輝度計算やコントラスト判定にも利用します。HSL（色相・彩度・明度）形式での直接入力には対応していません。</source>
+        <target>RGB and HSL conversion: internally, HEX is converted to RGB (red/green/blue channels, 0-255) for the linear interpolation, luminance, and contrast calculations. Entering colors directly in HSL notation is not supported.</target>
       </segment>
     </unit>
     <unit id="colorPaletteHelpSpecShades">
@@ -1625,6 +2039,12 @@ When OFF, uses decodeURI to decode while preserving the URL structure.</target>
         <target>Click any swatch in the Result card to copy its code — or use the &quot;Copy as CSS variables&quot; option to grab the entire ramp as ready-to-paste custom properties.</target>
       </segment>
     </unit>
+    <unit id="colorPaletteHelpUsageTip">
+      <segment state="initial">
+        <source> 補足: 入力したカラーコードやシェード生成結果はブラウザ内のみで保持され、ページを再読み込みすると内容はリセットされます。使用中の配色を残しておきたい場合は、コピーしたコードを別途メモしてください。 </source>
+        <target>Note: entered colors and generated shades live only in the browser tab and reset on reload. Copy down any codes you want to keep before refreshing the page.</target>
+      </segment>
+    </unit>
     <unit id="colorPaletteHelpUseCase">
       <segment state="initial">
         <source>ユースケース</source>
@@ -1641,6 +2061,12 @@ When OFF, uses decodeURI to decode while preserving the URL structure.</target>
       <segment state="initial">
         <source>ブランドカラーのシェードパレットを自動生成したい場合。</source>
         <target>Turning a single brand color into a full shade ramp without manually tinting and shading it in a design tool.</target>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpUseCaseCompareBrand">
+      <segment state="initial">
+        <source>複数の候補ブランドカラーを並べて比較し、コーポレートカラーとして採用する色を検討する場合。</source>
+        <target>Lining up several candidate brand colors side by side to decide which one to adopt as a corporate color.</target>
       </segment>
     </unit>
     <unit id="colorPaletteHelpUseCaseMaterial">
@@ -1869,6 +2295,84 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
         <target>UUID Generator — Bulk v1, v4 &amp; v7 (RFC 9562) Online</target>
       </segment>
     </unit>
+    <unit id="passwordGenHelpFaqA1">
+      <segment state="initial">
+        <source>いいえ。生成処理はすべてブラウザ内で完結しており、サーバーへの送信やCookie・ローカルストレージへの保存は行いません。表示された結果はページを離れると失われるため、必要な場合はその場でコピーして安全な場所に保管してください。</source>
+        <target>No. Everything happens client-side — nothing is sent to a server, and results aren&apos;t written to cookies or local storage. Leaving the page clears whatever was generated, so copy anything you need into a safe place before you navigate away.</target>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpFaqA2">
+      <segment state="initial">
+        <source>エントロピーは「文字種の数の対数×文字数」で概算でき、値が大きいほど総当たり攻撃に必要な試行回数が増えます。例えば英数字+記号（約94種）で16文字なら100ビットを超え、現実的な時間では解読が困難な強度になります。重要なアカウントほど文字種を増やし長くすることを推奨します。</source>
+        <target>Roughly, entropy is log2(character pool size) multiplied by length — bigger numbers mean exponentially more brute-force attempts required. A 16-character password from the ~94-character alphanumeric-plus-symbols pool clears 100 bits, well beyond what&apos;s crackable in any practical timeframe. For your most sensitive accounts, favor both a larger character set and more length.</target>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpFaqA3">
+      <segment state="initial">
+        <source>対象システムが特定の記号を禁止している場合や、口頭・手入力での伝達が発生する場合は「英数字」や「英小文字 + 数字」を選ぶ方が安全にトラブルを避けられます。また数字のみのPINコード入力を想定した機器では「数字のみ」を選択してください。</source>
+        <target>Yes — if the target system rejects certain symbols, or the password will be read aloud or typed in by hand, Alphanumeric or Lowercase + Digits avoids those headaches entirely. For devices that only accept a numeric PIN, use Digits Only.</target>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpFaqA4">
+      <segment state="initial">
+        <source>使用可能な文字種が減るためエントロピーはわずかに低下しますが、実用上の影響はごくわずかです。それよりも印刷物や電話口での伝達時に0とO、1とlを読み間違えるリスクの方が実運用では大きいため、人が手入力する場面では有効にすることを推奨します。</source>
+        <target>It shrinks the character pool slightly, so entropy dips a little, but the effect is negligible in practice. The bigger real-world risk is someone misreading a 0 for an O or a 1 for an l off a printout or over the phone — turn this on whenever a human will be typing the password in.</target>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpFaqA5">
+      <segment state="initial">
+        <source>文字種を増やしても短い文字数では総当たり攻撃に対するエントロピーが不足しがちです。可能であれば12文字以上、重要なアカウントでは16文字以上を推奨します。8文字などの短い長さは、システム側の文字数上限がある場合の最終手段として扱ってください。</source>
+        <target>Even a rich character set can&apos;t make up for too little length — entropy runs short fast at 8 characters. Aim for at least 12 where you have the choice, and 16 or more for anything sensitive. Treat 8-character passwords as a fallback for systems that cap the field, not a default.</target>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpFaqA6">
+      <segment state="initial">
+        <source>各文字は独立してランダムに選ばれるため、確率的には稀に大文字や記号に偏った結果が出ることもあります。特定の文字種を必ず含めたい場合は、生成結果を確認し要件を満たさないものは再生成して選び直してください。</source>
+        <target>Each character is chosen independently, so on rare occasions a result can lean heavily toward one character type, like mostly uppercase or mostly symbols. If a policy requires at least one of each type, glance at the output and regenerate any password that doesn&apos;t meet it.</target>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpFaqQ1">
+      <segment state="initial">
+        <source>生成したパスワードはどこかに保存されますか</source>
+        <target>Is the generated password stored anywhere?</target>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpFaqQ2">
+      <segment state="initial">
+        <source>パスワードの強度（エントロピー）はどう考えればよいですか</source>
+        <target>How should I think about password strength and entropy?</target>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpFaqQ3">
+      <segment state="initial">
+        <source>記号を含めない方がよい場面はありますか</source>
+        <target>When should I avoid including symbols?</target>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpFaqQ4">
+      <segment state="initial">
+        <source>「類似文字を除く」を有効にするとセキュリティは下がりますか</source>
+        <target>Does enabling Exclude Similar Characters weaken security?</target>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpFaqQ5">
+      <segment state="initial">
+        <source>短い文字数（8文字など）でも安全に使えますか</source>
+        <target>Is a short length like 8 characters still safe to use?</target>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpFaqQ6">
+      <segment state="initial">
+        <source>生成されたパスワードが偏った文字構成（同じ文字種ばかり）になることはありますか</source>
+        <target>Can a generated password end up skewed toward one character type?</target>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpFaqTitle">
+      <segment state="initial">
+        <source>よくある質問</source>
+        <target>FAQ</target>
+      </segment>
+    </unit>
     <unit id="passwordGenHelpOverview">
       <segment state="initial">
         <source>概要</source>
@@ -1879,6 +2383,12 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
       <segment state="initial">
         <source> パスワードジェネレーターは、セキュアなランダムパスワードをオンラインで一括生成するツールです。文字種・長さ・生成件数をカスタマイズでき、エンジニアのシステム構築からエンドユーザーの初期パスワード設定まで幅広く活用できます。 </source>
         <target>The password generator is an online tool for generating secure random passwords in bulk. You can customize the character set, length, and count, making it useful for everything from system setup by engineers to setting initial passwords for end users.</target>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpOverviewDesc2">
+      <segment state="initial">
+        <source> 人間が考えたパスワードは覚えやすさを優先するあまり、辞書に載っている単語や誕生日など推測されやすいパターンになりがちです。本ツールは暗号学的に安全な乱数生成を使ってランダムな文字列を作るため、総当たり攻撃や辞書攻撃に対する耐性を確保しながら、必要な件数を一度にまとめて発行できます。 </source>
+        <target> Passwords people make up tend to prioritize memorability over unpredictability, which is exactly what makes them guessable — dictionary words, birthdays, keyboard patterns. This tool draws from a cryptographically secure random source instead, so every password resists both brute-force and dictionary attacks, and you can issue a whole batch of them in one pass.</target>
       </segment>
     </unit>
     <unit id="passwordGenHelpSpec">
@@ -1923,6 +2433,18 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
         <target>Lowercase + Digits: Lowercase letters and digits only, which keeps the result easy to read aloud or copy from a printed page, and safe to drop into a URL path without escaping.</target>
       </segment>
     </unit>
+    <unit id="passwordGenHelpSpecNoStorage">
+      <segment state="initial">
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">データの取り扱い</pc>: 生成したパスワードはブラウザ内のメモリ上にのみ保持され、サーバーへの送信や保存は行いません。ページを再読み込みすると生成結果は失われます。</source>
+        <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">Data handling</pc>: Generated passwords live only in the browser&apos;s memory for the current tab — nothing is sent to or stored on a server. Reloading the page discards whatever was generated.</target>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpSpecRandomSource">
+      <segment state="initial">
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">乱数生成の仕組み</pc>: 各文字はブラウザが提供する暗号学的に安全な乱数生成器（Web Crypto APIのCrypto.getRandomValues）を用いて選択されます。Math.random()のような予測可能性のある擬似乱数は使用していません。</source>
+        <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">Randomness source</pc>: Each character comes from the browser&apos;s cryptographically secure random number generator (the Web Crypto API&apos;s Crypto.getRandomValues), not a predictable pseudo-random source like Math.random().</target>
+      </segment>
+    </unit>
     <unit id="passwordGenHelpUsage">
       <segment state="initial">
         <source>使い方</source>
@@ -1959,6 +2481,12 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
         <target>Click the &quot;Generate&quot; button.</target>
       </segment>
     </unit>
+    <unit id="passwordGenHelpUsageTip">
+      <segment state="initial">
+        <source> 補足: 対象システムが記号を許可していない、または特定の記号のみ禁止しているといった制約がある場合は、「英数字」や「英小文字 + 数字」を選択するか、生成後に該当する記号を含む結果だけを除外して利用してください。 </source>
+        <target> Note: if the target system disallows symbols entirely, or bans specific ones, switch to Alphanumeric or Lowercase + Digits — or generate a batch and manually discard the results containing the disallowed symbols.</target>
+      </segment>
+    </unit>
     <unit id="passwordGenHelpUseCase">
       <segment state="initial">
         <source>ユースケース</source>
@@ -1971,6 +2499,12 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
         <target>Bulk-generating initial passwords when onboarding a batch of new user accounts.</target>
       </segment>
     </unit>
+    <unit id="passwordGenHelpUseCasePolicyCheck">
+      <segment state="initial">
+        <source>社内パスワードポリシー（最小文字数・文字種の組み合わせ）に適合するパスワードを、複数パターン見比べながら決めたい場合。</source>
+        <target>Comparing several generated options side by side to settle on one that satisfies a corporate password policy (minimum length, required character types).</target>
+      </segment>
+    </unit>
     <unit id="passwordGenHelpUseCaseSecret">
       <segment state="initial">
         <source>APIシークレットや暗号化キーの生成。</source>
@@ -1981,6 +2515,12 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
       <segment state="initial">
         <source>テスト用ダミーパスワードの作成。</source>
         <target>Creating disposable dummy passwords for QA and staging accounts.</target>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpUseCaseWifi">
+      <segment state="initial">
+        <source>Wi-Fiルーターや共有端末など、記号入力が難しい機器向けに英数字のみのパスワードを発行したい場合。</source>
+        <target>Issuing an alphanumeric-only password for hardware that&apos;s awkward to type symbols into, like a Wi-Fi router admin panel or a shared kiosk device.</target>
       </segment>
     </unit>
     <unit id="sitemap.heading">
@@ -2109,6 +2649,84 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
         <target>UUID Generator</target>
       </segment>
     </unit>
+    <unit id="sqlFormatterHelpFaqA1">
+      <segment state="initial">
+        <source>主要な方言に共通する標準SQL構文の整形に対応しています。方言固有の拡張構文（PL/pgSQLのプロシージャ、T-SQLのBEGIN...END、MySQLのバッククォート識別子など）は整形結果が意図と異なる場合があるため、整形後は必ず内容を確認してください。</source>
+        <target>It handles the standard SQL syntax shared across MySQL, PostgreSQL, and SQL Server. Dialect-specific extensions — PL/pgSQL procedures, T-SQL&apos;s BEGIN...END blocks, MySQL backtick identifiers — can format unexpectedly, so double-check the output before using it.</target>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpFaqA2">
+      <segment state="initial">
+        <source>いいえ。整形処理はブラウザ内で完結しており、入力したSQLが外部に送信されることはありません。本番データベースのスキーマ情報を含むクエリでも安心してご利用いただけます。</source>
+        <target>No. Formatting happens entirely client-side, so a query is never sent anywhere else — even one that reveals your production schema.</target>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpFaqA3">
+      <segment state="initial">
+        <source>単純なDML/DDL文の整形を主眼としているため、ストアドプロシージャやトリガーに含まれる制御構文（IF、LOOP、CURSORなど）は正しく整形されない場合があります。SELECT文などクエリ本体部分のみを抜き出してご利用ください。</source>
+        <target>Not reliably — the formatter targets plain DML/DDL statements, so procedural control flow inside stored procedures or triggers (IF, LOOP, CURSOR) may not come out right. Extract just the query body, like the SELECT statement, instead.</target>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpFaqA4">
+      <segment state="initial">
+        <source>はい。セミコロンで区切られた複数のSQL文を一度に貼り付けると、それぞれが個別に整形されます。マイグレーションファイルのように複数のCREATE TABLE文が並んでいる場合にも利用できます。</source>
+        <target>Yes. Paste several semicolon-separated statements at once and each one is formatted on its own — handy for a migration file with a string of CREATE TABLE statements.</target>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpFaqA5">
+      <segment state="initial">
+        <source>SELECT・FROM・WHEREなどのキーワードを右揃えで縦に整列させるため、キーワードの位置が視覚的に揃い、条件句が多い長いクエリでも構造を把握しやすくなります。ドキュメントやプレゼン資料にSQLを掲載する際にもよく使われます。</source>
+        <target>It right-aligns SELECT, FROM, WHERE, and similar keywords into a vertical column, which makes the overall structure of a long, clause-heavy query easier to scan at a glance. It&apos;s also a common choice when dropping SQL into documentation or a slide deck.</target>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpFaqA6">
+      <segment state="initial">
+        <source>「予約語」オプションが「大文字」または「小文字」に設定されている場合、SELECTやFROMなどのSQLキーワードが自動的に変換されます。入力時のケースをそのまま維持したい場合は「変更しない」を選択してください。</source>
+        <target>That happens automatically whenever Keywords is set to Uppercase or Lowercase — SELECT, FROM, and the rest get converted accordingly. Set it to Preserve if you want the casing you typed to stay untouched.</target>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpFaqQ1">
+      <segment state="initial">
+        <source>MySQL・PostgreSQL・SQL Serverのどの方言に対応していますか</source>
+        <target>Which SQL dialects does this support: MySQL, PostgreSQL, SQL Server?</target>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpFaqQ2">
+      <segment state="initial">
+        <source>貼り付けたSQLに含まれるテーブル名やデータはサーバーに送信されますか</source>
+        <target>Is the table and column data in my pasted SQL sent to a server?</target>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpFaqQ3">
+      <segment state="initial">
+        <source>ストアドプロシージャやトリガーの定義も整形できますか</source>
+        <target>Can it format stored procedure or trigger definitions?</target>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpFaqQ4">
+      <segment state="initial">
+        <source>複数のSQL文をまとめて整形できますか</source>
+        <target>Can I format multiple SQL statements at once?</target>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpFaqQ5">
+      <segment state="initial">
+        <source>「右揃え/表形式」モードはどのような場面で使うと便利ですか</source>
+        <target>When is Right-aligned/Tabular mode useful?</target>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpFaqQ6">
+      <segment state="initial">
+        <source>整形結果の予約語が想定と異なる大文字/小文字になるのはなぜですか</source>
+        <target>Why did the output change the casing of my keywords?</target>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpFaqTitle">
+      <segment state="initial">
+        <source>よくある質問</source>
+        <target>FAQ</target>
+      </segment>
+    </unit>
     <unit id="sqlFormatterHelpOverview">
       <segment state="initial">
         <source>概要</source>
@@ -2121,10 +2739,28 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
         <target>ORM-generated queries and anything pulled from a slow-query log tend to come out as a dense single line, which makes catching a missing JOIN condition or a redundant subquery much harder than it should be. This formatter re-indents JOIN, WHERE, GROUP BY, and similar clauses onto their own lines so the query&apos;s structure is visible at a glance, which speeds up both code review and writing documentation.</target>
       </segment>
     </unit>
+    <unit id="sqlFormatterHelpOverviewDesc2">
+      <segment state="initial">
+        <source> ORMやBIツールが自動生成するSQLは1行に連結されていることが多く、JOIN条件やサブクエリの入れ子構造を目で追うのが困難です。手作業でインデントを揃え直すのは時間がかかるうえ、SELECT句のカラム数が多いクエリでは特に骨が折れます。本ツールはそうした整形作業を数秒で終わらせ、レビューやチューニングに集中できるようにします。 </source>
+        <target>Manually re-indenting a query by hand gets old fast, especially once a SELECT list stretches past a dozen columns or a subquery is buried three levels deep. Offloading that grunt work here means you spend your attention on reviewing the logic or tuning the query, not counting spaces.</target>
+      </segment>
+    </unit>
     <unit id="sqlFormatterHelpSpec">
       <segment state="initial">
         <source>仕様・用語解説</source>
         <target>Specifications &amp; Glossary</target>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpSpecComment">
+      <segment state="initial">
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">コメントの扱い</pc>: 行コメント（--）およびブロックコメント（/* */）は、位置情報を保持したまま整形後のクエリに引き継がれます。ORMが自動生成したクエリに付与されるバインドパラメータのコメントなどもそのまま残ります。</source>
+        <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">Comments</pc>: Line comments (--) and block comments (/* */) carry over into the formatted output in place, including the bind-parameter comments an ORM often attaches to generated queries.</target>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpSpecDialect">
+      <segment state="initial">
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">対応SQL方言について</pc>: 本ツールはMySQL・PostgreSQL・SQLiteなど主要な方言に共通する標準的なSQL構文（SELECT / INSERT / UPDATE / DELETE / CREATE TABLE等）の整形に対応しています。ただし、PL/pgSQLのストアドプロシージャや、T-SQL固有のBEGIN...END構文など、方言に強く依存する拡張構文は整形結果が崩れる場合があります。</source>
+        <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">Supported SQL dialects</pc>: This tool formats the standard SQL constructs shared across MySQL, PostgreSQL, and SQLite — SELECT, INSERT, UPDATE, DELETE, CREATE TABLE, and the like. Dialect-specific extensions such as PL/pgSQL stored procedures or T-SQL&apos;s BEGIN...END blocks fall outside that common ground and may not format cleanly.</target>
       </segment>
     </unit>
     <unit id="sqlFormatterHelpSpecIdentifier">
@@ -2223,6 +2859,12 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
         <target>Hit Format and the cleaned-up query appears on the right, ready to copy into a review comment or doc.</target>
       </segment>
     </unit>
+    <unit id="sqlFormatterHelpUsageTip">
+      <segment state="initial">
+        <source> 補足: 複数のSQL文をセミコロン区切りで一括貼り付けても整形できます。マイグレーションファイルなど、複数のCREATE TABLE文をまとめて確認したい場合に活用してください。 </source>
+        <target>Tip: you can paste several semicolon-separated statements at once — useful for reviewing a whole migration file&apos;s worth of CREATE TABLE statements in one pass.</target>
+      </segment>
+    </unit>
     <unit id="sqlFormatterHelpUseCase">
       <segment state="initial">
         <source>ユースケース</source>
@@ -2247,10 +2889,100 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
         <target>Cleaning up a query before opening a pull request, so reviewers spend their time on logic instead of deciphering formatting.</target>
       </segment>
     </unit>
+    <unit id="sqlFormatterHelpUseCaseSlowQueryLog">
+      <segment state="initial">
+        <source>スロークエリログに出力された整形前のSQLを貼り付けて可読化し、実行計画（EXPLAIN）を確認する前の下調べとして使う場合。</source>
+        <target>Making a raw entry from the slow query log readable as a first pass, before diving into the query plan with EXPLAIN.</target>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpUseCaseJoinAudit">
+      <segment state="initial">
+        <source>複数テーブルを結合した「SELECT * FROM orders o JOIN users u ON o.user_id = u.id JOIN items i ON o.item_id = i.id WHERE...」のような1行クエリを整形し、JOIN条件の対応関係を確認しながらパフォーマンスチューニングを行う場合。</source>
+        <target>Formatting a dense multi-table join, e.g. `SELECT * FROM orders o JOIN users u ON o.user_id = u.id JOIN items i ON o.item_id = i.id WHERE...`, to check each JOIN condition lines up correctly while tuning performance.</target>
+      </segment>
+    </unit>
     <unit id="sqlFormatterHelpUseCaseOrmComments">
       <segment state="initial">
         <source>ORMが生成したSQLに混在するバインドパラメータやコメントが多く読みにくい場合の整理。</source>
         <target>Sorting out SQL where an ORM has interleaved bind-parameter placeholders or auto-generated comments with the actual clauses — a common source of &quot;why won&apos;t this query format right&quot; confusion that a plain text editor can&apos;t fix.</target>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpFaqA1">
+      <segment state="initial">
+        <source>ブラウザのCanvas APIの制約上、外部URLへの画像参照やCSSで指定した外部Webフォントは読み込まれない場合があります。確実に反映させるには、画像はBase64形式でSVG内に埋め込み、文字はアウトライン化するか標準的なシステムフォントを使用してください。</source>
+        <target>Not reliably. Browser security restrictions around the Canvas API can block images loaded from an external URL and web fonts loaded via CSS. To guarantee they show up, embed images as base64 data URIs directly in the SVG, and either convert text to outlines or stick to a standard system font.</target>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpFaqA2">
+      <segment state="initial">
+        <source>「幅」「高さ」で指定したキャンバスサイズに「拡大率」を掛け合わせた値が実際の出力ピクセル数になります。Retinaディスプレイ向けに高解像度で書き出したい場合は、拡大率を200%に設定してください。</source>
+        <target>Multiply the width and height you set under Canvas Settings by the Scale percentage — that product is the actual pixel dimensions of the exported PNG. For a crisp Retina-ready asset, set Scale to 200% instead of exporting at 100% and upscaling later.</target>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpFaqA3">
+      <segment state="initial">
+        <source>はい。「背景を透過」を有効にすると、背景色を塗らない状態でPNGに書き出されます。PNG形式はアルファチャンネルに対応しているため、アイコンやロゴを透明背景で出力する用途に適しています。</source>
+        <target>Yes — turn on Transparent Background and the canvas is left unpainted before export. PNG supports an alpha channel, which makes it the right format for icons or logos that need to sit on top of any background color.</target>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpFaqA4">
+      <segment state="initial">
+        <source>処理はブラウザ内のCanvas APIで行われるため、極端に複雑なパスや非常に大きなキャンバスサイズを指定すると、ブラウザやデバイスの性能によって描画に時間がかかったり失敗したりすることがあります。必要な範囲でキャンバスサイズを調整してください。</source>
+        <target>Since rendering happens through your browser&apos;s Canvas API, an extremely complex path or a very large canvas size can be slow or fail outright, depending on your browser and device. Scale the canvas size down to what you actually need if you run into trouble.</target>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpFaqA5">
+      <segment state="initial">
+        <source>PNGは静止画形式のため、SMILやCSSアニメーションによる動きは反映されず、変換時点（プレビュー表示時）の静止した状態がそのまま書き出されます。動きのある画像として保存したい場合は、GIFや動画形式への変換を別途検討してください。</source>
+        <target>No. PNG is a still-image format, so SMIL or CSS animation is ignored and the export simply captures whatever frame was showing in the preview at the moment you clicked export. If you need to keep the motion, look at converting to GIF or a video format instead.</target>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpFaqA6">
+      <segment state="initial">
+        <source>いいえ。入力したSVGコードやプレビュー・変換処理はすべてブラウザ内で完結し、サーバーへ送信・保存されることはありません。タブを閉じたり再読み込みしたりすると入力内容は破棄されます。</source>
+        <target>No. The SVG markup you paste, the preview, and the PNG conversion all run entirely in your browser — nothing is sent to or stored on a server. Closing the tab or reloading the page discards whatever you had entered.</target>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpFaqQ1">
+      <segment state="initial">
+        <source>SVG内の外部画像参照やWebフォントは変換結果に反映されますか</source>
+        <target>Will external image references or web fonts inside my SVG show up in the exported PNG?</target>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpFaqQ2">
+      <segment state="initial">
+        <source>出力されるPNGの解像度はどう決まりますか</source>
+        <target>What determines the resolution of the exported PNG?</target>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpFaqQ3">
+      <segment state="initial">
+        <source>背景を透過したPNGとして出力できますか</source>
+        <target>Can I export a PNG with a transparent background?</target>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpFaqQ4">
+      <segment state="initial">
+        <source>サイズの大きいSVGファイルでも変換できますか</source>
+        <target>Are there limits on how large or complex an SVG can be?</target>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpFaqQ5">
+      <segment state="initial">
+        <source>SVGのアニメーションはPNGに反映されますか</source>
+        <target>Does SVG animation carry over into the exported PNG?</target>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpFaqQ6">
+      <segment state="initial">
+        <source>貼り付けたSVGコードは保存されますか</source>
+        <target>Is the SVG markup I paste in saved anywhere?</target>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpFaqTitle">
+      <segment state="initial">
+        <source>よくある質問</source>
+        <target>FAQ</target>
       </segment>
     </unit>
     <unit id="svgViewerHelpOverview">
@@ -2261,8 +2993,8 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
     </unit>
     <unit id="svgViewerHelpOverviewDesc">
       <segment state="initial">
-        <source> SVGビューアーは、SVGコードのリアルタイムプレビューとPNG画像への変換をオンラインで行えるツールです。キャンバスサイズ・背景色・スケール・オフセットを設定しながらプレビューし、PNG形式でダウンロードできます。 </source>
-        <target>Designers hand off icons as SVG, but most CMSs, email clients, and social platforms still expect a raster file — and many design tools don&apos;t give you pixel-level control over export size or padding. This SVG-to-PNG converter solves that: paste your SVG markup, preview it live, then fine-tune canvas size, background color, scale, and position before exporting a PNG that fits exactly where you need it.</target>
+        <source> SVGビューアーは、SVGコードのリアルタイムプレビューとPNG画像への変換をオンラインで行えるツールです。キャンバスサイズ・背景色・スケール・オフセットを設定しながらプレビューし、PNG形式でダウンロードできます。すべての変換処理はブラウザ内で完結するため、SVGファイルの内容が外部サーバーに送信されることはありません。アイコン素材の書き出しやOGP画像の作成など、デザインデータをラスター画像に変換したい場面で利用できます。 </source>
+        <target>Designers hand off icons as SVG, but most CMSs, email clients, and social platforms still expect a raster file — and many design tools don&apos;t give you pixel-level control over export size or padding. This SVG-to-PNG converter solves that: paste your SVG markup, preview it live, then fine-tune canvas size, background color, scale, and position before exporting a PNG that fits exactly where you need it. Everything runs client-side in your browser, so nothing you paste is ever uploaded anywhere.</target>
       </segment>
     </unit>
     <unit id="svgViewerHelpSpec">
@@ -2283,10 +3015,22 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
         <target>How the conversion works: SVG is vector data, so it has to be rasterized before it can become a PNG. This tool draws your SVG onto an HTML5 Canvas via drawImage(), then reads the pixels back out with toDataURL(&apos;image/png&apos;) — the same rasterization step browsers perform internally when they paint an &lt;img&gt; tag.</target>
       </segment>
     </unit>
+    <unit id="svgViewerHelpSpecExternalRef">
+      <segment state="initial">
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">外部参照・外部フォント</pc>: SVG内で外部画像を<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">&lt;image&gt;</pc>タグの<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">href</pc>で参照している場合や、Webフォントを外部CSSで指定している場合、ブラウザのセキュリティ制約により読み込めないことがあります。画像はBase64のData URIとして埋め込み、フォントは<pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">&lt;text&gt;</pc>要素にインラインの<pc id="4" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">style</pc>属性で指定することを推奨します。</source>
+        <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">External references &amp; fonts</pc>: An <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">&lt;image&gt;</pc> tag pointing at an external <pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">href</pc>, or a web font declared through external CSS, may fail to load because of browser security restrictions. Embed images as base64 data URIs instead, and set fonts through an inline <pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">style</pc> attribute on the <pc id="4" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">&lt;text&gt;</pc> element to be safe.</target>
+      </segment>
+    </unit>
     <unit id="svgViewerHelpSpecOffset">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">「X座標」・「Y座標」</pc>: SVGの描画位置をX・Y方向にずらすピクセル数です。キャンバス内の配置調整に使用します。</source>
         <target>X Offset / Y Offset: Shifts the SVG&apos;s drawing position within the canvas, in pixels. Useful when your artwork isn&apos;t centered in its own viewBox and you need to nudge it into place before export.</target>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpSpecResolution">
+      <segment state="initial">
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">出力解像度の考え方</pc>: PNGの実ピクセルサイズは「キャンバスサイズ × 拡大率」で決まります。SVGはベクター形式のため、拡大率を上げても輪郭のぼやけは発生しませんが、キャンバスサイズ自体を大きくしないと最終的な出力ピクセル数は増えません。</source>
+        <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">Output resolution</pc>: The actual pixel size of the PNG is canvas size multiplied by scale. Because SVG is vector data, raising the scale never blurs the edges — but the final pixel count only grows if you also raise the canvas size itself.</target>
       </segment>
     </unit>
     <unit id="svgViewerHelpSpecScale">
@@ -2367,6 +3111,90 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
         <target>Creating and verifying assets such as OGP images and favicons.</target>
       </segment>
     </unit>
+    <unit id="svgViewerHelpUseCaseTransparentExport">
+      <segment state="initial">
+        <source>透過PNGアイコンをアプリやWebサイトのアセットとして書き出す場合。</source>
+        <target>Exporting transparent-background PNG icons as app or website assets.</target>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpFaqA1">
+      <segment state="initial">
+        <source>いいえ。本ツールは行単位での比較に特化しており、1行の中のどの文字や単語が変わったかまでは強調表示されません。1行が大きく書き換わった場合は、行全体が変更行として扱われます。</source>
+        <target>No. This tool is built specifically for line-by-line comparison, so it won't highlight which word or character changed within a line. If a line is heavily rewritten, the whole line is simply marked as changed.</target>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpFaqA2">
+      <segment state="initial">
+        <source>はい。改行コードの違いは行の区切りとして解釈に影響するため、内容が同じでもLFとCRLFが混在していると差分として検出される場合があります。比較前にエディタなどで改行コードを統一することをおすすめします。</source>
+        <target>Yes. Line-ending style affects how line boundaries are interpreted, so a file using CRLF and one using LF can show up as different even when the content is otherwise identical. Normalize line endings in your editor before comparing if this is an issue.</target>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpFaqA3">
+      <segment state="initial">
+        <source>はい、区別されます。<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">Hello</pc>と<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">hello</pc>のように大文字・小文字のみが異なる行も、変更行として検出されます。大文字・小文字を無視して比較するオプションは現在提供していません。</source>
+        <target>Yes. Lines that differ only in capitalization, such as Hello versus hello, are still flagged as changed. There's currently no option to ignore case.</target>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpFaqA4">
+      <segment state="initial">
+        <source>数千行程度までは実用的な速度で比較できますが、テキストが極端に大きい場合はブラウザ内での計算処理に時間がかかったり、表示が重くなったりすることがあります。大きなファイルを比較する場合は、必要な範囲だけを抜き出してから比較することをおすすめします。</source>
+        <target>Texts up to a few thousand lines compare at a practical speed, but extremely large inputs can slow down the in-browser computation and make the display sluggish. For very large files, extract just the section you need before comparing.</target>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpFaqA5">
+      <segment state="initial">
+        <source>いいえ。差分の計算はすべてブラウザ内のJavaScriptで完結しており、入力したテキストが外部サーバーへ送信されることはありません。機密情報を含む文書でも安心して比較できます。</source>
+        <target>No. The diff is computed entirely in client-side JavaScript, so nothing you type is ever transmitted to an external server — it's safe to compare even sensitive documents.</target>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpFaqA6">
+      <segment state="initial">
+        <source>はい。行末や行頭の余分なスペース、タブとスペースの違いなども含めて、1文字でも異なれば変更行として検出されます。インデント幅の変更だけで差分が大量に出る場合は、この点が原因であることが多いです。</source>
+        <target>Yes. Trailing or leading spaces, and differences between tabs and spaces, count as a change even if that's the only difference on the line. A sudden flood of diffs after an indentation change is usually caused by this.</target>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpFaqQ1">
+      <segment state="initial">
+        <source>文字単位や単語単位での差分表示はできますか</source>
+        <target>Can this show differences at the character or word level?</target>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpFaqQ2">
+      <segment state="initial">
+        <source>改行コード（LF/CRLF）が違うだけでも差分として検出されますか</source>
+        <target>Are files flagged as different just because of line-ending style (LF vs. CRLF)?</target>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpFaqQ3">
+      <segment state="initial">
+        <source>大文字と小文字は区別されますか</source>
+        <target>Is the comparison case-sensitive?</target>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpFaqQ4">
+      <segment state="initial">
+        <source>非常に大きなテキストを比較しても問題ありませんか</source>
+        <target>Is there a limit to how large a text I can compare?</target>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpFaqQ5">
+      <segment state="initial">
+        <source>入力したテキストはサーバーに送信されますか</source>
+        <target>Is the text I enter sent to a server?</target>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpFaqQ6">
+      <segment state="initial">
+        <source>空白（スペース）だけの違いも差分として表示されますか</source>
+        <target>Do whitespace-only differences show up in the diff?</target>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpFaqTitle">
+      <segment state="initial">
+        <source>よくある質問</source>
+        <target>FAQ</target>
+      </segment>
+    </unit>
     <unit id="textDiffHelpOverview">
       <segment state="initial">
         <source>概要</source>
@@ -2379,6 +3207,12 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
         <target>Spotting what actually changed between two versions of a config file, a paragraph, or a pasted log is slow and error-prone when you&apos;re just scanning by eye. This tool runs a line-by-line diff on whatever you paste and renders the result as a color-coded, side-by-side comparison — added, removed, and modified lines are immediately visible, without needing a local git checkout or a diff viewer plugin.</target>
       </segment>
     </unit>
+    <unit id="textDiffHelpOverviewDesc2">
+      <segment state="initial">
+        <source> 設定ファイルの変更前後を見比べたい、文書の改訂箇所を確認したいといった場面で、目視での比較は見落としが発生しがちです。本ツールはブラウザ内で差分計算が完結するため、外部にテキストを送信することなく、その場で変更箇所だけを素早く特定できます。 </source>
+        <target>Spotting what actually changed between two versions of a config file or document by eye is error-prone — it's easy to miss a single flipped character. Because the comparison runs entirely in the browser, you can pinpoint exactly what changed without ever sending either version to a server.</target>
+      </segment>
+    </unit>
     <unit id="textDiffHelpSpec">
       <segment state="initial">
         <source>仕様・用語解説</source>
@@ -2389,6 +3223,12 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">差分アルゴリズム（LCS）</pc>: LCS（Longest Common Subsequence：最長共通部分列）ベースのdiffアルゴリズムを採用しています。2つのシーケンス間で最も長い共通の部分列を求め、追加・削除箇所を特定します。</source>
         <target>Diff algorithm (LCS): Built on the Longest Common Subsequence (LCS) algorithm — the same family of algorithm behind tools like the classic Unix diff and Git&apos;s default diff engine. It identifies the longest sequence of lines common to both texts, then reports everything else as an addition or deletion relative to that shared backbone.</target>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpSpecCaseSensitive">
+      <segment state="initial">
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">大文字・小文字の区別</pc>: 比較は大文字・小文字を区別して行われます。<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">Text</pc>と<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">text</pc>は異なる行として扱われ、差分として検出されます。</source>
+        <target>Case sensitivity: comparisons are case-sensitive. Text and text are treated as different lines and will show up as a diff even though the only difference is capitalization.</target>
       </segment>
     </unit>
     <unit id="textDiffHelpSpecDiffResult">
@@ -2405,8 +3245,14 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
     </unit>
     <unit id="textDiffHelpSpecLineDiff">
       <segment state="initial">
-        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">行単位の差分</pc>: テキストを行単位で比較し、変更のあった行を識別します。各行の変更内容を原文と並べて表示します。</source>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">行単位の差分</pc>: テキストを行単位で比較し、変更のあった行を識別します。各行の変更内容を原文と並べて表示します。単語単位や文字単位での差分強調には対応していません。</source>
         <target>Line-level diff: Comparison happens at the line level, not the word or character level — a single edited word still marks the whole line as modified. This keeps results easy to scan for config files and prose, though it won&apos;t pinpoint the exact word that changed within a long line.</target>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpSpecLineEnding">
+      <segment state="initial">
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">改行コードの扱い</pc>: 入力テキストの改行コード（LF・CRLF）の違いも行の境界として扱われるため、改行コードのみが異なるテキスト同士を比較すると、内容が同じでも差分として検出される場合があります。</source>
+        <target>Line ending handling: differences in line-ending style (LF vs. CRLF) are also treated as part of the line boundary, so two texts that are otherwise identical can still show up as a diff if their line endings don't match.</target>
       </segment>
     </unit>
     <unit id="textDiffHelpSpecSideBySide">
@@ -2445,6 +3291,12 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
         <target>Use the clear button to wipe both fields and start over.</target>
       </segment>
     </unit>
+    <unit id="textDiffHelpUsageTip">
+      <segment state="initial">
+        <source> 補足: 差分は行単位で計算されるため、1行が長すぎる場合や改行位置がずれている場合は差分が見づらくなることがあります。比較しやすくするには、あらかじめ整形ツールなどで改行位置をそろえておくことをおすすめします。 </source>
+        <target>Note: the diff is computed line by line, so very long lines or mismatched line breaks can make the result harder to read. Running both texts through a formatter first to normalize line breaks tends to make the comparison much clearer.</target>
+      </segment>
+    </unit>
     <unit id="textDiffHelpUseCase">
       <segment state="initial">
         <source>ユースケース</source>
@@ -2475,6 +3327,90 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
         <target>Sanity-checking a snippet&apos;s changes before opening a pull request, when you don&apos;t have the file in a local git checkout.</target>
       </segment>
     </unit>
+    <unit id="textDiffHelpUseCaseTranslation">
+      <segment state="initial">
+        <source>翻訳作業で、原文と訳文の対応関係を崩さずに旧版・新版のテキストを見比べる場合。</source>
+        <target>Comparing an old and new draft of a translation without losing the line-by-line correspondence between source and translated text.</target>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpFaqA1">
+      <segment state="initial">
+        <source>最大の違いはソート可能性です。UUID v4は完全にランダムなため生成順と文字列の並び順が一致しませんが、ULIDは先頭48ビットがミリ秒タイムスタンプなので、文字列としてソートするとほぼ生成順に並びます。長さもUUID（ハイフン込み36文字）に対しULIDは26文字と短くなります。</source>
+        <target>The biggest difference is sortability. UUID v4 is pure randomness, so string order and creation order have nothing to do with each other; ULID front-loads a 48-bit millisecond timestamp, so sorting the strings puts them back in roughly the order they were created. ULID is also shorter — 26 characters versus 36 for a hyphenated UUID.</target>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpFaqA2">
+      <segment state="initial">
+        <source>ULIDの先頭10文字はUNIXエポックからのミリ秒数をCrockford&apos;s Base32でエンコードした値です。Base32は桁の重みが大きい文字ほど先頭に来るよう設計されているため、生成時刻が新しいほど先頭文字列が大きくなり、通常の文字列比較（辞書順ソート）がそのまま時系列順と一致します。</source>
+        <target>The first 10 characters are the milliseconds-since-epoch timestamp, Crockford&apos;s Base32-encoded so that the most significant digit sits leftmost — exactly how positional number systems already work. A later timestamp always produces a lexicographically larger prefix, so an ordinary string comparison sorts ULIDs chronologically with no special logic required.</target>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpFaqA3">
+      <segment state="initial">
+        <source>はい。先頭10文字をCrockford&apos;s Base32としてデコードすれば、生成時に使われたミリ秒単位のUNIXタイムスタンプを復元できます。ランダム部分にあたる残り16文字からは時刻情報は得られません。</source>
+        <target>Yes. Decode the first 10 characters as Crockford&apos;s Base32 and you get back the exact millisecond Unix timestamp used at generation time. The remaining 16 characters are pure randomness and carry no time information.</target>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpFaqA4">
+      <segment state="initial">
+        <source>理論上は完全にゼロではありませんが、80ビットのランダム部分があるため実用上無視できるほど低い確率です。同一ミリ秒内で連続生成する場合に厳密な重複回避と順序保証を求めるなら、「単調増加」オプションを有効にしてください。</source>
+        <target>Not theoretically zero, but with 80 bits of randomness backing each ULID, collisions are negligible in practice. If you need a hard guarantee against duplicates and a strict order when generating several in the same millisecond, turn on Increase monotonically.</target>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpFaqA5">
+      <segment state="initial">
+        <source>同一ミリ秒内で複数生成した際に、2件目以降はランダム部分を1ずつインクリメントします。これにより同一タイムスタンプ内でも生成順どおりに文字列がソートされるようになり、イベントログのような順序が重要な用途に適しています。</source>
+        <target>When several ULIDs share a millisecond, every one after the first increments the random portion by one instead of re-rolling it. That keeps the batch sorted in generation order even within a single timestamp, which matters for event logs where sequence has to be exact.</target>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpFaqA6">
+      <segment state="initial">
+        <source>ULIDは128ビットの値なのでUUID型のカラムにバイナリ表現として格納すること自体は可能ですが、文字列表現の見た目やハイフンの有無が異なるため、既存のUUID文字列との単純な置き換えにはアプリケーション側の変換ロジックが必要です。移行前に既存コードがUUID形式の文字列（ハイフン区切り36文字）を前提にしていないか確認してください。</source>
+        <target>Since a ULID is still a 128-bit value, it can be stored as raw bytes in a UUID-typed column, but the string representation looks different — no hyphens, a different alphabet — so swapping in ULIDs for existing UUID strings needs a conversion layer in your application code. Before migrating, check whether existing code assumes the 36-character hyphenated UUID string format anywhere.</target>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpFaqQ1">
+      <segment state="initial">
+        <source>ULIDとUUIDの違いは何ですか</source>
+        <target>What&apos;s the difference between ULID and UUID?</target>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpFaqQ2">
+      <segment state="initial">
+        <source>なぜULIDは辞書順ソートで時系列順に並ぶのですか</source>
+        <target>Why does sorting ULIDs lexicographically put them in chronological order?</target>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpFaqQ3">
+      <segment state="initial">
+        <source>ULIDの文字列からタイムスタンプ（生成時刻）を逆算できますか</source>
+        <target>Can I recover the creation timestamp from a ULID string?</target>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpFaqQ4">
+      <segment state="initial">
+        <source>生成したULIDが重複することはありますか</source>
+        <target>Can two generated ULIDs collide?</target>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpFaqQ5">
+      <segment state="initial">
+        <source>「単調増加」を有効にするとどう変わりますか</source>
+        <target>What changes when I enable Increase monotonically?</target>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpFaqQ6">
+      <segment state="initial">
+        <source>既存システムのUUID列をULIDに移行できますか</source>
+        <target>Can I migrate an existing UUID column to ULID?</target>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpFaqTitle">
+      <segment state="initial">
+        <source>よくある質問</source>
+        <target>FAQ</target>
+      </segment>
+    </unit>
     <unit id="ulidGenHelpOverview">
       <segment state="initial">
         <source>概要</source>
@@ -2487,6 +3423,12 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
         <target>A random UUID makes a fine unique key, but it tells you nothing about when a row was created and it wrecks B-tree index locality at scale — every insert lands in a random page. ULID (Universally Unique Lexicographically Sortable Identifier, per the ulid/spec) solves both problems by combining a millisecond timestamp with random bits, so IDs sort chronologically as plain strings. This tool generates ULIDs in bulk, with control over the base timestamp and strict monotonic ordering, as a drop-in alternative wherever you&apos;d reach for a UUID.</target>
       </segment>
     </unit>
+    <unit id="ulidGenHelpOverviewDesc2">
+      <segment state="initial">
+        <source> UUID v4はランダム性が高く優れた識別子ですが、生成順とソート順が一致しないためDBの主キーに使うとインデックスが断片化しやすいという弱点があります。ULIDは先頭にミリ秒精度のタイムスタンプを埋め込むことでこの弱点を解消しつつ、UUIDと同等の衝突耐性を維持した識別子です。本ツールはブラウザ内で完結して生成するため、外部にデータを送信せずにその場でまとめて取得できます。 </source>
+        <target> UUID v4 is a solid identifier on its own merits, but its randomness works against it as a primary key — insertion order and sort order have no relationship, so B-tree indexes fragment as rows accumulate. Embedding a millisecond-precision timestamp up front is what fixes that, while keeping collision resistance on par with a UUID. Generation happens entirely in the browser, so you can pull a whole batch at once without any data leaving your machine.</target>
+      </segment>
+    </unit>
     <unit id="ulidGenHelpSpec">
       <segment state="initial">
         <source>仕様・用語解説</source>
@@ -2497,6 +3439,12 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">Crockford&apos;s Base32</pc>: I, L, O, U を除外した32文字セットを使用。視覚的に紛らわしい文字を排除し、人間が読みやすい形式にしています。</source>
         <target>Crockford&apos;s Base32: The encoding alphabet deliberately drops I, L, O, and U — letters that are easily mistaken for 1, 1, 0, and V when read aloud or copied by hand. That makes ULIDs safer to transcribe in support tickets or log excerpts than a standard Base32 or hex string of the same length.</target>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpSpecCollision">
+      <segment state="initial">
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">衝突確率</pc>: 同一ミリ秒内でも80ビットのランダム部分により、実用上十分な低確率でしか衝突しません。単調増加を有効にすればさらに同一プロセス内での重複を排除できます。</source>
+        <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">Collision probability</pc>: Even within the same millisecond, 80 bits of randomness keeps collisions vanishingly rare for practical purposes. Turn on Increase monotonically to eliminate duplicates within a single generation run entirely.</target>
       </segment>
     </unit>
     <unit id="ulidGenHelpSpecFormat">
@@ -2515,6 +3463,12 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">辞書順ソート</pc>: ULIDの先頭10文字が時刻を表すため、辞書順ソート（文字列比較）がそのまま時系列ソートになります。DBインデックスの局所性が高まりパフォーマンスが向上します。</source>
         <target>Lexicographic = chronological: Because the timestamp occupies the first 10 characters, a plain string sort (`ORDER BY id` in SQL, or `Array.sort()` in JS) puts ULIDs in creation order automatically — no separate `created_at` column needed just for ordering. As a side effect, sequential inserts land near each other in a B-tree index instead of scattering across random pages, which is the main reason ULID and similar schemes outperform UUID v4 as primary keys at scale.</target>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpSpecTimestampExtract">
+      <segment state="initial">
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">タイムスタンプ部分の復元</pc>: ULIDの先頭10文字（Base32でエンコードされた48ビット）をデコードすると、生成時刻（UNIXエポックからのミリ秒）を逆算できます。ログの発生時刻を推定する際にも利用できます。</source>
+        <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">Recovering the timestamp</pc>: Decoding the first 10 characters (48 bits of Base32) hands back the exact millisecond Unix timestamp used at generation — handy for reconstructing when a log entry actually occurred.</target>
       </segment>
     </unit>
     <unit id="ulidGenHelpSpecVsUuid">
@@ -2553,6 +3507,12 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
         <target>Click Generate and copy the values out of the Results card.</target>
       </segment>
     </unit>
+    <unit id="ulidGenHelpUsageTip">
+      <segment state="initial">
+        <source> 補足: 過去や未来の特定時刻を起点にしたULIDをまとめて発行したい場合は、「基準日時(タイムスタンプ)」に任意の日時を指定してから生成してください。テストデータの投入順序を制御したい場合などに便利です。 </source>
+        <target> Note: to issue a batch of ULIDs anchored to a specific past or future moment, set Base datetime - Timestamp to that date before generating. This is handy when you need to control the insertion order of seeded test data.</target>
+      </segment>
+    </unit>
     <unit id="ulidGenHelpUseCase">
       <segment state="initial">
         <source>ユースケース</source>
@@ -2565,10 +3525,22 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
         <target>Replacing an auto-increment or UUID v4 primary key with something that&apos;s both globally unique and index-friendly.</target>
       </segment>
     </unit>
+    <unit id="ulidGenHelpUseCaseDistributedSystem">
+      <segment state="initial">
+        <source>分散システムにおいて、複数ノードで採番してもソート順とおおよその発生順が保たれる識別子が必要な場合。</source>
+        <target>Distributed systems where multiple nodes issue IDs independently, but you still need sort order to roughly track when each ID was created.</target>
+      </segment>
+    </unit>
     <unit id="ulidGenHelpUseCaseLog">
       <segment state="initial">
         <source>時系列順のログIDやイベントIDの生成。</source>
         <target>Generating log or event IDs where the ID itself encodes &quot;what happened first,&quot; even before you look at a timestamp column.</target>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpUseCaseTestFixture">
+      <segment state="initial">
+        <source>テストフィクスチャで、生成時刻をずらした複数のULIDをまとめて用意し、時系列順の表示ロジックを検証したい場合。</source>
+        <target>Building test fixtures with several ULIDs spread across different timestamps, to verify a UI or query that relies on chronological ordering.</target>
       </segment>
     </unit>
     <unit id="ulidGenHelpUseCaseToken">
@@ -2583,6 +3555,84 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
         <target>Weighing ULID against UUID v7 (RFC 9562): both are time-ordered and sort correctly as strings, so the choice often comes down to format. ULID is a 26-character Base32 string with no separators and a community spec rather than an IETF standard; UUID v7 is the canonical 36-character hyphenated UUID format, so it slots into existing `uuid` database columns and client libraries without any schema changes. If you&apos;re already storing UUIDs everywhere, UUID v7 is usually the lower-friction upgrade; if you want shorter, URL-friendly IDs, ULID wins.</target>
       </segment>
     </unit>
+    <unit id="unixTimestampHelpFaqA1">
+      <segment state="initial">
+        <source>桁数で自動判定しています。おおむね10桁（2001年9月〜2286年頃の範囲）は秒単位、13桁（1970年〜2001年より後の範囲）はミリ秒単位として扱われます。想定と異なる桁数を入力すると、極端に過去または未来の日時に変換されるため、桁数を確認してください。</source>
+        <target>It's inferred from the number of digits. Roughly 10 digits (covering dates from 2001 to around 2286) is treated as seconds, and 13 digits (covering 1970 through well past 2001) as milliseconds. An unexpected digit count will produce a wildly wrong date, so check the digit count if the result looks off.</target>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpFaqA2">
+      <segment state="initial">
+        <source>UNIXタイムスタンプ自体はUTC基準の絶対値であり、タイムゾーンを変えても値そのものは変わりません。変わるのは表示される「年月日時分秒」の見た目のみで、IANAタイムゾーンごとの標準時・夏時間（DST）を考慮したローカル時刻に変換して表示します。</source>
+        <target>The underlying Unix timestamp is always a UTC-based absolute value and doesn't change when you switch time zones. Only the displayed year/month/day/hour/minute/second changes, converted to local time for the selected IANA zone with daylight saving time (DST) applied automatically.</target>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpFaqA3">
+      <segment state="initial">
+        <source>UNIXタイムスタンプを符号付き32ビット整数で保持している古いシステムでは、2038年1月19日 03:14:07 UTCに数値が最大値を超えてオーバーフローし、日時が正しく扱えなくなる問題です。JavaScriptの数値やモダンな64ビットシステムでは影響を受けませんが、組み込み機器や古いC言語プログラムでは注意が必要です。</source>
+        <target>Older systems that store Unix time as a signed 32-bit integer will overflow at 03:14:07 UTC on January 19, 2038, causing dates to be handled incorrectly after that point. Modern 64-bit systems and JavaScript's number type are unaffected, but embedded devices and legacy C programs can still be at risk.</target>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpFaqA4">
+      <segment state="initial">
+        <source>はい。1970年1月1日より前の日時は負のタイムスタンプとして扱われ、本ツールでも変換可能です。ただし一部の外部システムやライブラリは負の値をサポートしていない場合があるため、連携先の仕様も併せて確認してください。</source>
+        <target>Yes. Dates before January 1, 1970 are represented as negative timestamps, and this tool converts them correctly. Some external systems or libraries don't support negative values though, so check the spec of whatever you're integrating with.</target>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpFaqA5">
+      <segment state="initial">
+        <source>いいえ。UNIXタイムスタンプの定義上、閏秒は無視され、1日は常に86400秒として扱われます。これはPOSIX標準の一般的な実装に準拠しており、本ツールも同様の仕様です。</source>
+        <target>No. By definition, Unix time ignores leap seconds and treats every day as exactly 86400 seconds. This matches the common POSIX-standard implementation, and this tool follows the same convention.</target>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpFaqA6">
+      <segment state="initial">
+        <source>「日時に変換」モードで日時欄を空欄のまま実行するか、現在時刻を初期値として利用することで、その時点のUNIXタイムスタンプを秒・ミリ秒の両形式で確認できます。</source>
+        <target>Leave the date field at its default in "Convert to date" mode, or use the current time as the starting value, to see the current moment expressed as both a seconds and a milliseconds Unix timestamp.</target>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpFaqQ1">
+      <segment state="initial">
+        <source>入力したタイムスタンプが秒単位かミリ秒単位かはどう判断されますか</source>
+        <target>How does the tool know if my timestamp is in seconds or milliseconds?</target>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpFaqQ2">
+      <segment state="initial">
+        <source>タイムゾーンを変更すると何が変わりますか</source>
+        <target>What changes when I switch the time zone?</target>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpFaqQ3">
+      <segment state="initial">
+        <source>2038年問題とは何ですか</source>
+        <target>What is the Year 2038 problem?</target>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpFaqQ4">
+      <segment state="initial">
+        <source>1970年より前の日付や負の値は扱えますか</source>
+        <target>Can this handle dates before 1970 or negative values?</target>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpFaqQ5">
+      <segment state="initial">
+        <source>閏秒（うるう秒）は考慮されますか</source>
+        <target>Are leap seconds taken into account?</target>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpFaqQ6">
+      <segment state="initial">
+        <source>現在時刻をすぐに取得することはできますか</source>
+        <target>Can I quickly get the current timestamp?</target>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpFaqTitle">
+      <segment state="initial">
+        <source>よくある質問</source>
+        <target>FAQ</target>
+      </segment>
+    </unit>
     <unit id="unixTimestampHelpOverview">
       <segment state="initial">
         <source>概要</source>
@@ -2593,6 +3643,12 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
       <segment state="initial">
         <source> UNIXタイム変換ツールは、UNIXタイムスタンプ（エポック時刻）と人間が読める日時表記を相互変換するオンラインツールです。秒・ミリ秒単位のタイムスタンプに対応し、複数の形式（ISO 8601・RFC 2822など）とタイムゾーンでの時刻表示が可能です。 </source>
         <target>An API response or a log line full of raw epoch seconds (or milliseconds) is unreadable at a glance, and doing the conversion by hand — including the timezone math — is a common source of off-by-some-hours mistakes. This tool converts UNIX timestamps to and from human-readable date/time in both directions, handling both second and millisecond precision, multiple output formats (ISO 8601, RFC 2822), and any IANA timezone including daylight saving time transitions.</target>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpOverviewDesc2">
+      <segment state="initial">
+        <source> APIレスポンスやログファイルにはUNIXタイムスタンプがそのまま出力されることが多く、電卓や別のスクリプトを用意しなくても、貼り付けるだけで即座に日時へ変換できます。逆に特定の日時をタイムスタンプに変換して、DBのクエリ条件やテストデータの作成に使うこともできます。 </source>
+        <target>API responses and log files usually emit raw Unix timestamps as-is, so instead of reaching for a calculator or writing a one-off script, you can just paste the value in and get a readable date instantly. It also works the other way — enter a specific date and time to get the corresponding timestamp for a database query or test fixture.</target>
       </segment>
     </unit>
     <unit id="unixTimestampHelpSpec">
@@ -2617,6 +3673,12 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">タイムスタンプ（ミリ秒）</pc>: <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">Date.now()</pc>で取得できる13桁の数値です。JavaScriptやJavaで広く使用されます。</source>
         <target>Millisecond timestamp: A 13-digit number — what you get from JavaScript&apos;s Date.now() or Java&apos;s System.currentTimeMillis(). If a value you&apos;re inspecting has 13 digits instead of 10, it&apos;s almost certainly milliseconds, not seconds; feeding it into a seconds-based parser unmodified is a common bug.</target>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpSpecNegative">
+      <segment state="initial">
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">負のタイムスタンプ</pc>: 1970年1月1日より前の日時は負の数値で表現されます。多くの言語・ライブラリは負の値もサポートしていますが、一部の古いシステムでは対応していない場合があるため注意が必要です。</source>
+        <target>Negative timestamps: dates before January 1, 1970 are represented as negative numbers. Most languages and libraries support negative values, but some older systems don't, so check the target system's behavior if you're passing the value along.</target>
       </segment>
     </unit>
     <unit id="unixTimestampHelpSpecRfc">
@@ -2673,6 +3735,12 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
         <target>Click Convert and read the result from the Conversion Result card.</target>
       </segment>
     </unit>
+    <unit id="unixTimestampHelpUsageTip">
+      <segment state="initial">
+        <source> 補足: 入力したタイムスタンプの桁数が10桁の場合は秒単位、13桁の場合はミリ秒単位として自動的に解釈されます。桁数が想定と異なる場合は変換結果が極端に過去や未来の日付になるため、入力値の桁数を見直してください。 </source>
+        <target>Note: a 10-digit input is automatically interpreted as seconds and a 13-digit input as milliseconds. If the digit count doesn't match what you expect, the result will land on a wildly wrong date — double-check the number of digits first.</target>
+      </segment>
+    </unit>
     <unit id="unixTimestampHelpUseCase">
       <segment state="initial">
         <source>ユースケース</source>
@@ -2683,6 +3751,12 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
       <segment state="initial">
         <source>APIレスポンスに含まれるUNIXタイムスタンプを人間が読める日時に変換する場合。</source>
         <target>Translating raw epoch values in a JSON API response into a date you can actually read while debugging.</target>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpUseCaseDb">
+      <segment state="initial">
+        <source>DBに保存されたUNIXタイムスタンプ列の値をクエリ結果から目視で確認したい場合。</source>
+        <target>Eyeballing the value of a Unix timestamp column returned from a database query without writing a conversion function.</target>
       </segment>
     </unit>
     <unit id="unixTimestampHelpUseCaseLog">
@@ -3743,6 +4817,84 @@ Added the tool list page.</target>
         <target>Added the Articles page (/articles).</target>
       </segment>
     </unit>
+    <unit id="urlEncoderHelpFaqA1">
+      <segment state="initial">
+        <source>クエリパラメータの値やパスの一部分など、URLの断片をエンコードする場合はencodeURIComponentを使用してください。すでに完成した1つのURL全体をエンコードする場合は、<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">/</pc>や<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">?</pc>などの構造文字を保持できるencodeURIが適しています。</source>
+        <target>Use encodeURIComponent when you&apos;re encoding a fragment of a URL — a query parameter value, a single path segment. Use encodeURI when you already have a complete, well-formed URL and want to encode it as a whole while keeping structural characters like <pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">/</pc> and <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">?</pc> intact.</target>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpFaqA2">
+      <segment state="initial">
+        <source>日本語などのマルチバイト文字はまずUTF-8のバイト列に変換され、各バイトが<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%XX</pc>形式で表現されます。例えば「あ」は3バイトのUTF-8表現になるため、<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%E3%81%82</pc>という3つのパーセントエンコード列に変換されます。</source>
+        <target>Japanese and other multi-byte characters are first converted to their UTF-8 byte sequence, and each byte is then written as <pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%XX</pc>. The character &quot;あ&quot; is 3 bytes in UTF-8, so it expands into the three-part sequence <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%E3%81%82</pc>.</target>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpFaqA3">
+      <segment state="initial">
+        <source>すでにエンコード済みの文字列を再度エンコードすると、<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%</pc>記号自体が<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%25</pc>に変換され、デコードしても元の文字列に戻らなくなります。変換前に対象の文字列がすでにエンコード済みでないか確認することをおすすめします。</source>
+        <target>Encoding an already-encoded string a second time turns the literal <pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%</pc> character into <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%25</pc>, and decoding it once no longer gets you back to the original string. Check whether your input is already encoded before running it through the tool again.</target>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpFaqA4">
+      <segment state="initial">
+        <source>半角スペース・日本語などのマルチバイト文字に加え、<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">&amp;</pc>・<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">=</pc>・<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">?</pc>・<pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">#</pc>など、URLの構造やクエリの区切りとして意味を持つ記号もエンコード対象です。「URLの記号もすべて変換する」を有効にすると、これらの記号を含めてすべてエンコードされます。</source>
+        <target>Spaces and multi-byte characters like Japanese are obvious candidates, but reserved characters that carry structural meaning — <pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">&amp;</pc>, <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">=</pc>, <pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">?</pc>, and <pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">#</pc> — need encoding too if a value might contain them. Enabling Convert all URL symbols as well encodes all of these along with everything else.</target>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpFaqA5">
+      <segment state="initial">
+        <source>本ツールはJavaScript標準のencodeURI・encodeURIComponentに準拠しており、スペースは常に<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%20</pc>に変換されます。「+」によるスペース表現は<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">application/x-www-form-urlencoded</pc>形式のフォーム送信で使われる別の慣習であり、本ツールでは扱いません。</source>
+        <target>This tool follows JavaScript&apos;s built-in encodeURI/encodeURIComponent behavior, which always represents a space as <pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%20</pc>. The &quot;+&quot; convention for spaces belongs to <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">application/x-www-form-urlencoded</pc> form submissions, a separate encoding scheme that this tool doesn&apos;t produce.</target>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpFaqA6">
+      <segment state="initial">
+        <source>「%」の後ろに2桁の16進数が続かない不正な形式（例: 文字列末尾が「%2」で終わっている場合）や、UTF-8として不正なバイト列になっている場合はデコードエラーになります。エンコード前の文字列を再度確認してください。</source>
+        <target>Decoding fails when a &quot;%&quot; isn&apos;t followed by exactly two hex digits (for example, a string that ends abruptly with &quot;%2&quot;), or when the decoded bytes don&apos;t form valid UTF-8. Double-check the string before it was encoded and try again.</target>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpFaqQ1">
+      <segment state="initial">
+        <source>encodeURIComponentとencodeURIはどちらを使えばよいですか</source>
+        <target>Should I use encodeURIComponent or encodeURI?</target>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpFaqQ2">
+      <segment state="initial">
+        <source>日本語を含むURLはどのようにエンコードされますか</source>
+        <target>How does encoding handle URLs containing Japanese text?</target>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpFaqQ3">
+      <segment state="initial">
+        <source>二重エンコードしてしまうとどうなりますか</source>
+        <target>What happens if I accidentally encode a string twice?</target>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpFaqQ4">
+      <segment state="initial">
+        <source>クエリパラメータのどの文字がエンコード対象になりますか</source>
+        <target>Which characters in a query parameter actually need encoding?</target>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpFaqQ5">
+      <segment state="initial">
+        <source>スペースは「+」と「%20」のどちらに変換されますか</source>
+        <target>Does this tool encode spaces as &quot;+&quot; or as &quot;%20&quot;?</target>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpFaqQ6">
+      <segment state="initial">
+        <source>デコードに失敗するのはどのような場合ですか</source>
+        <target>In what situations does decoding fail?</target>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpFaqTitle">
+      <segment state="initial">
+        <source>よくある質問</source>
+        <target>FAQ</target>
+      </segment>
+    </unit>
     <unit id="urlEncoderHelpOverview">
       <segment state="initial">
         <source>概要</source>
@@ -3751,7 +4903,7 @@ Added the tool list page.</target>
     </unit>
     <unit id="urlEncoderHelpOverviewDesc">
       <segment state="initial">
-        <source> URLエンコード・デコードツールは、URLで使用できない文字を<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%XX</pc>形式に変換（エンコード）、またはその逆変換（デコード）を行うオンラインツールです。<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">encodeURI</pc>と<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">encodeURIComponent</pc>の2種類のJavaScriptメソッドに対応しています。 </source>
+        <source> URLエンコード・デコードツールは、URLで使用できない文字を<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%XX</pc>形式に変換（エンコード）、またはその逆変換（デコード）を行うオンラインツールです。<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">encodeURI</pc>と<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">encodeURIComponent</pc>の2種類のJavaScriptメソッドに対応しています。日本語を含むURLの生成や、APIリクエストのクエリパラメータ作成、既存URLの内容確認など幅広い場面で利用できます。 </source>
         <target>A URL full of <pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%XX</pc> sequences is unreadable at a glance, and remembering whether <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">encodeURI</pc> or <pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">encodeURIComponent</pc> is the right call for a given string trips up most developers at some point. This tool runs both directions — encode a raw string into percent-encoded form, or decode an encoded one back to plain text — using the exact same JavaScript methods you&apos;d call in code, so the result matches what your app will actually produce.</target>
       </segment>
     </unit>
@@ -3771,6 +4923,12 @@ Added the tool list page.</target>
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">encodeURIとencodeURIComponentの違い</pc>: encodeURIは<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">:</pc>、<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">/</pc>、<pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">?</pc>、<pc id="4" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">#</pc>などURLの構造文字をエンコードしませんが、encodeURIComponentはこれらもすべてエンコードします。</source>
         <target>Difference between encodeURI and encodeURIComponent: encodeURI does not encode URL structural characters such as :, /, ?, and #, while encodeURIComponent encodes all of them.</target>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpSpecDoubleEncoding">
+      <segment state="initial">
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">二重エンコーディング</pc>: すでにエンコード済みの文字列をさらにエンコードすると、<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%</pc>自体が<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%25</pc>に変換されてしまい、正しくデコードできなくなります。エンコード対象がすでに<pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%XX</pc>形式を含んでいないか確認してから変換してください。</source>
+        <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">Double encoding</pc>: Encoding a string that&apos;s already encoded turns the <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%</pc> character itself into <pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%25</pc>, breaking a clean round trip back to the original text. Check whether the input already contains <pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%XX</pc> sequences before converting.</target>
       </segment>
     </unit>
     <unit id="urlEncoderHelpSpecEncodeUri">
@@ -3839,6 +4997,12 @@ Added the tool list page.</target>
         <target>Converting form field values into a URL-safe format before building a query string by hand.</target>
       </segment>
     </unit>
+    <unit id="urlEncoderHelpUseCaseJapaneseDomain">
+      <segment state="initial">
+        <source>日本語ドメインやパスを含むURLを共有可能な形式に変換する場合。</source>
+        <target>Converting a URL with a Japanese domain or path into a form that&apos;s safe to share or paste elsewhere.</target>
+      </segment>
+    </unit>
     <unit id="urlEncoderHelpUseCaseQuery">
       <segment state="initial">
         <source>APIリクエストのクエリパラメータに日本語や特殊文字を含める場合。</source>
@@ -3851,6 +5015,84 @@ Added the tool list page.</target>
         <target>Settling the classic &quot;+ vs %20&quot; confusion: form submissions (application/x-www-form-urlencoded) traditionally encode a space as +, while encodeURIComponent and a URL&apos;s path always use %20 — mixing the two conventions is a common source of subtly broken query strings.</target>
       </segment>
     </unit>
+    <unit id="uuidGenHelpFaqA1">
+      <segment state="initial">
+        <source>新規に設計するシステムでDBのプライマリキーとして使う場合は、時系列ソートが可能でインデックス効率も良いv7がおすすめです。既存システムとの互換性やライブラリの対応状況を優先する場合は、最も普及しているv4を選ぶとよいでしょう。v1はMACアドレス由来の情報が含まれる可能性があるため、新規用途では避けるのが無難です。</source>
+        <target>For a database primary key in a new system, v7 is the strongest default — it sorts chronologically and keeps index fragmentation low. If library support or compatibility with an existing system matters more, v4 is the safest bet since it&apos;s the most widely implemented. Avoid v1 for new work; it can embed the generating machine&apos;s MAC address.</target>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpFaqA2">
+      <segment state="initial">
+        <source>理論上はゼロではありませんが、v4の場合122ビットのランダム値から生成されるため、実用上は無視できるレベルです。例えば1秒間に10億個生成し続けても、重複が発生する確率は天文学的に低い水準にとどまります。</source>
+        <target>Not in practice. v4 draws from 122 bits of randomness, so even generating a billion per second continuously, the odds of ever seeing a duplicate stay astronomically low.</target>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpFaqA3">
+      <segment state="initial">
+        <source>いいえ。UUIDの生成はブラウザ内のJavaScriptで完結しており、生成結果がサーバーに送信・保存されることはありません。ページを再読み込みすると生成履歴は失われます。</source>
+        <target>No. Generation happens entirely in client-side JavaScript, so the results are never sent to or stored on a server. Reload the page and the batch you generated is gone.</target>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpFaqA4">
+      <segment state="initial">
+        <source>分散環境で複数ノードが同時にレコードを作成する場合や、IDから件数・作成順序を推測されたくない場合はUUIDが適しています。一方、単一のデータベースで完結し、インデックスサイズやJOIN性能を最優先したい場合はauto-incrementの整数IDの方が有利なことがあります。v7を使えばUUIDのメリットを保ちながら整数IDに近いインデックス効率も得られます。</source>
+        <target>UUIDs make sense when multiple nodes create records independently, or when you don&apos;t want an ID to leak row counts or creation order. If you&apos;re on a single database and index size or JOIN performance is the priority, an auto-increment integer can still win. Using v7 gets you most of the UUID benefits with index locality closer to what an integer key gives you.</target>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpFaqA5">
+      <segment state="initial">
+        <source>ブラウザ上での表示・コピーのしやすさを考慮した上限です。それ以上の件数が必要な場合は、Node.jsのcryptoモジュールやuuidパッケージなど、スクリプトから直接生成する方法をご検討ください。</source>
+        <target>It&apos;s a practical limit for keeping the results readable and easy to copy in the browser. For anything larger, generate them directly in a script using Node&apos;s crypto module or the uuid package instead.</target>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpFaqA6">
+      <segment state="initial">
+        <source>現在のバージョンではハイフン付き・小文字の標準形式（RFC 4122準拠）で出力されます。ハイフン除去や大文字化が必要な場合は、コピー後にテキストエディタや置換ツールで加工してください。</source>
+        <target>The current output is always the standard lowercase, hyphenated form defined by RFC 4122. If you need hyphens stripped or the letters uppercased, run a find-and-replace on the copied text afterward.</target>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpFaqQ1">
+      <segment state="initial">
+        <source>v1・v4・v7のどれを選べばよいか迷います。おすすめはどれですか</source>
+        <target>Which UUID version should I use: v1, v4, or v7?</target>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpFaqQ2">
+      <segment state="initial">
+        <source>生成したUUIDが重複することはありますか</source>
+        <target>Can two generated UUIDs ever collide?</target>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpFaqQ3">
+      <segment state="initial">
+        <source>生成したUUIDはこのツールのサーバーに保存されますか</source>
+        <target>Are the UUIDs I generate stored on this tool&apos;s server?</target>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpFaqQ4">
+      <segment state="initial">
+        <source>UUIDとauto-increment（連番）の主キー、どちらを使うべきですか</source>
+        <target>Should I use a UUID or an auto-increment integer as my primary key?</target>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpFaqQ5">
+      <segment state="initial">
+        <source>最大1,000件までしか生成できないのはなぜですか</source>
+        <target>Why is the batch size capped at 1,000?</target>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpFaqQ6">
+      <segment state="initial">
+        <source>UUIDの文字列からハイフンを除去したり、大文字に変換したりできますか</source>
+        <target>Can I get the output without hyphens, or in uppercase?</target>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpFaqTitle">
+      <segment state="initial">
+        <source>よくある質問</source>
+        <target>FAQ</target>
+      </segment>
+    </unit>
     <unit id="uuidGenHelpOverview">
       <segment state="initial">
         <source>概要</source>
@@ -3861,6 +5103,12 @@ Added the tool list page.</target>
       <segment state="initial">
         <source> UUIDジェネレーターは、RFC 4122（RFC 9562）に準拠したUniversally Unique Identifier（UUID）をオンラインで生成するツールです。v1・v4・v7の3バージョンに対応し、最大1,000件の一括生成が可能です。 </source>
         <target>Writing one-off test fixtures or seeding a database with sample primary keys shouldn&apos;t require spinning up a script just to call a UUID library. This generator produces RFC 9562-compliant UUIDs directly in the browser — choose from the classic random v4, the timestamp-based v1, or the newer time-ordered v7 — and can output up to 1,000 at once for bulk seeding.</target>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpOverviewDesc2">
+      <segment state="initial">
+        <source> 分散システムやマイクロサービスでは、複数のサーバーやクライアントが同時に新しいIDを発行する場面が頻繁にあります。連番の採番テーブルを共有すると単一障害点やロック競合が発生しやすいのに対し、UUIDは各ノードが他と調整せずに一意な値を生成できるため、スケールしやすい設計を実現できます。本ツールはコードを書く前に各バージョンの見た目や桁数を素早く確認したい場合にも便利です。 </source>
+        <target>A shared auto-increment counter turns into a single point of contention the moment multiple servers or services need to mint IDs at once, forcing coordination that a purely random or timestamp-based scheme doesn&apos;t need. UUIDs sidestep that by letting every node generate a unique value independently, which is part of why they&apos;re a default choice in distributed architectures — and this page doubles as a quick way to eyeball what each version looks like before wiring one into your code.</target>
       </segment>
     </unit>
     <unit id="uuidGenHelpSpec">
@@ -3899,6 +5147,18 @@ Added the tool list page.</target>
         <target>UUID v7 (time-ordered): A millisecond-precision Unix timestamp in the high bits followed by random bits, standardized in RFC 9562. In the &quot;UUID v4 vs v7&quot; debate, v7 wins for primary keys: because values generated close together sort close together, B-tree indexes stay compact instead of fragmenting the way they do with purely random v4 keys.</target>
       </segment>
     </unit>
+    <unit id="uuidGenHelpSpecVariant">
+      <segment state="initial">
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">バリアントビット</pc>: UUIDの17文字目（N部分）は「8」「9」「a」「b」のいずれかになり、RFC 4122に準拠した形式であることを示します。異なる値の場合、Microsoft独自形式など別の生成規則に基づくUUIDである可能性があります。</source>
+        <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">Variant bits</pc>: The 17th character (the N position) is always 8, 9, a, or b in an RFC 4122-conformant UUID. A different value there usually signals a UUID built to a different, non-standard scheme, such as Microsoft&apos;s legacy GUID variant.</target>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpSpecVersionChoice">
+      <segment state="initial">
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">バージョンの選び方</pc>: v1はMACアドレス由来の情報漏洩リスクがあるため近年は非推奨とされることが多く、代わりにランダムベースのv4か、時系列ソート性を持つv7が選ばれる傾向にあります。RFC 9562（2024年発行）はv1・v4に加えてv6・v7・v8を新たに標準化し、UUIDの設計指針を整理しました。</source>
+        <target><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">Choosing a version</pc>: v1 has fallen out of favor because it can leak the generating machine&apos;s MAC address, pushing most new projects toward either random v4 or time-ordered v7. RFC 9562 (published 2024) formalized that shift, standardizing v6, v7, and v8 alongside the original v1 and v4 and giving implementers clearer guidance on which to reach for.</target>
+      </segment>
+    </unit>
     <unit id="uuidGenHelpUsage">
       <segment state="initial">
         <source>使い方</source>
@@ -3929,6 +5189,12 @@ Added the tool list page.</target>
         <target>Copy the list straight from Results — one UUID per line, ready to paste into a seed script or test fixture.</target>
       </segment>
     </unit>
+    <unit id="uuidGenHelpUsageTip">
+      <segment state="initial">
+        <source> 補足: どのバージョンを選べばよいか迷った場合は、新規システムであればv7（時系列ソート可能）、既存システムとの互換性を優先するならv4（最も広く普及）を選ぶとよいでしょう。 </source>
+        <target>Tip: if you&apos;re unsure which version to pick, go with v7 for a brand-new system (it sorts chronologically), or v4 if compatibility with existing tooling matters more — it&apos;s the most widely supported.</target>
+      </segment>
+    </unit>
     <unit id="uuidGenHelpUseCase">
       <segment state="initial">
         <source>ユースケース</source>
@@ -3945,6 +5211,18 @@ Added the tool list page.</target>
       <segment state="initial">
         <source>ファイル名の一意化・マイクロサービス間の相関IDとして活用。</source>
         <target>Generating unique filenames for uploads, or correlation IDs that tie a request together across microservices.</target>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpUseCaseIdempotencyKey">
+      <segment state="initial">
+        <source>決済APIなど冪等性（idempotency）が求められるリクエストに付与するIdempotency-Keyヘッダーの値として、リトライ時にも一意性が保たれるUUIDを発行する場合。</source>
+        <target>Minting a UUID for an Idempotency-Key header on requests that need idempotency guarantees, such as payment API calls, so the same key can be safely retried without double-processing.</target>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpUseCaseSeedData">
+      <segment state="initial">
+        <source>開発環境のテストデータ投入時に、100件・1000件といった単位でユニークなユーザーIDや注文IDをまとめて生成し、シードスクリプトに組み込む場合。</source>
+        <target>Bulk-generating a few hundred or a thousand unique user IDs or order IDs at once for a database seed script when setting up test data in a development environment.</target>
       </segment>
     </unit>
     <unit id="uuidGenHelpUseCaseSession">

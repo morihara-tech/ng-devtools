@@ -4,6 +4,9 @@
     <p class="help-text" i18n="@@apiKeyGenHelpOverviewDesc">
       APIキージェネレーターは、安全なAPIキーをオンラインで生成するツールです。Base62・16進数・UUID v4の3形式に対応し、任意のプレフィックスを付与したAPIキーを一括生成できます。
     </p>
+    <p class="help-text" i18n="@@apiKeyGenHelpOverviewDesc2">
+      開発中のAPIサーバーやモックサーバーの動作確認、認証ヘッダーの疎通テストなどでは、実際の課金サービスからキーを発行する前に「それらしい形式」のダミーキーが必要になる場面が多くあります。本ツールはブラウザ内で暗号学的に安全な乱数を用いてキーを生成するため、外部サービスに問い合わせることなくその場で必要な件数を用意できます。
+    </p>
   </app-help-section>
 
   <mat-divider></mat-divider>
@@ -32,6 +35,9 @@
         <span i18n="@@apiKeyGenHelpUsageStep5">「生成」ボタンをクリックします。</span>
       </li>
     </ol>
+    <p class="help-text" i18n="@@apiKeyGenHelpUsageTip">
+      補足: 「UUID v4」フォーマットを選択した場合、文字数の指定は無視され、常に固定のハイフン区切り36文字形式で生成されます。既存システムがUUID形式のキーを前提にしている場合はこちらを選択してください。
+    </p>
   </app-help-section>
 
   <mat-divider></mat-divider>
@@ -44,6 +50,8 @@
       <li i18n="@@apiKeyGenHelpSpecUuid"><strong>「UUID v4」フォーマット</strong>: RFC 4122に準拠したUUID v4形式（<code>xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx</code>）で生成します。既存システムとの互換性が高い標準形式です。</li>
       <li i18n="@@apiKeyGenHelpSpecPrefix"><strong>プレフィックス</strong>: <code>sk_</code>、<code>pk_</code>、<code>api_</code>などのプレフィックスを付与することで、キーの用途や権限を識別しやすくします（例: OpenAIの<code>sk-...</code>形式）。</li>
       <li i18n="@@apiKeyGenHelpSpecEntropy"><strong>エントロピーと安全性</strong>: Base62で32文字の場合、エントロピーは約190ビットとなり、総当たり攻撃に対して非常に高い耐性を持ちます。</li>
+      <li i18n="@@apiKeyGenHelpSpecRandomSource"><strong>乱数生成の仕組み</strong>: いずれのフォーマットもブラウザの暗号学的に安全な乱数生成器（Web Crypto APIのCrypto.getRandomValues）から得たバイト列をもとに文字を選択しており、予測可能性のある擬似乱数は使用していません。</li>
+      <li i18n="@@apiKeyGenHelpSpecUniqueness"><strong>一意性の考え方</strong>: 本ツールは統計的に衝突がほぼ起こらない十分なランダム性を提供しますが、データベース側で一意制約を課すことは保証しません。本番導入時は発行時にDB側でも重複チェック（UNIQUE制約）を行うことを推奨します。</li>
     </ul>
   </app-help-section>
 
@@ -56,6 +64,40 @@
       <li i18n="@@apiKeyGenHelpUseCaseWebhook">ウェブフックシークレットの生成。</li>
       <li i18n="@@apiKeyGenHelpUseCaseSaas">マルチテナントSaaSアプリケーションの顧客向けAPIキー発行。</li>
       <li i18n="@@apiKeyGenHelpUseCaseMcp">MCPサーバー設定ファイルに記載するダミーのAPIキーやトークンの作成。</li>
+      <li i18n="@@apiKeyGenHelpUseCaseMock">モックサーバーやローカル開発環境で、認証ヘッダーの疎通確認用に使う仮のAPIキーを用意したい場合。</li>
+      <li i18n="@@apiKeyGenHelpUseCaseE2e">E2Eテストのテストデータとして、複数のダミーAPIキーを一括で発行したい場合。</li>
     </ul>
+  </app-help-section>
+
+  <mat-divider></mat-divider>
+
+  <app-help-section icon="quiz">
+    <span helpTitle i18n="@@apiKeyGenHelpFaqTitle">よくある質問</span>
+    <dl class="help-faq">
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@apiKeyGenHelpFaqQ1">生成したキーを本番サービスのAPIキーとしてそのまま使えますか</dt>
+        <dd class="help-faq-answer" i18n="@@apiKeyGenHelpFaqA1">いいえ。本ツールが生成するのは形式が似たランダムな文字列であり、決済サービスやクラウドプロバイダーなど実際のサービス側で認証情報として登録・検証されるものではありません。本番用のキーは必ず各サービスの管理画面から正式に発行してください。用途はモック・テスト・開発時のダミーデータに限定されます。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@apiKeyGenHelpFaqQ2">生成したキーの一意性（重複しないこと）は保証されますか</dt>
+        <dd class="help-faq-answer" i18n="@@apiKeyGenHelpFaqA2">暗号学的に安全な乱数を使っており、十分な長さであれば統計的に衝突する確率は極めて低くなります。ただし数学的な絶対保証ではないため、システムに組み込む際はデータベース側でUNIQUE制約を設定し、万一の重複発行を防ぐ設計にすることを推奨します。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@apiKeyGenHelpFaqQ3">Base62・Hex・UUID v4はどう使い分ければよいですか</dt>
+        <dd class="help-faq-answer" i18n="@@apiKeyGenHelpFaqA3">URLやヘッダーに短く収めたい場合はBase62、既存の暗号処理やハッシュ関数と親和性を持たせたい場合はHex、他システムとの相互運用性を重視する場合はUUID v4が適しています。文字数を自由に調整したい場合はBase62かHexを選んでください。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@apiKeyGenHelpFaqQ4">プレフィックスにはどんな文字列を付けるべきですか</dt>
+        <dd class="help-faq-answer" i18n="@@apiKeyGenHelpFaqA4">決まった正解はありませんが、<code>sk_live_</code>や<code>sk_test_</code>のように用途（本番/テスト）や権限レベルを識別できる文字列を付けると、ログや設定ファイルを見たときにキーの種類を判別しやすくなります。実運用では環境ごとに異なるプレフィックスを使う設計が一般的です。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@apiKeyGenHelpFaqQ5">生成したAPIキーはサーバーに保存・送信されますか</dt>
+        <dd class="help-faq-answer" i18n="@@apiKeyGenHelpFaqA5">いいえ。生成処理はすべてブラウザ内のJavaScriptで完結しており、生成されたキーが外部サーバーへ送信されることはありません。ページを離れると生成結果は残らないため、必要な場合はその場でコピーして保管してください。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@apiKeyGenHelpFaqQ6">実際のAPIキーのようにハッシュ化して保存する必要はありますか</dt>
+        <dd class="help-faq-answer" i18n="@@apiKeyGenHelpFaqA6">本ツールで生成した値をテスト用途以外の実運用キーとして採用する場合は、パスワードと同様にサーバー側ではハッシュ化（例: SHA-256）した値のみを保存し、平文のキーをDBに残さない設計にすることを推奨します。本ツール自体はハッシュ化機能を提供していません。</dd>
+      </div>
+    </dl>
   </app-help-section>
 </div>

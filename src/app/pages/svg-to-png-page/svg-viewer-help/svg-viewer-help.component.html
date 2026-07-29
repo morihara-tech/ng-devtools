@@ -2,7 +2,7 @@
   <app-help-section icon="info">
     <span helpTitle i18n="@@svgViewerHelpOverview">概要</span>
     <p class="help-text" i18n="@@svgViewerHelpOverviewDesc">
-      SVGビューアーは、SVGコードのリアルタイムプレビューとPNG画像への変換をオンラインで行えるツールです。キャンバスサイズ・背景色・スケール・オフセットを設定しながらプレビューし、PNG形式でダウンロードできます。
+      SVGビューアーは、SVGコードのリアルタイムプレビューとPNG画像への変換をオンラインで行えるツールです。キャンバスサイズ・背景色・スケール・オフセットを設定しながらプレビューし、PNG形式でダウンロードできます。すべての変換処理はブラウザ内で完結するため、SVGファイルの内容が外部サーバーに送信されることはありません。アイコン素材の書き出しやOGP画像の作成など、デザインデータをラスター画像に変換したい場面で利用できます。
     </p>
   </app-help-section>
 
@@ -45,6 +45,8 @@
       <li i18n="@@svgViewerHelpSpecOffset"><strong>「X座標」・「Y座標」</strong>: SVGの描画位置をX・Y方向にずらすピクセル数です。キャンバス内の配置調整に使用します。</li>
       <li i18n="@@svgViewerHelpSpecTransparent"><strong>透明背景</strong>: PNG形式はアルファチャンネル（透明度）をサポートするため、透明背景のアイコンやロゴの出力が可能です。</li>
       <li i18n="@@svgViewerHelpSpecCanvas"><strong>キャンバスサイズ</strong>: 出力PNGのピクセルサイズを決定します。デフォルトは256×256ピクセルです。</li>
+      <li i18n="@@svgViewerHelpSpecExternalRef"><strong>外部参照・外部フォント</strong>: SVG内で外部画像を<code>&lt;image&gt;</code>タグの<code>href</code>で参照している場合や、Webフォントを外部CSSで指定している場合、ブラウザのセキュリティ制約により読み込めないことがあります。画像はBase64のData URIとして埋め込み、フォントは<code>&lt;text&gt;</code>要素にインラインの<code>style</code>属性で指定することを推奨します。</li>
+      <li i18n="@@svgViewerHelpSpecResolution"><strong>出力解像度の考え方</strong>: PNGの実ピクセルサイズは「キャンバスサイズ × 拡大率」で決まります。SVGはベクター形式のため、拡大率を上げても輪郭のぼやけは発生しませんが、キャンバスサイズ自体を大きくしないと最終的な出力ピクセル数は増えません。</li>
     </ul>
   </app-help-section>
 
@@ -56,6 +58,39 @@
       <li i18n="@@svgViewerHelpUseCaseIcon">デザインツールで作成したSVGアイコンをPNGに変換する場合。</li>
       <li i18n="@@svgViewerHelpUseCaseOgp">OGP画像・faviconなどの素材を作成・確認する場合。</li>
       <li i18n="@@svgViewerHelpUseCaseDebug">SVGパスやアニメーションのプレビュー・デバッグ。</li>
+      <li i18n="@@svgViewerHelpUseCaseTransparentExport">透過PNGアイコンをアプリやWebサイトのアセットとして書き出す場合。</li>
     </ul>
+  </app-help-section>
+
+  <mat-divider></mat-divider>
+
+  <app-help-section icon="quiz">
+    <span helpTitle i18n="@@svgViewerHelpFaqTitle">よくある質問</span>
+    <dl class="help-faq">
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@svgViewerHelpFaqQ1">SVG内の外部画像参照やWebフォントは変換結果に反映されますか</dt>
+        <dd class="help-faq-answer" i18n="@@svgViewerHelpFaqA1">ブラウザのCanvas APIの制約上、外部URLへの画像参照やCSSで指定した外部Webフォントは読み込まれない場合があります。確実に反映させるには、画像はBase64形式でSVG内に埋め込み、文字はアウトライン化するか標準的なシステムフォントを使用してください。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@svgViewerHelpFaqQ2">出力されるPNGの解像度はどう決まりますか</dt>
+        <dd class="help-faq-answer" i18n="@@svgViewerHelpFaqA2">「幅」「高さ」で指定したキャンバスサイズに「拡大率」を掛け合わせた値が実際の出力ピクセル数になります。Retinaディスプレイ向けに高解像度で書き出したい場合は、拡大率を200%に設定してください。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@svgViewerHelpFaqQ3">背景を透過したPNGとして出力できますか</dt>
+        <dd class="help-faq-answer" i18n="@@svgViewerHelpFaqA3">はい。「背景を透過」を有効にすると、背景色を塗らない状態でPNGに書き出されます。PNG形式はアルファチャンネルに対応しているため、アイコンやロゴを透明背景で出力する用途に適しています。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@svgViewerHelpFaqQ4">サイズの大きいSVGファイルでも変換できますか</dt>
+        <dd class="help-faq-answer" i18n="@@svgViewerHelpFaqA4">処理はブラウザ内のCanvas APIで行われるため、極端に複雑なパスや非常に大きなキャンバスサイズを指定すると、ブラウザやデバイスの性能によって描画に時間がかかったり失敗したりすることがあります。必要な範囲でキャンバスサイズを調整してください。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@svgViewerHelpFaqQ5">SVGのアニメーションはPNGに反映されますか</dt>
+        <dd class="help-faq-answer" i18n="@@svgViewerHelpFaqA5">PNGは静止画形式のため、SMILやCSSアニメーションによる動きは反映されず、変換時点（プレビュー表示時）の静止した状態がそのまま書き出されます。動きのある画像として保存したい場合は、GIFや動画形式への変換を別途検討してください。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@svgViewerHelpFaqQ6">貼り付けたSVGコードは保存されますか</dt>
+        <dd class="help-faq-answer" i18n="@@svgViewerHelpFaqA6">いいえ。入力したSVGコードやプレビュー・変換処理はすべてブラウザ内で完結し、サーバーへ送信・保存されることはありません。タブを閉じたり再読み込みしたりすると入力内容は破棄されます。</dd>
+      </div>
+    </dl>
   </app-help-section>
 </div>

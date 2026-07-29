@@ -4,6 +4,9 @@
     <p class="help-text" i18n="@@unixTimestampHelpOverviewDesc">
       UNIXタイム変換ツールは、UNIXタイムスタンプ（エポック時刻）と人間が読める日時表記を相互変換するオンラインツールです。秒・ミリ秒単位のタイムスタンプに対応し、複数の形式（ISO 8601・RFC 2822など）とタイムゾーンでの時刻表示が可能です。
     </p>
+    <p class="help-text" i18n="@@unixTimestampHelpOverviewDesc2">
+      APIレスポンスやログファイルにはUNIXタイムスタンプがそのまま出力されることが多く、電卓や別のスクリプトを用意しなくても、貼り付けるだけで即座に日時へ変換できます。逆に特定の日時をタイムスタンプに変換して、DBのクエリ条件やテストデータの作成に使うこともできます。
+    </p>
   </app-help-section>
 
   <mat-divider></mat-divider>
@@ -32,6 +35,9 @@
         <span i18n="@@unixTimestampHelpUsageStep5">「変換」ボタンをクリックします。</span>
       </li>
     </ol>
+    <p class="help-text" i18n="@@unixTimestampHelpUsageTip">
+      補足: 入力したタイムスタンプの桁数が10桁の場合は秒単位、13桁の場合はミリ秒単位として自動的に解釈されます。桁数が想定と異なる場合は変換結果が極端に過去や未来の日付になるため、入力値の桁数を見直してください。
+    </p>
   </app-help-section>
 
   <mat-divider></mat-divider>
@@ -45,6 +51,7 @@
       <li i18n="@@unixTimestampHelpSpecIso"><strong>ISO 8601</strong>: <code>2024-01-15T12:30:00+09:00</code>形式の国際標準日時表記です。タイムゾーンオフセットを明示できます。</li>
       <li i18n="@@unixTimestampHelpSpecRfc"><strong>RFC 2822</strong>: <code>Mon, 15 Jan 2024 12:30:00 +0900</code>形式のメールDate:ヘッダで使用される表記です。</li>
       <li i18n="@@unixTimestampHelpSpecIana"><strong>IANAタイムゾーン</strong>: <code>Asia/Tokyo</code>、<code>America/New_York</code>などの標準的なタイムゾーン識別子です。夏時間（DST）も自動考慮されます。</li>
+      <li i18n="@@unixTimestampHelpSpecNegative"><strong>負のタイムスタンプ</strong>: 1970年1月1日より前の日時は負の数値で表現されます。多くの言語・ライブラリは負の値もサポートしていますが、一部の古いシステムでは対応していない場合があるため注意が必要です。</li>
     </ul>
   </app-help-section>
 
@@ -57,6 +64,39 @@
       <li i18n="@@unixTimestampHelpUseCaseLog">ログファイルのタイムスタンプ解析。</li>
       <li i18n="@@unixTimestampHelpUseCaseTz">異なるタイムゾーン間での時刻変換・比較。</li>
       <li i18n="@@unixTimestampHelpUseCaseY2038">古いシステムやライブラリが32ビット整数でタイムスタンプを扱っている場合に、2038年問題（2038年1月19日 03:14:07 UTCでのオーバーフロー）の影響を受ける日時かどうかを確認する。</li>
+      <li i18n="@@unixTimestampHelpUseCaseDb">DBに保存されたUNIXタイムスタンプ列の値をクエリ結果から目視で確認したい場合。</li>
     </ul>
+  </app-help-section>
+
+  <mat-divider></mat-divider>
+
+  <app-help-section icon="quiz">
+    <span helpTitle i18n="@@unixTimestampHelpFaqTitle">よくある質問</span>
+    <dl class="help-faq">
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@unixTimestampHelpFaqQ1">入力したタイムスタンプが秒単位かミリ秒単位かはどう判断されますか</dt>
+        <dd class="help-faq-answer" i18n="@@unixTimestampHelpFaqA1">桁数で自動判定しています。おおむね10桁（2001年9月〜2286年頃の範囲）は秒単位、13桁（1970年〜2001年より後の範囲）はミリ秒単位として扱われます。想定と異なる桁数を入力すると、極端に過去または未来の日時に変換されるため、桁数を確認してください。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@unixTimestampHelpFaqQ2">タイムゾーンを変更すると何が変わりますか</dt>
+        <dd class="help-faq-answer" i18n="@@unixTimestampHelpFaqA2">UNIXタイムスタンプ自体はUTC基準の絶対値であり、タイムゾーンを変えても値そのものは変わりません。変わるのは表示される「年月日時分秒」の見た目のみで、IANAタイムゾーンごとの標準時・夏時間（DST）を考慮したローカル時刻に変換して表示します。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@unixTimestampHelpFaqQ3">2038年問題とは何ですか</dt>
+        <dd class="help-faq-answer" i18n="@@unixTimestampHelpFaqA3">UNIXタイムスタンプを符号付き32ビット整数で保持している古いシステムでは、2038年1月19日 03:14:07 UTCに数値が最大値を超えてオーバーフローし、日時が正しく扱えなくなる問題です。JavaScriptの数値やモダンな64ビットシステムでは影響を受けませんが、組み込み機器や古いC言語プログラムでは注意が必要です。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@unixTimestampHelpFaqQ4">1970年より前の日付や負の値は扱えますか</dt>
+        <dd class="help-faq-answer" i18n="@@unixTimestampHelpFaqA4">はい。1970年1月1日より前の日時は負のタイムスタンプとして扱われ、本ツールでも変換可能です。ただし一部の外部システムやライブラリは負の値をサポートしていない場合があるため、連携先の仕様も併せて確認してください。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@unixTimestampHelpFaqQ5">閏秒（うるう秒）は考慮されますか</dt>
+        <dd class="help-faq-answer" i18n="@@unixTimestampHelpFaqA5">いいえ。UNIXタイムスタンプの定義上、閏秒は無視され、1日は常に86400秒として扱われます。これはPOSIX標準の一般的な実装に準拠しており、本ツールも同様の仕様です。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@unixTimestampHelpFaqQ6">現在時刻をすぐに取得することはできますか</dt>
+        <dd class="help-faq-answer" i18n="@@unixTimestampHelpFaqA6">「日時に変換」モードで日時欄を空欄のまま実行するか、現在時刻を初期値として利用することで、その時点のUNIXタイムスタンプを秒・ミリ秒の両形式で確認できます。</dd>
+      </div>
+    </dl>
   </app-help-section>
 </div>

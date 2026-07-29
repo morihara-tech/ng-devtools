@@ -4,6 +4,9 @@
     <p class="help-text" i18n="@@sqlFormatterHelpOverviewDesc">
       SQLフォーマッターは、読みにくいSQLクエリを整形・可読化するオンラインツールです。JOIN、WHERE、GROUP BYなどのキーワードを適切なインデントで整列させ、コードレビューやドキュメント作成を効率化します。
     </p>
+    <p class="help-text" i18n="@@sqlFormatterHelpOverviewDesc2">
+      ORMやBIツールが自動生成するSQLは1行に連結されていることが多く、JOIN条件やサブクエリの入れ子構造を目で追うのが困難です。手作業でインデントを揃え直すのは時間がかかるうえ、SELECT句のカラム数が多いクエリでは特に骨が折れます。本ツールはそうした整形作業を数秒で終わらせ、レビューやチューニングに集中できるようにします。
+    </p>
   </app-help-section>
 
   <mat-divider></mat-divider>
@@ -32,6 +35,9 @@
         <span i18n="@@sqlFormatterHelpUsageStep5">「変換」ボタンをクリックすると整形結果が表示されます。</span>
       </li>
     </ol>
+    <p class="help-text" i18n="@@sqlFormatterHelpUsageTip">
+      補足: 複数のSQL文をセミコロン区切りで一括貼り付けても整形できます。マイグレーションファイルなど、複数のCREATE TABLE文をまとめて確認したい場合に活用してください。
+    </p>
   </app-help-section>
 
   <mat-divider></mat-divider>
@@ -57,6 +63,8 @@
       </li>
       <li i18n="@@sqlFormatterHelpSpecIdentifier"><strong>「識別子」</strong>: テーブル名やカラム名の大文字/小文字を変換します。大文字 / 小文字 / 変更しない から選択できます。</li>
       <li i18n="@@sqlFormatterHelpSpecIndent"><strong>「インデント」</strong>: 出力するSQLのインデントに使用するスペース数を設定します（例: 2スペース、4スペース）。</li>
+      <li i18n="@@sqlFormatterHelpSpecDialect"><strong>対応SQL方言について</strong>: 本ツールはMySQL・PostgreSQL・SQLiteなど主要な方言に共通する標準的なSQL構文（SELECT / INSERT / UPDATE / DELETE / CREATE TABLE等）の整形に対応しています。ただし、PL/pgSQLのストアドプロシージャや、T-SQL固有のBEGIN...END構文など、方言に強く依存する拡張構文は整形結果が崩れる場合があります。</li>
+      <li i18n="@@sqlFormatterHelpSpecComment"><strong>コメントの扱い</strong>: 行コメント（--）およびブロックコメント（/* */）は、位置情報を保持したまま整形後のクエリに引き継がれます。ORMが自動生成したクエリに付与されるバインドパラメータのコメントなどもそのまま残ります。</li>
     </ul>
   </app-help-section>
 
@@ -69,6 +77,40 @@
       <li i18n="@@sqlFormatterHelpUseCaseDebug">ORMが自動生成したクエリのデバッグ・解析時。</li>
       <li i18n="@@sqlFormatterHelpUseCaseDoc">ドキュメント用に整形されたSQLスニペットを作成したい場合。</li>
       <li i18n="@@sqlFormatterHelpUseCaseOrmComments">ORMが生成したSQLに混在するバインドパラメータやコメントが多く読みにくい場合の整理。</li>
+      <li i18n="@@sqlFormatterHelpUseCaseJoinAudit">複数テーブルを結合した「SELECT * FROM orders o JOIN users u ON o.user_id = u.id JOIN items i ON o.item_id = i.id WHERE...」のような1行クエリを整形し、JOIN条件の対応関係を確認しながらパフォーマンスチューニングを行う場合。</li>
+      <li i18n="@@sqlFormatterHelpUseCaseSlowQueryLog">スロークエリログに出力された整形前のSQLを貼り付けて可読化し、実行計画（EXPLAIN）を確認する前の下調べとして使う場合。</li>
     </ul>
+  </app-help-section>
+
+  <mat-divider></mat-divider>
+
+  <app-help-section icon="quiz">
+    <span helpTitle i18n="@@sqlFormatterHelpFaqTitle">よくある質問</span>
+    <dl class="help-faq">
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@sqlFormatterHelpFaqQ1">MySQL・PostgreSQL・SQL Serverのどの方言に対応していますか</dt>
+        <dd class="help-faq-answer" i18n="@@sqlFormatterHelpFaqA1">主要な方言に共通する標準SQL構文の整形に対応しています。方言固有の拡張構文（PL/pgSQLのプロシージャ、T-SQLのBEGIN...END、MySQLのバッククォート識別子など）は整形結果が意図と異なる場合があるため、整形後は必ず内容を確認してください。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@sqlFormatterHelpFaqQ2">貼り付けたSQLに含まれるテーブル名やデータはサーバーに送信されますか</dt>
+        <dd class="help-faq-answer" i18n="@@sqlFormatterHelpFaqA2">いいえ。整形処理はブラウザ内で完結しており、入力したSQLが外部に送信されることはありません。本番データベースのスキーマ情報を含むクエリでも安心してご利用いただけます。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@sqlFormatterHelpFaqQ3">ストアドプロシージャやトリガーの定義も整形できますか</dt>
+        <dd class="help-faq-answer" i18n="@@sqlFormatterHelpFaqA3">単純なDML/DDL文の整形を主眼としているため、ストアドプロシージャやトリガーに含まれる制御構文（IF、LOOP、CURSORなど）は正しく整形されない場合があります。SELECT文などクエリ本体部分のみを抜き出してご利用ください。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@sqlFormatterHelpFaqQ4">複数のSQL文をまとめて整形できますか</dt>
+        <dd class="help-faq-answer" i18n="@@sqlFormatterHelpFaqA4">はい。セミコロンで区切られた複数のSQL文を一度に貼り付けると、それぞれが個別に整形されます。マイグレーションファイルのように複数のCREATE TABLE文が並んでいる場合にも利用できます。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@sqlFormatterHelpFaqQ5">「右揃え/表形式」モードはどのような場面で使うと便利ですか</dt>
+        <dd class="help-faq-answer" i18n="@@sqlFormatterHelpFaqA5">SELECT・FROM・WHEREなどのキーワードを右揃えで縦に整列させるため、キーワードの位置が視覚的に揃い、条件句が多い長いクエリでも構造を把握しやすくなります。ドキュメントやプレゼン資料にSQLを掲載する際にもよく使われます。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@sqlFormatterHelpFaqQ6">整形結果の予約語が想定と異なる大文字/小文字になるのはなぜですか</dt>
+        <dd class="help-faq-answer" i18n="@@sqlFormatterHelpFaqA6">「予約語」オプションが「大文字」または「小文字」に設定されている場合、SELECTやFROMなどのSQLキーワードが自動的に変換されます。入力時のケースをそのまま維持したい場合は「変更しない」を選択してください。</dd>
+      </div>
+    </dl>
   </app-help-section>
 </div>

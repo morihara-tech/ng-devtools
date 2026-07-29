@@ -112,6 +112,69 @@
     background: var(--mat-sys-surface-container);
   }
 
+  .help-faq {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .help-faq-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .help-faq-question {
+    margin: 0;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    font-size: var(--mat-sys-body-medium-size);
+    font-weight: 500;
+    color: var(--mat-sys-on-surface);
+    line-height: 1.7;
+  }
+
+  .help-faq-question::before {
+    content: 'Q';
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    font-size: var(--mat-sys-label-small-size);
+    font-weight: 500;
+    color: var(--mat-sys-primary);
+    border: 1px solid var(--mat-sys-outline-variant);
+  }
+
+  .help-faq-answer {
+    margin: 0;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    font-size: var(--mat-sys-body-medium-size);
+    color: var(--mat-sys-on-surface-variant);
+    line-height: 1.8;
+  }
+
+  .help-faq-answer::before {
+    content: 'A';
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    font-size: var(--mat-sys-label-small-size);
+    color: var(--mat-sys-on-surface-variant);
+    border: 1px solid var(--mat-sys-outline-variant);
+  }
+
   ::ng-deep mat-divider {
     border-top-color: var(--mat-sys-outline-variant);
   }

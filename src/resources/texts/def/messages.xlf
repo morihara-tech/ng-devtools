@@ -16,6 +16,71 @@
         <source>© 2026 Yutaka Morihara</source>
       </segment>
     </unit>
+    <unit id="apiKeyGenHelpFaqA1">
+      <segment>
+        <source>いいえ。本ツールが生成するのは形式が似たランダムな文字列であり、決済サービスやクラウドプロバイダーなど実際のサービス側で認証情報として登録・検証されるものではありません。本番用のキーは必ず各サービスの管理画面から正式に発行してください。用途はモック・テスト・開発時のダミーデータに限定されます。</source>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpFaqA2">
+      <segment>
+        <source>暗号学的に安全な乱数を使っており、十分な長さであれば統計的に衝突する確率は極めて低くなります。ただし数学的な絶対保証ではないため、システムに組み込む際はデータベース側でUNIQUE制約を設定し、万一の重複発行を防ぐ設計にすることを推奨します。</source>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpFaqA3">
+      <segment>
+        <source>URLやヘッダーに短く収めたい場合はBase62、既存の暗号処理やハッシュ関数と親和性を持たせたい場合はHex、他システムとの相互運用性を重視する場合はUUID v4が適しています。文字数を自由に調整したい場合はBase62かHexを選んでください。</source>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpFaqA4">
+      <segment>
+        <source>決まった正解はありませんが、<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">sk_live_</pc>や<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">sk_test_</pc>のように用途（本番/テスト）や権限レベルを識別できる文字列を付けると、ログや設定ファイルを見たときにキーの種類を判別しやすくなります。実運用では環境ごとに異なるプレフィックスを使う設計が一般的です。</source>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpFaqA5">
+      <segment>
+        <source>いいえ。生成処理はすべてブラウザ内のJavaScriptで完結しており、生成されたキーが外部サーバーへ送信されることはありません。ページを離れると生成結果は残らないため、必要な場合はその場でコピーして保管してください。</source>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpFaqA6">
+      <segment>
+        <source>本ツールで生成した値をテスト用途以外の実運用キーとして採用する場合は、パスワードと同様にサーバー側ではハッシュ化（例: SHA-256）した値のみを保存し、平文のキーをDBに残さない設計にすることを推奨します。本ツール自体はハッシュ化機能を提供していません。</source>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpFaqQ1">
+      <segment>
+        <source>生成したキーを本番サービスのAPIキーとしてそのまま使えますか</source>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpFaqQ2">
+      <segment>
+        <source>生成したキーの一意性（重複しないこと）は保証されますか</source>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpFaqQ3">
+      <segment>
+        <source>Base62・Hex・UUID v4はどう使い分ければよいですか</source>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpFaqQ4">
+      <segment>
+        <source>プレフィックスにはどんな文字列を付けるべきですか</source>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpFaqQ5">
+      <segment>
+        <source>生成したAPIキーはサーバーに保存・送信されますか</source>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpFaqQ6">
+      <segment>
+        <source>実際のAPIキーのようにハッシュ化して保存する必要はありますか</source>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpFaqTitle">
+      <segment>
+        <source>よくある質問</source>
+      </segment>
+    </unit>
     <unit id="apiKeyGenHelpOverview">
       <segment>
         <source>概要</source>
@@ -24,6 +89,11 @@
     <unit id="apiKeyGenHelpOverviewDesc">
       <segment>
         <source> APIキージェネレーターは、安全なAPIキーをオンラインで生成するツールです。Base62・16進数・UUID v4の3形式に対応し、任意のプレフィックスを付与したAPIキーを一括生成できます。 </source>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpOverviewDesc2">
+      <segment>
+        <source> 開発中のAPIサーバーやモックサーバーの動作確認、認証ヘッダーの疎通テストなどでは、実際の課金サービスからキーを発行する前に「それらしい形式」のダミーキーが必要になる場面が多くあります。本ツールはブラウザ内で暗号学的に安全な乱数を用いてキーを生成するため、外部サービスに問い合わせることなくその場で必要な件数を用意できます。 </source>
       </segment>
     </unit>
     <unit id="apiKeyGenHelpSpec">
@@ -49,6 +119,16 @@
     <unit id="apiKeyGenHelpSpecPrefix">
       <segment>
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">プレフィックス</pc>: <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">sk_</pc>、<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">pk_</pc>、<pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">api_</pc>などのプレフィックスを付与することで、キーの用途や権限を識別しやすくします（例: OpenAIの<pc id="4" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">sk-...</pc>形式）。</source>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpSpecRandomSource">
+      <segment>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">乱数生成の仕組み</pc>: いずれのフォーマットもブラウザの暗号学的に安全な乱数生成器（Web Crypto APIのCrypto.getRandomValues）から得たバイト列をもとに文字を選択しており、予測可能性のある擬似乱数は使用していません。</source>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpSpecUniqueness">
+      <segment>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">一意性の考え方</pc>: 本ツールは統計的に衝突がほぼ起こらない十分なランダム性を提供しますが、データベース側で一意制約を課すことは保証しません。本番導入時は発行時にDB側でも重複チェック（UNIQUE制約）を行うことを推奨します。</source>
       </segment>
     </unit>
     <unit id="apiKeyGenHelpSpecUuid">
@@ -86,6 +166,11 @@
         <source>「生成」ボタンをクリックします。</source>
       </segment>
     </unit>
+    <unit id="apiKeyGenHelpUsageTip">
+      <segment>
+        <source> 補足: 「UUID v4」フォーマットを選択した場合、文字数の指定は無視され、常に固定のハイフン区切り36文字形式で生成されます。既存システムがUUID形式のキーを前提にしている場合はこちらを選択してください。 </source>
+      </segment>
+    </unit>
     <unit id="apiKeyGenHelpUseCase">
       <segment>
         <source>ユースケース</source>
@@ -94,6 +179,11 @@
     <unit id="apiKeyGenHelpUseCaseAuth">
       <segment>
         <source>REST APIの認証トークンやAPIキーの生成。</source>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpUseCaseE2e">
+      <segment>
+        <source>E2Eテストのテストデータとして、複数のダミーAPIキーを一括で発行したい場合。</source>
       </segment>
     </unit>
     <unit id="apiKeyGenHelpUseCaseSaas">
@@ -109,6 +199,11 @@
     <unit id="apiKeyGenHelpUseCaseMcp">
       <segment>
         <source>MCPサーバー設定ファイルに記載するダミーのAPIキーやトークンの作成。</source>
+      </segment>
+    </unit>
+    <unit id="apiKeyGenHelpUseCaseMock">
+      <segment>
+        <source>モックサーバーやローカル開発環境で、認証ヘッダーの疎通確認用に使う仮のAPIキーを用意したい場合。</source>
       </segment>
     </unit>
     <unit id="app.title">
@@ -241,6 +336,71 @@
         <source>メニュー</source>
       </segment>
     </unit>
+    <unit id="ipCidrHelpFaqA1">
+      <segment>
+        <source>「/24」はプレフィックス長を表し、IPアドレスの先頭24ビットがネットワーク部であることを意味します。IPv4では残りの8ビットがホスト部となり、そのサブネット内で使用できるホスト数が決まります。</source>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpFaqA2">
+      <segment>
+        <source>CIDRのプレフィックス長は、先頭から対応するビット数を1で埋めたサブネットマスクと等価です。例えば<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">/24</pc>は<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">255.255.255.0</pc>、<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">/16</pc>は<pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">255.255.0.0</pc>に対応します。</source>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpFaqA3">
+      <segment>
+        <source>はい。プロトコル選択でIPv6を選ぶと、128ビットアドレスに対応したネットワークアドレス・プレフィックス長の計算結果が表示されます。ただしIPv6にはブロードキャストアドレスの概念が存在しない点がIPv4と異なります。</source>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpFaqA4">
+      <segment>
+        <source>入力したIPアドレスがRFC 1918で定義されたプライベートアドレス範囲（<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">10.0.0.0/8</pc>など）に含まれるかどうかは、ネットワークアドレスの計算結果と照らし合わせて確認できます。社内LANやVPC設計時にアドレス範囲が重複していないか確認する際に役立ちます。</source>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpFaqA5">
+      <segment>
+        <source>IPv4では「2のホスト部ビット数乗 - 2」で計算します。2を引くのは、ホスト部が全0のネットワークアドレスと全1のブロードキャストアドレスをホストに割り当てられないためです。例えば<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">/24</pc>の場合はホスト部が8ビットなので、2の8乗から2を引いた254台が使用可能です。</source>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpFaqA6">
+      <segment>
+        <source>いいえ。すべての計算処理はブラウザ内のJavaScriptで完結しており、入力したIPアドレスやCIDR情報がサーバーに送信されることはありません。社内ネットワークのアドレス体系を扱う場合でも安心して利用できます。</source>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpFaqQ1">
+      <segment>
+        <source>CIDR表記の「/24」はどういう意味ですか</source>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpFaqQ2">
+      <segment>
+        <source>CIDR表記とサブネットマスクはどう対応していますか</source>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpFaqQ3">
+      <segment>
+        <source>このツールはIPv6にも対応していますか</source>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpFaqQ4">
+      <segment>
+        <source>プライベートIPアドレスとの関係を教えてください</source>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpFaqQ5">
+      <segment>
+        <source>使用可能ホスト数はどのように計算されますか</source>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpFaqQ6">
+      <segment>
+        <source>入力したIPアドレスは外部に送信されますか</source>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpFaqTitle">
+      <segment>
+        <source>よくある質問</source>
+      </segment>
+    </unit>
     <unit id="ipCidrHelpOverview">
       <segment>
         <source>概要</source>
@@ -248,7 +408,7 @@
     </unit>
     <unit id="ipCidrHelpOverviewDesc">
       <segment>
-        <source> IP/CIDR計算機は、IPアドレスとCIDR表記からネットワーク情報を計算するオンラインツールです。IPv4およびIPv6に対応し、サブネットマスク・ネットワークアドレス・使用可能ホスト数・2進数表現などを算出します。 </source>
+        <source> IP/CIDR計算機は、IPアドレスとCIDR表記からネットワーク情報を計算するオンラインツールです。IPv4およびIPv6に対応し、サブネットマスク・ネットワークアドレス・使用可能ホスト数・2進数表現などを算出します。VPCのサブネット設計やファイアウォールルールの確認など、ネットワーク構築時のCIDR計算を手計算なしで素早く行えます。 </source>
       </segment>
     </unit>
     <unit id="ipCidrHelpSpec">
@@ -281,9 +441,19 @@
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">IPv4とIPv6の違い</pc>: IPv4は32ビット（4オクテット、ドット区切り十進表記）、IPv6は128ビット（8グループの16進数、コロン区切り）で表現されます。</source>
       </segment>
     </unit>
+    <unit id="ipCidrHelpSpecIpv6Prefix">
+      <segment>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">IPv6のプレフィックス長</pc>: IPv6アドレスは128ビットで構成され、一般的に上位64ビットをネットワーク部（サブネットプレフィックス）、下位64ビットをインターフェースID（ホスト部）として扱う設計が広く採用されています。</source>
+      </segment>
+    </unit>
     <unit id="ipCidrHelpSpecNetwork">
       <segment>
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">ネットワークアドレス</pc>: サブネット内の最初のアドレス（ホスト部が全0）です。ルーティングの宛先として使用されます。</source>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpSpecPrivate">
+      <segment>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">プライベートIPアドレス範囲</pc>: IPv4では<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">10.0.0.0/8</pc>、<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">172.16.0.0/12</pc>、<pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">192.168.0.0/16</pc>がプライベートアドレスとして予約されています（RFC 1918）。社内ネットワークやVPC内部のアドレス設計ではこの範囲から割り当てるのが一般的です。</source>
       </segment>
     </unit>
     <unit id="ipCidrHelpSpecSubnetMask">
@@ -329,6 +499,11 @@
     <unit id="ipCidrHelpUseCaseFirewall">
       <segment>
         <source>ファイアウォールルールのIPレンジ確認と検証。</source>
+      </segment>
+    </unit>
+    <unit id="ipCidrHelpUseCaseSubnetSplit">
+      <segment>
+        <source>既存ネットワークを複数のサブネットに分割する際のアドレス範囲の見積もり。</source>
       </segment>
     </unit>
     <unit id="ipCidrHelpUseCaseVpc">
@@ -913,6 +1088,71 @@ OFFの場合はdecodeURIを使用し、URL構造を維持したままデコー�
         <source>無効なJSONです。</source>
       </segment>
     </unit>
+    <unit id="jsonFormatterHelpFaqA1">
+      <segment>
+        <source>いいえ。整形・圧縮処理はすべてブラウザ内のJavaScriptで完結しており、入力したデータが外部サーバーへ送信されることはありません。APIキーや個人情報を含むレスポンスでも安心して貼り付けて確認できます。</source>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpFaqA2">
+      <segment>
+        <source>標準のJSONパーサーを使用しているため、コメント（//や/* */）や末尾カンマを含む文字列はエラーになります。整形する前にコメントを削除するか、JSONCではなく厳密なJSON形式に変換してから貼り付けてください。</source>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpFaqA3">
+      <segment>
+        <source>主な原因は、キーや文字列値をシングルクォートで囲んでいる、末尾に余分なカンマがある、値がundefinedになっている、のいずれかです。エラーメッセージに表示される位置の周辺を確認してください。</source>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpFaqA4">
+      <segment>
+        <source>JavaScriptの数値はIEEE 754倍精度浮動小数点で扱われるため、2の53乗を超える整数（例: 一部のSnowflake IDやDB上のbigint値）は精度が失われる場合があります。厳密な値を確認したい場合は、該当のフィールドを文字列型として扱っているAPI仕様かどうかを確認してください。</source>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpFaqA5">
+      <segment>
+        <source>現在のバージョンではJSON全体に対して一括で整形・圧縮を適用する仕様です。特定の階層だけを個別に整形したい場合は、該当部分を抜き出して別途貼り付けてご利用ください。</source>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpFaqA6">
+      <segment>
+        <source>はい。UTF-8で表現された日本語や絵文字を含む文字列も、エスケープされた\uXXXX形式・生の文字のどちらでも正しく整形されます。出力時に元の表記（エスケープの有無）を変えたい場合は、圧縮モードの出力をご確認ください。</source>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpFaqQ1">
+      <segment>
+        <source>貼り付けたJSONデータはサーバーに送信されますか</source>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpFaqQ2">
+      <segment>
+        <source>コメント付きのJSON（JSONC）は整形できますか</source>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpFaqQ3">
+      <segment>
+        <source>「Unexpected token」エラーが出るのはなぜですか</source>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpFaqQ4">
+      <segment>
+        <source>数値の桁が大きいと結果が変わることがあるのはなぜですか</source>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpFaqQ5">
+      <segment>
+        <source>配列やオブジェクトの中身だけを圧縮せずに整形したい場合はどうすればよいですか</source>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpFaqQ6">
+      <segment>
+        <source>日本語（マルチバイト文字）を含むJSONは正しく整形されますか</source>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpFaqTitle">
+      <segment>
+        <source>よくある質問</source>
+      </segment>
+    </unit>
     <unit id="jsonFormatterHelpOverview">
       <segment>
         <source>概要</source>
@@ -921,6 +1161,11 @@ OFFの場合はdecodeURIを使用し、URL構造を維持したままデコー�
     <unit id="jsonFormatterHelpOverviewDesc">
       <segment>
         <source> JSON整形ツールは、読みにくいJSON文字列を自動的に整形・フォーマットするオンラインツールです。インデントの調整・ミニファイ（圧縮）に対応し、APIレスポンスや設定ファイルのデバッグ・確認作業を効率化します。 </source>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpOverviewDesc2">
+      <segment>
+        <source> APIレスポンスやログは1行に圧縮された状態で出力されることが多く、目視でネストの深さやキーの対応関係を追うのは困難です。かといって毎回エディタやIDEに貼り付けて整形するのは手間がかかります。本ツールはブラウザだけで完結するため、外部にデータを送信することなくその場で構造を可視化できます。 </source>
       </segment>
     </unit>
     <unit id="jsonFormatterHelpSpec">
@@ -943,9 +1188,19 @@ OFFの場合はdecodeURIを使用し、URL構造を維持したままデコー�
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">JSON（JavaScript Object Notation）</pc>: 軽量なデータ交換フォーマットです。人間にも機械にも読みやすく、REST APIのリクエスト・レスポンスや設定ファイルなどで広く使われています。RFC 8259 / ECMA-404で標準化されています。</source>
       </segment>
     </unit>
+    <unit id="jsonFormatterHelpSpecJsonc">
+      <segment>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">JSON5 / JSONC との違い</pc>: tsconfig.jsonなどではコメントや末尾カンマを許容する「JSONC」という拡張記法が使われることがありますが、これは仕様上のJSONそのものではありません。本ツールは厳密なJSON（RFC 8259）としてパースするため、コメント付きの設定ファイルをそのまま貼り付けるとエラーになる場合があります。</source>
+      </segment>
+    </unit>
     <unit id="jsonFormatterHelpSpecMinify">
       <segment>
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">「圧縮」モード</pc>: 改行・スペースをすべて除去してJSONを1行に圧縮します。ネットワーク転送量を削減したい場合や、HTTPリクエストボディとして利用する場合に有効です。</source>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpSpecRfc8259">
+      <segment>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">RFC 8259について</pc>: JSONの構文を定めるインターネット標準です。値として使える型はオブジェクト・配列・文字列・数値・真偽値・nullの6種類のみで、日付型や関数、コメントは含まれません。JavaScriptのオブジェクトリテラルと似ていますが、キー名を必ず二重引用符で囲む点や、undefinedを表現できない点が異なります。</source>
       </segment>
     </unit>
     <unit id="jsonFormatterHelpSpecValidation">
@@ -983,6 +1238,11 @@ OFFの場合はdecodeURIを使用し、URL構造を維持したままデコー�
         <source>クリップボードへコピーボタンで整形後のJSONをコピーできます。</source>
       </segment>
     </unit>
+    <unit id="jsonFormatterHelpUsageTip">
+      <segment>
+        <source> 補足: 変換に失敗する場合は、末尾カンマ・シングルクォート・コメントの混入など、JSONとして不正な記述がないか確認してください。エラーメッセージにはおおよその位置（行・文字位置）が表示されます。 </source>
+      </segment>
+    </unit>
     <unit id="jsonFormatterHelpUseCase">
       <segment>
         <source>ユースケース</source>
@@ -998,9 +1258,19 @@ OFFの場合はdecodeURIを使用し、URL構造を維持したままデコー�
         <source>設定ファイル（package.json、tsconfig.jsonなど）の確認・編集時。</source>
       </segment>
     </unit>
+    <unit id="jsonFormatterHelpUseCaseLog">
+      <segment>
+        <source>サーバーログに出力された構造化ログ（JSON Lines形式）を1件ずつ貼り付けて整形し、エラー発生時のフィールド値を確認する場合。</source>
+      </segment>
+    </unit>
     <unit id="jsonFormatterHelpUseCaseMinify">
       <segment>
         <source>本番環境向けにJSONを圧縮してファイルサイズを削減する場合。</source>
+      </segment>
+    </unit>
+    <unit id="jsonFormatterHelpUseCaseNested">
+      <segment>
+        <source><pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">&quot;user&quot;:&quot;id&quot;:1,&quot;roles&quot;:[&quot;admin&quot;,&quot;editor&quot;]</pc> のように1行にまとまったネスト構造のレスポンスを整形し、user.roles配列の中身をひと目で確認したい場合。 </source>
       </segment>
     </unit>
     <unit id="jsonFormatterHelpUseCaseTrailingComma">
@@ -1488,6 +1758,71 @@ OFFの場合はdecodeURIを使用し、URL構造を維持したままデコー�
         <source>パンくずリスト</source>
       </segment>
     </unit>
+    <unit id="colorPaletteHelpFaqA1">
+      <segment>
+        <source>入力欄はHEXカラーコード（<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">#RRGGBB</pc>または<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">#RGB</pc>）のみに対応しています。RGBやHSLで色を指定したい場合は、他のツールで一度HEX形式に変換してから入力してください。</source>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpFaqA2">
+      <segment>
+        <source>各シェードの背景色に対して、黒文字と白文字それぞれの相対輝度からコントラストが高い方を自動的に選択して表示しています。ただし表示される文字色は目安であり、WCAG AA（4.5:1）やAAA（7:1）などの具体的な達成基準を満たすかどうかは、別途コントラストチェッカーで数値を確認することをおすすめします。</source>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpFaqA3">
+      <segment>
+        <source>はい。500ステップは入力したHEXカラーコードをそのまま基準色として使用します。50〜400は白との線形補間、600〜900は黒との線形補間によって、500を中心に明暗のグラデーションが生成されます。</source>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpFaqA4">
+      <segment>
+        <source>現在のバージョンではパレットの保存機能は提供していません。各シェードのカラーコードをクリックしてクリップボードにコピーし、デザインツールやコードに直接貼り付けてご利用ください。</source>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpFaqA5">
+      <segment>
+        <source>複数のブランドカラー候補を横並びで見比べたい場合は「比較」モード、1つの色について全シェードを詳しく確認したい場合は「濃淡」モードが適しています。用途に応じて切り替えてご利用ください。</source>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpFaqA6">
+      <segment>
+        <source>いいえ。シェードの生成やコントラスト計算はすべてブラウザ内のJavaScriptで完結しており、入力したカラーコードが外部サーバーへ送信されることはありません。</source>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpFaqQ1">
+      <segment>
+        <source>RGBやHSL形式のカラーコードは入力できますか</source>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpFaqQ2">
+      <segment>
+        <source>生成されたシェードはWCAGのどの基準に基づいていますか</source>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpFaqQ3">
+      <segment>
+        <source>500ステップの色は入力した色そのものになりますか</source>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpFaqQ4">
+      <segment>
+        <source>生成したパレットは保存できますか</source>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpFaqQ5">
+      <segment>
+        <source>「比較」モードと「濃淡」モードはどう使い分ければよいですか</source>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpFaqQ6">
+      <segment>
+        <source>入力したカラーコードは外部に送信されますか</source>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpFaqTitle">
+      <segment>
+        <source>よくある質問</source>
+      </segment>
+    </unit>
     <unit id="colorPaletteHelpOverview">
       <segment>
         <source>概要</source>
@@ -1496,6 +1831,11 @@ OFFの場合はdecodeURIを使用し、URL構造を維持したままデコー�
     <unit id="colorPaletteHelpOverviewDesc">
       <segment>
         <source> カラーパレットツールは、入力したHEXカラーコードからMaterial Designライクなカラーシェードパレットを自動生成するオンラインツールです。比較モードとシェード生成モードの2種類に対応しています。 </source>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpOverviewDesc2">
+      <segment>
+        <source> デザインシステムやコンポーネントライブラリを構築する際、1つのブランドカラーから背景色・ホバー色・無効化状態の色といった複数階調を手作業で決めるのは手間がかかります。本ツールは基準色を入力するだけで一貫性のあるシェード段階を自動生成し、WCAGを踏まえたテキストカラーの候補も同時に確認できます。 </source>
       </segment>
     </unit>
     <unit id="colorPaletteHelpSpec">
@@ -1516,6 +1856,11 @@ OFFの場合はdecodeURIを使用し、URL構造を維持したままデコー�
     <unit id="colorPaletteHelpSpecHex">
       <segment>
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">HEXカラーコード</pc>: 3桁形式（<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">#RGB</pc>）と6桁形式（<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">#RRGGBB</pc>）の両方に対応しています。<pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">#</pc>プレフィックスの有無も問いません。</source>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpSpecRgbHsl">
+      <segment>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">RGB・HSLとの相互変換</pc>: 内部的にはHEXをRGB（赤・緑・青の各成分0〜255）に変換して線形補間を行い、輝度計算やコントラスト判定にも利用します。HSL（色相・彩度・明度）形式での直接入力には対応していません。</source>
       </segment>
     </unit>
     <unit id="colorPaletteHelpSpecShades">
@@ -1558,6 +1903,11 @@ OFFの場合はdecodeURIを使用し、URL構造を維持したままデコー�
         <source>各シェードのカラーコードをクリックしてコピーできます。</source>
       </segment>
     </unit>
+    <unit id="colorPaletteHelpUsageTip">
+      <segment>
+        <source> 補足: 入力したカラーコードやシェード生成結果はブラウザ内のみで保持され、ページを再読み込みすると内容はリセットされます。使用中の配色を残しておきたい場合は、コピーしたコードを別途メモしてください。 </source>
+      </segment>
+    </unit>
     <unit id="colorPaletteHelpUseCase">
       <segment>
         <source>ユースケース</source>
@@ -1571,6 +1921,11 @@ OFFの場合はdecodeURIを使用し、URL構造を維持したままデコー�
     <unit id="colorPaletteHelpUseCaseBrand">
       <segment>
         <source>ブランドカラーのシェードパレットを自動生成したい場合。</source>
+      </segment>
+    </unit>
+    <unit id="colorPaletteHelpUseCaseCompareBrand">
+      <segment>
+        <source>複数の候補ブランドカラーを並べて比較し、コーポレートカラーとして採用する色を検討する場合。</source>
       </segment>
     </unit>
     <unit id="colorPaletteHelpUseCaseMaterial">
@@ -1760,6 +2115,71 @@ v7: Unix時間と乱数を組み合わせて生成。時系列順に並べやす
         <source>UUID生成ツール（v1/v4/v7対応・一括生成）</source>
       </segment>
     </unit>
+    <unit id="passwordGenHelpFaqA1">
+      <segment>
+        <source>いいえ。生成処理はすべてブラウザ内で完結しており、サーバーへの送信やCookie・ローカルストレージへの保存は行いません。表示された結果はページを離れると失われるため、必要な場合はその場でコピーして安全な場所に保管してください。</source>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpFaqA2">
+      <segment>
+        <source>エントロピーは「文字種の数の対数×文字数」で概算でき、値が大きいほど総当たり攻撃に必要な試行回数が増えます。例えば英数字+記号（約94種）で16文字なら100ビットを超え、現実的な時間では解読が困難な強度になります。重要なアカウントほど文字種を増やし長くすることを推奨します。</source>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpFaqA3">
+      <segment>
+        <source>対象システムが特定の記号を禁止している場合や、口頭・手入力での伝達が発生する場合は「英数字」や「英小文字 + 数字」を選ぶ方が安全にトラブルを避けられます。また数字のみのPINコード入力を想定した機器では「数字のみ」を選択してください。</source>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpFaqA4">
+      <segment>
+        <source>使用可能な文字種が減るためエントロピーはわずかに低下しますが、実用上の影響はごくわずかです。それよりも印刷物や電話口での伝達時に0とO、1とlを読み間違えるリスクの方が実運用では大きいため、人が手入力する場面では有効にすることを推奨します。</source>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpFaqA5">
+      <segment>
+        <source>文字種を増やしても短い文字数では総当たり攻撃に対するエントロピーが不足しがちです。可能であれば12文字以上、重要なアカウントでは16文字以上を推奨します。8文字などの短い長さは、システム側の文字数上限がある場合の最終手段として扱ってください。</source>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpFaqA6">
+      <segment>
+        <source>各文字は独立してランダムに選ばれるため、確率的には稀に大文字や記号に偏った結果が出ることもあります。特定の文字種を必ず含めたい場合は、生成結果を確認し要件を満たさないものは再生成して選び直してください。</source>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpFaqQ1">
+      <segment>
+        <source>生成したパスワードはどこかに保存されますか</source>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpFaqQ2">
+      <segment>
+        <source>パスワードの強度（エントロピー）はどう考えればよいですか</source>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpFaqQ3">
+      <segment>
+        <source>記号を含めない方がよい場面はありますか</source>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpFaqQ4">
+      <segment>
+        <source>「類似文字を除く」を有効にするとセキュリティは下がりますか</source>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpFaqQ5">
+      <segment>
+        <source>短い文字数（8文字など）でも安全に使えますか</source>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpFaqQ6">
+      <segment>
+        <source>生成されたパスワードが偏った文字構成（同じ文字種ばかり）になることはありますか</source>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpFaqTitle">
+      <segment>
+        <source>よくある質問</source>
+      </segment>
+    </unit>
     <unit id="passwordGenHelpOverview">
       <segment>
         <source>概要</source>
@@ -1768,6 +2188,11 @@ v7: Unix時間と乱数を組み合わせて生成。時系列順に並べやす
     <unit id="passwordGenHelpOverviewDesc">
       <segment>
         <source> パスワードジェネレーターは、セキュアなランダムパスワードをオンラインで一括生成するツールです。文字種・長さ・生成件数をカスタマイズでき、エンジニアのシステム構築からエンドユーザーの初期パスワード設定まで幅広く活用できます。 </source>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpOverviewDesc2">
+      <segment>
+        <source> 人間が考えたパスワードは覚えやすさを優先するあまり、辞書に載っている単語や誕生日など推測されやすいパターンになりがちです。本ツールは暗号学的に安全な乱数生成を使ってランダムな文字列を作るため、総当たり攻撃や辞書攻撃に対する耐性を確保しながら、必要な件数を一度にまとめて発行できます。 </source>
       </segment>
     </unit>
     <unit id="passwordGenHelpSpec">
@@ -1805,6 +2230,16 @@ v7: Unix時間と乱数を組み合わせて生成。時系列順に並べやす
         <source>「英小文字 + 数字」: 小文字英字と数字のみ（可読性重視・URLセーフ用途）。</source>
       </segment>
     </unit>
+    <unit id="passwordGenHelpSpecNoStorage">
+      <segment>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">データの取り扱い</pc>: 生成したパスワードはブラウザ内のメモリ上にのみ保持され、サーバーへの送信や保存は行いません。ページを再読み込みすると生成結果は失われます。</source>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpSpecRandomSource">
+      <segment>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">乱数生成の仕組み</pc>: 各文字はブラウザが提供する暗号学的に安全な乱数生成器（Web Crypto APIのCrypto.getRandomValues）を用いて選択されます。Math.random()のような予測可能性のある擬似乱数は使用していません。</source>
+      </segment>
+    </unit>
     <unit id="passwordGenHelpUsage">
       <segment>
         <source>使い方</source>
@@ -1835,6 +2270,11 @@ v7: Unix時間と乱数を組み合わせて生成。時系列順に並べやす
         <source>「生成」ボタンをクリックします。</source>
       </segment>
     </unit>
+    <unit id="passwordGenHelpUsageTip">
+      <segment>
+        <source> 補足: 対象システムが記号を許可していない、または特定の記号のみ禁止しているといった制約がある場合は、「英数字」や「英小文字 + 数字」を選択するか、生成後に該当する記号を含む結果だけを除外して利用してください。 </source>
+      </segment>
+    </unit>
     <unit id="passwordGenHelpUseCase">
       <segment>
         <source>ユースケース</source>
@@ -1845,6 +2285,11 @@ v7: Unix時間と乱数を組み合わせて生成。時系列順に並べやす
         <source>新規ユーザーの初期パスワードを一括生成したい場合。</source>
       </segment>
     </unit>
+    <unit id="passwordGenHelpUseCasePolicyCheck">
+      <segment>
+        <source>社内パスワードポリシー（最小文字数・文字種の組み合わせ）に適合するパスワードを、複数パターン見比べながら決めたい場合。</source>
+      </segment>
+    </unit>
     <unit id="passwordGenHelpUseCaseSecret">
       <segment>
         <source>APIシークレットや暗号化キーの生成。</source>
@@ -1853,6 +2298,11 @@ v7: Unix時間と乱数を組み合わせて生成。時系列順に並べやす
     <unit id="passwordGenHelpUseCaseTest">
       <segment>
         <source>テスト用ダミーパスワードの作成。</source>
+      </segment>
+    </unit>
+    <unit id="passwordGenHelpUseCaseWifi">
+      <segment>
+        <source>Wi-Fiルーターや共有端末など、記号入力が難しい機器向けに英数字のみのパスワードを発行したい場合。</source>
       </segment>
     </unit>
     <unit id="update.home.20250823">
@@ -2219,6 +2669,71 @@ UNIXタイム変換ツールを実装しました。</source>
         <source>UUID生成ツール</source>
       </segment>
     </unit>
+    <unit id="sqlFormatterHelpFaqA1">
+      <segment>
+        <source>主要な方言に共通する標準SQL構文の整形に対応しています。方言固有の拡張構文（PL/pgSQLのプロシージャ、T-SQLのBEGIN...END、MySQLのバッククォート識別子など）は整形結果が意図と異なる場合があるため、整形後は必ず内容を確認してください。</source>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpFaqA2">
+      <segment>
+        <source>いいえ。整形処理はブラウザ内で完結しており、入力したSQLが外部に送信されることはありません。本番データベースのスキーマ情報を含むクエリでも安心してご利用いただけます。</source>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpFaqA3">
+      <segment>
+        <source>単純なDML/DDL文の整形を主眼としているため、ストアドプロシージャやトリガーに含まれる制御構文（IF、LOOP、CURSORなど）は正しく整形されない場合があります。SELECT文などクエリ本体部分のみを抜き出してご利用ください。</source>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpFaqA4">
+      <segment>
+        <source>はい。セミコロンで区切られた複数のSQL文を一度に貼り付けると、それぞれが個別に整形されます。マイグレーションファイルのように複数のCREATE TABLE文が並んでいる場合にも利用できます。</source>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpFaqA5">
+      <segment>
+        <source>SELECT・FROM・WHEREなどのキーワードを右揃えで縦に整列させるため、キーワードの位置が視覚的に揃い、条件句が多い長いクエリでも構造を把握しやすくなります。ドキュメントやプレゼン資料にSQLを掲載する際にもよく使われます。</source>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpFaqA6">
+      <segment>
+        <source>「予約語」オプションが「大文字」または「小文字」に設定されている場合、SELECTやFROMなどのSQLキーワードが自動的に変換されます。入力時のケースをそのまま維持したい場合は「変更しない」を選択してください。</source>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpFaqQ1">
+      <segment>
+        <source>MySQL・PostgreSQL・SQL Serverのどの方言に対応していますか</source>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpFaqQ2">
+      <segment>
+        <source>貼り付けたSQLに含まれるテーブル名やデータはサーバーに送信されますか</source>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpFaqQ3">
+      <segment>
+        <source>ストアドプロシージャやトリガーの定義も整形できますか</source>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpFaqQ4">
+      <segment>
+        <source>複数のSQL文をまとめて整形できますか</source>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpFaqQ5">
+      <segment>
+        <source>「右揃え/表形式」モードはどのような場面で使うと便利ですか</source>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpFaqQ6">
+      <segment>
+        <source>整形結果の予約語が想定と異なる大文字/小文字になるのはなぜですか</source>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpFaqTitle">
+      <segment>
+        <source>よくある質問</source>
+      </segment>
+    </unit>
     <unit id="sqlFormatterHelpOverview">
       <segment>
         <source>概要</source>
@@ -2229,9 +2744,24 @@ UNIXタイム変換ツールを実装しました。</source>
         <source> SQLフォーマッターは、読みにくいSQLクエリを整形・可読化するオンラインツールです。JOIN、WHERE、GROUP BYなどのキーワードを適切なインデントで整列させ、コードレビューやドキュメント作成を効率化します。 </source>
       </segment>
     </unit>
+    <unit id="sqlFormatterHelpOverviewDesc2">
+      <segment>
+        <source> ORMやBIツールが自動生成するSQLは1行に連結されていることが多く、JOIN条件やサブクエリの入れ子構造を目で追うのが困難です。手作業でインデントを揃え直すのは時間がかかるうえ、SELECT句のカラム数が多いクエリでは特に骨が折れます。本ツールはそうした整形作業を数秒で終わらせ、レビューやチューニングに集中できるようにします。 </source>
+      </segment>
+    </unit>
     <unit id="sqlFormatterHelpSpec">
       <segment>
         <source>仕様・用語解説</source>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpSpecComment">
+      <segment>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">コメントの扱い</pc>: 行コメント（--）およびブロックコメント（/* */）は、位置情報を保持したまま整形後のクエリに引き継がれます。ORMが自動生成したクエリに付与されるバインドパラメータのコメントなどもそのまま残ります。</source>
+      </segment>
+    </unit>
+    <unit id="sqlFormatterHelpSpecDialect">
+      <segment>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">対応SQL方言について</pc>: 本ツールはMySQL・PostgreSQL・SQLiteなど主要な方言に共通する標準的なSQL構文（SELECT / INSERT / UPDATE / DELETE / CREATE TABLE等）の整形に対応しています。ただし、PL/pgSQLのストアドプロシージャや、T-SQL固有のBEGIN...END構文など、方言に強く依存する拡張構文は整形結果が崩れる場合があります。</source>
       </segment>
     </unit>
     <unit id="sqlFormatterHelpSpecIdentifier">
@@ -2314,6 +2844,11 @@ UNIXタイム変換ツールを実装しました。</source>
         <source>「変換」ボタンをクリックすると整形結果が表示されます。</source>
       </segment>
     </unit>
+    <unit id="sqlFormatterHelpUsageTip">
+      <segment>
+        <source> 補足: 複数のSQL文をセミコロン区切りで一括貼り付けても整形できます。マイグレーションファイルなど、複数のCREATE TABLE文をまとめて確認したい場合に活用してください。 </source>
+      </segment>
+    </unit>
     <unit id="sqlFormatterHelpUseCase">
       <segment>
         <source>ユースケース</source>
@@ -2329,6 +2864,11 @@ UNIXタイム変換ツールを実装しました。</source>
         <source>ドキュメント用に整形されたSQLスニペットを作成したい場合。</source>
       </segment>
     </unit>
+    <unit id="sqlFormatterHelpUseCaseJoinAudit">
+      <segment>
+        <source>複数テーブルを結合した「SELECT * FROM orders o JOIN users u ON o.user_id = u.id JOIN items i ON o.item_id = i.id WHERE...」のような1行クエリを整形し、JOIN条件の対応関係を確認しながらパフォーマンスチューニングを行う場合。</source>
+      </segment>
+    </unit>
     <unit id="sqlFormatterHelpUseCaseOrmComments">
       <segment>
         <source>ORMが生成したSQLに混在するバインドパラメータやコメントが多く読みにくい場合の整理。</source>
@@ -2339,6 +2879,76 @@ UNIXタイム変換ツールを実装しました。</source>
         <source>コードレビュー前にSQLを整理して可読性を向上させたい場合。</source>
       </segment>
     </unit>
+    <unit id="sqlFormatterHelpUseCaseSlowQueryLog">
+      <segment>
+        <source>スロークエリログに出力された整形前のSQLを貼り付けて可読化し、実行計画（EXPLAIN）を確認する前の下調べとして使う場合。</source>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpFaqA1">
+      <segment>
+        <source>ブラウザのCanvas APIの制約上、外部URLへの画像参照やCSSで指定した外部Webフォントは読み込まれない場合があります。確実に反映させるには、画像はBase64形式でSVG内に埋め込み、文字はアウトライン化するか標準的なシステムフォントを使用してください。</source>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpFaqA2">
+      <segment>
+        <source>「幅」「高さ」で指定したキャンバスサイズに「拡大率」を掛け合わせた値が実際の出力ピクセル数になります。Retinaディスプレイ向けに高解像度で書き出したい場合は、拡大率を200%に設定してください。</source>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpFaqA3">
+      <segment>
+        <source>はい。「背景を透過」を有効にすると、背景色を塗らない状態でPNGに書き出されます。PNG形式はアルファチャンネルに対応しているため、アイコンやロゴを透明背景で出力する用途に適しています。</source>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpFaqA4">
+      <segment>
+        <source>処理はブラウザ内のCanvas APIで行われるため、極端に複雑なパスや非常に大きなキャンバスサイズを指定すると、ブラウザやデバイスの性能によって描画に時間がかかったり失敗したりすることがあります。必要な範囲でキャンバスサイズを調整してください。</source>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpFaqA5">
+      <segment>
+        <source>PNGは静止画形式のため、SMILやCSSアニメーションによる動きは反映されず、変換時点（プレビュー表示時）の静止した状態がそのまま書き出されます。動きのある画像として保存したい場合は、GIFや動画形式への変換を別途検討してください。</source>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpFaqA6">
+      <segment>
+        <source>いいえ。入力したSVGコードやプレビュー・変換処理はすべてブラウザ内で完結し、サーバーへ送信・保存されることはありません。タブを閉じたり再読み込みしたりすると入力内容は破棄されます。</source>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpFaqQ1">
+      <segment>
+        <source>SVG内の外部画像参照やWebフォントは変換結果に反映されますか</source>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpFaqQ2">
+      <segment>
+        <source>出力されるPNGの解像度はどう決まりますか</source>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpFaqQ3">
+      <segment>
+        <source>背景を透過したPNGとして出力できますか</source>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpFaqQ4">
+      <segment>
+        <source>サイズの大きいSVGファイルでも変換できますか</source>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpFaqQ5">
+      <segment>
+        <source>SVGのアニメーションはPNGに反映されますか</source>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpFaqQ6">
+      <segment>
+        <source>貼り付けたSVGコードは保存されますか</source>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpFaqTitle">
+      <segment>
+        <source>よくある質問</source>
+      </segment>
+    </unit>
     <unit id="svgViewerHelpOverview">
       <segment>
         <source>概要</source>
@@ -2346,7 +2956,7 @@ UNIXタイム変換ツールを実装しました。</source>
     </unit>
     <unit id="svgViewerHelpOverviewDesc">
       <segment>
-        <source> SVGビューアーは、SVGコードのリアルタイムプレビューとPNG画像への変換をオンラインで行えるツールです。キャンバスサイズ・背景色・スケール・オフセットを設定しながらプレビューし、PNG形式でダウンロードできます。 </source>
+        <source> SVGビューアーは、SVGコードのリアルタイムプレビューとPNG画像への変換をオンラインで行えるツールです。キャンバスサイズ・背景色・スケール・オフセットを設定しながらプレビューし、PNG形式でダウンロードできます。すべての変換処理はブラウザ内で完結するため、SVGファイルの内容が外部サーバーに送信されることはありません。アイコン素材の書き出しやOGP画像の作成など、デザインデータをラスター画像に変換したい場面で利用できます。 </source>
       </segment>
     </unit>
     <unit id="svgViewerHelpSpec">
@@ -2364,9 +2974,19 @@ UNIXタイム変換ツールを実装しました。</source>
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">PNG変換の仕組み</pc>: ブラウザのCanvas APIを使用してSVGをラスタライズします。<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">drawImage()</pc>でSVGをCanvasに描画し、<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">toDataURL(&apos;image/png&apos;)</pc>でPNGデータに変換します。</source>
       </segment>
     </unit>
+    <unit id="svgViewerHelpSpecExternalRef">
+      <segment>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">外部参照・外部フォント</pc>: SVG内で外部画像を<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">&lt;image&gt;</pc>タグの<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">href</pc>で参照している場合や、Webフォントを外部CSSで指定している場合、ブラウザのセキュリティ制約により読み込めないことがあります。画像はBase64のData URIとして埋め込み、フォントは<pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">&lt;text&gt;</pc>要素にインラインの<pc id="4" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">style</pc>属性で指定することを推奨します。</source>
+      </segment>
+    </unit>
     <unit id="svgViewerHelpSpecOffset">
       <segment>
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">「X座標」・「Y座標」</pc>: SVGの描画位置をX・Y方向にずらすピクセル数です。キャンバス内の配置調整に使用します。</source>
+      </segment>
+    </unit>
+    <unit id="svgViewerHelpSpecResolution">
+      <segment>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">出力解像度の考え方</pc>: PNGの実ピクセルサイズは「キャンバスサイズ × 拡大率」で決まります。SVGはベクター形式のため、拡大率を上げても輪郭のぼやけは発生しませんが、キャンバスサイズ自体を大きくしないと最終的な出力ピクセル数は増えません。</source>
       </segment>
     </unit>
     <unit id="svgViewerHelpSpecScale">
@@ -2434,6 +3054,76 @@ UNIXタイム変換ツールを実装しました。</source>
         <source>OGP画像・faviconなどの素材を作成・確認する場合。</source>
       </segment>
     </unit>
+    <unit id="svgViewerHelpUseCaseTransparentExport">
+      <segment>
+        <source>透過PNGアイコンをアプリやWebサイトのアセットとして書き出す場合。</source>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpFaqA1">
+      <segment>
+        <source>いいえ。本ツールは行単位での比較に特化しており、1行の中のどの文字や単語が変わったかまでは強調表示されません。1行が大きく書き換わった場合は、行全体が変更行として扱われます。</source>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpFaqA2">
+      <segment>
+        <source>はい。改行コードの違いは行の区切りとして解釈に影響するため、内容が同じでもLFとCRLFが混在していると差分として検出される場合があります。比較前にエディタなどで改行コードを統一することをおすすめします。</source>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpFaqA3">
+      <segment>
+        <source>はい、区別されます。<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">Hello</pc>と<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">hello</pc>のように大文字・小文字のみが異なる行も、変更行として検出されます。大文字・小文字を無視して比較するオプションは現在提供していません。</source>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpFaqA4">
+      <segment>
+        <source>数千行程度までは実用的な速度で比較できますが、テキストが極端に大きい場合はブラウザ内での計算処理に時間がかかったり、表示が重くなったりすることがあります。大きなファイルを比較する場合は、必要な範囲だけを抜き出してから比較することをおすすめします。</source>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpFaqA5">
+      <segment>
+        <source>いいえ。差分の計算はすべてブラウザ内のJavaScriptで完結しており、入力したテキストが外部サーバーへ送信されることはありません。機密情報を含む文書でも安心して比較できます。</source>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpFaqA6">
+      <segment>
+        <source>はい。行末や行頭の余分なスペース、タブとスペースの違いなども含めて、1文字でも異なれば変更行として検出されます。インデント幅の変更だけで差分が大量に出る場合は、この点が原因であることが多いです。</source>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpFaqQ1">
+      <segment>
+        <source>文字単位や単語単位での差分表示はできますか</source>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpFaqQ2">
+      <segment>
+        <source>改行コード（LF/CRLF）が違うだけでも差分として検出されますか</source>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpFaqQ3">
+      <segment>
+        <source>大文字と小文字は区別されますか</source>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpFaqQ4">
+      <segment>
+        <source>非常に大きなテキストを比較しても問題ありませんか</source>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpFaqQ5">
+      <segment>
+        <source>入力したテキストはサーバーに送信されますか</source>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpFaqQ6">
+      <segment>
+        <source>空白（スペース）だけの違いも差分として表示されますか</source>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpFaqTitle">
+      <segment>
+        <source>よくある質問</source>
+      </segment>
+    </unit>
     <unit id="textDiffHelpOverview">
       <segment>
         <source>概要</source>
@@ -2444,6 +3134,11 @@ UNIXタイム変換ツールを実装しました。</source>
         <source> テキスト比較ツールは、2つのテキストの差分をサイドバイサイドで視覚化するオンラインツールです。追加・削除・変更箇所を行ごとにハイライト表示し、コードや文書の差分確認を効率化します。 </source>
       </segment>
     </unit>
+    <unit id="textDiffHelpOverviewDesc2">
+      <segment>
+        <source> 設定ファイルの変更前後を見比べたい、文書の改訂箇所を確認したいといった場面で、目視での比較は見落としが発生しがちです。本ツールはブラウザ内で差分計算が完結するため、外部にテキストを送信することなく、その場で変更箇所だけを素早く特定できます。 </source>
+      </segment>
+    </unit>
     <unit id="textDiffHelpSpec">
       <segment>
         <source>仕様・用語解説</source>
@@ -2452,6 +3147,11 @@ UNIXタイム変換ツールを実装しました。</source>
     <unit id="textDiffHelpSpecAlgorithm">
       <segment>
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">差分アルゴリズム（LCS）</pc>: LCS（Longest Common Subsequence：最長共通部分列）ベースのdiffアルゴリズムを採用しています。2つのシーケンス間で最も長い共通の部分列を求め、追加・削除箇所を特定します。</source>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpSpecCaseSensitive">
+      <segment>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">大文字・小文字の区別</pc>: 比較は大文字・小文字を区別して行われます。<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">Text</pc>と<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">text</pc>は異なる行として扱われ、差分として検出されます。</source>
       </segment>
     </unit>
     <unit id="textDiffHelpSpecDiffResult">
@@ -2466,7 +3166,12 @@ UNIXタイム変換ツールを実装しました。</source>
     </unit>
     <unit id="textDiffHelpSpecLineDiff">
       <segment>
-        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">行単位の差分</pc>: テキストを行単位で比較し、変更のあった行を識別します。各行の変更内容を原文と並べて表示します。</source>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">行単位の差分</pc>: テキストを行単位で比較し、変更のあった行を識別します。各行の変更内容を原文と並べて表示します。単語単位や文字単位での差分強調には対応していません。</source>
+      </segment>
+    </unit>
+    <unit id="textDiffHelpSpecLineEnding">
+      <segment>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">改行コードの扱い</pc>: 入力テキストの改行コード（LF・CRLF）の違いも行の境界として扱われるため、改行コードのみが異なるテキスト同士を比較すると、内容が同じでも差分として検出される場合があります。</source>
       </segment>
     </unit>
     <unit id="textDiffHelpSpecSideBySide">
@@ -2499,6 +3204,11 @@ UNIXタイム変換ツールを実装しました。</source>
         <source>入力内容をリセットしたい場合はクリアボタンを使用します。</source>
       </segment>
     </unit>
+    <unit id="textDiffHelpUsageTip">
+      <segment>
+        <source> 補足: 差分は行単位で計算されるため、1行が長すぎる場合や改行位置がずれている場合は差分が見づらくなることがあります。比較しやすくするには、あらかじめ整形ツールなどで改行位置をそろえておくことをおすすめします。 </source>
+      </segment>
+    </unit>
     <unit id="textDiffHelpUseCase">
       <segment>
         <source>ユースケース</source>
@@ -2524,6 +3234,76 @@ UNIXタイム変換ツールを実装しました。</source>
         <source>コードレビュー前に変更内容を確認する場合。</source>
       </segment>
     </unit>
+    <unit id="textDiffHelpUseCaseTranslation">
+      <segment>
+        <source>翻訳作業で、原文と訳文の対応関係を崩さずに旧版・新版のテキストを見比べる場合。</source>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpFaqA1">
+      <segment>
+        <source>最大の違いはソート可能性です。UUID v4は完全にランダムなため生成順と文字列の並び順が一致しませんが、ULIDは先頭48ビットがミリ秒タイムスタンプなので、文字列としてソートするとほぼ生成順に並びます。長さもUUID（ハイフン込み36文字）に対しULIDは26文字と短くなります。</source>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpFaqA2">
+      <segment>
+        <source>ULIDの先頭10文字はUNIXエポックからのミリ秒数をCrockford&apos;s Base32でエンコードした値です。Base32は桁の重みが大きい文字ほど先頭に来るよう設計されているため、生成時刻が新しいほど先頭文字列が大きくなり、通常の文字列比較（辞書順ソート）がそのまま時系列順と一致します。</source>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpFaqA3">
+      <segment>
+        <source>はい。先頭10文字をCrockford&apos;s Base32としてデコードすれば、生成時に使われたミリ秒単位のUNIXタイムスタンプを復元できます。ランダム部分にあたる残り16文字からは時刻情報は得られません。</source>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpFaqA4">
+      <segment>
+        <source>理論上は完全にゼロではありませんが、80ビットのランダム部分があるため実用上無視できるほど低い確率です。同一ミリ秒内で連続生成する場合に厳密な重複回避と順序保証を求めるなら、「単調増加」オプションを有効にしてください。</source>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpFaqA5">
+      <segment>
+        <source>同一ミリ秒内で複数生成した際に、2件目以降はランダム部分を1ずつインクリメントします。これにより同一タイムスタンプ内でも生成順どおりに文字列がソートされるようになり、イベントログのような順序が重要な用途に適しています。</source>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpFaqA6">
+      <segment>
+        <source>ULIDは128ビットの値なのでUUID型のカラムにバイナリ表現として格納すること自体は可能ですが、文字列表現の見た目やハイフンの有無が異なるため、既存のUUID文字列との単純な置き換えにはアプリケーション側の変換ロジックが必要です。移行前に既存コードがUUID形式の文字列（ハイフン区切り36文字）を前提にしていないか確認してください。</source>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpFaqQ1">
+      <segment>
+        <source>ULIDとUUIDの違いは何ですか</source>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpFaqQ2">
+      <segment>
+        <source>なぜULIDは辞書順ソートで時系列順に並ぶのですか</source>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpFaqQ3">
+      <segment>
+        <source>ULIDの文字列からタイムスタンプ（生成時刻）を逆算できますか</source>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpFaqQ4">
+      <segment>
+        <source>生成したULIDが重複することはありますか</source>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpFaqQ5">
+      <segment>
+        <source>「単調増加」を有効にするとどう変わりますか</source>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpFaqQ6">
+      <segment>
+        <source>既存システムのUUID列をULIDに移行できますか</source>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpFaqTitle">
+      <segment>
+        <source>よくある質問</source>
+      </segment>
+    </unit>
     <unit id="ulidGenHelpOverview">
       <segment>
         <source>概要</source>
@@ -2534,6 +3314,11 @@ UNIXタイム変換ツールを実装しました。</source>
         <source> ULIDジェネレーターは、Universally Unique Lexicographically Sortable Identifier（ULID）を生成するオンラインツールです。UUIDの代替として、時系列ソート可能な一意識別子を一括生成できます。 </source>
       </segment>
     </unit>
+    <unit id="ulidGenHelpOverviewDesc2">
+      <segment>
+        <source> UUID v4はランダム性が高く優れた識別子ですが、生成順とソート順が一致しないためDBの主キーに使うとインデックスが断片化しやすいという弱点があります。ULIDは先頭にミリ秒精度のタイムスタンプを埋め込むことでこの弱点を解消しつつ、UUIDと同等の衝突耐性を維持した識別子です。本ツールはブラウザ内で完結して生成するため、外部にデータを送信せずにその場でまとめて取得できます。 </source>
+      </segment>
+    </unit>
     <unit id="ulidGenHelpSpec">
       <segment>
         <source>仕様・用語解説</source>
@@ -2542,6 +3327,11 @@ UNIXタイム変換ツールを実装しました。</source>
     <unit id="ulidGenHelpSpecBase32">
       <segment>
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">Crockford&apos;s Base32</pc>: I, L, O, U を除外した32文字セットを使用。視覚的に紛らわしい文字を排除し、人間が読みやすい形式にしています。</source>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpSpecCollision">
+      <segment>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">衝突確率</pc>: 同一ミリ秒内でも80ビットのランダム部分により、実用上十分な低確率でしか衝突しません。単調増加を有効にすればさらに同一プロセス内での重複を排除できます。</source>
       </segment>
     </unit>
     <unit id="ulidGenHelpSpecFormat">
@@ -2557,6 +3347,11 @@ UNIXタイム変換ツールを実装しました。</source>
     <unit id="ulidGenHelpSpecSort">
       <segment>
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">辞書順ソート</pc>: ULIDの先頭10文字が時刻を表すため、辞書順ソート（文字列比較）がそのまま時系列ソートになります。DBインデックスの局所性が高まりパフォーマンスが向上します。</source>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpSpecTimestampExtract">
+      <segment>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">タイムスタンプ部分の復元</pc>: ULIDの先頭10文字（Base32でエンコードされた48ビット）をデコードすると、生成時刻（UNIXエポックからのミリ秒）を逆算できます。ログの発生時刻を推定する際にも利用できます。</source>
       </segment>
     </unit>
     <unit id="ulidGenHelpSpecVsUuid">
@@ -2589,6 +3384,11 @@ UNIXタイム変換ツールを実装しました。</source>
         <source>「生成」ボタンをクリックします。</source>
       </segment>
     </unit>
+    <unit id="ulidGenHelpUsageTip">
+      <segment>
+        <source> 補足: 過去や未来の特定時刻を起点にしたULIDをまとめて発行したい場合は、「基準日時(タイムスタンプ)」に任意の日時を指定してから生成してください。テストデータの投入順序を制御したい場合などに便利です。 </source>
+      </segment>
+    </unit>
     <unit id="ulidGenHelpUseCase">
       <segment>
         <source>ユースケース</source>
@@ -2599,9 +3399,19 @@ UNIXタイム変換ツールを実装しました。</source>
         <source>RDBMSのプライマリキーとしてインデックス効率を高めたい場合。</source>
       </segment>
     </unit>
+    <unit id="ulidGenHelpUseCaseDistributedSystem">
+      <segment>
+        <source>分散システムにおいて、複数ノードで採番してもソート順とおおよその発生順が保たれる識別子が必要な場合。</source>
+      </segment>
+    </unit>
     <unit id="ulidGenHelpUseCaseLog">
       <segment>
         <source>時系列順のログIDやイベントIDの生成。</source>
+      </segment>
+    </unit>
+    <unit id="ulidGenHelpUseCaseTestFixture">
+      <segment>
+        <source>テストフィクスチャで、生成時刻をずらした複数のULIDをまとめて用意し、時系列順の表示ロジックを検証したい場合。</source>
       </segment>
     </unit>
     <unit id="ulidGenHelpUseCaseToken">
@@ -2614,6 +3424,71 @@ UNIXタイム変換ツールを実装しました。</source>
         <source>UUID v7との比較検討。どちらも時系列ソート可能だが、ULIDはCrockford&apos;s Base32で26文字、UUID v7はハイフン区切りの36文字という違いがある。</source>
       </segment>
     </unit>
+    <unit id="unixTimestampHelpFaqA1">
+      <segment>
+        <source>桁数で自動判定しています。おおむね10桁（2001年9月〜2286年頃の範囲）は秒単位、13桁（1970年〜2001年より後の範囲）はミリ秒単位として扱われます。想定と異なる桁数を入力すると、極端に過去または未来の日時に変換されるため、桁数を確認してください。</source>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpFaqA2">
+      <segment>
+        <source>UNIXタイムスタンプ自体はUTC基準の絶対値であり、タイムゾーンを変えても値そのものは変わりません。変わるのは表示される「年月日時分秒」の見た目のみで、IANAタイムゾーンごとの標準時・夏時間（DST）を考慮したローカル時刻に変換して表示します。</source>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpFaqA3">
+      <segment>
+        <source>UNIXタイムスタンプを符号付き32ビット整数で保持している古いシステムでは、2038年1月19日 03:14:07 UTCに数値が最大値を超えてオーバーフローし、日時が正しく扱えなくなる問題です。JavaScriptの数値やモダンな64ビットシステムでは影響を受けませんが、組み込み機器や古いC言語プログラムでは注意が必要です。</source>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpFaqA4">
+      <segment>
+        <source>はい。1970年1月1日より前の日時は負のタイムスタンプとして扱われ、本ツールでも変換可能です。ただし一部の外部システムやライブラリは負の値をサポートしていない場合があるため、連携先の仕様も併せて確認してください。</source>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpFaqA5">
+      <segment>
+        <source>いいえ。UNIXタイムスタンプの定義上、閏秒は無視され、1日は常に86400秒として扱われます。これはPOSIX標準の一般的な実装に準拠しており、本ツールも同様の仕様です。</source>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpFaqA6">
+      <segment>
+        <source>「日時に変換」モードで日時欄を空欄のまま実行するか、現在時刻を初期値として利用することで、その時点のUNIXタイムスタンプを秒・ミリ秒の両形式で確認できます。</source>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpFaqQ1">
+      <segment>
+        <source>入力したタイムスタンプが秒単位かミリ秒単位かはどう判断されますか</source>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpFaqQ2">
+      <segment>
+        <source>タイムゾーンを変更すると何が変わりますか</source>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpFaqQ3">
+      <segment>
+        <source>2038年問題とは何ですか</source>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpFaqQ4">
+      <segment>
+        <source>1970年より前の日付や負の値は扱えますか</source>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpFaqQ5">
+      <segment>
+        <source>閏秒（うるう秒）は考慮されますか</source>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpFaqQ6">
+      <segment>
+        <source>現在時刻をすぐに取得することはできますか</source>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpFaqTitle">
+      <segment>
+        <source>よくある質問</source>
+      </segment>
+    </unit>
     <unit id="unixTimestampHelpOverview">
       <segment>
         <source>概要</source>
@@ -2622,6 +3497,11 @@ UNIXタイム変換ツールを実装しました。</source>
     <unit id="unixTimestampHelpOverviewDesc">
       <segment>
         <source> UNIXタイム変換ツールは、UNIXタイムスタンプ（エポック時刻）と人間が読める日時表記を相互変換するオンラインツールです。秒・ミリ秒単位のタイムスタンプに対応し、複数の形式（ISO 8601・RFC 2822など）とタイムゾーンでの時刻表示が可能です。 </source>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpOverviewDesc2">
+      <segment>
+        <source> APIレスポンスやログファイルにはUNIXタイムスタンプがそのまま出力されることが多く、電卓や別のスクリプトを用意しなくても、貼り付けるだけで即座に日時へ変換できます。逆に特定の日時をタイムスタンプに変換して、DBのクエリ条件やテストデータの作成に使うこともできます。 </source>
       </segment>
     </unit>
     <unit id="unixTimestampHelpSpec">
@@ -2642,6 +3522,11 @@ UNIXタイム変換ツールを実装しました。</source>
     <unit id="unixTimestampHelpSpecMillis">
       <segment>
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">タイムスタンプ（ミリ秒）</pc>: <pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">Date.now()</pc>で取得できる13桁の数値です。JavaScriptやJavaで広く使用されます。</source>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpSpecNegative">
+      <segment>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">負のタイムスタンプ</pc>: 1970年1月1日より前の日時は負の数値で表現されます。多くの言語・ライブラリは負の値もサポートしていますが、一部の古いシステムでは対応していない場合があるため注意が必要です。</source>
       </segment>
     </unit>
     <unit id="unixTimestampHelpSpecRfc">
@@ -2689,6 +3574,11 @@ UNIXタイム変換ツールを実装しました。</source>
         <source>「変換」ボタンをクリックします。</source>
       </segment>
     </unit>
+    <unit id="unixTimestampHelpUsageTip">
+      <segment>
+        <source> 補足: 入力したタイムスタンプの桁数が10桁の場合は秒単位、13桁の場合はミリ秒単位として自動的に解釈されます。桁数が想定と異なる場合は変換結果が極端に過去や未来の日付になるため、入力値の桁数を見直してください。 </source>
+      </segment>
+    </unit>
     <unit id="unixTimestampHelpUseCase">
       <segment>
         <source>ユースケース</source>
@@ -2697,6 +3587,11 @@ UNIXタイム変換ツールを実装しました。</source>
     <unit id="unixTimestampHelpUseCaseApi">
       <segment>
         <source>APIレスポンスに含まれるUNIXタイムスタンプを人間が読める日時に変換する場合。</source>
+      </segment>
+    </unit>
+    <unit id="unixTimestampHelpUseCaseDb">
+      <segment>
+        <source>DBに保存されたUNIXタイムスタンプ列の値をクエリ結果から目視で確認したい場合。</source>
       </segment>
     </unit>
     <unit id="unixTimestampHelpUseCaseLog">
@@ -3109,6 +4004,71 @@ UNIXタイム変換ツールを実装しました。</source>
         <source>記事ページ（/articles）を追加しました。</source>
       </segment>
     </unit>
+    <unit id="urlEncoderHelpFaqA1">
+      <segment>
+        <source>クエリパラメータの値やパスの一部分など、URLの断片をエンコードする場合はencodeURIComponentを使用してください。すでに完成した1つのURL全体をエンコードする場合は、<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">/</pc>や<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">?</pc>などの構造文字を保持できるencodeURIが適しています。</source>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpFaqA2">
+      <segment>
+        <source>日本語などのマルチバイト文字はまずUTF-8のバイト列に変換され、各バイトが<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%XX</pc>形式で表現されます。例えば「あ」は3バイトのUTF-8表現になるため、<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%E3%81%82</pc>という3つのパーセントエンコード列に変換されます。</source>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpFaqA3">
+      <segment>
+        <source>すでにエンコード済みの文字列を再度エンコードすると、<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%</pc>記号自体が<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%25</pc>に変換され、デコードしても元の文字列に戻らなくなります。変換前に対象の文字列がすでにエンコード済みでないか確認することをおすすめします。</source>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpFaqA4">
+      <segment>
+        <source>半角スペース・日本語などのマルチバイト文字に加え、<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">&amp;</pc>・<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">=</pc>・<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">?</pc>・<pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">#</pc>など、URLの構造やクエリの区切りとして意味を持つ記号もエンコード対象です。「URLの記号もすべて変換する」を有効にすると、これらの記号を含めてすべてエンコードされます。</source>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpFaqA5">
+      <segment>
+        <source>本ツールはJavaScript標準のencodeURI・encodeURIComponentに準拠しており、スペースは常に<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%20</pc>に変換されます。「+」によるスペース表現は<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">application/x-www-form-urlencoded</pc>形式のフォーム送信で使われる別の慣習であり、本ツールでは扱いません。</source>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpFaqA6">
+      <segment>
+        <source>「%」の後ろに2桁の16進数が続かない不正な形式（例: 文字列末尾が「%2」で終わっている場合）や、UTF-8として不正なバイト列になっている場合はデコードエラーになります。エンコード前の文字列を再度確認してください。</source>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpFaqQ1">
+      <segment>
+        <source>encodeURIComponentとencodeURIはどちらを使えばよいですか</source>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpFaqQ2">
+      <segment>
+        <source>日本語を含むURLはどのようにエンコードされますか</source>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpFaqQ3">
+      <segment>
+        <source>二重エンコードしてしまうとどうなりますか</source>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpFaqQ4">
+      <segment>
+        <source>クエリパラメータのどの文字がエンコード対象になりますか</source>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpFaqQ5">
+      <segment>
+        <source>スペースは「+」と「%20」のどちらに変換されますか</source>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpFaqQ6">
+      <segment>
+        <source>デコードに失敗するのはどのような場合ですか</source>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpFaqTitle">
+      <segment>
+        <source>よくある質問</source>
+      </segment>
+    </unit>
     <unit id="urlEncoderHelpOverview">
       <segment>
         <source>概要</source>
@@ -3116,7 +4076,7 @@ UNIXタイム変換ツールを実装しました。</source>
     </unit>
     <unit id="urlEncoderHelpOverviewDesc">
       <segment>
-        <source> URLエンコード・デコードツールは、URLで使用できない文字を<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%XX</pc>形式に変換（エンコード）、またはその逆変換（デコード）を行うオンラインツールです。<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">encodeURI</pc>と<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">encodeURIComponent</pc>の2種類のJavaScriptメソッドに対応しています。 </source>
+        <source> URLエンコード・デコードツールは、URLで使用できない文字を<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%XX</pc>形式に変換（エンコード）、またはその逆変換（デコード）を行うオンラインツールです。<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">encodeURI</pc>と<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">encodeURIComponent</pc>の2種類のJavaScriptメソッドに対応しています。日本語を含むURLの生成や、APIリクエストのクエリパラメータ作成、既存URLの内容確認など幅広い場面で利用できます。 </source>
       </segment>
     </unit>
     <unit id="urlEncoderHelpSpec">
@@ -3132,6 +4092,11 @@ UNIXタイム変換ツールを実装しました。</source>
     <unit id="urlEncoderHelpSpecDifference">
       <segment>
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">encodeURIとencodeURIComponentの違い</pc>: encodeURIは<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">:</pc>、<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">/</pc>、<pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">?</pc>、<pc id="4" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">#</pc>などURLの構造文字をエンコードしませんが、encodeURIComponentはこれらもすべてエンコードします。</source>
+      </segment>
+    </unit>
+    <unit id="urlEncoderHelpSpecDoubleEncoding">
+      <segment>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">二重エンコーディング</pc>: すでにエンコード済みの文字列をさらにエンコードすると、<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%</pc>自体が<pc id="2" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%25</pc>に変換されてしまい、正しくデコードできなくなります。エンコード対象がすでに<pc id="3" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">%XX</pc>形式を含んでいないか確認してから変換してください。</source>
       </segment>
     </unit>
     <unit id="urlEncoderHelpSpecEncodeUri">
@@ -3189,6 +4154,11 @@ UNIXタイム変換ツールを実装しました。</source>
         <source>フォームデータをURLセーフな形式に変換する場合。</source>
       </segment>
     </unit>
+    <unit id="urlEncoderHelpUseCaseJapaneseDomain">
+      <segment>
+        <source>日本語ドメインやパスを含むURLを共有可能な形式に変換する場合。</source>
+      </segment>
+    </unit>
     <unit id="urlEncoderHelpUseCasePlusVsPercent20">
       <segment>
         <source>クエリパラメータ内のスペースが「+」と「%20」のどちらで表現されるべきか迷う場合の確認。</source>
@@ -3199,6 +4169,71 @@ UNIXタイム変換ツールを実装しました。</source>
         <source>APIリクエストのクエリパラメータに日本語や特殊文字を含める場合。</source>
       </segment>
     </unit>
+    <unit id="uuidGenHelpFaqA1">
+      <segment>
+        <source>新規に設計するシステムでDBのプライマリキーとして使う場合は、時系列ソートが可能でインデックス効率も良いv7がおすすめです。既存システムとの互換性やライブラリの対応状況を優先する場合は、最も普及しているv4を選ぶとよいでしょう。v1はMACアドレス由来の情報が含まれる可能性があるため、新規用途では避けるのが無難です。</source>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpFaqA2">
+      <segment>
+        <source>理論上はゼロではありませんが、v4の場合122ビットのランダム値から生成されるため、実用上は無視できるレベルです。例えば1秒間に10億個生成し続けても、重複が発生する確率は天文学的に低い水準にとどまります。</source>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpFaqA3">
+      <segment>
+        <source>いいえ。UUIDの生成はブラウザ内のJavaScriptで完結しており、生成結果がサーバーに送信・保存されることはありません。ページを再読み込みすると生成履歴は失われます。</source>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpFaqA4">
+      <segment>
+        <source>分散環境で複数ノードが同時にレコードを作成する場合や、IDから件数・作成順序を推測されたくない場合はUUIDが適しています。一方、単一のデータベースで完結し、インデックスサイズやJOIN性能を最優先したい場合はauto-incrementの整数IDの方が有利なことがあります。v7を使えばUUIDのメリットを保ちながら整数IDに近いインデックス効率も得られます。</source>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpFaqA5">
+      <segment>
+        <source>ブラウザ上での表示・コピーのしやすさを考慮した上限です。それ以上の件数が必要な場合は、Node.jsのcryptoモジュールやuuidパッケージなど、スクリプトから直接生成する方法をご検討ください。</source>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpFaqA6">
+      <segment>
+        <source>現在のバージョンではハイフン付き・小文字の標準形式（RFC 4122準拠）で出力されます。ハイフン除去や大文字化が必要な場合は、コピー後にテキストエディタや置換ツールで加工してください。</source>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpFaqQ1">
+      <segment>
+        <source>v1・v4・v7のどれを選べばよいか迷います。おすすめはどれですか</source>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpFaqQ2">
+      <segment>
+        <source>生成したUUIDが重複することはありますか</source>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpFaqQ3">
+      <segment>
+        <source>生成したUUIDはこのツールのサーバーに保存されますか</source>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpFaqQ4">
+      <segment>
+        <source>UUIDとauto-increment（連番）の主キー、どちらを使うべきですか</source>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpFaqQ5">
+      <segment>
+        <source>最大1,000件までしか生成できないのはなぜですか</source>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpFaqQ6">
+      <segment>
+        <source>UUIDの文字列からハイフンを除去したり、大文字に変換したりできますか</source>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpFaqTitle">
+      <segment>
+        <source>よくある質問</source>
+      </segment>
+    </unit>
     <unit id="uuidGenHelpOverview">
       <segment>
         <source>概要</source>
@@ -3207,6 +4242,11 @@ UNIXタイム変換ツールを実装しました。</source>
     <unit id="uuidGenHelpOverviewDesc">
       <segment>
         <source> UUIDジェネレーターは、RFC 4122（RFC 9562）に準拠したUniversally Unique Identifier（UUID）をオンラインで生成するツールです。v1・v4・v7の3バージョンに対応し、最大1,000件の一括生成が可能です。 </source>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpOverviewDesc2">
+      <segment>
+        <source> 分散システムやマイクロサービスでは、複数のサーバーやクライアントが同時に新しいIDを発行する場面が頻繁にあります。連番の採番テーブルを共有すると単一障害点やロック競合が発生しやすいのに対し、UUIDは各ノードが他と調整せずに一意な値を生成できるため、スケールしやすい設計を実現できます。本ツールはコードを書く前に各バージョンの見た目や桁数を素早く確認したい場合にも便利です。 </source>
       </segment>
     </unit>
     <unit id="uuidGenHelpSpec">
@@ -3239,6 +4279,16 @@ UNIXタイム変換ツールを実装しました。</source>
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">UUID v7</pc>: 48ビットのUnixタイムスタンプ（ミリ秒精度）＋ランダム値で構成されます。RFC 9562で定義された最新仕様で、時系列ソートが可能かつv4と同等のランダム性を持ちます。DBインデックスの効率化に有利です。</source>
       </segment>
     </unit>
+    <unit id="uuidGenHelpSpecVariant">
+      <segment>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">バリアントビット</pc>: UUIDの17文字目（N部分）は「8」「9」「a」「b」のいずれかになり、RFC 4122に準拠した形式であることを示します。異なる値の場合、Microsoft独自形式など別の生成規則に基づくUUIDである可能性があります。</source>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpSpecVersionChoice">
+      <segment>
+        <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">バージョンの選び方</pc>: v1はMACアドレス由来の情報漏洩リスクがあるため近年は非推奨とされることが多く、代わりにランダムベースのv4か、時系列ソート性を持つv7が選ばれる傾向にあります。RFC 9562（2024年発行）はv1・v4に加えてv6・v7・v8を新たに標準化し、UUIDの設計指針を整理しました。</source>
+      </segment>
+    </unit>
     <unit id="uuidGenHelpUsage">
       <segment>
         <source>使い方</source>
@@ -3264,6 +4314,11 @@ UNIXタイム変換ツールを実装しました。</source>
         <source>生成されたUUIDリストをコピーして利用します。</source>
       </segment>
     </unit>
+    <unit id="uuidGenHelpUsageTip">
+      <segment>
+        <source> 補足: どのバージョンを選べばよいか迷った場合は、新規システムであればv7（時系列ソート可能）、既存システムとの互換性を優先するならv4（最も広く普及）を選ぶとよいでしょう。 </source>
+      </segment>
+    </unit>
     <unit id="uuidGenHelpUseCase">
       <segment>
         <source>ユースケース</source>
@@ -3277,6 +4332,16 @@ UNIXタイム変換ツールを実装しました。</source>
     <unit id="uuidGenHelpUseCaseFile">
       <segment>
         <source>ファイル名の一意化・マイクロサービス間の相関IDとして活用。</source>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpUseCaseIdempotencyKey">
+      <segment>
+        <source>決済APIなど冪等性（idempotency）が求められるリクエストに付与するIdempotency-Keyヘッダーの値として、リトライ時にも一意性が保たれるUUIDを発行する場合。</source>
+      </segment>
+    </unit>
+    <unit id="uuidGenHelpUseCaseSeedData">
+      <segment>
+        <source>開発環境のテストデータ投入時に、100件・1000件といった単位でユニークなユーザーIDや注文IDをまとめて生成し、シードスクリプトに組み込む場合。</source>
       </segment>
     </unit>
     <unit id="uuidGenHelpUseCaseSession">

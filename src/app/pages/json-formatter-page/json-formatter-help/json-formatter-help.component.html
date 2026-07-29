@@ -4,6 +4,9 @@
     <p class="help-text" i18n="@@jsonFormatterHelpOverviewDesc">
       JSON整形ツールは、読みにくいJSON文字列を自動的に整形・フォーマットするオンラインツールです。インデントの調整・ミニファイ（圧縮）に対応し、APIレスポンスや設定ファイルのデバッグ・確認作業を効率化します。
     </p>
+    <p class="help-text" i18n="@@jsonFormatterHelpOverviewDesc2">
+      APIレスポンスやログは1行に圧縮された状態で出力されることが多く、目視でネストの深さやキーの対応関係を追うのは困難です。かといって毎回エディタやIDEに貼り付けて整形するのは手間がかかります。本ツールはブラウザだけで完結するため、外部にデータを送信することなくその場で構造を可視化できます。
+    </p>
   </app-help-section>
 
   <mat-divider></mat-divider>
@@ -32,6 +35,9 @@
         <span i18n="@@jsonFormatterHelpUsageStep5">クリップボードへコピーボタンで整形後のJSONをコピーできます。</span>
       </li>
     </ol>
+    <p class="help-text" i18n="@@jsonFormatterHelpUsageTip">
+      補足: 変換に失敗する場合は、末尾カンマ・シングルクォート・コメントの混入など、JSONとして不正な記述がないか確認してください。エラーメッセージにはおおよその位置（行・文字位置）が表示されます。
+    </p>
   </app-help-section>
 
   <mat-divider></mat-divider>
@@ -44,6 +50,8 @@
       <li i18n="@@jsonFormatterHelpSpecMinify"><strong>「圧縮」モード</strong>: 改行・スペースをすべて除去してJSONを1行に圧縮します。ネットワーク転送量を削減したい場合や、HTTPリクエストボディとして利用する場合に有効です。</li>
       <li i18n="@@jsonFormatterHelpSpecIndent"><strong>「インデント」</strong>: 整形モード時に使用するスペース数を設定します（例: 2スペース、4スペース）。チームのコーディングスタイルに合わせて選択できます。</li>
       <li i18n="@@jsonFormatterHelpSpecValidation"><strong>バリデーション</strong>: 入力されたJSONが不正な場合（構文エラー）はエラーメッセージが表示されます。JSONのキーは二重引用符で囲む必要があり、末尾のカンマ（trailing comma）は許可されていません。</li>
+      <li i18n="@@jsonFormatterHelpSpecRfc8259"><strong>RFC 8259について</strong>: JSONの構文を定めるインターネット標準です。値として使える型はオブジェクト・配列・文字列・数値・真偽値・nullの6種類のみで、日付型や関数、コメントは含まれません。JavaScriptのオブジェクトリテラルと似ていますが、キー名を必ず二重引用符で囲む点や、undefinedを表現できない点が異なります。</li>
+      <li i18n="@@jsonFormatterHelpSpecJsonc"><strong>JSON5 / JSONC との違い</strong>: tsconfig.jsonなどではコメントや末尾カンマを許容する「JSONC」という拡張記法が使われることがありますが、これは仕様上のJSONそのものではありません。本ツールは厳密なJSON（RFC 8259）としてパースするため、コメント付きの設定ファイルをそのまま貼り付けるとエラーになる場合があります。</li>
     </ul>
   </app-help-section>
 
@@ -56,6 +64,42 @@
       <li i18n="@@jsonFormatterHelpUseCaseConfig">設定ファイル（package.json、tsconfig.jsonなど）の確認・編集時。</li>
       <li i18n="@@jsonFormatterHelpUseCaseMinify">本番環境向けにJSONを圧縮してファイルサイズを削減する場合。</li>
       <li i18n="@@jsonFormatterHelpUseCaseTrailingComma">末尾のカンマや引用符ミスによるJSON構文エラーの原因箇所を特定する場合。</li>
+      <li i18n="@@jsonFormatterHelpUseCaseNested">
+        <code>"user":"id":1,"roles":["admin","editor"]</code> のように1行にまとまったネスト構造のレスポンスを整形し、user.roles配列の中身をひと目で確認したい場合。
+      </li>
+      <li i18n="@@jsonFormatterHelpUseCaseLog">サーバーログに出力された構造化ログ（JSON Lines形式）を1件ずつ貼り付けて整形し、エラー発生時のフィールド値を確認する場合。</li>
     </ul>
+  </app-help-section>
+
+  <mat-divider></mat-divider>
+
+  <app-help-section icon="quiz">
+    <span helpTitle i18n="@@jsonFormatterHelpFaqTitle">よくある質問</span>
+    <dl class="help-faq">
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@jsonFormatterHelpFaqQ1">貼り付けたJSONデータはサーバーに送信されますか</dt>
+        <dd class="help-faq-answer" i18n="@@jsonFormatterHelpFaqA1">いいえ。整形・圧縮処理はすべてブラウザ内のJavaScriptで完結しており、入力したデータが外部サーバーへ送信されることはありません。APIキーや個人情報を含むレスポンスでも安心して貼り付けて確認できます。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@jsonFormatterHelpFaqQ2">コメント付きのJSON（JSONC）は整形できますか</dt>
+        <dd class="help-faq-answer" i18n="@@jsonFormatterHelpFaqA2">標準のJSONパーサーを使用しているため、コメント（//や/* */）や末尾カンマを含む文字列はエラーになります。整形する前にコメントを削除するか、JSONCではなく厳密なJSON形式に変換してから貼り付けてください。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@jsonFormatterHelpFaqQ3">「Unexpected token」エラーが出るのはなぜですか</dt>
+        <dd class="help-faq-answer" i18n="@@jsonFormatterHelpFaqA3">主な原因は、キーや文字列値をシングルクォートで囲んでいる、末尾に余分なカンマがある、値がundefinedになっている、のいずれかです。エラーメッセージに表示される位置の周辺を確認してください。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@jsonFormatterHelpFaqQ4">数値の桁が大きいと結果が変わることがあるのはなぜですか</dt>
+        <dd class="help-faq-answer" i18n="@@jsonFormatterHelpFaqA4">JavaScriptの数値はIEEE 754倍精度浮動小数点で扱われるため、2の53乗を超える整数（例: 一部のSnowflake IDやDB上のbigint値）は精度が失われる場合があります。厳密な値を確認したい場合は、該当のフィールドを文字列型として扱っているAPI仕様かどうかを確認してください。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@jsonFormatterHelpFaqQ5">配列やオブジェクトの中身だけを圧縮せずに整形したい場合はどうすればよいですか</dt>
+        <dd class="help-faq-answer" i18n="@@jsonFormatterHelpFaqA5">現在のバージョンではJSON全体に対して一括で整形・圧縮を適用する仕様です。特定の階層だけを個別に整形したい場合は、該当部分を抜き出して別途貼り付けてご利用ください。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@jsonFormatterHelpFaqQ6">日本語（マルチバイト文字）を含むJSONは正しく整形されますか</dt>
+        <dd class="help-faq-answer" i18n="@@jsonFormatterHelpFaqA6">はい。UTF-8で表現された日本語や絵文字を含む文字列も、エスケープされた\uXXXX形式・生の文字のどちらでも正しく整形されます。出力時に元の表記（エスケープの有無）を変えたい場合は、圧縮モードの出力をご確認ください。</dd>
+      </div>
+    </dl>
   </app-help-section>
 </div>

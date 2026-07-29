@@ -4,6 +4,9 @@
     <p class="help-text" i18n="@@ulidGenHelpOverviewDesc">
       ULIDジェネレーターは、Universally Unique Lexicographically Sortable Identifier（ULID）を生成するオンラインツールです。UUIDの代替として、時系列ソート可能な一意識別子を一括生成できます。
     </p>
+    <p class="help-text" i18n="@@ulidGenHelpOverviewDesc2">
+      UUID v4はランダム性が高く優れた識別子ですが、生成順とソート順が一致しないためDBの主キーに使うとインデックスが断片化しやすいという弱点があります。ULIDは先頭にミリ秒精度のタイムスタンプを埋め込むことでこの弱点を解消しつつ、UUIDと同等の衝突耐性を維持した識別子です。本ツールはブラウザ内で完結して生成するため、外部にデータを送信せずにその場でまとめて取得できます。
+    </p>
   </app-help-section>
 
   <mat-divider></mat-divider>
@@ -28,6 +31,9 @@
         <span i18n="@@ulidGenHelpUsageStep4">「生成」ボタンをクリックします。</span>
       </li>
     </ol>
+    <p class="help-text" i18n="@@ulidGenHelpUsageTip">
+      補足: 過去や未来の特定時刻を起点にしたULIDをまとめて発行したい場合は、「基準日時(タイムスタンプ)」に任意の日時を指定してから生成してください。テストデータの投入順序を制御したい場合などに便利です。
+    </p>
   </app-help-section>
 
   <mat-divider></mat-divider>
@@ -40,6 +46,8 @@
       <li i18n="@@ulidGenHelpSpecMono"><strong>「単調増加」機能</strong>: 同一ミリ秒内に複数のULIDを生成した場合、ランダム部分をインクリメントして単調増加を保証します。イベントの順序を厳密に保持したい場合に使用します。</li>
       <li i18n="@@ulidGenHelpSpecVsUuid"><strong>UUIDとの比較</strong>: UUID v4はランダムな文字列のため辞書順ソートに時系列の意味がありませんが、ULIDは辞書順ソート＝時系列ソートになります。RDBMSのクラスタードインデックスで特に有効です。</li>
       <li i18n="@@ulidGenHelpSpecBase32"><strong>Crockford's Base32</strong>: I, L, O, U を除外した32文字セットを使用。視覚的に紛らわしい文字を排除し、人間が読みやすい形式にしています。</li>
+      <li i18n="@@ulidGenHelpSpecCollision"><strong>衝突確率</strong>: 同一ミリ秒内でも80ビットのランダム部分により、実用上十分な低確率でしか衝突しません。単調増加を有効にすればさらに同一プロセス内での重複を排除できます。</li>
+      <li i18n="@@ulidGenHelpSpecTimestampExtract"><strong>タイムスタンプ部分の復元</strong>: ULIDの先頭10文字（Base32でエンコードされた48ビット）をデコードすると、生成時刻（UNIXエポックからのミリ秒）を逆算できます。ログの発生時刻を推定する際にも利用できます。</li>
     </ul>
   </app-help-section>
 
@@ -52,6 +60,40 @@
       <li i18n="@@ulidGenHelpUseCaseDb">RDBMSのプライマリキーとしてインデックス効率を高めたい場合。</li>
       <li i18n="@@ulidGenHelpUseCaseToken">ファイル名や一時トークンの一意識別子として活用。</li>
       <li i18n="@@ulidGenHelpUseCaseVsUuidV7">UUID v7との比較検討。どちらも時系列ソート可能だが、ULIDはCrockford's Base32で26文字、UUID v7はハイフン区切りの36文字という違いがある。</li>
+      <li i18n="@@ulidGenHelpUseCaseDistributedSystem">分散システムにおいて、複数ノードで採番してもソート順とおおよその発生順が保たれる識別子が必要な場合。</li>
+      <li i18n="@@ulidGenHelpUseCaseTestFixture">テストフィクスチャで、生成時刻をずらした複数のULIDをまとめて用意し、時系列順の表示ロジックを検証したい場合。</li>
     </ul>
+  </app-help-section>
+
+  <mat-divider></mat-divider>
+
+  <app-help-section icon="quiz">
+    <span helpTitle i18n="@@ulidGenHelpFaqTitle">よくある質問</span>
+    <dl class="help-faq">
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@ulidGenHelpFaqQ1">ULIDとUUIDの違いは何ですか</dt>
+        <dd class="help-faq-answer" i18n="@@ulidGenHelpFaqA1">最大の違いはソート可能性です。UUID v4は完全にランダムなため生成順と文字列の並び順が一致しませんが、ULIDは先頭48ビットがミリ秒タイムスタンプなので、文字列としてソートするとほぼ生成順に並びます。長さもUUID（ハイフン込み36文字）に対しULIDは26文字と短くなります。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@ulidGenHelpFaqQ2">なぜULIDは辞書順ソートで時系列順に並ぶのですか</dt>
+        <dd class="help-faq-answer" i18n="@@ulidGenHelpFaqA2">ULIDの先頭10文字はUNIXエポックからのミリ秒数をCrockford's Base32でエンコードした値です。Base32は桁の重みが大きい文字ほど先頭に来るよう設計されているため、生成時刻が新しいほど先頭文字列が大きくなり、通常の文字列比較（辞書順ソート）がそのまま時系列順と一致します。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@ulidGenHelpFaqQ3">ULIDの文字列からタイムスタンプ（生成時刻）を逆算できますか</dt>
+        <dd class="help-faq-answer" i18n="@@ulidGenHelpFaqA3">はい。先頭10文字をCrockford's Base32としてデコードすれば、生成時に使われたミリ秒単位のUNIXタイムスタンプを復元できます。ランダム部分にあたる残り16文字からは時刻情報は得られません。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@ulidGenHelpFaqQ4">生成したULIDが重複することはありますか</dt>
+        <dd class="help-faq-answer" i18n="@@ulidGenHelpFaqA4">理論上は完全にゼロではありませんが、80ビットのランダム部分があるため実用上無視できるほど低い確率です。同一ミリ秒内で連続生成する場合に厳密な重複回避と順序保証を求めるなら、「単調増加」オプションを有効にしてください。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@ulidGenHelpFaqQ5">「単調増加」を有効にするとどう変わりますか</dt>
+        <dd class="help-faq-answer" i18n="@@ulidGenHelpFaqA5">同一ミリ秒内で複数生成した際に、2件目以降はランダム部分を1ずつインクリメントします。これにより同一タイムスタンプ内でも生成順どおりに文字列がソートされるようになり、イベントログのような順序が重要な用途に適しています。</dd>
+      </div>
+      <div class="help-faq-item">
+        <dt class="help-faq-question" i18n="@@ulidGenHelpFaqQ6">既存システムのUUID列をULIDに移行できますか</dt>
+        <dd class="help-faq-answer" i18n="@@ulidGenHelpFaqA6">ULIDは128ビットの値なのでUUID型のカラムにバイナリ表現として格納すること自体は可能ですが、文字列表現の見た目やハイフンの有無が異なるため、既存のUUID文字列との単純な置き換えにはアプリケーション側の変換ロジックが必要です。移行前に既存コードがUUID形式の文字列（ハイフン区切り36文字）を前提にしていないか確認してください。</dd>
+      </div>
+    </dl>
   </app-help-section>
 </div>
