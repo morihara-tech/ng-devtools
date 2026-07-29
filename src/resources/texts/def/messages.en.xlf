@@ -1941,7 +1941,6 @@ When OFF, uses decodeURI to decode while preserving the URL structure.</target>
       <segment state="initial">
         <source>よくある質問</source>
         <target>FAQ</target>
-
       </segment>
     </unit>
     <unit id="colorPaletteHelpOverview">

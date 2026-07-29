@@ -1821,7 +1821,6 @@ OFFの場合はdecodeURIを使用し、URL構造を維持したままデコー�
     <unit id="colorPaletteHelpFaqTitle">
       <segment>
         <source>よくある質問</source>
-
       </segment>
     </unit>
     <unit id="colorPaletteHelpOverview">
