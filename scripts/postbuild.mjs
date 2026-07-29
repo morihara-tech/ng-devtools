@@ -185,7 +185,7 @@ for (const locale of LOCALES) {
       `  <link rel="canonical" href="${BASE_URL}${urlPath}">`,
       `  <link rel="alternate" hreflang="${locale}" href="${BASE_URL}${urlPath}">`,
       `  <link rel="alternate" hreflang="${altLocale}" href="${BASE_URL}${altUrlPath}">`,
-      `  <link rel="alternate" hreflang="x-default" href="${BASE_URL}/ja">`,
+      `  <link rel="alternate" hreflang="x-default" href="${BASE_URL}${urlPath}">`,
     ].join('\n');
 
     const injected = html.replace('</head>', `${tags}\n</head>`);
