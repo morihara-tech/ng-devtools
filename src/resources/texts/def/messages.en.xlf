@@ -757,6 +757,12 @@
         <target>About the SVG Viewer</target>
       </segment>
     </unit>
+    <unit id="page.dashboard.breadcrumb">
+      <segment state="initial">
+        <source>無料で使える開発者ツール集</source>
+        <target>Free Dev Toolbox</target>
+      </segment>
+    </unit>
     <unit id="page.dashboard.card.ad.title">
       <segment state="initial">
         <source>広告</source>
@@ -1839,6 +1845,24 @@ When OFF, uses decodeURI to decode while preserving the URL structure.</target>
       <segment state="initial">
         <source> 当サイトでは、サービスの向上および最適なパーソナライズのためにCookieを使用しています。詳細は<pc id="0" equivStart="START_LINK" equivEnd="CLOSE_LINK" type="link" dispStart="&lt;a routerLink=&quot;/privacy-policy&quot; (click)=&quot;onPrivacyPolicy()&quot;&gt;" dispEnd="&lt;/a&gt;">プライバシーポリシー</pc>をご確認ください。 </source>
         <target> We use cookies to improve our service and provide personalized experiences. For more details, please review our <pc id="0" equivStart="START_LINK" equivEnd="CLOSE_LINK" type="link" dispStart="&lt;a routerLink=&quot;/privacy-policy&quot; (click)=&quot;onPrivacyPolicy()&quot;&gt;" dispEnd="&lt;/a&gt;">Privacy Policy</pc>. </target>
+      </segment>
+    </unit>
+    <unit id="breadcrumb.articles">
+      <segment state="initial">
+        <source>記事一覧</source>
+        <target>Article List</target>
+      </segment>
+    </unit>
+    <unit id="breadcrumb.home">
+      <segment state="initial">
+        <source>ホーム</source>
+        <target>Home</target>
+      </segment>
+    </unit>
+    <unit id="breadcrumb.nav.label">
+      <segment state="initial">
+        <source>パンくずリスト</source>
+        <target>Breadcrumb</target>
       </segment>
     </unit>
     <unit id="colorPaletteHelpFaqA1">

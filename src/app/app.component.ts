@@ -10,6 +10,7 @@ import { Meta, Title } from '@angular/platform-browser';
 import { SidenavComponent } from "./components/sidenav/sidenav.component";
 import { IconService } from './icon.service';
 import { SitemapComponent } from './components/sitemap/sitemap.component';
+import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { MENU_CATEGORIES, MENU_DASHBOARD } from '../resources/menu/def/menu-def';
 import { environment } from '../environments/environment';
 import { DOCUMENT } from '@angular/common';
@@ -28,6 +29,7 @@ type WindowWithGtag = Window & { gtag?: (...args: unknown[]) => void };
         MatBottomSheetModule,
         RouterOutlet,
         SitemapComponent,
+        BreadcrumbComponent,
     ],
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss'
