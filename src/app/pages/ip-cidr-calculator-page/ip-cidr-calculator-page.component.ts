@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, inject, viewChild } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, inject, viewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { IpCidrInputCardComponent } from './ip-cidr-input-card/ip-cidr-input-card.component';
@@ -23,7 +23,7 @@ import { StructuredDataService } from '../../core/services/structured-data.servi
   templateUrl: './ip-cidr-calculator-page.component.html',
   styleUrl: './ip-cidr-calculator-page.component.scss'
 })
-export class IpCidrCalculatorPageComponent implements OnInit, OnDestroy {
+export class IpCidrCalculatorPageComponent implements OnInit, AfterViewInit, OnDestroy {
   private readonly output = viewChild<IpCidrOutputCardComponent>('output');
   private readonly structuredDataService = inject(StructuredDataService);
 
@@ -37,6 +37,10 @@ export class IpCidrCalculatorPageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.structuredDataService.remove();
+  }
+
+  ngAfterViewInit(): void {
+    this.structuredDataService.addFaqPageFromDom();
   }
 
   onCalculate(input: IpCidrInputModel): void {

@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, inject, viewChild } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, inject, viewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { SvgToPngInputCardComponent } from './svg-to-png-input-card/svg-to-png-input-card.component';
@@ -23,7 +23,7 @@ import { StructuredDataService } from '../../core/services/structured-data.servi
   templateUrl: './svg-to-png-page.component.html',
   styleUrl: './svg-to-png-page.component.scss'
 })
-export class SvgToPngPageComponent implements OnInit, OnDestroy {
+export class SvgToPngPageComponent implements OnInit, AfterViewInit, OnDestroy {
   private readonly outputCard = viewChild<SvgToPngOutputCardComponent>('output');
   private readonly inputCard = viewChild<SvgToPngInputCardComponent>('input');
   private readonly structuredDataService = inject(StructuredDataService);
@@ -44,6 +44,7 @@ export class SvgToPngPageComponent implements OnInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
+    this.structuredDataService.addFaqPageFromDom();
     setTimeout(() => {
       this.updatePreview();
     }, 100);

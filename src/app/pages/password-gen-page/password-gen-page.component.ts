@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, inject, viewChild } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, inject, viewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { PasswordGenInputCardComponent } from './password-gen-input-card/password-gen-input-card.component';
@@ -23,7 +23,7 @@ import { StructuredDataService } from '../../core/services/structured-data.servi
     templateUrl: './password-gen-page.component.html',
     styleUrl: './password-gen-page.component.scss'
 })
-export class PasswordGenPageComponent implements OnInit, OnDestroy {
+export class PasswordGenPageComponent implements OnInit, AfterViewInit, OnDestroy {
   private readonly output = viewChild<PasswordGenOutputCardComponent>('output');
   private readonly structuredDataService = inject(StructuredDataService);
 
@@ -37,6 +37,10 @@ export class PasswordGenPageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.structuredDataService.remove();
+  }
+
+  ngAfterViewInit(): void {
+    this.structuredDataService.addFaqPageFromDom();
   }
 
   onGenerate(input: PasswordGenInputModel): void {
