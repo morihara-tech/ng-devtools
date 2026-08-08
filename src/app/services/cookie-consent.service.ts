@@ -73,6 +73,11 @@ export class CookieConsentService {
     this.needsBanner.set(false);
   }
 
+  /** Hides the banner without changing the persisted consent status. */
+  dismissBanner(): void {
+    this.needsBanner.set(false);
+  }
+
   private pushConsentDefault(state: ConsentValue): void {
     const win = this.platformService.window as WindowWithDataLayer | null;
     if (!win) return;
