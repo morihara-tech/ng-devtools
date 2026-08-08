@@ -70,7 +70,14 @@
               ],
               "outputHashing": "all",
               "localize": true,
-              "sourceMap": false
+              "sourceMap": false,
+              "optimization": {
+                "scripts": true,
+                "styles": true,
+                "fonts": {
+                  "inline": false
+                }
+              }
             },
             "development": {
               "optimization": false,
