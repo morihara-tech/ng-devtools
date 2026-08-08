@@ -9,3 +9,6 @@
   <app-breadcrumb></app-breadcrumb>
   <router-outlet></router-outlet>
 </app-sidenav>
+@if (cookieConsentService.needsBanner()) {
+  <app-cookie-consent-banner />
+}
