@@ -9,6 +9,7 @@
   display: flex;
   justify-content: flex-end;
   margin: 0 auto 8px;
+  max-width: 100%;
 }
 
 .card-wrapper {
@@ -17,6 +18,7 @@
   align-items: start;
   gap: 16px;
   margin: 0 auto;
+  max-width: 100%;
 }
 
 .card-header .mat-mdc-card-avatar {

@@ -51,7 +51,7 @@
           </mat-card-header>
 
           <mat-card-content class="card-content">
-            <ng-container #cardContent></ng-container>
+            <ng-container [ngComponentOutlet]="model.component"></ng-container>
           </mat-card-content>
 
           @if (model.destination) {
