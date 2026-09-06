@@ -5,10 +5,11 @@ import {
   inject,
   input,
   OnDestroy,
+  OnInit,
   viewChild,
-  viewChildren,
   ViewContainerRef,
 } from '@angular/core';
+import { NgComponentOutlet } from '@angular/common';
 import {
   CdkDrag,
   CdkDragDrop,
@@ -44,6 +45,16 @@ const MIN_CARD_SIZE = 80;
 const SIZE_M_MULTIPLIER = 2;
 const SIZE_L_MULTIPLIER = 3;
 
+/**
+ * Initial wrapper width used for both SSR and the client's pre-hydration
+ * render, so the two initial DOM outputs match exactly (no hydration
+ * mismatch). Equal to `getMaxWrapperWidth()` when it resolves to the small
+ * (< 1000px) base card width, so it stays consistent with the rest of the
+ * width-calculation logic. The real value is measured from the DOM and
+ * applied afterNextRender() (client-only).
+ */
+const DEFAULT_WRAPPER_WIDTH = MAX_CARD_WIDTH_FOR_SMALL_WINDOW * 3 + GAP_SIZE * 2;
+
 type CardSize = 's' | 'm' | 'l';
 
 interface ResizeState {
@@ -69,6 +80,7 @@ interface LayoutEntry {
 @Component({
   selector: 'app-dashboard-page-template',
   imports: [
+    NgComponentOutlet,
     CdkDrag,
     CdkDragHandle,
     CdkDropList,
@@ -82,17 +94,16 @@ interface LayoutEntry {
   templateUrl: './dashboard-page-template.component.html',
   styleUrl: './dashboard-page-template.component.scss',
 })
-export class DashboardPageTemplateComponent implements OnDestroy {
+export class DashboardPageTemplateComponent implements OnInit, OnDestroy {
   private readonly cardContainer = viewChild.required('cardContainer', { read: ViewContainerRef });
   private readonly cardWrapper = viewChild.required('cardWrapper', { read: ViewContainerRef });
-  private readonly cardContents = viewChildren('cardContent', { read: ViewContainerRef });
 
   readonly api = input.required<DashboardService>();
   readonly defaultCards = input<DashboardCardModel[]>([]);
 
   isReady: boolean = false;
   cardModels: DashboardCardModel[] = [];
-  wrapperWidth: number = 0;
+  wrapperWidth: number = DEFAULT_WRAPPER_WIDTH;
 
   /** Non-null while a card resize drag is in progress. */
   resizeState: ResizeState | null = null;
@@ -120,9 +131,10 @@ export class DashboardPageTemplateComponent implements OnDestroy {
 
       // Initialize with the current element width now that the DOM is stable
       // (AfterNextRender fires after SSR hydration is complete, so getBoundingClientRect
-      //  returns the real layout dimensions and detectChanges() works reliably.)
+      //  returns the real layout dimensions.)
       const width = nativeEl.getBoundingClientRect().width;
-      this.initCardWrapper(width > 0 ? width : nativeEl.offsetWidth);
+      this.setWrapperWidth(width > 0 ? width : nativeEl.offsetWidth);
+      this.cdr.markForCheck();
 
       // Set up ResizeObserver only for subsequent layout/window-resize changes
       this.resizeObserver = new ResizeObserver((entries) => {
@@ -130,11 +142,24 @@ export class DashboardPageTemplateComponent implements OnDestroy {
           const w = entry.contentRect.width;
           clearTimeout(this.debounceTimeout);
           this.debounceTimeout = setTimeout(() => {
-            this.initCardWrapper(w);
+            this.setWrapperWidth(w);
+            this.cdr.markForCheck();
           }, DEBOUNCE_DELAY);
         }
       });
       this.resizeObserver.observe(nativeEl);
+    });
+  }
+
+  ngOnInit(): void {
+    // Subscribing here (rather than only inside afterNextRender) lets the
+    // card list render declaratively during SSR/initial render, not just on
+    // the client after hydration. The underlying BehaviorSubject emits its
+    // current value synchronously on subscribe.
+    this.subscription = this.api().cards.subscribe((cardModels) => {
+      this.cardModels = cardModels;
+      this.isReady = true;
+      this.cdr.markForCheck();
     });
   }
 
@@ -311,18 +336,6 @@ export class DashboardPageTemplateComponent implements OnDestroy {
 
   // ── Private helpers ────────────────────────────────────────────────────────
 
-  private initCardWrapper(width: number): void {
-    this.setWrapperWidth(width);
-
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
-    this.subscription = this.api().cards.subscribe((cardModels) => {
-      this.cardModels = cardModels;
-      this.showCards();
-    });
-  }
-
   private setWrapperWidth(containerWidth: number): void {
     if (this.getMaxWrapperWidth() < containerWidth) {
       this.wrapperWidth = this.getMaxWrapperWidth();
@@ -383,21 +396,5 @@ export class DashboardPageTemplateComponent implements OnDestroy {
     if (pixels < sMax) return 's';
     if (pixels < mMax) return 'm';
     return 'l';
-  }
-
-  private showCards(): void {
-    this.cdr.detectChanges(); // render the @for block with the current cardModels
-    const contents = this.cardContents();
-    this.cardModels.forEach((model, i) => {
-      const cardContent = contents[i];
-      if (!cardContent) {
-        console.warn(`Card for index ${i} not found.`);
-        return;
-      }
-      cardContent.clear();
-      cardContent.createComponent(model.component);
-    });
-    this.isReady = true;
-    this.cdr.markForCheck();
   }
 }

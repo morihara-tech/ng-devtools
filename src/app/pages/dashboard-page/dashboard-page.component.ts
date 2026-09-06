@@ -1,5 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { afterNextRender, Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { DashboardPageTemplateComponent } from '../../components/dashboard/dashboard-page-template/dashboard-page-template.component';
 import { DashboardService } from '../../components/dashboard/dashboard.service';
 import { DashboardCardModel } from '../../components/dashboard/dashboard-card-model';
@@ -33,9 +33,22 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
   defaultCards: DashboardCardModel[] = [];
   private jsonLdScript?: HTMLScriptElement;
 
+  constructor() {
+    afterNextRender(() => {
+      // Client-only: apply the saved layout (order/sizes) from localStorage
+      // after hydration completes. Reading localStorage during ngOnInit would
+      // make the client's pre-hydration render diverge from the SSR output
+      // (which always sees no localStorage), causing a hydration mismatch.
+      this.dashboardService.update(this.loadLayoutFromStorage());
+    });
+  }
+
   ngOnInit(): void {
     this.defaultCards = this.buildDefaultCards();
-    this.initDashboard();
+    this.dashboardService = new DashboardService();
+    // Server/client initial render always uses the default order so the two
+    // renders match exactly.
+    this.dashboardService.update([...this.defaultCards]);
     this.addJsonLd();
   }
 
@@ -122,12 +135,6 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
         size: { x: 's', y: 's' },
       },
     ];
-  }
-
-  private initDashboard(): void {
-    this.dashboardService = new DashboardService();
-    const cards = this.loadLayoutFromStorage();
-    this.dashboardService.update(cards);
   }
 
   /**
