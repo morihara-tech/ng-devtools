@@ -1,7 +1,6 @@
 <div class="container">
   @if (dashboardService) {
     <app-dashboard-page-template
-      ngSkipHydration
       [api]="dashboardService"
       [defaultCards]="defaultCards"
     ></app-dashboard-page-template>
