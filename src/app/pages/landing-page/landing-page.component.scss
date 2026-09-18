@@ -3,6 +3,7 @@
 .landing > section,
 .landing > .landing__ad,
 .landing > .landing-footer {
+  box-sizing: border-box;
   width: 100%;
   padding: 48px 24px;
 
@@ -62,6 +63,8 @@
 .landing-footer__nav { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-bottom: 16px; }
 
 .landing-footer__nav a {
+  display: inline-block;
+  padding: 15px 4px;
   color: var(--mat-sys-on-surface-variant);
   text-decoration: none;
   font-size: var(--mat-sys-body-small-size);
