@@ -349,6 +349,192 @@
         <target>All Tools</target>
       </segment>
     </unit>
+    <unit id="page.landing.breadcrumb">
+      <segment state="translated">
+        <source>実装を検証した開発者ツール集</source>
+        <target>Developer tools, verified in writing</target>
+      </segment>
+    </unit>
+    <unit id="page.landing.categories.eyebrow">
+      <segment state="translated">
+        <source>$ ls tools/ --by-category</source>
+        <target>$ ls tools/ --by-category</target>
+      </segment>
+    </unit>
+    <unit id="page.landing.categories.heading">
+      <segment state="translated">
+        <source>全12ツールをカテゴリ別に</source>
+        <target>Browse all 12 tools</target>
+      </segment>
+    </unit>
+    <unit id="page.landing.description">
+      <segment state="translated">
+        <source>JSON整形・SQL整形・UUID生成など、ブラウザだけで完結する無料の開発者ツール集です。仕様やエッジケースを記事で検証しながら実装しているツールを中心に紹介します。</source>
+        <target>A free collection of browser-only developer tools — JSON formatting, SQL formatting, UUID generation, and more. Several are backed by articles that walk through the spec and edge cases behind the implementation.</target>
+      </segment>
+    </unit>
+    <unit id="page.landing.footer.heading">
+      <segment state="translated">
+        <source>サイト内リンク</source>
+        <target>Site links</target>
+      </segment>
+    </unit>
+    <unit id="page.landing.footer.link.articles">
+      <segment state="translated">
+        <source>記事一覧</source>
+        <target>Articles</target>
+      </segment>
+    </unit>
+    <unit id="page.landing.footer.link.contact">
+      <segment state="translated">
+        <source>お問い合わせ（GitHub Issues）</source>
+        <target>Contact us (GitHub Issues)</target>
+      </segment>
+    </unit>
+    <unit id="page.landing.footer.link.dashboard">
+      <segment state="translated">
+        <source>ダッシュボード</source>
+        <target>Dashboard</target>
+      </segment>
+    </unit>
+    <unit id="page.landing.footer.link.guide">
+      <segment state="translated">
+        <source>ご利用ガイド</source>
+        <target>User guide</target>
+      </segment>
+    </unit>
+    <unit id="page.landing.footer.link.menu">
+      <segment state="translated">
+        <source>全ツール一覧</source>
+        <target>All tools</target>
+      </segment>
+    </unit>
+    <unit id="page.landing.footer.link.operatorInfo">
+      <segment state="translated">
+        <source>運営者情報</source>
+        <target>About the site</target>
+      </segment>
+    </unit>
+    <unit id="page.landing.footer.link.privacyPolicy">
+      <segment state="translated">
+        <source>プライバシーポリシー</source>
+        <target>Privacy policy</target>
+      </segment>
+    </unit>
+    <unit id="page.landing.hero.cta">
+      <segment state="translated">
+        <source>よく使うツールをダッシュボードにまとめる</source>
+        <target>Or pin your favorites to the dashboard</target>
+      </segment>
+    </unit>
+    <unit id="page.landing.hero.eyebrow">
+      <segment state="translated">
+        <source>$ devtools --philosophy</source>
+        <target>$ devtools --philosophy</target>
+      </segment>
+    </unit>
+    <unit id="page.landing.hero.panel.filename">
+      <segment state="translated">
+        <source>verify.log</source>
+        <target>verify.log</target>
+      </segment>
+    </unit>
+    <unit id="page.landing.hero.panel.line1">
+      <segment state="translated">
+        <source>assert isTimeOrdered(uuidV7) === true</source>
+        <target>assert isTimeOrdered(uuidV7) === true</target>
+      </segment>
+    </unit>
+    <unit id="page.landing.hero.panel.line2">
+      <segment state="translated">
+        <source>assert handlesLeapSeconds(input) === true</source>
+        <target>assert handlesLeapSeconds(input) === true</target>
+      </segment>
+    </unit>
+    <unit id="page.landing.hero.panel.line3">
+      <segment state="translated">
+        <source>assert format(ormGeneratedSql) is readable</source>
+        <target>assert format(ormGeneratedSql) is readable</target>
+      </segment>
+    </unit>
+    <unit id="page.landing.hero.panel.line4">
+      <segment state="translated">
+        <source>assert roundTrip(parse, stringify) === input</source>
+        <target>assert roundTrip(parse, stringify) === input</target>
+      </segment>
+    </unit>
+    <unit id="page.landing.hero.subtitle">
+      <segment state="translated">
+        <source> JSON整形・UUID生成・SQL整形など、ブラウザだけで完結する無料ツールを12個公開しています。ただ動かすだけでなく、出力の仕様やエッジケースを記事として検証しながら実装しているのが、このサイトのツールです。 </source>
+        <target> Most JSON formatters just format. Before shipping any of the 12 free, browser-only tools here — UUID generation, SQL formatting, timestamp conversion, and the rest — we write up the spec and the edge cases as an article: why a v7 UUID sorts the way it does, how leap seconds affect Unix time, what breaks when you reformat ORM-generated SQL. </target>
+      </segment>
+    </unit>
+    <unit id="page.landing.hero.title">
+      <segment state="translated">
+        <source> 「なぜ合っているか」まで確かめた開発者ツール </source>
+        <target> Free dev tools that show their work </target>
+      </segment>
+    </unit>
+    <unit id="page.landing.history.heading">
+      <segment state="translated">
+        <source>更新履歴</source>
+        <target>What's new</target>
+      </segment>
+    </unit>
+    <unit id="page.landing.history.more">
+      <segment state="translated">
+        <source>これまでの記事一覧を見る</source>
+        <target>Browse the full article archive</target>
+      </segment>
+    </unit>
+    <unit id="page.landing.title">
+      <segment state="translated">
+        <source>実装を検証した無料の開発者ツール集</source>
+        <target>Free Developer Tools, Verified in Writing</target>
+      </segment>
+    </unit>
+    <unit id="page.landing.trust.heading">
+      <segment state="translated">
+        <source>なぜ安心して使えるか</source>
+        <target>No install, no data leaves your browser</target>
+      </segment>
+    </unit>
+    <unit id="page.landing.trust.item1">
+      <segment state="translated">
+        <source>入力データはサーバーに送信されません。変換・整形はすべてブラウザ内で完結します。</source>
+        <target>Nothing you paste or type is ever sent to a server — every conversion and format runs locally in your browser.</target>
+      </segment>
+    </unit>
+    <unit id="page.landing.trust.item2">
+      <segment state="translated">
+        <source>アカウント登録やアプリのインストールは不要です。ページを開けばすぐに使えます。</source>
+        <target>No sign-up, no app to install — open the page and the tool is ready.</target>
+      </segment>
+    </unit>
+    <unit id="page.landing.trust.item3">
+      <segment state="translated">
+        <source>処理内容はすべてクライアントサイドの実装のため、コードを読めば動作を確認できます。</source>
+        <target>Every tool is a plain client-side implementation, so you can read exactly what it does — nothing runs server-side out of view.</target>
+      </segment>
+    </unit>
+    <unit id="page.landing.verifiedTools.eyebrow">
+      <segment state="translated">
+        <source>VERIFIED IMPLEMENTATION</source>
+        <target>VERIFIED IMPLEMENTATION</target>
+      </segment>
+    </unit>
+    <unit id="page.landing.verifiedTools.heading">
+      <segment state="translated">
+        <source>実装を検証したツール</source>
+        <target>Tools we've verified in writing</target>
+      </segment>
+    </unit>
+    <unit id="page.landing.verifiedTools.intro">
+      <segment state="translated">
+        <source> 「それらしく動く」ではなく「なぜその結果になるか」を、実装レベルで検証した記事です。各記事の末尾から、検証したツールへ直接移動できます。 </source>
+        <target> These articles dig into implementation detail — not just that a tool works, but why it produces the result it does. Each one links straight through to the tool it verifies. </target>
+      </segment>
+    </unit>
     <unit id="page.menu.description">
       <segment state="initial">
         <source>devTools で利用可能な全ツールの一覧です。</source>
@@ -1886,13 +2072,13 @@ When OFF, uses decodeURI to decode while preserving the URL structure.</target>
     <unit id="colorPaletteHelpFaqA4">
       <segment state="initial">
         <source>現在のバージョンではパレットの保存機能は提供していません。各シェードのカラーコードをクリックしてクリップボードにコピーし、デザインツールやコードに直接貼り付けてご利用ください。</source>
-        <target>There's no save feature in the current version. Click any shade's code to copy it to the clipboard and paste it directly into your design tool or code.</target>
+        <target>There&apos;s no save feature in the current version. Click any shade&apos;s code to copy it to the clipboard and paste it directly into your design tool or code.</target>
       </segment>
     </unit>
     <unit id="colorPaletteHelpFaqA5">
       <segment state="initial">
         <source>複数のブランドカラー候補を横並びで見比べたい場合は「比較」モード、1つの色について全シェードを詳しく確認したい場合は「濃淡」モードが適しています。用途に応じて切り替えてご利用ください。</source>
-        <target>Use Compare mode to line up several candidate brand colors side by side, and Shades mode when you want to inspect the full ramp of a single color in detail. Switch between them depending on what you're evaluating.</target>
+        <target>Use Compare mode to line up several candidate brand colors side by side, and Shades mode when you want to inspect the full ramp of a single color in detail. Switch between them depending on what you&apos;re evaluating.</target>
       </segment>
     </unit>
     <unit id="colorPaletteHelpFaqA6">
@@ -1922,7 +2108,7 @@ When OFF, uses decodeURI to decode while preserving the URL structure.</target>
     <unit id="colorPaletteHelpFaqQ4">
       <segment state="initial">
         <source>生成したパレットは保存できますか</source>
-        <target>Can I save a palette I've generated?</target>
+        <target>Can I save a palette I&apos;ve generated?</target>
       </segment>
     </unit>
     <unit id="colorPaletteHelpFaqQ5">
@@ -3120,7 +3306,7 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
     <unit id="textDiffHelpFaqA1">
       <segment state="initial">
         <source>いいえ。本ツールは行単位での比較に特化しており、1行の中のどの文字や単語が変わったかまでは強調表示されません。1行が大きく書き換わった場合は、行全体が変更行として扱われます。</source>
-        <target>No. This tool is built specifically for line-by-line comparison, so it won't highlight which word or character changed within a line. If a line is heavily rewritten, the whole line is simply marked as changed.</target>
+        <target>No. This tool is built specifically for line-by-line comparison, so it won&apos;t highlight which word or character changed within a line. If a line is heavily rewritten, the whole line is simply marked as changed.</target>
       </segment>
     </unit>
     <unit id="textDiffHelpFaqA2">
@@ -3132,7 +3318,7 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
     <unit id="textDiffHelpFaqA3">
       <segment state="initial">
         <source>はい、区別されます。<pc id="0" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">Hello</pc>と<pc id="1" equivStart="START_TAG_CODE" equivEnd="CLOSE_TAG_CODE" type="other" dispStart="&lt;code&gt;" dispEnd="&lt;/code&gt;">hello</pc>のように大文字・小文字のみが異なる行も、変更行として検出されます。大文字・小文字を無視して比較するオプションは現在提供していません。</source>
-        <target>Yes. Lines that differ only in capitalization, such as Hello versus hello, are still flagged as changed. There's currently no option to ignore case.</target>
+        <target>Yes. Lines that differ only in capitalization, such as Hello versus hello, are still flagged as changed. There&apos;s currently no option to ignore case.</target>
       </segment>
     </unit>
     <unit id="textDiffHelpFaqA4">
@@ -3144,13 +3330,13 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
     <unit id="textDiffHelpFaqA5">
       <segment state="initial">
         <source>いいえ。差分の計算はすべてブラウザ内のJavaScriptで完結しており、入力したテキストが外部サーバーへ送信されることはありません。機密情報を含む文書でも安心して比較できます。</source>
-        <target>No. The diff is computed entirely in client-side JavaScript, so nothing you type is ever transmitted to an external server — it's safe to compare even sensitive documents.</target>
+        <target>No. The diff is computed entirely in client-side JavaScript, so nothing you type is ever transmitted to an external server — it&apos;s safe to compare even sensitive documents.</target>
       </segment>
     </unit>
     <unit id="textDiffHelpFaqA6">
       <segment state="initial">
         <source>はい。行末や行頭の余分なスペース、タブとスペースの違いなども含めて、1文字でも異なれば変更行として検出されます。インデント幅の変更だけで差分が大量に出る場合は、この点が原因であることが多いです。</source>
-        <target>Yes. Trailing or leading spaces, and differences between tabs and spaces, count as a change even if that's the only difference on the line. A sudden flood of diffs after an indentation change is usually caused by this.</target>
+        <target>Yes. Trailing or leading spaces, and differences between tabs and spaces, count as a change even if that&apos;s the only difference on the line. A sudden flood of diffs after an indentation change is usually caused by this.</target>
       </segment>
     </unit>
     <unit id="textDiffHelpFaqQ1">
@@ -3210,7 +3396,7 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
     <unit id="textDiffHelpOverviewDesc2">
       <segment state="initial">
         <source> 設定ファイルの変更前後を見比べたい、文書の改訂箇所を確認したいといった場面で、目視での比較は見落としが発生しがちです。本ツールはブラウザ内で差分計算が完結するため、外部にテキストを送信することなく、その場で変更箇所だけを素早く特定できます。 </source>
-        <target>Spotting what actually changed between two versions of a config file or document by eye is error-prone — it's easy to miss a single flipped character. Because the comparison runs entirely in the browser, you can pinpoint exactly what changed without ever sending either version to a server.</target>
+        <target>Spotting what actually changed between two versions of a config file or document by eye is error-prone — it&apos;s easy to miss a single flipped character. Because the comparison runs entirely in the browser, you can pinpoint exactly what changed without ever sending either version to a server.</target>
       </segment>
     </unit>
     <unit id="textDiffHelpSpec">
@@ -3252,7 +3438,7 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
     <unit id="textDiffHelpSpecLineEnding">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">改行コードの扱い</pc>: 入力テキストの改行コード（LF・CRLF）の違いも行の境界として扱われるため、改行コードのみが異なるテキスト同士を比較すると、内容が同じでも差分として検出される場合があります。</source>
-        <target>Line ending handling: differences in line-ending style (LF vs. CRLF) are also treated as part of the line boundary, so two texts that are otherwise identical can still show up as a diff if their line endings don't match.</target>
+        <target>Line ending handling: differences in line-ending style (LF vs. CRLF) are also treated as part of the line boundary, so two texts that are otherwise identical can still show up as a diff if their line endings don&apos;t match.</target>
       </segment>
     </unit>
     <unit id="textDiffHelpSpecSideBySide">
@@ -3558,25 +3744,25 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
     <unit id="unixTimestampHelpFaqA1">
       <segment state="initial">
         <source>桁数で自動判定しています。おおむね10桁（2001年9月〜2286年頃の範囲）は秒単位、13桁（1970年〜2001年より後の範囲）はミリ秒単位として扱われます。想定と異なる桁数を入力すると、極端に過去または未来の日時に変換されるため、桁数を確認してください。</source>
-        <target>It's inferred from the number of digits. Roughly 10 digits (covering dates from 2001 to around 2286) is treated as seconds, and 13 digits (covering 1970 through well past 2001) as milliseconds. An unexpected digit count will produce a wildly wrong date, so check the digit count if the result looks off.</target>
+        <target>It&apos;s inferred from the number of digits. Roughly 10 digits (covering dates from 2001 to around 2286) is treated as seconds, and 13 digits (covering 1970 through well past 2001) as milliseconds. An unexpected digit count will produce a wildly wrong date, so check the digit count if the result looks off.</target>
       </segment>
     </unit>
     <unit id="unixTimestampHelpFaqA2">
       <segment state="initial">
         <source>UNIXタイムスタンプ自体はUTC基準の絶対値であり、タイムゾーンを変えても値そのものは変わりません。変わるのは表示される「年月日時分秒」の見た目のみで、IANAタイムゾーンごとの標準時・夏時間（DST）を考慮したローカル時刻に変換して表示します。</source>
-        <target>The underlying Unix timestamp is always a UTC-based absolute value and doesn't change when you switch time zones. Only the displayed year/month/day/hour/minute/second changes, converted to local time for the selected IANA zone with daylight saving time (DST) applied automatically.</target>
+        <target>The underlying Unix timestamp is always a UTC-based absolute value and doesn&apos;t change when you switch time zones. Only the displayed year/month/day/hour/minute/second changes, converted to local time for the selected IANA zone with daylight saving time (DST) applied automatically.</target>
       </segment>
     </unit>
     <unit id="unixTimestampHelpFaqA3">
       <segment state="initial">
         <source>UNIXタイムスタンプを符号付き32ビット整数で保持している古いシステムでは、2038年1月19日 03:14:07 UTCに数値が最大値を超えてオーバーフローし、日時が正しく扱えなくなる問題です。JavaScriptの数値やモダンな64ビットシステムでは影響を受けませんが、組み込み機器や古いC言語プログラムでは注意が必要です。</source>
-        <target>Older systems that store Unix time as a signed 32-bit integer will overflow at 03:14:07 UTC on January 19, 2038, causing dates to be handled incorrectly after that point. Modern 64-bit systems and JavaScript's number type are unaffected, but embedded devices and legacy C programs can still be at risk.</target>
+        <target>Older systems that store Unix time as a signed 32-bit integer will overflow at 03:14:07 UTC on January 19, 2038, causing dates to be handled incorrectly after that point. Modern 64-bit systems and JavaScript&apos;s number type are unaffected, but embedded devices and legacy C programs can still be at risk.</target>
       </segment>
     </unit>
     <unit id="unixTimestampHelpFaqA4">
       <segment state="initial">
         <source>はい。1970年1月1日より前の日時は負のタイムスタンプとして扱われ、本ツールでも変換可能です。ただし一部の外部システムやライブラリは負の値をサポートしていない場合があるため、連携先の仕様も併せて確認してください。</source>
-        <target>Yes. Dates before January 1, 1970 are represented as negative timestamps, and this tool converts them correctly. Some external systems or libraries don't support negative values though, so check the spec of whatever you're integrating with.</target>
+        <target>Yes. Dates before January 1, 1970 are represented as negative timestamps, and this tool converts them correctly. Some external systems or libraries don&apos;t support negative values though, so check the spec of whatever you&apos;re integrating with.</target>
       </segment>
     </unit>
     <unit id="unixTimestampHelpFaqA5">
@@ -3588,7 +3774,7 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
     <unit id="unixTimestampHelpFaqA6">
       <segment state="initial">
         <source>「日時に変換」モードで日時欄を空欄のまま実行するか、現在時刻を初期値として利用することで、その時点のUNIXタイムスタンプを秒・ミリ秒の両形式で確認できます。</source>
-        <target>Leave the date field at its default in "Convert to date" mode, or use the current time as the starting value, to see the current moment expressed as both a seconds and a milliseconds Unix timestamp.</target>
+        <target>Leave the date field at its default in &quot;Convert to date&quot; mode, or use the current time as the starting value, to see the current moment expressed as both a seconds and a milliseconds Unix timestamp.</target>
       </segment>
     </unit>
     <unit id="unixTimestampHelpFaqQ1">
@@ -3678,7 +3864,7 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
     <unit id="unixTimestampHelpSpecNegative">
       <segment state="initial">
         <source><pc id="0" equivStart="START_TAG_STRONG" equivEnd="CLOSE_TAG_STRONG" type="other" dispStart="&lt;strong&gt;" dispEnd="&lt;/strong&gt;">負のタイムスタンプ</pc>: 1970年1月1日より前の日時は負の数値で表現されます。多くの言語・ライブラリは負の値もサポートしていますが、一部の古いシステムでは対応していない場合があるため注意が必要です。</source>
-        <target>Negative timestamps: dates before January 1, 1970 are represented as negative numbers. Most languages and libraries support negative values, but some older systems don't, so check the target system's behavior if you're passing the value along.</target>
+        <target>Negative timestamps: dates before January 1, 1970 are represented as negative numbers. Most languages and libraries support negative values, but some older systems don&apos;t, so check the target system&apos;s behavior if you&apos;re passing the value along.</target>
       </segment>
     </unit>
     <unit id="unixTimestampHelpSpecRfc">
@@ -3738,7 +3924,7 @@ v7: Generated by combining Unix time and random numbers. Easy to sort chronologi
     <unit id="unixTimestampHelpUsageTip">
       <segment state="initial">
         <source> 補足: 入力したタイムスタンプの桁数が10桁の場合は秒単位、13桁の場合はミリ秒単位として自動的に解釈されます。桁数が想定と異なる場合は変換結果が極端に過去や未来の日付になるため、入力値の桁数を見直してください。 </source>
-        <target>Note: a 10-digit input is automatically interpreted as seconds and a 13-digit input as milliseconds. If the digit count doesn't match what you expect, the result will land on a wildly wrong date — double-check the number of digits first.</target>
+        <target>Note: a 10-digit input is automatically interpreted as seconds and a 13-digit input as milliseconds. If the digit count doesn&apos;t match what you expect, the result will land on a wildly wrong date — double-check the number of digits first.</target>
       </segment>
     </unit>
     <unit id="unixTimestampHelpUseCase">

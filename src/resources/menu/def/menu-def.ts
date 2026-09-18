@@ -24,7 +24,7 @@ export interface MenuCategory {
 export const MENU_DASHBOARD: MenuItem = {
   label: $localize`:@@page.dashboard.menu:ダッシュボード`,
   description: $localize`:@@page.dashboard.description:JSON整形・SQL整形・UUID生成・URLエンコードなど開発者がよく使うツールを無料でまとめて利用できます。インストール不要でブラウザからすぐに使え、更新履歴やお役立ち記事もここから確認できます。`,
-  routerLink: '/',
+  routerLink: '/dashboard',
   icon: 'dashboard',
 };
 

@@ -1,0 +1,19 @@
+@if (articles.length > 0) {
+  <section class="verified" aria-labelledby="landing-verified-heading">
+    <p class="eyebrow mono" i18n="@@page.landing.verifiedTools.eyebrow">VERIFIED IMPLEMENTATION</p>
+    <h2 id="landing-verified-heading" i18n="@@page.landing.verifiedTools.heading">実装を検証したツール</h2>
+    <p class="verified__intro" i18n="@@page.landing.verifiedTools.intro">
+      「それらしく動く」ではなく「なぜその結果になるか」を、実装レベルで検証した記事です。各記事の末尾から、検証したツールへ直接移動できます。
+    </p>
+
+    <div class="verified__grid">
+      @for (article of articles; track article.slug) {
+        <article class="verified-card">
+          <a class="verified-card__title" [routerLink]="article.routerLink">{{ article.title }}</a>
+          <p class="verified-card__summary">{{ article.summary }}</p>
+          <app-article-related-tools [routerLinks]="article.relatedTools"></app-article-related-tools>
+        </article>
+      }
+    </div>
+  </section>
+}

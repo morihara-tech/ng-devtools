@@ -1,0 +1,51 @@
+<div class="landing">
+
+  <app-landing-hero [dashboardLink]="dashboardLink"></app-landing-hero>
+
+  <app-landing-tool-categories [categories]="categories"></app-landing-tool-categories>
+
+  <app-landing-verified-tools></app-landing-verified-tools>
+
+  <div class="landing__ad">
+    <app-ad provider="adsense" [slotId]="landingAdSlot"></app-ad>
+  </div>
+
+  <section class="trust" aria-labelledby="landing-trust-heading">
+    <h2 id="landing-trust-heading" class="trust__heading" i18n="@@page.landing.trust.heading">なぜ安心して使えるか</h2>
+    <ul class="trust__list">
+      <li class="trust__item">
+        <mat-icon>cloud_off</mat-icon>
+        <span i18n="@@page.landing.trust.item1">入力データはサーバーに送信されません。変換・整形はすべてブラウザ内で完結します。</span>
+      </li>
+      <li class="trust__item">
+        <mat-icon>bolt</mat-icon>
+        <span i18n="@@page.landing.trust.item2">アカウント登録やアプリのインストールは不要です。ページを開けばすぐに使えます。</span>
+      </li>
+      <li class="trust__item">
+        <mat-icon>visibility</mat-icon>
+        <span i18n="@@page.landing.trust.item3">処理内容はすべてクライアントサイドの実装のため、コードを読めば動作を確認できます。</span>
+      </li>
+    </ul>
+  </section>
+
+  <section class="history" aria-labelledby="landing-history-heading">
+    <h2 id="landing-history-heading" i18n="@@page.landing.history.heading">更新履歴</h2>
+    <app-update-history [histories]="recentHistories"></app-update-history>
+    <a class="history__more" routerLink="/articles" i18n="@@page.landing.history.more">これまでの記事一覧を見る</a>
+  </section>
+
+  <footer class="landing-footer" aria-labelledby="landing-footer-heading">
+    <h2 id="landing-footer-heading" class="cdk-visually-hidden" i18n="@@page.landing.footer.heading">サイト内リンク</h2>
+    <nav class="landing-footer__nav">
+      <a [routerLink]="dashboardLink" i18n="@@page.landing.footer.link.dashboard">ダッシュボード</a>
+      <a routerLink="/menu" i18n="@@page.landing.footer.link.menu">全ツール一覧</a>
+      <a routerLink="/guide" i18n="@@page.landing.footer.link.guide">ご利用ガイド</a>
+      <a routerLink="/articles" i18n="@@page.landing.footer.link.articles">記事一覧</a>
+      <a routerLink="/operator-info" i18n="@@page.landing.footer.link.operatorInfo">運営者情報</a>
+      <a routerLink="/privacy-policy" i18n="@@page.landing.footer.link.privacyPolicy">プライバシーポリシー</a>
+      <a href="https://github.com/morihara-tech/ng-devtools/issues" target="_blank" rel="noopener noreferrer" i18n="@@page.landing.footer.link.contact">お問い合わせ（GitHub Issues）</a>
+    </nav>
+    <p class="landing-footer__copyright" i18n="@@common.copyRight">© 2026 Yutaka Morihara</p>
+  </footer>
+
+</div>
