@@ -48,6 +48,7 @@
 
 // Update history
 .history h2 { margin: 0 0 16px; font-size: var(--mat-sys-headline-small-size); color: var(--mat-sys-on-surface); }
+.history app-update-history { display: block; }
 
 .history__more {
   display: inline-block;
