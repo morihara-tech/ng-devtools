@@ -4,7 +4,7 @@
       <mat-icon>menu</mat-icon>
     </button>
     <div class="separator"></div>
-    <a appHomeLink class="content">
+    <a [routerLink]="dashboardLink" class="content">
       <img class="logo" [src]="m.logo.logoUrl">
     </a>
     @if (m.appsButton) {
