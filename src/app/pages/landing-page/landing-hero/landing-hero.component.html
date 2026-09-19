@@ -2,10 +2,10 @@
   <div class="hero__copy">
     <p class="eyebrow mono" i18n="@@page.landing.hero.eyebrow">$ devtools --philosophy</p>
     <h2 class="hero__title" i18n="@@page.landing.hero.title">
-      「なぜ合っているか」まで確かめた開発者ツール
+      無料で使える開発者ツール集
     </h2>
     <p class="hero__subtitle" i18n="@@page.landing.hero.subtitle">
-      JSON整形・UUID生成・SQL整形など、ブラウザだけで完結する無料ツールを12個公開しています。ただ動かすだけでなく、出力の仕様やエッジケースを記事として検証しながら実装しているのが、このサイトのツールです。
+      APIキー生成・SVGビューアー・ULID生成・カラーパレットなど、無料で使える開発者ツール集です。気になる仕様やエッジケースについては、記事でも詳しく解説しています。
     </p>
     <a class="hero__cta" [routerLink]="dashboardLink()">
       <mat-icon>dashboard</mat-icon>
@@ -14,18 +14,15 @@
     </a>
   </div>
 
-  <div class="hero__panel">
-    <div class="hero__panel-titlebar">
-      <span class="hero__panel-dot"></span>
-      <span class="hero__panel-dot"></span>
-      <span class="hero__panel-dot"></span>
-      <span class="hero__panel-filename mono" i18n="@@page.landing.hero.panel.filename">verify.log</span>
+  @if (relatedArticleCards.length > 0) {
+    <div class="hero__related" role="group" aria-label="関連記事" i18n-aria-label="@@page.landing.hero.relatedCards.ariaLabel">
+      @for (card of relatedArticleCards; track card.toolRouterLink) {
+        <a class="hero__related-card" [routerLink]="card.article.routerLink">
+          <span class="hero__related-tool">{{ card.toolLabel }}</span>
+          <mat-icon class="hero__related-arrow" aria-hidden="true">arrow_forward</mat-icon>
+          <span class="hero__related-article">{{ card.article.title }}</span>
+        </a>
+      }
     </div>
-    <ul class="hero__panel-lines mono">
-      <li><span class="ok">✓</span> <span class="target">uuid-generator</span><span class="assertion" i18n="@@page.landing.hero.panel.line1">assert isTimeOrdered(uuidV7) === true</span></li>
-      <li><span class="ok">✓</span> <span class="target">unix-timestamp-converter</span><span class="assertion" i18n="@@page.landing.hero.panel.line2">assert handlesLeapSeconds(input) === true</span></li>
-      <li><span class="ok">✓</span> <span class="target">sql-formatter</span><span class="assertion" i18n="@@page.landing.hero.panel.line3">assert format(ormGeneratedSql) is readable</span></li>
-      <li><span class="ok">✓</span> <span class="target">json-formatter</span><span class="assertion" i18n="@@page.landing.hero.panel.line4">assert roundTrip(parse, stringify) === input</span></li>
-    </ul>
-  </div>
+  }
 </section>

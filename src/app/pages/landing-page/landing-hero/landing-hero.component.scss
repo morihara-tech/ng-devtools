@@ -11,6 +11,13 @@
 
 .hero {
   display: grid;
+  // Explicit `minmax(0, 1fr)` (not the `auto` implicit default) so the
+  // single mobile column can't be stretched wide by an overflowing child —
+  // without this, a long, non-wrapping child (e.g. `.hero__related-article`
+  // before its own min-width:0 fix) grows the track to content width and
+  // every sibling in that track (including `.hero__copy`) gets pulled wide
+  // with it, causing horizontal overflow at narrow viewports.
+  grid-template-columns: minmax(0, 1fr);
   gap: 32px;
   padding: 48px 24px;
   background: var(--mat-sys-surface-container-low);
@@ -19,14 +26,22 @@
   @media (max-width: 600px) { padding: 32px 16px; }
 
   @media (min-width: 900px) {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 440px);
     align-items: center;
     max-width: 1080px;
     margin: 0 auto;
+
+    // Two columns only when the related-article panel is actually present
+    // (it renders nothing locally, where `content/articles/` is not synced
+    // — see LandingHeroComponent doc comment) — otherwise the copy centers
+    // in a single column instead of leaving an empty second track.
+    &:has(> .hero__related) {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 440px);
+    }
   }
 }
 
-.hero__copy { display: flex; flex-direction: column; align-items: flex-start; max-width: 640px; }
+.hero__copy { display: flex; flex-direction: column; align-items: flex-start; max-width: 640px; min-width: 0; }
+.hero:not(:has(> .hero__related)) .hero__copy { max-width: 720px; margin: 0 auto; }
 
 .hero__title {
   margin: 0 0 16px;
@@ -62,38 +77,51 @@
 
 .hero__cta-arrow { font-size: 18px; width: 18px; height: 18px; }
 
-.hero__panel {
-  border-radius: 8px;
-  overflow: hidden;
-  border: 1px solid var(--mat-sys-outline-variant);
-  background: var(--mat-sys-inverse-surface);
-  color: var(--mat-sys-inverse-on-surface);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, .15);
-}
-
-.hero__panel-titlebar {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 10px 12px;
-  border-bottom: 1px solid rgba(255, 255, 255, .12);
-}
-
-.hero__panel-dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255, 255, 255, .2); }
-.hero__panel-filename { margin-left: 8px; font-size: 12px; opacity: .7; }
-
-.hero__panel-lines {
-  margin: 0;
-  padding: 16px;
-  list-style: none;
+.hero__related {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  font-size: 13px;
-
-  li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px; }
+  min-width: 0;
 }
 
-.ok { color: var(--mat-sys-secondary); font-weight: 700; }
-.target { font-weight: 600; }
-.assertion { opacity: .75; }
+.hero__related-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--mat-sys-outline-variant);
+  background: var(--mat-sys-surface-container);
+  color: var(--mat-sys-on-surface);
+  text-decoration: none;
+  transition: background-color .2s, border-color .2s;
+  // Flex items default to `min-width: auto`, which refuses to shrink below
+  // the intrinsic (unwrapped) width of `.hero__related-article` — without
+  // this override the card (and its ellipsis) never actually shrinks, and
+  // instead pushes the whole card wider than its container.
+  min-width: 0;
+
+  &:hover, &:focus-visible {
+    background: var(--mat-sys-surface-variant);
+    border-color: var(--mat-sys-primary);
+  }
+}
+
+.hero__related-tool {
+  flex: none;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--mat-sys-secondary);
+  white-space: nowrap;
+}
+
+.hero__related-arrow { flex: none; font-size: 16px; width: 16px; height: 16px; color: var(--mat-sys-outline); }
+
+.hero__related-article {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: var(--mat-sys-body-medium-size);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

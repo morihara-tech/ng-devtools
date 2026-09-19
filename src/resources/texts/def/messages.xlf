@@ -293,7 +293,7 @@
     </unit>
     <unit id="page.landing.breadcrumb">
       <segment>
-        <source>実装を検証した開発者ツール集</source>
+        <source>無料の開発者ツール集</source>
       </segment>
     </unit>
     <unit id="page.landing.categories.eyebrow">
@@ -308,7 +308,7 @@
     </unit>
     <unit id="page.landing.description">
       <segment>
-        <source>JSON整形・SQL整形・UUID生成など、ブラウザだけで完結する無料の開発者ツール集です。仕様やエッジケースを記事で検証しながら実装しているツールを中心に紹介します。</source>
+        <source>APIキー生成・SVGビューアー・ULID生成・カラーパレットなど、無料で使える開発者ツール集です。気になる仕様やエッジケースについては、記事でも詳しく解説しています。</source>
       </segment>
     </unit>
     <unit id="page.landing.footer.heading">
@@ -361,39 +361,19 @@
         <source>$ devtools --philosophy</source>
       </segment>
     </unit>
-    <unit id="page.landing.hero.panel.filename">
+    <unit id="page.landing.hero.relatedCards.ariaLabel">
       <segment>
-        <source>verify.log</source>
-      </segment>
-    </unit>
-    <unit id="page.landing.hero.panel.line1">
-      <segment>
-        <source>assert isTimeOrdered(uuidV7) === true</source>
-      </segment>
-    </unit>
-    <unit id="page.landing.hero.panel.line2">
-      <segment>
-        <source>assert handlesLeapSeconds(input) === true</source>
-      </segment>
-    </unit>
-    <unit id="page.landing.hero.panel.line3">
-      <segment>
-        <source>assert format(ormGeneratedSql) is readable</source>
-      </segment>
-    </unit>
-    <unit id="page.landing.hero.panel.line4">
-      <segment>
-        <source>assert roundTrip(parse, stringify) === input</source>
+        <source>関連記事</source>
       </segment>
     </unit>
     <unit id="page.landing.hero.subtitle">
       <segment>
-        <source> JSON整形・UUID生成・SQL整形など、ブラウザだけで完結する無料ツールを12個公開しています。ただ動かすだけでなく、出力の仕様やエッジケースを記事として検証しながら実装しているのが、このサイトのツールです。 </source>
+        <source> APIキー生成・SVGビューアー・ULID生成・カラーパレットなど、無料で使える開発者ツール集です。気になる仕様やエッジケースについては、記事でも詳しく解説しています。 </source>
       </segment>
     </unit>
     <unit id="page.landing.hero.title">
       <segment>
-        <source> 「なぜ合っているか」まで確かめた開発者ツール </source>
+        <source> 無料で使える開発者ツール集 </source>
       </segment>
     </unit>
     <unit id="page.landing.history.heading">
@@ -408,7 +388,7 @@
     </unit>
     <unit id="page.landing.title">
       <segment>
-        <source>実装を検証した無料の開発者ツール集</source>
+        <source>無料で使える開発者ツール集</source>
       </segment>
     </unit>
     <unit id="page.landing.trust.heading">
@@ -433,17 +413,17 @@
     </unit>
     <unit id="page.landing.verifiedTools.eyebrow">
       <segment>
-        <source>VERIFIED IMPLEMENTATION</source>
+        <source>HOW IT WORKS</source>
       </segment>
     </unit>
     <unit id="page.landing.verifiedTools.heading">
       <segment>
-        <source>実装を検証したツール</source>
+        <source>ツールの裏側を記事にしています</source>
       </segment>
     </unit>
     <unit id="page.landing.verifiedTools.intro">
       <segment>
-        <source> 「それらしく動く」ではなく「なぜその結果になるか」を、実装レベルで検証した記事です。各記事の末尾から、検証したツールへ直接移動できます。 </source>
+        <source> 動く仕組みや、つまずきやすいエッジケースがなぜ起きるのかを調べて記事にまとめました。各記事から、対応するツールへ移動できます。 </source>
       </segment>
     </unit>
     <unit id="page.menu.description">

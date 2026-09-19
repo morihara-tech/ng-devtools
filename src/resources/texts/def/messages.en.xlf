@@ -350,9 +350,9 @@
       </segment>
     </unit>
     <unit id="page.landing.breadcrumb">
-      <segment state="translated">
-        <source>実装を検証した開発者ツール集</source>
-        <target>Developer tools, verified in writing</target>
+      <segment state="initial">
+        <source>無料の開発者ツール集</source>
+        <target>Free developer tools</target>
       </segment>
     </unit>
     <unit id="page.landing.categories.eyebrow">
@@ -368,9 +368,9 @@
       </segment>
     </unit>
     <unit id="page.landing.description">
-      <segment state="translated">
-        <source>JSON整形・SQL整形・UUID生成など、ブラウザだけで完結する無料の開発者ツール集です。仕様やエッジケースを記事で検証しながら実装しているツールを中心に紹介します。</source>
-        <target>A free collection of browser-only developer tools — JSON formatting, SQL formatting, UUID generation, and more. Several are backed by articles that walk through the spec and edge cases behind the implementation.</target>
+      <segment state="initial">
+        <source>APIキー生成・SVGビューアー・ULID生成・カラーパレットなど、無料で使える開発者ツール集です。気になる仕様やエッジケースについては、記事でも詳しく解説しています。</source>
+        <target>API key generation, an SVG viewer, ULID generation, color palettes, and more — all free to use. Curious how something behaves under the hood? Several tools link to an article that digs into the details.</target>
       </segment>
     </unit>
     <unit id="page.landing.footer.heading">
@@ -433,46 +433,22 @@
         <target>$ devtools --philosophy</target>
       </segment>
     </unit>
-    <unit id="page.landing.hero.panel.filename">
-      <segment state="translated">
-        <source>verify.log</source>
-        <target>verify.log</target>
-      </segment>
-    </unit>
-    <unit id="page.landing.hero.panel.line1">
-      <segment state="translated">
-        <source>assert isTimeOrdered(uuidV7) === true</source>
-        <target>assert isTimeOrdered(uuidV7) === true</target>
-      </segment>
-    </unit>
-    <unit id="page.landing.hero.panel.line2">
-      <segment state="translated">
-        <source>assert handlesLeapSeconds(input) === true</source>
-        <target>assert handlesLeapSeconds(input) === true</target>
-      </segment>
-    </unit>
-    <unit id="page.landing.hero.panel.line3">
-      <segment state="translated">
-        <source>assert format(ormGeneratedSql) is readable</source>
-        <target>assert format(ormGeneratedSql) is readable</target>
-      </segment>
-    </unit>
-    <unit id="page.landing.hero.panel.line4">
-      <segment state="translated">
-        <source>assert roundTrip(parse, stringify) === input</source>
-        <target>assert roundTrip(parse, stringify) === input</target>
+    <unit id="page.landing.hero.relatedCards.ariaLabel">
+      <segment state="initial">
+        <source>関連記事</source>
+        <target>Related articles</target>
       </segment>
     </unit>
     <unit id="page.landing.hero.subtitle">
-      <segment state="translated">
-        <source> JSON整形・UUID生成・SQL整形など、ブラウザだけで完結する無料ツールを12個公開しています。ただ動かすだけでなく、出力の仕様やエッジケースを記事として検証しながら実装しているのが、このサイトのツールです。 </source>
-        <target> Most JSON formatters just format. Before shipping any of the 12 free, browser-only tools here — UUID generation, SQL formatting, timestamp conversion, and the rest — we write up the spec and the edge cases as an article: why a v7 UUID sorts the way it does, how leap seconds affect Unix time, what breaks when you reformat ORM-generated SQL. </target>
+      <segment state="initial">
+        <source> APIキー生成・SVGビューアー・ULID生成・カラーパレットなど、無料で使える開発者ツール集です。気になる仕様やエッジケースについては、記事でも詳しく解説しています。 </source>
+        <target> From API key generation to an SVG viewer, ULID generation, and color palettes: a free toolbox for everyday development work. Wondering about the edge cases? Several tools come with an article that walks through how they actually behave. </target>
       </segment>
     </unit>
     <unit id="page.landing.hero.title">
-      <segment state="translated">
-        <source> 「なぜ合っているか」まで確かめた開発者ツール </source>
-        <target> Free dev tools that show their work </target>
+      <segment state="initial">
+        <source> 無料で使える開発者ツール集 </source>
+        <target> Free developer tools, ready in your browser </target>
       </segment>
     </unit>
     <unit id="page.landing.history.heading">
@@ -488,9 +464,9 @@
       </segment>
     </unit>
     <unit id="page.landing.title">
-      <segment state="translated">
-        <source>実装を検証した無料の開発者ツール集</source>
-        <target>Free Developer Tools, Verified in Writing</target>
+      <segment state="initial">
+        <source>無料で使える開発者ツール集</source>
+        <target>Free Developer Tools, Right in Your Browser</target>
       </segment>
     </unit>
     <unit id="page.landing.trust.heading">
@@ -518,21 +494,21 @@
       </segment>
     </unit>
     <unit id="page.landing.verifiedTools.eyebrow">
-      <segment state="translated">
-        <source>VERIFIED IMPLEMENTATION</source>
-        <target>VERIFIED IMPLEMENTATION</target>
+      <segment state="initial">
+        <source>HOW IT WORKS</source>
+        <target>HOW IT WORKS</target>
       </segment>
     </unit>
     <unit id="page.landing.verifiedTools.heading">
-      <segment state="translated">
-        <source>実装を検証したツール</source>
-        <target>Tools we've verified in writing</target>
+      <segment state="initial">
+        <source>ツールの裏側を記事にしています</source>
+        <target>What's Behind Each Tool</target>
       </segment>
     </unit>
     <unit id="page.landing.verifiedTools.intro">
-      <segment state="translated">
-        <source> 「それらしく動く」ではなく「なぜその結果になるか」を、実装レベルで検証した記事です。各記事の末尾から、検証したツールへ直接移動できます。 </source>
-        <target> These articles dig into implementation detail — not just that a tool works, but why it produces the result it does. Each one links straight through to the tool it verifies. </target>
+      <segment state="initial">
+        <source> 動く仕組みや、つまずきやすいエッジケースがなぜ起きるのかを調べて記事にまとめました。各記事から、対応するツールへ移動できます。 </source>
+        <target> We dug into how each tool actually works, including the edge cases that trip people up, and wrote it all down. Every article links straight back to the tool it covers. </target>
       </segment>
     </unit>
     <unit id="page.menu.description">
