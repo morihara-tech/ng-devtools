@@ -423,8 +423,8 @@
     </unit>
     <unit id="page.landing.hero.cta">
       <segment state="translated">
-        <source>よく使うツールをダッシュボードにまとめる</source>
-        <target>Or pin your favorites to the dashboard</target>
+        <source>ダッシュボードを見てみる</source>
+        <target>Take a look at the dashboard</target>
       </segment>
     </unit>
     <unit id="page.landing.hero.eyebrow">
