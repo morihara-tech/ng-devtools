@@ -50,15 +50,6 @@
 .history h2 { margin: 0 0 16px; font-size: var(--mat-sys-headline-small-size); color: var(--mat-sys-on-surface); }
 .history app-update-history { display: block; }
 
-.history__more {
-  display: block;
-  margin-top: 12px;
-  color: var(--mat-sys-primary);
-  text-decoration: none;
-
-  &:hover, &:focus-visible { text-decoration: underline; }
-}
-
 // Footer links
 .landing-footer { border-top: 1px solid var(--mat-sys-outline-variant); }
 .landing-footer__nav { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-bottom: 16px; }

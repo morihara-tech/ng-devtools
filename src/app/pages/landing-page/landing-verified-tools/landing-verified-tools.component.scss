@@ -79,3 +79,12 @@ h2 {
   color: var(--mat-sys-on-surface-variant);
   flex-grow: 1;
 }
+
+.verified__more {
+  display: block;
+  margin-top: 12px;
+  color: var(--mat-sys-primary);
+  text-decoration: none;
+
+  &:hover, &:focus-visible { text-decoration: underline; }
+}

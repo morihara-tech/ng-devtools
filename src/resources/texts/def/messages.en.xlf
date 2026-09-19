@@ -454,7 +454,7 @@
     <unit id="page.landing.history.heading">
       <segment state="translated">
         <source>更新履歴</source>
-        <target>What's new</target>
+        <target>What&apos;s new</target>
       </segment>
     </unit>
     <unit id="page.landing.history.more">
@@ -502,7 +502,7 @@
     <unit id="page.landing.verifiedTools.heading">
       <segment state="initial">
         <source>ツールの裏側を記事にしています</source>
-        <target>What's Behind Each Tool</target>
+        <target>What&apos;s Behind Each Tool</target>
       </segment>
     </unit>
     <unit id="page.landing.verifiedTools.intro">
