@@ -1,0 +1,28 @@
+<section class="hero">
+  <div class="hero__copy">
+    <p class="eyebrow mono" i18n="@@page.landing.hero.eyebrow">$ devtools --philosophy</p>
+    <h2 class="hero__title" i18n="@@page.landing.hero.title">
+      無料で使える開発者ツール集
+    </h2>
+    <p class="hero__subtitle" i18n="@@page.landing.hero.subtitle">
+      APIキー生成・SVGビューアー・ULID生成・カラーパレットなど、無料で使える開発者ツール集です。気になる仕様やエッジケースについては、記事でも詳しく解説しています。
+    </p>
+    <a class="hero__cta" [routerLink]="dashboardLink()">
+      <mat-icon>dashboard</mat-icon>
+      <span i18n="@@page.landing.hero.cta">ダッシュボードを見てみる</span>
+      <mat-icon class="hero__cta-arrow">arrow_forward</mat-icon>
+    </a>
+  </div>
+
+  @if (relatedArticleCards.length > 0) {
+    <div class="hero__related" role="group" aria-label="関連記事" i18n-aria-label="@@page.landing.hero.relatedCards.ariaLabel">
+      @for (card of relatedArticleCards; track card.toolRouterLink) {
+        <a class="hero__related-card" [routerLink]="card.article.routerLink">
+          <span class="hero__related-tool">{{ card.toolLabel }}</span>
+          <mat-icon class="hero__related-arrow" aria-hidden="true">arrow_forward</mat-icon>
+          <span class="hero__related-article">{{ card.article.title }}</span>
+        </a>
+      }
+    </div>
+  }
+</section>

@@ -1,0 +1,30 @@
+<section class="categories" aria-labelledby="landing-categories-heading">
+  <p class="eyebrow mono" i18n="@@page.landing.categories.eyebrow">$ ls tools/ --by-category</p>
+  <h2 id="landing-categories-heading" i18n="@@page.landing.categories.heading">全12ツールをカテゴリ別に</h2>
+
+  <div class="categories__grid">
+    @for (category of categories(); track category.label) {
+      <div class="category">
+        <h3 class="category__label">{{ category.label }}</h3>
+        <ul class="category__list">
+          @for (item of category.items; track item.routerLink) {
+            <li class="category__item">
+              <a class="category__link" [routerLink]="item.routerLink">
+                @if (item.svgIcon) {
+                  <mat-icon [svgIcon]="item.svgIcon"></mat-icon>
+                }
+                @if (item.icon) {
+                  <mat-icon>{{ item.icon }}</mat-icon>
+                }
+                <span class="category__text">
+                  <span class="category__item-label">{{ item.label }}</span>
+                  <span class="category__item-description">{{ item.description }}</span>
+                </span>
+              </a>
+            </li>
+          }
+        </ul>
+      </div>
+    }
+  </div>
+</section>

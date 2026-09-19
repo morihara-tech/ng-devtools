@@ -13,7 +13,7 @@
 @if (topItem(); as top) {
   <mat-nav-list>
     <a mat-list-item class="item"
-      appHomeLink
+      [routerLink]="top.routerLink"
       (click)="clickMenu.emit()">
       @if (top.icon) {
         <mat-icon matListItemIcon>{{ top.icon }}</mat-icon>
@@ -77,17 +77,34 @@
 @if (bottomItems(); as bottoms) {
   <mat-nav-list class="bottom-nav">
     @for (bottom of bottoms; track $index) {
-      <a mat-list-item class="item"
-        [routerLink]="bottom.routerLink"
-        (click)="clickMenu.emit()">
-        @if (bottom.icon) {
-          <mat-icon matListItemIcon>{{ bottom.icon }}</mat-icon>
-        }
-        @if (bottom.svgIcon) {
-          <mat-icon matListItemIcon [svgIcon]="bottom.svgIcon"></mat-icon>
-        }
-        <span matListItemTitle>{{ bottom.label }}</span>
-      </a>
+      <!-- `isHome` items use `appHomeLink` instead of `[routerLink]` to avoid
+           the trailing-slash root-path href issue (see HomeLinkDirective);
+           everything else links via its own `routerLink` as usual. -->
+      @if (bottom.isHome) {
+        <a mat-list-item class="item"
+          appHomeLink
+          (click)="clickMenu.emit()">
+          @if (bottom.icon) {
+            <mat-icon matListItemIcon>{{ bottom.icon }}</mat-icon>
+          }
+          @if (bottom.svgIcon) {
+            <mat-icon matListItemIcon [svgIcon]="bottom.svgIcon"></mat-icon>
+          }
+          <span matListItemTitle>{{ bottom.label }}</span>
+        </a>
+      } @else {
+        <a mat-list-item class="item"
+          [routerLink]="bottom.routerLink"
+          (click)="clickMenu.emit()">
+          @if (bottom.icon) {
+            <mat-icon matListItemIcon>{{ bottom.icon }}</mat-icon>
+          }
+          @if (bottom.svgIcon) {
+            <mat-icon matListItemIcon [svgIcon]="bottom.svgIcon"></mat-icon>
+          }
+          <span matListItemTitle>{{ bottom.label }}</span>
+        </a>
+      }
     }
   </mat-nav-list>
 }

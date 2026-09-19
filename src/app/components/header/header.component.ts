@@ -8,7 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { LanguageButtonComponent } from './language-button/language-button.component';
 import { filter, map, mergeMap, startWith } from 'rxjs';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { HomeLinkDirective } from '../locale/home-link.directive';
+import { MENU_DASHBOARD } from '../../../resources/menu/def/menu-def';
 
 @Component({
     selector: 'app-header',
@@ -16,7 +16,6 @@ import { HomeLinkDirective } from '../locale/home-link.directive';
         PersonButtonComponent,
         LanguageButtonComponent,
         RouterModule,
-        HomeLinkDirective,
         MatButtonModule,
         MatIconModule,
         MatToolbarModule
@@ -28,6 +27,16 @@ export class HeaderComponent {
   readonly model = input<HeaderModel>();
   readonly toggleMenu = output<void>();
   readonly clickPersonContext = output<PersonButtonMenuModel>();
+
+  /**
+   * Router link for the header logo. Since the Issue #223 landing-page
+   * split, the app root `/` is the landing page and the operational
+   * dashboard lives at `/dashboard` — the logo (long-standing "take me to
+   * my tools" affordance) now points there instead of the app root, so it
+   * no longer needs `HomeLinkDirective`'s root-path trailing-slash handling
+   * (see `home-link.directive.ts`), a plain `[routerLink]` is correct.
+   */
+  readonly dashboardLink = MENU_DASHBOARD.routerLink;
 
   private readonly route = inject(Router);
   private readonly activatedRoute = inject(ActivatedRoute);

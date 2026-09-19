@@ -96,6 +96,7 @@ export class AppComponent {
         this.titleService.setTitle(title);
         this.toggle.set(event['menuToggle']);
         this.setMetaDescription(event);
+        this.setRobotsMeta(event);
       });
   }
 
@@ -109,6 +110,22 @@ export class AppComponent {
     const description = menuItem?.description ?? (routeData['description'] as string | undefined) ?? '';
     if (description) {
       this.metaService.updateTag({ name: 'description', content: description });
+    }
+  }
+
+  /**
+   * Injects (or removes) `<meta name="robots">` based on the current
+   * route's `data.robots` (e.g. `/dashboard`'s `'noindex,follow'` — see
+   * `dashboard-page.routes.ts`). Explicitly removes the tag on routes with
+   * no `robots` data so an SPA navigation away from a noindex route (e.g.
+   * `/dashboard` → `/json-formatter`) never leaves a stale tag behind.
+   */
+  private setRobotsMeta(routeData: Data): void {
+    const robots = routeData['robots'] as string | undefined;
+    if (robots) {
+      this.metaService.updateTag({ name: 'robots', content: robots });
+    } else {
+      this.metaService.removeTag('name="robots"');
     }
   }
 

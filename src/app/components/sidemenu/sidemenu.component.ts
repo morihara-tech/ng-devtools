@@ -20,9 +20,11 @@ import { HomeLinkDirective } from '../locale/home-link.directive';
 })
 export class SidemenuComponent {
   /**
-   * Single top-level item rendered outside the accordion (e.g. Dashboard).
-   * Always links to the app root, so the template renders it with
-   * `appHomeLink` rather than `top.routerLink` (see HomeLinkDirective).
+   * Single top-level item rendered outside the accordion (e.g. Dashboard,
+   * at `/dashboard` since the Issue #223 landing-page split — the app root
+   * `/` is now the landing page, not the dashboard). Renders via
+   * `[routerLink]="top.routerLink"` like any other item; it is not the
+   * app-root "Home" link (see `bottomItems`' `isHome` item for that).
    */
   readonly topItem = input<SidemenuItemModel>();
   /** Category groups rendered as an accordion */

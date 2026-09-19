@@ -1,0 +1,67 @@
+:host { display: block; }
+
+.landing > section,
+.landing > .landing__ad,
+.landing > .landing-footer {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 48px 24px;
+
+  @media (max-width: 600px) { padding: 32px 16px; }
+}
+
+.landing > section > *,
+.landing > .landing-footer > * {
+  max-width: 1080px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Ad slot
+.landing__ad { padding-top: 0; padding-bottom: 0; }
+.landing__ad app-ad { display: block; max-width: 1080px; margin: 0 auto; }
+
+// Trust — deliberately quiet, smaller than the surrounding sections.
+.trust { background: var(--mat-sys-surface-container-low); padding-top: 32px; padding-bottom: 32px; }
+.trust__heading { margin: 0 0 16px; font-size: var(--mat-sys-title-medium-size); color: var(--mat-sys-on-surface-variant); font-weight: 600; }
+
+.trust__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr;
+
+  @media (min-width: 720px) { grid-template-columns: repeat(3, 1fr); }
+}
+
+.trust__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: var(--mat-sys-body-small-size);
+  color: var(--mat-sys-on-surface-variant);
+
+  mat-icon { flex-shrink: 0; font-size: 20px; width: 20px; height: 20px; color: var(--mat-sys-on-surface-variant); }
+}
+
+// Update history
+.history h2 { margin: 0 0 16px; font-size: var(--mat-sys-headline-small-size); color: var(--mat-sys-on-surface); }
+.history app-update-history { display: block; }
+
+// Footer links
+.landing-footer { border-top: 1px solid var(--mat-sys-outline-variant); }
+.landing-footer__nav { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-bottom: 16px; }
+
+.landing-footer__nav a {
+  display: inline-block;
+  padding: 15px 4px;
+  color: var(--mat-sys-on-surface-variant);
+  text-decoration: none;
+  font-size: var(--mat-sys-body-small-size);
+
+  &:hover, &:focus-visible { color: var(--mat-sys-primary); text-decoration: underline; }
+}
+
+.landing-footer__copyright { margin: 0; font-size: var(--mat-sys-body-small-size); color: var(--mat-sys-on-surface-variant); }

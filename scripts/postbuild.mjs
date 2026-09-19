@@ -276,7 +276,7 @@ const BUILD_DATE_FALLBACK = new Date().toISOString().slice(0, 10);
 const MENU_DEF_PATH = 'src/resources/menu/def/menu-def.ts';
 
 const PAGE_SOURCE_MAP = {
-  '/': ['src/app/pages/dashboard-page', MENU_DEF_PATH],
+  '/': ['src/app/pages/landing-page', MENU_DEF_PATH],
   '/menu': ['src/app/pages/menu-page', MENU_DEF_PATH],
   '/guide': ['src/app/pages/guide-page'],
   '/ulid-generator': ['src/app/pages/ulid-gen-page'],
@@ -429,6 +429,11 @@ for (const locale of LOCALES) {
     const relativePath = indexPath.slice(BROWSER_DIR.length + 1).replace(/\\/g, '/');
     const urlPath = stripTrailingSlash('/' + relativePath.replace(/index\.html$/, ''));
     const barePath = stripLocalePrefix(urlPath, locale);
+
+    // /dashboard is noindex,follow (see dashboard-page.routes.ts) — it must
+    // not appear in sitemap.xml. Matches barePath === '/dashboard' and any
+    // path nested under it.
+    if (barePath === '/dashboard' || barePath.startsWith('/dashboard/')) continue;
 
     const lastmod = resolveLastmod(barePath, locale);
     sitemapEntries.push({ loc: `${BASE_URL}${urlPath}`, lastmod });
