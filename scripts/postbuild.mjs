@@ -180,12 +180,16 @@ for (const locale of LOCALES) {
 
     const altLocale = locale === 'ja' ? 'en' : 'ja';
     const altUrlPath = urlPath.replace(`/${locale}`, `/${altLocale}`);
+    // x-default must always point at the English URL regardless of which
+    // locale is currently being built, so that ja and en builds agree on
+    // the same x-default target for a given page (see issue #225).
+    const defaultUrlPath = locale === 'en' ? urlPath : altUrlPath;
 
     const tags = [
       `  <link rel="canonical" href="${BASE_URL}${urlPath}">`,
       `  <link rel="alternate" hreflang="${locale}" href="${BASE_URL}${urlPath}">`,
       `  <link rel="alternate" hreflang="${altLocale}" href="${BASE_URL}${altUrlPath}">`,
-      `  <link rel="alternate" hreflang="x-default" href="${BASE_URL}${urlPath}">`,
+      `  <link rel="alternate" hreflang="x-default" href="${BASE_URL}${defaultUrlPath}">`,
     ].join('\n');
 
     const injected = html.replace('</head>', `${tags}\n</head>`);
